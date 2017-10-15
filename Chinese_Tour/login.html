@@ -60,7 +60,7 @@
   </nav>
   <!--login body-->
 <div class="container">
-  <form class="form-horizontal" data-toggle="validator">
+  <form class="form-horizontal" data-toggle="validator" action="">
     <div class="row">
       <div class="col-md-3"></div>
       <div class="col-md-6"><br><br><br><br>
@@ -75,7 +75,7 @@
         <div class="form-group has-feedback">
           <div class="input-group mb-2 mr-sm-2 mb-sm-0">
             <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
-            <input type="text" pattern="^[_A-z0-9]{1,}$" maxlength="15" class="form-control" id="inputUsername" placeholder="Username" required>
+            <input type="text" pattern="^[_A-z0-9]{1,}$" maxlength="15" class="form-control" id="inputUsername" placeholder="Username" name="username" required>
           </div>
         </div>
 
@@ -88,7 +88,7 @@
           <label class="sr-only control-label" for="inputPassword">Password</label>
           <div class="input-group mb-2 mr-sm-2 mb-sm-0">
             <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
-            <input type="password" name="password" data-minlength="6" class="form-control" id="inputPassword" placeholder="Password" required>
+            <input type="password" name="password" data-minlength="6" class="form-control" id="inputPassword" placeholder="Password" name="password" required>
           </div>
 
           <div class="col-md-12">
