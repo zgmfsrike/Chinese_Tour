@@ -15,6 +15,7 @@ if(isset($_POST['login'])){
         $objResult = mysqli_fetch_array($result);
         if ( verifyPassword($password,$objResult["password"]) ){
             $_SESSION['login_id'] = $objResult['id'];
+            $_SESSION['member_type'] = "member";
             $active = $objResult['active'];
             if ($active == 1){
                 // confirmed

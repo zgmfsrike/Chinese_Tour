@@ -14,8 +14,6 @@ include "db_config.php";
        $username = $username[0];
        $username = md5($objResult['username']);
        
-       echo "$username<br>$u";
-       
        if($u == $username){
            
            $active = $objResult['active'];
@@ -24,9 +22,9 @@ include "db_config.php";
                $result = mysqli_query( $GLOBALS['conn'] , $sql );
            
                if($result){
-                   echo "success";
+                   echo "actived";
                }else{
-                   echo "no";
+                   echo "error can not update";
                }   
            }
        }else{
