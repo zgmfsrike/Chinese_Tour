@@ -60,7 +60,7 @@
   </nav>
   <!--login body-->
 <div class="container">
-  <form class="form-horizontal" data-toggle="validator" action="">
+  <form class="form-horizontal" data-toggle="validator" method="post" action="login.php">
     <div class="row">
       <div class="col-md-3"></div>
       <div class="col-md-6"><br><br><br><br>
@@ -100,12 +100,12 @@
     <div class="row">
       <div class="col-md-3"></div>
       <div class="col-md-6">
-        <button type="submit" class="btn btn-danger btn-sm">Login</button>
+        <button type="submit" class="btn btn-danger btn-sm" name="login">Login</button>
         <button type="button" onclick="window.location.href='Register.html'" class="btn btn-warning btn-sm">Register</button>
       </div>
     </div>
+      </form>
 <!--end login body-->
-  </form>
 </div>
 
     <!-- Footer -->

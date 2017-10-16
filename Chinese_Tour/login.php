@@ -1,35 +1,35 @@
 <?php
-include "database/db_config.php";
+include "db_config.php";
 include "module/hashing.php";
 session_start();
 
 if(isset($_POST['login'])){
     $username = $_POST['username'];
-    $password = '' . $_POST['password'] . '';
+    $password = ''.$_POST['password'].'';
 
-    $query = "SELECT * FROM kuylai WHERE username = '$username'";
-    $select_user_query = mysqli_query($conn, $query);
-
-    $result = mysqli_fetch_array($select_user_query,MYSQLI_ASSOC);
-    $count = mysqli_num_rows($select_user_query);
+    $query = "SELECT * FROM member WHERE username = '$username'";
+    $result = mysqli_query($conn, $query);
+    $count = mysqli_num_rows($result);
 
     if($count == 1){
-      $hash_row = $result['password'];
-      $hash = '' . $hash_row[0] . '';
-      $id = $row['id'];
-      if ( verifyPassword($password,$hash) ){
-          $_SESSION['login_id'] = $id[0];
-          header("location: login1.html");
-      }else{
-        header("location: ล๊อคอินไม่ผ่านสัส.html");
-      }
+        $objResult = mysqli_fetch_array($result);
+        if ( verifyPassword($password,$objResult["password"]) ){
+            $_SESSION['login_id'] = $objResult['id'];
+            $active = $objResult['active'];
+            if ($active == 1){
+                // confirmed
+                header("location: index.html");
+            }else{
+                // not confirmed
+                header("location: unconfirmed.html");
+            }
+        }else{
+            header("location: fail.html");
+        }
     }else{
-        $error = "Your Login Name or Password is invalid";
+//        $error = "Your Login Name or Password is invalid";
         header("location: login.html");
     }
-    //
-    // $id = $row['id'];
-    // echo 'id = ' . $id;
 }
 
 ?>

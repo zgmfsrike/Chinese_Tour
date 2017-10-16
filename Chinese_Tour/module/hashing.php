@@ -6,11 +6,7 @@
     }
 
     function verifyPassword($password , $hash){
-        if(password_verify($password, $hash)) {
-            return true;
-        } else{
-            return false;
-        }
+        return password_verify($password, $hash);
     }
 
 ?>
