@@ -30,30 +30,62 @@ function register(){
     $salary = $_POST["salary"];
     $occupation = $_POST["occupation"];
 
-    // prepare SQL statement
-    $sql = "INSERT INTO member (username, password, first_name, middle_name, last_name, address, phone, email, date_of_birth, occupation, salary) VALUES ('$username', '$password', '$firstName', '$middleName', '$lastName', '$address', '$phone', $occupation, $salary, '$email', '$dob')";
-    
-    echo $sql;
+    $check = check_available($username,$email);
+    if($check){
+        // prepare SQL statement
+        $sql = "INSERT INTO member (username, password, first_name, middle_name, last_name, address, phone, email, date_of_birth, occupation, salary) VALUES ('$username', '$password', '$firstName', '$middleName', '$lastName', '$address', '$phone', '$email', '$dob', '$occupation', '$salary')";
 
-    // execute
-    $result = mysqli_query( $GLOBALS['conn'] , $sql );
-    if ($result){
-        echo "pass";
+        // execute
+        $result = mysqli_query( $GLOBALS['conn'] , $sql );
+        if ($result){
+            $last_id = $GLOBALS['conn']->insert_id;
         
-        $last_id = $GLOBALS['conn']->insert_id;
+            // confirmation url
+            $url = "http://localhost/tourjean/active_account.php?id=" . $last_id . "&u=" . md5($username);
         
-        // confirmation url
-        $url = "http://localhost/tourjean/active_account.php?id=" . $last_id . "&u=" . md5($username);
+            // ***** Sent confirmation email   
+            $ToEmail = $email;
+            $EmailSubject = 'Email confirmation';
+            $MESSAGE_BODY = "Dear, ".$username."<br>";
+            $MESSAGE_BODY .= "Click here to confirm your email:<br>";
+            $MESSAGE_BODY .= $url;
+            
+            echo $MESSAGE_BODY;
+            mail($ToEmail, $EmailSubject, $MESSAGE_BODY);
         
-        // ***** Sent confirmation email
-        // mail($emailid, "Register Confirmation", $url);
+            // please confirmation by email
         
-        // please confirmation by email
-        
-    }else{
-        echo "error: " . mysqli_error( $GLOBALS['conn'] );
+        }else{
+            echo "error: " . mysqli_error( $GLOBALS['conn'] );
+        }
     }
+}
 
+function check_available($username,$email){
+    
+    $msg = "";
+    
+    $query = "SELECT * FROM member WHERE username = '$username'";
+    $result = mysqli_query($GLOBALS['conn'], $query);
+    $count = mysqli_num_rows($result);
+    echo $count;
+    if( $count >= 1 ){
+        $msg .= "Username is already used.";
+    }
+    
+    $query = "SELECT * FROM member WHERE email = '$email'";
+    $result = mysqli_query($GLOBALS['conn'], $query);
+    $count = mysqli_num_rows($result);
+    if( $count >= 1 ){
+        $msg .= "E-mail is already used.";
+    }
+    
+    if($msg != ""){
+        echo "<script type='text/javascript'>alert('$msg');</script>";
+        return false;
+    }
+    
+    return true;
 }
 
 ?>

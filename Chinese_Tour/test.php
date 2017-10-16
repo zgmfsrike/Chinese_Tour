@@ -1,10 +1,3 @@
 <?php
-
-echo md5("username01");
-
-
-
-
-
-
+echo "<script type='text/javascript'>alert('test');</script>";
 ?>
