@@ -17,7 +17,7 @@ if(isset($_POST['submit'])){
 
 // register method
 function register(){
-    // ***** (0) get global params
+    
     $username = $_POST["username"];
     $password = hashPassword(''.$_POST["password"].'');
     $firstName = $_POST["firstname"];
@@ -30,7 +30,7 @@ function register(){
     $salary = $_POST["salary"];
     $occupation = $_POST["occupation"];
 
-    // prepare spq statement
+    // prepare SQL statement
     $sql = "INSERT INTO member (username, password, first_name, middle_name, last_name, address, phone, email, date_of_birth, occupation, salary) VALUES ('$username', '$password', '$firstName', '$middleName', '$lastName', '$address', '$phone', $occupation, $salary, '$email', '$dob')";
     
     echo $sql;
