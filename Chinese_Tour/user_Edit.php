@@ -4,11 +4,10 @@ session_start();
 
 
 //-----------------------------Variable----------------------------------------------------//
-$host = mysqli_connect('localhost', 'root', '7744536','testlogin');
-// include "database/db_config.php";
-// include "module/hashing.php";
-if(isset($_SESSION['username'])){
-$username = $_SESSION['username'];
+include "db_config.php";
+include "module/hashing.php";
+if(isset($_SESSION['login_id'])){
+$id = $_SESSION['login_id'];
 
 $firstname = $_POST['firstname'];
 $middlename = $_POST['middlename'];
@@ -25,7 +24,7 @@ $email = $_POST['emailid'];
 
 //-----------------------------Edit fucntion----------------------------------------------------//
 $sql= "UPDATE `member` SET `first_name`='$firstname', `middle_name`='$middlename',`last_name`='$surname',`address`='$address',
-                            `phone`='$phone',`occupation`='$occupation',`salary`='$salary',`dob`='$time',`email`='$email' WHERE username = $username  ";
+                            `phone`='$phone',`occupation`='$occupation',`salary`='$salary',`dob`='$time',`email`='$email' WHERE id = $id   ";
 
 
 //-----------------------------Send change mail fucntion----------------------------------------------------//
@@ -56,7 +55,7 @@ echo "Your Confirmation link Has Been Sent To Your New Email Address.";
 else {
 echo "Cannot send Confirmation link to your e-mail address";
 }
-?>
+
 
 
 
