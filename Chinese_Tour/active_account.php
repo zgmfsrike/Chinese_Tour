@@ -17,16 +17,17 @@ include "db_config.php";
        echo "$username<br>$u";
        
        if($u == $username){
-        
-           $sql = "UPDATE member SET active = 1 WHERE id = $id";
-           $result = mysqli_query( $GLOBALS['conn'] , $sql );
            
-           if($result){
-               echo "success";
-               // success
-               
-           }else{
-               echo "no";
+           $active = $objResult['active'];
+           if($active = 1){
+               $sql = "UPDATE member SET active = 1 WHERE id = $id";
+               $result = mysqli_query( $GLOBALS['conn'] , $sql );
+           
+               if($result){
+                   echo "success";
+               }else{
+                   echo "no";
+               }   
            }
        }else{
            echo "u != username";
