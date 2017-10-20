@@ -14,9 +14,6 @@
     <!-- Custom styles for this template -->
     <link href="css/modern-business.css" rel="stylesheet">
 
-
-
-
 </head>
 <body>
   <!-- Navigation -->
@@ -61,47 +58,25 @@
           </ul>
       </div>
   </nav>
-  <!--Register body-->
+  <br><br>
+  <!-- Page Content -->
   <div class="container">
-<div class="row">
-<div class="col-md-8">
-    <h3 class="entry-title"><span><br><br>Account Information</span> </h3>
-    <hr>
-        <form class="form-horizontal" method="post" action="register.php">
-          <div class="form-group">
-            <label class="control-label col-sm-8">Username <span class="text-danger">*</span></label>
-            <div class="col-md-8 col-sm-9">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" pattern="^[_A-z0-9]{1,}$" maxlength="15" class="form-control" id="inputUsername" placeholder="Username" name="username" required>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="control-label col-sm-8">Password <span class="text-danger">*</span></label>
-            <div class="col-sm-8">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                <input type="password" data-minlength="6" class="form-control" id="inputPassword" placeholder="Password" name="password" required>
-              </div>
-            </div>
-          </div>
-
-      <div class="form-group">
-        <label class="control-label col-sm-8">Confirm Password <span class="text-danger">*</span></label>
-        <div class="col-sm-8">
-          <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-            <input type="password" class="form-control" name="cpassword" id="cpassword" placeholder="Confirm your password" required>
-          </div>
+    <!-- Content Row -->
+    <div class="row">
+      <!-- Sidebar Column -->
+      <div class="col-lg-3 mb-4">
+        <div class="list-group admin-menu">
+          <hr>
+          <a href="Profile.html" class="list-group-item list-group-item-danger active text-white"><i class="fa fa-user fa-fw"></i>Profile</a>
+          <a href="Purchase.html" class="list-group-item list-group-item-danger text-white"><i class="fa fa-shopping-cart fa-fw"></i>Purchase</a>
+          <a href="Record.html" class="list-group-item list-group-item-danger text-white"><i class="fa fa-clipboard fa-fw"></i>Record</a>
         </div>
       </div>
-
-
-      <h3 class="entry-title"><span><br>Personal Information</span> </h3>
-      <hr>
-
+      <!-- Content Column -->
+      <div class="col-lg-9 mb-4">
+        <h3 class="entry-title"><span><br>Account Information</span> </h3>
+        <hr>
+        <form action="user_Edit.php" method="post">
       <div class="form-group">
         <label class="control-label col-sm-8">Name <span class="text-danger">*</span></label>
         <div class="col-sm-8">
@@ -122,7 +97,7 @@
         <label class="control-label col-sm-8">Surname <span class="text-danger">*</span></label>
         <div class="col-sm-8">
           <div class="input-group">
-            <input type="text" class="form-control" name="lastname" id="surname" placeholder="Enter your Surname here" required>
+            <input type="text" class="form-control" name="surname" id="surname" placeholder="Enter your Surname here" required>
           </div>
         </div>
       </div>
@@ -153,7 +128,7 @@
       <div class="form-group">
         <label class="control-label col-sm-8">Occupation<span class="text-danger"> *</span></label>
         <div class="form-inline col-md-8 col-sm-9">
-              <select name="occupation" class="form-control" required>
+              <select name="Occupation" class="form-control" required>
         <option value="">Store Owner</option>
         <option value="1">Business Owner</option>
         <option value="2">Employee</option>
@@ -188,7 +163,7 @@
           <div class="col-sm-8">
               <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-              <input type="email" class="form-control" name="email" id="emailid" placeholder="Enter your Email ID"  required>
+              <input type="email" class="form-control" name="emailid" id="emailid" placeholder="Enter your Email ID" required>
             </div>
             </div>
         </div>
@@ -198,31 +173,31 @@
         <div class="col-sm-8">
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-          <input type="text" class="form-control" name="phone" id="contactnum" placeholder="Enter your contact no."  required>
+          <input type="text" class="form-control" name="contactnum" id="contactnum" placeholder="Enter your contact no." required>
           </div>
         </div>
       </div>
-
       <div class="form-group">
-        <label class="control-label col-sm-8">Address <span class="text-danger">*</span></label>
-        <textarea class="form-control" rows="5" id="address" name="address" required></textarea>
+        <label class="control-label col-sm-3">Address <span class="text-danger">*</span></label>
+        <textarea class="form-control" name="address" rows="5" id="address" required></textarea>
       </div>
       <div class="form-group">
-        <div class="col-xs-offset-3 col-xs-10 float-none">
-          <input type="submit" class="btn btn-danger btn-md" value="Sign Up" name="submit">
-          <input name="Submit" type="submit" value="Cancel" onclick="window.location.href='Index.html'" class="btn btn-warning">
+        <div class="col-sm-8 float-none">
+          <input type="submit" class="btn btn-danger btn-md" value="save" ></button>
+          <input name="Submit" type="submit" value="Cancel" onclick="window.location.href='Profile.html'" class="btn btn-warning">
         </div>
       </div>
-    </form>
-</div>
-</div>
+      </form>
+    </div>
+    <!-- /.row -->
+
   </div>
-<!--end Register body-->
+</div>
+  <!-- /.container -->
 
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/popper/popper.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js"></script>
-
+<!--end side menu body-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/popper/popper.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

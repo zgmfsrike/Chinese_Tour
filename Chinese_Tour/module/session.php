@@ -4,7 +4,7 @@
     if(isset( $_SESSION['login_id'] )){
         $user_id = $_SESSION['login_id'];
     }else{
-        header("Location: index.php");
+        header("Location: login.html");
     }
 
    $ses_sql = mysqli_query($connection,"SELECT * FROM users WHERE id = '{$user_id}' ");
