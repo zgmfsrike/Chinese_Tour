@@ -42,6 +42,7 @@
                 <a class="nav-link" href="index.html">About Us</a>
             </li>
         </ul>
+
           <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
             <li class="nav-item">
                 <a class="nav-link" href="Register.html"><i class="fa fa-user-plus">&nbsp;&nbsp;</i>Sing up&nbsp;&nbsp;&nbsp;&nbsp;</a>
@@ -98,7 +99,7 @@
             <li>
               <br>
               <input name="Submit" type="submit" value="Edit" onclick="window.location.href='EditInfo.html'" class="btn btn-danger">
-              <input name="Submit" type="submit" value="Change Password" onclick="window.location.href='ChangePassword.html'" class="btn btn-danger">
+              <input name="changePassword" type="submit" value="Change Password" onclick="window.location.href='ChangePassword.html'" class="btn btn-danger">
             </li>
           </ul>
         </div>

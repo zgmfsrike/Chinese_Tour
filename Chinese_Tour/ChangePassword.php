@@ -82,7 +82,7 @@
             <div class="col-sm-5">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                <input type="password" name="password" data-minlength="6" class="form-control" id="inputPassword" placeholder="Password" required>
+                <input type="password" name="password" minlength="4" maxlength="16" class="form-control" id="inputPassword" placeholder="Password" required>
               </div>
             </div>
           </div>
@@ -92,7 +92,7 @@
             <div class="col-sm-5">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                <input type="password" class="form-control" name="npassword" id="npassword" placeholder="Confirm your password" required>
+                  <input required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16"  id="inputPassword" placeholder="Please enter new password" />
               </div>
             </div>
           </div>
@@ -102,15 +102,16 @@
             <div class="col-sm-5">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                <input type="password" class="form-control" name="cpassword" id="cpassword" placeholder="Confirm your password" required>
+                <input onkeyup="checkPass(); return false;" type="password" class="form-control inputpass" name="cpassword" minlength="4" maxlength="16" id="cpassword" placeholder="Confirm your new password" required>
+                <span id="confirmMessage" class="confirmMessage"></span>
               </div>
             </div>
           </div>
 
           <div class="form-group">
             <div class="col-xs-offset-3 col-sm-9 float-none"><br>
-              <button type="submit" class="btn btn-danger btn-md">Save</button>
-              <input name="Submit" type="submit" value="Cancel" onclick="window.location.href='Profile.html'" class="btn btn-warning">
+              <input type="submit" class="btn btn-danger btn-md" value="Save">
+              <input type="submit" value="Cancel" onclick="window.location.href='Profile.html'" class="btn btn-warning">
             </div>
           </div>
         </form>
@@ -122,8 +123,6 @@
   <!-- /.container -->
 
 <!--end side menu body-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/popper/popper.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="js/validate.js"></script>
 </body>
 </html>

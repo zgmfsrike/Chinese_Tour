@@ -194,94 +194,78 @@ function check_available($username,$email){
 <div class="col-md-8">
     <h3 class="entry-title"><span><br><br>Account Information</span> </h3>
     <hr>
-        <form class="form-horizontal" method="post" action="register.php">
+        <form class="form-horizontal" method="post" id="fileForm" role="form">
           <div class="form-group">
-            <label class="control-label col-sm-8">Username <span class="text-danger">*</span></label>
+            <label class="control-label col-sm-8">Username <span class="text-danger req">*</span></label>
             <div class="col-md-8 col-sm-9">
               <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" pattern="^[_A-z0-9]{1,}$" maxlength="15" class="form-control" id="inputUsername" placeholder="Username" name="username" required>
+                <span class="input-group-addon req"><i class="fa fa-user"></i></span>
+                <input required type="text" minlength="3" maxlength="16" class="form-control" id="txt" placeholder="minimum 3 letters" name="username" onkeyup = "Validate(this)">
               </div>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="control-label col-sm-8">Password <span class="text-danger">*</span></label>
+            <label for="password" class="control-label col-sm-8">Password <span class="text-danger req">*</span></label>
             <div class="col-sm-8">
               <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                <input type="password" data-minlength="6" class="form-control" id="inputPassword" placeholder="Password" name="password" required>
+                <span class="input-group-addon req"><i class="fa fa-lock"></i></span>
+                <input required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16"  id="inputPassword" placeholder="Please enter your password" />
               </div>
             </div>
           </div>
 
       <div class="form-group">
-        <label class="control-label col-sm-8">Confirm Password <span class="text-danger">*</span></label>
+        <label for="password" class="control-label col-sm-8">Confirm Password <span class="text-danger req">*</span></label>
         <div class="col-sm-8">
           <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-            <input type="password" class="form-control" name="cpassword" id="cpassword" placeholder="Confirm your password" required>
+            <span class="input-group-addon req"><i class="fa fa-lock"></i></span>
+            <input onkeyup="checkPass(); return false;" type="password" class="form-control inputpass" name="cpassword" minlength="4" maxlength="16" id="cpassword" placeholder="Confirm your password" required>
+            <span id="confirmMessage" class="confirmMessage"></span>
           </div>
         </div>
       </div>
-
 
       <h3 class="entry-title"><span><br>Personal Information</span> </h3>
       <hr>
 
       <div class="form-group">
-        <label class="control-label col-sm-8">Name <span class="text-danger">*</span></label>
+        <label class="control-label col-sm-8">Name&nbsp;<span class="text-danger req">*</span></label>
         <div class="col-sm-8">
           <div class="input-group">
-            <input type="text" class="form-control" name="firstname" id="firstname" placeholder="Enter your Name here" required>
+            <input onkeyup = "Validate(this)" id="txt" type="text" class="form-control" name="firstname" id="firstname" placeholder="Enter your Name here" required>
           </div>
         </div>
       </div>
       <div class="form-group">
-        <label class="control-label col-sm-8">Middle Name</label>
+        <label class="control-label col-sm-8 req">Middle&nbsp;Name</label>
         <div class="col-sm-8">
           <div class="input-group">
-            <input type="text" class="form-control" name="middlename" id="middlename" placeholder="Enter your Middle Name here">
+            <input onkeyup = "Validate(this)" type="text" class="form-control" name="middlename" id="middlename" placeholder="Enter your Middle Name here">
           </div>
         </div>
       </div>
       <div class="form-group">
-        <label class="control-label col-sm-8">Surname <span class="text-danger">*</span></label>
+        <label class="control-label col-sm-8">Surname&nbsp;<span class="text-danger req">*</span></label>
         <div class="col-sm-8">
           <div class="input-group">
-            <input type="text" class="form-control" name="lastname" id="surname" placeholder="Enter your Surname here" required>
+            <input onkeyup = "Validate(this)" type="text" class="form-control" name="surname" id="surname" placeholder="Enter your Surname here" required>
           </div>
         </div>
       </div>
 
       <div class="form-group">
-        <label class="control-label col-sm-8">Date of Birth <span class="text-danger">*</span></label>
-        <div class="col-md-8 col-sm-9">
-          <div class="form-inline">
-            <div class="form-group">
-              <select name="dd" class="form-control" required>
-                <option value="">Date</option>
-                <option value="1" >1 </option><option value="2" >2 </option><option value="3" >3 </option><option value="4" >4 </option><option value="5" >5 </option><option value="6" >6 </option><option value="7" >7 </option><option value="8" >8 </option><option value="9" >9 </option><option value="10" >10 </option><option value="11" >11 </option><option value="12" >12 </option><option value="13" >13 </option><option value="14" >14 </option><option value="15" >15 </option><option value="16" >16 </option><option value="17" >17 </option><option value="18" >18 </option><option value="19" >19 </option><option value="20" >20 </option><option value="21" >21 </option><option value="22" >22 </option><option value="23" >23 </option><option value="24" >24 </option><option value="25" >25 </option><option value="26" >26 </option><option value="27" >27 </option><option value="28" >28 </option><option value="29" >29 </option><option value="30" >30 </option><option value="31" >31 </option>                </select>
-            </div>
-            <div class="form-group">
-              <select name="mm" class="form-control" required>
-                <option value="">Month</option>
-                <option value="1">Jan</option><option value="2">Feb</option><option value="3">Mar</option><option value="4">Apr</option><option value="5">May</option><option value="6">Jun</option><option value="7">Jul</option><option value="8">Aug</option><option value="9">Sep</option><option value="10">Oct</option><option value="11">Nov</option><option value="12">Dec</option>                </select>
-            </div>
-            <div class="form-group" >
-              <select name="yyyy" class="form-control" required>
-                <option value="">Year</option>
-                <option value="1955" >1955 </option><option value="1956" >1956 </option><option value="1957" >1957 </option><option value="1958" >1958 </option><option value="1959" >1959 </option><option value="1960" >1960 </option><option value="1961" >1961 </option><option value="1962" >1962 </option><option value="1963" >1963 </option><option value="1964" >1964 </option><option value="1965" >1965 </option><option value="1966" >1966 </option><option value="1967" >1967 </option><option value="1968" >1968 </option><option value="1969" >1969 </option><option value="1970" >1970 </option><option value="1971" >1971 </option><option value="1972" >1972 </option><option value="1973" >1973 </option><option value="1974" >1974 </option><option value="1975" >1975 </option><option value="1976" >1976 </option><option value="1977" >1977 </option><option value="1978" >1978 </option><option value="1979" >1979 </option><option value="1980" >1980 </option><option value="1981" >1981 </option><option value="1982" >1982 </option><option value="1983" >1983 </option><option value="1984" >1984 </option><option value="1985" >1985 </option><option value="1986" >1986 </option><option value="1987" >1987 </option><option value="1988" >1988 </option><option value="1989" >1989 </option><option value="1990" >1990 </option><option value="1991" >1991 </option><option value="1992" >1992 </option><option value="1993" >1993 </option><option value="1994" >1994 </option><option value="1995" >1995 </option><option value="1996" >1996 </option><option value="1997" >1997 </option><option value="1998" >1998 </option><option value="1999" >1999 </option><option value="2000" >2000 </option><option value="2001" >2001 </option><option value="2002" >2002 </option><option value="2003" >2003 </option><option value="2004" >2004 </option><option value="2005" >2005 </option><option value="2006" >2006 </option>                </select>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="control-label col-sm-8">Occupation<span class="text-danger"> *</span></label>
+        <label class="control-label col-sm-8">Date&nbsp;of&nbsp;Birth&nbsp;<span class="text-danger">*</span></label>
         <div class="form-inline col-md-8 col-sm-9">
-              <select name="occupation" class="form-control" required>
-        <option value="">Store Owner</option>
+        <input required id="dob" name="dob" class="form-control" type="date" value="2017-10-13"/>
+      </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-8">Occupation&nbsp;<span class="text-danger"> *</span></label>
+        <div class="form-inline col-md-8 col-sm-9">
+              <select name="Occupation" class="form-control" required>
+        <option value="">Please select</option>
         <option value="1">Business Owner</option>
         <option value="2">Employee</option>
         <option value="3">University Lecturer</option>
@@ -289,54 +273,91 @@ function check_available($username,$email){
         <option value="5">Government officer</option>
         <option value="6">Doctor</option>
         <option value="7">Researcher</option>
-        <option value="18">Other</option>
+        <option value="8">Store Owner</option>
+        <option value="9">Other</option>
               </select>
       </div>
       </div>
 
       <div class="form-group">
-        <label class="control-label col-sm-8">Salary<span class="text-danger"> *</span></label>
+        <label class="control-label col-sm-8">Salary&nbsp;<span class="text-danger"> *</span></label>
         <div class="form-inline col-md-8 col-sm-9">
-              <select name="salary" class="form-control" required>
-                <option value="">0&nbsp;-&nbsp;10,000&nbsp;THB/month</option>
-                <option value="1">10,001&nbsp;-15,000&nbsp;THB/month</option>
-                <option value="2">15,001&nbsp;-20,000&nbsp;THB/month</option>
-                <option value="3">20,001&nbsp;-25,000&nbsp;THB/month</option>
-                <option value="4">25,001&nbsp;-30,000&nbsp;THB/month</option>
-                <option value="5">30,001&nbsp;-35,000&nbsp;THB/month</option>
-                <option value="6">35,001&nbsp;-40,000&nbsp;THB/month</option>
-                <option value="7">&gt;40,0001&nbsp;THB/month</option>
+              <select name="Occupation" class="form-control" required>
+                <option value="">Please select</option>
+                <option value="1">0&nbsp;-&nbsp;10,000&nbsp;THB/month</option>
+                <option value="2">10,001&nbsp;-15,000&nbsp;THB/month</option>
+                <option value="3">15,001&nbsp;-20,000&nbsp;THB/month</option>
+                <option value="4">20,001&nbsp;-25,000&nbsp;THB/month</option>
+                <option value="5">25,001&nbsp;-30,000&nbsp;THB/month</option>
+                <option value="6">30,001&nbsp;-35,000&nbsp;THB/month</option>
+                <option value="7">35,001&nbsp;-40,000&nbsp;THB/month</option>
+                <option value="8">&gt;40,0001&nbsp;THB/month</option>
               </select>
       </div>
       </div>
 
       <div class="form-group">
-          <label class="control-label col-sm-8">Email ID <span class="text-danger">*</span></label>
+          <label class="control-label col-sm-8">Email&nbsp;<span class="text-danger req">*</span></label>
           <div class="col-sm-8">
               <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-              <input type="email" class="form-control" name="email" id="emailid" placeholder="Enter your Email ID"  required>
+              <input onchange="email_validate(this.value);" type="email" class="form-control" name="emailid" id="emailid" placeholder="Enter your Email"  required>
             </div>
             </div>
         </div>
 
       <div class="form-group">
-        <label class="control-label col-sm-8">Contact No. <span class="text-danger">*</span></label>
+        <label class="control-label col-sm-8">Contact No.&nbsp;<span class="text-danger req">*</span></label>
         <div class="col-sm-8">
           <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-          <input type="text" class="form-control" name="phone" id="contactnum" placeholder="Enter your contact no."  required>
+            <span class="input-group-addon"><i class="fa fa-phone">&nbsp;&nbsp;66</i></span>
+          <input onkeyup="validatephone(this);" type="text" class="form-control phone" maxlength="9" name="contactnum" id="contactnum" placeholder="Enter your contact no." required>
           </div>
         </div>
       </div>
 
+
       <div class="form-group">
-        <label class="control-label col-sm-8">Address <span class="text-danger">*</span></label>
-        <textarea class="form-control" rows="5" id="address" name="address" required></textarea>
+        <label class="control-label col-sm-8">Address <span class="text-danger req">*</span></label>
+        <div class="col-sm-8">
+          <div class="input-group">
+            <span class="input-group-addon req"><i class="fa fa-home"></i></span>
+            <input required name="address" type="text" class="form-control inputpass" minlength="4" maxlength="50"  id="address" placeholder="Address" />
+          </div>
+        </div>
       </div>
       <div class="form-group">
+        <label class="control-label col-sm-8">City&nbsp;<span class="text-danger req">*</span></label>
+        <div class="col-sm-8">
+          <div class="input-group">
+              <span class="input-group-addon req"><i class="fa fa-home"></i></span>
+            <input onkeyup = "Validate(this)" id="txt" type="text" class="form-control inputpass" name="city" id="city" placeholder="City" required>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-8">Province&nbsp;<span class="text-danger req">*</span></label>
+        <div class="col-sm-8">
+          <div class="input-group">
+              <span class="input-group-addon req"><i class="fa fa-home"></i></span>
+            <input onkeyup = "Validate(this)" id="txt" type="text" class="form-control inputpass" name="province" id="province" placeholder="Province" required>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-8">Zip&nbsp;Code&nbsp;<span class="text-danger req">*</span></label>
+        <div class="col-sm-8">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-home"></i></span>
+          <input onkeyup="validatephone(this);" type="text" class="form-control phone" maxlength="5" name="zipcode" id="zipcode" placeholder="Zip Code" required>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="form-group">
         <div class="col-xs-offset-3 col-xs-10 float-none">
-          <input type="submit" class="btn btn-danger btn-md" value="Sign Up" name="submit">
+          <input type="submit" class="btn btn-danger btn-md" value="Sign Up">
           <input name="Submit" type="submit" value="Cancel" onclick="window.location.href='Index.html'" class="btn btn-warning">
         </div>
       </div>
@@ -345,7 +366,7 @@ function check_available($username,$email){
 </div>
   </div>
 <!--end Register body-->
-
+    <script src="js/validate.js"></script>
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/popper/popper.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>

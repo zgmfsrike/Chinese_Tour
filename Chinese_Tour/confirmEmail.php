@@ -1,37 +1,3 @@
-<?php
-include "db_config.php";
-include "module/hashing.php";
-session_start();
-
-if(isset($_POST['login'])){
-    $username = $_POST['username'];
-    $password = ''.$_POST['password'].'';
-
-    $query = "SELECT * FROM member WHERE username = '$username'";
-    $result = mysqli_query($conn, $query);
-    $count = mysqli_num_rows($result);
-
-    if($count == 1){
-        $objResult = mysqli_fetch_array($result);
-        if ( verifyPassword($password,$objResult["password"]) ){
-            $_SESSION['login_id'] = $objResult['id'];
-            $_SESSION['member_type'] = "member";
-            $active = $objResult['active'];
-            if ($active == 1){
-                // confirmed
-                header("location: index.php");
-            }else{
-                // not confirmed
-            }
-        }
-    }else{
-//        $error = "Your Login Name or Password is invalid";
-    }
-}
-
-?>
-
-<!-- HTML -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -98,45 +64,16 @@ if(isset($_POST['login'])){
     <div class="row">
       <div class="col-md-3"></div>
       <div class="col-md-6"><br><br><br><br>
-        <h1>Please Login</h1>
+        <h1>Thank you!</h1>
+        <h3>Your Email has been confirmed</h3>
         <hr>
       </div>
     </div>
+
     <div class="row">
       <div class="col-md-3"></div>
       <div class="col-md-6">
-
-        <div class="form-group has-feedback">
-          <label class="sr-only control-label req">Username</label>
-          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-            <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
-            <input required type="text" minlength="3" maxlength="16" class="form-control" id="txt" placeholder="minimum 3 letters" name="username" onkeyup = "Validate(this)">
-          </div>
-        </div>
-
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-3"></div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label class="sr-only control-label req" for="password">Password</label>
-          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-            <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
-            <input required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16"  id="inputPassword" placeholder="Please enter your password" />
-          </div>
-
-          <div class="col-md-12">
-            <a class="pull-right small" href="/password/reset">Forgot Your Password?</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-3"></div>
-      <div class="col-md-6">
-        <button type="submit" class="btn btn-danger btn-sm">Login</button>
-        <input type="button" onclick="window.location.href='Register.html'" class="btn btn-warning btn-sm" value="Register">
+        <input type="button" onclick="window.location.href='index.html'" class="btn btn-warning btn-sm" value="Go back to Home page">
       </div>
     </div>
 <!--end login body-->
