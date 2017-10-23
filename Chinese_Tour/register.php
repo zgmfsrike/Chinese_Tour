@@ -43,18 +43,8 @@ function register(){
             // confirmation url
             $url = "http://localhost/tourjean/active_account.php?id=" . $last_id . "&u=" . md5($username);
             // please confirmation by email
-            include("sendmail.php");
-            $to       =   "some email";
-            $subject  =   "Hello";
-            $message  =   "hello <i>how are you.</i>";
-            $name     =   "Shahid Shaikh";
-            $mailsend =   sendmail($to,$subject,$message,$name);
-            if($mailsend==1){
-                echo '<h2>email sent.</h2>';
-            }
-            else{
-                echo '<h2>There are some issue.</h2>';
-            }
+            
+            
         }else{
             echo "error: " . mysqli_error( $GLOBALS['conn'] );
             header("login.html");
