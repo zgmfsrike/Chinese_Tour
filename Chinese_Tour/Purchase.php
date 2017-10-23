@@ -1,3 +1,38 @@
+<?php
+
+require_once 'module/hashing.php';
+require_once 'module/init.php';
+
+// if(not_logged_in() === TRUE) {
+// 	header('location: login.php');
+// }
+if($_POST) {
+	$password = $_POST['password'];
+	$npassword = $_POST["npassword"];
+	$cpassword = $_POST['cpassword'];
+
+
+  if($password && $npassword && $cpassword) {
+    if(passwordMatch($_SESSION['id'], $password) === TRUE) {
+
+      if($npassword != $cpassword) {
+        echo "New password does not match conform password <br />";
+      } else {
+        if(changePassword($_SESSION['id'], $npassword) === TRUE) {
+					echo "Successfully updated";
+        } else {
+          echo "Error while updating the information <br />";
+        }
+      }
+
+    } else {
+      echo "Current Password is incorrect <br />";
+    }
+  }
+}
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,24 +62,24 @@
       <div class="navbar-collapse collapse" id="collapsingNavbar3">
         <ul class="navbar-nav mx-auto w-100 justify-content-center">
           <li class="nav-item">
-              <a class="nav-link" href="index.html"><h5>Create your own tour&nbsp;&nbsp;&nbsp;</h5></a>
+              <a class="nav-link" href="index.php"><h5>Create your own tour&nbsp;&nbsp;&nbsp;</h5></a>
           </li>
             <li class="nav-item">
-                <a class="nav-link" href="index.html"><h5>Pick a Tour&nbsp;&nbsp;&nbsp;</h5></a>
+                <a class="nav-link" href="index.php"><h5>Pick a Tour&nbsp;&nbsp;&nbsp;</h5></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="index.html"><h5>About Us</h5></a>
+                <a class="nav-link" href="index.php"><h5>About Us</h5></a>
             </li>
         </ul>
 
           <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
             <li class="nav-item">
-                <a class="nav-link" href="Register.html"><i class="fa fa-user-plus">&nbsp;&nbsp;</i>Sing up&nbsp;&nbsp;&nbsp;&nbsp;</a>
-                <a class="nav-link" href="Login.html"><i class="fa fa-user">&nbsp;&nbsp;</i>Login&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                <a class="nav-link" href="Register.php"><i class="fa fa-user-plus">&nbsp;&nbsp;</i>Sing up&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                <a class="nav-link" href="Login.php"><i class="fa fa-user">&nbsp;&nbsp;</i>Login&nbsp;&nbsp;&nbsp;&nbsp;</a>
             </li>
             <li class="nav-item">
-              <span class="nav-link text-white" id="nav-service" href="Register.html"><i class="fa fa-comments">&nbsp;&nbsp;</i>Chat Service</span>
-              <span class="nav-link text-white" id="nav-service" href="Login.html"><i class="fa fa-phone">&nbsp;&nbsp;</i>+66-xxx-xxxx</span>
+              <span class="nav-link text-white" id="nav-service" href="Register.php"><i class="fa fa-comments">&nbsp;&nbsp;</i>Chat Service</span>
+              <span class="nav-link text-white" id="nav-service" href="Login.php"><i class="fa fa-phone">&nbsp;&nbsp;</i>+66-xxx-xxxx</span>
             </li>
             <li>
 

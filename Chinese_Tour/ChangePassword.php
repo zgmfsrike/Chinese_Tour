@@ -1,3 +1,38 @@
+<?php
+
+require_once 'module/hashing.php';
+require_once 'module/init.php';
+
+// if(not_logged_in() === TRUE) {
+// 	header('location: login.php');
+// }
+if($_POST) {
+	$password = $_POST['password'];
+	$npassword = $_POST["npassword"];
+	$cpassword = $_POST['cpassword'];
+
+
+  if($password && $npassword && $cpassword) {
+    if(passwordMatch($_SESSION['id'], $password) === TRUE) {
+
+      if($npassword != $cpassword) {
+        echo "New password does not match conform password <br />";
+      } else {
+        if(changePassword($_SESSION['id'], $npassword) === TRUE) {
+					echo "Successfully updated";
+        } else {
+          echo "Error while updating the information <br />";
+        }
+      }
+
+    } else {
+      echo "Current Password is incorrect <br />";
+    }
+  }
+}
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,10 +60,10 @@
       <div class="navbar-collapse collapse" id="collapsingNavbar3">
         <ul class="navbar-nav mx-auto w-100 justify-content-center">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Create your own tour&nbsp;&nbsp;&nbsp;</a>
+              <a class="nav-link" href="index.php">Create your own tour&nbsp;&nbsp;&nbsp;</a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="index.html" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="index.php" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Pick a Tour
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
@@ -39,14 +74,14 @@
               </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="index.html">About Us</a>
+                <a class="nav-link" href="index.php">About Us</a>
             </li>
         </ul>
 
           <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
             <li class="nav-item">
-                <a class="nav-link" href="Register.html"><i class="fa fa-user-plus">&nbsp;&nbsp;</i>Sing up&nbsp;&nbsp;&nbsp;&nbsp;</a>
-                <a class="nav-link" href="Login.html"><i class="fa fa-user">&nbsp;&nbsp;</i>Login&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                <a class="nav-link" href="Register.php"><i class="fa fa-user-plus">&nbsp;&nbsp;</i>Sing up&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                <a class="nav-link" href="Login.php"><i class="fa fa-user">&nbsp;&nbsp;</i>Login&nbsp;&nbsp;&nbsp;&nbsp;</a>
             </li>
             <li class="nav-item">
               <span class="nav-link text-dark" id="nav-chatservice"><i class="fa fa-comments">&nbsp;&nbsp;</i>Chat Service</span>
@@ -67,16 +102,16 @@
       <div class="col-lg-3 mb-4">
         <div class="list-group admin-menu">
           <hr>
-          <a href="Profile.html" class="list-group-item list-group-item-danger active text-white"><i class="fa fa-user fa-fw"></i>Profile</a>
-          <a href="Purchase.html" class="list-group-item list-group-item-danger text-white"><i class="fa fa-shopping-cart fa-fw"></i>Purchase</a>
-          <a href="Record.html" class="list-group-item list-group-item-danger text-white"><i class="fa fa-clipboard fa-fw"></i>Record</a>
+          <a href="Profile.php" class="list-group-item list-group-item-danger active text-white"><i class="fa fa-user fa-fw"></i>Profile</a>
+          <a href="Purchase.php" class="list-group-item list-group-item-danger text-white"><i class="fa fa-shopping-cart fa-fw"></i>Purchase</a>
+          <a href="Record.php" class="list-group-item list-group-item-danger text-white"><i class="fa fa-clipboard fa-fw"></i>Record</a>
         </div>
       </div>
       <!-- Content Column -->
       <div class="col-lg-9 mb-4">
         <h3 class="entry-title"><span><br>Change Password</span> </h3>
         <hr>
-        <form class="" action="index.html" method="post">
+        <form class="" action="index.php" method="post">
           <div class="form-group">
             <label class="control-label col-sm-8">Password <span class="text-danger">*</span></label>
             <div class="col-sm-5">
@@ -92,7 +127,7 @@
             <div class="col-sm-5">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                  <input required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16"  id="inputPassword" placeholder="Please enter new password" />
+                  <input required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16"  id="nPassword" placeholder="Please enter new password" />
               </div>
             </div>
           </div>
@@ -102,7 +137,7 @@
             <div class="col-sm-5">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                <input onkeyup="checkPass(); return false;" type="password" class="form-control inputpass" name="cpassword" minlength="4" maxlength="16" id="cpassword" placeholder="Confirm your new password" required>
+                <input onkeyup="checknewPass(); return false;" type="password" class="form-control inputpass" name="cpassword" minlength="4" maxlength="16" id="cpassword" placeholder="Confirm your new password" required>
                 <span id="confirmMessage" class="confirmMessage"></span>
               </div>
             </div>
@@ -123,6 +158,6 @@
   <!-- /.container -->
 
 <!--end side menu body-->
-<script src="js/validate.js"></script>
+<script src="js/validate2.js"></script>
 </body>
 </html>
