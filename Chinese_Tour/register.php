@@ -2,7 +2,8 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-include "db_config.php";
+ include "db_config.php";
+// include "db_configNB.php";
 include "module/hashing.php";
 
 // check connection
@@ -20,7 +21,7 @@ if(isset($_POST['submit'])){
 
 // register method
 function register(){
-    
+
     $username = $_POST["username"];
     $password = hashPassword(''.$_POST["password"].'');
     $firstName = $_POST["firstname"];
@@ -42,7 +43,7 @@ function register(){
         $result = mysqli_query( $GLOBALS['conn'] , $sql );
         if ($result){
             $last_id = $GLOBALS['conn']->insert_id;
-        
+
             // confirmation url
             $url = "http://localhost/Chinese_Tour/Chinese_Tour/active_account.php?id=" . $last_id . "&u=" . md5($username);
             // please confirmation by email
@@ -57,10 +58,10 @@ function register(){
                 $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
                 $mail->SMTPAuth = true;                               // Enable SMTP authentication
                 $mail->Username = "zgmfsrike@gmail.com";                 // SMTP username
-                $mail->Password = 'password';                           // SMTP password
+                $mail->Password = 'amenoera7744';                           // SMTP password
                 $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
                 $mail->Port = 587;                                    // TCP port to connect to
-                
+
                 //Recipients
                 $mail->setFrom('info@chtour.com', 'Chinese Tour');
                 $mail->addAddress($email);
@@ -69,11 +70,11 @@ function register(){
                 // $mail->addReplyTo('info@example.com', 'Information');
                 // $mail->addCC('cc@example.com');
                 // $mail->addBCC('bcc@example.com');
-                
+
                 //Attachments
                 // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
                 // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
-                
+
                 //Content
                 $body = '<p><strong>Please confirm your E-mail</strong><br>
                     Link : '.$url.'</p>';
@@ -83,7 +84,7 @@ function register(){
                 $mail->AltBody = strip_tags($body);
 
                 $mail->send();
-                echo 'Message has been sent';
+                // echo 'Message has been sent';
             } catch (Exception $e) {
                 echo 'Message could not be sent.';
                 echo 'Mailer Error: ' . $mail->ErrorInfo;
@@ -96,9 +97,9 @@ function register(){
 }
 
 function check_available($username,$email){
-    
+
     $msg = "";
-    
+
     $query = "SELECT * FROM member WHERE username = '$username'";
     $result = mysqli_query($GLOBALS['conn'], $query);
     $count = mysqli_num_rows($result);
@@ -108,7 +109,7 @@ function check_available($username,$email){
         echo "<script type='text/javascript'>alert('$msg');</script>";
         return false;
     }
-    
+
     $query = "SELECT * FROM member WHERE email = '$email'";
     $result = mysqli_query($GLOBALS['conn'], $query);
     $count = mysqli_num_rows($result);
@@ -117,7 +118,7 @@ function check_available($username,$email){
         echo "<script type='text/javascript'>alert('$msg');</script>";
         return false;
     }
-    
+
     return true;
 }
 
@@ -352,4 +353,3 @@ function check_available($username,$email){
 
 </body>
 </html>
-
