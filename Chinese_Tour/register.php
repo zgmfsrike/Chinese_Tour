@@ -42,66 +42,19 @@ function register(){
         
             // confirmation url
             $url = "http://localhost/tourjean/active_account.php?id=" . $last_id . "&u=" . md5($username);
-<<<<<<< HEAD
-
-            // ***** Sent confirmation email
-           //Create a new PHPMailer instance
-            $mail = new PHPMailer;
-
-            //Tell PHPMailer to use SMTP
-            $mail->isSMTP();
-
-            //Set the hostname of the mail server
-            $mail->Host = 'smtp.gmail.com';
-            // use
-            // $mail->Host = gethostbyname('smtp.gmail.com');
-            // if your network does not support SMTP over IPv6
-            
-            //Set the SMTP port number - 587 for authenticated TLS
-            $mail->Port = 587;
-            
-            //Set the encryption system to use - ssl (deprecated) or tls
-            $mail->SMTPSecure = 'tls';
-            
-            //Whether to use SMTP authentication
-            $mail->SMTPAuth = true;
-            
-            //Username to use for SMTP authentication - use full email address for gmail
-            $mail->Username = "nay31314.15.01@gmail.com";
-            
-            //Password to use for SMTP authentication
-            $mail->Password = "3131431314";
-            
-            //Set who the message is to be sent from
-            $mail->setFrom('from@example.com', 'First Last');
-            
-            //Set an alternative reply-to address
-            $mail->addReplyTo('replyto@example.com', 'First Last');
-            
-            //Set who the message is to be sent to
-            $mail->addAddress('whoto@example.com', 'John Doe');
-            
-            if(!$mail->send()) {
-                echo 'Message could not be sent. ';
-                echo 'Mailer Error: ' . $mail->ErrorInfo;
-                exit;
-            }
-
-=======
-        
-            // ***** Sent confirmation email   
-            $ToEmail = $email;
-            $EmailSubject = 'Email confirmation';
-            $MESSAGE_BODY = "Dear, ".$username."<br>";
-            $MESSAGE_BODY .= "Click here to confirm your email:<br>";
-            $MESSAGE_BODY .= $url;
-            
-            echo $MESSAGE_BODY;
-            mail($ToEmail, $EmailSubject, $MESSAGE_BODY);
-        
->>>>>>> parent of 6ceb6f9... Merge branch 'master' of https://github.com/zgmfsrike/Chinese_Tour
             // please confirmation by email
-        
+            include("sendmail.php");
+            $to       =   "some email";
+            $subject  =   "Hello";
+            $message  =   "hello <i>how are you.</i>";
+            $name     =   "Shahid Shaikh";
+            $mailsend =   sendmail($to,$subject,$message,$name);
+            if($mailsend==1){
+                echo '<h2>email sent.</h2>';
+            }
+            else{
+                echo '<h2>There are some issue.</h2>';
+            }
         }else{
             echo "error: " . mysqli_error( $GLOBALS['conn'] );
             header("login.html");
