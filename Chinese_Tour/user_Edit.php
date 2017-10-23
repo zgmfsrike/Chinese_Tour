@@ -65,7 +65,7 @@ if($query){
   echo "Record update successfully";
 }
 
-}else{
+else{
     $error = "Your Login Name or Password is invalid";
     header("location: login.html");
 }

@@ -1,3 +1,38 @@
+<?php
+require_once 'module/session.php';
+require_once 'module/hashing.php';
+include 'db_config.php';
+
+if(not_logged_in() === TRUE) {
+	header('location: login.php');
+}
+if($_POST) {
+	$password = $_POST['password'];
+	$npassword =  hashPassword($_POST["npassword"]);
+	$cpassword = $_POST['cpassword'];
+
+
+  if($password && $npassword && $cpassword) {
+    if(passwordMatch($_SESSION['id'], $password) === TRUE) {
+
+      if($npassword != $cpassword) {
+        echo "New password does not match conform password <br />";
+      } else {
+        if(changePassword($_SESSION['id'], $npassword) === TRUE) {
+					echo "Successfully updated";
+        } else {
+          echo "Error while updating the information <br />";
+        }
+      }
+
+    } else {
+      echo "Current Password is incorrect <br />";
+    }
+  }
+}
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +60,7 @@
       <div class="navbar-collapse collapse" id="collapsingNavbar3">
         <ul class="navbar-nav mx-auto w-100 justify-content-center">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Create your own tour&nbsp;&nbsp;&nbsp;</a>
+              <a class="nav-link" href="index.php">Create your own tour&nbsp;&nbsp;&nbsp;</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="index.html" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -39,14 +74,14 @@
               </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="index.html">About Us</a>
+                <a class="nav-link" href="index.php">About Us</a>
             </li>
         </ul>
 
           <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
             <li class="nav-item">
-                <a class="nav-link" href="Register.html"><i class="fa fa-user-plus">&nbsp;&nbsp;</i>Sing up&nbsp;&nbsp;&nbsp;&nbsp;</a>
-                <a class="nav-link" href="Login.html"><i class="fa fa-user">&nbsp;&nbsp;</i>Login&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                <a class="nav-link" href="Register.php"><i class="fa fa-user-plus">&nbsp;&nbsp;</i>Sing up&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                <a class="nav-link" href="Login.php"><i class="fa fa-user">&nbsp;&nbsp;</i>Login&nbsp;&nbsp;&nbsp;&nbsp;</a>
             </li>
             <li class="nav-item">
               <span class="nav-link text-dark" id="nav-chatservice"><i class="fa fa-comments">&nbsp;&nbsp;</i>Chat Service</span>
@@ -76,7 +111,7 @@
       <div class="col-lg-9 mb-4">
         <h3 class="entry-title"><span><br>Change Password</span> </h3>
         <hr>
-        <form class="" action="index.html" method="post">
+        <form class="" action="index.php" method="post">
           <div class="form-group">
             <label class="control-label col-sm-8">Password <span class="text-danger">*</span></label>
             <div class="col-sm-5">

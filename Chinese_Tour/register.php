@@ -17,7 +17,7 @@ if(isset($_POST['submit'])){
 
 // register method
 function register(){
-    
+
     $username = $_POST["username"];
     $password = hashPassword(''.$_POST["password"].'');
     $firstName = $_POST["firstname"];
@@ -39,22 +39,22 @@ function register(){
         $result = mysqli_query( $GLOBALS['conn'] , $sql );
         if ($result){
             $last_id = $GLOBALS['conn']->insert_id;
-        
+
             // confirmation url
             $url = "http://localhost/tourjean/active_account.php?id=" . $last_id . "&u=" . md5($username);
-        
-            // ***** Sent confirmation email   
+
+            // ***** Sent confirmation email
             $ToEmail = $email;
             $EmailSubject = 'Email confirmation';
             $MESSAGE_BODY = "Dear, ".$username."<br>";
             $MESSAGE_BODY .= "Click here to confirm your email:<br>";
             $MESSAGE_BODY .= $url;
-            
+
             echo $MESSAGE_BODY;
             mail($ToEmail, $EmailSubject, $MESSAGE_BODY);
-        
+
             // please confirmation by email
-        
+
         }else{
             echo "error: " . mysqli_error( $GLOBALS['conn'] );
             header("login.html");
@@ -63,9 +63,9 @@ function register(){
 }
 
 function check_available($username,$email){
-    
+
     $msg = "";
-    
+
     $query = "SELECT * FROM member WHERE username = '$username'";
     $result = mysqli_query($GLOBALS['conn'], $query);
     $count = mysqli_num_rows($result);
@@ -75,7 +75,7 @@ function check_available($username,$email){
         echo "<script type='text/javascript'>alert('$msg');</script>";
         return false;
     }
-    
+
     $query = "SELECT * FROM member WHERE email = '$email'";
     $result = mysqli_query($GLOBALS['conn'], $query);
     $count = mysqli_num_rows($result);
@@ -84,7 +84,7 @@ function check_available($username,$email){
         echo "<script type='text/javascript'>alert('$msg');</script>";
         return false;
     }
-    
+
     return true;
 }
 
@@ -319,4 +319,3 @@ function check_available($username,$email){
 
 </body>
 </html>
-
