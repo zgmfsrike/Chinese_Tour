@@ -62,8 +62,8 @@ function register(){
                 $mail->Port = 587;                                    // TCP port to connect to
                 
                 //Recipients
-                $mail->setFrom('info@chtour.com', 'Nuborez');
-                $mail->addAddress('zgmfstike@gmail.com', 'zgmfstike');
+                $mail->setFrom('info@chtour.com', 'Chinese Tour');
+                $mail->addAddress($email);
                 // Add a recipient
                 // $mail->addAddress('ellen@example.com');               // Name is optional
                 // $mail->addReplyTo('info@example.com', 'Information');
@@ -78,7 +78,7 @@ function register(){
                 $body = '<p><strong>Please confirm your E-mail</strong><br>
                     Link : '.$url.'</p>';
                 $mail->isHTML(true);                                  // Set email format to HTML
-                // $mail->Subject = 'Here is the test email';
+                 $mail->Subject = 'Chinese Tour: Email confirmation';
                 $mail->Body    = $body;
                 $mail->AltBody = strip_tags($body);
 
