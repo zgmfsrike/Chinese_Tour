@@ -210,7 +210,7 @@ function check_available($username,$email){
             <div class="col-sm-8">
               <div class="input-group">
                 <span class="input-group-addon req"><i class="fa fa-lock"></i></span>
-                <input required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16"  id="inputPassword" placeholder="Please enter your password" />
+                <input onkeyup="checkPass(); return false;" onfocusout="checkPass(); return false;" required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16"  id="inputPassword" placeholder="Please enter your password" />
               </div>
             </div>
           </div>
@@ -220,9 +220,9 @@ function check_available($username,$email){
         <div class="col-sm-8">
           <div class="input-group">
             <span class="input-group-addon req"><i class="fa fa-lock"></i></span>
-            <input onkeyup="checkPass(); return false;" type="password" class="form-control inputpass" name="cpassword" minlength="4" maxlength="16" id="cpassword" placeholder="Confirm your password" required>
-            <span id="confirmMessage" class="confirmMessage"></span>
+            <input onkeyup="checkPass(); return false;" onfocusout="checkPass(); return false;" type="password" class="form-control inputpass" name="cpassword" minlength="4" maxlength="16" id="cpassword" placeholder="Confirm your password" required>
           </div>
+            <span id="confirmMessage" class="confirmMessage"></span>
         </div>
       </div>
 
@@ -249,7 +249,7 @@ function check_available($username,$email){
         <label class="control-label col-sm-8">Surname&nbsp;<span class="text-danger req">*</span></label>
         <div class="col-sm-8">
           <div class="input-group">
-            <input onkeyup = "Validate(this)" type="text" class="form-control" name="surname" id="surname" placeholder="Enter your Surname here" required>
+            <input onkeyup="Validate(this)" type="text" class="form-control" name="lastname" id="lastname" placeholder="Enter your Surname here" required>
           </div>
         </div>
       </div>

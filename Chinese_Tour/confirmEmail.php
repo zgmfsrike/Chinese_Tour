@@ -57,15 +57,16 @@
             </li>
           </ul>
       </div>
-  </nav>
-  <!--login body-->
+  </nav><br><br><br><br>
+    
+  <!-- body -->
 <div class="container">
   <form class="form-horizontal" data-toggle="validator">
     <div class="row">
       <div class="col-md-3"></div>
-      <div class="col-md-6"><br><br><br><br>
+      <div class="col-md-6">
         <h1>Thank you!</h1>
-        <h3>Your Email has been confirmed</h3>
+        <h3>Your account has been actived</h3>
         <hr>
       </div>
     </div>
@@ -76,7 +77,6 @@
         <input type="button" onclick="window.location.href='index.html'" class="btn btn-warning btn-sm" value="Go back to Home page">
       </div>
     </div>
-<!--end login body-->
   </form>
 </div>
 

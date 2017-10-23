@@ -8,7 +8,7 @@ if(isset($_GET['id']) and isset($_GET['u'])){
     $sql = "SELECT * FROM member WHERE id = '$id'";
     $result = mysqli_query( $GLOBALS['conn'] , $sql );
     if(!$result){
-        header("location: index.php");
+        msg("<h1>Sorry!</h1><h3>Something went wrong, please try again later.</h3>");
     }
     $count = mysqli_num_rows($result);
 
@@ -26,21 +26,21 @@ if(isset($_GET['id']) and isset($_GET['u'])){
                $result = mysqli_query( $GLOBALS['conn'] , $sql );
            
                if($result){
-                   msg("Actived");
+                   msg("<h1>Thank you!</h1><h3>Your account has been actived</h3>");
                }else{
-                   msg("Error can not update");
+                   msg("<h1>Sorry!</h1><h3>Something went wrong, please try again later.</h3>");
                }   
            }else{
-               msg("This account had already actived");
+               msg("<h1>Sorry!</h1><h3>Your account had already actived</h3>");
            }
        }else{
-           msg("u != username");
+           msg("<h1>Error!</h1><h3>Request does not match, please check link again.</h3>");
        }
     }else{
-//        header("location: index.php");
+       msg("<h1>Error!</h1><h3>Request does not match, please check link again.</h3>");
     }
 }else{
-//    header("location: index.php");
+    msg("<h1>Error!</h1><h3>Request does not match, please check link again.</h3>");
 }
 ?>
 
@@ -65,17 +65,17 @@ if(isset($_GET['id']) and isset($_GET['u'])){
 <body>
   <!-- Navigation -->
   <nav class="navbar fixed-top navbar-light navbar-expand-md bg-danger justify-content-center">
-      <a href="index.php" class="navbar-brand d-flex w-50 mr-auto">Brand</a>
+      <a href="index.html" class="navbar-brand d-flex w-50 mr-auto">Brand</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar3">
           <span class="navbar-toggler-icon"></span>
       </button>
       <div class="navbar-collapse collapse" id="collapsingNavbar3">
         <ul class="navbar-nav mx-auto w-100 justify-content-center">
             <li class="nav-item">
-              <a class="nav-link" href="index.php">Create your own tour&nbsp;&nbsp;&nbsp;</a>
+              <a class="nav-link" href="index.html">Create your own tour&nbsp;&nbsp;&nbsp;</a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="index.php" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="index.html" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Pick a Tour
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
@@ -86,14 +86,14 @@ if(isset($_GET['id']) and isset($_GET['u'])){
               </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="index.php">About Us</a>
+                <a class="nav-link" href="index.html">About Us</a>
             </li>
         </ul>
 
           <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
             <li class="nav-item">
-                <a class="nav-link" href="Register.php"><i class="fa fa-user-plus">&nbsp;&nbsp;</i>Sing up&nbsp;&nbsp;&nbsp;&nbsp;</a>
-                <a class="nav-link" href="Login.php"><i class="fa fa-user">&nbsp;&nbsp;</i>Login&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                <a class="nav-link" href="Register.html"><i class="fa fa-user-plus">&nbsp;&nbsp;</i>Sing up&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                <a class="nav-link" href="Login.html"><i class="fa fa-user">&nbsp;&nbsp;</i>Login&nbsp;&nbsp;&nbsp;&nbsp;</a>
             </li>
             <li class="nav-item">
               <span class="nav-link text-dark" id="nav-chatservice"><i class="fa fa-comments">&nbsp;&nbsp;</i>Chat Service</span>
@@ -105,19 +105,33 @@ if(isset($_GET['id']) and isset($_GET['u'])){
           </ul>
       </div>
   </nav>
-    <br><br><br><br>
-  <!-- body-->
+  <!--login body-->
+    <?php
+          function msg($msg){
+              ?>
 <div class="container">
+  <form class="form-horizontal" data-toggle="validator">
     <div class="row">
-        <div class="sr-only control-label">
-            <?php
-                function msg($msg){
-                    echo $msg;
-                }
-            ?>
-        </div>
+      <div class="col-md-3"></div>
+      <div class="col-md-6"><br><br><br><br>
+        <?php
+              echo $msg;
+              ?>
+        <hr>
+      </div>
     </div>
+
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <input type="button" onclick="window.location.href='index.html'" class="btn btn-warning btn-sm" value="Go back to Home page">
+      </div>
+    </div>
+  </form>
 </div>
+    <?php
+          }
+          ?>
 
     <!-- Footer -->
     <br><br><br><br>
@@ -160,9 +174,6 @@ if(isset($_GET['id']) and isset($_GET['u'])){
     </div>
   </footer>
 
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/popper/popper.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js"></script>
+<script src="js/validate.js"></script>
 </body>
 </html>
