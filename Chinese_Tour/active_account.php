@@ -105,13 +105,14 @@ if(isset($_GET['id']) and isset($_GET['u'])){
           </ul>
       </div>
   </nav>
-  <!--login body-->
+    <br><br><br><br>
+  <!-- body-->
 <div class="container">
     <div class="row">
         <div class="sr-only control-label">
             <?php
                 function msg($msg){
-                    echo "<br><br><br>".$msg;
+                    echo $msg;
                 }
             ?>
         </div>
