@@ -92,7 +92,7 @@
             <div class="col-sm-5">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                  <input required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16"  id="inputPassword" placeholder="Please enter new password" />
+                  <input required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16"  id="nPassword" placeholder="Please enter new password" />
               </div>
             </div>
           </div>
@@ -102,7 +102,7 @@
             <div class="col-sm-5">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                <input onkeyup="checkPass(); return false;" type="password" class="form-control inputpass" name="cpassword" minlength="4" maxlength="16" id="cpassword" placeholder="Confirm your new password" required>
+                <input onkeyup="checknewPass(); return false;" type="password" class="form-control inputpass" name="cpassword" minlength="4" maxlength="16" id="cpassword" placeholder="Confirm your new password" required>
                 <span id="confirmMessage" class="confirmMessage"></span>
               </div>
             </div>
@@ -123,6 +123,6 @@
   <!-- /.container -->
 
 <!--end side menu body-->
-<script src="js/validate.js"></script>
+<script src="js/validate2.js"></script>
 </body>
 </html>
