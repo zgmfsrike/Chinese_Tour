@@ -2,7 +2,9 @@
 include "db_config.php";
 include "module/hashing.php";
 session_start();
-
+if(isset($_SESSION['login_id'])){
+    header("location: index.php");
+}
 if(isset($_POST['login'])){
     $username = $_POST['username'];
     $password = ''.$_POST['password'].'';
@@ -14,18 +16,23 @@ if(isset($_POST['login'])){
     if($count == 1){
         $objResult = mysqli_fetch_array($result);
         if ( verifyPassword($password,$objResult["password"]) ){
-            $_SESSION['login_id'] = $objResult['id'];
-            $_SESSION['member_type'] = "member";
             $active = $objResult['active'];
             if ($active == 1){
                 // confirmed
+                $_SESSION['login_id'] = $objResult['id'];
+                $_SESSION['user_type'] = "member";
                 header("location: index.php");
             }else{
                 // not confirmed
+                echo '<script type="text/javascript">alert("You account is not active, please check your email for the activated link.");</script>';
             }
+        }else{
+            echo '<script type="text/javascript">alert("Username or Password are incorrect.");</script>';
+            
         }
     }else{
 //        $error = "Your Login Name or Password is invalid";
+        echo '<script type="text/javascript">alert("Username or Password are incorrect.");</script>';
     }
 }
 
@@ -94,7 +101,7 @@ if(isset($_POST['login'])){
   </nav>
   <!--login body-->
 <div class="container">
-  <form class="form-horizontal" data-toggle="validator">
+  <form class="form-horizontal" data-toggle="validator" method="post" action="login.php">
     <div class="row">
       <div class="col-md-3"></div>
       <div class="col-md-6"><br><br><br><br>
@@ -135,7 +142,7 @@ if(isset($_POST['login'])){
     <div class="row">
       <div class="col-md-3"></div>
       <div class="col-md-6">
-        <button type="submit" class="btn btn-danger btn-sm">Login</button>
+        <input type="submit" class="btn btn-danger btn-sm" name="login" value="Login">
         <input type="button" onclick="window.location.href='Register.php'" class="btn btn-warning btn-sm" value="Register">
       </div>
     </div>

@@ -1,18 +1,15 @@
 <?php
     session_start();
     include('db_config.php');
-    if( )){
+    if(isset($_SESSION['login_id'])){
         $user_id = $_SESSION['login_id'];
+        $query = "SELECT * FROM member WHERE id = '$user_id'";
+        $result = mysqli_query($conn, $query);
+        $objResult = mysqli_fetch_array($result);
+        $username = $objResult['username'];
     }else{
-        header("Location: login.php");
+        
     }
-
-    $query = "SELECT * FROM member WHERE id = '$user_id'";
-    $result = mysqli_query($conn, $query);
-    $objResult = mysqli_fetch_array($result);
-    $username = $objResult['username'];
-
-    echo "Hi ". $username ."!<br>";
     
 ?>
 
