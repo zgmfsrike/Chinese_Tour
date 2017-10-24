@@ -2,7 +2,7 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
- include "db_config.php";
+include "db_config.php";
 // include "db_configNB.php";
 include "module/hashing.php";
 
@@ -12,6 +12,7 @@ if(! $conn ) {
 }
 // If submit button clicked from form
 if(isset($_POST['submit'])){
+    header('index.php');
    register();
 }
 // ** If user is already login, redirect to welcome.php
@@ -27,10 +28,10 @@ function register(){
     $firstName = $_POST["firstname"];
     $middleName = $_POST["middlename"];
     $lastName = $_POST["lastname"];
-    $address = $_POST["address"];
+    $address = $_POST["address"] . " " . $_POST["city"] . " " . $_POST["province"] . " " . $_POST["zipcode"];
     $phone = $_POST["phone"];
     $email = $_POST["email"];
-    $dob = date('Y-m-d',strtotime($_POST["yyyy"] . "-" . $_POST["mm"] . "-" . $_POST["dd"]));
+    $dob = $_POST["dob"];
     $salary = $_POST["salary"];
     $occupation = $_POST["occupation"];
 
@@ -47,7 +48,7 @@ function register(){
             // confirmation url
             $url = "http://localhost/Chinese_Tour/Chinese_Tour/active_account.php?id=" . $last_id . "&u=" . md5($username);
             // please confirmation by email
-            //Load composer's autoloader
+            // Load composer's autoloader
             require 'vendor/autoload.php';
 
             $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
@@ -194,7 +195,7 @@ function check_available($username,$email){
 <div class="col-md-8">
     <h3 class="entry-title"><span><br><br>Account Information</span> </h3>
     <hr>
-        <form class="form-horizontal" method="post" id="fileForm" role="form">
+        <form class="form-horizontal" method="post" action="register.php" id="fileForm" role="form">
           <div class="form-group">
             <label class="control-label col-sm-8">Username <span class="text-danger req">*</span></label>
             <div class="col-md-8 col-sm-9">
@@ -264,7 +265,7 @@ function check_available($username,$email){
       <div class="form-group">
         <label class="control-label col-sm-8">Occupation&nbsp;<span class="text-danger"> *</span></label>
         <div class="form-inline col-md-8 col-sm-9">
-              <select name="Occupation" class="form-control" required>
+              <select name="occupation" class="form-control" required>
         <option value="">Please select</option>
         <option value="1">Business Owner</option>
         <option value="2">Employee</option>
@@ -282,7 +283,7 @@ function check_available($username,$email){
       <div class="form-group">
         <label class="control-label col-sm-8">Salary&nbsp;<span class="text-danger"> *</span></label>
         <div class="form-inline col-md-8 col-sm-9">
-              <select name="Occupation" class="form-control" required>
+              <select name="salary" class="form-control" required>
                 <option value="">Please select</option>
                 <option value="1">0&nbsp;-&nbsp;10,000&nbsp;THB/month</option>
                 <option value="2">10,001&nbsp;-15,000&nbsp;THB/month</option>
@@ -301,7 +302,7 @@ function check_available($username,$email){
           <div class="col-sm-8">
               <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-              <input onchange="email_validate(this.value);" type="email" class="form-control" name="emailid" id="emailid" placeholder="Enter your Email"  required>
+              <input onchange="email_validate(this.value);" type="email" class="form-control" name="email" id="email" placeholder="Enter your Email"  required>
             </div>
             </div>
         </div>
@@ -311,7 +312,7 @@ function check_available($username,$email){
         <div class="col-sm-8">
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-phone">&nbsp;&nbsp;66</i></span>
-          <input onkeyup="validatephone(this);" type="text" class="form-control phone" maxlength="9" name="contactnum" id="contactnum" placeholder="Enter your contact no." required>
+          <input onkeyup="validatephone(this);" type="text" class="form-control phone" maxlength="9" name="phone" id="phone" placeholder="Enter your contact no." required>
           </div>
         </div>
       </div>
@@ -357,12 +358,12 @@ function check_available($username,$email){
 
       <div class="form-group">
         <div class="col-xs-offset-3 col-xs-10 float-none">
-          <input type="submit" class="btn btn-danger btn-md" value="Sign Up">
-          <input name="Submit" type="submit" value="Cancel" onclick="window.location.href='Index.php'" class="btn btn-warning">
+            <input name="submit" type="submit" class="btn btn-danger btn-md" value="Sign Up">
+            <input type="submit" value="Cancel" onclick="window.location.href='Index.php'" class="btn btn-warning">
         </div>
       </div>
     </form>
-</div>
+    </div>
 </div>
   </div>
 <!--end Register body-->
