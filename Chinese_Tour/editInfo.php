@@ -267,12 +267,16 @@ $province = $_POST['province'];
 $zipcode = $_POST['zipcode'];
 
 $address = $location." ".$city." ".$province." ".$zipcode;
-
+$dob_format = $dob ;
 //-----------------------------Edit fucntion----------------------------------------------------//
-
+echo $dob;
+echo "--------------";
+echo $dob_format;
 if(strcmp($email,$confirm_email)==0){
   $sql= "UPDATE `member` SET `first_name`='$firstname', `middle_name`='$middlename',`last_name`='$surname',`address`='$address',
-                              `phone`='$phone',`occupation`='$occupation',`salary`='$salary',`dob`='$dob',`email`='$email' WHERE id = 10   ";
+                              `phone`='$phone',`occupation`='$occupation',`salary`='$salary',`date_of_birth`='$dob',`email`='$email' WHERE id = 10   ";
+  // $sql= "UPDATE `member` SET `first_name`='$firstname', `middle_name`='$middlename',`last_name`='$surname',`address`='$address',
+  //                             `phone`='$phone',`occupation`='$occupation',`salary`='$salary',`email`='$email' WHERE id = 10   ";
 
   $result = mysqli_query( $GLOBALS['conn'] , $sql );
 
@@ -283,7 +287,7 @@ if(strcmp($email,$confirm_email)==0){
     $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
     try {
         //Server settings
-        $mail->SMTPDebug = 1;                                 // Enable verbose debug output
+        $mail->SMTPDebug = 2;                                 // Enable verbose debug output
         $mail->isSMTP();                                      // Set mailer to use SMTP
         $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
         $mail->SMTPAuth = true;                               // Enable SMTP authentication
