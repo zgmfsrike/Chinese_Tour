@@ -55,7 +55,7 @@ if($_POST) {
 <body>
   <!-- Navigation -->
   <nav class="navbar fixed-top navbar-light navbar-expand-md bg-danger justify-content-center">
-      <a href="index.html" class="navbar-brand d-flex w-50 mr-auto">Brand</a>
+      <a href="index.php" class="navbar-brand d-flex w-50 mr-auto">Brand</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar3">
           <span class="navbar-toggler-icon"></span>
       </button>
@@ -96,9 +96,9 @@ if($_POST) {
       <div class="col-lg-3 mb-4">
         <div class="list-group admin-menu">
           <hr>
-          <a href="Profile.html" class="list-group-item list-group-item-danger "><i class="fa fa-user fa-fw"></i>Profile</a>
-          <a href="Purchase.html" class="list-group-item list-group-item-danger active"><i class="fa fa-shopping-cart fa-fw"></i>Purchase</a>
-          <a href="Record.html" class="list-group-item list-group-item-danger"><i class="fa fa-clipboard fa-fw"></i>Record</a>
+          <a href="Profile.php" class="list-group-item list-group-item-danger "><i class="fa fa-user fa-fw"></i>Profile</a>
+          <a href="Purchase.php" class="list-group-item list-group-item-danger active"><i class="fa fa-shopping-cart fa-fw"></i>Purchase</a>
+          <a href="Record.php" class="list-group-item list-group-item-danger"><i class="fa fa-clipboard fa-fw"></i>Record</a>
         </div>
       </div>
       <!-- Content Column -->
@@ -107,7 +107,7 @@ if($_POST) {
         <hr>
         <div class="form-group">
           <div class="col-xs-offset-3 col-xs-10">
-            <input name="Submit" type="submit" value="Edit" onclick="window.location.href='EditInfo.html'" class="btn btn-danger">
+            <input name="Submit" type="submit" value="Edit" onclick="window.location.href='EditInfo.php'" class="btn btn-danger">
           </div>
         </div>
         <h3 class="entry-title"><span><br>Change Password</span> </h3>

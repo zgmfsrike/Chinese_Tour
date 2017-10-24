@@ -53,7 +53,7 @@ if($_POST) {
 <body>
   <!-- Navigation -->
   <nav class="navbar fixed-top navbar-light navbar-expand-md bg-danger justify-content-center">
-      <a href="index.html" class="navbar-brand d-flex w-50 mr-auto">Brand</a>
+      <a href="index.php" class="navbar-brand d-flex w-50 mr-auto">Brand</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar3">
           <span class="navbar-toggler-icon"></span>
       </button>
@@ -67,10 +67,10 @@ if($_POST) {
                 Pick a Tour
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                <a class="dropdown-item" href="portfolio-1-col.html">Meeting</a>
-                <a class="dropdown-item" href="portfolio-2-col.html">Incentive</a>
-                <a class="dropdown-item" href="portfolio-3-col.html">Conferences</a>
-                <a class="dropdown-item" href="portfolio-4-col.html">Events</a>
+                <a class="dropdown-item" href="portfolio-1-col.php">Meeting</a>
+                <a class="dropdown-item" href="portfolio-2-col.php">Incentive</a>
+                <a class="dropdown-item" href="portfolio-3-col.php">Conferences</a>
+                <a class="dropdown-item" href="portfolio-4-col.php">Events</a>
               </div>
             </li>
             <li class="nav-item">
@@ -146,7 +146,7 @@ if($_POST) {
           <div class="form-group">
             <div class="col-xs-offset-3 col-sm-9 float-none"><br>
               <input type="submit" class="btn btn-danger btn-md" value="Save">
-              <input type="submit" value="Cancel" onclick="window.location.href='Profile.html'" class="btn btn-warning">
+              <input type="submit" value="Cancel" onclick="window.location.href='Profile.php'" class="btn btn-warning">
             </div>
           </div>
         </form>

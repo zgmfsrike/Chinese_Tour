@@ -84,7 +84,7 @@ if($query){
 
 }else{
     $error = "Your Login Name or Password is invalid";
-    header("location: login.html");
+    header("location: login.php");
 }
 
 
