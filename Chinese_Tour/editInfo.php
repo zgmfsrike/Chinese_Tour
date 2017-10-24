@@ -245,11 +245,11 @@ session_start();
 <script src="js/validate.js"></script>
 <?php
 //-----------------------------Variable----------------------------------------------------//
-// include "db_config.php";
-include "db_configNB.php";
+include "db_config.php";
+// include "db_configNB.php";
 include "module/hashing.php";
-// if(isset($_SESSION['login_id'])){
-// $id = $_SESSION['login_id'];
+if(isset($_SESSION['login_id'])){
+$id = $_SESSION['login_id'];
 $firstname = $_POST['firstname'];
 $middlename = $_POST['middlename'];
 $surname = $_POST['surname'];
@@ -274,7 +274,7 @@ echo "--------------";
 echo $dob_format;
 if(strcmp($email,$confirm_email)==0){
   $sql= "UPDATE `member` SET `first_name`='$firstname', `middle_name`='$middlename',`last_name`='$surname',`address`='$address',
-                              `phone`='$phone',`occupation`='$occupation',`salary`='$salary',`date_of_birth`='$dob',`email`='$email' WHERE id = 10   ";
+                              `phone`='$phone',`occupation`='$occupation',`salary`='$salary',`date_of_birth`='$dob',`email`='$email' WHERE id = $id   ";
   // $sql= "UPDATE `member` SET `first_name`='$firstname', `middle_name`='$middlename',`last_name`='$surname',`address`='$address',
   //                             `phone`='$phone',`occupation`='$occupation',`salary`='$salary',`email`='$email' WHERE id = 10   ";
 
@@ -326,7 +326,7 @@ if(strcmp($email,$confirm_email)==0){
 
 }
 
-  }
+
 
 
 
@@ -341,10 +341,11 @@ if(strcmp($email,$confirm_email)==0){
 //   echo "Record update successfully";
 // }
 
-// }else{
-//     $error = "Your Login Name or Password is invalid";
-//     header("location: login.php");
-// }
+}else{
+    $error = "Your Login Name or Password is invalid";
+    header("location: login.php");
+}
+}
 
 
 ?>
