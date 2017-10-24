@@ -1,8 +1,8 @@
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-// include "db_config.php";
-include "db_configNB.php";
+include "db_config.php";
+// include "db_configNB.php";
 include "module/hashing.php";
 //----------------------------Wait for session---------------------------------------------//
 session_start();
