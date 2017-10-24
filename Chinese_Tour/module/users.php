@@ -37,7 +37,7 @@ $occupation = $_POST["occupation"];
 
 $npassword =  makePassword($password);
 if($npassword){
-	$sql = "INSERT INTO member (username, password, first_name, middle_name, last_name, address, phone, email, date_of_birth, occupation, salary) VALUES ('$username', '$password', '$firstName', '$middleName', '$lastName', '$address', '$phone', '$email', '$dob', '$occupation', '$salary')";
+	$sql = "INSERT INTO member (username, password, first_name, middle_name, last_name, address, phone, email, date_of_birth, occupation, salary) VALUES ('$username', '$password','$npassword', '$firstName', '$middleName', '$lastName', '$address', '$phone', '$email', '$dob', '$occupation', '$salary')";
   $query = $connect->query($sql);
 	if($query === TRUE) {
 		return true;
@@ -142,7 +142,7 @@ function logout() {
 }
 
 function passwordMatch($id,$password){
-  global $connection;
+  global $connect;
 
   $userdata = getUserDataByUserId($id);
 
