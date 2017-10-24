@@ -41,7 +41,7 @@ function register(){
         $sql = "INSERT INTO member (username, password, first_name, middle_name, last_name, address, phone, email, date_of_birth, occupation, salary) VALUES ('$username', '$password', '$firstName', '$middleName', '$lastName', '$address', '$phone', '$email', '$dob', '$occupation', '$salary')";
 
         // execute
-        $result = mysqli_query( $GLOBALS['conn'] , $sql );
+        $result = mysqli_query( $conn , $sql );
         if ($result){
             $last_id = $GLOBALS['conn']->insert_id;
 

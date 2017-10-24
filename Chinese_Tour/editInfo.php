@@ -5,89 +5,6 @@ use PHPMailer\PHPMailer\Exception;
 //----------------------------Wait for session---------------------------------------------//
 session_start();
 
-
-//-----------------------------Variable----------------------------------------------------//
-include "db_config.php";
-// include "db_configNB.php";
-include "module/hashing.php";
-if(isset($_SESSION['login_id'])){
-$id = $_SESSION['login_id'];
-
-$firstname = $_POST['firstname'];
-$middlename = $_POST['middlename'];
-$surname = $_POST['surname'];
-$occupation =  $_POST['Occupation'];
-$salary = $_POST['salary'];
-$date = $_POST['dd'];
-$month = $_POST['mm'];
-$year = $_POST['yyyy'];
-$time =  $year . "-" . $month . "-" . $date ;
-$phone = $_POST['contactnum'];
-$address = $_POST['address'];
-$email = $_POST['emailid'];
-
-//-----------------------------Edit fucntion----------------------------------------------------//
-$sql= "UPDATE `member` SET `first_name`='$firstname', `middle_name`='$middlename',`last_name`='$surname',`address`='$address',
-                            `phone`='$phone',`occupation`='$occupation',`salary`='$salary',`dob`='$time',`email`='$email' WHERE id = $id   ";
-
-
-//-----------------------------Send change mail fucntion----------------------------------------------------//
-require 'vendor/autoload.php';
-// $url = "http://localhost/Chinese_Tour/Chinese_Tour/home.php"
-$mail = new PHPMailer(true);                              // Passing `true` enables exceptions
-try {
-    //Server settings
-    $mail->SMTPDebug = 1;                                 // Enable verbose debug output
-    $mail->isSMTP();                                      // Set mailer to use SMTP
-    $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
-    $mail->SMTPAuth = true;                               // Enable SMTP authentication
-    $mail->Username = "zgmfsrike@gmail.com";                 // SMTP username
-    $mail->Password = 'amenoera7744';                           // SMTP password
-    $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-    $mail->Port = 587;                                    // TCP port to connect to
-
-    //Recipients
-    $mail->setFrom('info@chtour.com', 'Chinese Tour');
-    $mail->addAddress($email);
-    // Add a recipient
-    // $mail->addAddress('ellen@example.com');               // Name is optional
-    // $mail->addReplyTo('info@example.com', 'Information');
-    // $mail->addCC('cc@example.com');
-    // $mail->addBCC('bcc@example.com');
-
-    //Attachments
-    // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-    // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
-
-    //Content
-    $body = '<p><strong>The user email is changed , Click the link below to go to homepage</strong><br>
-        Link : '.$url.'</p>';
-    $mail->isHTML(true);                                  // Set email format to HTML
-     $mail->Subject = 'Chinese Tour: Email address is changed';
-    $mail->Body    = $body;
-    $mail->AltBody = strip_tags($body);
-
-    $mail->send();
-    // echo 'Message has been sent';
-} catch (Exception $e) {
-    echo 'Message could not be sent.';
-    echo 'Mailer Error: ' . $mail->ErrorInfo;
-}
-
-
-
-//-----------------------------Check edit fucntion----------------------------------------------------//
-$query = mysqli_query($host,$sql);
-if($query){
-  echo "Record update successfully";
-}
-
-}else{
-    $error = "Your Login Name or Password is invalid";
-    header("location: login.php");
-}
-
-
 ?>
 
 
@@ -171,7 +88,7 @@ if($query){
       <div class="col-lg-9 mb-4">
         <h3 class="entry-title"><span><br>Account Information</span> </h3>
         <hr>
-        <form>
+        <form action='editinfo.php' method="post">
       <div class="form-group">
         <label class="control-label col-sm-8">Name <span class="text-danger">*</span></label>
         <div class="col-sm-8">
@@ -229,7 +146,7 @@ if($query){
       <div class="form-group">
         <label class="control-label col-sm-8">Salary<span class="text-danger"> *</span></label>
         <div class="form-inline col-md-8 col-sm-9">
-          <select name="Occupation" class="form-control" required>
+          <select name="salary" class="form-control" required>
             <option value="">Please select</option>
             <option value="1">0&nbsp;-&nbsp;10,000&nbsp;THB/month</option>
             <option value="2">10,001&nbsp;-15,000&nbsp;THB/month</option>
@@ -248,10 +165,21 @@ if($query){
           <div class="col-sm-8">
               <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-              <input onchange="email_validate(this.value);" type="email" class="form-control" name="emailid" id="emailid" placeholder="Enter your Email"  required>
+              <input onkeyup="checkMail(); return false;" onfocusout="checkMail(); return false;" onchange="email_validate(this.value);" type="email" class="form-control" name="email" id="email" placeholder="Enter your Email"  required>
             </div>
             </div>
         </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-8">Confirm Email <span class="text-danger">*</span></label>
+            <div class="col-sm-8">
+                <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                <input onkeyup="checkMail(); return false;" onfocusout="checkMail(); return false;" onchange="email_validate(this.value);" type="email" class="form-control" name="confirm_email" id="confirm_email" placeholder="Enter your Email"  required>
+              </div>
+              <span id="confirmMessage" class="confirmMessage"></span>
+              </div>
+          </div>
 
       <div class="form-group">
         <label class="control-label col-sm-8">Contact No. <span class="text-danger">*</span></label>
@@ -315,5 +243,111 @@ if($query){
 
 <!--end side menu body-->
 <script src="js/validate.js"></script>
+<?php
+//-----------------------------Variable----------------------------------------------------//
+include "db_config.php";
+// include "db_configNB.php";
+include "module/hashing.php";
+if(isset($_SESSION['login_id'])){
+$id = $_SESSION['login_id'];
+$firstname = $_POST['firstname'];
+$middlename = $_POST['middlename'];
+$surname = $_POST['surname'];
+$occupation =  $_POST['Occupation'];
+$salary = $_POST['salary'];
+$dob = $_POST['dob'];
+$phone = $_POST['contactnum'];
+$email = $_POST['email'];
+
+$confirm_email = $_POST['confirm_email'];
+
+$location = $_POST['address'];
+$city = $_POST['city'];
+$province = $_POST['province'];
+$zipcode = $_POST['zipcode'];
+
+$address = $location." ".$city." ".$province." ".$zipcode;
+$dob_format = $dob ;
+//-----------------------------Edit fucntion----------------------------------------------------//
+echo $dob;
+echo "--------------";
+echo $dob_format;
+if(strcmp($email,$confirm_email)==0){
+  $sql= "UPDATE `member` SET `first_name`='$firstname', `middle_name`='$middlename',`last_name`='$surname',`address`='$address',
+                              `phone`='$phone',`occupation`='$occupation',`salary`='$salary',`date_of_birth`='$dob',`email`='$email' WHERE id = $id   ";
+  // $sql= "UPDATE `member` SET `first_name`='$firstname', `middle_name`='$middlename',`last_name`='$surname',`address`='$address',
+  //                             `phone`='$phone',`occupation`='$occupation',`salary`='$salary',`email`='$email' WHERE id = 10   ";
+
+  $result = mysqli_query( $GLOBALS['conn'] , $sql );
+
+  //-----------------------------Send change mail fucntion----------------------------------------------------//
+  if($result){
+    require 'vendor/autoload.php';
+    // $url = "http://localhost/Chinese_Tour/Chinese_Tour/home.php"
+    $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+    try {
+        //Server settings
+        $mail->SMTPDebug = 2;                                 // Enable verbose debug output
+        $mail->isSMTP();                                      // Set mailer to use SMTP
+        $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+        $mail->SMTPAuth = true;                               // Enable SMTP authentication
+        $mail->Username = "zgmfsrike@gmail.com";                 // SMTP username
+        $mail->Password = 'amenoera7744';                           // SMTP password
+        $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+        $mail->Port = 587;                                    // TCP port to connect to
+
+        //Recipients
+        $mail->setFrom('info@chtour.com', 'Chinese Tour');
+        $mail->addAddress($email,$firstname);
+        // Add a recipient
+        // $mail->addAddress('ellen@example.com');               // Name is optional
+        // $mail->addReplyTo('info@example.com', 'Information');
+        // $mail->addCC('cc@example.com');
+        // $mail->addBCC('bcc@example.com');
+
+        //Attachments
+        // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+        // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+
+        //Content
+        $body = '<p><strong>The user email is changed , Click the link below to go to homepage</strong><br>
+            Link : '.$url.'</p>';
+        $mail->isHTML(true);                                  // Set email format to HTML
+         $mail->Subject = 'Chinese Tour: Email address is changed';
+        $mail->Body    = $body;
+        $mail->AltBody = strip_tags($body);
+
+        $mail->send();
+        // echo 'Message has been sent';
+    } catch (Exception $e) {
+        echo 'Message could not be sent.';
+        echo 'Mailer Error: ' . $mail->ErrorInfo;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+//-----------------------------Check edit fucntion----------------------------------------------------//
+// $query = mysqli_query($host,$sql);
+// if($query){
+//   echo "Record update successfully";
+// }
+
+}else{
+    $error = "Your Login Name or Password is invalid";
+    header("location: login.php");
+}
+}
+
+
+?>
 </body>
 </html>
