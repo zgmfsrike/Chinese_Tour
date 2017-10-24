@@ -1,3 +1,38 @@
+<?php
+//-----------------------------Variable----------------------------------------------------//
+session_cache_expire(30);
+error_reporting (E_ALL ^ E_NOTICE);
+session_start();
+include "db_config.php";
+// include "db_configNB.php";
+include "module/hashing.php";
+
+if(isset($_SESSION['login_id'])){
+$id = $_SESSION['login_id'];
+$sql_db =  "SELECT * FROM `member` WHERE id=$id" ;
+$result2 = mysqli_query($conn,$sql_db);
+$data = mysqli_fetch_array($result2);
+
+$username_db = $data['username'];
+$firstname_db = $data['first_name'];
+$middlename_db = $data['middle_name'];
+$lastname_db = $data['last_name'];
+$phone_db = $data['phone'];
+$email_db = $data['email'];
+$salary_db = $data['salary'];
+$occupation_db = $data['occupation'];
+$date_of_birth = $data['date_of_birth'];
+
+}
+
+
+
+
+?>
+
+
+
+<!------------------------------------------------------------- HTML  ------------------------------------------------------------>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,22 +114,22 @@
         <div class="col-sm-9">
           <ul style="list-style-type:none">
             <li>
-              <label class="control-label"><b>Username&nbsp;:</b>&nbsp;Niranam</label>
+              <label class="control-label"><b>Username&nbsp;:</b>&nbsp;<?php echo $firstname_db ?></label>
             </li>
             <li>
-              <label class="control-label"><b>Firstname&nbsp;:</b>&nbsp;Surasang</label>
+              <label class="control-label"><b>Firstname&nbsp;:</b>&nbsp;<?php echo $firstname_db ?></label>
             </li>
             <li>
-              <label class="control-label"><b>Middlename&nbsp;:</b>&nbsp;-</label>
+              <label class="control-label"><b>Middlename&nbsp;:</b>&nbsp;<?php echo $middlename_db ?></label>
             </li>
             <li>
-                <label class="control-label"><b>Surname&nbsp;:</b>&nbsp;Wanlaii</label>
+                <label class="control-label"><b>Surname&nbsp;:</b>&nbsp;<?php echo $lastname_db ?></label>
             </li>
             <li>
-              <label class="control-label"><b>Contact No.&nbsp;:</b>&nbsp;+66-123-4567</label>
+              <label class="control-label"><b>Contact No.&nbsp;:</b>&nbsp;<?php echo $phone_db ?></label>
             </li>
             <li>
-              <label class="control-label"><b>Date Of Birth&nbsp;:</b>&nbsp;09-09-1997</label>
+              <label class="control-label"><b>Date Of Birth&nbsp;:</b>&nbsp;<?php echo $date_of_birth ?></label>
             </li>
             <li>
               <br>
@@ -113,5 +148,6 @@
   <script src="vendor/popper/popper.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js"></script>
+
 </body>
 </html>

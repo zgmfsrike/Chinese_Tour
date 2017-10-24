@@ -1,4 +1,6 @@
 <?php
+session_cache_expire(30);
+error_reporting (E_ALL ^ E_NOTICE);
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 include "db_config.php";
@@ -108,6 +110,7 @@ $id = $_SESSION['login_id'];
           $email_db = $data['email'];
           $salary_db = $data['salary'];
           $occupation_db = $data['occupation'];
+          $date_of_birth = $data['date_of_birth'];
 
            ?>
       <div class="form-group">
@@ -140,7 +143,7 @@ $id = $_SESSION['login_id'];
         <div class="col-md-8 col-sm-9">
           <div class="form-inline">
             <div class="form-group">
-            <input required id="dob" name="dob" class="form-control" type="date" value="2017-10-13"/>
+            <input required id="dob" name="dob" class="form-control" type="date" value="<?php echo $date_of_birth ?>"/>
             </div>
           </div>
         </div>
@@ -151,15 +154,15 @@ $id = $_SESSION['login_id'];
         <div class="form-inline col-md-8 col-sm-9">
           <select name="Occupation" class="form-control"  required >
     <option value="">Please select</option>
-    <option value="1">Business Owner</option>
-    <option value="2">Employee</option>
-    <option value="3">University Lecturer</option>
-    <option value="4">Manager</option>
-    <option value="5">Government officer</option>
-    <option value="6">Doctor</option>
-    <option value="7">Researcher</option>
-    <option value="8">Store Owner</option>
-    <option value="9">Other</option>
+    <option value="1" <?php if($occupation_db == 1) echo "selected"; ?>>Business Owner</option>
+    <option value="2" <?php if($occupation_db == 2) echo "selected"; ?>>Employee</option>
+    <option value="3" <?php if($occupation_db == 3) echo "selected"; ?> >University Lecturer</option>
+    <option value="4" <?php if($occupation_db == 4) echo "selected"; ?> >Manager</option>
+    <option value="5" <?php if($occupation_db == 5) echo "selected"; ?> >Government officer</option>
+    <option value="6" <?php if($occupation_db == 6) echo "selected"; ?> >Doctor</option>
+    <option value="7" <?php if($occupation_db == 7) echo "selected"; ?> >Researcher</option>
+    <option value="8" <?php if($occupation_db == 8) echo "selected"; ?> >Store Owner</option>
+    <option value="9" <?php if($occupation_db == 9) echo "selected"; ?> >Other</option>
           </select>
       </div>
       </div>
@@ -169,14 +172,14 @@ $id = $_SESSION['login_id'];
         <div class="form-inline col-md-8 col-sm-9">
           <select name="salary" class="form-control" required>
             <option value="">Please select</option>
-            <option value="1">0&nbsp;-&nbsp;10,000&nbsp;THB/month</option>
-            <option value="2">10,001&nbsp;-15,000&nbsp;THB/month</option>
-            <option value="3">15,001&nbsp;-20,000&nbsp;THB/month</option>
-            <option value="4">20,001&nbsp;-25,000&nbsp;THB/month</option>
-            <option value="5">25,001&nbsp;-30,000&nbsp;THB/month</option>
-            <option value="6">30,001&nbsp;-35,000&nbsp;THB/month</option>
-            <option value="7">35,001&nbsp;-40,000&nbsp;THB/month</option>
-            <option value="8">&gt;40,0001&nbsp;THB/month</option>
+            <option value="1" <?php if($salary_db == 1) echo "selected"; ?> >0&nbsp;-&nbsp;10,000&nbsp;THB/month</option>
+            <option value="2" <?php if($salary_db == 2) echo "selected"; ?> >10,001&nbsp;-15,000&nbsp;THB/month</option>
+            <option value="3" <?php if($salary_db == 3) echo "selected"; ?> >15,001&nbsp;-20,000&nbsp;THB/month</option>
+            <option value="4" <?php if($salary_db == 4) echo "selected"; ?> >20,001&nbsp;-25,000&nbsp;THB/month</option>
+            <option value="5" <?php if($salary_db == 5) echo "selected"; ?> >25,001&nbsp;-30,000&nbsp;THB/month</option>
+            <option value="6" <?php if($salary_db == 6) echo "selected"; ?> >30,001&nbsp;-35,000&nbsp;THB/month</option>
+            <option value="7" <?php if($salary_db == 7) echo "selected"; ?> >35,001&nbsp;-40,000&nbsp;THB/month</option>
+            <option value="8" <?php if($salary_db == 8) echo "selected"; ?> >&gt;40,0001&nbsp;THB/month</option>
           </select>
       </div>
       </div>
@@ -250,7 +253,7 @@ $id = $_SESSION['login_id'];
 
       <div class="form-group">
         <div class="col-sm-8 float-none">
-          <input type="submit" class="btn btn-danger btn-md" value="Save">
+          <input type="submit" class="btn btn-danger btn-md" value="Save" name='save'>
           <input name="Submit" type="submit" value="Cancel" onclick="window.location.href='Profile.php'" class="btn btn-warning">
         </div>
       </div>
@@ -288,60 +291,61 @@ $zipcode = $_POST['zipcode'];
 $address = $location." ".$city." ".$province." ".$zipcode;
 $dob_format = $dob ;
 //-----------------------------Edit fucntion----------------------------------------------------//
-echo $dob;
-echo "--------------";
-echo $dob_format;
-if(strcmp($email,$confirm_email)==0){
-  $sql= "UPDATE `member` SET `first_name`='$firstname', `middle_name`='$middlename',`last_name`='$surname',`address`='$address',
-                              `phone`='$phone',`occupation`='$occupation',`salary`='$salary',`date_of_birth`='$dob',`email`='$email' WHERE id = $id   ";
-  // $sql= "UPDATE `member` SET `first_name`='$firstname', `middle_name`='$middlename',`last_name`='$surname',`address`='$address',
-  //                             `phone`='$phone',`occupation`='$occupation',`salary`='$salary',`email`='$email' WHERE id = 10   ";
+if($_POST['save']){
 
-  $result = mysqli_query( $GLOBALS['conn'] , $sql );
+  if(strcmp($email,$confirm_email)==0){
+    $sql= "UPDATE `member` SET `first_name`='$firstname', `middle_name`='$middlename',`last_name`='$surname',`address`='$address',
+                                `phone`='$phone',`occupation`='$occupation',`salary`='$salary',`date_of_birth`='$dob',`email`='$email' WHERE id = $id   ";
+    // $sql= "UPDATE `member` SET `first_name`='$firstname', `middle_name`='$middlename',`last_name`='$surname',`address`='$address',
+    //                             `phone`='$phone',`occupation`='$occupation',`salary`='$salary',`email`='$email' WHERE id = 10   ";
+    $result = mysqli_query( $GLOBALS['conn'] , $sql );
 
-  //-----------------------------Send change mail fucntion----------------------------------------------------//
-  if($result){
-    require 'vendor/autoload.php';
-    // $url = "http://localhost/Chinese_Tour/Chinese_Tour/home.php"
-    $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
-    try {
-        //Server settings
-        $mail->SMTPDebug = 2;                                 // Enable verbose debug output
-        $mail->isSMTP();                                      // Set mailer to use SMTP
-        $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
-        $mail->SMTPAuth = true;                               // Enable SMTP authentication
-        $mail->Username = "zgmfsrike@gmail.com";                 // SMTP username
-        $mail->Password = 'amenoera7744';                           // SMTP password
-        $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-        $mail->Port = 587;                                    // TCP port to connect to
+    //-----------------------------Send change mail fucntion----------------------------------------------------//
+    if($result){
+      require 'vendor/autoload.php';
+      // $url = "http://localhost/Chinese_Tour/Chinese_Tour/home.php"
+      $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+      try {
+          //Server settings
+          $mail->SMTPDebug = 0;                                 // Enable verbose debug output
+          $mail->isSMTP();                                      // Set mailer to use SMTP
+          $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+          $mail->SMTPAuth = true;                               // Enable SMTP authentication
+          $mail->Username = "zgmfsrike@gmail.com";                 // SMTP username
+          $mail->Password = 'amenoera7744';                           // SMTP password
+          $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+          $mail->Port = 587;                                    // TCP port to connect to
 
-        //Recipients
-        $mail->setFrom('info@chtour.com', 'Chinese Tour');
-        $mail->addAddress($email,$firstname);
-        // Add a recipient
-        // $mail->addAddress('ellen@example.com');               // Name is optional
-        // $mail->addReplyTo('info@example.com', 'Information');
-        // $mail->addCC('cc@example.com');
-        // $mail->addBCC('bcc@example.com');
+          //Recipients
+          $mail->setFrom('info@chtour.com', 'Chinese Tour');
+          $mail->addAddress($email,$firstname);
+          // Add a recipient
+          // $mail->addAddress('ellen@example.com');               // Name is optional
+          // $mail->addReplyTo('info@example.com', 'Information');
+          // $mail->addCC('cc@example.com');
+          // $mail->addBCC('bcc@example.com');
 
-        //Attachments
-        // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-        // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+          //Attachments
+          // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+          // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
 
-        //Content
-        $body = '<p><strong>The user email is changed , Click the link below to go to homepage</strong><br>
-            Link : '.$url.'</p>';
-        $mail->isHTML(true);                                  // Set email format to HTML
-         $mail->Subject = 'Chinese Tour: Email address is changed';
-        $mail->Body    = $body;
-        $mail->AltBody = strip_tags($body);
+          //Content
+          $body = '<p><strong>The user email is changed';
+          $mail->isHTML(true);                                  // Set email format to HTML
+           $mail->Subject = 'Chinese Tour: Email address is changed';
+          $mail->Body    = $body;
+          $mail->AltBody = strip_tags($body);
 
-        $mail->send();
-        // echo 'Message has been sent';
-    } catch (Exception $e) {
-        echo 'Message could not be sent.';
-        echo 'Mailer Error: ' . $mail->ErrorInfo;
-    }
+          $mail->send();
+          echo '<script type="text/javascript">alert("ํYour new email address has been sent , you need to confirm again in your email.");</script>';
+          // echo 'Message has been sent';
+      } catch (Exception $e) {
+          echo 'Message could not be sent.';
+          echo 'Mailer Error: ' . $mail->ErrorInfo;
+      }
+
+}
+
 
 }
 
@@ -360,9 +364,6 @@ if(strcmp($email,$confirm_email)==0){
 //   echo "Record update successfully";
 // }
 
-}else{
-    $error = "Your Login Name or Password is invalid";
-    header("location: login.php");
 }
 }
 

@@ -1,4 +1,5 @@
 <?php
+    
     session_start();
     include('db_config.php');
     if(isset($_SESSION['login_id'])){
@@ -8,9 +9,9 @@
         $objResult = mysqli_fetch_array($result);
         $username = $objResult['username'];
     }else{
-        
+
     }
-    
+
 ?>
 
 <!DOCTYPE html>
@@ -65,6 +66,7 @@
               <li class="nav-item">
                   <a class="nav-link" href="Register.php"><i class="fa fa-user-plus">&nbsp;&nbsp;</i>Sing up&nbsp;&nbsp;&nbsp;&nbsp;</a>
                   <a class="nav-link" href="Login.php"><i class="fa fa-user">&nbsp;&nbsp;</i>Login&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                  <a class="nav-link" href="Logout.php"><i class="fa fa-user">&nbsp;&nbsp;</i>Logout&nbsp;&nbsp;&nbsp;&nbsp;</a>
               </li>
               <li class="nav-item">
                 <span class="nav-link text-dark" id="nav-chatservice"><i class="fa fa-comments">&nbsp;&nbsp;</i>Chat Service</span>
@@ -273,7 +275,7 @@
 
     <!-- Footer -->
     <footer class="py-5 bg-">
-      <div class="container">    
+      <div class="container">
             <div class="row">
                 <div class="col-md-2 company">
                     <h3>Logo</h3>
