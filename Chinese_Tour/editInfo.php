@@ -1,9 +1,15 @@
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-
+// include "db_config.php";
+include "db_configNB.php";
+include "module/hashing.php";
 //----------------------------Wait for session---------------------------------------------//
 session_start();
+//----------------------------Show value-----------------------------------------------//
+$id = $_SESSION['login_id'];
+
+
 
 ?>
 
@@ -28,6 +34,7 @@ session_start();
 
 </head>
 <body>
+
   <!-- Navigation -->
   <nav class="navbar fixed-top navbar-light navbar-expand-md bg-danger justify-content-center">
       <a href="index.php" class="navbar-brand d-flex w-50 mr-auto">Brand</a>
@@ -89,11 +96,25 @@ session_start();
         <h3 class="entry-title"><span><br>Account Information</span> </h3>
         <hr>
         <form action='editinfo.php' method="post">
+          <?php
+          $sql_db =  "SELECT * FROM `member` WHERE id=$id" ;
+          $result2 = mysqli_query($conn,$sql_db);
+          $data = mysqli_fetch_array($result2);
+
+          $firstname_db = $data['first_name'];
+          $middlename_db = $data['middle_name'];
+          $lastname_db = $data['last_name'];
+          $phone_db = $data['phone'];
+          $email_db = $data['email'];
+          $salary_db = $data['salary'];
+          $occupation_db = $data['occupation'];
+
+           ?>
       <div class="form-group">
         <label class="control-label col-sm-8">Name <span class="text-danger">*</span></label>
         <div class="col-sm-8">
           <div class="input-group">
-            <input onkeyup = "Validate(this)" id="txt" type="text" class="form-control" name="firstname" id="firstname" placeholder="Enter your Name here" required>
+            <input onkeyup = "Validate(this)" id="txt" type="text" class="form-control" name="firstname" id="firstname" value= "<?php echo $firstname_db ?>"required>
           </div>
         </div>
       </div>
@@ -101,7 +122,7 @@ session_start();
         <label class="control-label col-sm-8">Middle Name</label>
         <div class="col-sm-8">
           <div class="input-group">
-            <input onkeyup = "Validate(this)" type="text" class="form-control" name="middlename" id="middlename" placeholder="Enter your Middle Name here">
+            <input onkeyup = "Validate(this)" type="text" class="form-control" name="middlename" id="middlename" value="<?php echo $middlename_db ?>">
           </div>
         </div>
       </div>
@@ -109,7 +130,7 @@ session_start();
         <label class="control-label col-sm-8">Surname <span class="text-danger">*</span></label>
         <div class="col-sm-8">
           <div class="input-group">
-            <input onkeyup = "Validate(this)" type="text" class="form-control" name="surname" id="surname" placeholder="Enter your Surname here" required>
+            <input onkeyup = "Validate(this)" type="text" class="form-control" name="surname" id="surname" value="<?php echo $lastname_db ?>" required>
           </div>
         </div>
       </div>
@@ -128,7 +149,7 @@ session_start();
       <div class="form-group">
         <label class="control-label col-sm-8">Occupation<span class="text-danger"> *</span></label>
         <div class="form-inline col-md-8 col-sm-9">
-          <select name="Occupation" class="form-control" required>
+          <select name="Occupation" class="form-control"  required >
     <option value="">Please select</option>
     <option value="1">Business Owner</option>
     <option value="2">Employee</option>
@@ -165,7 +186,7 @@ session_start();
           <div class="col-sm-8">
               <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-              <input onkeyup="checkMail(); return false;" onfocusout="checkMail(); return false;" onchange="email_validate(this.value);" type="email" class="form-control" name="email" id="email" placeholder="Enter your Email"  required>
+              <input onkeyup="checkMail(); return false;" onfocusout="checkMail(); return false;" onchange="email_validate(this.value);" type="email" class="form-control" name="email" id="email" value="<?php echo $email_db ?>"  required>
             </div>
             </div>
         </div>
@@ -186,7 +207,7 @@ session_start();
         <div class="col-sm-8">
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-phone">&nbsp;&nbsp;66</i></span>
-          <input onkeyup="validatephone(this);" type="text" class="form-control phone" maxlength="9" name="contactnum" id="contactnum" placeholder="Enter your contact no." required>
+          <input onkeyup="validatephone(this);" type="text" class="form-control phone" maxlength="9" name="contactnum" id="contactnum" value="<?php echo $phone_db ?>" required>
           </div>
         </div>
       </div>
@@ -245,9 +266,7 @@ session_start();
 <script src="js/validate.js"></script>
 <?php
 //-----------------------------Variable----------------------------------------------------//
-include "db_config.php";
-// include "db_configNB.php";
-include "module/hashing.php";
+
 if(isset($_SESSION['login_id'])){
 $id = $_SESSION['login_id'];
 $firstname = $_POST['firstname'];
