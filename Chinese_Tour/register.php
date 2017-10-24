@@ -1,11 +1,15 @@
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+session_start();
 
-// include "db_config.php";
-include "db_configNB.php";
+ include "db_config.php";
+//include "db_configNB.php";
 include "module/hashing.php";
 
+if(isset($_SESSION['login_id'])){
+    header("location: index.php");
+}
 // check connection
 if(! $conn ) {
     die('Could not connect: ' . mysql_error());
