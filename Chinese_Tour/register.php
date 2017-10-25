@@ -4,7 +4,6 @@ use PHPMailer\PHPMailer\Exception;
 session_start();
 
  include "db_config.php";
-//include "db_configNB.php";
 include "module/hashing.php";
 
 if(isset($_SESSION['login_id'])){
