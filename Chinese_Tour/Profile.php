@@ -114,7 +114,7 @@ $date_of_birth = $data['date_of_birth'];
         <div class="col-sm-9">
           <ul style="list-style-type:none">
             <li>
-              <label class="control-label"><b>Username&nbsp;:</b>&nbsp;<?php echo $firstname_db ?></label>
+              <label class="control-label"><b>Username&nbsp;:</b>&nbsp;<?php echo $username_db ?></label>
             </li>
             <li>
               <label class="control-label"><b>Firstname&nbsp;:</b>&nbsp;<?php echo $firstname_db ?></label>
@@ -135,6 +135,7 @@ $date_of_birth = $data['date_of_birth'];
               <br>
               <input name="Submit" type="submit" value="Edit" onclick="window.location.href='EditInfo.php'" class="btn btn-danger">
               <input name="changePassword" type="submit" value="Change Password" onclick="window.location.href='ChangePassword.php'" class="btn btn-danger">
+              <input name="changeEmail" type="submit" value="Change Email" onclick="window.location.href='changeEmail.php'" class="btn btn-danger">
             </li>
           </ul>
         </div>

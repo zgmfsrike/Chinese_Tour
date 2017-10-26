@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_cache_expire(30);
 error_reporting (E_ALL ^ E_NOTICE);
 use PHPMailer\PHPMailer\PHPMailer;
@@ -184,26 +185,6 @@ $id = $_SESSION['login_id'];
       </div>
       </div>
 
-      <div class="form-group">
-          <label class="control-label col-sm-8">Email ID <span class="text-danger">*</span></label>
-          <div class="col-sm-8">
-              <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-              <input onkeyup="checkMail(); return false;" onfocusout="checkMail(); return false;" onchange="email_validate(this.value);" type="email" class="form-control" name="email" id="email" value="<?php echo $email_db ?>"  required>
-            </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="control-label col-sm-8">Confirm Email <span class="text-danger">*</span></label>
-            <div class="col-sm-8">
-                <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                <input onkeyup="checkMail(); return false;" onfocusout="checkMail(); return false;" onchange="email_validate(this.value);" type="email" class="form-control" name="confirm_email" id="confirm_email" placeholder="Enter your Email"  required>
-              </div>
-              <span id="confirmMessage" class="confirmMessage"></span>
-              </div>
-          </div>
 
       <div class="form-group">
         <label class="control-label col-sm-8">Contact No. <span class="text-danger">*</span></label>
@@ -279,9 +260,7 @@ $occupation =  $_POST['Occupation'];
 $salary = $_POST['salary'];
 $dob = $_POST['dob'];
 $phone = $_POST['contactnum'];
-$email = $_POST['email'];
 
-$confirm_email = $_POST['confirm_email'];
 
 $location = $_POST['address'];
 $city = $_POST['city'];
@@ -293,76 +272,12 @@ $dob_format = $dob ;
 //-----------------------------Edit fucntion----------------------------------------------------//
 if($_POST['save']){
 
-  if(strcmp($email,$confirm_email)==0){
     $sql= "UPDATE `member` SET `first_name`='$firstname', `middle_name`='$middlename',`last_name`='$surname',`address`='$address',
-                                `phone`='$phone',`occupation`='$occupation',`salary`='$salary',`date_of_birth`='$dob',`email`='$email' WHERE id = $id   ";
-    // $sql= "UPDATE `member` SET `first_name`='$firstname', `middle_name`='$middlename',`last_name`='$surname',`address`='$address',
-    //                             `phone`='$phone',`occupation`='$occupation',`salary`='$salary',`email`='$email' WHERE id = 10   ";
+                                `phone`='$phone',`occupation`='$occupation',`salary`='$salary',`date_of_birth`='$dob' WHERE id = $id ";
     $result = mysqli_query( $GLOBALS['conn'] , $sql );
+      header("location: profile.php");
+      ob_end_flush();
 
-    //-----------------------------Send change mail fucntion----------------------------------------------------//
-    if($result){
-      require 'vendor/autoload.php';
-      // $url = "http://localhost/Chinese_Tour/Chinese_Tour/home.php"
-      $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
-      try {
-          //Server settings
-          $mail->SMTPDebug = 0;                                 // Enable verbose debug output
-          $mail->isSMTP();                                      // Set mailer to use SMTP
-          $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
-          $mail->SMTPAuth = true;                               // Enable SMTP authentication
-          $mail->Username = "zgmfsrike@gmail.com";                 // SMTP username
-          $mail->Password = 'amenoera7744';                           // SMTP password
-          $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-          $mail->Port = 587;                                    // TCP port to connect to
-
-          //Recipients
-          $mail->setFrom('info@chtour.com', 'Chinese Tour');
-          $mail->addAddress($email,$firstname);
-          // Add a recipient
-          // $mail->addAddress('ellen@example.com');               // Name is optional
-          // $mail->addReplyTo('info@example.com', 'Information');
-          // $mail->addCC('cc@example.com');
-          // $mail->addBCC('bcc@example.com');
-
-          //Attachments
-          // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-          // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
-
-          //Content
-          $body = '<p><strong>The user email is changed';
-          $mail->isHTML(true);                                  // Set email format to HTML
-           $mail->Subject = 'Chinese Tour: Email address is changed';
-          $mail->Body    = $body;
-          $mail->AltBody = strip_tags($body);
-
-          $mail->send();
-          echo '<script type="text/javascript">alert("ํYour new email address has been sent , you need to confirm again in your email.");</script>';
-          // echo 'Message has been sent';
-      } catch (Exception $e) {
-          echo 'Message could not be sent.';
-          echo 'Mailer Error: ' . $mail->ErrorInfo;
-      }
-
-}
-
-
-}
-
-
-
-
-
-
-
-
-
-
-//-----------------------------Check edit fucntion----------------------------------------------------//
-// $query = mysqli_query($host,$sql);
-// if($query){
-//   echo "Record update successfully";
-// }
 
 }
 }

@@ -1,7 +1,7 @@
 <?php
 
 require_once 'module/hashing.php';
-require_once 'module/init.php';
+include "db_config.php";
 
 // if(not_logged_in() === TRUE) {
 // 	header('location: login.php');
