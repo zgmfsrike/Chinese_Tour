@@ -1,9 +1,11 @@
 <?php
 include "db_config.php";
 
-if(isset($_GET['id']) and isset($_GET['u'])){
+if(isset($_GET['id']) and isset($_GET['u']) and isset($_GET['m']) ){
     $id = $_GET['id'];
     $u = $_GET['u'];
+    $m = $_GET['m'];
+
 
     $sql = "SELECT * FROM member WHERE id = '$id'";
     $result = mysqli_query( $GLOBALS['conn'] , $sql );
@@ -13,21 +15,30 @@ if(isset($_GET['id']) and isset($_GET['u'])){
     $count = mysqli_num_rows($result);
 
    if($count == 1){
+     $objResult = mysqli_fetch_array($result);
+     $email = $objResult['email'];
 
-       $objResult = mysqli_fetch_array($result);
-       $username = $username[0];
-       $username = md5($objResult['username']);
 
-       if($u == $username){
+         if($email == $m){
+           msg("<h1>Sorry!</h1><h3>Your email had already changed</h3>");
 
-               $sql= "UPDATE `member` SET `email`='$email' WHERE id = $id   ";
-               $result = mysqli_query( $GLOBALS['conn'] , $sql );
+       }else{
+            //  $sql = "UPDATE member SET active = 1 WHERE id = $id";
+             $sql= "UPDATE `member` SET `email`='$m' WHERE id = $id   ";
+             $result = mysqli_query( $GLOBALS['conn'] , $sql );
 
-               if($result){
-                   msg("<h1>Thank you!</h1><h3>Your email has been changed</h3>");
-               }else{
-                  msg("<h1>Sorry!</h1><h3>Your email had already changed</h3>");
-               }
+             if($result){
+                msg("<h1>Thank you!</h1><h3>Your email has been changed</h3>");
+             }else{
+                 msg("<h1>Sorry!</h1><h3>Something went wrong, please try again later.</h3>");
+             }
+       }
+    }else{
+       msg("<h1>Error!</h1><h3>Request does not match, please check link again2.</h3>");
+    }
+}else{
+    msg("<h1>Error!</h1><h3>Request does not match, please check link again3.</h3>");
+}
 
 ?>
 
@@ -126,7 +137,7 @@ if(isset($_GET['id']) and isset($_GET['u'])){
       <div class="container ">
         <div class="row">
             <div class="col-md-2 company">
-                <h3>Logo</h3>
+                <h3>Logo<?php echo $id ?></h3>
             </div>
             <div class="col-md-3 dc">
                 <h3>Help</h3>
