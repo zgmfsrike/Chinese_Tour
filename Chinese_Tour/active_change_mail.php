@@ -34,10 +34,10 @@ if(isset($_GET['id']) and isset($_GET['u']) and isset($_GET['m']) ){
              }
        }
     }else{
-       msg("<h1>Error!</h1><h3>Request does not match, please check link again2.</h3>");
+       msg("<h1>Error!</h1><h3>Request does not match, please check link again.</h3>");
     }
 }else{
-    msg("<h1>Error!</h1><h3>Request does not match, please check link again3.</h3>");
+    msg("<h1>Error!</h1><h3>Request does not match, please check link again.</h3>");
 }
 
 ?>
