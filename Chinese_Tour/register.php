@@ -204,7 +204,7 @@ function check_available($username,$email){
             <div class="col-md-8 col-sm-9">
               <div class="input-group">
                 <span class="input-group-addon req"><i class="fa fa-user"></i></span>
-                <input required type="text" minlength="3" maxlength="16" class="form-control" id="txt" placeholder="minimum 3 letters" name="username" onkeyup = "Validate(this)">
+                <input required type="text" minlength="3" maxlength="16" class="form-control" id="username" placeholder="minimum 3 letters" name="username" onkeyup = "ValidateTextandNum(this)">
               </div>
             </div>
           </div>
