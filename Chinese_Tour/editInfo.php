@@ -275,7 +275,7 @@ if($_POST['save']){
     $sql= "UPDATE `member` SET `first_name`='$firstname', `middle_name`='$middlename',`last_name`='$surname',`address`='$address',
                                 `phone`='$phone',`occupation`='$occupation',`salary`='$salary',`date_of_birth`='$dob' WHERE id = $id ";
     $result = mysqli_query( $GLOBALS['conn'] , $sql );
-      header("location: profile.php");
+      header("location: messege.php?msg=edit");
       ob_end_flush();
 
 

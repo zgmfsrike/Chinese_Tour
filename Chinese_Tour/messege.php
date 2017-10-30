@@ -1,41 +1,40 @@
 <?php
 include "db_config.php";
-include "module/hashing.php";
-session_start();
-if(isset($_SESSION['login_id'])){
-    header("location: index.php");
-}
-if(isset($_POST['login'])){
-    $username = $_POST['username'];
-    $password = ''.$_POST['password'].'';
 
-    $query = "SELECT * FROM member WHERE username = '$username'";
-    $result = mysqli_query($conn, $query);
-    $count = mysqli_num_rows($result);
+if(isset($_GET['msg'])){
+    $msg = $_GET['msg'];
+    switch ($msg) {
+            // add messege case : messege(HEADER,MESSEGE,LINK,BUTTON_VALUE);
+            // use '' in LINK or BUTTON_VALUE to use DEFAULT as back button
 
-    if($count == 1){
-        $objResult = mysqli_fetch_array($result);
-        if ( verifyPassword($password,$objResult["password"]) ){
-            $active = $objResult['active'];
-            if ($active == 1){
-                // confirmed
-                $_SESSION['login_id'] = $objResult['id'];
-                $_SESSION['user_type'] = "member";
-                header("location: index.php");
-            }else{
-                // not confirmed
-                header("location: messege.php?msg=not_active");
-            }
-        }else{
-            echo '<script type="text/javascript">alert("Username or Password are incorrect.");</script>';
-            
-        }
-    }else{
-//        $error = "Your Login Name or Password is invalid";
-        echo '<script type="text/javascript">alert("Username or Password are incorrect.");</script>';
+            // LOGIN
+        case 'login_invalid': messege('Login fail','Username or Password are invalid.','','Back to Login page');
+            break;
+
+        case 'edit': messege('Success','You information has been update','Profile.php','Go to profile page');
+            break;
+
+        case 'not_active': messege('Login fail','Please active your account from your e-mail.','','Back to Login page');
+            break;
+
+        case 'email_change': messege('Email confirmation is already send','Please confirm again in your email.','Profile.php','Go to profile page');
+            break;
+
+
+            // REGISTER
+
+            // default
+        default: messege('Request not found','','','');
+
+
     }
+}else{
+    messege('Request not found.','','index.php','Go to Homepage');
 }
 
+function getLink($link){
+    return 'window.location.href="'.$link.'"';
+}
 ?>
 
 <!-- HTML -->
@@ -100,55 +99,41 @@ if(isset($_POST['login'])){
       </div>
   </nav>
   <!--login body-->
+<!----- PHP : 4 parameters ----->
+    <?php
+          function messege($header,$messege,$link,$btn){
+              ?>
 <div class="container">
-  <form class="form-horizontal" data-toggle="validator" method="post" action="login.php">
+  <form class="form-horizontal" data-toggle="validator">
     <div class="row">
       <div class="col-md-3"></div>
       <div class="col-md-6"><br><br><br><br>
-        <h1>Please Login</h1>
+          <h1>
+              <?php
+              echo $header;
+              ?>
+          </h1>
+          <div>
+            <?php
+                echo $messege;
+            ?>
+          </div>
         <hr>
       </div>
     </div>
+
     <div class="row">
       <div class="col-md-3"></div>
       <div class="col-md-6">
-
-        <div class="form-group has-feedback">
-          <label class="sr-only control-label req">Username</label>
-          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-            <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
-            <input required type="text" minlength="3" maxlength="16" class="form-control" id="txt" placeholder="minimum 3 letters" name="username" onkeyup = "Validate(this)">
-          </div>
-        </div>
-
+        <input type="button" onclick=<?php echo (!$link == "") ? "window.location.href='$link'" : "history.go(-1)"; ?> class="btn btn-warning btn-sm" value="<?php echo(!$btn == '') ? $btn : 'Back' ?>">
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-3"></div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label class="sr-only control-label req" for="password">Password</label>
-          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-            <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
-            <input required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16"  id="inputPassword" placeholder="Please enter your password" />
-          </div>
-
-          <div class="col-md-12">
-            <a class="pull-right small" href="/password/reset">Forgot Your Password?</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-3"></div>
-      <div class="col-md-6">
-        <input type="submit" class="btn btn-danger btn-sm" name="login" value="Login">
-        <input type="button" onclick="window.location.href='Register.php'" class="btn btn-warning btn-sm" value="Register">
-      </div>
-    </div>
-<!--end login body-->
   </form>
 </div>
+    <?php
+          }
+          ?>
+
 
     <!-- Footer -->
     <br><br><br><br>
