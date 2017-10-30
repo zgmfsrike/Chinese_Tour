@@ -2,7 +2,7 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 session_start();
-
+ob_start();
  include "db_config.php";
 include "module/hashing.php";
 
@@ -42,7 +42,7 @@ function register(){
     $city       = $_POST["city"];
     $province   = $_POST["province"];
     $zipcode    = $_POST["zipcode"];
-    
+
     // confirm password
     if($password == $cPassword){
         $password = hashPassword($password);
@@ -101,6 +101,8 @@ function register(){
                 $mail->AltBody = strip_tags($body);
 
                 $mail->send();
+                header("location: messege.php");
+                ob_end_flush();
                 // echo 'Message has been sent';
             } catch (Exception $e) {
                 echo 'Message could not be sent.';
@@ -110,6 +112,7 @@ function register(){
             echo "error: " . mysqli_error( $GLOBALS['conn'] );
             header("login.php");
         }
+
     }
 }
 

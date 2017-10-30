@@ -20,24 +20,28 @@ if(isset($_GET['id']) and isset($_GET['u']) and isset($_GET['m']) ){
 
 
          if($email == $m){
-           msg("<h1>Sorry!</h1><h3>Your email had already changed</h3>");
-
+          //  msg("<h1>Sorry!</h1><h3>Your email had already changed</h3>");
+           header("location: messege.php?msg=email_change_already");
        }else{
             //  $sql = "UPDATE member SET active = 1 WHERE id = $id";
              $sql= "UPDATE `member` SET `email`='$m' WHERE id = $id   ";
              $result = mysqli_query( $GLOBALS['conn'] , $sql );
 
              if($result){
-                msg("<h1>Thank you!</h1><h3>Your email has been changed</h3>");
+                // msg("<h1>Thank you!</h1><h3>Your email has been changed</h3>");
+                 header("location: messege.php?msg=email_change_succ");
              }else{
-                 msg("<h1>Sorry!</h1><h3>Something went wrong, please try again later.</h3>");
+                //  msg("<h1>Sorry!</h1><h3>Something went wrong, please try again later.</h3>");
+                 header("location: messege.php?msg=email");
              }
        }
     }else{
-       msg("<h1>Error!</h1><h3>Request does not match, please check link again.</h3>");
+      //  msg("<h1>Error!</h1><h3>Request does not match, please check link again.</h3>");
+       header("location: messege.php?msg=email_error");
     }
 }else{
-    msg("<h1>Error!</h1><h3>Request does not match, please check link again.</h3>");
+    // msg("<h1>Error!</h1><h3>Request does not match, please check link again.</h3>");
+     header("location: messege.php?msg=email_error");
 }
 
 ?>

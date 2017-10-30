@@ -21,7 +21,7 @@ $phone_db = $data['phone'];
 $email_db = $data['email'];
 $salary_db = $data['salary'];
 $occupation_db = $data['occupation'];
-$date_of_birth = $data['date_of_birth'];
+$date_of_birth = $data['dob'];
 
 }
 

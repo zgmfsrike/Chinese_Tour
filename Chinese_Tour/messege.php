@@ -11,29 +11,42 @@ if(isset($_GET['msg'])){
         case 'login_invalid': messege('Login fail','Username or Password are invalid.','','Back to Login page');
             break;
 
-        case 'edit': messege('Success','You information has been update','Profile.php','Go to profile page');
-            break;
-
         case 'not_active': messege('Login fail','Please active your account from your e-mail.','','Back to Login page');
             break;
 
-        case 'email_change': messege('Email confirmation is already send','Please confirm again in your email.','Profile.php','Go to profile page');
+            //Edit
+        case 'edit': messege('Success!','You information has been update','Profile.php','Go to profile page');
             break;
-
-
             // REGISTER
-            
+
             // ACTIVE ACCOUNT
         case 'active_succ': messege('Thank you!','account has been actived','index.php','Go to home page');
             break;
-            
+
         case 'active_fail': messege('Fail to acctive!','Please try again later.','index.php','Go to home page');
             break;
-            
+
         case 'active_already': messege('Sorry!','Your account had already actived.','index.php','Go to home page');
             break;
-        
+
         case 'active_error': messege('Error!','Request does not match, please check link again.','index.php','Go to home page');
+            break;
+
+          //Change mail
+          case 'email_change_succ': messege('Success!','Your email has been changed.','Profile.php','Go to profile page');
+              break;
+
+          case 'email_change': messege('Email confirmation is already send','Please confirm again in your email.','Profile.php','Go to profile page');
+              break;
+
+          case 'email_change_already': messege('Sorry!','Your email had already changed.','Profile.php','Go to profile page');
+              break;
+
+          case 'email_fail': messege('Fail to change email!','Please try again later.','Profile.php','Go to profile page');
+              break;
+
+          case 'email_error': messege('Error!','Request does not match, please check link again.','Profile.php','Go to profile page');
+              break;
 
             // default
         default: messege('Request not found','','','');
