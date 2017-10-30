@@ -8,12 +8,12 @@ if(isset($_GET['msg'])){
             // use '' in LINK or BUTTON_VALUE to use DEFAULT
         case 'test': messege('TEST HEADER','TEST MESSEGE','login.php','Go to login page');
             break;
-        case '': messege('','','','');
+        case 'edit': messege('Edit success','You information has been update','Profile.php','Go to profile page');
             break;
-            
+
             // default
         default: messege('','','','');
-            
+
     }
 }else{
     messege('Request not found.','','','');
@@ -102,7 +102,7 @@ function linkTo($link){
           </h1>
           <div>
             <?php
-                echo $messege;  
+                echo $messege;
             ?>
           </div>
         <hr>
