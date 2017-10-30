@@ -6,14 +6,21 @@ if(isset($_GET['msg'])){
     switch ($msg) {
             // add messege case : messege(HEADER,MESSEGE,LINK,BUTTON_VALUE);
             // use '' in LINK or BUTTON_VALUE to use DEFAULT as back button
-            
+
             // LOGIN
         case 'login_invalid': messege('Login fail','Username or Password are invalid.','','Back to Login page');
             break;
-            
+
+        case 'edit': messege('Success','You information has been update','Profile.php','Go to profile page');
+            break;
+
         case 'not_active': messege('Login fail','Please active your account from your e-mail.','','Back to Login page');
             break;
-            
+
+        case 'email_change': messege('Email confirmation is already send','Please confirm again in your email.','Profile.php','Go to profile page');
+            break;
+
+
             // REGISTER
             
             // ACTIVE ACCOUNT
@@ -27,10 +34,11 @@ if(isset($_GET['msg'])){
             break;
         
         case 'active_error': messege('Error!','Request does not match, please check link again.','index.php','Go to home page');
-            break;
+
             // default
-        default: messege('Request not found!','','','');
-            
+        default: messege('Request not found','','','');
+
+
     }
 }else{
     messege('Request not found.','','index.php','Go to Homepage');
@@ -119,7 +127,7 @@ function getLink($link){
           </h1>
           <div>
             <?php
-                echo $messege;  
+                echo $messege;
             ?>
           </div>
         <hr>
