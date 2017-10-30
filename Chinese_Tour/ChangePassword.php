@@ -1,12 +1,9 @@
 <?php
-error_reporting (E_ALL ^ E_NOTICE);
 include "module/hashing.php";
-// require_once 'module/init.php';
 include "db_config.php";
-// if(not_logged_in() === TRUE) {
-// 	header('location: login.php');
-// }
+
 session_cache_expire(30);
+error_reporting (E_ALL ^ E_NOTICE);
 session_start();
 if(isset($_SESSION['login_id'])){
 	$id = $_SESSION['login_id'];
@@ -33,79 +30,6 @@ if(isset($_SESSION['login_id'])){
 }else {
 	header("location: login.php");
 }
-//
-// function getUserDataByUserID($id){
-// $sql_db = "SELECT * FROM `member` WHERE id=$id";
-// $result = mysqli_query($conn,$sql_db);
-// $data = mysqli_fetch_array($result);
-// }
-//
-// function users_exists_by_id($id, $username) {
-// 	global $connect;
-// 	$sql_db = "SELECT * FROM `member` WHERE username = '$username'AND id !=$id";
-// 	$query = $connect->query($sql_db);
-// 	$result = mysqli_query($conn,$sql_db);
-// 	$data = mysqli_fetch_array($result);
-// 	if($query->num_rows >= 1) {
-// 		return true;
-// 	} else {
-// 		return false;
-// 	}
-// 	$connect->close();
-// }
-//
-// function userdata($username){
-// 	global $connect;
-//
-// 	$sql_db = "SELECT * FROM `member` WHERE username = '$username'";
-// 	$query = $connect->query($sql_db);
-// 	$result = mysqli_query($conn,$sql_db);
-// 	$data = mysqli_fetch_array($result);
-// 	if($query->num_rows >= 1) {
-// 		return true;
-// 	} else {
-// 		return false;
-// 	}
-// 	$connect->close();
-// }
-//
-// function makePassword($password) {
-// 	return hash('sha256', $password);
-// }
-//
-// function passwordMatch($id,$password){
-// 	global $connect;
-//
-// $userdata=getUserDataByUserId($id);
-// $makePassword = makePassword($password);
-// if($makePassword == $userdata['password']) {
-// 	return true;
-// } else {
-// 	return false;
-// }
-//
-// // close connection
-// $connect->close();
-// }
-//
-// function changePassword($id, $password) {
-// 	global $connect;
-// 	$makePassword = makePassword($password);
-// 	$sql_db = "SELECT * FROM `member` WHERE username = '$username'";
-// 	$query = $connect->query($sql_db);
-// 	$result = mysqli_query($conn,$sql_db);
-// 	$data = mysqli_fetch_array($result);
-// 	if($query === TRUE) {
-// 		return true;
-// 	} else {
-// 		return false;
-// 	}
-// }
-
-
-
-
-
 
  ?>
 
