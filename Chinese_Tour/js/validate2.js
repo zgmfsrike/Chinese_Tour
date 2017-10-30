@@ -26,3 +26,7 @@ function checknewPass()
         message.innerHTML = "&nbsp;Passwords Do Not Match!"
     }
 }
+//validates username only
+function ValidateUsername(username) {
+  username.value = username.value.replace(/[^a-zA-Z-0-9'\n\r.]+/g, '');
+}

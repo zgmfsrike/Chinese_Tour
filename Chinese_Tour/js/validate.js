@@ -44,12 +44,10 @@ function Validate(txt) {
     txt.value = txt.value.replace(/[^a-zA-Z-'\n\r.]+/g, '');
 }
 
-// validates username only
-// function Validate(username) {
-//   var username = document.getElementById('username');
-//   //Store the Confimation Message Object ...
-//   var message = document.getElementById('confirmMessage');
-// }
+//validates username only
+function ValidateTextandNum(username) {
+  username.value = username.value.replace(/[^a-zA-Z-'\n\r.]+/g, '');
+}
 
 // validate email
 // function email_validate(email)
