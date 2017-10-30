@@ -10,13 +10,26 @@ if(isset($_GET['msg'])){
             // LOGIN
         case 'login_invalid': messege('Login fail','Username or Password are invalid.','','Back to Login page');
             break;
+            
         case 'not_active': messege('Login fail','Please active your account from your e-mail.','','Back to Login page');
             break;
             
             // REGISTER
             
+            // ACTIVE ACCOUNT
+        case 'active_succ': messege('Thank you!','account has been actived','index.php','Go to home page');
+            break;
+            
+        case 'active_fail': messege('Fail to acctive!','Please try again later.','index.php','Go to home page');
+            break;
+            
+        case 'active_already': messege('Sorry!','Your account had already actived.','index.php','Go to home page');
+            break;
+        
+        case 'active_error': messege('Error!','Request does not match, please check link again.','index.php','Go to home page');
+            break;
             // default
-        default: messege('Request not found','','','');
+        default: messege('Request not found!','','','');
             
     }
 }else{

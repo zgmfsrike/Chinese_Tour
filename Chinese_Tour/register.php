@@ -26,22 +26,35 @@ if(isset($_POST['submit'])){
 // register method
 function register(){
 
-    $username = $_POST["username"];
-    $password = hashPassword(''.$_POST["password"].'');
-    $firstName = $_POST["firstname"];
+    // recieve data from form
+    $username   = $_POST["username"];
+    $password   = $_POST["password"];
+    $cPassword  = $_POST["cpassword"];
+    $firstName  = $_POST["firstname"];
     $middleName = $_POST["middlename"];
-    $lastName = $_POST["lastname"];
-    $address = $_POST["address"] . " " . $_POST["city"] . " " . $_POST["province"] . " " . $_POST["zipcode"];
-    $phone = $_POST["phone"];
-    $email = $_POST["email"];
-    $dob = $_POST["dob"];
-    $salary = $_POST["salary"];
+    $lastName   = $_POST["lastname"];
+    $dob        = $_POST["dob"];
     $occupation = $_POST["occupation"];
+    $salary     = $_POST["salary"];
+    $email      = $_POST["email"];
+    $phone      = $_POST["phone"];
+    $address    = $_POST["address"];
+    $city       = $_POST["city"];
+    $province   = $_POST["province"];
+    $zipcode    = $_POST["zipcode"];
+    
+    // confirm password
+    if($password == $cPassword){
+        $password = hashPassword($password);
+    }else{
+        header('location: messege.php');
+    }
 
-    $check = check_available($username,$email);
-    if($check){
+    // check username and password in used
+    if(check_available($username,$email)){
+        $hash = md5(rand(1000,5000));
         // prepare SQL statement
-        $sql = "INSERT INTO member (username, password, first_name, middle_name, last_name, address, phone, email, date_of_birth, occupation, salary) VALUES ('$username', '$password', '$firstName', '$middleName', '$lastName', '$address', '$phone', '$email', '$dob', '$occupation', '$salary')";
+        $sql = "INSERT INTO member (username, password, first_name, middle_name, last_name, dob, phone, email, address, city, province, zipcode, occupation, salary, hash) VALUES ('$username', '$password', '$firstName', '$middleName', '$lastName', '$dob', '$phone', '$email', '$address', '$city', '$province', '$zipcode', '$occupation', '$salary', '$hash')";
 
         // execute
         $result = mysqli_query( $GLOBALS['conn'] , $sql );
@@ -49,7 +62,7 @@ function register(){
             $last_id = $GLOBALS['conn']->insert_id;
 
             // confirmation url
-            $url = "http://localhost/Chinese_Tour/Chinese_Tour/active_account.php?id=" . $last_id . "&u=" . md5($username);
+            $url = "http://localhost/Chinese_Tour/Chinese_Tour/active_account.php?id=" . $last_id . "&h=" . $hash;
             // please confirmation by email
             // Load composer's autoloader
             require 'vendor/autoload.php';
