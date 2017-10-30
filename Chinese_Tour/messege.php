@@ -5,22 +5,35 @@ if(isset($_GET['msg'])){
     $msg = $_GET['msg'];
     switch ($msg) {
             // add messege case : messege(HEADER,MESSEGE,LINK,BUTTON_VALUE);
-            // use '' in LINK or BUTTON_VALUE to use DEFAULT
-        case 'test': messege('TEST HEADER','TEST MESSEGE','login.php','Go to login page');
+            // use '' in LINK or BUTTON_VALUE to use DEFAULT as back button
+
+            // LOGIN
+        case 'login_invalid': messege('Login fail','Username or Password are invalid.','','Back to Login page');
             break;
+
         case 'edit': messege('Edit success','You information has been update','Profile.php','Go to profile page');
             break;
 
             // default
         default: messege('','','','');
 
+
+        case 'not_active': messege('Login fail','Please active your account from your e-mail.','','Back to Login page');
+            break;
+
+            // REGISTER
+
+            // default
+        default: messege('Request not found','','','');
+
+
     }
 }else{
-    messege('Request not found.','','','');
+    messege('Request not found.','','index.php','Go to Homepage');
 }
 
-function linkTo($link){
-    header("location: $link");
+function getLink($link){
+    return 'window.location.href="'.$link.'"';
 }
 ?>
 
@@ -112,13 +125,12 @@ function linkTo($link){
     <div class="row">
       <div class="col-md-3"></div>
       <div class="col-md-6">
-        <input type="button" onclick='<?php echo (!$link == "") ? "linkTo(".$link.")": 'history.go(-1);' ?>' class="btn btn-warning btn-sm" value="<?php echo(!$btn == '') ? $btn : 'Back' ?>">
+        <input type="button" onclick=<?php echo (!$link == "") ? "window.location.href='$link'" : "history.go(-1)"; ?> class="btn btn-warning btn-sm" value="<?php echo(!$btn == '') ? $btn : 'Back' ?>">
       </div>
     </div>
   </form>
 </div>
     <?php
-                // onClick="linkTo(login.php)";
           }
           ?>
 

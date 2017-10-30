@@ -24,7 +24,7 @@ if(isset($_POST['login'])){
                 header("location: index.php");
             }else{
                 // not confirmed
-                echo '<script type="text/javascript">alert("You account is not active, please check your email for the activated link.");</script>';
+                header("location: messege.php?msg=not_active");
             }
         }else{
             echo '<script type="text/javascript">alert("Username or Password are incorrect.");</script>';
