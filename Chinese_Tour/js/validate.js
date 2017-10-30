@@ -44,10 +44,7 @@ function Validate(txt) {
     txt.value = txt.value.replace(/[^a-zA-Z-'\n\r.]+/g, '');
 }
 
-//validates username only
-function ValidateTextandNum(username) {
-  username.value = username.value.replace(/[^a-zA-Z-'\n\r.]+/g, '');
-}
+
 
 // validate email
 // function email_validate(email)

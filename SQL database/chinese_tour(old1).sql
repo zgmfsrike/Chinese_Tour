@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 30, 2017 at 02:15 PM
+-- Generation Time: Oct 16, 2017 at 05:35 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -51,25 +51,21 @@ CREATE TABLE `member` (
   `first_name` varchar(50) NOT NULL,
   `middle_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
-  `dob` date NOT NULL,
+  `address` varchar(300) NOT NULL,
   `phone` varchar(15) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `address` varchar(100) NOT NULL,
-  `city` varchar(50) NOT NULL,
-  `province` varchar(50) NOT NULL,
-  `zipcode` varchar(6) NOT NULL,
-  `occupation` int(11) NOT NULL,
-  `salary` int(11) NOT NULL,
-  `active` int(11) NOT NULL DEFAULT '0',
-  `hash` varchar(60) NOT NULL
+  `date_of_birth` date NOT NULL,
+  `salary` int(2) NOT NULL,
+  `occupation` int(2) NOT NULL,
+  `active` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `member`
 --
 
-INSERT INTO `member` (`id`, `username`, `password`, `first_name`, `middle_name`, `last_name`, `dob`, `phone`, `email`, `address`, `city`, `province`, `zipcode`, `occupation`, `salary`, `active`, `hash`) VALUES
-(1, 'asdfghj', '$2y$10$nEshXXiYm0orI2SyEXKVnO3V7S4KOOA45tRQCTdRNRAAwE34/Eedi', 'asdf', 'asdf', 'asdf', '2017-10-13', '252626281', 'nayzaa2010@hotmail.com', '241 moo.9 subdis.Sansai luang, dis.Sansai', 'CMCMCMCM', 'ChiangMai-', '50210', 1, 1, 1, '4edaa105d5f53590338791951e38c3ad');
+INSERT INTO `member` (`id`, `username`, `password`, `first_name`, `middle_name`, `last_name`, `address`, `phone`, `email`, `date_of_birth`, `salary`, `occupation`, `active`) VALUES
+(6, 'username01', '$2y$10$sxstrBqRPpaRgPakConUVevi.5RgC20kIfKdabXlJIf.Rjz8poFH2', 'firstname01', 'middlename01', 'lastname01', 'fffff ffff ffff ffff', '125326252', '6', '0000-00-00', 1968, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -81,20 +77,6 @@ CREATE TABLE `occupation` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `occupation`
---
-
-INSERT INTO `occupation` (`id`, `name`) VALUES
-(1, 'Business Owner'),
-(2, 'Employee'),
-(3, 'University Lecturer'),
-(4, 'Manager'),
-(5, 'Government officer'),
-(6, 'Doctor'),
-(7, 'Researcher'),
-(8, 'Store Owner');
 
 -- --------------------------------------------------------
 
@@ -124,12 +106,6 @@ ALTER TABLE `member`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `occupation`
---
-ALTER TABLE `occupation`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `salary`
 --
 ALTER TABLE `salary`
@@ -149,19 +125,7 @@ ALTER TABLE `administrator`
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `occupation`
---
-ALTER TABLE `occupation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT for table `salary`
---
-ALTER TABLE `salary`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

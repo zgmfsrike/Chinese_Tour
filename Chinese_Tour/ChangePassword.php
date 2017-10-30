@@ -1,34 +1,34 @@
 <?php
-
-require_once 'module/hashing.php';
+include "module/hashing.php";
 include "db_config.php";
 
-// if(not_logged_in() === TRUE) {
-// 	header('location: login.php');
-// }
-if($_POST) {
+session_cache_expire(30);
+error_reporting (E_ALL ^ E_NOTICE);
+session_start();
+if(isset($_SESSION['login_id'])){
+	$id = $_SESSION['login_id'];
 	$password = $_POST['password'];
-	$npassword = $_POST["npassword"];
+	$npassword = hashPassword(''.$_POST["npassword"].'');
 	$cpassword = $_POST['cpassword'];
+	$sql= "SELECT* from `member` WHERE id = $id ";
+	$result = mysqli_query( $GLOBALS['conn'] , $sql );
+  $data = mysqli_fetch_array($result);
+  $pass_db = $data['password'];
+
+	if($_POST['save']){
+	    $sql_db= "UPDATE `member` SET `password`= '$npassword' WHERE id = $id ";
+			$result2 = mysqli_query( $GLOBALS['conn'] , $sql_db);
+			echo $result2;
+
+	      header("location: profile.php");
+	      ob_end_flush();
+	}
 
 
-  if($password && $npassword && $cpassword) {
-    if(passwordMatch($_SESSION['id'], $password) === TRUE) {
 
-      if($npassword != $cpassword) {
-        echo "New password does not match conform password <br />";
-      } else {
-        if(changePassword($_SESSION['id'], $npassword) === TRUE) {
-					echo "Successfully updated";
-        } else {
-          echo "Error while updating the information <br />";
-        }
-      }
 
-    } else {
-      echo "Current Password is incorrect <br />";
-    }
-  }
+}else {
+	header("location: login.php");
 }
 
  ?>
@@ -53,7 +53,7 @@ if($_POST) {
 <body>
   <!-- Navigation -->
   <nav class="navbar fixed-top navbar-light navbar-expand-md bg-danger justify-content-center">
-      <a href="index.php" class="navbar-brand d-flex w-50 mr-auto">Brand</a>
+      <a href="index.html" class="navbar-brand d-flex w-50 mr-auto">Brand</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar3">
           <span class="navbar-toggler-icon"></span>
       </button>
@@ -67,10 +67,10 @@ if($_POST) {
                 Pick a Tour
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                <a class="dropdown-item" href="portfolio-1-col.php">Meeting</a>
-                <a class="dropdown-item" href="portfolio-2-col.php">Incentive</a>
-                <a class="dropdown-item" href="portfolio-3-col.php">Conferences</a>
-                <a class="dropdown-item" href="portfolio-4-col.php">Events</a>
+                <a class="dropdown-item" href="portfolio-1-col.html">Meeting</a>
+                <a class="dropdown-item" href="portfolio-2-col.html">Incentive</a>
+                <a class="dropdown-item" href="portfolio-3-col.html">Conferences</a>
+                <a class="dropdown-item" href="portfolio-4-col.html">Events</a>
               </div>
             </li>
             <li class="nav-item">
@@ -109,9 +109,9 @@ if($_POST) {
       </div>
       <!-- Content Column -->
       <div class="col-lg-9 mb-4">
-        <h3 class="entry-title"><span><br>Change Password</span> </h3>
+        <h3 class="entry-title"><span><br>Change Password </span> </h3>
         <hr>
-        <form class="" action="index.php" method="post">
+        <form class="" action="ChangePassword.php" method="post">
           <div class="form-group">
             <label class="control-label col-sm-8">Password <span class="text-danger">*</span></label>
             <div class="col-sm-5">
@@ -127,7 +127,7 @@ if($_POST) {
             <div class="col-sm-5">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                  <input required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16"  id="nPassword" placeholder="Please enter new password" />
+                  <input required name="npassword" type="password" class="form-control inputpass" minlength="4" maxlength="16"  id="nPassword" placeholder="Please enter new password" />
               </div>
             </div>
           </div>
@@ -145,8 +145,8 @@ if($_POST) {
 
           <div class="form-group">
             <div class="col-xs-offset-3 col-sm-9 float-none"><br>
-              <input type="submit" class="btn btn-danger btn-md" value="Save">
-              <input type="submit" value="Cancel" onclick="window.location.href='Profile.php'" class="btn btn-warning">
+              <input type="submit" class="btn btn-danger btn-md" value="Save" name="save">
+              <input type="submit" value="Cancel" onclick="window.location.href='Profile.html'" class="btn btn-warning">
             </div>
           </div>
         </form>

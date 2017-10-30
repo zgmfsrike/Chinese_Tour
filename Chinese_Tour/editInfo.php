@@ -111,7 +111,11 @@ $id = $_SESSION['login_id'];
           $email_db = $data['email'];
           $salary_db = $data['salary'];
           $occupation_db = $data['occupation'];
-          $date_of_birth = $data['date_of_birth'];
+          $date_of_birth = $data['dob'];
+          $address_db = $data['address'];
+          $city_db = $data['city'];
+          $province_db = $data['province'];
+          $zipcode_db = $data['zipcode'];
 
            ?>
       <div class="form-group">
@@ -200,7 +204,7 @@ $id = $_SESSION['login_id'];
         <div class="col-sm-8">
           <div class="input-group">
             <span class="input-group-addon req"><i class="fa fa-home"></i></span>
-            <input required name="address" type="text" class="form-control inputpass" minlength="4" maxlength="50"  id="address" placeholder="Address" />
+            <input required name="address" type="text" class="form-control inputpass" minlength="4" maxlength="50" value="<?php echo $address_db ?>" id="address" placeholder="Address" />
           </div>
         </div>
       </div>
@@ -209,7 +213,7 @@ $id = $_SESSION['login_id'];
         <div class="col-sm-8">
           <div class="input-group">
             <span class="input-group-addon req"><i class="fa fa-home"></i></span>
-          <input onkeyup = "Validate(this)" id="txt" type="text" class="form-control" name="city" id="city" placeholder="City" required>
+          <input onkeyup = "Validate(this)" id="txt" type="text" class="form-control" name="city" id="city" value="<?php echo $city_db ?>" placeholder="City" required>
           </div>
         </div>
       </div>
@@ -218,7 +222,7 @@ $id = $_SESSION['login_id'];
         <div class="col-sm-8">
           <div class="input-group">
             <span class="input-group-addon req"><i class="fa fa-home"></i></span>
-            <input onkeyup = "Validate(this)" id="txt" type="text" class="form-control" name="province" id="province" placeholder="Province" required>
+            <input onkeyup = "Validate(this)" id="txt" type="text" class="form-control" name="province" id="province" value="<?php echo $province_db ?>" placeholder="Province" required>
           </div>
         </div>
       </div>
@@ -227,7 +231,7 @@ $id = $_SESSION['login_id'];
         <div class="col-sm-8">
           <div class="input-group">
             <span class="input-group-addon req"><i class="fa fa-home"></i></span>
-          <input onkeyup="validatephone(this);" type="text" class="form-control phone" maxlength="5" name="zipcode" id="zipcode" placeholder="Zip Code" required>
+          <input onkeyup="validatephone(this);" type="text" class="form-control phone" maxlength="5" name="zipcode" value="<?php echo $zipcode_db ?>" id="zipcode" placeholder="Zip Code" required>
           </div>
         </div>
       </div>
@@ -235,7 +239,7 @@ $id = $_SESSION['login_id'];
       <div class="form-group">
         <div class="col-sm-8 float-none">
           <input type="submit" class="btn btn-danger btn-md" value="Save" name='save'>
-          <input name="Submit" type="submit" value="Cancel" onclick="window.location.href='Profile.php'" class="btn btn-warning">
+          <input name="Submit" type="button" value="Cancel" onclick="window.location.href='Profile.php'" class="btn btn-warning">
         </div>
       </div>
       </form>
@@ -262,21 +266,23 @@ $dob = $_POST['dob'];
 $phone = $_POST['contactnum'];
 
 
-$location = $_POST['address'];
+$address = $_POST['address'];
 $city = $_POST['city'];
 $province = $_POST['province'];
 $zipcode = $_POST['zipcode'];
-
-$address = $location." ".$city." ".$province." ".$zipcode;
-$dob_format = $dob ;
 //-----------------------------Edit fucntion----------------------------------------------------//
 if($_POST['save']){
 
-    $sql= "UPDATE `member` SET `first_name`='$firstname', `middle_name`='$middlename',`last_name`='$surname',`address`='$address',
-                                `phone`='$phone',`occupation`='$occupation',`salary`='$salary',`date_of_birth`='$dob' WHERE id = $id ";
+    $sql= "UPDATE `member` SET `first_name`='$firstname',`middle_name`='$middlename',`last_name`='$surname',
+                                `phone`='$phone',`occupation`='$occupation',`salary`='$salary',`dob`='$dob',`address`='$address',`city`='$city',`province`='$province',`zipcode`='$zipcode'
+                          
+                                 WHERE id = $id ";
     $result = mysqli_query( $GLOBALS['conn'] , $sql );
-      header("location: profile.php");
+    if($result){
+      header("location: messege.php?msg=edit");
       ob_end_flush();
+    }
+
 
 
 }

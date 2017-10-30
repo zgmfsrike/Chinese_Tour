@@ -1,49 +1,65 @@
 <?php
 include "db_config.php";
 
-if(isset($_GET['id']) and isset($_GET['u']) and isset($_GET['m']) ){
-    $id = $_GET['id'];
-    $u = $_GET['u'];
-    $m = $_GET['m'];
+if(isset($_GET['msg'])){
+    $msg = $_GET['msg'];
+    switch ($msg) {
+            // add messege case : messege(HEADER,MESSEGE,LINK,BUTTON_VALUE);
+            // use '' in LINK or BUTTON_VALUE to use DEFAULT as back button
+
+            // LOGIN
+        case 'login_invalid': messege('Login fail','Username or Password are invalid.','','Back to Login page');
+            break;
+
+        case 'not_active': messege('Login fail','Please active your account from your e-mail.','','Back to Login page');
+            break;
+
+            //Edit
+        case 'edit': messege('Success!','You information has been update','Profile.php','Go to profile page');
+            break;
+            // REGISTER
+
+            // ACTIVE ACCOUNT
+        case 'active_succ': messege('Thank you!','account has been actived','index.php','Go to home page');
+            break;
+
+        case 'active_fail': messege('Fail to acctive!','Please try again later.','index.php','Go to home page');
+            break;
+
+        case 'active_already': messege('Sorry!','Your account had already actived.','index.php','Go to home page');
+            break;
+
+        case 'active_error': messege('Error!','Request does not match, please check link again.','index.php','Go to home page');
+            break;
+
+          //Change mail
+          case 'email_change_succ': messege('Success!','Your email has been changed.','Profile.php','Go to profile page');
+              break;
+
+          case 'email_change': messege('Email confirmation is already send','Please confirm again in your email.','Profile.php','Go to profile page');
+              break;
+
+          case 'email_change_already': messege('Sorry!','Your email had already changed.','Profile.php','Go to profile page');
+              break;
+
+          case 'email_fail': messege('Fail to change email!','Please try again later.','Profile.php','Go to profile page');
+              break;
+
+          case 'email_error': messege('Error!','Request does not match, please check link again.','Profile.php','Go to profile page');
+              break;
+
+            // default
+        default: messege('Request not found','','','');
 
 
-    $sql = "SELECT * FROM member WHERE id = '$id'";
-    $result = mysqli_query( $GLOBALS['conn'] , $sql );
-    if(!$result){
-        msg("<h1>Sorry!</h1><h3>Something went wrong, please try again later.</h3>");
-    }
-    $count = mysqli_num_rows($result);
-
-   if($count == 1){
-     $objResult = mysqli_fetch_array($result);
-     $email = $objResult['email'];
-
-
-         if($email == $m){
-          //  msg("<h1>Sorry!</h1><h3>Your email had already changed</h3>");
-           header("location: messege.php?msg=email_change_already");
-       }else{
-            //  $sql = "UPDATE member SET active = 1 WHERE id = $id";
-             $sql= "UPDATE `member` SET `email`='$m' WHERE id = $id   ";
-             $result = mysqli_query( $GLOBALS['conn'] , $sql );
-
-             if($result){
-                // msg("<h1>Thank you!</h1><h3>Your email has been changed</h3>");
-                 header("location: messege.php?msg=email_change_succ");
-             }else{
-                //  msg("<h1>Sorry!</h1><h3>Something went wrong, please try again later.</h3>");
-                 header("location: messege.php?msg=email");
-             }
-       }
-    }else{
-      //  msg("<h1>Error!</h1><h3>Request does not match, please check link again.</h3>");
-       header("location: messege.php?msg=email_error");
     }
 }else{
-    // msg("<h1>Error!</h1><h3>Request does not match, please check link again.</h3>");
-     header("location: messege.php?msg=email_error");
+    messege('Request not found.','','index.php','Go to Homepage');
 }
 
+function getLink($link){
+    return 'window.location.href="'.$link.'"';
+}
 ?>
 
 <!-- HTML -->
@@ -108,17 +124,25 @@ if(isset($_GET['id']) and isset($_GET['u']) and isset($_GET['m']) ){
       </div>
   </nav>
   <!--login body-->
+<!----- PHP : 4 parameters ----->
     <?php
-          function msg($msg){
+          function messege($header,$messege,$link,$btn){
               ?>
 <div class="container">
   <form class="form-horizontal" data-toggle="validator">
     <div class="row">
       <div class="col-md-3"></div>
       <div class="col-md-6"><br><br><br><br>
-        <?php
-              echo $msg;
+          <h1>
+              <?php
+              echo $header;
               ?>
+          </h1>
+          <div>
+            <?php
+                echo $messege;
+            ?>
+          </div>
         <hr>
       </div>
     </div>
@@ -126,7 +150,7 @@ if(isset($_GET['id']) and isset($_GET['u']) and isset($_GET['m']) ){
     <div class="row">
       <div class="col-md-3"></div>
       <div class="col-md-6">
-        <input type="button" onclick="window.location.href='index.php'" class="btn btn-warning btn-sm" value="Go back to Home page">
+        <input type="button" onclick=<?php echo (!$link == "") ? "window.location.href='$link'" : "history.go(-1)"; ?> class="btn btn-warning btn-sm" value="<?php echo(!$btn == '') ? $btn : 'Back' ?>">
       </div>
     </div>
   </form>
@@ -135,13 +159,14 @@ if(isset($_GET['id']) and isset($_GET['u']) and isset($_GET['m']) ){
           }
           ?>
 
+
     <!-- Footer -->
     <br><br><br><br>
     <footer class="py-5 ">
       <div class="container ">
         <div class="row">
             <div class="col-md-2 company">
-                <h3>Logo<?php echo $id ?></h3>
+                <h3>Logo</h3>
             </div>
             <div class="col-md-3 dc">
                 <h3>Help</h3>

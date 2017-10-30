@@ -2,7 +2,7 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 session_start();
-
+ob_start();
  include "db_config.php";
 include "module/hashing.php";
 
@@ -26,22 +26,35 @@ if(isset($_POST['submit'])){
 // register method
 function register(){
 
-    $username = $_POST["username"];
-    $password = hashPassword(''.$_POST["password"].'');
-    $firstName = $_POST["firstname"];
+    // recieve data from form
+    $username   = $_POST["username"];
+    $password   = $_POST["password"];
+    $cPassword  = $_POST["cpassword"];
+    $firstName  = $_POST["firstname"];
     $middleName = $_POST["middlename"];
-    $lastName = $_POST["lastname"];
-    $address = $_POST["address"] . " " . $_POST["city"] . " " . $_POST["province"] . " " . $_POST["zipcode"];
-    $phone = $_POST["phone"];
-    $email = $_POST["email"];
-    $dob = $_POST["dob"];
-    $salary = $_POST["salary"];
+    $lastName   = $_POST["lastname"];
+    $dob        = $_POST["dob"];
     $occupation = $_POST["occupation"];
+    $salary     = $_POST["salary"];
+    $email      = $_POST["email"];
+    $phone      = $_POST["phone"];
+    $address    = $_POST["address"];
+    $city       = $_POST["city"];
+    $province   = $_POST["province"];
+    $zipcode    = $_POST["zipcode"];
 
-    $check = check_available($username,$email);
-    if($check){
+    // confirm password
+    if($password == $cPassword){
+        $password = hashPassword($password);
+    }else{
+        header('location: messege.php');
+    }
+
+    // check username and password in used
+    if(check_available($username,$email)){
+        $hash = md5(rand(1000,5000));
         // prepare SQL statement
-        $sql = "INSERT INTO member (username, password, first_name, middle_name, last_name, address, phone, email, date_of_birth, occupation, salary) VALUES ('$username', '$password', '$firstName', '$middleName', '$lastName', '$address', '$phone', '$email', '$dob', '$occupation', '$salary')";
+        $sql = "INSERT INTO member (username, password, first_name, middle_name, last_name, dob, phone, email, address, city, province, zipcode, occupation, salary, hash) VALUES ('$username', '$password', '$firstName', '$middleName', '$lastName', '$dob', '$phone', '$email', '$address', '$city', '$province', '$zipcode', '$occupation', '$salary', '$hash')";
 
         // execute
         $result = mysqli_query( $GLOBALS['conn'] , $sql );
@@ -49,7 +62,7 @@ function register(){
             $last_id = $GLOBALS['conn']->insert_id;
 
             // confirmation url
-            $url = "http://localhost/Chinese_Tour/Chinese_Tour/active_account.php?id=" . $last_id . "&u=" . md5($username);
+            $url = "http://localhost/Chinese_Tour/Chinese_Tour/active_account.php?id=" . $last_id . "&h=" . $hash;
             // please confirmation by email
             // Load composer's autoloader
             require 'vendor/autoload.php';
@@ -88,6 +101,8 @@ function register(){
                 $mail->AltBody = strip_tags($body);
 
                 $mail->send();
+                header("location: messege.php");
+                ob_end_flush();
                 // echo 'Message has been sent';
             } catch (Exception $e) {
                 echo 'Message could not be sent.';
@@ -97,6 +112,7 @@ function register(){
             echo "error: " . mysqli_error( $GLOBALS['conn'] );
             header("login.php");
         }
+
     }
 }
 
@@ -107,7 +123,6 @@ function check_available($username,$email){
     $query = "SELECT * FROM member WHERE username = '$username'";
     $result = mysqli_query($GLOBALS['conn'], $query);
     $count = mysqli_num_rows($result);
-    echo $count;
     if( $count >= 1 ){
         $msg .= "Username is already used.";
         echo "<script type='text/javascript'>alert('$msg');</script>";
@@ -204,7 +219,11 @@ function check_available($username,$email){
             <div class="col-md-8 col-sm-9">
               <div class="input-group">
                 <span class="input-group-addon req"><i class="fa fa-user"></i></span>
+<<<<<<< HEAD
                 <input onkeyup = "ValidateUsername(this)" id="username" type="text" class="form-control" name="username" id="username" placeholder="Enter your Username here" minlength="3" maxlength="16" required>
+=======
+                <input required type="text" minlength="3" maxlength="16" class="form-control" id="username" placeholder="minimum 3 letters" name="username" onkeyup = "ValidateTextandNum(this)">
+>>>>>>> 23776034940dcc0f63dd00faf76df29fdf7fa722
               </div>
             </div>
           </div>
