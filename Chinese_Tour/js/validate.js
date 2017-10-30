@@ -1,5 +1,4 @@
-function checkPass()
-{
+function checkPass() {
     //Store the password field objects into variables ...
     var inputPassword = document.getElementById('inputPassword');
     var cpassword = document.getElementById('cpassword');
@@ -45,11 +44,9 @@ function Validate(txt) {
 }
 
 // validates username only
-// function Validate(username) {
-//   var username = document.getElementById('username');
-//   //Store the Confimation Message Object ...
-//   var message = document.getElementById('confirmMessage');
-// }
+ function ValidateTextandNum(username) {
+  username.value = username.value.replace(/[^a-zA-Z0-9'\n\r.]+/g, '');
+ }
 
 // validate email
 // function email_validate(email)
