@@ -107,7 +107,6 @@ function check_available($username,$email){
     $query = "SELECT * FROM member WHERE username = '$username'";
     $result = mysqli_query($GLOBALS['conn'], $query);
     $count = mysqli_num_rows($result);
-    echo $count;
     if( $count >= 1 ){
         $msg .= "Username is already used.";
         echo "<script type='text/javascript'>alert('$msg');</script>";
