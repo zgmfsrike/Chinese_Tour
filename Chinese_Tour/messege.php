@@ -11,15 +11,15 @@ if(isset($_GET['msg'])){
         case 'login_invalid': messege('Login fail','Username or Password are invalid.','','Back to Login page');
             break;
 
-        case 'edit': messege('Edit success','You information has been update','Profile.php','Go to profile page');
+        case 'edit': messege('Success','You information has been update','Profile.php','Go to profile page');
             break;
-
-            // default
-        default: messege('','','','');
-
 
         case 'not_active': messege('Login fail','Please active your account from your e-mail.','','Back to Login page');
             break;
+
+        case 'email_change': messege('Email confirmation is already send','Please confirm again in your email.','Profile.php','Go to profile page');
+            break;
+
 
             // REGISTER
 
