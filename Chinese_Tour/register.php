@@ -219,7 +219,11 @@ function check_available($username,$email){
             <div class="col-md-8 col-sm-9">
               <div class="input-group">
                 <span class="input-group-addon req"><i class="fa fa-user"></i></span>
+<<<<<<< HEAD
+                <input onkeyup = "ValidateUsername(this)" id="username" type="text" class="form-control" name="username" id="username" placeholder="Enter your Username here" minlength="3" maxlength="16" required>
+=======
                 <input required type="text" minlength="3" maxlength="16" class="form-control" id="username" placeholder="minimum 3 letters" name="username" onkeyup = "ValidateTextandNum(this)">
+>>>>>>> 23776034940dcc0f63dd00faf76df29fdf7fa722
               </div>
             </div>
           </div>
@@ -329,8 +333,9 @@ function check_available($username,$email){
         <label class="control-label col-sm-8">Contact No.&nbsp;<span class="text-danger req">*</span></label>
         <div class="col-sm-8">
           <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-phone">&nbsp;&nbsp;66</i></span>
-          <input onkeyup="validatephone(this);" type="text" class="form-control phone" maxlength="9" name="phone" id="phone" placeholder="Enter your contact no." required>
+            <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+            <input class="col-sm-3" onkeyup="validatephone(this);" maxlength="3" type="text" name="countrycode" placeholder="Code" value="" required>
+          <input onkeyup="validatephone(this);" type="text" class="form-control phone" maxlength="15" name="phone" id="phone" placeholder="Enter your contact no." required>
           </div>
         </div>
       </div>
@@ -391,6 +396,7 @@ function check_available($username,$email){
 ?>
 <!--end Register body-->
     <script src="js/validate.js"></script>
+    <script src="js/validate2.js"></script>
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/popper/popper.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>

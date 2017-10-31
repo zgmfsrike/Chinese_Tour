@@ -31,7 +31,7 @@ if(isset($_POST['login'])){
             }
         }else{
             echo '<script type="text/javascript">alert("Username or Password are incorrect.");</script>';
-            
+
         }
     }else{
 //        $error = "Your Login Name or Password is invalid";
@@ -83,7 +83,7 @@ if(isset($_POST['login'])){
           <label class="sr-only control-label req">Username</label>
           <div class="input-group mb-2 mr-sm-2 mb-sm-0">
             <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
-            <input required type="text" minlength="3" maxlength="16" class="form-control" id="txt" placeholder="minimum 3 letters" name="username" onkeyup = "Validate(this)">
+            <input onkeyup = "ValidateUsername(this)" id="username" type="text" class="form-control" name="username" id="username" placeholder="Enter your Username here" minlength="3" maxlength="16" required>
           </div>
         </div>
 
@@ -123,5 +123,6 @@ if(isset($_POST['login'])){
 ?>
 
 <script src="js/validate.js"></script>
+<script src="js/validate2.js"></script>
 </body>
 </html>
