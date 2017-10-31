@@ -1,16 +1,14 @@
 <?php
+session_start();
 
-    session_start();
-    include('db_config.php');
-    if(isset($_SESSION['login_id'])){
-        $user_id = $_SESSION['login_id'];
-        $query = "SELECT * FROM member WHERE id = '$user_id'";
-        $result = mysqli_query($conn, $query);
-        $objResult = mysqli_fetch_array($result);
-        $username = $objResult['username'];
-    }else{
-
-    }
+include('db_config.php');
+if(isset($_SESSION['login_id'])){
+$user_id = $_SESSION['login_id'];
+$query = "SELECT * FROM member WHERE id = '$user_id'";
+$result = mysqli_query($conn, $query);
+$objResult = mysqli_fetch_array($result);
+$username = $objResult['username'];
+}
 
 ?>
 
@@ -36,49 +34,9 @@
 
   <body>
     <!-- Navigation -->
-    <nav class="navbar fixed-top navbar-light navbar-expand-md bg-danger justify-content-center">
-        <a href="index.php" class="navbar-brand d-flex w-50 mr-auto">Brand</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar3">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-collapse collapse" id="collapsingNavbar3">
-          <ul class="navbar-nav mx-auto w-100 justify-content-center">
-              <li class="nav-item">
-                <a class="nav-link" href="index.php">Create your own tour&nbsp;&nbsp;&nbsp;</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="index.php" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Pick a Tour
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                  <a class="dropdown-item" href="portfolio-1-col.php">Meeting</a>
-                  <a class="dropdown-item" href="portfolio-2-col.php">Incentive</a>
-                  <a class="dropdown-item" href="portfolio-3-col.php">Conferences</a>
-                  <a class="dropdown-item" href="portfolio-4-col.php">Events</a>
-                </div>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="index.php">About Us</a>
-              </li>
-          </ul>
-
-            <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
-              <li class="nav-item">
-                  <a class="nav-link" href="Register.php"><i class="fa fa-user-plus">&nbsp;&nbsp;</i>Sing up&nbsp;&nbsp;&nbsp;&nbsp;</a>
-                  <a class="nav-link" href="Login.php"><i class="fa fa-user">&nbsp;&nbsp;</i>Login&nbsp;&nbsp;&nbsp;&nbsp;</a>
-                  <a class="nav-link" href="Logout.php"><i class="fa fa-user">&nbsp;&nbsp;</i>Logout&nbsp;&nbsp;&nbsp;&nbsp;</a>
-                  <a class="nav-link" href="Profile.php"><i class="fa fa-user">&nbsp;&nbsp;</i>Profile&nbsp;&nbsp;&nbsp;&nbsp;</a>
-              </li>
-              <li class="nav-item">
-                <span class="nav-link text-dark" id="nav-chatservice"><i class="fa fa-comments">&nbsp;&nbsp;</i>Chat Service</span>
-                <span class="nav-link text-dark" id="nav-contactservice"><i class="fa fa-phone">&nbsp;&nbsp;</i>+66-xxx-xxxx</span>
-              </li>
-              <li>
-
-              </li>
-            </ul>
-        </div>
-    </nav>
+    <?php
+      include 'component/header.php';
+      ?>
 
     <header>
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -275,45 +233,9 @@
     <!-- /.container -->
 
     <!-- Footer -->
-    <footer class="py-5 bg-">
-      <div class="container">
-            <div class="row">
-                <div class="col-md-2 company">
-                    <h3>Logo</h3>
-                </div>
-                <div class="col-md-3 dc">
-                    <h3>Help</h3>
-                    <ul>
-                        <li><a href=""></a>Freemans Ridge Estate</li>
-                        <li><a href=""></a>Homeworld Camden South</li>
-                        <li><a href=""></a>Brooks Beach Estate Horsley</li>
-                    </ul>
-                </div>
-                <div class="col-md-2 customer">
-                    <h3>Services</h3>
-                    <p>Unit 36/65 Marigold St,Revesby
-                    NSW 2212 <br>
-                    P | (02) 9773 8773
-                    <br>
-                    F | (02) 977 8125
-                    <br>
-                    E | info@trevell.com.au</p>
-                </div>
-                <div class="col-md-3 lp">
-                    <h3>Community</h3>
-                    <ul>
-                        <li><a href=""></a>House & Land Packages</li>
-                        <li><a href=""></a>Display Home for Sale</li>
-                    </ul>
-                </div>
-                <div class="col-md-2 nl">
-                    <h3>Call Center</h3>
-                    +66 XXX XXXX
-                </div>
-            </div>
-      </div>
-      <!-- /.container -->
-    </footer>
+<?php
+      include 'component/footer.php';
+?>
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>

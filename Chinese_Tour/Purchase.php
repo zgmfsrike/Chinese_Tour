@@ -1,11 +1,10 @@
 <?php
+include 'module/session.php';
+requireLogin();
 
 require_once 'module/hashing.php';
 require_once 'module/init.php';
 
-// if(not_logged_in() === TRUE) {
-// 	header('location: login.php');
-// }
 if($_POST) {
 	$password = $_POST['password'];
 	$npassword = $_POST["npassword"];
@@ -54,39 +53,9 @@ if($_POST) {
 </head>
 <body>
   <!-- Navigation -->
-  <nav class="navbar fixed-top navbar-light navbar-expand-md bg-danger justify-content-center">
-      <a href="index.php" class="navbar-brand d-flex w-50 mr-auto">Brand</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar3">
-          <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="navbar-collapse collapse" id="collapsingNavbar3">
-        <ul class="navbar-nav mx-auto w-100 justify-content-center">
-          <li class="nav-item">
-              <a class="nav-link" href="index.php"><h5>Create your own tour&nbsp;&nbsp;&nbsp;</h5></a>
-          </li>
-            <li class="nav-item">
-                <a class="nav-link" href="index.php"><h5>Pick a Tour&nbsp;&nbsp;&nbsp;</h5></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="index.php"><h5>About Us</h5></a>
-            </li>
-        </ul>
-
-          <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
-            <li class="nav-item">
-                <a class="nav-link" href="Register.php"><i class="fa fa-user-plus">&nbsp;&nbsp;</i>Sing up&nbsp;&nbsp;&nbsp;&nbsp;</a>
-                <a class="nav-link" href="Login.php"><i class="fa fa-user">&nbsp;&nbsp;</i>Login&nbsp;&nbsp;&nbsp;&nbsp;</a>
-            </li>
-            <li class="nav-item">
-              <span class="nav-link text-white" id="nav-service" href="Register.php"><i class="fa fa-comments">&nbsp;&nbsp;</i>Chat Service</span>
-              <span class="nav-link text-white" id="nav-service" href="Login.php"><i class="fa fa-phone">&nbsp;&nbsp;</i>+66-xxx-xxxx</span>
-            </li>
-            <li>
-
-            </li>
-          </ul>
-      </div>
-  </nav>
+  <?php
+    include 'component/header.php';
+    ?>
   <br><br>
   <!-- Page Content -->
   <div class="container">
@@ -150,7 +119,9 @@ if($_POST) {
 
   </div>
   <!-- /.container -->
-
+<?php
+    include 'component/footer.php';
+    ?>
 <!--end side menu body-->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/popper/popper.min.js"></script>

@@ -1,10 +1,11 @@
 <?php
+
 include "db_config.php";
 include "module/hashing.php";
-session_start();
-if(isset($_SESSION['login_id'])){
-    header("location: index.php");
-}
+//session_start();
+//if(isset($_SESSION['login_id'])){
+//    header("location: index.php");
+//}
 if(isset($_POST['login'])){
     $username = $_POST['username'];
     $password = ''.$_POST['password'].'';
@@ -15,7 +16,7 @@ if(isset($_POST['login'])){
 
     if($count == 1){
         $objResult = mysqli_fetch_array($result);
-        if ( verifyPassword($password,$objResult["password"]) ){
+        if ( $password == $objResult["password"]) ){
                 $_SESSION['login_id'] = $objResult['id'];
                 $_SESSION['user_type'] = "admin";
                 header("location: index.php");

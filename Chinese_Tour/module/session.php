@@ -1,15 +1,25 @@
 <?php
     session_start();
     include('db_config.php');
-    if(isset( $_SESSION['login_id'] )){
-        $user_id = $_SESSION['login_id'];
-    }else{
-        header("Location: login.php");
+
+    // check login session exist
+    function requireLogin(){
+        if(!isset($_SESSION['login_id'])){
+            header('Location: messege.php?msg=please_login');
+        }
+
+        
+        // check login session expire
+        $now = time(); // Checking the time now when home page starts.
+        if ($now > $_SESSION['expire'] && isset($_SESSION['expire'])) {
+            session_destroy();
+            header('location: messege.php?msg=session_expired');
+        }
     }
 
-   $ses_sql = mysqli_query($connection,"SELECT * FROM users WHERE id = '{$user_id}' ");
-   
-   $row = mysqli_fetch_array($ses_sql,MYSQLI_ASSOC);
-   
-   $login_session = $row['username'];
+    function noLogin(){
+        if(isset($_SESSION['login_id'])){
+            header('Location: messege.php?msg=login_already');
+        }
+    }
 ?>

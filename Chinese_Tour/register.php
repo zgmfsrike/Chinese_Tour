@@ -1,14 +1,14 @@
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-session_start();
+
+include 'module/session.php';
+noLogin();
+
 ob_start();
- include "db_config.php";
+include "db_config.php";
 include "module/hashing.php";
 
-if(isset($_SESSION['login_id'])){
-    header("location: index.php");
-}
 // check connection
 if(! $conn ) {
     die('Could not connect: ' . mysql_error());
@@ -384,6 +384,11 @@ function check_available($username,$email){
     </div>
 </div>
   </div>
+<!--  FOOTER  -->
+    <br><br><br><br>
+<?php
+    include 'component/footer.php';
+?>
 <!--end Register body-->
     <script src="js/validate.js"></script>
     <script src="vendor/jquery/jquery.min.js"></script>

@@ -1,10 +1,10 @@
 <?php
+include 'module/session.php';
+noLogin();
+
 include "db_config.php";
 include "module/hashing.php";
-session_start();
-if(isset($_SESSION['login_id'])){
-    header("location: index.php");
-}
+
 if(isset($_POST['login'])){
     $username = $_POST['username'];
     $password = ''.$_POST['password'].'';
@@ -18,9 +18,12 @@ if(isset($_POST['login'])){
         if ( verifyPassword($password,$objResult["password"]) ){
             $active = $objResult['active'];
             if ($active == 1){
-                // confirmed
                 $_SESSION['login_id'] = $objResult['id'];
+                $_SESSION['login_firstname'] = $objResult['first_name'];
                 $_SESSION['user_type'] = "member";
+                $_SESSION['start'] = time(); // Taking now logged in time.
+                // Ending a session in 30 minutes from the starting time.
+                $_SESSION['expire'] = $_SESSION['start'] + (30 * 60);
                 header("location: index.php");
             }else{
                 // not confirmed
@@ -58,47 +61,10 @@ if(isset($_POST['login'])){
 </head>
 <body>
   <!-- Navigation -->
-  <nav class="navbar fixed-top navbar-light navbar-expand-md bg-danger justify-content-center">
-      <a href="index.php" class="navbar-brand d-flex w-50 mr-auto">Brand</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar3">
-          <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="navbar-collapse collapse" id="collapsingNavbar3">
-        <ul class="navbar-nav mx-auto w-100 justify-content-center">
-            <li class="nav-item">
-              <a class="nav-link" href="index.php">Create your own tour&nbsp;&nbsp;&nbsp;</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="index.php" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Pick a Tour
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                <a class="dropdown-item" href="portfolio-1-col.php">Meeting</a>
-                <a class="dropdown-item" href="portfolio-2-col.php">Incentive</a>
-                <a class="dropdown-item" href="portfolio-3-col.php">Conferences</a>
-                <a class="dropdown-item" href="portfolio-4-col.php">Events</a>
-              </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="index.php">About Us</a>
-            </li>
-        </ul>
-
-          <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
-            <li class="nav-item">
-                <a class="nav-link" href="Register.php"><i class="fa fa-user-plus">&nbsp;&nbsp;</i>Sing up&nbsp;&nbsp;&nbsp;&nbsp;</a>
-                <a class="nav-link" href="Login.php"><i class="fa fa-user">&nbsp;&nbsp;</i>Login&nbsp;&nbsp;&nbsp;&nbsp;</a>
-            </li>
-            <li class="nav-item">
-              <span class="nav-link text-dark" id="nav-chatservice"><i class="fa fa-comments">&nbsp;&nbsp;</i>Chat Service</span>
-              <span class="nav-link text-dark" id="nav-contactservice"><i class="fa fa-phone">&nbsp;&nbsp;</i>+66-xxx-xxxx</span>
-            </li>
-            <li>
-
-            </li>
-          </ul>
-      </div>
-  </nav>
+<?php
+    include 'component/header.php';
+?>
+    
   <!--login body-->
 <div class="container">
   <form class="form-horizontal" data-toggle="validator" method="post" action="login.php">
@@ -152,44 +118,9 @@ if(isset($_POST['login'])){
 
     <!-- Footer -->
     <br><br><br><br>
-    <footer class="py-5 ">
-      <div class="container ">
-        <div class="row">
-            <div class="col-md-2 company">
-                <h3>Logo</h3>
-            </div>
-            <div class="col-md-3 dc">
-                <h3>Help</h3>
-                <ul>
-                    <li><a href=""></a>Freemans Ridge Estate</li>
-                    <li><a href=""></a>Homeworld Camden South</li>
-                    <li><a href=""></a>Brooks Beach Estate Horsley</li>
-                </ul>
-            </div>
-            <div class="col-md-2 customer">
-                <h3>Services</h3>
-                <p>Unit 36/65 Marigold St,Revesby
-                NSW 2212 <br>
-                P | (02) 9773 8773
-                <br>
-                F | (02) 977 8125
-                <br>
-                E | info@trevell.com.au</p>
-            </div>
-            <div class="col-md-3 lp">
-                <h3>Community</h3>
-                <ul>
-                    <li><a href=""></a>House & Land Packages</li>
-                    <li><a href=""></a>Display Home for Sale</li>
-                </ul>
-            </div>
-            <div class="col-md-2 nl">
-                <h3>Call Center</h3>
-                +66 XXX XXXX
-            </div>
-        </div>
-    </div>
-  </footer>
+<?php
+    include 'component/footer.php';
+?>
 
 <script src="js/validate.js"></script>
 </body>
