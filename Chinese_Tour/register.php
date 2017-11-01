@@ -47,7 +47,7 @@ function register(){
     if($password == $cPassword){
         $password = hashPassword($password);
     }else{
-        header('location: messege.php');
+        // header('location: messege.php');
     }
 
     // check username and password in used
@@ -101,7 +101,7 @@ function register(){
                 $mail->AltBody = strip_tags($body);
 
                 $mail->send();
-                header("location: messege.php");
+                header("location: messege.php?msg=reg_succ");
                 ob_end_flush();
                 // echo 'Message has been sent';
             } catch (Exception $e) {
@@ -219,11 +219,7 @@ function check_available($username,$email){
             <div class="col-md-8 col-sm-9">
               <div class="input-group">
                 <span class="input-group-addon req"><i class="fa fa-user"></i></span>
-<<<<<<< HEAD
                 <input onkeyup = "ValidateUsername(this)" id="username" type="text" class="form-control" name="username" id="username" placeholder="Enter your Username here" minlength="3" maxlength="16" required>
-=======
-                <input required type="text" minlength="3" maxlength="16" class="form-control" id="username" placeholder="minimum 3 letters" name="username" onkeyup = "ValidateTextandNum(this)">
->>>>>>> 23776034940dcc0f63dd00faf76df29fdf7fa722
               </div>
             </div>
           </div>
