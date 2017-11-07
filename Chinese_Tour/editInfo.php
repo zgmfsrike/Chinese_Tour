@@ -1,26 +1,3 @@
-<?php
-include 'module/session.php';
-requireLogin();
-
-ob_start();
-session_cache_expire(30);
-error_reporting (E_ALL ^ E_NOTICE);
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-include "db_config.php";
-// include "db_configNB.php";
-include "module/hashing.php";
-//----------------------------Wait for session---------------------------------------------//
-session_start();
-//----------------------------Show value-----------------------------------------------//
-$id = $_SESSION['login_id'];
-
-
-
-?>
-
-
-
 <!---------------------------------HTML --------------------------------- -->
 <!DOCTYPE html>
 <html lang="en">
@@ -44,6 +21,7 @@ $id = $_SESSION['login_id'];
   <!-- Navigation -->
   <?php
     include 'component/header.php';
+    include 'php_edit_func.php' ;
     ?>
   <br><br>
   <!-- Page Content -->
@@ -63,26 +41,8 @@ $id = $_SESSION['login_id'];
       <div class="col-lg-9 mb-4">
         <h3 class="entry-title"><span><br>Account Information</span> </h3>
         <hr>
-        <form action='editinfo.php' method="post">
-          <?php
-          $sql_db =  "SELECT * FROM `member` WHERE id=$id" ;
-          $result2 = mysqli_query($conn,$sql_db);
-          $data = mysqli_fetch_array($result2);
-
-          $firstname_db = $data['first_name'];
-          $middlename_db = $data['middle_name'];
-          $lastname_db = $data['last_name'];
-          $phone_db = $data['phone'];
-          $email_db = $data['email'];
-          $salary_db = $data['salary'];
-          $occupation_db = $data['occupation'];
-          $date_of_birth = $data['dob'];
-          $address_db = $data['address'];
-          $city_db = $data['city'];
-          $province_db = $data['province'];
-          $zipcode_db = $data['zipcode'];
-
-           ?>
+        <!-- <form action='php_edit_func.php' method="post"> -->
+        <form action='editInfo.php' method="post">
       <div class="form-group">
         <label class="control-label col-sm-8">Name <span class="text-danger">*</span></label>
         <div class="col-sm-8">
@@ -219,43 +179,6 @@ $id = $_SESSION['login_id'];
     ?>
 <!--end side menu body-->
 <script src="js/validate.js"></script>
-<?php
-//-----------------------------Variable----------------------------------------------------//
 
-if(isset($_SESSION['login_id'])){
-$id = $_SESSION['login_id'];
-$firstname = $_POST['firstname'];
-$middlename = $_POST['middlename'];
-$surname = $_POST['surname'];
-$occupation =  $_POST['Occupation'];
-$salary = $_POST['salary'];
-$dob = $_POST['dob'];
-$phone = $_POST['contactnum'];
-
-
-$address = $_POST['address'];
-$city = $_POST['city'];
-$province = $_POST['province'];
-$zipcode = $_POST['zipcode'];
-//-----------------------------Edit fucntion----------------------------------------------------//
-if($_POST['save']){
-
-    $sql= "UPDATE `member` SET `first_name`='$firstname',`middle_name`='$middlename',`last_name`='$surname',
-                                `phone`='$phone',`occupation`='$occupation',`salary`='$salary',`dob`='$dob',`address`='$address',`city`='$city',`province`='$province',`zipcode`='$zipcode'
-                          
-                                 WHERE id = $id ";
-    $result = mysqli_query( $GLOBALS['conn'] , $sql );
-    if($result){
-      header("location: messege.php?msg=edit");
-      ob_end_flush();
-    }
-
-
-
-}
-}
-
-
-?>
 </body>
 </html>
