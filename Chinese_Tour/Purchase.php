@@ -1,7 +1,6 @@
 <?php
 include 'module/session.php';
 requireLogin();
-
 require_once 'module/hashing.php';
 require_once 'module/init.php';
 

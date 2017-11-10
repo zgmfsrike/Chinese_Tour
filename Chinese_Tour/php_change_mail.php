@@ -1,11 +1,8 @@
 <?php
-include 'module/session.php';
-requireLogin();
-
-ob_start();
-session_cache_expire(30);
-error_reporting (E_ALL ^ E_NOTICE);
 session_start();
+ob_start();
+error_reporting (E_ALL ^ E_NOTICE);
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 include "db_config.php";

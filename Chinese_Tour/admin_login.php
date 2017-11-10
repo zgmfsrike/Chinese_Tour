@@ -1,4 +1,5 @@
 <?php
+include('module/session.php');
 
 include "db_config.php";
 include "module/hashing.php";

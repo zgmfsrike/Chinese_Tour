@@ -1,4 +1,6 @@
 <?php
+include('module/session.php');
+requireLogin();
 include 'php_change_mail.php';
 
  ?>

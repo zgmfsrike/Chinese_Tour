@@ -1,7 +1,7 @@
 <?php
+include 'module/session.php';
+requireLogin();
 include 'php_profile_func.php';
-
-
 ?>
 
 

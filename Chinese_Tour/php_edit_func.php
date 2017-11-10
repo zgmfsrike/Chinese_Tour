@@ -1,7 +1,4 @@
 <?php
-include 'module/session.php';
-requireLogin();
-
 ob_start();
 session_cache_expire(30);
 error_reporting (E_ALL ^ E_NOTICE);

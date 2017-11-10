@@ -2,6 +2,14 @@
     session_start();
     include('db_config.php');
 
+    $now = time();
+if(isset($_SESSION['expire'])){
+    if ($now > $_SESSION['expire']) {
+        session_destroy();
+        header('location: messege.php?msg=session_expired');
+    }
+}
+
     // check login session exist
     function requireLogin(){
         if(!isset($_SESSION['login_id'])){
@@ -10,11 +18,11 @@
 
         
         // check login session expire
-        $now = time(); // Checking the time now when home page starts.
-        if ($now > $_SESSION['expire'] && isset($_SESSION['expire'])) {
-            session_destroy();
-            header('location: messege.php?msg=session_expired');
-        }
+//        $now = time(); // Checking the time now when home page starts.
+//        if ($now > $_SESSION['expire'] && isset($_SESSION['expire'])) {
+//            session_destroy();
+//            header('location: messege.php?msg=session_expired');
+//        }
     }
 
     function noLogin(){

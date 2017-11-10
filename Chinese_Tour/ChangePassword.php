@@ -1,10 +1,11 @@
 <?php
+include('module/session.php');
+requireLogin();
 include "module/hashing.php";
 include "db_config.php";
 
-session_cache_expire(30);
 error_reporting (E_ALL ^ E_NOTICE);
-session_start();
+
 if(isset($_SESSION['login_id'])){
 	$id = $_SESSION['login_id'];
 	$password = $_POST['password'];
@@ -21,7 +22,6 @@ if(isset($_SESSION['login_id'])){
 			echo $result2;
 
 	      header("location: profile.php");
-	      ob_end_flush();
 	}
 
 

@@ -1,4 +1,9 @@
 <!---------------------------------HTML --------------------------------- -->
+<?php
+    include('module/session.php');
+    requireLogin();
+    include 'php_edit_func.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +26,6 @@
   <!-- Navigation -->
   <?php
     include 'component/header.php';
-    include 'php_edit_func.php' ;
     ?>
   <br><br>
   <!-- Page Content -->

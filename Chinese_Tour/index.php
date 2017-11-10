@@ -1,7 +1,7 @@
 <?php
-session_start();
-
+include('module/session.php');
 include('db_config.php');
+
 if(isset($_SESSION['login_id'])){
 $user_id = $_SESSION['login_id'];
 $query = "SELECT * FROM member WHERE id = '$user_id'";

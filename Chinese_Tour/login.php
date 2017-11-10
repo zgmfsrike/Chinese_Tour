@@ -48,7 +48,6 @@ noLogin();
             <input onkeyup = "ValidateUsername(this)" id="username" type="text" class="form-control" name="username" id="username" placeholder="Enter your Username here" minlength="3" maxlength="16" required>
           </div>
         </div>
-
       </div>
     </div>
     <div class="row">

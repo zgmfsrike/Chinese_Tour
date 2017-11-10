@@ -1,6 +1,4 @@
 <?php
-include 'module/session.php';
-requireLogin();
 //-----------------------------Variable----------------------------------------------------//
 error_reporting (E_ALL ^ E_NOTICE);
 include "db_config.php";
@@ -24,8 +22,5 @@ $occupation_db = $data['occupation'];
 $date_of_birth = $data['dob'];
 
 }
-
-
-
 
 ?>

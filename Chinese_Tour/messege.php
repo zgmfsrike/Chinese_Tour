@@ -30,6 +30,16 @@ if(isset($_GET['msg'])){
             // REGISTER
         case 'reg_succ': messege('Registration Success!','Please active your account from your e-mail.','index.php','Go to homepage');
             break;
+            // --------------------------- fix ----------------------------
+        case 'reg_fail_confirm_password': messege('Register fail!','Confirm password does not match.','','');
+            break;
+            
+        case 'reg_fail_username': messege('Register fail!','This username is already used','','');
+            break;
+            
+        case 'reg_fail_email': messege('Register fail!','This email address is already used','','');
+            break;
+            //-------------------------- end fix --------------------------
 
             // ACTIVE ACCOUNT
         case 'active_succ': messege('Thank you!','account has been actived','index.php','Go to home page');
