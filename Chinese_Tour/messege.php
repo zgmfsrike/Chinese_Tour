@@ -7,7 +7,7 @@ if(isset($_GET['msg'])){
     switch ($msg) {
             // add messege case : messege(HEADER,MESSEGE,LINK,BUTTON_VALUE);
             // use '' in LINK or BUTTON_VALUE to use DEFAULT as back button
-            
+
             // SESSION
         case 'session_expired': messege('Session expired','Please login','login.php','Login');
             break;
@@ -26,17 +26,17 @@ if(isset($_GET['msg'])){
             // EDIT INFORMATION
         case 'edit': messege('Success!','You information has been update','Profile.php','Go to profile page');
             break;
-            
+
             // REGISTER
         case 'reg_succ': messege('Registration Success!','Please active your account from your e-mail.','index.php','Go to homepage');
             break;
             // --------------------------- fix ----------------------------
         case 'reg_fail_confirm_password': messege('Register fail!','Confirm password does not match.','','');
             break;
-            
+
         case 'reg_fail_username': messege('Register fail!','This username is already used','','');
             break;
-            
+
         case 'reg_fail_email': messege('Register fail!','This email address is already used','','');
             break;
             //-------------------------- end fix --------------------------
@@ -68,6 +68,15 @@ if(isset($_GET['msg'])){
               break;
 
           case 'email_error': messege('Error!','Request does not match, please check link again.','Profile.php','Go to profile page');
+              break;
+
+          case 'email_old': messege('Sorry!','You already use this email, please try again.','','');
+              break;
+
+          case 'email_not_match': messege('Sorry!','Your email is not match, please try again','','');
+              break;
+
+          case 'email_already_use': messege('Sorry!','Your email is already used , please try again','','');
               break;
 
             // default

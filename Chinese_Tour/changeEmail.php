@@ -1,7 +1,6 @@
 <?php
 include('module/session.php');
 requireLogin();
-include 'php_change_mail.php';
 
  ?>
 
@@ -46,7 +45,7 @@ include 'php_change_mail.php';
         <h3 class="entry-title"><span><br>Change Email</span> </h3>
 
         <hr>
-        <form action="changeEmail.php" method="post">
+        <form action="php_change_mail.php" method="post">
             <div class="form-group">
                 <label class="control-label col-sm-8">Email  <span class="text-danger">*</span></label>
                 <div class="col-sm-8">

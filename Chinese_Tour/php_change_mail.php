@@ -26,7 +26,7 @@ if($_POST['save']){
   $count = mysqli_num_rows($result);
   if( $count == 0 ){
 
-      if(strcmp($email,$confirm_email)==0 && $oldmail != $email){
+      if(strcmp($email,$confirm_email)==0 && $oldmail !== $email){
        //-----------------------------Send change mail fucntion----------------------------------------------------//
          require 'vendor/autoload.php';
 
@@ -95,15 +95,16 @@ if($_POST['save']){
          ob_end_flush();
 
 
-   }else if($email == $oldmail){
-      echo '<script type="text/javascript">alert("Sorry, you already use this email.");</script>';
-   }else {
-     echo '<script type="text/javascript">alert("Sorry, your email is not match please try again.");</script>';
    }
+   else if($email !== $confirm_email){
+     header("location: messege.php?msg=email_not_match");
+     }
 
- }else{
-   echo '<script type="text/javascript">alert("E-mail is already used.");</script>';
- }
+ }else if($email == $oldmail){
+    header("location: messege.php?msg=email_old");
+ }else {
+   header("location: messege.php?msg=email_already_use");
+   }
 
 
 

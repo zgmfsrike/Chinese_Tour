@@ -2,7 +2,23 @@
 <?php
     include('module/session.php');
     requireLogin();
-    include 'php_edit_func.php';
+    $id = $_SESSION['login_id'];
+    //---------------------- DB Value----------------------
+  $sql_db =  "SELECT * FROM `member` WHERE id=$id" ;
+  $result2 = mysqli_query($conn,$sql_db);
+  $data = mysqli_fetch_array($result2);
+  $firstname_db = $data['first_name'];
+  $middlename_db = $data['middle_name'];
+  $lastname_db = $data['last_name'];
+  $phone_db = $data['phone'];
+  $email_db = $data['email'];
+  $salary_db = $data['salary'];
+  $occupation_db = $data['occupation'];
+  $date_of_birth = $data['dob'];
+  $address_db = $data['address'];
+  $city_db = $data['city'];
+  $province_db = $data['province'];
+  $zipcode_db = $data['zipcode'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,7 +62,7 @@
         <h3 class="entry-title"><span><br>Account Information</span> </h3>
         <hr>
         <!-- <form action='php_edit_func.php' method="post"> -->
-        <form action='editInfo.php' method="post">
+        <form action='php_edit_func.php' method="post">
       <div class="form-group">
         <label class="control-label col-sm-8">Name <span class="text-danger">*</span></label>
         <div class="col-sm-8">
