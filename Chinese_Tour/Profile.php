@@ -72,6 +72,7 @@ include 'php_profile_func.php';
               <input name="Submit" type="submit" value="Edit" onclick="window.location.href='EditInfo.php'" class="btn btn-danger">
               <input name="changePassword" type="submit" value="Change Password" onclick="window.location.href='ChangePassword.php'" class="btn btn-danger">
               <input name="changeEmail" type="submit" value="Change Email" onclick="window.location.href='changeEmail.php'" class="btn btn-danger">
+              <input name="search" type="submit" value="Search" onclick="window.location.href='php_search_tour.php'" class="btn btn-danger">
             </li>
           </ul>
         </div>
