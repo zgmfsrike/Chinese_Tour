@@ -12,15 +12,14 @@ requireLogin();
 if(isset($_SESSION['login_id'])){
 
 //-----------------------------Search fucntion----------------------------------------------------//
-if($_GET['member_id'] != ""){
-    $member_id = $_GET['member_id'];
-    $sql= "SELECT  m.email FROM member m WHERE m.id = $member_id ";
-    $result = mysqli_query( $GLOBALS['conn'] , $sql );
-    $show = mysqli_fetch_array($result);
-    $email = $show['email'];
-    $_SESSION['email'] = $email;
-
-}
+// if($_POST['send_all']){
+//     $sql= "SELECT  m.email FROM member m  ";
+//     $result = mysqli_query( $GLOBALS['conn'] , $sql );
+//     $show = mysqli_fetch_array($result);
+//     $email = $show['email'];
+//     $_SESSION['email'] = $email;
+//
+// }
 }
 
 
@@ -65,13 +64,13 @@ if($_GET['member_id'] != ""){
       </div>
       <!-- Content Column -->
       <div class="col-md-7 mb-5">
-        <h3 class="entry-title"><span><br>Send E-Mail</span> </h3>
+        <h3 class="entry-title"><span><br>Send E-Mail to all member</span> </h3>
         <hr>
-        <p>Email : <?php echo $email; ?></p>
-          <form action="php_send_mail.func.php" method="post">
+          <form action="php_send_mail_all.func.php" method="post">
             <div class="your-class">
+              <br>
               <label for="Subject">Subject : </label>
-             <input name="subject" id="subject"  placeholder="Subject" required style="width: 200px;"/>
+             <input name="subject" id="subject"  placeholder="Subject" required style="width: 200px;" />
             </div>
             <div class="your-class">
               <br>

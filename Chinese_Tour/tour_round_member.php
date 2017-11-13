@@ -53,8 +53,11 @@ requireLogin();
         <h3 class="entry-title"><span><br>Tour Round Member</span> </h3>
 
         <hr>
+          <input type="button" class="btn btn-danger btn-md" value="Send All" name ="send_all" onclick="window.location.href ='tour_send_mail_all.php'">
+          <br>
                <?php
                if(isset($_SESSION['login_id'])){
+
 
                //-----------------------------Search fucntion----------------------------------------------------//
                if($_GET['tour_round_id'] != ""){
@@ -64,6 +67,7 @@ requireLogin();
                           WHERE trm.tour_round_id = $tour_round_id ";
                    $result = mysqli_query( $GLOBALS['conn'] , $sql );
 
+                   echo "<br>";
                    echo "<table border='1' align='center' width='900'>";
                    echo "<tr align='center' bgcolor='#f5c6cb'><td>First Name</td><td>Middle Name</td><td>Last Name</td><td>Passport Id</td><td>Reservation Age</td><td>Avoid Food</td><td>Group Member</td><td>Email</td><td>Send mail</td>";
                    while($show = mysqli_fetch_array($result)) {
@@ -87,11 +91,13 @@ requireLogin();
 
 
 
+
                }
                }
 
                ?>
     </div>
+
     <!-- /.row -->
 
   </div>
