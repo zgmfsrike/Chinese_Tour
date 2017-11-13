@@ -59,14 +59,15 @@ requireLogin();
                //-----------------------------Search fucntion----------------------------------------------------//
                if($_GET['tour_round_id'] != ""){
                    $tour_round_id = $_GET['tour_round_id'];
-                   $sql= "SELECT m.first_name,m.middle_name,m.last_name,trm.passport_id,trm.reservation_age,trm.avoid_food,trm.group_member
+                   $sql= "SELECT m.first_name,m.middle_name,m.last_name,trm.passport_id,trm.reservation_age,trm.avoid_food,trm.group_member,m.id,m.email
                           FROM tour_round_member trm INNER JOIN tour_round tr ON trm.tour_round_id = tr.tour_round_id INNER JOIN member m ON trm.id = m.id
                           WHERE trm.tour_round_id = $tour_round_id ";
                    $result = mysqli_query( $GLOBALS['conn'] , $sql );
 
                    echo "<table border='1' align='center' width='900'>";
-                   echo "<tr align='center' bgcolor='#f5c6cb'><td>First Name</td><td>Middle Name</td><td>Last Name</td><td>Passport Id</td><td>Reservation Age</td><td>Avoid Food</td><td>Group Member</td>";
+                   echo "<tr align='center' bgcolor='#f5c6cb'><td>First Name</td><td>Middle Name</td><td>Last Name</td><td>Passport Id</td><td>Reservation Age</td><td>Avoid Food</td><td>Group Member</td><td>Email</td><td>Send mail</td>";
                    while($show = mysqli_fetch_array($result)) {
+                     $member_id = $show['id'];
                      echo "<tr>";
                      echo "<td align ='center'>" .$show['first_name'] .  "</td> ";
                      echo "<td align ='center'>" .$show['middle_name'] .  "</td> ";
@@ -75,7 +76,9 @@ requireLogin();
                      echo "<td align ='center'>" .$show['reservation_age'] .  "</td> ";
                      echo "<td align ='center'>" .$show['avoid_food'] .  "</td> ";
                      echo "<td align ='center'>" .$show['group_member'] .  "</td> ";
-                     // echo "<td align ='center'><input type='button' value='View' onclick=\"window.location.href='http://localhost/Chinese_Tour/Chinese_Tour/show_tour_round.php?tourId=$show['tour_id']'\"></td>";
+                     echo "<td align ='center'>" .$show['email'] .  "</td> ";
+                     echo "<td align ='center'><input  type='button' value='View' onclick=\"window.location.href='http://localhost/Chinese_Tour/Chinese_Tour/tour_send_mail.php?member_id=$member_id'\"></td>";
+
                      echo "</tr>";
 
                    }

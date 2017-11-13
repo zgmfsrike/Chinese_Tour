@@ -79,6 +79,9 @@ if(isset($_GET['msg'])){
           case 'email_already_use': messege('Sorry!','Your email is already used , please try again','','');
               break;
 
+          case 'email_send_succ': messege('Success!','E-mail has already send to member ','index.php','Go to home page');
+              break;
+
             // default
         default: messege('Request not found','','','');
 
