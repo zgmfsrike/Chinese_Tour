@@ -72,6 +72,8 @@ requireLogin();
                    echo "<tr align='center' bgcolor='#f5c6cb'><td>First Name</td><td>Middle Name</td><td>Last Name</td><td>Passport Id</td><td>Reservation Age</td><td>Avoid Food</td><td>Group Member</td><td>Email</td><td>Send mail</td>";
                    while($show = mysqli_fetch_array($result)) {
                      $member_id = $show['id'];
+
+
                      echo "<tr>";
                      echo "<td align ='center'>" .$show['first_name'] .  "</td> ";
                      echo "<td align ='center'>" .$show['middle_name'] .  "</td> ";
@@ -81,6 +83,8 @@ requireLogin();
                      echo "<td align ='center'>" .$show['avoid_food'] .  "</td> ";
                      echo "<td align ='center'>" .$show['group_member'] .  "</td> ";
                      echo "<td align ='center'>" .$show['email'] .  "</td> ";
+
+
                      echo "<td align ='center'><input  type='button' value='View' onclick=\"window.location.href='http://localhost/Chinese_Tour/Chinese_Tour/tour_send_mail.php?member_id=$member_id'\"></td>";
 
                      echo "</tr>";
