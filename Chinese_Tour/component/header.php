@@ -6,9 +6,9 @@
       <div class="navbar-collapse collapse" id="collapsingNavbar3">
         <ul class="navbar-nav mx-auto w-100 justify-content-center">
             <li class="nav-item">
-              <a class="nav-link" href="index.php">Create your own tour&nbsp;&nbsp;&nbsp;</a>
+              <a class="nav-link" href="index.php">Home</a>
             </li>
-            <li class="nav-item dropdown">
+            <!-- <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="index.php" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Pick a Tour
               </a>
@@ -18,9 +18,24 @@
                 <a class="dropdown-item" href="portfolio-3-col.php">Conferences</a>
                 <a class="dropdown-item" href="portfolio-4-col.php">Events</a>
               </div>
+            </li> -->
+            <li class="nav-item">
+                <a class="nav-link" href="index.php">Meeting Tour</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="index.php">About Us</a>
+                <a class="nav-link" href="index.php">Incentive Tour</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index.php">Convension Tour</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index.php">Exhibition Tour</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index.php">Business Tour</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="about.php">About Us</a>
             </li>
         </ul>
 <!--     PHP : check session login     -->
@@ -50,7 +65,7 @@
             <li>
             </li>
           </ul>
-          <?php 
+          <?php
             }
           ?>
 <!--      PHP : login     -->
@@ -69,7 +84,7 @@
             <li>
             </li>
           </ul>
-          <?php 
+          <?php
             }
           ?>
 <!--     PHP : end     -->
