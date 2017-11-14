@@ -78,10 +78,19 @@ if(isset($_GET['msg'])){
 
           case 'email_already_use': messege('Sorry!','Your email is already used , please try again','','');
               break;
+            
+            // Change Password
+            case 'incorrect_password': messege('Sorry!','Password is incorrect, please try again.','','');
+                break;
+            case 'change_password_succ': messege('Success!','Your password has been changed.','profile.php','Go to profile page');
+                break;
+            case 'change_password_fail': messege('Sorry!','Something went wrong, please try again.','','');
+                break;
+            case 'change_password_fail_confirm_password': messege('Sorry!','Confirm password does not match.','','');
+                break;
 
             // default
         default: messege('Request not found','','','');
-
 
     }
 }else{
