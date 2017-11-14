@@ -8,11 +8,14 @@ use PHPMailer\PHPMailer\Exception;
 include "db_config.php";
 //-----------------------------Variable----------------------------------------------------//
 
-if(isset($_SESSION['login_id'])){
+if($_GET['tour_round_id']){
+  $tour_round_id = $_GET['tour_round_id'];
   $subject = $_POST['subject'];
   $description = $_POST['description'];
 
-  $sql= "SELECT  m.email FROM member m  ";
+  $sql= "SELECT m.email
+FROM member m INNER JOIN tour_round_member trm on m.id  = trm.id
+WHERE trm.tour_round_id = $tour_round_id ";
   $result = mysqli_query( $GLOBALS['conn'] , $sql );
   // $show = mysqli_fetch_array($result);
   // $email = $show['email'];
@@ -27,7 +30,7 @@ if($_POST['send'] && $subject !== "" && $description !==""){
       $mail = new PHPMailer(true);
       try {
           //Server settings
-          $mail->SMTPDebug = 2;
+          $mail->SMTPDebug = 5;
           $mail->CharSet = "UTF-8";                               // Enable verbose debug output
           $mail->isSMTP();                                      // Set mailer to use SMTP
           $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers

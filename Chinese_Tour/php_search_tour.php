@@ -78,23 +78,30 @@ requireLogin();
                      INNER JOIN accommodation a ON t.accommodation_id = a.accommodation_id
                          WHERE t.tour_name LIKE '$tourName%' ";
                    $result = mysqli_query( $GLOBALS['conn'] , $sql );
+                  $count = mysqli_num_rows($result);
+                   if($count != 0){
+                     echo "<table border='1' align='center' width='700'>";
+                     echo "<tr align='center' bgcolor='#f5c6cb'><td>Tour name   </td><td>Tour description</td><td>Rating</td><td>Tour type</td><td>Vehicle type</td><td>Accommodation</td><td>View detail</td>";
+                     while($show = mysqli_fetch_array($result)) {
+                       $tourId = $show['tour_id'];
+                       echo "<tr>";
+                       echo "<td align ='center'>" .$show['tour_name'] .  "</td> ";
+                       echo "<td align ='center'>" .$show['tour_description'] .  "</td> ";
+                       echo "<td align ='center'>" .$show['rating'] .  "</td> ";
+                       echo "<td align ='center'>" .$show['tour_type'] .  "</td> ";
+                       echo "<td align ='center'>" .$show['vehicle_type'] .  "</td> ";
+                       echo "<td align ='center'>" .$show['accommodation_level'] .  "</td> ";
+                       echo "<td align ='center'><input type='button' value='View' onclick=\"window.location.href='http://localhost/Chinese_Tour/Chinese_Tour/show_tour_round.php?tourId=$tourId'\"></td>";
+                       echo "</tr>";
 
-                   echo "<table border='1' align='center' width='700'>";
-                   echo "<tr align='center' bgcolor='#f5c6cb'><td>Tour name   </td><td>Tour description</td><td>Rating</td><td>Tour type</td><td>Vehicle type</td><td>Accommodation</td><td>View detail</td>";
-                   while($show = mysqli_fetch_array($result)) {
-                     $tourId = $show['tour_id'];
-                     echo "<tr>";
-                     echo "<td align ='center'>" .$show['tour_name'] .  "</td> ";
-                     echo "<td align ='center'>" .$show['tour_description'] .  "</td> ";
-                     echo "<td align ='center'>" .$show['rating'] .  "</td> ";
-                     echo "<td align ='center'>" .$show['tour_type'] .  "</td> ";
-                     echo "<td align ='center'>" .$show['vehicle_type'] .  "</td> ";
-                     echo "<td align ='center'>" .$show['accommodation_level'] .  "</td> ";
-                     echo "<td align ='center'><input type='button' value='View' onclick=\"window.location.href='http://localhost/Chinese_Tour/Chinese_Tour/show_tour_round.php?tourId=$tourId'\"></td>";
-                     echo "</tr>";
+                     }
+                     echo "</table>";
 
+
+                   }else{
+                     echo "<h2>Nothing found ! , please try again.</h2>";
                    }
-                   echo "</table>";
+
 
 
 

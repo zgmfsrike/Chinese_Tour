@@ -10,6 +10,7 @@ requireLogin();
 
 
 if(isset($_SESSION['login_id'])){
+  $tour_round_id= $_GET['tour_round_id'];
 
 //-----------------------------Search fucntion----------------------------------------------------//
 // if($_POST['send_all']){
@@ -66,7 +67,7 @@ if(isset($_SESSION['login_id'])){
       <div class="col-md-7 mb-5">
         <h3 class="entry-title"><span><br>Send E-Mail to all member</span> </h3>
         <hr>
-          <form action="php_send_mail_all.func.php" method="post">
+          <form action="php_send_mail_all.func.php?tour_round_id=<?php echo $tour_round_id; ?>" method="post">
             <div class="your-class">
               <br>
               <label for="Subject">Subject : </label>

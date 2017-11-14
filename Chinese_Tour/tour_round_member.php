@@ -9,6 +9,7 @@ include "module/hashing.php";
 <?php
 include('module/session.php');
 requireLogin();
+$tour_round_id = $_GET['tour_round_id'];
 
  ?>
 
@@ -53,7 +54,8 @@ requireLogin();
         <h3 class="entry-title"><span><br>Tour Round Member</span> </h3>
 
         <hr>
-          <input type="button" class="btn btn-danger btn-md" value="Send All" name ="send_all" onclick="window.location.href ='tour_send_mail_all.php'">
+          <input type="button" class="btn btn-danger btn-md" value="Send All" name ="send_all" onclick="window.location.href ='http://localhost/Chinese_Tour/Chinese_Tour/tour_send_mail_all.php?tour_round_id=<?php echo $tour_round_id; ?>'">
+
           <br>
                <?php
                if(isset($_SESSION['login_id'])){
@@ -61,11 +63,13 @@ requireLogin();
 
                //-----------------------------Search fucntion----------------------------------------------------//
                if($_GET['tour_round_id'] != ""){
-                   $tour_round_id = $_GET['tour_round_id'];
+
+
                    $sql= "SELECT m.first_name,m.middle_name,m.last_name,trm.passport_id,trm.reservation_age,trm.avoid_food,trm.group_member,m.id,m.email
                           FROM tour_round_member trm INNER JOIN tour_round tr ON trm.tour_round_id = tr.tour_round_id INNER JOIN member m ON trm.id = m.id
                           WHERE trm.tour_round_id = $tour_round_id ";
                    $result = mysqli_query( $GLOBALS['conn'] , $sql );
+
 
                    echo "<br>";
                    echo "<table border='1' align='center' width='900'>";
@@ -85,7 +89,7 @@ requireLogin();
                      echo "<td align ='center'>" .$show['email'] .  "</td> ";
 
 
-                     echo "<td align ='center'><input  type='button' value='View' onclick=\"window.location.href='http://localhost/Chinese_Tour/Chinese_Tour/tour_send_mail.php?member_id=$member_id'\"></td>";
+                     echo "<td align ='center'><input  type='button' value='View' onclick=\"window.location.href='http://localhost/Chinese_Tour/Chinese_Tour/tour_send_mail.php?member_id=$member_id.'\"></td>";
 
                      echo "</tr>";
 
