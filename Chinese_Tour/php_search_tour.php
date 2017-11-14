@@ -7,40 +7,6 @@ include "module/hashing.php";
 
 
 
-// if(isset($_SESSION['login_id'])){
-//
-// //-----------------------------Search fucntion----------------------------------------------------//
-// if($_GET['tourName'] != ""){
-//     $tourName = $_GET['tourName'];
-//     $sql= "SELECT t.tour_name,t.tour_description,t.rating,tt.tour_type,vt.vehicle_type,a.accommodation_level
-// FROM tour t INNER JOIN tour_type tt ON t.tour_type_id = tt.tour_type_id
-// 	INNER JOIN vehicle_type vt  ON t.vehicle_type_id = vt.vehicle_type_id
-//     	INNER JOIN accommodation a ON t.accommodation_id = a.accommodation_id
-//         	WHERE t.tour_name LIKE '$tourName%' ";
-//     $result = mysqli_query( $GLOBALS['conn'] , $sql );
-//
-//     echo "<table border='1' align='center' width='500'>";
-//     echo "<tr align='center' bgcolor='#CCCCCC'><td>UserId</td><td>UserName</td><td>UserPassword</td>";
-//     while($show = mysqli_fetch_array($result)) {
-//       echo "<tr>";
-//       echo "<td>" .$show['tour_name'] .  "</td> ";
-//       echo "<td>" .$show['tour_description'] .  "</td> ";
-//       echo "<td>" .$show['rating'] .  "</td> ";
-//       echo "<td>" .$show['tour_type'] .  "</td> ";
-//       echo "<td>" .$show['vehicle_type'] .  "</td> ";
-//       echo "<td>" .$show['accommodation_level'] .  "</td> ";
-//       echo "</tr>";
-//
-//     }
-//     echo "</table>";
-//
-//
-//
-//
-// }
-// }
-
-
 
 ?>
 <?php

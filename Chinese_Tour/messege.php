@@ -89,6 +89,9 @@ if(isset($_GET['msg'])){
             case 'change_password_fail_confirm_password': messege('Sorry!','Confirm password does not match.','','');
                 break;
 
+          case 'email_send_succ': messege('Success!','E-mail has already send to member ','index.php','Go to home page');
+              break;
+
             // default
         default: messege('Request not found','','','');
 
