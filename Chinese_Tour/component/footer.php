@@ -5,10 +5,7 @@
                 <p>Copyright&copy;2017</p>
                 <h3>Address</h3>
                 <p>Unit 36/65 Marigold St,Revesby
-                NSW 2212
-                Tel | (02) 9773 8773 
-                Fax | (02) 977 8125
-                Email | info@trevell.com.au</p>
+                NSW 2212 Tel | (02) 9773 8773 Fax | (02) 977 8125 Email | info@trevell.com.au</p>
             </div>
             <!-- <div class="col-md-3 lp">
                 <h3>Community</h3>
