@@ -40,6 +40,8 @@ function register(){
     $province   = $_POST["province"];
     $zipcode    = $_POST["zipcode"];
 
+    $countrycode = $_POST["countrycode"];
+
     // confirm password
     if($password == $cPassword){
         $password = hashPassword($password);
@@ -52,7 +54,8 @@ function register(){
     if(check_available($username,$email)){
         $hash = md5(rand(1000,5000));
         // prepare SQL statement
-        $sql = "INSERT INTO member (username, password, first_name, middle_name, last_name, dob, phone, email, address, city, province, zipcode, occupation, salary, hash) VALUES ('$username', '$password', '$firstName', '$middleName', '$lastName', '$dob', '$phone', '$email', '$address', '$city', '$province', '$zipcode', '$occupation', '$salary', '$hash')";
+        $sql = "INSERT INTO member (username, password, first_name, middle_name, last_name, dob,country_code,phone, email, address, city, province, zipcode, occupation, salary, hash) 
+        VALUES ('$username', '$password', '$firstName', '$middleName', '$lastName', '$dob', '$countrycode','$phone', '$email', '$address', '$city', '$province', '$zipcode', '$occupation', '$salary', '$hash')";
 
         // execute
         $result = mysqli_query( $GLOBALS['conn'] , $sql );
