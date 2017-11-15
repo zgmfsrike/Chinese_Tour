@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Chinese Tour</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/modern-business.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+    <!-- Navigation -->
+  <?php
+    include 'component/header.php;
+  ?>
+
+    <!-- Body -->
+    <div class="container">
+      <form class="form-horizontal" data-toggle="validator">
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-6"><br><br><br><br>
+            <h1>What are you looking for?</h1>
+            <h5>let's us help through your journey.</h5>
+            <hr>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-search"></i></span>
+              <input required class="form-control" type="text" id="tourName" name="tourName" value="">
+              <input type="submit" class="btn btn-danger" value="Search">
+            </div>
+          </div>
+        </div>
+    <!--end  body-->
+      </form>
+    </div
+
+
+    <!-- Footer -->
+    <?php
+      include 'component/footer.php;
+    ?>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/popper/popper.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+  </body>
+
+</html>
