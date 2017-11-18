@@ -27,12 +27,12 @@ if(isset($_GET['id']) and isset($_GET['h'])){
                    header("location: messege.php?msg=active_fail");
                }   
            }else{
-               header("location: messege1.php?msg=active_already");
+               header("location: messege.php?msg=active_already");
            }
        }else{
-           header("location: messege2.php?msg=active_error");
+           header("location: messege.php?msg=active_error");
        }
     }else{
-       header("location: messege3.php?msg=active_error");
+       header("location: messege.php?msg=active_error");
     }
 ?>
