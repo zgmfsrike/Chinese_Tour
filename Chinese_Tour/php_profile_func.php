@@ -20,6 +20,7 @@ $email_db = $data['email'];
 $salary_db = $data['salary'];
 $occupation_db = $data['occupation'];
 $date_of_birth = $data['dob'];
+$countrycode = $data['country_code'];
 
 }
 

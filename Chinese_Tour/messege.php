@@ -78,7 +78,7 @@ if(isset($_GET['msg'])){
 
           case 'email_already_use': messege('Sorry!','Your email is already used , please try again','','');
               break;
-            
+
             // Change Password
             case 'incorrect_password': messege('Sorry!','Password is incorrect, please try again.','','');
                 break;
@@ -90,6 +90,11 @@ if(isset($_GET['msg'])){
                 break;
 
           case 'email_send_succ': messege('Success!','E-mail has already send to member ','index.php','Go to home page');
+              break;
+
+          // Create News
+
+          case 'create_news_succ': messege('Success!','News has been created ','index.php','Go to home page');
               break;
 
             // default

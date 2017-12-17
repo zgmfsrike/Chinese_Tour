@@ -62,7 +62,7 @@ include 'php_profile_func.php';
                 <label class="control-label"><b>Surname&nbsp;:</b>&nbsp;<?php echo $lastname_db ?></label>
             </li>
             <li>
-              <label class="control-label"><b>Contact No.&nbsp;:</b>&nbsp;<?php echo $phone_db ?></label>
+              <label class="control-label"><b>Contact No.&nbsp;:</b>&nbsp;<?php echo "+".$countrycode.$phone_db ?></label>
             </li>
             <li>
               <label class="control-label"><b>Date Of Birth&nbsp;:</b>&nbsp;<?php echo $date_of_birth ?></label>
@@ -73,6 +73,7 @@ include 'php_profile_func.php';
               <input name="changePassword" type="submit" value="Change Password" onclick="window.location.href='ChangePassword.php'" class="btn btn-danger">
               <input name="changeEmail" type="submit" value="Change Email" onclick="window.location.href='changeEmail.php'" class="btn btn-danger">
               <input name="search" type="submit" value="Search" onclick="window.location.href='php_search_tour.php'" class="btn btn-danger">
+              <input name="createNews" type="submit" value="Create News" onclick="window.location.href='CreateNews.php'" class="btn btn-danger">
             </li>
           </ul>
         </div>

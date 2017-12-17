@@ -72,7 +72,7 @@ requireLogin();
                //-----------------------------Search fucntion----------------------------------------------------//
                if($_GET['tourName'] != ""){
                    $tourName = $_GET['tourName'];
-                   $sql= "SELECT t.tour_name,t.tour_description,t.rating,tt.tour_type,vt.vehicle_type,a.accommodation_level,t.tour_id
+                   $sql= "SELECT t.tour_name,t.rating,tt.tour_type,vt.vehicle_type,a.accommodation_level,t.tour_id
                FROM tour t INNER JOIN tour_type tt ON t.tour_type_id = tt.tour_type_id
                  INNER JOIN vehicle_type vt  ON t.vehicle_type_id = vt.vehicle_type_id
                      INNER JOIN accommodation a ON t.accommodation_id = a.accommodation_id
@@ -81,12 +81,12 @@ requireLogin();
                   $count = mysqli_num_rows($result);
                    if($count != 0){
                      echo "<table border='1' align='center' width='700'>";
-                     echo "<tr align='center' bgcolor='#f5c6cb'><td>Tour name   </td><td>Tour description</td><td>Rating</td><td>Tour type</td><td>Vehicle type</td><td>Accommodation</td><td>View detail</td>";
+                     echo "<tr align='center' bgcolor='#f5c6cb'><td>Tour name   </td><td>Rating</td><td>Tour type</td><td>Vehicle type</td><td>Accommodation</td><td>View detail</td>";
                      while($show = mysqli_fetch_array($result)) {
                        $tourId = $show['tour_id'];
                        echo "<tr>";
                        echo "<td align ='center'>" .$show['tour_name'] .  "</td> ";
-                       echo "<td align ='center'>" .$show['tour_description'] .  "</td> ";
+                       // echo "<td align ='center'>" .$show['tour_description'] .  "</td> ";
                        echo "<td align ='center'>" .$show['rating'] .  "</td> ";
                        echo "<td align ='center'>" .$show['tour_type'] .  "</td> ";
                        echo "<td align ='center'>" .$show['vehicle_type'] .  "</td> ";
