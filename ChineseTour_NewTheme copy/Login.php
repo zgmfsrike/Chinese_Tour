@@ -1,8 +1,10 @@
-<!DOCTYPE html>
-  <html>
 <?php
       include 'component/header.php';
+      include 'module/session.php';
+      noLogin();
 ?>
+<!DOCTYPE html>
+<html>
 <body>
 
     <!--Login-->
@@ -13,7 +15,7 @@
              <div class="section"></div>
              <a href="Index.php"><h5 id="title" class="center black-text">Login</h5></a>
              <div class="container">
-             <form>
+             <form action="php_login.php" data-toggle="validator" method="post">
                <div class="row">
                  <div class="input-field">
                    <input onkeyup="ValidateUsername(this)" id="username" type="text" name="username" id="username" minlength="3" maxlength="16" required/>
@@ -32,6 +34,7 @@
                  <input type="button" onclick="window.location.href='Register.php'" class="col s12 l5 waves-effect waves-light btn amber" value="Register">
                  <div class="section"></div>
                  <div class="section"></div>
+                 <a href="/password/reset">Forgot Your Password?</a>
                </div>
              </form>
              </div>

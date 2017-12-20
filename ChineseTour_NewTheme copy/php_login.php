@@ -23,7 +23,7 @@ if(isset($_POST['login'])){
                 $_SESSION['start'] = time(); // Taking now logged in time.
                 // Ending a session in 30 minutes from the starting time.
                 $_SESSION['expire'] = $_SESSION['start'] + (60*30);
-                header("location: index.php");
+                header("location: Index.php");
             }else{
                 // not confirmed
                 header("location: message.php?msg=not_active");

@@ -16,41 +16,41 @@
   <nav class="nav-extended">
     <div class="nav-wrapper red darken-2">
         <a href="Index.php" class="brand-logo center hide-on-med-and-down"><img src="images/logo400x300.png" width=20% height=20% alt="logo"></a>
-        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-        <a href="Index.php" class="show-on-medium-and-down hide-on-large-only">Chiangmai HongThai</a>
 
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a href="#">WeChat</a></li>
           <li><a href="#">081-025-0351</a></li>
           <li><a class="grey-text text-lighten-3" href="mailto:chiangmaihongthai@hotmail.com">chiangmaihongthai@hotmail.com</a></li>
         </ul>
-
         <ul class="side-nav" id="mobile-demo">
           <li><a>Chiangmai HongThai</a></li>
           <li><div class="divider"></div></li>
-          <li><a href="Index.php">Home</a></li>
+          <li><a href="AdminIndex.php">Home</a></li>
           <li><a href="meeting.php">Meeting Tour</a></li>
           <li><a href="incentive.php">Incentive Tour</a></li>
           <li><a href="convension.php">Convension Tour</a></li>
           <li><a href="foxhibition.php">Foxhibition Tour</a></li>
           <li><a href="business.php">Business Tour</a></li>
-          <li><a href="aboutUs.html">About Us</a></li>
+          <li><a href="AdminaboutUs.html">About Us</a></li>
           <li><div class="divider"></div></li>
+          <li><a href="Manage.php">Register</a></li>
           <li><a href="Register.php">Register</a></li>
           <li><a href="Login.php">Log in</a></li>
         </ul>
     </div>
 
     <div class="nav-content red darken-3 hide-on-med-and-down">
-      <ul class="tabs tabs-fixed-width tabs-transparent container">
-        <li class="tab"><a target="_self" href="Index.php">Home</a></li>
+      <ul class="tabs tabs-fixed-width tabs-transparent">
+        <li class="tab"><a target="_self" href="AdminIndex.php">Home</a></li>
         <li class="tab"><a target="_self" href="meeting.php">Meeting Tour</a></li>
         <li class="tab"><a target="_self" href="incentive.php">Incentive Tour</a></li>
         <li class="tab"><a target="_self" href="convension.php">Convension Tour</a></li>
         <li class="tab"><a target="_self" href="foxhibition.php">Foxhibition Tour</a></li>
         <li class="tab"><a target="_self" href="business.php">Business Tour</a></li>
-        <li class="tab"><a target="_self" href="aboutUs.php">About Us</a></li>
+        <li class="tab"><a target="_self" href="AdminaboutUs.php">About Us</a></li>
         <li style="border-left: 1px solid #fff; border-radius: 0; height:50%; margin-top:1%;" class="tab"></li>
+        <li class="rigt tab"><a target="_self" href="Manage.php">Manage</a></li>
 
         <!--PHP : Check Login-->
         <?php
@@ -59,11 +59,8 @@
               $firstname = $_SESSION['login_firstname'];
               $userType = $_SESSION['user_type'];
               login();
-              echo "dddddd";
-
             }else{
               notLogin();
-              echo "TOT";
           }
         ?>
 
@@ -73,7 +70,6 @@
         ?>
         <li class="right tab"><a target="_self" href="Register.php">Register</a></li>
         <li class="right tab"><a target="_self" href="Login.php">Log in</a></li>
-
         <?php
         }
         ?>
@@ -82,8 +78,8 @@
         <?php
             function login(){
         ?>
-        <li class="right tab"><a target="_self" href="Logout.php">Logout</a></li>
         <li class="right tab"><a target="_self" href="Profile.php"><?php echo $GLOBALS['firstname']; ?></a></li>
+        <li class="right tab"><a target="_self" href="Logout.php">Logout</a></li>
         <?php
         }
         ?>

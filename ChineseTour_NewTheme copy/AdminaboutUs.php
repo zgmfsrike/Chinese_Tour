@@ -1,7 +1,7 @@
 <!DOCTYPE html>
   <html>
 <?php
-      include 'component/header.php';
+      include 'component/adminHeader.php';
 ?>
 <body>
 

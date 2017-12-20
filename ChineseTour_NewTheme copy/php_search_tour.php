@@ -15,29 +15,15 @@ requireLogin();
 
  ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- Standard Meta -->
-    <meta charset="utf-8"/>
-
-    <!-- Site Properties -->
-    <title>Chiang Mai Hongthai Business and Consultant Enterprise</title>
-
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="css/modern-business.css" rel="stylesheet">
-
-</head>
-<body>
-  <!-- Navigation -->
-  <?php
-    include 'component/header.php';
-    ?>
-  <br><br>
+ <!DOCTYPE html>
+   <html>
+ <?php
+       include 'component/header.php';
+       // include 'module/session.php';
+       // requireLogin();
+       // include 'php_profile_func.php';
+ ?>
+ <body>
   <!-- Page Content -->
   <div class="container">
     <!-- Content Row -->
@@ -102,11 +88,6 @@ requireLogin();
                    }else{
                      echo "<h2>Nothing found ! , please try again.</h2>";
                    }
-
-
-
-
-
                }
                }
 

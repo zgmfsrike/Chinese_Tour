@@ -5,23 +5,17 @@
 ?>
 <body>
   <!-- body -->
+
 <div class="container">
   <form class="form-horizontal" data-toggle="validator">
-    <div class="row">
-      <div class="col-md-3"></div>
-      <div class="col-md-6">
-        <h1>Thank you!</h1>
-        <h3>Your account has been actived</h3>
+      <div class="row">
+        <h3>Thank you!</h3>
+        <h5>Your account has been actived</h5>
         <hr>
       </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-3"></div>
-      <div class="col-md-6">
-        <input type="button" onclick="window.location.href='index.php'" class="btn btn-warning btn-sm" value="Go back to Home page">
+      <div class="row">
+        <input type="button" onclick="window.location.href='Index.php'" class="col s12 l5 waves-effect waves-light btn amber" value="Go back to Home page">
       </div>
-    </div>
   </form>
 </div>
 

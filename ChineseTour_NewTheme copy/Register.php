@@ -121,7 +121,8 @@
             </div>
             <div class="row">
               <div class="input-field col s10 l6">
-                <input onkeyup="validatephone(this);" type="text" class="form-control phone" maxlength="5" name="zipcode" id="zipcode" placeholder="Zip Code" required>
+                <!--China lenght 6 ,Iran lenght 10-->
+                <input onkeyup="validatephone(this);" type="text" class="form-control phone" maxlength="10" name="zipcode" id="zipcode" placeholder="Zip Code" required>
                 <label for="zipcode">Zipcode<b class="red-text"> *</b></label>
               </div>
             </div>

@@ -13,46 +13,26 @@
           <ul class="slides">
             <li>
               <img src="images/home1.jpg"> <!-- random image -->
-              <div class="caption center-align">
-                <h3>This is our big Tagline!</h3>
-                <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-              </div>
             </li>
             <li>
               <img src="images/home2.jpg"> <!-- random image -->
-              <div class="caption left-align">
-                <h3>Left Aligned Caption</h3>
-                <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-              </div>
             </li>
             <li>
               <img src="images/home3.jpg"> <!-- random image -->
-              <div class="caption right-align">
-                <h3>Right Aligned Caption</h3>
-                <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-              </div>
             </li>
             <li>
               <img src="images/home4.jpg"> <!-- random image -->
-              <div class="caption center-align">
-                <h3>This is our big Tagline!</h3>
-                <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-              </div>
             </li>
             <li>
-              <img src="images/homeถ.jpg"> <!-- random image -->
-              <div class="caption left-align">
-                <h3>This is our big Tagline!</h3>
-                <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-              </div>
+              <img src="images/home5.jpg"> <!-- random image -->
             </li>
           </ul>
         </div>
       </div>
       <div class="container row">
-        <div class="col s12 m12">
+
           <div class="row">
-            <div class="col s12 m12">
+            <div class="col s12">
               <div class="card">
                 <div class="card-content black-text">
                   <span class="card-title" id="newsTopic">Chiang Mai</span>
@@ -66,9 +46,7 @@
           </div>
         </div>
       </div>
-        </div>
       </div>
-
       <!--Footer-->
       <?php
       include 'component/footer.php';

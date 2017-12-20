@@ -1,7 +1,7 @@
 <!DOCTYPE html>
   <html>
 <?php
-      include 'component/header.php';
+      include 'component/adminHeader.php';
 ?>
 <body>
       <!--Edit News Here-->
@@ -9,8 +9,7 @@
       <div class="container">
         <div class="row">
           <h3>Edit News</h3>
-            <form class="col s12">
-
+            <form>
               <div class="row">
                 <div class="col s12">
                   News Topic :
