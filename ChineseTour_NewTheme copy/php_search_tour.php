@@ -5,9 +5,6 @@ include "db_config.php";
 // include "db_configNB.php";
 include "module/hashing.php";
 
-
-
-
 ?>
 <?php
 include('module/session.php');
@@ -24,34 +21,26 @@ requireLogin();
        // include 'php_profile_func.php';
  ?>
  <body>
-  <!-- Page Content -->
   <div class="container">
-    <!-- Content Row -->
     <div class="row">
-      <!-- Sidebar Column -->
-      <div class="col-lg-3 mb-4">
-        <div class="list-group admin-menu">
-          <hr>
-          <a href="Profile.php" class="list-group-item list-group-item-danger active text-white"><i class="fa fa-user fa-fw"></i>Profile</a>
-          <a href="Purchase.php" class="list-group-item list-group-item-danger text-white"><i class="fa fa-shopping-cart fa-fw"></i>Purchase</a>
-          <a href="Record.php" class="list-group-item list-group-item-danger text-white"><i class="fa fa-clipboard fa-fw"></i>Record</a>
-        </div>
-      </div>
-      <!-- Content Column -->
-      <div class="col-md-7 mb-5">
-        <h3 class="entry-title"><span><br>Search tour</span> </h3>
 
-        <hr>
-        <form  action="php_search_tour.php" method="get"  class="navbar-form navbar-center" role="form" >
-										<div class="input-group">
-												<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-												<input id="tourName" type="text" class="form-control" name="tourName" value="<?php echo $_GET['tourName'];?>" size="20" required>
-                        <input type="submit" class="btn btn-primary" value="Search " /><br><br>
-										</div>
-                    <br>
+                  <div class="col s12">
+                      <div class="section"></div>
+                      <a href="php_search_tour.php" class="black-text"><h3>Search Tour</h3></a>
+                          <div class="search-wrapper card">
+                            <form action="php_search_tour.php" method="get" role="form" >
+                              <div class="col s12 l10">
+                                <div class="input-field">
+                                  <input id="tourName" placeholder="Search Tour Here" type="text" name="tourName" value="<?php echo $_GET['tourName'];?>" size="20" required>
+                                </div>
+                              </div>
+                                <div class="center col s12 l2">
+                                  <input type="submit" class="btn-large waves-effect waves-light amber" value="Search " />
+                                </div>
+                            </form>
+                          </div>
+                 </div>
 
-
-							 </form>
                <?php
                if(isset($_SESSION['login_id'])){
 
@@ -66,8 +55,11 @@ requireLogin();
                    $result = mysqli_query( $GLOBALS['conn'] , $sql );
                   $count = mysqli_num_rows($result);
                    if($count != 0){
-                     echo "<table border='1' align='center' width='700'>";
-                     echo "<tr align='center' bgcolor='#f5c6cb'><td>Tour ID</td><td>Tour Description</td><td>Rating</td><td>Tour type</td><td>Vehicle type</td><td>Accommodation</td><td>View detail</td>";
+                     echo "<table style='overflow-x:auto;' class='responsive-table table table-striped highlight centered'>";
+                     echo "<thead>";
+                     echo "<tr align='center'><th>Tour ID</th><th>Tour Description</th><th>Rating</th><th>Tour type</th><th>Vehicle type</th><th>Accommodation</th><th>View detail</th>";
+                     echo "</tr>";
+                     echo "</thead>";
                      while($show = mysqli_fetch_array($result)) {
                        $tourId = $show['tour_id'];
                        echo "<tr>";
@@ -78,15 +70,13 @@ requireLogin();
                        echo "<td align ='center'>" .$show['tour_type'] .  "</td> ";
                        echo "<td align ='center'>" .$show['vehicle_type'] .  "</td> ";
                        echo "<td align ='center'>" .$show['accommodation_level'] .  "</td> ";
-                       echo "<td align ='center'><input type='button' value='View' onclick=\"window.location.href='http://localhost/Chinese_Tour/Chinese_Tour/show_tour_round.php?tourId=$tourId'\"></td>";
+                       echo "<td align ='center'><input class='waves-effect waves-light btn green' type='button' value='View' onclick=\"window.location.href='http://localhost:8080/ChineseTour/Chinese_Tour/ChineseTour_NewTheme%20copy/show_tour_round.php?tourId=$tourId'\"></td>";
                        echo "</tr>";
-
                      }
                      echo "</table>";
 
-
                    }else{
-                     echo "<h2>Nothing found ! , please try again.</h2>";
+                     echo "<h5>Nothing found ! , please try again.</h5>";
                    }
                }
                }
@@ -96,7 +86,7 @@ requireLogin();
     <!-- /.row -->
 
   </div>
-</div>
+
     <?php
     include 'component/footer.php';
     ?>

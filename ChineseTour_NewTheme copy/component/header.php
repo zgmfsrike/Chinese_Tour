@@ -59,11 +59,9 @@
               $firstname = $_SESSION['login_firstname'];
               $userType = $_SESSION['user_type'];
               login();
-              echo "dddddd";
 
             }else{
               notLogin();
-              echo "TOT";
           }
         ?>
 
@@ -82,7 +80,7 @@
         <?php
             function login(){
         ?>
-        <li class="right tab"><a target="_self" href="Logout.php">Logout</a></li>
+        <li class="right tab"><a target="_self" href="logout.php">Logout</a></li>
         <li class="right tab"><a target="_self" href="Profile.php"><?php echo $GLOBALS['firstname']; ?></a></li>
         <?php
         }

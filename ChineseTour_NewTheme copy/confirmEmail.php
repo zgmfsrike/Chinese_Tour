@@ -1,8 +1,12 @@
 <!DOCTYPE html>
   <html>
-<?php
+  <?php
+  include('module/session.php');
+  requireLogin();
+   ?>
+   <?php
       include 'component/header.php';
-?>
+      ?>
 <body>
   <!-- body -->
 

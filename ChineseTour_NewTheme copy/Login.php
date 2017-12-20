@@ -34,6 +34,7 @@
                  <input type="button" onclick="window.location.href='Register.php'" class="col s12 l5 waves-effect waves-light btn amber" value="Register">
                  <div class="section"></div>
                  <div class="section"></div>
+                 <div class="section"></div>
                  <a href="/password/reset">Forgot Your Password?</a>
                </div>
              </form>

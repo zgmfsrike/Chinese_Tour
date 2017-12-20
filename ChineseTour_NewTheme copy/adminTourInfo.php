@@ -1,8 +1,12 @@
 <!DOCTYPE html>
   <html>
-<?php
+  <?php
+  include('module/session.php');
+  requireLogin();
+   ?>
+   <?php
       include 'component/adminHeader.php';
-?>
+      ?>
 <body>
     <!--tour body-->
     <div class="container">

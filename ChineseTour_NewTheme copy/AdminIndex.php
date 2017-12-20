@@ -1,10 +1,12 @@
 <!DOCTYPE html>
   <html>
-<?php
+  <?php
+  include('module/session.php');
+   ?>
+   <?php
       include 'component/adminHeader.php';
-?>
+      ?>
 <body>
-
         <div id="home" class="col s12">
           <div class="slider">
             <ul class="slides">

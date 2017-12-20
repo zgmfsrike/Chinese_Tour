@@ -16,10 +16,10 @@ if(isset($_GET['msg'])){
             // use '' in LINK or BUTTON_VALUE to use DEFAULT as back button
 
             // SESSION
-        case 'session_expired': message('Session expired','Please login','login.php','Login');
+        case 'session_expired': message('Session expired','Please login','Login.php','Login');
             break;
 
-        case 'please_login': message('You are not login','Please login first.','login.php','Login');
+        case 'please_login': message('You are not login','Please login first.','Login.php','Login');
             break;
         case 'login_already': message('You are already login','','','');
             break;
@@ -35,7 +35,7 @@ if(isset($_GET['msg'])){
             break;
 
             // REGISTER
-        case 'reg_succ': message('Registration Success!','Please active your account from your e-mail.','index.php','Go to homepage');
+        case 'reg_succ': message('Registration Success!','Please active your account from your e-mail.','Index.php','Go to homepage');
             break;
             // --------------------------- fix ----------------------------
         case 'reg_fail_confirm_password': message('Register fail!','Confirm password does not match.','','');
@@ -49,16 +49,16 @@ if(isset($_GET['msg'])){
             //-------------------------- end fix --------------------------
 
             // ACTIVE ACCOUNT
-        case 'active_succ': message('Thank you!','account has been actived','index.php','Go to home page');
+        case 'active_succ': message('Thank you!','account has been actived','Index.php','Go to home page');
             break;
 
-        case 'active_fail': message('Fail to acctive!','Please try again later.','index.php','Go to home page');
+        case 'active_fail': message('Fail to acctive!','Please try again later.','Index.php','Go to home page');
             break;
 
-        case 'active_already': message('Sorry!','Your account had already actived.','index.php','Go to home page');
+        case 'active_already': message('Sorry!','Your account had already actived.','Index.php','Go to home page');
             break;
 
-        case 'active_error': message('Error!','Request does not match, please check link again.','index.php','Go to home page');
+        case 'active_error': message('Error!','Request does not match, please check link again.','Index.php','Go to home page');
             break;
 
           //Change mail
@@ -89,25 +89,25 @@ if(isset($_GET['msg'])){
             // Change Password
             case 'incorrect_password': message('Sorry!','Password is incorrect, please try again.','','');
                 break;
-            case 'change_password_succ': message('Success!','Your password has been changed.','profile.php','Go to profile page');
+            case 'change_password_succ': message('Success!','Your password has been changed.','Profile.php','Go to profile page');
                 break;
             case 'change_password_fail': message('Sorry!','Something went wrong, please try again.','','');
                 break;
             case 'change_password_fail_confirm_password': message('Sorry!','Confirm password does not match.','','');
                 break;
 
-          case 'email_send_succ': message('Success!','E-mail has already send to member ','index.php','Go to home page');
+          case 'email_send_succ': message('Success!','E-mail has already send to member ','Index.php','Go to home page');
               break;
 
           // Create News
 
-          case 'create_news_succ': message('Success!','News has been created ','index.php','Go to home page');
+          case 'create_news_succ': message('Success!','News has been created ','Index.php','Go to home page');
               break;
 
-          case 'del_news_succ': messege('Success!','News has been deleted ','index.php','Go to home page');
+          case 'del_news_succ': messege('Success!','News has been deleted ','Index.php','Go to home page');
               break;
 
-          case 'edit_news_succ': messege('Success!','News has been changed ','index.php','Go to home page');
+          case 'edit_news_succ': messege('Success!','News has been changed ','Index.php','Go to home page');
               break;
 
 
@@ -117,7 +117,7 @@ if(isset($_GET['msg'])){
 
     }
 }else{
-    message('Request not found.','','index.php','Go to Homepage');
+    message('Request not found.','','Index.php','Go to Homepage');
 }
 
 ?>

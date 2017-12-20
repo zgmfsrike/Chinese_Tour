@@ -16,7 +16,7 @@ if(isset($_SESSION['expire'])){
             header('Location: message.php?msg=please_login');
         }
 
-        
+
         // check login session expire
 //        $now = time(); // Checking the time now when home page starts.
 //        if ($now > $_SESSION['expire'] && isset($_SESSION['expire'])) {
