@@ -10,7 +10,7 @@ if(isset($_GET['id']) and isset($_GET['h'])){
     
     // can not SELECT from data base
     if(!$result){
-        header("location: messege.php?msg=active_fail");
+        header("location: message.php?msg=active_fail");
     }
     
     $count = mysqli_num_rows($result);
@@ -22,17 +22,17 @@ if(isset($_GET['id']) and isset($_GET['h'])){
                $result = mysqli_query( $GLOBALS['conn'] , $sql );
            
                if($result){
-                   header("location: messege.php?msg=active_succ");
+                   header("location: message.php?msg=active_succ");
                }else{
-                   header("location: messege.php?msg=active_fail");
+                   header("location: message.php?msg=active_fail");
                }   
            }else{
-               header("location: messege.php?msg=active_already");
+               header("location: message.php?msg=active_already");
            }
        }else{
-           header("location: messege.php?msg=active_error");
+           header("location: message.php?msg=active_error");
        }
     }else{
-       header("location: messege.php?msg=active_error");
+       header("location: message.php?msg=active_error");
     }
 ?>

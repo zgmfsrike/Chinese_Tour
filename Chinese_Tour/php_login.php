@@ -26,13 +26,13 @@ if(isset($_POST['login'])){
                 header("location: index.php");
             }else{
                 // not confirmed
-                header("location: messege.php?msg=not_active");
+                header("location: message.php?msg=not_active");
             }
         }else{
-            header("location: messege.php?msg=login_invalid");
+            header("location: message.php?msg=login_invalid");
         }
     }else{
-        header("location: messege.php?msg=login_invalid");
+        header("location: message.php?msg=login_invalid");
     }
 }
 ?>

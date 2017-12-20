@@ -6,14 +6,14 @@
 if(isset($_SESSION['expire'])){
     if ($now > $_SESSION['expire']) {
         session_destroy();
-        header('location: messege.php?msg=session_expired');
+        header('location: message.php?msg=session_expired');
     }
 }
 
     // check login session exist
     function requireLogin(){
         if(!isset($_SESSION['login_id'])){
-            header('Location: messege.php?msg=please_login');
+            header('Location: message.php?msg=please_login');
         }
 
         
@@ -21,13 +21,13 @@ if(isset($_SESSION['expire'])){
 //        $now = time(); // Checking the time now when home page starts.
 //        if ($now > $_SESSION['expire'] && isset($_SESSION['expire'])) {
 //            session_destroy();
-//            header('location: messege.php?msg=session_expired');
+//            header('location: message.php?msg=session_expired');
 //        }
     }
 
     function noLogin(){
         if(isset($_SESSION['login_id'])){
-            header('Location: messege.php?msg=login_already');
+            header('Location: message.php?msg=login_already');
         }
     }
 ?>

@@ -142,9 +142,7 @@ if($_POST['save']){
 
         }
 
-
-        header("location: messege.php?msg=edit_news_succ");
-
+        header("location: message.php?msg=edit_news_succ");
   }
 
 

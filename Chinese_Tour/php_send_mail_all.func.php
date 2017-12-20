@@ -78,7 +78,7 @@ if($_POST['send'] && $subject !== "" && $description !==""){
        //-----------------------------Send change mail fucntion----------------------------------------------------//
 
          //
-         header("location: messege.php?msg=email_send_succ");
+         header("location: message.php?msg=email_send_succ");
          ob_end_flush();
 
 
