@@ -42,7 +42,7 @@ requireLogin();
       $news_topic = $show['topic'];
       $news_content = $show['content'];
 
-      $sql_pdf = "SELECT n.news_id,np.news_pdf
+      $sql_pdf = "SELECT n.news_id,np.news_pdf,np.pdf_name
       FROM news n INNER JOIN news_pdf np on n.news_id = np.news_id
       WHERE n.news_id = $news_id";
 
@@ -104,10 +104,12 @@ requireLogin();
 
     while ($show_pdf = mysqli_fetch_array($result_pdf)) {
       $show_txt = $txt.$i;
-      $pdf_name = $show_pdf['news_pdf'];
+      $pdf_name = $show_pdf['pdf_name'];
+
       $pdf_file = $pdf_path.$pdf_name;
-      echo "<h4>".$show_txt."</h4>";
-      echo "<iframe src='$pdf_file' width='700' height='500'></iframe>";
+      echo "<br><a href='$pdf_file' download='$pdf_name'><h4>".$pdf_name."</h4></a>";
+      // echo "<a href='$pdf_file' download='$pdf_name'></a>";
+      // echo "<iframe src='$pdf_file' width='700' height='500'></iframe>";
       $i++;
 
     }

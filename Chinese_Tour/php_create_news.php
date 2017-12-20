@@ -58,6 +58,7 @@ if($_POST['save']){
                 $new_image_name = 'img_'.$last_id.'_'.$i.'.'.$ext;
                 $img_path = "images/";
                 $upload_path = $img_path.$new_image_name;
+
                 $success = move_uploaded_file($_FILES['newsPicAddtopic'.$i]['tmp_name'] ,$upload_path);
                 if($success == FALSE){
                   echo "Cannot upload images";
@@ -87,6 +88,11 @@ if($_POST['save']){
               $ext = pathinfo(basename($_FILES['newsPdf'.$j]['name'] ),PATHINFO_EXTENSION);
               $check_ext = strtolower( $ext);
 
+              $old_pdf_name = basename($_FILES['newsPdf'.$j]['name']);
+              // echo $old_pdf_name;
+              // $sql_add_pdf_name = "INSERT INTO `news_pdf`( `pdf_name`) VALUES ('$old_pdf_name') WHERE news_id ='$last_id'";
+              // $add_name = mysqli_query($GLOBALS['conn'] , $sql_add_pdf_name);
+
 
                 $new_pdf_name = 'pdf_'.$last_id.'_'.$j.'.'.$ext;
                 $pdf_path = "pdf/";
@@ -99,7 +105,7 @@ if($_POST['save']){
                 $news_pdf = $new_pdf_name;
 
                 // ---------------------------
-                $sql3 = "INSERT INTO news_pdf(news_id, news_pdf) VALUES ('$last_id','$news_pdf')";
+                $sql3 = "INSERT INTO news_pdf(news_id, news_pdf,pdf_name) VALUES ('$last_id','$news_pdf','$old_pdf_name')";
                 $result3 = mysqli_query( $GLOBALS['conn'] , $sql3 );
 
 

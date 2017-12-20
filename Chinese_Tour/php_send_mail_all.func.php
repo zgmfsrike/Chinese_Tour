@@ -30,6 +30,13 @@ if($_POST['send'] && $subject !== "" && $description !==""){
       $mail = new PHPMailer(true);
       try {
           //Server settings
+          $mail->SMTPOptions = array(
+                  'ssl' => array(
+                      'verify_peer' => false,
+                      'verify_peer_name' => false,
+                      'allow_self_signed' => true
+                  )
+              );
           $mail->SMTPDebug = 5;
           $mail->CharSet = "UTF-8";                               // Enable verbose debug output
           $mail->isSMTP();                                      // Set mailer to use SMTP

@@ -41,9 +41,10 @@ function register(){
     $zipcode    = $_POST["zipcode"];
 
     $countrycode = $_POST["countrycode"];
-
+    echo "PASS : 1";
     // confirm password
     if($password == $cPassword){
+
         $password = hashPassword($password);
     }else{
         header("location: messege.php?msg=reg_fail_confirm_password");
@@ -54,12 +55,13 @@ function register(){
     if(check_available($username,$email)){
         $hash = md5(rand(1000,5000));
         // prepare SQL statement
-        $sql = "INSERT INTO member (username, password, first_name, middle_name, last_name, dob,country_code,phone, email, address, city, province, zipcode, occupation, salary, hash) 
+        $sql = "INSERT INTO member (username, password, first_name, middle_name, last_name, dob,country_code,phone, email, address, city, province, zipcode, occupation, salary, hash)
         VALUES ('$username', '$password', '$firstName', '$middleName', '$lastName', '$dob', '$countrycode','$phone', '$email', '$address', '$city', '$province', '$zipcode', '$occupation', '$salary', '$hash')";
 
         // execute
         $result = mysqli_query( $GLOBALS['conn'] , $sql );
         if ($result){
+            echo "PASS : 2";
             $last_id = $GLOBALS['conn']->insert_id;
 
             // confirmation url
@@ -71,8 +73,15 @@ function register(){
             $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
             try {
                 //Server settings
-                $mail->SMTPDebug = 0;                                 // Enable verbose debug output
-                $mail->isSMTP();                                      // Set mailer to use SMTP
+                $mail->SMTPOptions = array(
+                        'ssl' => array(
+                            'verify_peer' => false,
+                            'verify_peer_name' => false,
+                            'allow_self_signed' => true
+                        )
+                    );
+                $mail->SMTPDebug = 2;                                 // Enable verbose debug output
+                $mail->isSMTP();                             // Set mailer to use SMTP
                 $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
                 $mail->SMTPAuth = true;                               // Enable SMTP authentication
                 $mail->Username = "zgmfsrike@gmail.com";                 // SMTP username
@@ -102,10 +111,12 @@ function register(){
                 $mail->AltBody = strip_tags($body);
 
                 $mail->send();
+                echo "PASS : 3";
                 header("location: messege.php?msg=reg_succ");
                 ob_end_flush();
                 // echo 'Message has been sent';
             } catch (Exception $e) {
+                echo "PASS : 5";
 //                echo 'Message could not be sent.';
 //                echo 'Mailer Error: ' . $mail->ErrorInfo;
             }
@@ -118,7 +129,7 @@ function register(){
 }
 
 function check_available($username,$email){
-
+      echo "PASS : 4";
     $msg = "";
 
     $query = "SELECT * FROM member WHERE username = '$username'";
