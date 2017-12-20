@@ -84,8 +84,8 @@
                  I am convenient because I require little markup to use effectively.</p>
                </div>
                <div class="card-action">
-                 <a href="AdminEditNews.php">Edit me</a>
-                 <a href="AdminCreateNews.php" class="btn-floating tooltipped halfway-fab waves-effect waves-light red" data-position="top" data-delay="50" data-tooltip="Create News"><i class="material-icons">edit</i></a>
+                 <a href="AdminNews.php">Read More</a>
+
                </div>
              </div>
            </div>
@@ -100,8 +100,8 @@
                  I am convenient because I require little markup to use effectively.</p>
                </div>
                <div class="card-action">
-                 <a href="AdminEditNews.php">Edit me</a>
-                  <a href="AdminCreateNews.php" class="btn-floating tooltipped halfway-fab waves-effect waves-light red" data-position="top" data-delay="50" data-tooltip="Create News"><i class="material-icons">edit</i></a>
+                 <a href="AdminNews.php">Read More</a>
+
                </div>
              </div>
            </div>
@@ -116,8 +116,8 @@
                  I am convenient because I require little markup to use effectively.</p>
                </div>
                <div class="card-action">
-                 <a href="AdminEditNews.php">Edit me</a>
-                  <a href="AdminCreateNews.php" class="btn-floating tooltipped halfway-fab waves-effect waves-light red" data-position="top" data-delay="50" data-tooltip="Create News"><i class="material-icons">edit</i></a>
+                 <a href="AdminNews.php">Read More</a>
+
                </div>
              </div>
            </div>
@@ -134,8 +134,8 @@
                 I am convenient because I require little markup to use effectively.</p>
               </div>
               <div class="card-action">
-                <a href="AdminEditNews.php">Edit me</a>
-                <a href="AdminCreateNews.php" class="btn-floating tooltipped halfway-fab waves-effect waves-light red" data-position="top" data-delay="50" data-tooltip="Create News"><i class="material-icons">edit</i></a>
+                <a href="AdminNews.php">Read More</a>
+
               </div>
             </div>
           </div>
@@ -150,8 +150,8 @@
                 I am convenient because I require little markup to use effectively.</p>
               </div>
               <div class="card-action">
-                <a href="AdminEditNews.php">Edit me</a>
-                <a href="AdminCreateNews.php" class="btn-floating tooltipped halfway-fab waves-effect waves-light red" data-position="top" data-delay="50" data-tooltip="Create News"><i class="material-icons">edit</i></a>
+                <a href="AdminNews.php">Read More</a>
+
               </div>
             </div>
           </div>
@@ -166,8 +166,8 @@
                 I am convenient because I require little markup to use effectively.</p>
               </div>
               <div class="card-action">
-                <a href="AdminEditNews.php">Edit me</a>
-                <a href="AdminCreateNews.php" class="btn-floating tooltipped halfway-fab waves-effect waves-light red" data-position="top" data-delay="50" data-tooltip="Create News"><i class="material-icons">edit</i></a>
+                <a href="AdminNews.php">Read More</a>
+
               </div>
             </div>
           </div>
