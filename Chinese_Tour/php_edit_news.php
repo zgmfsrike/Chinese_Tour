@@ -102,6 +102,10 @@ if($_POST['save']){
               // -----Upload PDF-----
               $ext = pathinfo(basename($_FILES['newsPdf'.$j]['name'] ),PATHINFO_EXTENSION);
               $check_ext = strtolower( $ext);
+
+              $old_pdf_name = basename($_FILES['newsPdf'.$j]['name']);
+              // echo $old_pdf_name;
+
               // echo $check_ext;
 
               if($check_ext == "pdf"){
@@ -119,7 +123,7 @@ if($_POST['save']){
                 $news_pdf = $new_pdf_name;
 
                 // ---------------------------
-                $sql3 = "UPDATE `news_pdf` SET `news_pdf`='$news_pdf' WHERE news_pdf LIKE '$old_pdf%'";
+                $sql3 = "UPDATE `news_pdf` SET `news_pdf`='$news_pdf',`pdf_name`='$old_pdf_name' WHERE news_pdf LIKE '$old_pdf%'";
                 $result3 = mysqli_query( $GLOBALS['conn'] , $sql3 );
 
 
@@ -130,7 +134,7 @@ if($_POST['save']){
 
                 if($count_row  == 0){
                   echo "fail to update";
-                  $sql_add_pdf = "INSERT INTO news_pdf(news_id, news_pdf) VALUES ('$news_id[0]','$news_pdf')";
+                  $sql_add_pdf = "INSERT INTO news_pdf(news_id, news_pdf,pdf_name) VALUES ('$news_id[0]','$news_pdf','$old_pdf_name')";
                   $result_add = mysqli_query( $GLOBALS['conn'],$sql_add_pdf);
 
                 }
