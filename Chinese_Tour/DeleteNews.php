@@ -14,7 +14,7 @@ if($_GET['news_id'] != ""){
   $result = mysqli_query($GLOBALS['conn'],$sql);
 
   if($result){
-      header("location: messege.php?msg=del_news_succ");
+      header("location: message.php?msg=del_news_succ");
   }
 
 }
