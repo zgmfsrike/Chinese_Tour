@@ -79,7 +79,7 @@ if($_POST['save']){
 
 
 
-        header("location: messege.php?msg=create_news_succ");
+        header("location: message.php?msg=create_news_succ");
 
   }
 

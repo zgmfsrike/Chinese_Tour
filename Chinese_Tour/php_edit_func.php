@@ -55,7 +55,7 @@ if($_POST['save']){
                                  WHERE id = $id ";
     $result = mysqli_query( $GLOBALS['conn'] , $sql );
     if($result){
-      header("location: messege.php?msg=edit");
+      header("location: message.php?msg=edit");
       ob_end_flush();
     }
 

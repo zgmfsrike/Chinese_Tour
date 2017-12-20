@@ -19,21 +19,21 @@ if(isset($_POST['save'])){
                     $query= "UPDATE `member` SET `password`= '$npassword' WHERE id = $id ";
                     $result = mysqli_query( $GLOBALS['conn'] , $query);
                     if($result){
-                        header("location: messege.php?msg=change_password_succ");
+                        header("location: message.php?msg=change_password_succ");
                     }else{
-                        header("location: messege.php?msg=change_password_fail");
+                        header("location: message.php?msg=change_password_fail");
                     }
                 }else{
-                    header("location: messege.php?msg=change_password_fail_confirm_password");
+                    header("location: message.php?msg=change_password_fail_confirm_password");
                 }
             }else{
-                header("location: messege.php?msg=incorrect_password");
+                header("location: message.php?msg=incorrect_password");
             }
         }else{
-            header("location: messege.php?msg=change_password_fail");
+            header("location: message.php?msg=change_password_fail");
         }
     }else{
-        header("location: messege.php?msg=change_password_fail");
+        header("location: message.php?msg=change_password_fail");
     }
 }
 ?>
