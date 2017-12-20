@@ -98,19 +98,19 @@ if($_POST['save']){
              echo 'Message could not be sent.';
              echo 'Mailer Error: ' . $mail->ErrorInfo;
          }
-         header("location: messege.php?msg=email_change");
+         header("location: message.php?msg=email_change");
          ob_end_flush();
 
 
    }
    else if($email !== $confirm_email){
-     header("location: messege.php?msg=email_not_match");
+     header("location: message.php?msg=email_not_match");
      }
 
  }else if($email == $oldmail){
-    header("location: messege.php?msg=email_old");
+    header("location: message.php?msg=email_old");
  }else {
-   header("location: messege.php?msg=email_already_use");
+   header("location: message.php?msg=email_already_use");
    }
 
 

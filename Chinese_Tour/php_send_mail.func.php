@@ -65,7 +65,7 @@ if($_POST['send'] && $subject !== "" && $description !==""){
              echo 'Message could not be sent.';
              echo 'Mailer Error: ' . $mail->ErrorInfo;
          }
-         header("location: messege.php?msg=email_send_succ");
+         header("location: message.php?msg=email_send_succ");
          ob_end_flush();
 
 

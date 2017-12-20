@@ -47,7 +47,7 @@ function register(){
 
         $password = hashPassword($password);
     }else{
-        header("location: messege.php?msg=reg_fail_confirm_password");
+        header("location: message.php?msg=reg_fail_confirm_password");
         return false;
     }
 
@@ -111,8 +111,11 @@ function register(){
                 $mail->AltBody = strip_tags($body);
 
                 $mail->send();
+
                 echo "PASS : 3";
-                header("location: messege.php?msg=reg_succ");
+
+                header("location: message.php?msg=reg_succ");
+
                 ob_end_flush();
                 // echo 'Message has been sent';
             } catch (Exception $e) {
@@ -137,7 +140,7 @@ function check_available($username,$email){
     $count = mysqli_num_rows($result);
     if( $count >= 1 ){
 //        $msg .= "Username is already used.";
-        header("location: messege.php?msg=reg_fail_username");
+        header("location: message.php?msg=reg_fail_username");
         return false;
     }
 
@@ -146,7 +149,7 @@ function check_available($username,$email){
     $count = mysqli_num_rows($result);
     if( $count >= 1 ){
 //        $msg .= "E-mail is already used.";
-        header("location: messege.php?msg=reg_fail_email");
+        header("location: message.php?msg=reg_fail_email");
         return false;
     }
 
