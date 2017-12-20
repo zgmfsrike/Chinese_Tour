@@ -97,6 +97,14 @@ if(isset($_GET['msg'])){
           case 'create_news_succ': messege('Success!','News has been created ','index.php','Go to home page');
               break;
 
+          case 'del_news_succ': messege('Success!','News has been deleted ','index.php','Go to home page');
+              break;
+
+          case 'edit_news_succ': messege('Success!','News has been changed ','index.php','Go to home page');
+              break;
+
+
+
             // default
         default: messege('Request not found','','','');
 

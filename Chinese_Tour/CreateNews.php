@@ -58,8 +58,24 @@ requireLogin();
         </div>
         <div class="form-group">
           <div class="col-md-8 col-sm-9">
+            <label for="control-label col-sm-8"><h5>Add PDF</h5></label>
+          <input class="form-control" type="file" name="newsPdf1" value="" accept="application/pdf">
+          <input class="form-control" type="file" name="newsPdf2" value="" accept="application/pdf">
+          <input class="form-control" type="file" name="newsPdf3" value="" accept="application/pdf">
+          <input class="form-control" type="file" name="newsPdf4" value="" accept="application/pdf">
+          <input class="form-control" type="file" name="newsPdf5" value="" accept="application/pdf">
+        </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-8 col-sm-9">
             <label for="control-label col-sm-8"><h5>Description</h5></label>
             <textarea required name="newsDescription" rows="8" cols="80" maxlength="500" minlength="10"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-8 col-sm-9">
+            <label for="control-label col-sm-8"><h5>Content</h5></label>
+            <textarea required name="newsContent" rows="8" cols="80" maxlength="500" minlength="10"></textarea>
           </div>
         </div>
 

@@ -82,47 +82,53 @@ $username = $objResult['username'];
     <!-- Page Content -->
     <div class="container">
 
-      <h1 class="my-4">Welcome to Modern Business</h1>
+      <h1 class="my-4">News</h1>
 
       <!-- Marketing Icons Section -->
-      <div class="row">
-        <div class="col-lg-4 mb-4">
-          <div class="card h-100">
-            <h4 class="card-header">Card Title</h4>
-            <div class="card-body">
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Learn More</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 mb-4">
-          <div class="card h-100">
-            <h4 class="card-header">Card Title</h4>
-            <div class="card-body">
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Learn More</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 mb-4">
-          <div class="card h-100">
-            <h4 class="card-header">Card Title</h4>
-            <div class="card-body">
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Learn More</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- /.row -->
+      <div class="row ">
 
-      <!-- Portfolio Section -->
+              <div class="col-lg-4">
+                <?php
+                $sql= "SELECT n.news_id,n.topic,n.short_description FROM news n";
+                $result = mysqli_query( $GLOBALS['conn'] , $sql );
+                $img_path = "./images/";
+
+                // $img = $img_path.$img_file;
+                while($show = mysqli_fetch_array($result)) {
+
+                  echo "<div class='col-lg-12'>";
+                  echo "<table class='table table-striped'>";
+                    echo "<tbody>
+                    <tr>
+                    </tr>
+
+                        <tr>";
+                  $news_id = $show['news_id'];
+                  $sql_img = "SELECT n.news_id,ni.news_image FROM news n INNER JOIN news_image ni on n.news_id = ni.news_id
+                              WHERE n.news_id = '$news_id'";
+                  $result_img = mysqli_query( $GLOBALS['conn'] , $sql_img );
+                  $show_img = mysqli_fetch_array($result_img);
+                  $img_name = $show_img['news_image'];
+                  if(!$show_img){
+                    $img_name = "No_Image_Available.png";
+                  }
+                  $img_file = $img_path.$img_name;
+                echo "<td><img src='$img_file' height='100' width='150'></td>";
+                echo "<td class='col-md-6'><a href='http://localhost/Chinese_Tour/Chinese_Tour/view_news.php?news_id=$news_id'><h4>".$show['topic']."</a></h4>";
+                echo "<div class='col-lg-12'>".$show['short_description']."</div></td>";
+                echo "  </tr>
+                </tbody>
+              </table>
+            </div>";
+                }
+                ?>
+
+
+
+              </div>
+
+
+      </div>
       <h2>Notice</h2>
 
       <div class="row">
