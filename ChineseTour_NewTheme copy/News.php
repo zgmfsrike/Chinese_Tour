@@ -12,19 +12,19 @@
         <div class="slider">
           <ul class="slides">
             <li>
-              <img src="images/home1.jpg"> <!-- random image -->
+              <img src="images/home1.jpg">
             </li>
             <li>
-              <img src="images/home2.jpg"> <!-- random image -->
+              <img src="images/home2.jpg">
             </li>
             <li>
-              <img src="images/home3.jpg"> <!-- random image -->
+              <img src="images/home3.jpg">
             </li>
             <li>
-              <img src="images/home4.jpg"> <!-- random image -->
+              <img src="images/home4.jpg">
             </li>
             <li>
-              <img src="images/home5.jpg"> <!-- random image -->
+              <img src="images/home5.jpg">
             </li>
           </ul>
         </div>

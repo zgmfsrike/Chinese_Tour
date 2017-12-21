@@ -70,7 +70,7 @@ requireLogin();
                        echo "<td align ='center'>" .$show['tour_type'] .  "</td> ";
                        echo "<td align ='center'>" .$show['vehicle_type'] .  "</td> ";
                        echo "<td align ='center'>" .$show['accommodation_level'] .  "</td> ";
-                       echo "<td align ='center'><input class='waves-effect waves-light btn green' type='button' value='View' onclick=\"window.location.href='http://localhost:8080/ChineseTour/Chinese_Tour/ChineseTour_NewTheme%20copy/show_tour_round.php?tourId=$tourId'\"></td>";
+                       echo "<td align ='center'><input class='waves-effect waves-light btn green' type='button' value='View' onclick=\"window.location.href='http://localhost:8080/Chinese_Tour/ChineseTour_NewTheme%20copy/show_tour_round.php?tourId=$tourId'\"></td>";
                        echo "</tr>";
                      }
                      echo "</table>";

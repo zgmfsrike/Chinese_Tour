@@ -65,7 +65,7 @@ $tour_round_id = $_GET['tour_round_id'];
                      echo "<td align ='center'>" .$show['reservation_age'] .  "</td> ";
                      echo "<td align ='center'>" .$show['avoid_food'] .  "</td> ";
                      echo "<td align ='center'>" .$show['group_member'] .  "</td> ";
-                     echo "<td align ='center'><a href='http://localhost:8080/ChineseTour/Chinese_Tour/ChineseTour_NewTheme%20copy/tour_send_mail.php?member_id=$member_id'>" .$show['email'] .  "</a></td> ";
+                     echo "<td align ='center'><a href='http://localhost:8080/Chinese_Tour/ChineseTour_NewTheme%20copy/tour_send_mail.php?member_id=$member_id'>" .$show['email'] .  "</a></td> ";
                      // echo "<td align ='center'><input  type='button' value='Send Mail' onclick=\"window.location.href='http://localhost/Chinese_Tour/Chinese_Tour/tour_send_mail.php?member_id=$member_id.'\"></td>";
                      echo "</tr>";
                    }
