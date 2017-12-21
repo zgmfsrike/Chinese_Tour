@@ -1,7 +1,7 @@
 <!DOCTYPE html>
   <html>
   <?php
-  // include('module/session.php');
+  include('module/session.php');
   // requireLogin();
    ?>
    <?php
@@ -31,7 +31,7 @@
                         </div>
                       </div>
                       <div class="s3 l4">
-                        <input type="submit" class="waves-effect waves-light btn green" value="Change" name="changeBanner1">
+                        <input type="submit" onclick="window.location.href ='http://localhost:8080/ChineseTour/Chinese_Tour/ChineseTour_NewTheme%20copy/Index.php'" class="waves-effect waves-light btn green" value="Change" name="changeBanner1">
                       </div>
 
                   </div>
@@ -104,6 +104,12 @@
                       </div>
                   </div>
                 </div>
+                <!-- <div class="row">
+                  <div class="center col s12">
+                    <input type="submit" value="Cancel" onclick="window.location.href='AdminIndex.php'" class="waves-effect waves-light btn red">
+                    <input name="changeAll" type="submit" class="waves-effect waves-light btn amber" value="Save All">
+                  </div>
+                </div> -->
               </form>
 
   </div>

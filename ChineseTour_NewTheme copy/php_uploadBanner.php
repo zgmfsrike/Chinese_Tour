@@ -4,7 +4,6 @@ include "db_config.php";
       $target_dir = "images/";
       $changeBanner = array('changeBanner1','changeBanner2','changeBanner3','changeBanner4','changeBanner5');
       $banner = array('banner1','banner2','banner3','banner4','banner5');
-      
       if (isset($_POST[$changeBanner[0]])) {
         $temp = $banner[0];
         $submit = $changeBanner[0];
@@ -26,6 +25,15 @@ include "db_config.php";
         $submit = $changeBanner[4];
         $m = 5;
       }
+      // elseif (isset($_POST["changeAll"])) {
+      //   for ($n=0; $n <=5 ; $n++) {
+      //     $temp = $banner[$n];
+      //     $submit = $changeBanner[$n];
+      //     $m = $n+1;
+      //
+      //   }
+      // }
+
       $target_file = $target_dir . basename($_FILES["$temp"]["name"]);
       $filename = $_FILES["$temp"]["name"];
       $filetemp = $_FILES["$temp"]["tmp_name"];
@@ -42,6 +50,16 @@ include "db_config.php";
           $uploadOk = 0;
         }
       }
+      // if(isset($_POST["changeAll"])) {
+      //   $check = getimagesize($_FILES["$temp"]["tmp_name"]);
+      //   if($check !== false) {
+      //     echo "File is an image - " . $check["mime"] . ".";
+      //     $uploadOk = 1;
+      //   } else {
+      //     echo "File is not an image.";
+      //     $uploadOk = 0;
+      //   }
+      // }
 
         // Check file size
         if ($_FILES["$temp"]["size"] > 500000) {
@@ -55,15 +73,13 @@ include "db_config.php";
         }
         // Check if $uploadOk is set to 0 by an error
         if ($uploadOk == 0) {
-          echo "Sorry, your file was not uploaded.";
+          header("location: message.php?msg=uploadNotSucc");
           // if everything is ok, try to upload file
         } else {
           $changeFilename = explode(".",$filename);
           $newname="home$m.".$changeFilename['1'];
           move_uploaded_file($filetemp,'images/'.$newname);
-          echo "Got it! The file has been uploaded.";
+          header("location: message.php?msg=uploadSucc");
         }
-
-
 
 ?>

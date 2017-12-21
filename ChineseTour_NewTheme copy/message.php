@@ -110,6 +110,12 @@ if(isset($_GET['msg'])){
           case 'edit_news_succ': messege('Success!','News has been changed ','Index.php','Go to home page');
               break;
 
+          //Index manage
+          case 'uploadSucc': message('Got it!',' The file has been uploaded.','Index.php','Go to home page');
+            break;
+          case 'uploadNotSucc': message('Sorry, your file was not uploaded.','Please check neither your file is too large, nor your file type is wrong (Only JPG, JPEG, PNG & GIF files are allowed).','AdminIndex.php','Go to home page');
+            break;
+
 
 
             // default
