@@ -58,7 +58,7 @@ include 'component/header.php';
       include 'component/footer.php';
       ?>
 
-    <script src="http://api.map.baidu.com/api?v=2.0"></script>
+    <script src="http://api.map.baidu.com/api?v=1.2"></script>
     <script>
           var map = new BMap.Map('map_canvas');
           map.centerAndZoom(new BMap.Point(98.993963,18.781326),20);
