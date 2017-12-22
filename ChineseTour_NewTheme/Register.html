@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link rel="stylesheet" href="css/materialize.min.css"/>
+      <link rel="stylesheet" href="css/materialize.css"/>
+      <link rel="stylesheet" href="css/main.css">
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+      <title>Chinese Tour</title>
+
+    </head>
+
+    <body>
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script src="js/materialize.min.js"></script>
+      <script src="js/materialize.js"></script>
+      <script src="js/main.js"></script>
+      <script src="js/validate.js"></script>
+      <script src="js/validate2.js"></script>
+
+<!------------------------------------------------------------------------------------------------------------------------------>
+
+      <!--Navbar-->
+      <div>
+        <nav class="nav-extended">
+          <div class="nav-wrapper red darken-2">
+              <a href="index.html" class="brand-logo center hide-on-med-and-down"><img src="images/logo400x300.png" width=20% height=20% alt="logo"></a>
+
+              <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+              <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="#">WeChat</a></li>
+                <li><a href="#">081-025-0351</a></li>
+                <li><a class="grey-text text-lighten-3" href="mailto:chiangmaihongthai@hotmail.com">chiangmaihongthai@hotmail.com</a></li>
+                </ul>
+              <ul class="side-nav" id="mobile-demo">
+                <li><a>Chiangmai HongThai</a></li>
+                <li><div class="divider"></div></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="meeting.html">Meeting Tour</a></li>
+                <li><a href="incentive.html">Incentive Tour</a></li>
+                <li><a href="convension.html">Convension Tour</a></li>
+                <li><a href="foxhibition.html">Foxhibition Tour</a></li>
+                <li><a href="business.html">Business Tour</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><div class="divider"></div></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="login.html">Log in</a></li>
+              </ul>
+          </div>
+
+          <div class="nav-content red darken-3 hide-on-small-only">
+            <ul class="tabs tabs-transparent">
+              <li class="tab"><a target="_self" href="index.html">Home</a></li>
+              <li class="tab"><a target="_self" href="meeting.html">Meeting Tour</a></li>
+              <li class="tab"><a target="_self" href="incentive.html">Incentive Tour</a></li>
+              <li class="tab"><a target="_self" href="convension.html">Convension Tour</a></li>
+              <li class="tab"><a target="_self" href="foxhibition.html">Foxhibition Tour</a></li>
+              <li class="tab"><a target="_self" href="business.html">Business Tour</a></li>
+              <li class="tab"><a target="_self" href="aboutus.html">About Us</a></li>
+              <li class="right tab"><a target="_self" href="register.html">Register</a></li>
+              <li class="right tab"><a target="_self" href="login.html">Log in</a></li>
+            </ul>
+          </div>
+        </nav>
+
+      <!--Register-->
+      <div class="container">
+        <div class="row">
+          <h3 class="center">Registration</h3>
+          <div class="col s12">
+            <h4>Account Information</h4>
+            <form class="form-horizontal" method="post" action="php_register.php" id="fileForm" role="form">
+
+            <div class="row">
+              <div class="input-field col s12 l6">
+                <input onkeyup="ValidateUsername(this)" id="username" type="text" name="username" id="username" minlength="3" maxlength="16" required/>
+                <label for="username">Username<b class="red-text"> *</b></label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 l6">
+                <input onkeyup="checkPass(); return false;" onfocusout="checkPass(); return false;" required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16" id="inputPassword"/>
+                <label for="password">Password<b class="red-text"> *</b></label>
+              </div>
+              <div class="input-field col s12 l6">
+                <input onkeyup="checkPass(); return false;" onfocusout="checkPass(); return false;" type="password" class="form-control inputpass" name="cpassword" minlength="4" maxlength="16" id="cpassword" placeholder="Confirm your password" required>
+                <label for="cpassword">Comfirm Password</label>
+                <span id="confirmMessage" class="confirmMessage"></span>
+              </div>
+            </div>
+
+            <h4>Personal Information</h4>
+            <div class="row">
+              <div class="input-field col s12 l6">
+                <input onkeyup = "Validate(this)" id="txt" type="text" class="form-control" name="firstname" id="firstname" placeholder="Enter your Name here" required>
+                <label for="firstname">Firstname<b class="red-text"> *</b></label>
+              </div>
+              <div class="input-field col s12 l6">
+                <input onkeyup = "Validate(this)" type="text" class="form-control" name="middlename" id="middlename" placeholder="Enter your Middle Name here">
+                <label for="middlename">Middle Name</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 l6">
+                <input onkeyup="Validate(this)" type="text" class="form-control" name="lastname" id="lastname" placeholder="Enter your Surname here" required>
+                <label for="lastname">Lastname<b class="red-text"> *</b></label>
+              </div>
+              <div class="input-field col s12 l6">
+                <input type="text" class="datepicker">
+                <label for="datepicker">Birthday<b class="red-text"> *</b></label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12 l6">
+                <label>Occupation<b class="red-text"> *</b></label>
+                  <select class="browser-default" name="occupation" required>
+                    <option value="">Please select</option>
+                    <option value="1">Business Owner</option>
+                    <option value="2">Employee</option>
+                    <option value="3">University Lecturer</option>
+                    <option value="4">Manager</option>
+                    <option value="5">Government officer</option>
+                    <option value="6">Doctor</option>
+                    <option value="7">Researcher</option>
+                    <option value="8">Store Owner</option>
+                    <option value="9">Other</option>
+                  </select>
+              </div>
+              <div class="col s12 l6">
+                <label>Salary<b class="red-text"> *</b></label>
+                  <select class="browser-default" name="occupation" required>
+                    <option value="">Please select</option>
+                    <option value="1">0&nbsp;-&nbsp;10,000&nbsp;THB/month</option>
+                    <option value="2">10,001&nbsp;-15,000&nbsp;THB/month</option>
+                    <option value="3">15,001&nbsp;-20,000&nbsp;THB/month</option>
+                    <option value="4">20,001&nbsp;-25,000&nbsp;THB/month</option>
+                    <option value="5">25,001&nbsp;-30,000&nbsp;THB/month</option>
+                    <option value="6">30,001&nbsp;-35,000&nbsp;THB/month</option>
+                    <option value="7">35,001&nbsp;-40,000&nbsp;THB/month</option>
+                    <option value="8">&gt;40,0001&nbsp;THB/month</option>
+                  </select>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s12 l6">
+                <input onchange="email_validate(this.value);" type="email" class="form-control" name="email" id="email" placeholder="Enter your Email"  required>
+                <label for="email">Email<b class="red-text"> *</b></label>
+              </div>
+              <div class="input-field col s2 l2">
+                <input class="col-sm-3" onkeyup="validatephone(this);" maxlength="3" type="text" name="countrycode" placeholder="Code" value="" required>
+                <label for="countrycode">Countrycode<b class="red-text"> *</b></label>
+              </div>
+              <div class="input-field col s10 l4">
+              <input onkeyup="validatephone(this);" type="text" class="form-control phone" maxlength="15" name="phone" id="phone" placeholder="Enter your contact no." required>
+              <label for="phone">Telephone Number<b class="red-text"> *</b></label>
+              </div>
+            </div>
+            <h5>Address</h5>
+            <div class="row">
+              <div class="input-field col s10 l6">
+                <input required name="address" type="text" class="form-control inputpass" minlength="4" maxlength="50"  id="address" placeholder="Address" />
+                <label for="address">Address<b class="red-text"> *</b></label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s10 l6">
+                <input onkeyup = "Validate(this)" id="txt" type="text" class="form-control inputpass" name="city" id="city" placeholder="City" required>
+                <label for="city">City<b class="red-text"> *</b></label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s10 l6">
+                <input onkeyup = "Validate(this)" id="txt" type="text" class="form-control inputpass" name="province" id="province" placeholder="Province" required>
+                <label for="province">Province<b class="red-text"> *</b></label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s10 l6">
+                <input onkeyup="validatephone(this);" type="text" class="form-control phone" maxlength="5" name="zipcode" id="zipcode" placeholder="Zip Code" required>
+                <label for="zipcode">Zipcode<b class="red-text"> *</b></label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="center col s12">
+                <input type="submit" value="Cancel" onclick="window.location.href='Index.php'" class="waves-effect waves-light btn red">
+                <input name="submit" type="submit" class="waves-effect waves-light btn amber" value="Sign Up">
+              </div>
+            </div>
+      </div>
+    </form>
+    </div>
+</div>
+  </div>
+
+
+      <!--Footer-->
+      <footer class="page-footer red darken-3">
+         <div class="container">
+           <div class="row">
+             <div class="col l6 s12">
+               <h5 class="white-text">Address</h5>
+               <p class="grey-text text-lighten-4">Chiangmai HongThai SriDonChai Road PhraSingha District Aumphoe Mueang Chiangmai Thailand</p>
+             </div>
+             <div class="col l4 offset-l2 s12">
+               <h5 class="white-text">Contact Us</h5>
+               <ul>
+                 <li><a class="grey-text text-lighten-3" href="#!">WeChat : @wechatIdHere</a></li>
+                 <li><a class="grey-text text-lighten-3" href="#!">Tel : 081-025-0351</a></li>
+                 <li><a class="grey-text text-lighten-3" href="mailto:chiangmaihongthai@hotmail.com">Email : chiangmaihongthai@hotmail.com</a></li>
+               </ul>
+             </div>
+           </div>
+         </div>
+         <div class="footer-copyright red darken-4">
+           <div class="container">
+           © 2017 Copyright CAMT
+           <a class="grey-text text-lighten-4 right" href="#!">Click me!</a>
+           </div>
+         </div>
+       </footer>
+
+    </body>
+  </html>

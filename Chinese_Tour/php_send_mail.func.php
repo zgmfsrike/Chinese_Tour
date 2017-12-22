@@ -24,6 +24,13 @@ if($_POST['send'] && $subject !== "" && $description !==""){
            $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
          try {
              //Server settings
+             $mail->SMTPOptions = array(
+                     'ssl' => array(
+                         'verify_peer' => false,
+                         'verify_peer_name' => false,
+                         'allow_self_signed' => true
+                     )
+                 );
              $mail->SMTPDebug = 0;                                 // Enable verbose debug output
              $mail->isSMTP();                                      // Set mailer to use SMTP
              $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
@@ -58,7 +65,7 @@ if($_POST['send'] && $subject !== "" && $description !==""){
              echo 'Message could not be sent.';
              echo 'Mailer Error: ' . $mail->ErrorInfo;
          }
-         header("location: messege.php?msg=email_send_succ");
+         header("location: message.php?msg=email_send_succ");
          ob_end_flush();
 
 

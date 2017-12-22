@@ -35,6 +35,13 @@ if($_POST['save']){
            $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
          try {
              //Server settings
+             $mail->SMTPOptions = array(
+                     'ssl' => array(
+                         'verify_peer' => false,
+                         'verify_peer_name' => false,
+                         'allow_self_signed' => true
+                     )
+                 );
              $mail->SMTPDebug = 0;                                 // Enable verbose debug output
              $mail->isSMTP();                                      // Set mailer to use SMTP
              $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
@@ -91,19 +98,19 @@ if($_POST['save']){
              echo 'Message could not be sent.';
              echo 'Mailer Error: ' . $mail->ErrorInfo;
          }
-         header("location: messege.php?msg=email_change");
+         header("location: message.php?msg=email_change");
          ob_end_flush();
 
 
    }
    else if($email !== $confirm_email){
-     header("location: messege.php?msg=email_not_match");
+     header("location: message.php?msg=email_not_match");
      }
 
  }else if($email == $oldmail){
-    header("location: messege.php?msg=email_old");
+    header("location: message.php?msg=email_old");
  }else {
-   header("location: messege.php?msg=email_already_use");
+   header("location: message.php?msg=email_already_use");
    }
 
 

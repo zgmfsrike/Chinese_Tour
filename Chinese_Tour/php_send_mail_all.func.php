@@ -30,6 +30,13 @@ if($_POST['send'] && $subject !== "" && $description !==""){
       $mail = new PHPMailer(true);
       try {
           //Server settings
+          $mail->SMTPOptions = array(
+                  'ssl' => array(
+                      'verify_peer' => false,
+                      'verify_peer_name' => false,
+                      'allow_self_signed' => true
+                  )
+              );
           $mail->SMTPDebug = 5;
           $mail->CharSet = "UTF-8";                               // Enable verbose debug output
           $mail->isSMTP();                                      // Set mailer to use SMTP
@@ -78,7 +85,7 @@ if($_POST['send'] && $subject !== "" && $description !==""){
        //-----------------------------Send change mail fucntion----------------------------------------------------//
 
          //
-         header("location: messege.php?msg=email_send_succ");
+         header("location: message.php?msg=email_send_succ");
          ob_end_flush();
 
 
