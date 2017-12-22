@@ -28,7 +28,7 @@ include 'component/header.php';
         <div class="row">
           <div class="col s12 l6">
             <div class="section"></div>
-            <iframe width="100%" height="400px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://developer.baidu.com/map/jsdemo/demo/a1_1.htm"></iframe>
+              <div id="map_canvas" style="width:100%;height:400px"></div>
           </div>
           <div class="col s12 l1">
 
@@ -57,5 +57,12 @@ include 'component/header.php';
       <?php
       include 'component/footer.php';
       ?>
+
+    <script src="http://api.map.baidu.com/api?v=2.0"></script>
+    <script>
+          var map = new BMap.Map('map_canvas');
+          map.centerAndZoom(new BMap.Point(98.993963,18.781326),20);
+    </script>
+
     </body>
   </html>
