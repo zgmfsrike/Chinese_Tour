@@ -31,7 +31,7 @@
                         </div>
                       </div>
                       <div class="s3 l4">
-                        <input type="submit" onclick="window.location.href ='http://localhost:8080/ChineseTour/Chinese_Tour/ChineseTour_NewTheme%20copy/Index.php'" class="waves-effect waves-light btn green" value="Change" name="changeBanner1">
+                        <input type="submit" class="waves-effect waves-light btn green" value="Change" name="changeBanner1">
                       </div>
 
                   </div>
