@@ -2,7 +2,7 @@
   <html>
   <?php
   include('module/session.php');
-  isLogin();
+  isAdmin();
    ?>
    <?php
       include 'component/adminHeader.php';
@@ -51,7 +51,7 @@
       <div class="row">
         <div class="right">
           <a href="AdminCreateNews.php" class="btn-large btn-floating tooltipped waves-effect waves-light amber" data-position="top" data-delay="50" data-tooltip="Create News"><i class="material-icons">edit</i></a>
-          <a href="#" class="btn-large btn-floating tooltipped waves-effect waves-light red" data-position="top" data-delay="50" data-tooltip="Delete"><i class="material-icons">delete</i></a>
+          <a href="#" onclick="warning();" class="btn-large btn-floating tooltipped waves-effect waves-light red" data-position="top" data-delay="50" data-tooltip="Delete"><i class="material-icons">delete</i></a>
         </div>
       </div>
       </div>
@@ -60,6 +60,30 @@
       <?php
       include 'component/footer.php';
       ?>
+
+      <!-- ย้ายไปไฟล์ js แยกแล้วใช้ไม่ได้อะ เลยแปะไว้ตรงนี้แทน งง -0- -->
+      <script type="text/javascript">
+      function warning(){
+          swal({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.value) {
+              swal(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+              )
+            }
+          })
+      }
+
+      </script>
 
     </body>
   </html>

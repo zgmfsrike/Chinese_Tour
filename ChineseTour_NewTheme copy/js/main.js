@@ -33,4 +33,5 @@ $(document).ready(function(){
     $('select').material_select();
     $(".button-collapse").sideNav();
     $('.chips-initial').material_chip('data');
+
 });

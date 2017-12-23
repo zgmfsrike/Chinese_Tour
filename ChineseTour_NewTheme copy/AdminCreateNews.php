@@ -2,7 +2,7 @@
   <html>
   <?php
   include('module/session.php');
-  isLogin();
+  isAdmin();
    ?>
    <?php
       include 'component/adminHeader.php';
@@ -34,7 +34,7 @@
                         <input type="file">
                       </div>
                       <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                        <input class="file-path validate" type="text" placeholder="Upload a picture">
                       </div>
                     </div>
                   </form>
@@ -45,7 +45,7 @@
                         <input type="file">
                       </div>
                       <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                        <input class="file-path validate" type="text" placeholder="Upload a picture">
                       </div>
                     </div>
                   </form>
@@ -56,7 +56,7 @@
                         <input type="file">
                       </div>
                       <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                        <input class="file-path validate" type="text" placeholder="Upload a picture">
                       </div>
                     </div>
                   </form>
@@ -67,7 +67,7 @@
                         <input type="file">
                       </div>
                       <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                        <input class="file-path validate" type="text" placeholder="Upload a picture">
                       </div>
                     </div>
                   </form>
@@ -78,7 +78,18 @@
                         <input type="file">
                       </div>
                       <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                        <input class="file-path validate" type="text" placeholder="Upload a picture">
+                      </div>
+                    </div>
+                  </form>
+                  <form action="#">
+                    <div class="file-field input-field">
+                      <div class="btn amber">
+                        <span>File</span>
+                        <input type="file">
+                      </div>
+                      <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" placeholder="Upload a file">
                       </div>
                     </div>
                   </form>
