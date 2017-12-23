@@ -74,6 +74,7 @@ include 'php_profile_func.php';
               <input name="changeEmail" type="submit" value="Change Email" onclick="window.location.href='changeEmail.php'" class="btn btn-danger">
               <input name="search" type="submit" value="Search" onclick="window.location.href='php_search_tour.php'" class="btn btn-danger">
               <input name="createNews" type="submit" value="Create News" onclick="window.location.href='CreateNews.php'" class="btn btn-danger">
+              <!-- <input name="listNews" type="submit" value="List News" onclick="window.location.href='ListNews.php'" class="btn btn-danger"> -->
             </li>
           </ul>
         </div>

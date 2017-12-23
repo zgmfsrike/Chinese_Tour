@@ -1,10 +1,10 @@
 <footer class="py-2 ">
       <div class="container ">
         <div class="row">
-            <div class="col-md-8 dc">
-                <p>Copyright&copy;2017</p>
-                <h4>Address</h4>
-                <p>Unit 36/65 Marigold St,Revesby NSW 2212 Tel | (02) 9773 8773 Fax | (02) 977 8125 <br>Email | info@trevell.com.au</p>
+            <div class="col-md-8 text-left">
+                <p>Copyright&copy;2017<br>
+                <b>Address&nbsp;</b>
+                Unit 36/65 Marigold St,Revesby NSW 2212 Tel | (02) 9773 8773 Fax | (02) 977 8125 <br>Email | info@trevell.com.au</p>
             </div>
             <!-- <div class="col-md-3 lp">
                 <h3>Community</h3>

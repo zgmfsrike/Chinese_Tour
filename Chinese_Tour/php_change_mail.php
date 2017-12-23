@@ -35,6 +35,13 @@ if($_POST['save']){
            $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
          try {
              //Server settings
+             $mail->SMTPOptions = array(
+                     'ssl' => array(
+                         'verify_peer' => false,
+                         'verify_peer_name' => false,
+                         'allow_self_signed' => true
+                     )
+                 );
              $mail->SMTPDebug = 0;                                 // Enable verbose debug output
              $mail->isSMTP();                                      // Set mailer to use SMTP
              $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
