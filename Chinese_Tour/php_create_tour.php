@@ -4,9 +4,9 @@ include "db_config.php";
 error_reporting(E_ALL | E_STRICT);
 
 //if(isset($_SESSION['login_id'])){
-    
+
     if($_POST['submit']){
-        
+
         // ===== Insert to "tour" table =====
         $tour_name          = $_POST["tour_name"];
 //        $tour_image         = $_POST["image[]"]; // **
@@ -21,16 +21,16 @@ error_reporting(E_ALL | E_STRICT);
         $tour_max           = $_POST["max"];
 //        $tour_round_start   = $_POST["start_date[]"]; // ***
 //        $tour_round_end     = $_POST["end_date[]"]; // ***
-        
+
         $sql= "INSERT INTO tour (name, highlight, region, province, price, max_customer) VALUES ('$tour_name','$tour_highlight','$tour_region','$tour_province','$tour_price','$tour_max')";
         $result = mysqli_query( $GLOBALS['conn'] , $sql );
         $last_id = mysqli_insert_id($GLOBALS['conn']);
-        
+
         if (!$result) {
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
             return false;
         }
-        
+
         // ====== upload images + insert "tour_image" table =====
         for($i=1;$i<=10;$i++){
           if(!isset($_FILES['image_'.$i]) || $_FILES['image_'.$i]['error'] == UPLOAD_ERR_NO_FILE){
@@ -61,7 +61,7 @@ error_reporting(E_ALL | E_STRICT);
           }
 
         }
-        
+
         // upload schedule + insert "tour_schedule" table
         if(!isset($_FILES['schedule']) || $_FILES['schedule']['error'] == UPLOAD_ERR_NO_FILE){
             // echo "Image : ".$i." no file ";
@@ -96,7 +96,7 @@ error_reporting(E_ALL | E_STRICT);
               }
 
           }
-        
+
         // ======= check box : type ========
             if(!empty($_POST['type'])) {
                 // Counting number of checked checkboxes.
@@ -110,7 +110,7 @@ error_reporting(E_ALL | E_STRICT);
             }else{
                 echo "<b>Please Select Atleast One Option.</b>";
             }
-        
+
         // ======= check box : vehicel ========
             if(!empty($_POST['vehicel'])) {
                 // Counting number of checked checkboxes.
@@ -124,7 +124,7 @@ error_reporting(E_ALL | E_STRICT);
             }else{
                 echo "<b>Please Select Atleast One Option.</b>";
             }
-        
+
         // ======= check box : accommodation  ========
             if(!empty($_POST['accommodation'])) {
                 // Counting number of checked checkboxes.
@@ -138,7 +138,7 @@ error_reporting(E_ALL | E_STRICT);
             }else{
                 echo "<b>Please Select Atleast One Option.</b>";
             }
-    
+
         // ======= Tour round ========
         if(!empty($_POST['start_date']) and !empty($_POST['end_date'])){
             for($i = 0; $i < count($_POST['start_date']);$i++ ){
@@ -146,10 +146,10 @@ error_reporting(E_ALL | E_STRICT);
                 $end = $_POST['end_date'][$i];
                 $sql = "INSERT INTO tour_round(tour_id, start_date_time,end_date_time) VALUES ('$last_id','$start','$end')";
                 $result = mysqli_query( $GLOBALS['conn'] , $sql );
-                
+
             }
-            
+
         }
-        
+
     }
 ?>

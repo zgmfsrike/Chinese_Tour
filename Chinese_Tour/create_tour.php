@@ -1,21 +1,6 @@
 <?php
 include 'db_config.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- Standard Meta -->
-    <meta charset="utf-8"/>
-
-    <!-- Site Properties -->
-    <title>Chiang Mai Hongthai Business and Consultant Enterprise</title>
-
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="css/modern-business.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
       $(document).ready(function(){
@@ -23,11 +8,11 @@ include 'db_config.php';
         $('.add_more_image').click(function(e){
           e.preventDefault();
             var e = document.getElementsByTagName('input');
-            var i; 
+            var i;
             var s = 0;
             for(i=0; i < e.length; i++) {
                 if(e[i].type== "file" && e[i].className=="image" ) {
-                    s++; 
+                    s++;
                 }
             }
             if(s < 10){
@@ -35,7 +20,7 @@ include 'db_config.php';
                 $(this).before("<input name='image_" + s + "' required class='image' type='file' accept='image/*'/><br>");
             }
         });
-          
+
           // add more tour round
           $('.add_more_tr').click(function(e){
             e.preventDefault();
@@ -45,10 +30,6 @@ include 'db_config.php';
     </script>
 </head>
 <body>
-    <?php
-    include 'component/header.php';
-    ?>
-    <br><br><br><br>
 <div id="wrapper">
 <form action="php_create_tour.php" enctype="multipart/form-data" method="post" name="create_tour">
 <!--  Text : Tour name  -->
@@ -57,30 +38,30 @@ include 'db_config.php';
         <input required name='tour_name' type='text'/>
         <br>
     </div>
-    
+
 <!--  File[] : Image  -->
     <div id="image">
         <label>Image</label><br>
         <input name='image_1' required class='image' type='file' accept="image/*"/><br>
         <input type="button" class="add_more_image" value="Add More">
     </div>
-    
-    
-   
+
+
+
 <!--  Text : Highlight  -->
   <div id="highlight">
         <label>Highlight</label>
         <input required name='highlight' type='text'/>
         <br>
     </div>
-   
+
 <!--  PDF File : Schedule  -->
   <div id="schedule">
         <label>Schedule</label>
         <input required name='schedule' type='file' value="" accept="application/pdf"/>
         <br>
     </div>
-   
+
 <!--  Region  -->
     <div id="region">
         <label>Region</label>
@@ -168,8 +149,8 @@ include 'db_config.php';
         <input required name='max' type='number'/>
         <br>
     </div>
-    
-    
+
+
 <!--  Tour round  -->
     <div id="tour_round">
            <label>Start date</label><label>End date</label><br>
@@ -180,8 +161,3 @@ include 'db_config.php';
     <input type="submit" name="submit"/>
 </form>
 </div>
-    <?php
-    include 'component/footer.php';
-    ?>
-</body>
-</html>
