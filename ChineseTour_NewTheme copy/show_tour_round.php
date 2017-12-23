@@ -7,7 +7,7 @@ include "module/hashing.php";
 ?>
 <?php
 include('module/session.php');
-requireLogin();
+isLogin();
 
  ?>
 

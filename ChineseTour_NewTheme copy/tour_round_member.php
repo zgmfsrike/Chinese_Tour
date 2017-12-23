@@ -8,7 +8,7 @@ include "module/hashing.php";
 ?>
 <?php
 include('module/session.php');
-requireLogin();
+isLogin();
 $tour_round_id = $_GET['tour_round_id'];
 
  ?>

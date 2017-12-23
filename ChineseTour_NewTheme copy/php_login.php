@@ -34,5 +34,7 @@ if(isset($_POST['login'])){
     }else{
         header("location: message.php?msg=login_invalid");
     }
+}else{
+    header("location: index.php");
 }
 ?>

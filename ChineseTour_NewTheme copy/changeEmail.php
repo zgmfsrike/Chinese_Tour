@@ -1,6 +1,6 @@
 <?php
 include('module/session.php');
-requireLogin();
+isLogin();
 
  ?>
  <!DOCTYPE html>

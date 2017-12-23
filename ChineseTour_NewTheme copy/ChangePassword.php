@@ -1,6 +1,6 @@
 <?php
 include('module/session.php');
-requireLogin();
+isLogin();
 include "module/hashing.php";
 include "db_config.php";
 

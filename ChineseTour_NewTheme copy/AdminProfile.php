@@ -3,7 +3,7 @@
 <?php
       include 'component/header.php';
       include 'module/session.php';
-      requireLogin();
+      isLogin();
       include 'php_profile_func.php';
 ?>
 <body>

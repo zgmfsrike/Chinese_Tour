@@ -6,7 +6,7 @@ include "db_config.php";
 include "module/hashing.php";
 
 include('module/session.php');
-requireLogin();
+isLogin();
 
 
 if(isset($_SESSION['login_id'])){

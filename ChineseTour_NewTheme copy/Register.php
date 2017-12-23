@@ -3,7 +3,7 @@
 <?php
       include 'component/header.php';
       include 'module/session.php';
-      noLogin();
+      isNotLogin();
 ?>
 <body>
 

@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-  <html>
-
 <?php
-include 'component/header.php';
-?>
+include 'module/session.php';
+
+ ?>
+<!DOCTYPE html>
+<html>
 <body>
+  <?php
+  include 'component/header.php';
+  ?>
       <!--About Us-->
       <div class="container">
         <div class="row col s12">

@@ -1,6 +1,6 @@
 <?php
 include 'module/session.php';
-requireLogin();
+isLogin();
 if($_GET['news_id'] != ""){
   $news_id = $_GET['news_id'];
   $_SESSION['news_id'] = $news_id;

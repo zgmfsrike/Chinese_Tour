@@ -2,7 +2,7 @@
   <html>
   <?php
   include('module/session.php');
-  requireLogin();
+  isLogin();
    ?>
    <?php
       include 'component/adminHeader.php';
@@ -137,7 +137,7 @@
                 </form>
               </div>
               <div class="row col s12">
-                <input name="Submit" type="submit" value="Cancel" onclick="window.location.href='adminTourInfo.php'" class="waves-effect waves-light btn red">
+                <input name="Submit" type="submit" value="Cancel" onclick="window.location.href='AdminTourInfo.php'" class="waves-effect waves-light btn red">
                 <input type="submit" class="waves-effect waves-light btn green" value="Save">
               </div>
     </form>

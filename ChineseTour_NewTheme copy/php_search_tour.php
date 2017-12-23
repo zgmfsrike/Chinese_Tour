@@ -8,7 +8,7 @@ include "module/hashing.php";
 ?>
 <?php
 include('module/session.php');
-requireLogin();
+isLogin();
 
  ?>
 
@@ -17,7 +17,7 @@ requireLogin();
  <?php
        include 'component/header.php';
        // include 'module/session.php';
-       // requireLogin();
+       // isLogin();
        // include 'php_profile_func.php';
  ?>
  <body>

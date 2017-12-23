@@ -1,13 +1,14 @@
-<!DOCTYPE html>
-  <html>
 <?php
-      include 'component/header.php';
+include "db_config.php";
+include 'module/session.php';
 ?>
+
+<!DOCTYPE html>
+<html>
 <body>
 
 <?php
-include 'module/session.php';
-include "db_config.php";
+include 'component/header.php';
 
 if(isset($_GET['msg'])){
     $msg = $_GET['msg'];

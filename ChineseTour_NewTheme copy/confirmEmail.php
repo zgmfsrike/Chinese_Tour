@@ -2,7 +2,7 @@
   <html>
   <?php
   include('module/session.php');
-  requireLogin();
+  isLogin();
    ?>
    <?php
       include 'component/header.php';

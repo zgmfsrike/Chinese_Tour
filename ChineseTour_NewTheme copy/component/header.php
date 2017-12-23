@@ -34,7 +34,7 @@
           <li><a href="convension.php">Convension Tour</a></li>
           <li><a href="foxhibition.php">Foxhibition Tour</a></li>
           <li><a href="business.php">Business Tour</a></li>
-          <li><a href="aboutUs.html">About Us</a></li>
+          <li><a href="AboutUs.html">About Us</a></li>
           <li><div class="divider"></div></li>
           <li><a href="Register.php">Register</a></li>
           <li><a href="Login.php">Log in</a></li>
@@ -49,7 +49,7 @@
         <li class="tab"><a target="_self" href="convension.php">Convension Tour</a></li>
         <li class="tab"><a target="_self" href="foxhibition.php">Foxhibition Tour</a></li>
         <li class="tab"><a target="_self" href="business.php">Business Tour</a></li>
-        <li class="tab"><a target="_self" href="aboutUs.php">About Us</a></li>
+        <li class="tab"><a target="_self" href="AboutUs.php">About Us</a></li>
         <li style="border-left: 1px solid #fff; border-radius: 0; height:50%; margin-top:1%;" class="tab"></li>
 
         <!--PHP : Check Login-->
@@ -81,7 +81,16 @@
             function login(){
         ?>
         <li class="right tab"><a target="_self" href="logout.php">Logout</a></li>
-        <li class="right tab"><a target="_self" href="Profile.php"><?php echo $GLOBALS['firstname']; ?></a></li>
+        <li class="right tab"><a target="_self" href="Profile.php">
+          <?php
+          if ($_SESSION['user_type'] == 'member') {
+            echo '';
+          }elseif ($_SESSION['user_type'] == 'admin') {
+            echo 'Admin ';
+          }
+          echo $GLOBALS['firstname'];
+          ?>
+        </a></li>
         <?php
         }
         ?>
