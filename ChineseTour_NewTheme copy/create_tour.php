@@ -13,12 +13,13 @@ include 'db_config.php';
             var i;
             var s = 0;
             for(i=0; i < e.length; i++) {
-                if(e[i].type== "file" && e[i].name=="image[]" ) {
+                if(e[i].type== "file" && e[i].className=="image" ) {
                     s++;
                 }
             }
             if(s < 10){
-                $(this).before("<input required name='image[]' type='file' accept='image/*'/><br>");
+              s++;
+              $(this).before("<input name='image_" + s + "' class='image' type='file' accept='image/*'/><br>");
             }
         });
 
@@ -43,7 +44,7 @@ include 'db_config.php';
 <!--  File[] : Image  -->
     <div id="image">
         <label>Image</label><br>
-        <input required name='image[]' type='file' accept="image/*"/><br>
+        <input required name='image_1' type='file' class='image' accept="image/*"/><br>
         <input type="button" class="add_more_image" value="Add More">
     </div>
 
@@ -89,7 +90,9 @@ include 'db_config.php';
             if($result = mysqli_query($conn, $sql)){
                 if(mysqli_num_rows($result) > 0){
                     while($row = mysqli_fetch_array($result)){
-                        echo '<input type="checkbox" name="type[]" value="'.$row['tour_type_id'].'"  checked>'.$row['tour_type']. '</input>';
+                    ?>
+                    <input type="checkbox" name="type[]" value="<?php echo $row['tour_type_id'];?>"  checked><?php echo $row['tour_type'];?></input>
+                    <?php
                     }
                     // Free result set
                     mysqli_free_result($result);

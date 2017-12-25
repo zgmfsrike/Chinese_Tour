@@ -1,9 +1,9 @@
+<?php
+include('module/session.php');
+isLogin();
+ ?>
 <!DOCTYPE html>
   <html>
-  <?php
-  include('module/session.php');
-  isLogin();
-   ?>
    <?php
       include 'component/adminHeader.php';
       ?>

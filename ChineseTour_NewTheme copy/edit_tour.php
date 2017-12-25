@@ -1,5 +1,21 @@
 <?php
 include 'db_config.php';
+
+if(isset($_GET['id'])){
+    $id = $_GET['id'];
+
+    // tour
+    $sql = "SELECT * FROM `tour` WHERE tour_id = $id";
+    $result = mysqli_query($conn, $sql);
+    $data = mysqli_fetch_array($result);
+
+    $tour_name = $data['name'];
+    $hightlight = $data['highlight'];
+    $region = $data['region'];
+    $province = $data['province'];
+    $price = $data['price'];
+    $max_customer = $data['max_customer'];
+    $rating = $data['rating'];
 ?>
 <html>
 <head>
@@ -13,12 +29,13 @@ include 'db_config.php';
             var i;
             var s = 0;
             for(i=0; i < e.length; i++) {
-                if(e[i].type== "file" && e[i].name=="image[]" ) {
+                if(e[i].type== "file" && e[i].className=="image" ) {
                     s++;
                 }
             }
             if(s < 10){
-                $(this).before("<input required name='image[]' type='file' accept='image/*'/><br>");
+              s++;
+              $(this).before("<input name='image_" + s + "' class='image' type='file' accept='image/*'/><br>");
             }
         });
 
@@ -32,18 +49,34 @@ include 'db_config.php';
 </head>
 <body>
 <div id="wrapper">
-<form action="php_create_tour.php" enctype="multipart/form-data" method="post" name="create_tour">
+<form action="php_edit_tour.php" enctype="multipart/form-data" method="post" name="edit_tour">
 <!--  Text : Tour name  -->
     <div id="name" name="tour_name">
         <label>Tour name</label>
-        <input required name='tour_name' type='text'/>
+        <input required name='tour_name' type='text' value="<?php echo $tour_name; ?>"/>
         <br>
     </div>
 
-<!--  File[] : Image  -->
+<!--  File[] : Image**  -->
     <div id="image">
         <label>Image</label><br>
-        <input required name='image[]' type='file' accept="image/*"/><br>
+        <?php
+        $sql = "SELECT * FROM `tour_image` WHERE tour_id = $id";
+        $result = mysqli_query($conn, $sql);
+        if(mysqli_num_rows($result) > 0){
+          $i = 1;
+            while($row = mysqli_fetch_array($result)){
+                $img_name = $row['img_name'];
+                ?>
+                <img src="images/tours/<?php echo $img_name;?>" height="200" width="200">
+                <input name='image_<?php echo $i ?>' type='file' class='image' accept="image/*"/><br>
+                <?php
+                $i++;
+            }
+            // Free result set
+            mysqli_free_result($result);
+        }
+        ?>
         <input type="button" class="add_more_image" value="Add More">
     </div>
 
@@ -52,11 +85,11 @@ include 'db_config.php';
 <!--  Text : Highlight  -->
   <div id="highlight">
         <label>Highlight</label>
-        <input required name='highlight' type='text'/>
+        <input required name='highlight' type='text' value="<?php echo $hightlight; ?>"/>
         <br>
     </div>
 
-<!--  PDF File : Schedule  -->
+<!--  PDF File : Schedule**  -->
   <div id="schedule">
         <label>Schedule</label>
         <input required name='schedule' type='file' value="" accept="application/pdf"/>
@@ -66,19 +99,19 @@ include 'db_config.php';
 <!--  Region  -->
     <div id="region">
         <label>Region</label>
-        <input required name='region' type='text'/>
+        <input required name='region' type='text' value="<?php echo $region; ?>"/>
         <br>
     </div>
 <!--  Province  -->
     <div id="province">
         <label>Province</label>
-        <input required name='province' type='text'/>
+        <input required name='province' type='text' value="<?php echo $province; ?>"/>
         <br>
     </div>
 <!--  Price sale  -->
     <div id="price">
         <label>Price sale</label>
-        <input required name='price' type='number'/>
+        <input required name='price' type='number' value="<?php echo $price; ?>"/>
         <br>
     </div>
 <!--  Tour type  -->
@@ -89,7 +122,9 @@ include 'db_config.php';
             if($result = mysqli_query($conn, $sql)){
                 if(mysqli_num_rows($result) > 0){
                     while($row = mysqli_fetch_array($result)){
-                        echo '<input type="checkbox" name="type[]" value="'.$row['tour_type_id'].'"  checked>'.$row['tour_type']. '</input>';
+                    ?>
+                    <input type="checkbox" name="type[]" value="<?php echo $row['tour_type_id'];?>"  checked><?php echo $row['tour_type'];?></input>
+                    <?php
                     }
                     // Free result set
                     mysqli_free_result($result);
@@ -163,6 +198,7 @@ include 'db_config.php';
 </form>
 </div>
 </body>
-<script>
-    </script>
 </html>
+<?php }else{
+  echo "No id provide";
+} ?>
