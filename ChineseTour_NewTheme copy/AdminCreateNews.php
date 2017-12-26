@@ -1,6 +1,7 @@
 <?php
 include('module/session.php');
-isAdmin();
+// isAdmin();
+isLogin();
  ?>
 
 <!DOCTYPE html>

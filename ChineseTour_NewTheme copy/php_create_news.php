@@ -55,6 +55,13 @@ if($_POST['save']){
                 // $result3 = mysqli_query( $GLOBALS['conn'] , $sql3 );
                 //
 
+
+                // $image_origin = basename($_FILES['newsPicAddtopic'.$i]['name']);
+                // $width = 100;
+                // $size = getimagesize($image_origin);
+                // $height
+
+
                 $new_image_name = 'img_'.$last_id.'_'.$i.'.'.$ext;
                 $img_path = "images/";
                 $upload_path = $img_path.$new_image_name;
@@ -83,24 +90,28 @@ if($_POST['save']){
             // echo "Image : ".$i." have file ";
             // echo "<br>";
 
-              // -----Upload PDF-----
-              $ext = pathinfo(basename($_FILES['newsPdf'.$j]['name'] ),PATHINFO_EXTENSION);
-              $check_ext = strtolower( $ext);
+            $ext = pathinfo(basename($_FILES['newsPdf'.$j]['name'] ),PATHINFO_EXTENSION);
+            $check_ext = strtolower( $ext);
+
+            $old_pdf_name = basename($_FILES['newsPdf'.$j]['name']);
+            // echo $old_pdf_name;
+            // $sql_add_pdf_name = "INSERT INTO `news_pdf`( `pdf_name`) VALUES ('$old_pdf_name') WHERE news_id ='$last_id'";
+            // $add_name = mysqli_query($GLOBALS['conn'] , $sql_add_pdf_name);
 
 
-                $new_pdf_name = 'pdf_'.$last_id.'_'.$j.'.'.$ext;
-                $pdf_path = "pdf/";
-                $upload_path_pdf = $pdf_path.$new_pdf_name;
-                $success = move_uploaded_file($_FILES['newsPdf'.$j]['tmp_name'] ,$upload_path_pdf);
-                if($success == FALSE){
-                  echo "Cannot upload pdf";
-                  exit();
-                }
-                $news_pdf = $new_pdf_name;
+              $new_pdf_name = 'pdf_'.$last_id.'_'.$j.'.'.$ext;
+              $pdf_path = "pdf/";
+              $upload_path_pdf = $pdf_path.$new_pdf_name;
+              $success = move_uploaded_file($_FILES['newsPdf'.$j]['tmp_name'] ,$upload_path_pdf);
+              if($success == FALSE){
+                echo "Cannot upload pdf";
+                exit();
+              }
+              $news_pdf = $new_pdf_name;
 
-                // ---------------------------
-                $sql3 = "INSERT INTO news_pdf(news_id, news_pdf) VALUES ('$last_id','$news_pdf')";
-                $result3 = mysqli_query( $GLOBALS['conn'] , $sql3 );
+              // ---------------------------
+              $sql3 = "INSERT INTO news_pdf(news_id, news_pdf,pdf_name) VALUES ('$last_id','$news_pdf','$old_pdf_name')";
+              $result3 = mysqli_query( $GLOBALS['conn'] , $sql3 );
 
 
 

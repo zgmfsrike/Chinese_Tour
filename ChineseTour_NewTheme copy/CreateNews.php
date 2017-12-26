@@ -107,8 +107,9 @@ include 'module/session.php';
 
         <div class="form-group">
           <div class="col-md-8 col-sm-9">
-            <input name="save" type="submit" class="btn btn-danger btn-md" value="Save">
             <input name="cancel" type="submit" value="Cancel" onclick="window.location.href='Index.php'" class="btn btn-warning">
+            <input name="save" type="submit" class="btn btn-danger btn-md" value="Save">
+
 
           </div>
         </div>
