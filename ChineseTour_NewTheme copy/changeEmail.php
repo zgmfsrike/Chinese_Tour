@@ -20,7 +20,7 @@ isLogin();
          </div>
        </div>
        <div class="col s12 l9">
-         <div class="col s12 l9">
+
            <h3>Change Email</h3>
            <form action="php_change_mail.php" method="post">
                <div class="form-group">
@@ -51,7 +51,7 @@ isLogin();
                </div>
              </div>
            </form>
-       </div>
+
        </div>
      </div>
    </div>

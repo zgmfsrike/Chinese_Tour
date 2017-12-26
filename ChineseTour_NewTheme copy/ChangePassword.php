@@ -61,7 +61,6 @@ if(isset($_POST['save'])){
         </div>
       </div>
       <div class="col s12 l9">
-        <div class="col s12 l9">
           <h3>Change Password</h3>
           <form action="ChangePassword.php" method="post">
             <div class="form-group">
@@ -101,7 +100,7 @@ if(isset($_POST['save'])){
                 <input type="button" value="Cancel" onclick="window.location.href='Profile.php'" class="btn waves-effect waves-light red"></div>
             </div>
           </form>
-      </div>
+
       </div>
     </div>
   </div>
