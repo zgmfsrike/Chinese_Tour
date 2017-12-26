@@ -1,12 +1,11 @@
+<?php
+include 'module/session.php';
+ ?>
 <!DOCTYPE html>
   <html>
-  <?php
-  include('module/session.php');
-  // isLogin();
-   ?>
-   <?php
-      include 'component/adminHeader.php';
-      ?>
+<?php
+include 'component/header.php';
+?>
 <body>
 
       <!--Change Banners Here-->
@@ -103,7 +102,6 @@
                         <input type="submit" class="waves-effect waves-light btn green" value="Change" name="changeBanner5">
                       </div>
                   </div>
-                </div>
                 <!-- <div class="row">
                   <div class="center col s12">
                     <input type="submit" value="Cancel" onclick="window.location.href='AdminIndex.php'" class="waves-effect waves-light btn red">
@@ -112,8 +110,9 @@
                 </div> -->
               </form>
 
-  </div>
-      </div>
+            </div>
+        </div>
+    </div>
 
       <!--Footer-->
       <?php

@@ -1,11 +1,10 @@
+<?php
+include 'module/session.php';
+ ?>
 <!DOCTYPE html>
   <html>
-  <?php
-  include('module/session.php');
-  isAdmin();
-   ?>
    <?php
-      include 'component/adminHeader.php';
+      include 'component/header.php';
       ?>
 <body>
       <!--Edit News Here-->

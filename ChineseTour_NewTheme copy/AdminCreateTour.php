@@ -1,10 +1,11 @@
 <?php
+include 'module/session.php';
 include 'db_config.php';
- ?>
+?>
 <!DOCTYPE html>
   <html>
 <?php
-    include 'component/adminHeader.php';
+    include 'component/header.php';
 ?>
 
 <body>

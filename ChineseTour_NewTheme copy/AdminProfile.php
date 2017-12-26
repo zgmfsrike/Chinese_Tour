@@ -1,9 +1,10 @@
+<?php
+include 'module/session.php';
+ ?>
 <!DOCTYPE html>
   <html>
 <?php
       include 'component/header.php';
-      include 'module/session.php';
-      isLogin();
       include 'php_profile_func.php';
 ?>
 <body>

@@ -1,3 +1,6 @@
+<?php
+include 'module/session.php';
+?>
 <!DOCTYPE html>
   <html>
 <?php

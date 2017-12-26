@@ -1,7 +1,5 @@
 <?php
 include('module/session.php');
-isLogin();
-
  ?>
  <!DOCTYPE html>
    <html>
