@@ -1,10 +1,11 @@
 <?php
-      include 'component/header.php';
-      include 'module/session.php';
-      isNotLogin();
+include 'module/session.php';
 ?>
 <!DOCTYPE html>
 <html>
+<?php
+include 'component/header.php';
+?>
 <body>
 
     <!--Login-->
@@ -43,7 +44,6 @@
       </div>
       <div class="section"></div>
   </div>
-    </div>
 
       <!--Footer-->
       <?php

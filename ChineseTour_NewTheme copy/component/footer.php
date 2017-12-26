@@ -18,7 +18,6 @@
    <div class="footer-copyright red darken-4">
      <div class="container">
      © 2017 Copyright CAMT
-     <a class="grey-text text-lighten-4 right" href="#!">Click me!</a>
      </div>
    </div>
 

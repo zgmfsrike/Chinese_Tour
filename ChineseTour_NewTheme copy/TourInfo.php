@@ -1,4 +1,5 @@
 <?php
+include 'module/session.php';
 include 'db_config.php';
 ?>
 
@@ -23,7 +24,7 @@ if(isset($_GET['id'])){
     $price = $data['price'];
     $max_customer = $data['max_customer'];
     $rating = $data['rating'];
-    ?>
+  ?>
 
 
 <!DOCTYPE html>

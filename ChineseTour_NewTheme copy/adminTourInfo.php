@@ -5,7 +5,7 @@
   isLogin();
    ?>
    <?php
-      include 'component/adminHeader.php';
+      include 'component/header.php';
       ?>
 <body>
     <!--tour body-->

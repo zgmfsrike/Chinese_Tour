@@ -27,7 +27,7 @@
 // isLoginAs(array('admin','member'))
     function isLoginAs($user_type){
         if(!isset($_SESSION['login_id'])){
-            header('Location: message.php?msg=please_login');
+            return FALSE;
         }
         $lenght = count($user_type);
         if($lenght == 0){

@@ -1,15 +1,10 @@
 <?php
-session_start();
+include('module/session.php');
 error_reporting (E_ALL ^ E_NOTICE);
 include "db_config.php";
 // include "db_configNB.php";
 include "module/hashing.php";
 ?>
-<?php
-include('module/session.php');
-isLogin();
-
- ?>
 
  <!DOCTYPE html>
    <html>

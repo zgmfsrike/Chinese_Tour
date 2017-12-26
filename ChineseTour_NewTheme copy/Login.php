@@ -1,10 +1,14 @@
 <?php
-      include 'component/header.php';
-      include 'module/session.php';
-      isNotLogin();
+include 'module/session.php';
+if(isLoginAs('admin','member')){
+    header('Location: message.php?msg=login_already');
+}
 ?>
 <!DOCTYPE html>
 <html>
+    <?php
+      include 'component/header.php';
+?>
 <body>
 
     <!--Login-->
@@ -43,7 +47,6 @@
       </div>
       <div class="section"></div>
   </div>
-    </div>
 
       <!--Footer-->
       <?php
