@@ -8,18 +8,50 @@
 <body>
 <div class="container">
   <h3>Create Tour</h3>
-  <div class="section"></div>
   <form action="php_create_tour.php" enctype="multipart/form-data" method="post" name="create_tour">
   <div class="row">
-    <div class="col s12 l6" id="name">
-      <!--  Text : Tour name  -->
-      <div class="input-field" id="name" name="tour_name">
-          <input placeholder="Tour name here" required name="tour_name" type="text"/>
-          <label for="tour_name">Tour name</label>
+    <div class="column">
+      <div id="name">
+        <!--  Text : Tour name  -->
+           <div class="input-field inline col s12 l6" id="name" name="tour_name">
+             <h5>Tour name</h5>
+             <input placeholder="Tour name here" required name="tour_name" type="text">
+           </div>
+      </div>
+      <div class="col s12 l6" id="highlight">
+        <!--  Text : Highlight  -->
+        <h5>Highlight</h5>
+        <div class="input-field" id="highlight" name='highlight'>
+            <input placeholder="Highlight Here" required name='highlight' type='text'/>
+
+        </div>
       </div>
     </div>
+    <div class="column">
+      <div class="col s12 l6">
+        <div class="section"></div><br/>
+              <!--  PDF File : Schedule  -->
+                <div id="schedule">
+                  <div class="file-field input-field">
+                    <div class="btn">
+                      <span>Schedule File</span>
+                      <input required name='schedule' required type='file' accept="application/pdf"/>
+                    </div>
+                    <div class="file-path-wrapper">
+                      <input class="file-path validate" type="text" placeholder="File here">
+                    </div>
+                  </div>
+                      <!-- <label>Schedule</label>
+                      <input required name='schedule' type='file' value="" accept="application/pdf"/>
+                      <br> -->
+                  </div>
+      </div>
+    </div>
+
+
   </div>
   <div class="row">
+
     <div class="col s12 l6">
       <!--  File[] : Image  -->
           <div id="image">
@@ -37,47 +69,31 @@
               <input type="button" class="add_more_image btn amber" value="Add More Image">
           </div>
     </div>
-    <div class="col s12 l6">
-            <!--  PDF File : Schedule  -->
-              <div id="schedule">
-                <div class="file-field input-field">
-                  <div class="btn">
-                    <span>FILE</span>
-                    <input required name='schedule' required type='file' accept="application/pdf"/>
-                  </div>
-                  <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text" placeholder="File here">
-                  </div>
-                </div>
-                    <!-- <label>Schedule</label>
-                    <input required name='schedule' type='file' value="" accept="application/pdf"/>
-                    <br> -->
-                </div>
-    </div>
   </div>
-  <div class="row">
-    <div class="col s12 l6" id="highlight">
-      <!--  Text : Highlight  -->
-      <div class="input-field" id="highlight" name='highlight'>
-          <input placeholder="Highlight" required name='highlight' type='text'/>
-          <label for="highlight">Highlight</label>
+    <div class="row">
+      <div class="col s12 l6" id="price">
+          <!--  Price sale  -->
+          <h5>Price sale</h5>
+          <div class="input-field" id="price" name='price'>
+              <input placeholder="Price sale Here" required name='price' type='number' min="1"/>
+          </div>
       </div>
     </div>
-    <div class="col s12 l3" id="price">
-        <!--  Price sale  -->
-        <div class="input-field" id="price" name='price'>
-            <input placeholder="Price sale" required name='price' type='number' min="1"/>
-            <label for="price">Price sale</label>
-        </div>
+    <div class="row">
+      <div class="col s12 l6" id="max">
+        <!--  Max # of customer  -->
+        <h5>Max # of customer</h5>
+          <div class="input-field" id="max" name="max">
+              <input placeholder="Max number of customer" required name='max' type='number' min="1"/>
+          </div>
+      </div>
     </div>
-    <div class="col s12 l3" id="max">
-      <!--  Max # of customer  -->
-        <div class="input-field" id="max" name="max">
-            <input placeholder="Max number of customer" required name='max' type='number' min="1"/>
-            <label for="max">Max</label>
-        </div>
-    </div>
+
+
+  <div class="row">
+
   </div>
+
   <div class="row">
     <div class="col s12 l6" id="region">
       <!--  Region  -->
