@@ -2,6 +2,15 @@
   <html>
   <?php
   include('module/session.php');
+  include('db_config.php');
+
+  if(isset($_SESSION['login_id'])){
+  $user_id = $_SESSION['login_id'];
+  $query = "SELECT * FROM member WHERE id = '$user_id'";
+  $result = mysqli_query($conn, $query);
+  $objResult = mysqli_fetch_array($result);
+  $username = $objResult['username'];
+  }
    ?>
    <?php
       include 'component/header.php';
@@ -55,96 +64,43 @@
             <h3>News</h3>
           </div>
           <div class="container row">
-           <div class="col s12 m4">
-             <div class="card small">
-               <div class="card-image">
-                 <img src="images/home1.jpg">
-                 <span class="card-title">Card Title</span>
-               </div>
-               <div class="card-content">
-                 <p>I am a very simple card. I am good at containing small bits of information.
-                 I am convenient because I require little markup to use effectively.</p>
-               </div>
-               <div class="card-action">
-                 <a href="News.php">Read More</a>
-               </div>
-             </div>
-           </div>
-           <div class="col s12 m4">
-             <div class="card small">
-               <div class="card-image">
-                 <img src="images/home3.jpg">
-                 <span class="card-title">Card Title</span>
-               </div>
-               <div class="card-content">
-                 <p>I am a very simple card. I am good at containing small bits of information.
-                 I am convenient because I require little markup to use effectively.</p>
-               </div>
-               <div class="card-action">
-                 <a href="News.php">Read More</a>
-               </div>
-             </div>
-           </div>
-           <div class="col s12 m4">
-             <div class="card small">
-               <div class="card-image">
-                 <img src="images/home2.jpg">
-                 <span class="card-title">Card Title</span>
-               </div>
-               <div class="card-content">
-                 <p>I am a very simple card. I am good at containing small bits of information.
-                 I am convenient because I require little markup to use effectively.</p>
-               </div>
-               <div class="card-action">
-                 <a href="News.php">Read More</a>
-               </div>
-             </div>
-           </div>
-         </div>
-         <div class="container row">
-          <div class="col s12 m4">
-            <div class="card small">
-              <div class="card-image">
-                <img src="images/home1.jpg">
-                <span class="card-title">Card Title</span>
-              </div>
-              <div class="card-content">
-                <p>I am a very simple card. I am good at containing small bits of information.
-                I am convenient because I require little markup to use effectively.</p>
-              </div>
-              <div class="card-action">
-                <a href="News.php">Read More</a>
-              </div>
-            </div>
-          </div>
-          <div class="col s12 m4">
-            <div class="card small">
-              <div class="card-image">
-                <img src="images/home3.jpg">
-                <span class="card-title">Card Title</span>
-              </div>
-              <div class="card-content">
-                <p>I am a very simple card. I am good at containing small bits of information.
-                I am convenient because I require little markup to use effectively.</p>
-              </div>
-              <div class="card-action">
-                <a href="News.php">Read More</a>
-              </div>
-            </div>
-          </div>
-          <div class="col s12 m4">
-            <div class="card small">
-              <div class="card-image">
-                <img src="images/home2.jpg">
-                <span class="card-title">Card Title</span>
-              </div>
-              <div class="card-content">
-                <p>I am a very simple card. I am good at containing small bits of information.
-                I am convenient because I require little markup to use effectively.</p>
-              </div>
-              <div class="card-action">
-                <a href="News.php">Read More</a>
-              </div>
+            <?php
+            $sql= "SELECT n.news_id,n.topic,n.short_description FROM news n";
+            $result = mysqli_query( $GLOBALS['conn'] , $sql );
+            $img_path = "./images/";
+
+              while($show = mysqli_fetch_array($result)) {
+                $news_id = $show['news_id'];
+                $sql_img = "SELECT n.news_id,ni.news_image FROM news n INNER JOIN news_image ni on n.news_id = ni.news_id
+                            WHERE n.news_id = '$news_id'";
+                $result_img = mysqli_query( $GLOBALS['conn'] , $sql_img );
+                $show_img = mysqli_fetch_array($result_img);
+                $img_name = $show_img['news_image'];
+                if(!$show_img){
+                  $img_name = "No_Image_Available.png";
+                }
+                $img_file = $img_path.$img_name;
+                echo "<div class='col s12 m4'>
+                    <div class='card small'>
+                    <div class='card-image'>
+
+                    <img src='$img_file'>
+                    <span class='card-title'>".$show['topic']."</span>
+                  </div>
+                  <div class='card-content'>
+                    <p>".$show['short_description']."</p>
+                  </div>
+                  <div class='card-action'>
+                  <a href='http://localhost/Chinese_Tour/ChineseTour_NewTheme%20copy/view_news.php?news_id=$news_id'>"."READ MORE"."</a>
+                  </div>
+                </div>
+              </div>";
+
+              }
+
+
+
+           ?>
             </div>
           </div>
         </div>

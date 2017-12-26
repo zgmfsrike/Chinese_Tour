@@ -24,7 +24,7 @@
         <div class="center">
           <a href="AdminChangeBanners.php" name="changeBanners" value="Change Banners" class="btn waves-effect waves-light green darken-1">Change Banners</a>
           <a href="AdminEditAnnounce.php" name="editAnnounce" value="Edit Announce" class="btn waves-effect waves-light green darken-1">Edit Announcesment</a>
-          <a href="AdminCreateNews.php" name="createNews" value="Create News" class="btn waves-effect waves-light green darken-1">Create News</a>
+          <a href="CreateNews.php" name="createNews" value="Create News" class="btn waves-effect waves-light green darken-1">Create News</a>
         </div>
         <div class="section"></div>
       </div>

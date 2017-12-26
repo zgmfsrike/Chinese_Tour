@@ -1,6 +1,7 @@
 <?php
 include 'module/session.php';
 isLogin();
+include "db_config.php";
 if($_GET['news_id'] != ""){
   $news_id = $_GET['news_id'];
   $_SESSION['news_id'] = $news_id;
@@ -195,7 +196,7 @@ if($_GET['news_id'] != ""){
         <div class="form-group">
           <div class="col-md-8 col-sm-9">
             <input name="save" type="submit" class="btn btn-danger btn-md" value="Save">
-            <input name="cancel" type="submit" value="Cancel" onclick="window.location.href='Index.php'" class="btn btn-warning">
+          <input name="cancel" type="button" value="Cancel" onclick="window.location.href='http://localhost/Chinese_Tour/ChineseTour_NewTheme%20copy/view_news.php?news_id=<?php echo $news_id?>'" class="btn btn-warning">
 
           </div>
         </div>

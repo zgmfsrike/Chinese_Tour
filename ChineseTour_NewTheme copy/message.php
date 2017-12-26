@@ -105,10 +105,10 @@ if(isset($_GET['msg'])){
           case 'create_news_succ': message('Success!','News has been created ','Index.php','Go to home page');
               break;
 
-          case 'del_news_succ': messege('Success!','News has been deleted ','Index.php','Go to home page');
+          case 'del_news_succ': message('Success!','News has been deleted ','Index.php','Go to home page');
               break;
 
-          case 'edit_news_succ': messege('Success!','News has been changed ','Index.php','Go to home page');
+          case 'edit_news_succ': message('Success!','News has been changed ','Index.php','Go to home page');
               break;
 
           //Index manage

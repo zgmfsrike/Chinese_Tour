@@ -29,6 +29,13 @@ if($_POST['send'] && $subject !== "" && $description !==""){
      require 'vendor/autoload.php';
       $mail = new PHPMailer(true);
       try {
+        $mail->SMTPOptions = array(
+                'ssl' => array(
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                    'allow_self_signed' => true
+                )
+            );
           //Server settings
           $mail->SMTPDebug = 5;
           $mail->CharSet = "UTF-8";                               // Enable verbose debug output
