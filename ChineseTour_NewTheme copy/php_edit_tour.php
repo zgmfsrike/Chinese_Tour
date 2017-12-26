@@ -5,7 +5,7 @@ error_reporting(E_ALL | E_STRICT);
 
 //if(isset($_SESSION['login_id'])){
 
-    if($_POST['submit']){
+    if($_POST['save']){
 
         // ===== Insert to "tour" table =====
         $tour_name          = $_POST["tour_name"];
@@ -21,6 +21,10 @@ error_reporting(E_ALL | E_STRICT);
         $tour_max           = $_POST["max"];
 //        $tour_round_start   = $_POST["start_date[]"]; // ***
 //        $tour_round_end     = $_POST["end_date[]"]; // ***
+
+
+
+
 
         $sql= "INSERT INTO tour (name, highlight, region, province, price, max_customer) VALUES ('$tour_name','$tour_highlight','$tour_region','$tour_province','$tour_price','$tour_max')";
         $result = mysqli_query( $GLOBALS['conn'] , $sql );

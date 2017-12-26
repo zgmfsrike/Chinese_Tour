@@ -9,7 +9,7 @@ if(isset($_GET['id'])){
     $result = mysqli_query($conn, $sql);
     $data = mysqli_fetch_array($result);
 
-    $tour_name = $data['name'];
+    $tour_description = $data['tour_description'];
     $hightlight = $data['highlight'];
     $region = $data['region'];
     $province = $data['province'];
@@ -53,7 +53,7 @@ if(isset($_GET['id'])){
 <!--  Text : Tour name  -->
     <div id="name" name="tour_name">
         <label>Tour name</label>
-        <input required name='tour_name' type='text' value="<?php echo $tour_name; ?>"/>
+        <input required name='tour_name' type='text' value="<?php echo $tour_description; ?>"/>
         <br>
     </div>
 
@@ -68,7 +68,7 @@ if(isset($_GET['id'])){
             while($row = mysqli_fetch_array($result)){
                 $img_name = $row['img_name'];
                 ?>
-                <img src="images/tours/<?php echo $img_name;?>" height="200" width="200">
+                <img src="images/tours/<?php echo $img_name;?>" height="200" width="300">
                 <input name='image_<?php echo $i ?>' type='file' class='image' accept="image/*"/><br>
                 <?php
                 $i++;
@@ -80,8 +80,6 @@ if(isset($_GET['id'])){
         <input type="button" class="add_more_image" value="Add More">
     </div>
 
-
-
 <!--  Text : Highlight  -->
   <div id="highlight">
         <label>Highlight</label>
@@ -91,7 +89,20 @@ if(isset($_GET['id'])){
 
 <!--  PDF File : Schedule**  -->
   <div id="schedule">
-        <label>Schedule</label>
+        <label>Schedule</label><br>
+        <?php
+        $sql = "SELECT * FROM `tour_schedule` WHERE tour_id = $id";
+        $result = mysqli_query($conn, $sql);
+        if(mysqli_num_rows($result) > 0){
+            $row = mysqli_fetch_array($result);
+            $file_name = $row['file_name'];
+            ?>
+            <embed src="pdf/tours_schedule/<?php echo $file_name; ?>" type="application/pdf"   height="500px" width="30%"><br>
+            <?php
+            // Free result set
+            mysqli_free_result($result);
+        }
+         ?>
         <input required name='schedule' type='file' value="" accept="application/pdf"/>
         <br>
     </div>
@@ -118,12 +129,12 @@ if(isset($_GET['id'])){
     <div id="type">
         <label>Tour type</label>
         <?php
-            $sql = "SELECT * FROM tour_type";
+            $sql = "SELECT tour_type.tour_type_id,tour_type.tour_type,ttt.tour_id FROM tour_type LEFT JOIN (SELECT * FROM tour_tour_type WHERE tour_id = $id) AS ttt ON tour_type.tour_type_id = ttt.tour_type_id ORDER BY tour_type.tour_type_id ASC";
             if($result = mysqli_query($conn, $sql)){
                 if(mysqli_num_rows($result) > 0){
                     while($row = mysqli_fetch_array($result)){
                     ?>
-                    <input type="checkbox" name="type[]" value="<?php echo $row['tour_type_id'];?>"  checked><?php echo $row['tour_type'];?></input>
+                    <input type="checkbox" name="type[]" value="<?php echo $row['tour_type_id'];?>"  <?php echo ($row['tour_id'] != "") ? 'checked':''?>><?php echo $row['tour_type'];?></input>
                     <?php
                     }
                     // Free result set
@@ -141,11 +152,15 @@ if(isset($_GET['id'])){
     <div id="vehicel">
         <label>Vehicel</label>
         <?php
-            $sql = "SELECT * FROM vehicle_type";
+            $sql = "SELECT vehicle_type.vehicle_type_id,vehicle_type.vehicle_type,tvt.tour_id FROM vehicle_type
+            LEFT JOIN (SELECT * FROM tour_vehicle_type WHERE tour_id = $id) AS tvt ON vehicle_type.vehicle_type_id = tvt.vehicle_type_id
+            ORDER BY vehicle_type.vehicle_type_id ASC";
             if($result = mysqli_query($conn, $sql)){
                 if(mysqli_num_rows($result) > 0){
                     while($row = mysqli_fetch_array($result)){
-                        echo '<input type="checkbox" name="vehicel[]" value="'.$row['vehicle_type_id'].' " checked>'.$row['vehicle_type']. '</input>';
+                      ?>
+                      <input type="checkbox" name="vehicel[]" value="<?php echo $row['vehicle_type_id'];?>"  <?php echo ($row['tour_id'] != "") ? 'checked':''?>><?php echo $row['vehicle_type'];?></input>
+                      <?php
                     }
                     // Free result set
                     mysqli_free_result($result);
@@ -163,10 +178,15 @@ if(isset($_GET['id'])){
         <label>Accommodation</label>
         <?php
             $sql = "SELECT * FROM accommodation";
+            $sql = "SELECT accommodation.accommodation_id,accommodation.accommodation_level,ta.tour_id FROM accommodation
+            LEFT JOIN (SELECT * FROM tour_accommodation WHERE tour_id = $id) AS ta ON accommodation.accommodation_id = ta.accommodation_id
+            ORDER BY accommodation.accommodation_id ASC";
             if($result = mysqli_query($conn, $sql)){
                 if(mysqli_num_rows($result) > 0){
                     while($row = mysqli_fetch_array($result)){
-                        echo '<input type="checkbox" name="accommodation[]" value="'.$row['accommodation_id'].'" checked>'.$row['accommodation_level']. '</input>';
+                      ?>
+                      <input type="checkbox" name="accommodation[]" value="<?php echo $row['accommodation_id'];?>"  <?php echo ($row['tour_id'] != "") ? 'checked':''?>><?php echo $row['accommodation_level'];?></input>
+                      <?php
                     }
                     // Free result set
                     mysqli_free_result($result);
@@ -182,7 +202,7 @@ if(isset($_GET['id'])){
 <!--  Max # of customer  -->
        <div id="max">
         <label>Max</label>
-        <input required name='max' type='number'/>
+        <input required name='max' type='number' value="<?php echo $max_customer; ?>"/>
         <br>
     </div>
 
@@ -190,11 +210,25 @@ if(isset($_GET['id'])){
 <!--  Tour round  -->
     <div id="tour_round">
            <label>Start date</label><label>End date</label><br>
-           <input required name='start_date[]' type='date'/>
-           <input required name='end_date[]' type='date'/><br>
+           <?php
+           $sql = "SELECT * FROM `tour_round` WHERE tour_id = $id";
+           $result = mysqli_query($conn, $sql);
+           if(mysqli_num_rows($result) > 0){
+             while($row = mysqli_fetch_array($result)){
+               $start_date = $row['start_date_time'];
+               $end_date = $row['end_date_time'];
+               ?>
+               <input required name='start_date[]' type='date' value="<?php echo $start_date; ?>"/>
+               <input required name='end_date[]' type='date' value="<?php echo $end_date; ?>"/><br>
+               <?php
+             }
+               // Free result set
+               mysqli_free_result($result);
+           }
+            ?>
            <input type="button" class="add_more_tr" value="Add More">
        </div>
-    <input type="submit" name="submit"/>
+    <input type="submit" name="save"/>
 </form>
 </div>
 </body>

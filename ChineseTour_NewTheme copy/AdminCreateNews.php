@@ -1,6 +1,6 @@
 <?php
 include('module/session.php');
-isAdmin();
+//isAdmin();
  ?>
 
 <!DOCTYPE html>

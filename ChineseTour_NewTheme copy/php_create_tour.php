@@ -8,7 +8,7 @@ error_reporting(E_ALL | E_STRICT);
     if($_POST['submit']){
 
         // ===== Insert to "tour" table =====
-        $tour_name          = $_POST["tour_name"];
+        $tour_description   = $_POST["tour_description"];
 //        $tour_image         = $_POST["image[]"]; // **
         $tour_highlight     = $_POST["highlight"];
 //        $tour_schedule      = $_POST["schedule"]; // **
@@ -22,7 +22,7 @@ error_reporting(E_ALL | E_STRICT);
 //        $tour_round_start   = $_POST["start_date[]"]; // ***
 //        $tour_round_end     = $_POST["end_date[]"]; // ***
 
-        $sql= "INSERT INTO tour (name, highlight, region, province, price, max_customer) VALUES ('$tour_name','$tour_highlight','$tour_region','$tour_province','$tour_price','$tour_max')";
+        $sql= "INSERT INTO tour (tour_description, highlight, region, province, price, max_customer) VALUES ('$tour_description','$tour_highlight','$tour_region','$tour_province','$tour_price','$tour_max')";
         $result = mysqli_query( $GLOBALS['conn'] , $sql );
         $last_id = mysqli_insert_id($GLOBALS['conn']);
 
@@ -31,12 +31,15 @@ error_reporting(E_ALL | E_STRICT);
             return false;
         }
 
+        $count = 0;
         // ====== upload images + insert "tour_image" table =====
         for($i=1;$i<=10;$i++){
           if(!isset($_FILES['image_'.$i]) || $_FILES['image_'.$i]['error'] == UPLOAD_ERR_NO_FILE){
             // echo "Image : ".$i." no file ";
             // echo "<br>";
           }else {
+
+            $count++;
             // echo "Image : ".$i." have file ";
             // echo "<br>";
 
@@ -45,7 +48,7 @@ error_reporting(E_ALL | E_STRICT);
               $check_ext = strtolower( $ext);
               echo $check_ext;
 
-                $new_image_name = $last_id.'_'.$i.".".$ext;
+                $new_image_name = $last_id.'_'.$count.".".$ext;
                 $img_path = "images/tours/";
                 $upload_path = $img_path.$new_image_name;
                 $success = move_uploaded_file($_FILES['image_'.$i]['tmp_name'] ,$upload_path);
@@ -56,7 +59,7 @@ error_reporting(E_ALL | E_STRICT);
                 $image_name = $new_image_name;
 
                 // ----------- insert ----------
-                $sql2 = "INSERT INTO tour_image(tour_id, img_name) VALUES ('$last_id','$image_name')";
+                $sql2 = "INSERT INTO tour_image(tour_id, img_index, img_name) VALUES ('$last_id','$count','$image_name')";
                 $result2 = mysqli_query( $GLOBALS['conn'] , $sql2 );
           }
 

@@ -35,9 +35,9 @@ include 'db_config.php';
 <div id="wrapper">
 <form action="php_create_tour.php" enctype="multipart/form-data" method="post" name="create_tour">
 <!--  Text : Tour name  -->
-    <div id="name" name="tour_name">
-        <label>Tour name</label>
-        <input required name='tour_name' type='text'/>
+    <div id="tour_description">
+        <label>Tour_description</label>
+        <input required name='tour_description' type='text'/>
         <br>
     </div>
 

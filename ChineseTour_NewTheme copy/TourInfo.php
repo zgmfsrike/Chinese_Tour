@@ -9,9 +9,14 @@ if(isset($_GET['id'])){
     // tour
     $sql = "SELECT * FROM `tour` WHERE tour_id = $id";
     $result = mysqli_query($conn, $sql);
+    if(mysqli_num_rows($result) == 0){
+      //error no data
+      echo "No data match";
+      return false;
+    }
     $data = mysqli_fetch_array($result);
 
-    $tour_name = $data['name'];
+    $tour_description = $data['tour_description'];
     $hightlight = $data['highlight'];
     $region = $data['region'];
     $province = $data['province'];
@@ -32,7 +37,7 @@ if(isset($_GET['id'])){
     <div class="container">
       <div class="section"></div><div class="section"></div>
       <div class="row">
-        <h3 class=""> <?php echo $tour_name; ?></h3>
+        <h3 class=""> <?php echo $tour_description; ?></h3>
         <div class="col s12 l6">
           <div class="slider">
             <ul class="slides">
