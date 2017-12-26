@@ -42,13 +42,13 @@
 
     <div class="nav-content red darken-3 hide-on-med-and-down">
       <ul class="tabs tabs-fixed-width tabs-transparent">
-        <li class="tab"><a target="_self" href="AdminIndex.php">Home</a></li>
+        <li class="tab"><a target="_self" href="Index.php">Home</a></li>
         <li class="tab"><a target="_self" href="meeting.php">Meeting Tour</a></li>
         <li class="tab"><a target="_self" href="incentive.php">Incentive Tour</a></li>
         <li class="tab"><a target="_self" href="convension.php">Convension Tour</a></li>
         <li class="tab"><a target="_self" href="foxhibition.php">Foxhibition Tour</a></li>
         <li class="tab"><a target="_self" href="business.php">Business Tour</a></li>
-        <li class="tab"><a target="_self" href="AdminAboutUs.php">About Us</a></li>
+        <li class="tab"><a target="_self" href="aboutUs.php">About Us</a></li>
         <li style="border-left: 1px solid #fff; border-radius: 0; height:50%; margin-top:1%;" class="tab"></li>
         <li class="rigt tab"><a target="_self" href="Manage.php">Manage</a></li>
 
