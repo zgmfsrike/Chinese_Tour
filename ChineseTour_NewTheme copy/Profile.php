@@ -47,7 +47,7 @@ include('module/session.php');
             </div>
           <div class="row">
             <div class="col s3">
-              <a href="EditInfo.php" class="btn waves-effect waves-light red">Edit Profile</a>
+              <a href="editInfo.php" class="btn waves-effect waves-light red">Edit Profile</a>
             <div class="section"></div></div>
             <div class="col s4">
               <a href="ChangePassword.php" class="btn waves-effect waves-light red">Change Password</a>
