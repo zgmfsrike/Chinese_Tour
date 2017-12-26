@@ -56,16 +56,30 @@ if($_POST['save']){
                 //
 
 
-                // $image_origin = basename($_FILES['newsPicAddtopic'.$i]['name']);
-                // $width = 100;
-                // $size = getimagesize($image_origin);
-                // $height
+
 
 
                 $new_image_name = 'img_'.$last_id.'_'.$i.'.'.$ext;
                 $img_path = "images/";
                 $upload_path = $img_path.$new_image_name;
-                $success = move_uploaded_file($_FILES['newsPicAddtopic'.$i]['tmp_name'] ,$upload_path);
+
+                $images = $_FILES['newsPicAddtopic'.$i]["tmp_name"];
+            		copy($_FILES['newsPicAddtopic'.$i]["tmp_name"],"images/".$_FILES['newsPicAddtopic'.$i]["name"]);
+            		$width=100; //*** Fix Width & Heigh (Autu caculate) ***//
+            		$size=GetimageSize($images);
+            		$height=round($width*$size[1]/$size[0]);
+            		$images_orig = ImageCreateFromJPEG($images);
+            		$photoX = ImagesX($images_orig);
+            		$photoY = ImagesY($images_orig);
+            		$images_fin = ImageCreateTrueColor($width, $height);
+            		ImageCopyResampled($images_fin, $images_orig, 0, 0, 0, 0, $width+1, $height+1, $photoX, $photoY);
+            		$success= ImageJPEG($images_fin,"images/".  $new_image_name);
+            		ImageDestroy($images_orig);
+            		ImageDestroy($images_fin);
+
+
+
+                // $success = move_uploaded_file($_FILES['newsPicAddtopic'.$i]['tmp_name'] ,$upload_path);
                 if($success == FALSE){
                   echo "Cannot upload images";
                   exit();

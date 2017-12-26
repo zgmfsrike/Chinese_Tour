@@ -17,11 +17,11 @@ if($_POST['save']){
   $last_edit_date = date("Y-m-d");
 
 
-  //$news_content = $_POST['newsContent'];
+  $news_content = $_POST['newsContent'];
 
   if($news_topic != "" && $news_description !=""){
     $sql= "UPDATE `news` SET `last_edit_date`='$last_edit_date',`topic`='$news_topic',
-    `short_description`='$news_description' WHERE news_id = $news_id";
+    `short_description`='$news_description',`content`='$news_content' WHERE news_id = $news_id";
     $result = mysqli_query( $GLOBALS['conn'] , $sql );
     // $last_id = mysqli_insert_id($GLOBALS['conn']);
 

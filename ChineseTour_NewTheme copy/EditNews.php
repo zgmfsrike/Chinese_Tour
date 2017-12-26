@@ -334,17 +334,15 @@
 
                 </div>
               </div>
-              <!-- <div class="row">
+              <div class="row">
                 <div class="col s12 l6">
                   <h5>Content</h5>
                   <div class="input-field col s12">
-                    <textarea id="textarea1" name="" class="materialize-textarea"></textarea>
-                    <label for="textarea1">
-
-                  </label>
+                    <textarea id="textarea2" name="newsContent" class="materialize-textarea" required><?php echo $news_content ?></textarea>
+                    <label for="textarea1"></label>
                   </div>
                 </div>
-              </div> -->
+              </div>
 
               <div class="row">
                 <div class="col s12 l6">

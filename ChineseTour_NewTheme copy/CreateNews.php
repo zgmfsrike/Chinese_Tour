@@ -1,134 +1,137 @@
 <?php
-include 'module/session.php';
-  isLogin();
-?>
+include('module/session.php');
+isLogin();
+ ?>
 
 <!DOCTYPE html>
-<html lang="en">
+  <html>
+   <?php
+      include 'component/adminHeader.php';
+      ?>
+<body>
+      <!--Edit News Here-->
 
-  <head>
+      <div class="container">
+        <div class="row">
+          <h3>Create News</h3>
+          <form class="col s12" action="php_create_news.php" method="post" enctype="multipart/form-data">
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Chinese Tour</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/modern-business.css" rel="stylesheet">
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script>
-          $(document).ready(function(){
-              // add more image
-            $('.add_more_image').click(function(e){
-              e.preventDefault();
-                var e = document.getElementsByTagName('input');
-                var i;
-                var s = 0;
-                for(i=0; i < e.length; i++) {
-                    if(e[i].type== "file" && e[i].className=="imgNews form-control" ) {
-                        s++;
-                    }
-                }
-                if(s < 5){
-                    s++;
-                    $(this).before("<input name='newsPicAddtopic" + s + "' required class='imgNews form-control' type='file' accept='image/*'/><br>");
-                }
-            });
-        });
-        </script> -->
-
-
-
-  </head>
-
-
-  <body>
-
-    <!-- Navigation -->
-  <?php
-    include 'component/header.php';
-  ?>
-
-    <!-- Body -->
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8">
-          <h3 class="entry-title"><span><br><br>Create News</span> </h3>
-          <hr>
-        <form class="form-horizonta" action="php_create_news.php" method="post" enctype="multipart/form-data">
-          <div class="form-group">
-            <div class="col-md-8 col-sm-9">
-              <label for="control-label col-sm-8"><h5>Topic</h5></label>
-              <div class="col-md-8">
-                <div class="input-group">
-                  <input required type="text" class="form-control" value="" name="newsAddtopic">
+              <div class="row">
+                <div class="col s12">
+                  News Topic :
+                  <div class="input-field inline">
+                    <input id="newsTopic" type="text" class="validate" name="newsAddtopic" required>
+                    <label for="newsTopic">Topic</label>
+                  </div>
                 </div>
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-md-8 col-sm-9">
-            <label for="control-label col-sm-8"><h5>Add images</h5></label>
-          <input class="imgNews form-control" type="file" name="newsPicAddtopic1" value="" accept="image/*">
-          <!-- <input type="button" class="add_more_image" value="Add More"> -->
-          <input class="form-control" type="file" name="newsPicAddtopic2" value="" accept="image/*">
-          <input class="form-control" type="file" name="newsPicAddtopic3" value="" accept="image/*">
-          <input class="form-control" type="file" name="newsPicAddtopic4" value="" accept="image/*">
-          <input class="form-control" type="file" name="newsPicAddtopic5" value="" accept="image/*">
-        </div>
-        </div>
-        <div class="form-group">
-          <div class="col-md-8 col-sm-9">
-            <label for="control-label col-sm-8"><h5>Add PDF</h5></label>
-          <input class="form-control" type="file" name="newsPdf1" value="" accept="application/pdf">
-          <input class="form-control" type="file" name="newsPdf2" value="" accept="application/pdf">
-          <input class="form-control" type="file" name="newsPdf3" value="" accept="application/pdf">
-          <input class="form-control" type="file" name="newsPdf4" value="" accept="application/pdf">
-          <input class="form-control" type="file" name="newsPdf5" value="" accept="application/pdf">
-        </div>
-        </div>
-        <div class="form-group">
-          <div class="col-md-8 col-sm-9">
-            <label for="control-label col-sm-8"><h5>Description</h5></label>
-            <textarea required name="newsDescription" rows="8" cols="80" maxlength="500" minlength="10"></textarea>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-md-8 col-sm-9">
-            <label for="control-label col-sm-8"><h5>Content</h5></label>
-            <textarea required name="newsContent" rows="8" cols="80" maxlength="500" minlength="10"></textarea>
-          </div>
-        </div>
+              </div>
+              <div class="row">
+                <h5>Add Images</h5>
+                <div class="col s12">
+                  <div class="section"></div>
+                  <div id="image">
+                    <label for="image"><b>Images</b></label>
+                    <div class="file-field input-field">
+                      <div class="btn">
+                        <span>Upload image</span>
+                        <input  name='newsPicAddtopic1'  class='image' type='file' accept="image/*"/>
+                      </div>
+                      <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" placeholder="Image here">
+                      </div>
+                    </div>
+                      <!-- <label>Image</label><br>
+                      <input name='image_1' required class='image' type='file' accept="image/*"/><br> -->
+                      <input type="button" class="add_more_image btn amber" value="Add More Image">
+                  </div>
+                  <!--  PDF File : Schedule  -->
+                  <div id="pdf">
+                    <div class="section"></div>
+                    <label for="pdf"><b>PDF</b></label>
+                    <div class="file-field input-field">
+                      <div class="btn">
+                        <span>Upload file</span>
+                        <input  name='newsPdf1' class='pdf' type='file' accept="application/pdf"/>
+                      </div>
+                      <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" placeholder="PDF here">
+                      </div>
+                    </div>
+                      <input type="button" class="add_more_pdf btn amber" value="Add More PDF">
+                          <!-- <label>Schedule</label>
+                          <input required name='schedule' type='file' value="" accept="application/pdf"/>
+                          <br> -->
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col s12 l6">
+                  <h5>Content</h5>
+                  <div class="input-field col s12">
+                    <textarea id="textarea2" name="newsContent" class="materialize-textarea" required></textarea>
+                    <label for="textarea1">
+                  </label>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col s12 l6">
+                  <h5>Description</h5>
+                  <div class="input-field col s12">
+                    <textarea name="newsDescription" id="textarea1" class="materialize-textarea" required></textarea>
+                    <label for="textarea1">Textarea</label>
+                  </div>
+                </div>
+              </div>
+              <div class="row col s12">
+                <input name="cancel" type="button" value="Cancel" onclick="window.location.href='Index.php'" class="waves-effect waves-light btn red">
+                <input type="submit" name="save" class="waves-effect waves-light btn green" value="Save">
+              </div>
+    </form>
+  </div>
+      </div>
 
-        <div class="form-group">
-          <div class="col-md-8 col-sm-9">
-            <input name="cancel" type="submit" value="Cancel" onclick="window.location.href='Index.php'" class="btn btn-warning">
-            <input name="save" type="submit" class="btn btn-danger btn-md" value="Save">
-
-
-          </div>
-        </div>
-        </form>
-    </div>
-    </div>
-    </div>
-
-
-    <!-- Footer -->
-    <?php
+      <!--Footer-->
+      <?php
       include 'component/footer.php';
-    ?>
+      ?>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/popper/popper.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+      <script>
+            $(document).ready(function(){
+                // add more image
+              $('.add_more_image').click(function(e){
+                e.preventDefault();
+                  var e = document.getElementsByTagName('input');
+                  var i;
+                  var s = 0;
+                  for(i=0; i < e.length; i++) {
+                      if(e[i].type== "file" && e[i].className=="image" ) {
+                          s++;
+                      }
+                  }
+                  if(s < 5){
+                      s++;
+                      $(this).before("<div class='file-field input-field'><div class='btn'><span>Upload image</span><input name='newsPicAddtopic" + s + "' class='image' type='file' accept='image/*'/></div><div class='file-path-wrapper'><input class='file-path validate' type='text' placeholder='Image here'></div></div>");
+                  }
+              });
 
-  </body>
-
-</html>
+              $('.add_more_pdf').click(function(e){
+                e.preventDefault();
+                  var e = document.getElementsByTagName('input');
+                  var j;
+                  var k = 0;
+                  for(j=0; j < e.length; j++) {
+                      if(e[j].type== "file" && e[j].className=="pdf" ) {
+                          k++;
+                      }
+                  }
+                  if(k < 5){
+                      k++;
+                      $(this).before("<div class='file-field input-field'><div class='btn'><span>Upload FILE</span><input name='newsPdf" + k + "' class='pdf' type='file' accept='application/pdf'/></div><div class='file-path-wrapper'><input class='file-path validate' type='text' placeholder='PDF here'></div></div>");
+                  }
+              });
+          });
+          </script>
+    </body>
+  </html>
