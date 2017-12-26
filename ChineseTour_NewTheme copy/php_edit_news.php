@@ -52,20 +52,55 @@ if($_POST['save']){
 
               // if($check_ext == "jpeg" or "jpg" or "png" or "gif"){
 
-                $new_image_name = 'img_'.$news_id[0].'_'.$i.'.'.$ext;
+                // $new_image_name = 'img_'.$news_id[0].'_'.$i.'.'.$ext;
                 echo $new_image_name;
                 $img_path = "images/";
-                $upload_path = $img_path.$new_image_name;
-                if(file_exists($upload_path)){
-                      unlink($upload_path);
 
-                  }
-                $success = move_uploaded_file($_FILES['newsPicAddtopic'.$i]['tmp_name'] ,$upload_path);
+
+                $img = $_FILES['newsPicAddtopic'.$i]['tmp_name'];
+                $new_image_name = 'img_'.$news_id[0].'_'.$i;
+                $dst = $img_path.$new_image_name ;
+
+                if (($img_info = getimagesize($img)) === FALSE)
+                  die("Image not found or not an image");
+
+                // $width = $img_info[0];
+                // $height = $img_info[1];
+                $width=872;
+                $height=400;
+                switch ($img_info[2]) {
+                  case IMAGETYPE_GIF  : $src = imagecreatefromgif($img);  break;
+                  case IMAGETYPE_JPEG : $src = imagecreatefromjpeg($img); break;
+                  case IMAGETYPE_PNG  : $src = imagecreatefrompng($img);  break;
+                  default : die("Unknown filetype");
+                }
+                $photoX = ImagesX($src);
+                $photoY = ImagesY($src);
+
+                $tmp = imagecreatetruecolor($width, $height);
+                imagecopyresampled($tmp, $src, 0, 0, 0, 0, $width, $height, $photoX, $photoY);
+                $success= imagejpeg($tmp, $dst.".jpg");
+                unlink($img_path.$_FILES['newsPicAddtopic'.$i]['name'] );
+
+
+
+
+
+
+                // $upload_path = $img_path.$new_image_name.'.'.$ext;
+                // if(file_exists($upload_path)){
+                //       unlink($upload_path);
+                //
+                //   }
+
+                // $success = move_uploaded_file($_FILES['newsPicAddtopic'.$i]['tmp_name'] ,$upload_path);
                 if($success == FALSE){
                   echo "Cannot upload images";
                   exit();
                 }
-                $news_image = $new_image_name;
+
+
+                $news_image = $new_image_name.".jpg";
 
                 // ---------------------------
                 $sql2 = "UPDATE `news_image` SET `news_image`='$news_image' WHERE news_image LIKE '$old_img%' ";

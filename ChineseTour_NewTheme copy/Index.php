@@ -84,7 +84,7 @@
                     <div class='card small'>
                     <div class='card-image'>
 
-                    <img src='$img_file'>
+                    <img src='$img_file'  height='263' width='370'>
                     <span class='card-title'>".$show['topic']."</span>
                   </div>
                   <div class='card-content'>

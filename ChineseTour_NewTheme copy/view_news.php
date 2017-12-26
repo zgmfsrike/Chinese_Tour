@@ -57,7 +57,7 @@
               // echo "<img class='d-block w-100 h-400' src='$img_file' alt='$c'>";
               // echo "</div>";
               echo "<li>
-                <img src='$img_file'>
+                <img src='$img_file' >
               </li>";
 
 

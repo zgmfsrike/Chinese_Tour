@@ -190,7 +190,7 @@
                     while ($data_db_img = mysqli_fetch_array($result_show_img)) {
                       $img_file = $img_path.$data_db_img['news_image'];
 
-
+                      
                       echo "
                         <div class='file-field input-field'>
                           <div class='btn'>
@@ -303,6 +303,41 @@
                       // echo "<input class='form-control' type='file' name='newsPdf".$g."' accept='application/pdf'>";
                     }
 
+
+                  }else{
+                    for($i = 1;$i<6;$i++){
+                      echo "
+                        <div class='file-field input-field'>
+                          <div class='btn'>
+                            <span>File</span>
+                            <input type='file' name='newsPicAddtopic".$i."' accept='image/*'>
+                          </div>
+
+                          <div class='file-path-wrapper'>
+                            <input class='file-path validate'  type='text' placeholder='Upload one or more files' >
+                          </div>
+                        </div>
+                      ";
+                      // echo "<input class='form-control' type='file' name='newsPicAddtopic".$i."'  accept='image/*'>";
+                    }
+                    echo "<br><h5>Add PDF</h5>";
+                    for($g = $count_pdf;$g<6;$g++){
+
+                      echo "
+                        <div class='file-field input-field'>
+                          <div class='btn'>
+                            <span>File</span>
+                            <input type='file' name='newsPdf".$g."' accept='application/pdf'>
+                          </div>
+
+                          <div class='file-path-wrapper'>
+
+                            <input class='file-path validate'  type='text' placeholder='Upload one or more files' >
+                          </div>
+                        </div>
+                      ";
+                      // echo "<input class='form-control' type='file' name='newsPdf".$g."' accept='application/pdf'>";
+                    }
 
                   }
 
