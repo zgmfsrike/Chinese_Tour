@@ -66,8 +66,8 @@ if($_POST['save']){
 
                 // $width = $img_info[0];
                 // $height = $img_info[1];
-                $width=872;
-                $height=400;
+                $width=1280;
+                $height=500;
                 switch ($img_info[2]) {
                   case IMAGETYPE_GIF  : $src = imagecreatefromgif($img);  break;
                   case IMAGETYPE_JPEG : $src = imagecreatefromjpeg($img); break;
