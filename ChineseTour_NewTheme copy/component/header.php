@@ -49,7 +49,7 @@
         <li class="tab"><a target="_self" href="convension.php">Convension Tour</a></li>
         <li class="tab"><a target="_self" href="foxhibition.php">Foxhibition Tour</a></li>
         <li class="tab"><a target="_self" href="business.php">Business Tour</a></li>
-        <li class="tab"><a target="_self" href="AboutUs.php">About Us</a></li>
+        <li class="tab"><a target="_self" href="aboutUs.php">About Us</a></li>
         <li style="border-left: 1px solid #fff; border-radius: 0; height:50%; margin-top:1%;" class="tab"></li>
 
         <!--PHP : Check Login-->

@@ -1,6 +1,9 @@
 <?php
 include('module/session.php');
+<<<<<<< HEAD
 // isAdmin();
+=======
+>>>>>>> master
 isLogin();
  ?>
 
