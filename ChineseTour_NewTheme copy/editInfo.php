@@ -94,7 +94,7 @@
               <label for="countrycode">Countrycode<b class="red-text"> *</b></label>
             </div>
             <div class="input-field col s10 l4">
-            <input onkeyup="validatephone(this);" type="text" class="form-control phone" maxlength="15" name="phone" id="phone" value="<?php echo $phone_db ?>" required>
+            <input onkeyup="validatephone(this);" type="text" maxlength="15" name="phone" id="phone" value="<?php echo $phone_db ?>" required>
             <label for="phone">Telephone Number<b class="red-text"> *</b></label>
             </div>
           </div>
@@ -102,26 +102,26 @@
           <h3>Address</h3>
           <div class="row">
             <div class="input-field col s12">
-              <input required name="address" type="text" class="form-control inputpass" minlength="4" maxlength="50"  id="address" value="<?php echo $address_db ?>" />
+              <input required name="address" type="text" minlength="4" maxlength="50"  id="address" value="<?php echo $address_db ?>" />
               <label for="address">Address<b class="red-text"> *</b></label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <input onkeyup = "Validate(this)" id="txt" type="text" class="form-control inputpass" name="city" id="city" value="<?php echo $city_db ?>" required>
+              <input onkeyup = "Validate(this)" id="txt" type="text" name="city" id="city" value="<?php echo $city_db ?>" required>
               <label for="city">City<b class="red-text"> *</b></label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <input onkeyup = "Validate(this)" id="txt" type="text" class="form-control inputpass" name="province" id="province" value="<?php echo $province_db ?>" required>
+              <input onkeyup = "Validate(this)" id="txt" type="text" name="province" id="province" value="<?php echo $province_db ?>" required>
               <label for="province">Province<b class="red-text"> *</b></label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
               <!--China lenght 6 ,Iran lenght 10-->
-              <input onkeyup="validatephone(this);" type="text" class="form-control phone" maxlength="10" name="zipcode" id="zipcode" value="<?php echo $zipcode_db ?>" required>
+              <input onkeyup="validatephone(this);" type="text" maxlength="10" name="zipcode" id="zipcode" value="<?php echo $zipcode_db ?>" required>
               <label for="zipcode">Zipcode<b class="red-text"> *</b></label>
             </div>
           </div>
@@ -140,8 +140,5 @@
 <?php
     include 'component/footer.php';
     ?>
-<!--end side menu body-->
-<script src="js/validate.js"></script>
-
 </body>
 </html>
