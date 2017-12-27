@@ -6,6 +6,12 @@ include "db_config.php";
 include "module/hashing.php";
 
 ?>
+<?php
+if(!isLoginAs(array('admin'))){
+    header('Location: message.php?msg=unauthorized');
+}
+
+ ?>
 
  <!DOCTYPE html>
    <html>
@@ -35,6 +41,7 @@ include "module/hashing.php";
                             </form>
                           </div>
                  </div> -->
+                 <h3>Search Tour</h3>
                  <form  action="php_search_tour.php" method="get"  class="navbar-form navbar-center" role="form" >
          										<div class="input-group">
          												<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
