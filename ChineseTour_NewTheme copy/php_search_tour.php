@@ -8,7 +8,9 @@ include "module/hashing.php";
 ?>
 <?php
 include('module/session.php');
-isLogin();
+if(!isLoginAs(array('admin'))){
+    header('Location: message.php?msg=unauthorized');
+}
 
  ?>
 
@@ -41,6 +43,7 @@ isLogin();
                             </form>
                           </div>
                  </div> -->
+                 <h3>Search Tour</h3>
                  <form  action="php_search_tour.php" method="get"  class="navbar-form navbar-center" role="form" >
          										<div class="input-group">
          												<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
