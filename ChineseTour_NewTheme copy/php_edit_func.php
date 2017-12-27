@@ -49,7 +49,6 @@ $zipcode = $_POST['zipcode'];
 //-----------------------------Edit fucntion----------------------------------------------------//
 if($_POST['save']){
 
-
     $sql= "UPDATE `member` SET `first_name`='$firstname',`middle_name`='$middlename',`last_name`='$surname',
                                 `phone`='$phone',`occupation`='$occupation',`salary`='$salary',`dob`='$dob',`address`='$address',`city`='$city',`province`='$province',`zipcode`='$zipcode'
 

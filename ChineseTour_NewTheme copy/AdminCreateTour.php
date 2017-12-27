@@ -160,7 +160,7 @@ include 'db_config.php';
                 <div class="file-field input-field">
                   <div class="btn">
                     <span>Upload file</span>
-                    <input required name='schedule' type='file' accept="application/pdf"/>
+                    <input name='schedule' type='file' accept="application/pdf"/>
                   </div>
                   <div class="file-path-wrapper">
                     <input class="file-path validate" type="text" placeholder="Schedule here">
