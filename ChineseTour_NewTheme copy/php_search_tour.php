@@ -7,7 +7,6 @@ include "module/hashing.php";
 
 ?>
 <?php
-include('module/session.php');
 if(!isLoginAs(array('admin'))){
     header('Location: message.php?msg=unauthorized');
 }
