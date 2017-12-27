@@ -35,11 +35,63 @@ $zipcode_db = $data['zipcode'];
 
 $firstname = $_POST['firstname'];
 $middlename = $_POST['middlename'];
-$surname = $_POST['surname'];
-$occupation =  $_POST['Occupation'];
+$surname = $_POST['lastname'];
+$occupation =  $_POST['occupation'];
 $salary = $_POST['salary'];
-$dob = $_POST['dob'];
-$phone = $_POST['contactnum'];
+$raw_dob = $_POST['dob'];
+$phone = $_POST['phone'];
+
+$cut_comma = explode(",",$raw_dob);
+// echo $cut_comma[0]." : ".$cut_comma[1];
+$cut_comma_str = $cut_comma[0].$cut_comma[1];
+$cut_space = explode(" ",$cut_comma_str);
+switch ($cut_space[1]) {
+  case 'January':
+    $cut_space[1] = 1;
+    break;
+  case 'February':
+    $cut_space[1] = 2;
+    break;
+  case 'March':
+    $cut_space[1] = 3;
+    # code...
+    break;
+    case 'April':
+      $cut_space[1] = 4;
+      break;
+    case 'May':
+      $cut_space[1] = 5;
+      break;
+    case 'June':
+      $cut_space[1] = 6;
+      # code...
+      break;
+      case 'July':
+        $cut_space[1] = 7;
+        break;
+      case 'August':
+        $cut_space[1] = 8;
+        break;
+      case 'September':
+        $cut_space[1] = 9;
+        # code...
+        break;
+        case 'October':
+          $cut_space[1] = 10;
+          break;
+        case 'November':
+          $cut_space[1] = 11;
+          break;
+        case 'December':
+          $cut_space[1] = 12;
+          # code...
+          break;
+  default:
+    # code...
+    break;
+}
+$dob = $cut_space[2]."-".$cut_space[1]."-".$cut_space[0];
+
 
 
 $address = $_POST['address'];
@@ -48,6 +100,7 @@ $province = $_POST['province'];
 $zipcode = $_POST['zipcode'];
 //-----------------------------Edit fucntion----------------------------------------------------//
 if($_POST['save']){
+
 
     $sql= "UPDATE `member` SET `first_name`='$firstname',`middle_name`='$middlename',`last_name`='$surname',
                                 `phone`='$phone',`occupation`='$occupation',`salary`='$salary',`dob`='$dob',`address`='$address',`city`='$city',`province`='$province',`zipcode`='$zipcode'
