@@ -35,11 +35,11 @@ $zipcode_db = $data['zipcode'];
 
 $firstname = $_POST['firstname'];
 $middlename = $_POST['middlename'];
-$surname = $_POST['surname'];
-$occupation =  $_POST['Occupation'];
+$surname = $_POST['lastname'];
+$occupation =  $_POST['occupation'];
 $salary = $_POST['salary'];
-$dob = $_POST['dob'];
-$phone = $_POST['contactnum'];
+$dob = date('Y-m-d',strtotime($_POST['dob']));
+$phone = $_POST['phone'];
 
 
 $address = $_POST['address'];

@@ -30,7 +30,7 @@ function register(){
     $firstName  = $_POST["firstname"];
     $middleName = $_POST["middlename"];
     $lastName   = $_POST["lastname"];
-    $dob        = $_POST["dob"];
+    $dob = date('Y-m-d',strtotime($_POST['dob']));
     $occupation = $_POST["occupation"];
     $salary     = $_POST["salary"];
     $email      = $_POST["email"];
@@ -61,7 +61,7 @@ function register(){
             $last_id = $GLOBALS['conn']->insert_id;
 
             // confirmation url
-            $url = "http://localhost/Chinese_Tour/Chinese_Tour/active_account.php?id=" . $last_id . "&h=" . $hash;
+            $url = "http://localhost/Chinese_Tour/ChineseTour_NewTheme%20copy/active_account.php?id=" . $last_id . "&h=" . $hash;
             // please confirmation by email
             // Load composer's autoloader
             require 'vendor/autoload.php';

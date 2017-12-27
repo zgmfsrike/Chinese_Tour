@@ -55,7 +55,7 @@
               <label for="lastname">Lastname<b class="red-text"> *</b></label>
             </div>
             <div class="input-field col s12 l6">
-              <input type="text" class="datepicker" name="dob" id="dob" value="<?php echo $date_of_birth ?>">
+              <input required name='dob' type='date' class="datepicker" value='<?php echo $date_of_birth; ?>'/>
               <label for="dob">Birthday<b class="red-text"> *</b></label>
             </div>
           </div>

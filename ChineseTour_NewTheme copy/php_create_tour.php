@@ -146,6 +146,7 @@ include "db_config.php";
         if(!empty($_POST['start_date']) and !empty($_POST['end_date'])){
             for($i = 0; $i < count($_POST['start_date']);$i++ ){
                 $start = $_POST['start_date'][$i];
+                echo "<br><br>date : " . $start;
                 $end = $_POST['end_date'][$i];
                 $sql = "INSERT INTO tour_round(tour_id, start_date_time,end_date_time) VALUES ('$last_id','$start','$end')";
                 $result = mysqli_query( $GLOBALS['conn'] , $sql );

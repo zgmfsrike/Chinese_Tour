@@ -51,7 +51,7 @@ include 'module/session.php';
                 <label for="lastname">Lastname<b class="red-text"> *</b></label>
               </div>
               <div class="input-field col s12 l6">
-                <input type="text" class="datepicker" name="dob" id="dob">
+                <input type="date" class="datepicker" name="dob" id="dob">
                 <label for="dob">Birthday<b class="red-text"> *</b></label>
               </div>
             </div>
