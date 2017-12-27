@@ -36,10 +36,10 @@ mysqli_query($conn, $sql);
 $sql = "DELETE FROM tour_schedule WHERE tour_id = $id";
 mysqli_query($conn, $sql);
 
-$sql = "DELETE FROM tour_accommodation WHERE tour_id = $id";
+$sql = "DELETE FROM tour_round WHERE tour_id = $id";
 mysqli_query($conn, $sql);
 
-$sql = "DELETE FROM tour_round WHERE tour_id = $id";
+$sql = "DELETE FROM tour_accommodation WHERE tour_id = $id";
 mysqli_query($conn, $sql);
 
 $sql = "DELETE FROM tour_tour_type WHERE tour_id = $id";

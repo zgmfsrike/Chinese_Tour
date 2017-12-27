@@ -1,11 +1,11 @@
 
 <?php
 include "db_config.php";
-error_reporting(E_ALL | E_STRICT);
+// error_reporting(E_ALL | E_STRICT);
 
 //if(isset($_SESSION['login_id'])){
 
-    if($_POST['submit']){
+    if(isset($_POST['submit'])){
 
         // ===== Insert to "tour" table =====
         $tour_description   = $_POST["tour_description"];
@@ -38,16 +38,15 @@ error_reporting(E_ALL | E_STRICT);
             // echo "Image : ".$i." no file ";
             // echo "<br>";
           }else {
-
             $count++;
             // echo "Image : ".$i." have file ";
             // echo "<br>";
-
               // -----Upload images-----
               $ext = pathinfo(basename($_FILES['image_'.$i]['name'] ),PATHINFO_EXTENSION);
               $check_ext = strtolower( $ext);
-              echo $check_ext;
+              echo "image : ". $i ." : ". $check_ext . "<br>";
 
+              if($check_ext == "jpeg" or "jpg" or "png" or "gif"){
                 $new_image_name = $last_id.'_'.$count.".".$ext;
                 $img_path = "images/tours/";
                 $upload_path = $img_path.$new_image_name;
@@ -64,6 +63,7 @@ error_reporting(E_ALL | E_STRICT);
           }
 
         }
+      }
 
         // upload schedule + insert "tour_schedule" table
         if(!isset($_FILES['schedule']) || $_FILES['schedule']['error'] == UPLOAD_ERR_NO_FILE){
@@ -155,4 +155,5 @@ error_reporting(E_ALL | E_STRICT);
         }
 
     }
+
 ?>

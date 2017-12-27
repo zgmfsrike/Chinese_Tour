@@ -31,7 +31,7 @@ isLogin();
                             <form action="php_search_tour.php" method="get" role="form" >
                               <div class="col s12 l10">
                                 <div class="input-field">
-                                  <input id="tourName" placeholder="Search Tour Here" type="text" name="tourName" value="<?php echo $_GET['tourName'];?>" size="20" required>
+                                  <input id="tourName" placeholder="Search Tour Here" type="text" name="tour_description" value="<?php echo $_GET['tourName'];?>" size="20" required>
                                 </div>
                               </div>
                                 <div class="center col s12 l2">
@@ -51,7 +51,7 @@ isLogin();
                FROM tour t INNER JOIN tour_type tt ON t.tour_type_id = tt.tour_type_id
                  INNER JOIN vehicle_type vt  ON t.vehicle_type_id = vt.vehicle_type_id
                      INNER JOIN accommodation a ON t.accommodation_id = a.accommodation_id
-                         WHERE t.tour_description LIKE '$tour_description%' ";
+                         WHERE t.tour_description LIKE '%$tour_description%' ";
                    $result = mysqli_query( $GLOBALS['conn'] , $sql );
                   $count = mysqli_num_rows($result);
                    if($count != 0){

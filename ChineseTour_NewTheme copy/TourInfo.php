@@ -171,6 +171,13 @@ if(isset($_GET['id'])){
            ?>
         </div>
       </div>
+
+      <div class="row">
+        <div class="col s12">
+          <a href="AdminEditTour.php?id=<?php echo $id?>" class="btn-large btn-floating tooltipped right waves-effect waves-light red" data-position="top" data-delay="50" data-tooltip="Edit Tour"><i class="material-icons">settings</i></a>
+        </div>
+      </div>
+
       <div class="section"></div>
       <div class="row card">
         <div class="col s12">

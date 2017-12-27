@@ -123,7 +123,8 @@ include 'db_config.php';
                                                 <input type="checkbox" name="accommodation[]" value="<?php echo $row['accommodation_id'];?>" id="<?php echo $row['accommodation_level'];?>" checked/>
                                                 <label for="<?php echo $row['accommodation_level'];?>"><?php echo $row['accommodation_level'];?></label>
                                               </div>
-                                                <?php                          }
+                                                <?php
+                                              }
                                             // Free result set
                                             mysqli_free_result($result);
                                         } else{
@@ -142,7 +143,7 @@ include 'db_config.php';
                 <div class="file-field input-field">
                   <div class="btn">
                     <span>Upload image</span>
-                    <input name='image_1' required class='image' type='file' accept="image/*"/>
+                    <input name='image_1' class='image' type='file' accept="image/*"/>
                   </div>
                   <div class="file-path-wrapper">
                     <input class="file-path validate" type="text" placeholder="Image here">
@@ -159,7 +160,7 @@ include 'db_config.php';
                 <div class="file-field input-field">
                   <div class="btn">
                     <span>Upload file</span>
-                    <input required name='schedule' required type='file' accept="application/pdf"/>
+                    <input required name='schedule' type='file' accept="application/pdf"/>
                   </div>
                   <div class="file-path-wrapper">
                     <input class="file-path validate" type="text" placeholder="Schedule here">
