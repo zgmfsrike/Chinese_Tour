@@ -1,7 +1,10 @@
-
 <?php
 include 'module/session.php';
 include 'db_config.php';
+
+if(!isLoginAs(array('admin'))){
+    header('Location: message.php?msg=unauthorized');
+}
 
 $tour_description=$hightlight=$region=$province=$price=$max_customer=$rating=0;
 

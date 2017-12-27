@@ -1,13 +1,14 @@
+<?php
+include('module/session.php');
+ ?>
 <!DOCTYPE html>
   <html>
   <?php
-  include('module/session.php');
   // isAdmin();
   include "db_config.php";
-  isLogin();
    ?>
    <?php
-      include 'component/adminHeader.php';
+      include 'component/header.php';
       ?>
 <body>
   <?php

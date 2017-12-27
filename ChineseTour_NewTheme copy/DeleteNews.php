@@ -1,6 +1,8 @@
 <?php
 include 'module/session.php';
-isLogin();
+if(!isLoginAs(array('admin'))){
+    header('Location: message.php?msg=unauthorized');
+}
 include('db_config.php');
 if($_GET['news_id'] != ""){
   $news_id = $_GET['news_id'];

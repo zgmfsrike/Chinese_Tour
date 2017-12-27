@@ -24,6 +24,10 @@ if(isset($_GET['msg'])){
             break;
         case 'login_already': message('You are already login','','','');
             break;
+            // AUTHENTICATION
+        case 'unauthorized': message('Unauthorized','','','');
+            break;
+
             // LOGIN
         case 'login_invalid': message('Login fail','Username or Password are invalid.','','Back to Login page');
             break;

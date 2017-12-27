@@ -4,7 +4,7 @@
   include('module/session.php');
    ?>
    <?php
-      include 'component/adminHeader.php';
+      include 'component/header.php';
       ?>
 <body>
         <div id="home" class="col s12">

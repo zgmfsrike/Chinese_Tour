@@ -1,7 +1,13 @@
+<?php
+include 'module/session.php';
+if(!isLoginAs(array('admin'))){
+    header('Location: message.php?msg=unauthorized');
+}
+ ?>
+
 <!DOCTYPE html>
   <html>
   <?php
-  include('module/session.php');
   // isAdmin();
   isLogin();
 
@@ -67,7 +73,7 @@
   // $data = mysqli_fetch_array($result);
    ?>
    <?php
-      include 'component/adminHeader.php';
+      include 'component/header.php';
       ?>
 
 

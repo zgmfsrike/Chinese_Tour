@@ -1,6 +1,7 @@
 <?php
 include 'module/session.php';
-if(isLoginAs('admin','member')){
+
+if(isLoginAs(array('admin','member'))){
     header('Location: message.php?msg=login_already');
 }
 ?>

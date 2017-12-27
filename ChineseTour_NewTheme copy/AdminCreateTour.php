@@ -1,6 +1,9 @@
 <?php
 include 'module/session.php';
 include 'db_config.php';
+if(!isLoginAs(array('admin'))){
+    header('Location: message.php?msg=unauthorized');
+}
 ?>
 <!DOCTYPE html>
   <html>

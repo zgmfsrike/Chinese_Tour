@@ -1,5 +1,8 @@
 <?php
 include 'module/session.php';
+if(isLoginAs(array('admin','member'))){
+    header('Location: message.php?msg=login_already');
+}
 ?>
 <!DOCTYPE html>
 <html>

@@ -1,6 +1,8 @@
 <?php
 include('module/session.php');
-isLogin();
+if(!isLoginAs(array('admin','member'))){
+    header('Location: message.php?msg=please_login');
+}
 include "module/hashing.php";
 include "db_config.php";
 
