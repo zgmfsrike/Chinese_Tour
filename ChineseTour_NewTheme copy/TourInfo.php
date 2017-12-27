@@ -175,6 +175,8 @@ if(isset($_GET['id'])){
       <div class="row">
         <div class="col s12">
           <a href="AdminEditTour.php?id=<?php echo $id?>" class="btn-large btn-floating tooltipped right waves-effect waves-light red" data-position="top" data-delay="50" data-tooltip="Edit Tour"><i class="material-icons">settings</i></a>
+          <a href="#" id='del_button' onclick="warning();" class="btn-large btn-floating tooltipped waves-effect waves-light red" data-position="top" data-delay="50" data-tooltip="Delete"><i class="material-icons">delete</i></a>
+
         </div>
       </div>
 
@@ -213,6 +215,52 @@ if(isset($_GET['id'])){
       <?php
       include 'component/footer.php';
       ?>
+      <!--สคริปปุ่มโดนแก้กับ Delete Tour แล้วอะนะ-->
+      <script type="text/javascript">
+      function warning(){
+          swal({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '<a style="color:white" href ="DeleteNews.php?news_id=<?php echo $news_id; ?>">Yes, delete it!</a>'
+          }).then((result) => {
+            if (result.value) {
+              swal(
+                // let url = getElementById('del_button').innerHTML = "<a href ='DeleteNews.php?news_id=<?php echo $news_id; ?>'></a>";
+
+                // '<a href ="DeleteNews.php?news_id=<?php echo $news_id; ?>">Deleted</a>!'
+                // 'Your file has been deleted.',
+                // 'success'
+              )
+            }
+          })
+
+          //อันนี้คืออันออริจิ เผื่ออยากได้
+//           swal({
+//   title: 'Are you sure?',
+//   text: "You won't be able to revert this!",
+//   type: 'warning',
+//   showCancelButton: true,
+//   confirmButtonColor: '#3085d6',
+//   cancelButtonColor: '#d33',
+//   confirmButtonText: 'Yes, delete it!'
+// }).then((result) => {
+//   if (result.value) {
+//     swal(
+//       'Deleted!',
+//       'Your file has been deleted.',
+//       'success'
+//     )
+//   }
+// })
+
+
+      }
+
+      </script>
     </body>
   </html>
   <?php
