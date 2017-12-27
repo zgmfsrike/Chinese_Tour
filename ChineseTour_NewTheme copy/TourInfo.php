@@ -137,15 +137,34 @@ if(isset($_GET['id'])){
                 <option value="6">Khu Mueang</option>
               </select>
           </form>
+
+          <label>Tour round</label>
+          <select class="browser-default" name="dropOff" required>
+            <option value="">Please select</option>
+<?php
+$sql = "SELECT * FROM `tour_round` WHERE tour_id = $id";
+$result = mysqli_query($conn, $sql);
+if(mysqli_num_rows($result) > 0){
+    while($row = mysqli_fetch_array($result)){
+        $tour_round_id = $row['tour_round_id'];
+        $start_date_time = $row['start_date_time'];
+        $end_date_time = $row['end_date_time'];
+ ?>
+            <option value="<?php echo $tour_round_id; ?>"><?php echo $start_date_time; ?> to <?php echo $end_date_time; ?></option>
+<?php
+}}
+ ?>
+          </select>
           <div class="section"></div>
-          <div class="col s12 l6">
+          <!-- <div class="col s12 l6">
             <label for="datepicker">Start Date</label>
             <input type="text" id="datepicker">
           </div>
           <div class="col s12 l6">
             <label for="datepicker">End Date</label>
             <input type="text" id="datepicker2">
-          </div>
+          </div> -->
+
           <div class="center col s12">
             <input type="submit" class="waves-effect waves-light btn orange" name="book" value="Book">
           </div>

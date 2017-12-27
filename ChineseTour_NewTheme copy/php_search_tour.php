@@ -1,16 +1,11 @@
 <?php
-session_start();
+include('module/session.php');
 error_reporting (E_ALL ^ E_NOTICE);
 include "db_config.php";
 // include "db_configNB.php";
 include "module/hashing.php";
 
 ?>
-<?php
-include('module/session.php');
-isLogin();
-
- ?>
 
  <!DOCTYPE html>
    <html>
@@ -23,7 +18,6 @@ isLogin();
  <body>
   <div class="container">
     <div class="row">
-
 
                   <!-- <div class="col s12">
                       <div class="section"></div>
@@ -70,30 +64,48 @@ isLogin();
                    $result = mysqli_query( $GLOBALS['conn'] , $sql );
                   $count = mysqli_num_rows($result);
                    if($count != 0){
-                     echo "<table style='overflow-x:auto;' class='responsive-table table table-striped highlight centered'>";
-                     echo "<thead>";
-                     echo "<tr align='center'><th>Tour ID</th><th>Tour Description</th>";
-                     // <th>Rating</th><th>Tour type</th><th>Vehicle type</th><th>Accommodation</th><th>View detail</th>";
-                     echo "</tr>";
-                     echo "</thead>";
+                     ?>
+                     <table style='overflow-x:auto;' class='responsive-table table table-striped highlight centered'>
+                       <thead>
+                         <tr align='center'>
+                           <th>Tour ID</th>
+                           <th>Tour Description</th>
+                           <?php
+                            // <th>Rating</th><th>Tour type</th><th>Vehicle type</th><th>Accommodation</th><th>View detail</th>";
+                            ?>
+                        </tr>
+                     </thead>
+                     <?php
                      while($show = mysqli_fetch_array($result)) {
                        $tourId = $show['tour_id'];
-                       echo "<tr>";
+                       ?>
+                       <tr>
+                         <?php
                        // echo "<td align ='center'>" .$show['tour_name'] .  "</td> ";
-                       echo "<td align ='center'>" .$tourId.  "</td> ";
-                       echo "<td align ='center'>" .$show['tour_description'] .  "</td> ";
+                       ?>
+                       <td align ='center'><?php echo $tourId;?></td>
+                       <td align ='center'><?php echo $show['tour_description'];?></td>
+                       <?php
                        // echo "<td align ='center'>" .$show['rating'] .  "</td> ";
                        // echo "<td align ='center'>" .$show['tour_type'] .  "</td> ";
                        // echo "<td align ='center'>" .$show['vehicle_type'] .  "</td> ";
                        // echo "<td align ='center'>" .$show['accommodation_level'] .  "</td> ";
                        // echo "<td align ='center'><input class='waves-effect waves-light btn green' type='button' value='View' onclick=\"window.location.href='http://localhost:8080/Chinese_Tour/ChineseTour_NewTheme%20copy/show_tour_round.php?tourId=$tourId'\"></td>";
-                       echo "<td align ='center'><a href='show_tour_round.php?tourId=$tourId'><input class='waves-effect waves-light btn green' type='button' value='View'></a></td>";
-                       echo "</tr>";
+                       ?>
+                        <td align ='center'>
+                          <a href='show_tour_round.php?tourId=<?php echo $tourId;?>'><input class='waves-effect waves-light btn green' type='button' value='Tour round'></a>
+                          <a href='tourinfo.php?id=<?php echo $tourId;?>'><input class='waves-effect waves-light btn green' type='button' value='Detail'></a>
+                        </td>
+                       </tr>
+                       <?php
                      }
-                     echo "</table>";
-
+                     ?>
+                     </table>
+                     <?php
                    }else{
-                     echo "<h5>Nothing found ! , please try again.</h5>";
+                     ?>
+                     <h5>Nothing found ! , please try again.</h5>
+                     <?php
                    }
                }
                }

@@ -3,7 +3,6 @@
 
 include('module/session.php');
 include "db_config.php";
-isLogin();
 ?>
 
 <!DOCTYPE html>
