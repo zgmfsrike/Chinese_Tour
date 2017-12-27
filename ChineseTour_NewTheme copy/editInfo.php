@@ -2,27 +2,26 @@
 <?php
     include "db_config.php";
     include('module/session.php');
-    isLogin();
-    if(isset($_SESSION['login_id'])){
-      $id = $_SESSION['login_id'];
-        //---------------------- DB Value----------------------
-      $sql_db =  "SELECT * FROM `member` WHERE id=$id" ;
-      $result2 = mysqli_query($conn,$sql_db);
-      $data = mysqli_fetch_array($result2);
-      $firstname_db = $data['first_name'];
-      $middlename_db = $data['middle_name'];
-      $lastname_db = $data['last_name'];
-      $phone_db = $data['phone'];
-      $email_db = $data['email'];
-      $salary_db = $data['salary'];
-      $occupation_db = $data['occupation'];
-      $date_of_birth = $data['dob'];
-      $address_db = $data['address'];
-      $city_db = $data['city'];
-      $province_db = $data['province'];
-      $zipcode_db = $data['zipcode'];
-    }
-
+    include 'db_config.php';
+    //requireLogin();
+    $id = $_SESSION['login_id'];
+    //---------------------- DB Value----------------------
+  $sql_db =  "SELECT * FROM `member` WHERE id=$id" ;
+  $result2 = mysqli_query($conn,$sql_db);
+  $data = mysqli_fetch_array($result2);
+  $firstname_db = $data['first_name'];
+  $middlename_db = $data['middle_name'];
+  $lastname_db = $data['last_name'];
+  $phone_db = $data['phone'];
+  $email_db = $data['email'];
+  $salary_db = $data['salary'];
+  $occupation_db = $data['occupation'];
+  $date_of_birth = $data['dob'];
+  $address_db = $data['address'];
+  $city_db = $data['city'];
+  $province_db = $data['province'];
+  $zipcode_db = $data['zipcode'];
+  $country_code = $data['country_code'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -98,6 +97,14 @@
           <div class="form-inline">
             <div class="form-group">
             <input required id="dob" name="dob" class="form-control" type="date" value="<?php echo $date_of_birth ?>"/>
+          <div class="row">
+            <div class="input-field col s2 l2">
+              <input class="col-sm-3" onkeyup="validatephone(this);" maxlength="3" type="text" name="countrycode" placeholder="Code" value="<?php echo  $country_code; ?>" required>
+              <label for="countrycode">Countrycode<b class="red-text"> *</b></label>
+            </div>
+            <div class="input-field col s10 l4">
+            <input onkeyup="validatephone(this);" type="text" maxlength="15" name="phone" id="phone" value="<?php echo $phone_db; ?>" required>
+            <label for="phone">Telephone Number<b class="red-text"> *</b></label>
             </div>
           </div>
         </div>
@@ -172,6 +179,11 @@
           <div class="input-group">
             <span class="input-group-addon req"><i class="fa fa-home"></i></span>
             <input onkeyup = "Validate(this)" id="txt" type="text" class="form-control" name="province" id="province" value="<?php echo $province_db ?>" placeholder="Province" required>
+          <h3>Address</h3>
+          <div class="row">
+            <div class="input-field col s12">
+              <input required name="address" type="text" minlength="4" maxlength="50"  id="address" value="<?php echo $address_db; ?>" />
+              <label for="address">Address<b class="red-text"> *</b></label>
           </div>
         </div>
       </div>

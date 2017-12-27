@@ -93,8 +93,7 @@ ON tour_vehicle_type.vehicle_type_id=vehicle_type.vehicle_type_id WHERE tour_id 
     echo '<br><br>';
 
     // accommodation
-    $sql = "SELECT * FROM `tour_accommodation` INNER JOIN `accommodation`
-ON tour_accommodation.accommodation_id=accommodation.accommodation_id WHERE tour_id = $id";
+    $sql = "SELECT * FROM `tour_accommodation` INNER JOIN `accommodation` ON tour_accommodation.accommodation_id=accommodation.accommodation_id WHERE tour_id = $id";
     $result = mysqli_query($conn, $sql);
     if(mysqli_num_rows($result) > 0){
         echo 'Accommodation : <ul>';
@@ -132,5 +131,3 @@ ON tour_accommodation.accommodation_id=accommodation.accommodation_id WHERE tour
     <?php
     include 'component/footer.php';
     ?>
-</body>
-</html>
