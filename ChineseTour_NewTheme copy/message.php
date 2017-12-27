@@ -121,7 +121,13 @@ if(isset($_GET['msg'])){
           case 'uploadNotSucc': message('Sorry, your file was not uploaded.','Please check neither your file is too large, nor your file type is wrong (Only JPG, JPEG, PNG & GIF files are allowed).','AdminIndex.php','Go to home page');
             break;
 
-
+          // TOUR
+          case 'create_tour_succ':message('Success!','Creating tour successfully','index.php','Go to home page');
+            break;
+          case 'delete_tour_succ':message('Success!','Deleting tour successfully','index.php','Go to home page');
+            break;
+          case 'edit_tour_succ':message('Success!','Editing tour successfully','index.php','Go to home page');
+            break;
 
             // default
         default: message('Request not found','','','');

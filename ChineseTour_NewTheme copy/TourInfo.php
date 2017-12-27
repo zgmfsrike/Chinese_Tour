@@ -244,7 +244,7 @@ if(mysqli_num_rows($result) > 0){
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: '<a style="color:white" href ="DeleteNews.php?news_id=<?php echo $news_id; ?>">Yes, delete it!</a>'
+            confirmButtonText: '<a style="color:white" href ="php_delete_tour.php?id=<?php echo $id; ?>">Yes, delete it!</a>'
           }).then((result) => {
             if (result.value) {
               swal(
@@ -284,6 +284,6 @@ if(mysqli_num_rows($result) > 0){
   </html>
   <?php
 }else{
-  echo "No id provide";
+  header("location: message.php");
 }
    ?>

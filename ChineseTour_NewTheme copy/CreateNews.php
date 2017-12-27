@@ -1,6 +1,8 @@
 <?php
 include('module/session.php');
-isLogin();
+if(!isLoginAs(array('admin'))){
+    header('Location: message.php?msg=unauthorized');
+}
  ?>
 
 <!DOCTYPE html>
