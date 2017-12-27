@@ -9,8 +9,8 @@ include "db_config.php";
 // include "db_configNB.php";
 include "module/hashing.php";
 
-include('module/session.php');
-isLogin();
+// include('module/session.php');
+
 
 
 if(isset($_SESSION['login_id'])){

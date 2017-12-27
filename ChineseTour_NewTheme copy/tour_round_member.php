@@ -11,8 +11,8 @@ include "module/hashing.php";
 
 ?>
 <?php
-include('module/session.php');
-isLogin();
+// include('module/session.php');
+
 $tour_round_id = $_GET['tour_round_id'];
 
  ?>
