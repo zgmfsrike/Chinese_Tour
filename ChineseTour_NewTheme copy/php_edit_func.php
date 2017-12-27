@@ -38,21 +38,9 @@ $middlename = $_POST['middlename'];
 $surname = $_POST['lastname'];
 $occupation =  $_POST['occupation'];
 $salary = $_POST['salary'];
-<<<<<<< HEAD
 $dob = date('Y-m-d',strtotime($_POST['dob']));
 $phone = $_POST['phone'];
 
-=======
-$phone = $_POST['phone'];
-
-
-$dob = date('Y-m-d',strtotime($_POST['dob']));
-
-
-
-
-
->>>>>>> e91b315f7f3744c3f2be12aec4f7c686cf059f1f
 
 $address = $_POST['address'];
 $city = $_POST['city'];
@@ -76,11 +64,3 @@ if($_POST['save']){
 
 }
 }
-
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> e91b315f7f3744c3f2be12aec4f7c686cf059f1f
-?>
