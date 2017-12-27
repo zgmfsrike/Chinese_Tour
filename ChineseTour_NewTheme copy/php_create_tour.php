@@ -155,6 +155,9 @@ include "db_config.php";
 
         }
 
-    }
+header("location: message.php?msg=create_tour_succ");
+}else{
+  header("location: message.php");
+}
 
 ?>

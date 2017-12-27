@@ -137,15 +137,34 @@ if(isset($_GET['id'])){
                 <option value="6">Khu Mueang</option>
               </select>
           </form>
+
+          <label>Tour round</label>
+          <select class="browser-default" name="dropOff" required>
+            <option value="">Please select</option>
+<?php
+$sql = "SELECT * FROM `tour_round` WHERE tour_id = $id";
+$result = mysqli_query($conn, $sql);
+if(mysqli_num_rows($result) > 0){
+    while($row = mysqli_fetch_array($result)){
+        $tour_round_id = $row['tour_round_id'];
+        $start_date_time = $row['start_date_time'];
+        $end_date_time = $row['end_date_time'];
+ ?>
+            <option value="<?php echo $tour_round_id; ?>"><?php echo $start_date_time; ?> to <?php echo $end_date_time; ?></option>
+<?php
+}}
+ ?>
+          </select>
           <div class="section"></div>
-          <div class="col s12 l6">
+          <!-- <div class="col s12 l6">
             <label for="datepicker">Start Date</label>
             <input type="text" id="datepicker">
           </div>
           <div class="col s12 l6">
             <label for="datepicker">End Date</label>
             <input type="text" id="datepicker2">
-          </div>
+          </div> -->
+
           <div class="center col s12">
             <input type="submit" class="waves-effect waves-light btn orange" name="book" value="Book">
           </div>
@@ -175,6 +194,8 @@ if(isset($_GET['id'])){
       <div class="row">
         <div class="col s12">
           <a href="AdminEditTour.php?id=<?php echo $id?>" class="btn-large btn-floating tooltipped right waves-effect waves-light red" data-position="top" data-delay="50" data-tooltip="Edit Tour"><i class="material-icons">settings</i></a>
+          <a href="#" id='del_button' onclick="warning();" class="btn-large btn-floating tooltipped waves-effect waves-light red" data-position="top" data-delay="50" data-tooltip="Delete"><i class="material-icons">delete</i></a>
+
         </div>
       </div>
 
@@ -213,10 +234,56 @@ if(isset($_GET['id'])){
       <?php
       include 'component/footer.php';
       ?>
+      <!--สคริปปุ่มโดนแก้กับ Delete Tour แล้วอะนะ-->
+      <script type="text/javascript">
+      function warning(){
+          swal({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '<a style="color:white" href ="php_delete_tour.php?id=<?php echo $id; ?>">Yes, delete it!</a>'
+          }).then((result) => {
+            if (result.value) {
+              swal(
+                // let url = getElementById('del_button').innerHTML = "<a href ='DeleteNews.php?news_id=<?php echo $news_id; ?>'></a>";
+
+                // '<a href ="DeleteNews.php?news_id=<?php echo $news_id; ?>">Deleted</a>!'
+                // 'Your file has been deleted.',
+                // 'success'
+              )
+            }
+          })
+
+          //อันนี้คืออันออริจิ เผื่ออยากได้
+//           swal({
+//   title: 'Are you sure?',
+//   text: "You won't be able to revert this!",
+//   type: 'warning',
+//   showCancelButton: true,
+//   confirmButtonColor: '#3085d6',
+//   cancelButtonColor: '#d33',
+//   confirmButtonText: 'Yes, delete it!'
+// }).then((result) => {
+//   if (result.value) {
+//     swal(
+//       'Deleted!',
+//       'Your file has been deleted.',
+//       'success'
+//     )
+//   }
+// })
+
+
+      }
+
+      </script>
     </body>
   </html>
   <?php
 }else{
-  echo "No id provide";
+  header("location: message.php");
 }
    ?>
