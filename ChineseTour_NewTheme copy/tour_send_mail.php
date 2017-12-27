@@ -40,7 +40,7 @@ if($_GET['member_id'] != ""){
        </div><hr>
      </div>
      <div class="row">
-       <form action="php_send_mail_all.func.php?tour_round_id=<?php echo $tour_round_id; ?>" method="post">
+       <form action="php_send_mail.func.php?tour_round_id=<?php echo $tour_round_id; ?>" method="post">
          <div class="col s12 l6">
            <p>To : <?php echo $email; ?></p>
              Subject :

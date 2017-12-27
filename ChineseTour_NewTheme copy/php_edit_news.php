@@ -17,11 +17,11 @@ if($_POST['save']){
   $last_edit_date = date("Y-m-d");
 
 
-  //$news_content = $_POST['newsContent'];
+  $news_content = $_POST['newsContent'];
 
   if($news_topic != "" && $news_description !=""){
     $sql= "UPDATE `news` SET `last_edit_date`='$last_edit_date',`topic`='$news_topic',
-    `short_description`='$news_description' WHERE news_id = $news_id";
+    `short_description`='$news_description',`content`='$news_content' WHERE news_id = $news_id";
     $result = mysqli_query( $GLOBALS['conn'] , $sql );
     // $last_id = mysqli_insert_id($GLOBALS['conn']);
 
@@ -52,20 +52,55 @@ if($_POST['save']){
 
               // if($check_ext == "jpeg" or "jpg" or "png" or "gif"){
 
-                $new_image_name = 'img_'.$news_id[0].'_'.$i.'.'.$ext;
+                // $new_image_name = 'img_'.$news_id[0].'_'.$i.'.'.$ext;
                 echo $new_image_name;
                 $img_path = "images/";
-                $upload_path = $img_path.$new_image_name;
-                if(file_exists($upload_path)){
-                      unlink($upload_path);
 
-                  }
-                $success = move_uploaded_file($_FILES['newsPicAddtopic'.$i]['tmp_name'] ,$upload_path);
+
+                $img = $_FILES['newsPicAddtopic'.$i]['tmp_name'];
+                $new_image_name = 'img_'.$news_id[0].'_'.$i;
+                $dst = $img_path.$new_image_name ;
+
+                if (($img_info = getimagesize($img)) === FALSE)
+                  die("Image not found or not an image");
+
+                // $width = $img_info[0];
+                // $height = $img_info[1];
+                $width=1280;
+                $height=500;
+                switch ($img_info[2]) {
+                  case IMAGETYPE_GIF  : $src = imagecreatefromgif($img);  break;
+                  case IMAGETYPE_JPEG : $src = imagecreatefromjpeg($img); break;
+                  case IMAGETYPE_PNG  : $src = imagecreatefrompng($img);  break;
+                  default : die("Unknown filetype");
+                }
+                $photoX = ImagesX($src);
+                $photoY = ImagesY($src);
+
+                $tmp = imagecreatetruecolor($width, $height);
+                imagecopyresampled($tmp, $src, 0, 0, 0, 0, $width, $height, $photoX, $photoY);
+                $success= imagejpeg($tmp, $dst.".jpg");
+                unlink($img_path.$_FILES['newsPicAddtopic'.$i]['name'] );
+
+
+
+
+
+
+                // $upload_path = $img_path.$new_image_name.'.'.$ext;
+                // if(file_exists($upload_path)){
+                //       unlink($upload_path);
+                //
+                //   }
+
+                // $success = move_uploaded_file($_FILES['newsPicAddtopic'.$i]['tmp_name'] ,$upload_path);
                 if($success == FALSE){
                   echo "Cannot upload images";
                   exit();
                 }
-                $news_image = $new_image_name;
+
+
+                $news_image = $new_image_name.".jpg";
 
                 // ---------------------------
                 $sql2 = "UPDATE `news_image` SET `news_image`='$news_image' WHERE news_image LIKE '$old_img%' ";
@@ -102,6 +137,10 @@ if($_POST['save']){
               // -----Upload PDF-----
               $ext = pathinfo(basename($_FILES['newsPdf'.$j]['name'] ),PATHINFO_EXTENSION);
               $check_ext = strtolower( $ext);
+
+              $old_pdf_name = basename($_FILES['newsPdf'.$j]['name']);
+              // echo $old_pdf_name;
+
               // echo $check_ext;
 
               if($check_ext == "pdf"){
@@ -119,7 +158,7 @@ if($_POST['save']){
                 $news_pdf = $new_pdf_name;
 
                 // ---------------------------
-                $sql3 = "UPDATE `news_pdf` SET `news_pdf`='$news_pdf' WHERE news_pdf LIKE '$old_pdf%'";
+                $sql3 = "UPDATE `news_pdf` SET `news_pdf`='$news_pdf',`pdf_name`='$old_pdf_name' WHERE news_pdf LIKE '$old_pdf%'";
                 $result3 = mysqli_query( $GLOBALS['conn'] , $sql3 );
 
 
@@ -130,7 +169,7 @@ if($_POST['save']){
 
                 if($count_row  == 0){
                   echo "fail to update";
-                  $sql_add_pdf = "INSERT INTO news_pdf(news_id, news_pdf) VALUES ('$news_id[0]','$news_pdf')";
+                  $sql_add_pdf = "INSERT INTO news_pdf(news_id, news_pdf,pdf_name) VALUES ('$news_id[0]','$news_pdf','$old_pdf_name')";
                   $result_add = mysqli_query( $GLOBALS['conn'],$sql_add_pdf);
 
                 }

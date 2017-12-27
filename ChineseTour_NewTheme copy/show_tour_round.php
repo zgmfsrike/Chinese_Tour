@@ -45,7 +45,8 @@ include "module/hashing.php";
                      echo "<td align ='center'>" .$show['end_date_time'] .  "</td> ";
                      echo "<td align ='center'>" .$show['departure_point'] .  "</td> ";
                      echo "<td align ='center'>" .$show['drop_off_point'] .  "</td> ";
-                     echo "<td align ='center'><input class='waves-effect waves-light btn green' type='button' value='View' onclick=\"window.location.href='http://localhost:8080/Chinese_Tour/ChineseTour_NewTheme%20copy/tour_round_member.php?tour_round_id=$tour_round_id'\"></td>";
+                     // echo "<td align ='center'><input class='waves-effect waves-light btn green' type='button' value='View' onclick=\"window.location.href='http://localhost:8080/Chinese_TourChineseTour_NewTheme%20copy/tour_round_member.php?tour_round_id=$tour_round_id'\"></td>";
+                     echo "<td align ='center'><a href='tour_round_member.php?tour_round_id=$tour_round_id'><input class='waves-effect waves-light btn green' type='button' value='View'></a></td>";
                      echo "</tr>";
 
                    }

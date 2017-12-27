@@ -30,10 +30,17 @@ if($_POST['save']){
        //-----------------------------Send change mail fucntion----------------------------------------------------//
          require 'vendor/autoload.php';
 
-           $url = "http://localhost/Chinese_Tour/Chinese_Tour/active_change_mail.php?id=" . $id . "&u=" . md5($username)."&m=" .$email;
+           $url = "http://localhost/Chinese_Tour/ChineseTour_NewTheme%20copy/active_change_mail.php?id=" . $id . "&u=" . md5($username)."&m=" .$email;
 
            $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
          try {
+           $mail->SMTPOptions = array(
+                   'ssl' => array(
+                       'verify_peer' => false,
+                       'verify_peer_name' => false,
+                       'allow_self_signed' => true
+                   )
+               );
              //Server settings
              $mail->SMTPDebug = 0;                                 // Enable verbose debug output
              $mail->isSMTP();                                      // Set mailer to use SMTP

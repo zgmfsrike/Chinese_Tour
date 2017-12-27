@@ -1,6 +1,9 @@
 <?php
-include 'module/session.php';
-requireLogin();
+// include 'module/session.php';
+
+include('module/session.php');
+include "db_config.php";
+isLogin();
 ?>
 
 <!DOCTYPE html>

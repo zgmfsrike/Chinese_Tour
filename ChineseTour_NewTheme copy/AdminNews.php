@@ -2,7 +2,7 @@
   <html>
   <?php
   include('module/session.php');
-  isAdmin();
+  // isAdmin();
    ?>
    <?php
       include 'component/adminHeader.php';
