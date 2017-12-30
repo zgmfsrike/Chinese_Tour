@@ -165,7 +165,9 @@ if(isset($_GET['msg'])){
                       <hr>
                   </div>
                   <div class="row">
-                    <input type="button" onclick=<?php echo (!$link == "") ? "window.location.href='$link'" : "history.go(-1)"; ?> class="waves-effect waves-light btn amber" value="<?php echo(!$btn == '') ? $btn : 'Back' ?>">
+                    <button type="button" onclick=<?php echo (!$link == "") ? "window.location.href='$link'" : "history.go(-1)"; ?> class="waves-effect waves-light btn amber" value="<?php echo(!$btn == '') ? $btn : 'Back' ?>">
+                      <?php echo(!$btn == '') ? $btn : 'Back' ?>
+                    </button>
                   </div>
                 </form>
               </div>

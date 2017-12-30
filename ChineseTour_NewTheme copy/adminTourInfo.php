@@ -78,7 +78,7 @@
             <input type="text" id="datepicker2">
           </div>
           <div class="center col s12">
-            <input type="submit" class="waves-effect waves-light btn orange" name="book" value="Book">
+            <button type="submit" class="waves-effect waves-light btn orange" name="book" value="Book">Book</button>
           </div>
         </div>
       </div>

@@ -397,8 +397,8 @@ if(!isLoginAs(array('admin'))){
 
 
               <div class="row col s12">
-                <input type="button" value="Cancel" onclick="window.location.href='http://localhost/Chinese_Tour/ChineseTour_NewTheme%20copy/view_news.php?news_id=<?php echo $news_id?>'" class="waves-effect waves-light btn red">
-                <input name="save" type="submit" class="waves-effect waves-light btn green" value="Save">
+                <button type="button" value="Cancel" onclick="window.location.href='http://localhost/Chinese_Tour/ChineseTour_NewTheme%20copy/view_news.php?news_id=<?php echo $news_id?>'" class="waves-effect waves-light btn red">Cancel</button>
+                <button name="save" type="submit" class="waves-effect waves-light btn green" value="Save">Save</button>
               </div>
     </form>
   </div>

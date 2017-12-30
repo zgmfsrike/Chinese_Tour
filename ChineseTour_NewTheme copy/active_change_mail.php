@@ -21,7 +21,7 @@
         <div class="seciton"></div>
       </div>
       <div class="rol col s12 l3 center">
-        <input type="button" onclick="window.location.href='Index.php'" class="col waves-effect waves-light btn amber" value="Go back to Home page">
+        <button type="button" onclick="window.location.href='Index.php'" class="col waves-effect waves-light btn amber" value="Go back to Home page">Go back to Home page</button>
       </div>
   </div>
     <?php

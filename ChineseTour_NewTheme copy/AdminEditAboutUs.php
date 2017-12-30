@@ -60,8 +60,8 @@
         </div>
           </div>
           <div class="row col s12 center">
-              <input name="Submit" type="submit" value="Cancel" onclick="window.location.href='AdminAboutUs.php'" class="waves-effect waves-light btn red">
-              <input type="submit" class="waves-effect waves-light btn green" value="Save">
+              <button name="Submit" type="submit" value="Cancel" onclick="window.location.href='AdminAboutUs.php'" class="waves-effect waves-light btn red">Cancel</button>
+              <button type="submit" class="waves-effect waves-light btn green" value="Save">Save</button>
           </div>
       </div>
 
