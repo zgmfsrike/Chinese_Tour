@@ -9,7 +9,6 @@ if(!isLoginAs(array('admin'))){
   <html>
   <?php
   // isAdmin();
-  isLogin();
 
 
   include "db_config.php";

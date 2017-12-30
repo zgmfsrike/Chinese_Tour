@@ -200,7 +200,7 @@ error_reporting(E_ALL | E_STRICT);
                 $result = mysqli_query( $GLOBALS['conn'] , $sql );
             }
         }
-        header("location: message.php?msg=delete_tour_succ");
+        header("location: message.php?msg=edit_tour_succ");
     }else{
       header("location: message.php");
     }
