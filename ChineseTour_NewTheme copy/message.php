@@ -118,7 +118,7 @@ if(isset($_GET['msg'])){
           //Index manage
           case 'uploadSucc': message('Got it!',' The file has been uploaded.','Index.php','Go to home page');
             break;
-          case 'uploadNotSucc': message('Sorry, your file was not uploaded.','Please check neither your file is too large, nor your file type is wrong (Only JPG, JPEG, PNG & GIF files are allowed).','AdminIndex.php','Go to home page');
+          case 'uploadNotSucc': message('Sorry, your file was not uploaded.','Please check neither your file is too large, nor your file type is wrong (Only JPG, JPEG, PNG & GIF files are allowed).','Index.php','Go to home page');
             break;
 
           // TOUR

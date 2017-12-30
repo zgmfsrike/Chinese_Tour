@@ -27,7 +27,7 @@ if(!isLoginAs(array('admin'))){
                 </form>
               </div>
               <div class="row col s12">
-                <button name="Submit" type="submit" value="Cancel" onclick="window.location.href='Index.php'" class="waves-effect waves-light btn red">Submit</button>
+                <button name="Submit" type="submit" value="Cancel" onclick="window.location.href='Index.php'" class="waves-effect waves-light btn red">Cancel</button>
                 <button type="submit" class="waves-effect waves-light btn green" value="Save">Save</button>
               </div>
     </form>
