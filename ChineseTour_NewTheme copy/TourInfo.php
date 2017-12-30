@@ -166,7 +166,7 @@ if(mysqli_num_rows($result) > 0){
           </div> -->
 
           <div class="center col s12">
-            <input type="submit" class="waves-effect waves-light btn orange" name="book" value="Book">
+            <button type="submit" class="waves-effect waves-light btn orange" name="book" value="Book">Book</button>
           </div>
         </div>
       </div>

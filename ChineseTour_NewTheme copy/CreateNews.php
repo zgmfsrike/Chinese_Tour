@@ -86,8 +86,8 @@ if(!isLoginAs(array('admin'))){
                 </div>
               </div>
               <div class="row col s12">
-                <input name="cancel" type="button" value="Cancel" onclick="window.location.href='Index.php'" class="waves-effect waves-light btn red">
-                <input type="submit" name="save" class="waves-effect waves-light btn green" value="Save">
+                <button name="cancel" type="button" value="Cancel" onclick="window.location.href='Index.php'" class="waves-effect waves-light btn red">Cancel</button>
+                <button type="submit" name="save" class="waves-effect waves-light btn green" value="Save">Save</button>
               </div>
     </form>
   </div>

@@ -251,7 +251,7 @@ if(isset($_GET['id'])){
 
   <div class="row">
     <div class="col s12 center">
-      <input class="waves-effect waves-light btn amber" type="submit" name="submit"/>
+      <button class="waves-effect waves-light btn amber" type="submit" name="submit"/>Submit</button>
     </div>
   </div>
 

@@ -132,8 +132,8 @@
           </div>
           <div class="row">
             <div class="col s12 center">
-              <input type="submit" class="waves-effect waves-light btn green" value="Save" name='save'>
-              <input name="Submit" type="button" value="Cancel" onclick="window.location.href='Profile.php'" class="waves-effect waves-light btn red">
+              <button type="submit" class="waves-effect waves-light btn green" value="Save" name='save'>Save</button>
+              <button name="Submit" type="button" value="Cancel" onclick="window.location.href='Profile.php'" class="waves-effect waves-light btn red">Cancel</button>
             </div>
           </div>
       </form>

@@ -33,7 +33,7 @@ include 'component/header.php';
                         </div>
                       </div>
                       <div class="s3 l4">
-                        <input type="submit" class="waves-effect waves-light btn green" value="Change" name="changeBanner1">
+                        <button type="submit" class="waves-effect waves-light btn green" value="Change" name="changeBanner1">Change</button>
                       </div>
 
                   </div>
@@ -51,7 +51,7 @@ include 'component/header.php';
                         </div>
                       </div>
                       <div class="s3 l4">
-                        <input type="submit" class="waves-effect waves-light btn green" value="Change" name="changeBanner2">
+                        <button type="submit" class="waves-effect waves-light btn green" value="Change" name="changeBanner2">Change</button>
                       </div>
                   </div>
                   <!--Banner 3-->
@@ -68,7 +68,7 @@ include 'component/header.php';
                         </div>
                       </div>
                       <div class="s3 l4">
-                        <input type="submit" class="waves-effect waves-light btn green" value="Change" name="changeBanner3">
+                        <button type="submit" class="waves-effect waves-light btn green" value="Change" name="changeBanner3">Change</button>
                       </div>
                   </div>
                   <!--Banner 4-->
@@ -85,7 +85,7 @@ include 'component/header.php';
                         </div>
                       </div>
                       <div class="s3 l4">
-                        <input type="submit" class="waves-effect waves-light btn green" value="Change" name="changeBanner4">
+                        <button type="submit" class="waves-effect waves-light btn green" value="Change" name="changeBanner4">Change</button>
                       </div>
                   </div>
                   <!--Banner 5-->
@@ -102,7 +102,7 @@ include 'component/header.php';
                         </div>
                       </div>
                       <div class="s3 l4">
-                        <input type="submit" class="waves-effect waves-light btn green" value="Change" name="changeBanner5">
+                        <button type="submit" class="waves-effect waves-light btn green" value="Change" name="changeBanner5">Change</button>
                       </div>
                   </div>
                 <!-- <div class="row">

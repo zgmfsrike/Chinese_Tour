@@ -98,8 +98,9 @@ if(isset($_POST['save'])){
 
             <div class="form-group">
               <div class="col-xs-offset-3 col-sm-9 float-none"><br>
-                <input type="submit" class="btn waves-effect waves-light green" value="save" name ="save">
-                <input type="button" value="Cancel" onclick="window.location.href='Profile.php'" class="btn waves-effect waves-light red"></div>
+                <button type="submit" class="btn waves-effect waves-light green" value="save" name ="save">Save</button>
+                <button type="button" value="Cancel" onclick="window.location.href='Profile.php'" class="btn waves-effect waves-light red">Cancel</button>
+              </div>
             </div>
           </form>
 

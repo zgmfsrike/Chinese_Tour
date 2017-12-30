@@ -133,8 +133,8 @@ if(isLoginAs(array('admin','member'))){
 
             <div class="row">
               <div class="center col s12">
-                <input type="submit" value="Cancel" onclick="window.location.href='Index.php'" class="waves-effect waves-light btn red">
-                <input name="submit" type="submit" class="waves-effect waves-light btn amber" value="Sign Up">
+                <button type="submit" value="Cancel" onclick="window.location.href='Index.php'" class="waves-effect waves-light btn red">Cancel</button>
+                <button name="submit" type="submit" class="waves-effect waves-light btn amber" value="Sign Up">Sign Up</button>
               </div>
             </div>
       </div>
