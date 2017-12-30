@@ -74,6 +74,8 @@ error_reporting(E_ALL | E_STRICT);
                   // }else{
                   //   echo "File can not delete : " . $img_name;
                   // }
+
+
                   $new_image_name = $id.'_'.$i.".".$ext;
                   $img_path = "images/tours/";
                   $upload_path = $img_path.$new_image_name;
