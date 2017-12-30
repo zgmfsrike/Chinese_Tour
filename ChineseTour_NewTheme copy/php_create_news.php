@@ -2,7 +2,7 @@
 session_cache_expire(30);
 error_reporting (E_ALL ^ E_NOTICE);
 include "db_config.php";
- include "db_config.php";
+ //include "db_config.php";
 include "module/hashing.php";
 //----------------------------Wait for session---------------------------------------------//
 session_start();
