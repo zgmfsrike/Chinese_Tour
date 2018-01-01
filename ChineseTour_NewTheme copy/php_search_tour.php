@@ -4,6 +4,7 @@ error_reporting (E_ALL ^ E_NOTICE);
 include "db_config.php";
 // include "db_configNB.php";
 include "module/hashing.php";
+include "lib/pagination.php";
 
 ?>
 <?php
@@ -42,11 +43,15 @@ if(!isLoginAs(array('admin'))){
                           </div>
                  </div> -->
                  <h3>Search Tour</h3>
+
+                 <a href="search_all_tour.php" class="btn" >Search All</a>
                  <form  action="php_search_tour.php" method="get"  class="navbar-form navbar-center" role="form" >
+
          										<div class="input-group">
          												<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-         												<input id="tourName" type="text" class="form-control" name="tourName" value="<?php echo $_GET['tourName'];?>" size="20" required>
+         												<input id="tourName" type="text" class="form-control" name="tourName" value="<?php echo $_GET['tourName'];?>" size="20" >
                                  <input type="submit" class="btn btn-primary" value="Search " /><br><br>
+
          										</div>
                              <br>
 
@@ -55,6 +60,7 @@ if(!isLoginAs(array('admin'))){
 
                <?php
                if(isset($_SESSION['login_id'])){
+
 
                //-----------------------------Search fucntion----------------------------------------------------//
                if($_GET['tourName'] != ""){
@@ -68,7 +74,8 @@ if(!isLoginAs(array('admin'))){
                  -- INNER JOIN vehicle_type vt  ON t.vehicle_type_id = vt.vehicle_type_id
                      -- INNER JOIN accommodation a ON t.accommodation_id = a.accommodation_id
                          WHERE t.tour_description LIKE '%$tour_description%' ";
-                   $result = mysqli_query( $GLOBALS['conn'] , $sql );
+                   // $result = mysqli_query( $GLOBALS['conn'] , $sql );
+                  $result = page_query($GLOBALS['conn'],$sql,2);
                   $count = mysqli_num_rows($result);
                    if($count != 0){
                      ?>
@@ -108,7 +115,10 @@ if(!isLoginAs(array('admin'))){
                      }
                      ?>
                      </table>
+
                      <?php
+                     page_echo_pagenums(6,true,true);
+
                    }else{
                      ?>
                      <h5>Nothing found ! , please try again.</h5>

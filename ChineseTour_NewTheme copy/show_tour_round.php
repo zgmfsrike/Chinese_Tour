@@ -8,6 +8,7 @@ error_reporting (E_ALL ^ E_NOTICE);
 include "db_config.php";
 // include "db_configNB.php";
 include "module/hashing.php";
+include "lib/pagination.php";
 ?>
 
  <!DOCTYPE html>
@@ -33,7 +34,8 @@ include "module/hashing.php";
                if($_GET['tourId'] != ""){
                    $tourId = $_GET['tourId'];
                    $sql= "SELECT * FROM tour_round tr WHERE tr.tour_id = $tourId";
-                   $result = mysqli_query( $GLOBALS['conn'] , $sql );
+                   // $result = mysqli_query( $GLOBALS['conn'] , $sql );
+                  $result = page_query($GLOBALS['conn'],$sql,2);
                    echo "<table style='overflow-x:auto;' class='responsive-table table table-striped highlight centered'>";
                    echo "<thead>";
                    echo "<tr align='center'><th>TourRound Id</th><th>Trip status</th><th>Start Date</th><th>End date</th><th>Departure Point</th><th>DropOff Point</th><th>Member</th>";
@@ -55,6 +57,7 @@ include "module/hashing.php";
 
                    }
                    echo "</table>";
+                  page_echo_pagenums(6,true,true);
 
                }
                }

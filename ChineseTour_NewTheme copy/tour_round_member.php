@@ -8,6 +8,7 @@ error_reporting (E_ALL ^ E_NOTICE);
 include "db_config.php";
 // include "db_configNB.php";
 include "module/hashing.php";
+include "lib/pagination.php";
 
 ?>
 <?php
@@ -52,7 +53,8 @@ $tour_round_id = $_GET['tour_round_id'];
                    $sql= "SELECT m.first_name,m.middle_name,m.last_name,trm.passport_id,trm.reservation_age,trm.avoid_food,trm.group_member,m.id,m.email
                           FROM tour_round_member trm INNER JOIN tour_round tr ON trm.tour_round_id = tr.tour_round_id INNER JOIN member m ON trm.id = m.id
                           WHERE trm.tour_round_id = $tour_round_id ";
-                   $result = mysqli_query( $GLOBALS['conn'] , $sql );
+                   // $result = mysqli_query( $GLOBALS['conn'] , $sql );
+                     $result = page_query($GLOBALS['conn'],$sql,2);
                    echo "<table style='overflow-x:auto;' class='responsive-table table table-striped highlight centered'>";
                    echo "<thead>";
                    echo "<tr align='center'><th>Member ID</th><th>First Name</th><th>Middle Name</th><th>Last Name</th><th>Passport Id</th><th>Reservation Age</th><th>Avoid Food</th><th>Group Member</th><th>Email</th>";
@@ -75,6 +77,7 @@ $tour_round_id = $_GET['tour_round_id'];
                      echo "</tr>";
                    }
                    echo "</table>";
+                     page_echo_pagenums(6,true,true);
                }
                }
 

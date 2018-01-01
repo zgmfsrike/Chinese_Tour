@@ -26,6 +26,8 @@ if($_POST['save']){
     $last_id = mysqli_insert_id($GLOBALS['conn']);
 
     if ($result) {
+        $count_img = 0;
+        $count_pdf = 0;
 
         for($i=1;$i<6;$i++){
           if(!isset($_FILES['newsPicAddtopic'.$i]) || $_FILES['newsPicAddtopic'.$i]['error'] == UPLOAD_ERR_NO_FILE){
@@ -34,7 +36,7 @@ if($_POST['save']){
           }else {
             // echo "Image : ".$i." have file ";
             // echo "<br>";
-
+              $count_img++;
               // -----Upload PDF-----
               $ext = pathinfo(basename($_FILES['newsPicAddtopic'.$i]['name'] ),PATHINFO_EXTENSION);
               $check_ext = strtolower( $ext);
@@ -44,7 +46,7 @@ if($_POST['save']){
                 $img_path = "images/";
 
                 $img = $_FILES['newsPicAddtopic'.$i]['tmp_name'];
-                $new_image_name = 'img_'.$last_id.'_'.$i;
+                $new_image_name = 'img_'.$last_id.'_'.$count_img;
                 $dst = $img_path.$new_image_name ;
 
                 if (($img_info = getimagesize($img)) === FALSE)
@@ -108,7 +110,7 @@ if($_POST['save']){
                 $news_image = $new_image_name.".jpg";
 
                 // ---------------------------
-                $sql2 = "INSERT INTO news_image(news_id, news_image) VALUES ('$last_id','$news_image')";
+                $sql2 = "INSERT INTO news_image(news_id, news_image,img_index) VALUES ('$last_id','$news_image','$count_img')";
                 $result2 = mysqli_query( $GLOBALS['conn'] , $sql2 );
 
 
@@ -124,6 +126,7 @@ if($_POST['save']){
           }else {
             // echo "Image : ".$i." have file ";
             // echo "<br>";
+            $count_pdf++;
 
             $ext = pathinfo(basename($_FILES['newsPdf'.$j]['name'] ),PATHINFO_EXTENSION);
             $check_ext = strtolower( $ext);
@@ -134,7 +137,7 @@ if($_POST['save']){
             // $add_name = mysqli_query($GLOBALS['conn'] , $sql_add_pdf_name);
 
 
-              $new_pdf_name = 'pdf_'.$last_id.'_'.$j.'.'.$ext;
+              $new_pdf_name = 'pdf_'.$last_id.'_'.$count_pdf.'.'.$ext;
               $pdf_path = "pdf/";
               $upload_path_pdf = $pdf_path.$new_pdf_name;
               $success = move_uploaded_file($_FILES['newsPdf'.$j]['tmp_name'] ,$upload_path_pdf);
@@ -145,7 +148,7 @@ if($_POST['save']){
               $news_pdf = $new_pdf_name;
 
               // ---------------------------
-              $sql3 = "INSERT INTO news_pdf(news_id, news_pdf,pdf_name) VALUES ('$last_id','$news_pdf','$old_pdf_name')";
+              $sql3 = "INSERT INTO news_pdf(news_id, news_pdf,pdf_name,pdf_index) VALUES ('$last_id','$news_pdf','$old_pdf_name','$count_pdf')";
               $result3 = mysqli_query( $GLOBALS['conn'] , $sql3 );
 
 
