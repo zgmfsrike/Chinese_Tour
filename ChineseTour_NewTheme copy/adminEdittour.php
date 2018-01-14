@@ -203,6 +203,7 @@ if(isset($_GET['id'])){
                     <input class="file-path validate" type="text" placeholder="Image here">
                   </div>
                 </div>
+                <input name='hide_<?php echo $i; ?>' class='hide' type='text' value='0'/>
                 <?php
                 $i++;
             }
@@ -213,6 +214,7 @@ if(isset($_GET['id'])){
                   <!-- <label>Image</label><br>
                   <input name='image_1' required class='image' type='file' accept="image/*"/><br> -->
                   <input type="button" class="add_more_image btn amber" value="Add More Image">
+                  <span id="limit" style="color: red;"></span>
               </div>
               <!--  PDF File : Schedule  -->
               <div id="schedule">
@@ -251,7 +253,7 @@ if(isset($_GET['id'])){
 
   <div class="row">
     <div class="col s12 center">
-      <button class="waves-effect waves-light btn amber" type="submit" name="submit"/>Submit</button>
+      <button class="waves-effect waves-light btn amber" type="submit" name="submit">Submit</button>
     </div>
   </div>
 
@@ -279,13 +281,15 @@ include 'component/footer.php';
             if(s < 10){
                 s++;
                 $(this).before("<div class='file-field input-field'><div class='btn'><span>Upload image</span><input name='image_" + s + "' class='image' type='file' accept='image/*'/></div><div class='file-path-wrapper'><input class='file-path validate' type='text' placeholder='Image here'></div></div>");
+            }else{
+                document.getElementById('limit').innerHTML = "<br>Can not add more image.";
             }
         });
 
           // add more tour round
           $('.add_more_tr').click(function(e){
             e.preventDefault();
-            $(this).before("<span><b>Start Date</b></span><input required name='start_date[]' type='date'/><span><b>End Date</b></span><input required name='end_date[]' type='date'/><br>");
+            $(this).before("<span><b>Start Date</b></span><input name='start_date[]' type='date'/><span><b>End Date</b></span><input name='end_date[]' type='date'/><br>");
             });
     });
     </script>

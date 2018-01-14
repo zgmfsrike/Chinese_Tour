@@ -75,7 +75,7 @@ if(!isLoginAs(array('admin'))){
                      -- INNER JOIN accommodation a ON t.accommodation_id = a.accommodation_id
                          WHERE t.tour_description LIKE '%$tour_description%' ";
                    // $result = mysqli_query( $GLOBALS['conn'] , $sql );
-                  $result = page_query($GLOBALS['conn'],$sql,2);
+                  $result = page_query($GLOBALS['conn'],$sql,3);
                   $count = mysqli_num_rows($result);
                    if($count != 0){
                      ?>
