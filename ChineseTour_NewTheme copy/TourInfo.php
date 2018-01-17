@@ -24,6 +24,7 @@ if(isset($_GET['id'])){
     $price = $data['price'];
     $max_customer = $data['max_customer'];
     $rating = $data['rating'];
+
   ?>
 
 
@@ -65,7 +66,7 @@ if(isset($_GET['id'])){
           <div class="card"><br/>
             <h5 class="center-align">Sale Price : <?php echo $price; ?> ฿</h5>
             <p class="center-align">Satisfaction <?php echo $rating; ?>% from xxxx people</p>
-            <p class="center-align">xxxx people travelled</p><br/>
+            <p class="center-align">Highlight : <?php echo $hightlight; ?></p><br/>
           </div>
 
           <ul>

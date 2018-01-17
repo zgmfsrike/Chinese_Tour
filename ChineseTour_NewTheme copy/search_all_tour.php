@@ -22,7 +22,7 @@ if(!isLoginAs(array('admin'))){
        // isLogin();
        // include 'php_profile_func.php';
        $sql = "SELECT * FROM `tour`";
-      $result = page_query($GLOBALS['conn'],$sql,2);
+      $result = page_query($GLOBALS['conn'],$sql,3);
 
 
  ?>
