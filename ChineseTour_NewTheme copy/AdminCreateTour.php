@@ -54,11 +54,18 @@ if(!isLoginAs(array('admin'))){
                       <!--Start-End Date-->
                       <div id="tour_round" class="col s12">
                         <div class="section"></div>
-                          <span><b>Start Date</b></span>
-                            <input required name='start_date[]' type='date'/>
-                          <span><b>End Date</b></span>
-                            <input required name='end_date[]' type='date'/><br>
+                        <fieldset>
+                          <legend>Tour Round</legend>
+                          <div class="col s6">
+                            <span><b>Start Date</b></span>
+                              <input required name='start_date[]' type='date'/>
+                          </div>
+                          <div class="col s6">
+                            <span><b>End Date</b></span>
+                              <input required name='end_date[]' type='date'/><br>
+                          </div>
                         <input type="button" class="add_more_tr btn amber" value="Add More">
+                        </fieldset>
                       </div>
         </div>
         <div class="col s12 l6">
@@ -180,7 +187,7 @@ if(!isLoginAs(array('admin'))){
 
   <div class="row">
     <div class="col s12 center">
-      <button class="waves-effect waves-light btn amber" type="submit" name="submit"/>Submit</button>
+      <button class="waves-effect waves-light btn amber" type="submit" name="submit">Submit</button>
     </div>
   </div>
 
@@ -216,7 +223,7 @@ include 'component/footer.php';
           // add more tour round
           $('.add_more_tr').click(function(e){
             e.preventDefault();
-            $(this).before("<span><b>Start Date</b></span><input name='start_date[]' type='date'/><span><b>End Date</b></span><input name='end_date[]' type='date'/><br>");
+            $(this).before("<div class='col s6'><span><b>Start Date</b></span><input required name='start_date[]' type='date'/></div><div class='col s6'><span><b>End Date</b></span><input required name='end_date[]' type='date'/><br></div>");
             });
     });
     </script>
