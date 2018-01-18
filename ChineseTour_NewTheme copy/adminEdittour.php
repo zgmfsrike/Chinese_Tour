@@ -191,7 +191,7 @@ if(isset($_GET['id'])){
                     while($row = mysqli_fetch_array($result)){
                         $img_name = $row['img_name'];
                         ?>
-                        <div>
+                        <div id="image_<?php echo $i; ?>">
                           <img src="images/tours/<?php echo $img_name;?>" height="200" width="300">
                         </div>
                 <div class="file-field input-field">
@@ -203,7 +203,8 @@ if(isset($_GET['id'])){
                     <input class="file-path validate" type="text" placeholder="Image here">
                   </div>
                 </div>
-                <input name='hide_<?php echo $i; ?>' class='hide' type='text' value='0'/>
+                <input id='delete_<?php echo $i; ?>' class='hide' type='text' value='0'/>
+                <button type="button" onclick="delete_image(<?php echo $i; ?>)">Delete</button>
                 <?php
                 $i++;
             }
@@ -292,6 +293,11 @@ include 'component/footer.php';
             $(this).before("<span><b>Start Date</b></span><input name='start_date[]' type='date'/><span><b>End Date</b></span><input name='end_date[]' type='date'/><br>");
             });
     });
+    
+    function delete_image(id) {
+        document.getElementById("image_"+id).style.display = 'none';
+        document.getElementById("delete_"+id).value = 1;
+}
     </script>
 </body>
 </html>

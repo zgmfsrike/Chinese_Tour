@@ -47,9 +47,14 @@ error_reporting(E_ALL | E_STRICT);
         $result = mysqli_query($conn, $sql);
         $count = mysqli_num_rows($result);
         // ====== upload images + insert "tour_image" table =====
+        $new_index = 1;
         for($i=1;$i<=10;$i++){
           $sql = "SELECT * FROM `tour_image` WHERE tour_id = $id AND img_index = $i";
           $result = mysqli_query($conn, $sql);
+            
+            if($_POST['delete_'.$i] == 1 && !isset($_FILES['image_'.$i])){
+                
+            }
 
           if(!isset($_FILES['image_'.$i]) || $_FILES['image_'.$i]['error'] == UPLOAD_ERR_NO_FILE){
             // echo "Image : ".$i." no file ";
@@ -61,7 +66,7 @@ error_reporting(E_ALL | E_STRICT);
               // -----Upload images-----
               $ext = pathinfo(basename($_FILES['image_'.$i]['name'] ),PATHINFO_EXTENSION);
               $check_ext = strtolower( $ext);
-              echo $check_ext;
+//              echo $check_ext;
 
               if($check_ext == "jpeg" or "jpg" or "png" or "gif"){
 
