@@ -166,9 +166,15 @@ if(mysqli_num_rows($result) > 0){
             <input type="text" id="datepicker2">
           </div> -->
 
-          <div class="center col s12">
+         <?php
+            if(isLoginAs(array('member'))){
+            ?>
+            <div class="center col s12">
             <button type="submit" class="waves-effect waves-light btn orange" name="book" value="Book">Book</button>
           </div>
+            <?php
+            }
+                ?>
         </div>
       </div>
       <div class="section"></div>
@@ -194,8 +200,15 @@ if(mysqli_num_rows($result) > 0){
 
       <div class="row">
         <div class="col s12">
-          <a href="AdminEditTour.php?id=<?php echo $id?>" class="btn-large btn-floating tooltipped right waves-effect waves-light red" data-position="top" data-delay="50" data-tooltip="Edit Tour"><i class="material-icons">settings</i></a>
+        <?php
+            if(isLoginAs(array('admin'))){
+        ?>
+        <a href="AdminEditTour.php?id=<?php echo $id?>" class="btn-large btn-floating tooltipped right waves-effect waves-light red" data-position="top" data-delay="50" data-tooltip="Edit Tour"><i class="material-icons">settings</i></a>
           <a href="#" id='del_button' onclick="warning();" class="btn-large btn-floating tooltipped waves-effect waves-light red" data-position="top" data-delay="50" data-tooltip="Delete"><i class="material-icons">delete</i></a>
+        <?php
+            }
+        ?>
+          
 
         </div>
       </div>
@@ -249,11 +262,6 @@ if(mysqli_num_rows($result) > 0){
           }).then((result) => {
             if (result.value) {
               swal(
-                // let url = getElementById('del_button').innerHTML = "<a href ='DeleteNews.php?news_id=<?php echo $news_id; ?>'></a>";
-
-                // '<a href ="DeleteNews.php?news_id=<?php echo $news_id; ?>">Deleted</a>!'
-                // 'Your file has been deleted.',
-                // 'success'
               )
             }
           })
