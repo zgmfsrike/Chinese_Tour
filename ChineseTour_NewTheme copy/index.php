@@ -15,14 +15,14 @@
 
     <nav class="nav-extended">
         <div class="nav-wrapper red darken-2">
-            <a href="Index.php" class="brand-logo center hide-on-med-and-down"><img src="images/logo400x300.png" width=20% height=20% alt="logo"></a>
+            <a href="#" class="brand-logo center hide-on-med-and-down"><img src="images/logo400x300.png" width=20% height=20% alt="logo"></a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-            <a href="Index.php" class="show-on-medium-and-down hide-on-large-only">Chiangmai HongThai</a>
+            <a href="#" class="show-on-medium-and-down hide-on-large-only">Chiangmai HongThai</a>
 
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="#">WeChat</a></li>
                 <li><a href="#">081-025-0351</a></li>
-                <li><a class="grey-text text-lighten-3" href="mailto:chiangmaihongthai@hotmail.com">chiangmaihongthai@hotmail.com</a></li>
+                <li><a class="grey-text text-lighten-3" href="#">chiangmaihongthai@hotmail.com</a></li>
             </ul>
         </div>
     </nav>
@@ -100,17 +100,6 @@
 
     <!--  End Body  -->
 
-
-
-
-
-
-
-
-
-
-
-
     <footer class="page-footer red darken-3">
         <div class="container">
             <div class="row">
@@ -121,8 +110,8 @@
                 <div class="col l4 offset-l2 s12">
                     <h5 class="white-text">Contact Us</h5>
                     <ul>
-                        <li><a class="grey-text text-lighten-3" href="#!">Tel : 081-025-0351</a></li>
-                        <li><a class="grey-text text-lighten-3" href="mailto:chiangmaihongthai@hotmail.com">Email : chiangmaihongthai@hotmail.com</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#">Tel : 081-025-0351</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#">Email : chiangmaihongthai@hotmail.com</a></li>
                     </ul>
                 </div>
             </div>
