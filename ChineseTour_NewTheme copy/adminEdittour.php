@@ -75,27 +75,34 @@ if(isset($_GET['id'])){
                       <!--Start-End Date-->
                       <div id="tour_round" class="col s12">
                         <div class="section"></div>
-                        <?php
-                        $sql = "SELECT * FROM `tour_round` WHERE tour_id = $id";
-                        $result = mysqli_query($conn, $sql);
-                        if(mysqli_num_rows($result) > 0){
-                          while($row = mysqli_fetch_array($result)){
-                            $start_date = $row['start_date_time'];
-                            $end_date = $row['end_date_time'];
-                            ?>
-                          <span><b>Start Date</b></span>
-                            <input required name='start_date[]' type='date' value="<?php echo $start_date; ?>"/>
-                          <span><b>End Date</b></span>
-                            <input required name='end_date[]' type='date' value="<?php echo $end_date; ?>"/><br>
-                            <?php
+                        <fieldset>
+                          <legend>Tour Round</legend>
+                          <?php
+                          $sql = "SELECT * FROM `tour_round` WHERE tour_id = $id";
+                          $result = mysqli_query($conn, $sql);
+                          if(mysqli_num_rows($result) > 0){
+                            while($row = mysqli_fetch_array($result)){
+                              $start_date = $row['start_date_time'];
+                              $end_date = $row['end_date_time'];
+                              ?>
+                              <div class="col s6">
+                            <span><b>Start Date</b></span>
+                              <input required name='start_date[]' type='date' value="<?php echo $start_date; ?>"/>
+                              </div>
+                              <div class="col s6">
+                            <span><b>End Date</b></span>
+                              <input required name='end_date[]' type='date' value="<?php echo $end_date; ?>"/><br>
+                            </div>
+                              <?php
+                            }
+                              // Free result set
+                              mysqli_free_result($result);
                           }
-                            // Free result set
-                            mysqli_free_result($result);
-                        }
-                         ?>
+                           ?>
                         <input type="button" class="add_more_tr btn amber" value="Add More">
-
+                        </fieldset>
                       </div>
+
         </div>
         <div class="col s12 l6">
           <div class="col s12 l4" id="type">
@@ -193,6 +200,7 @@ if(isset($_GET['id'])){
                       if($img != ''){
                           ?>
                              <div id="image_<?php echo $i; ?>">
+                             <a href="#" id='del_button' onclick="warning();" class="btn-large btn-floating tooltipped waves-effect waves-light red right" data-position="top" data-delay="50" data-tooltip="Delete"><i class="material-icons">delete</i></a>
                           <img src="images/tours/<?php echo $img;?>" height="200" width="300">
                         </div>
                 <div class="file-field input-field">
@@ -295,11 +303,32 @@ include 'component/footer.php';
             $(this).before("<span><b>Start Date</b></span><input name='start_date[]' type='date'/><span><b>End Date</b></span><input name='end_date[]' type='date'/><br>");
             });
     });
-    
     function delete_image(id) {
         document.getElementById("image_"+id).style.display = 'none';
         document.getElementById("delete_"+id).value = 1;
 }
+
+    function warning(){
+        swal({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: '<a style="color:white" href ="DeleteNews.php?news_id=<?php echo $news_id; ?>">Yes, delete it!</a>'
+        }).then((result) => {
+          if (result.value) {
+            swal(
+              // let url = getElementById('del_button').innerHTML = "<a href ='DeleteNews.php?news_id=<?php echo $news_id; ?>'></a>";
+
+              // '<a href ="DeleteNews.php?news_id=<?php echo $news_id; ?>">Deleted</a>!'
+              // 'Your file has been deleted.',
+              // 'success'
+            )
+          }
+        })
+    }
     </script>
 </body>
 </html>

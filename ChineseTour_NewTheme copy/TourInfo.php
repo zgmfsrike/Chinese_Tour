@@ -123,7 +123,7 @@ if(isset($_GET['id'])){
             <label>Departure Location</label>
               <select class="browser-default" name="depart" required>
                 <option value="">Please select</option>
-                <option value="1">Chiangmai</option>
+                <option value="1">Airport</option>
                 <option value="2">Bangkok</option>
                 <option value="3">Nar More</option>
                 <option value="4">Lung More</option>
