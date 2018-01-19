@@ -114,7 +114,7 @@ include('module/session.php');
       <div class="row">
         <div class="right">
           <a href="EditNews.php?news_id=<?php echo $news_id; ?>" class="btn-large btn-floating tooltipped waves-effect waves-light amber" data-position="top" data-delay="50" data-tooltip="Edit News"><i class="material-icons">edit</i></a>
-          <a href="#" id='del_button' onclick="warning();" class="btn-large btn-floating tooltipped waves-effect waves-light red" data-position="top" data-delay="50" data-tooltip="Delete"><i class="material-icons">delete</i></a>
+          <button id='del_button' class="delete_warn btn-large btn-floating tooltipped waves-effect waves-light red" data-position="top" data-delay="50" data-tooltip="Delete"><i class="delete_warn material-icons">delete</i></button>
         </div>
       </div>
       </div>
@@ -124,10 +124,13 @@ include('module/session.php');
       include 'component/footer.php';
       ?>
 
-      <!-- ย้ายไปไฟล์ js แยกแล้วใช้ไม่ได้อะ เลยแปะไว้ตรงนี้แทน งง -0- -->
+      <!-- Warning -->
       <script type="text/javascript">
-      function warning(){
-          swal({
+          $(document).ready(function(){
+          // add more image
+        $('.delete_warn').click(function(e){
+          e.preventDefault();
+            swal({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
             type: 'warning',
@@ -145,9 +148,9 @@ include('module/session.php');
                 // 'success'
               )
             }
-          })
-      }
-
+          });
+        });
+          }
       </script>
 
     </body>

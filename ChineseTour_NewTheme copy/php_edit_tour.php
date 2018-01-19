@@ -48,11 +48,17 @@ error_reporting(E_ALL | E_STRICT);
         $count = mysqli_num_rows($result);
         // ====== upload images + insert "tour_image" table =====
         $new_index = 1;
+        
+        $sql = "SELECT * FROM `tour_image` WHERE tour_id = $id";
+        $result = mysqli_query($conn, $sql);
+        
+        
         for($i=1;$i<=10;$i++){
           $sql = "SELECT * FROM `tour_image` WHERE tour_id = $id AND img_index = $i";
           $result = mysqli_query($conn, $sql);
-            
-            if($_POST['delete_'.$i] == 1 && !isset($_FILES['image_'.$i])){
+            if(isset($_POST['delete_'.$i])){
+                if($_POST['delete_'.$i] == 1 && !isset($_FILES['image_'.$i])){
+                }
                 
             }
 
@@ -129,11 +135,20 @@ error_reporting(E_ALL | E_STRICT);
               $ext = pathinfo(basename($_FILES['schedule']['name'] ),PATHINFO_EXTENSION);
               $check_ext = strtolower( $ext);
               echo $check_ext;
+            
 
               if($check_ext == "pdf"){
                 $new_pdf_name = $id.".".$ext;
                 $pdf_path = "pdf/tours_schedule/";
                 $upload_path_pdf = $pdf_path.$new_pdf_name;
+                  if(file_exists("pdf/tours_schedule/".$id.".pdf")){
+                      $flgDelete = unlink("pdf/tours_schedule/".$id.".pdf");
+                      if($flgDelete){
+                          echo "File Deleted : " . $id;
+                      }else{
+                          echo "File can not delete : " . $id;
+                      }
+                  }
                 $success = move_uploaded_file($_FILES['schedule']['tmp_name'] ,$upload_path_pdf);
                 if($success == FALSE){
                   echo "Cannot upload pdf";
@@ -207,7 +222,7 @@ error_reporting(E_ALL | E_STRICT);
                 $result = mysqli_query( $GLOBALS['conn'] , $sql );
             }
         }
-        header("location: message.php?msg=edit_tour_succ");
+        header("location: message.php?msg=edit_tour_succ&id=$id");
     }else{
       header("location: message.php");
     }

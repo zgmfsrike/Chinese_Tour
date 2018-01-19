@@ -300,35 +300,13 @@ include 'component/footer.php';
           // add more tour round
           $('.add_more_tr').click(function(e){
             e.preventDefault();
-            $(this).before("<span><b>Start Date</b></span><input name='start_date[]' type='date'/><span><b>End Date</b></span><input name='end_date[]' type='date'/><br>");
+            $(this).before("<div class='col s6'><span><b>Start Date</b></span><input required name='start_date[]' type='date'/></div><div class='col s6'><span><b>End Date</b></span><input required name='end_date[]' type='date'/><br></div>");
             });
     });
     function delete_image(id) {
         document.getElementById("image_"+id).style.display = 'none';
         document.getElementById("delete_"+id).value = 1;
 }
-
-    function warning(){
-        swal({
-          title: 'Are you sure?',
-          text: "You won't be able to revert this!",
-          type: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: '<a style="color:white" href ="DeleteNews.php?news_id=<?php echo $news_id; ?>">Yes, delete it!</a>'
-        }).then((result) => {
-          if (result.value) {
-            swal(
-              // let url = getElementById('del_button').innerHTML = "<a href ='DeleteNews.php?news_id=<?php echo $news_id; ?>'></a>";
-
-              // '<a href ="DeleteNews.php?news_id=<?php echo $news_id; ?>">Deleted</a>!'
-              // 'Your file has been deleted.',
-              // 'success'
-            )
-          }
-        })
-    }
     </script>
 </body>
 </html>

@@ -31,8 +31,20 @@ include "db_config.php";
             return false;
         }
 
-        $count = 0;
         // ====== upload images + insert "tour_image" table =====
+        
+        $count = 0;
+        $img[1] = '';
+        $img[2] = '';
+        $img[3] = '';
+        $img[4] = '';
+        $img[5] = '';
+        $img[6] = '';
+        $img[7] = '';
+        $img[8] = '';
+        $img[9] = '';
+        $img[10] = '';
+        
         for($i=1;$i<=10;$i++){
           if(!isset($_FILES['image_'.$i]) || $_FILES['image_'.$i]['error'] == UPLOAD_ERR_NO_FILE){
             // echo "Image : ".$i." no file ";
@@ -51,32 +63,30 @@ include "db_config.php";
                 $img_path = "images/tours/";
 
 
-                $img = $_FILES['image_'.$i]['tmp_name'];
+                $img_name = $_FILES['image_'.$i]['tmp_name'];
                 $new_image_name = $last_id.'_'.$count;
                 $dst = $img_path.$new_image_name ;
 
-                if (($img_info = getimagesize($img)) === FALSE)
-                  die("Image not found or not an image");
+                if (($img_info = getimagesize($img_name)) === FALSE){
+                    die("Image not found or not an image");
+                }
 
                 // $width = $img_info[0];
                 // $height = $img_info[1];
-                $width=1280;
-                $height=500;
+                $width=960;
+                $height=720;
                 switch ($img_info[2]) {
-                  case IMAGETYPE_GIF  : $src = imagecreatefromgif($img);  break;
-                  case IMAGETYPE_JPEG : $src = imagecreatefromjpeg($img); break;
-                  case IMAGETYPE_PNG  : $src = imagecreatefrompng($img);  break;
+                  case IMAGETYPE_GIF  : $src = imagecreatefromgif($img_name);  break;
+                  case IMAGETYPE_JPEG : $src = imagecreatefromjpeg($img_name); break;
+                  case IMAGETYPE_PNG  : $src = imagecreatefrompng($img_name);  break;
                   default : die("Unknown filetype");
                 }
                 $photoX = ImagesX($src);
-            		$photoY = ImagesY($src);
+                $photoY = ImagesY($src);
 
                 $tmp = imagecreatetruecolor($width, $height);
                 imagecopyresampled($tmp, $src, 0, 0, 0, 0, $width, $height, $photoX, $photoY);
                 $success= imagejpeg($tmp, $dst.".jpg");
-                unlink($img_path.$_FILES['newsPicAddtopic'.$i]['name'] );
-
-
 
                 // $upload_path = $img_path.$new_image_name;
                 // $success = move_uploaded_file($_FILES['image_'.$i]['tmp_name'] ,$upload_path);
@@ -84,15 +94,16 @@ include "db_config.php";
                   echo "Cannot upload images";
                   exit();
                 }
-                $image_name = $new_image_name;
-
-                // ----------- insert ----------
-                $sql2 = "INSERT INTO tour_image(tour_id, img_index, img_name) VALUES ('$last_id','$count','$image_name')";
-                $result2 = mysqli_query( $GLOBALS['conn'] , $sql2 );
+                  
+                  $img[$count] = $new_image_name.".jpg";
           }
 
         }
       }
+        // insert into image table
+        
+    $sql2 = "INSERT INTO tour_image(tour_id, img1, img2,img3,img4,img5,img6,img7,img8,img9,img10) VALUES ('$last_id','$img[1]','$img[2]','$img[3]','$img[4]','$img[5]','$img[6]','$img[7]','$img[8]','$img[9]','$img[10]')";
+    $result2 = mysqli_query( $GLOBALS['conn'] , $sql2 );
 
         // upload schedule + insert "tour_schedule" table
         if(!isset($_FILES['schedule']) || $_FILES['schedule']['error'] == UPLOAD_ERR_NO_FILE){
@@ -121,8 +132,6 @@ include "db_config.php";
                 // ---------------------------
                 $sql3 = "INSERT INTO tour_schedule(tour_id, file_name) VALUES ('$last_id','$schedule_pdf')";
                 $result3 = mysqli_query( $GLOBALS['conn'] , $sql3 );
-
-
               }else{
                 echo "not pdf";
               }
@@ -184,7 +193,7 @@ include "db_config.php";
 
         }
 
-header("location: message.php?msg=create_tour_succ");
+header("location: message.php?msg=create_tour_succ&id=$last_id");
 }else{
   header("location: message.php");
 }
