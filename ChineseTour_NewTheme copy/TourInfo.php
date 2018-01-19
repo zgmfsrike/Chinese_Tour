@@ -249,11 +249,6 @@ if(mysqli_num_rows($result) > 0){
           }).then((result) => {
             if (result.value) {
               swal(
-                // let url = getElementById('del_button').innerHTML = "<a href ='DeleteNews.php?news_id=<?php echo $news_id; ?>'></a>";
-
-                // '<a href ="DeleteNews.php?news_id=<?php echo $news_id; ?>">Deleted</a>!'
-                // 'Your file has been deleted.',
-                // 'success'
               )
             }
           })
