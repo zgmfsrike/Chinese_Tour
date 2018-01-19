@@ -69,10 +69,12 @@ if(isset($_POST['submit'])){
             $mail->AltBody = strip_tags($body);
 
             $mail->send();
-            header("location: contact.php?send_mail=done");
+            header("location: index.php?send_mail=done");
             ob_end_flush();
             // echo 'Message has been sent';
         } catch (Exception $e) {
+            header("location: index.php?send_mail=unsuccessful");
+            ob_end_flush();
             //                echo 'Message could not be sent.';
             //                echo 'Mailer Error: ' . $mail->ErrorInfo;
         }
