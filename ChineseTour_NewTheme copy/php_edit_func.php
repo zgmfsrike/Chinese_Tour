@@ -46,11 +46,12 @@ $address = $_POST['address'];
 $city = $_POST['city'];
 $province = $_POST['province'];
 $zipcode = $_POST['zipcode'];
+$country_code = $_POST['countrycode'];
 //-----------------------------Edit fucntion----------------------------------------------------//
 if($_POST['save']){
 
     $sql= "UPDATE `member` SET `first_name`='$firstname',`middle_name`='$middlename',`last_name`='$surname',
-                                `phone`='$phone',`occupation`='$occupation',`salary`='$salary',`dob`='$dob',`address`='$address',`city`='$city',`province`='$province',`zipcode`='$zipcode'
+                                `phone`='$phone',`occupation`='$occupation',`salary`='$salary',`dob`='$dob',`address`='$address',`city`='$city',`province`='$province',`zipcode`='$zipcode',`country_code`='$country_code'
 
                                  WHERE id = $id ";
     $result = mysqli_query( $GLOBALS['conn'] , $sql );

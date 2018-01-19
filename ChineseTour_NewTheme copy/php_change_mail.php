@@ -30,7 +30,7 @@ if($_POST['save']){
        //-----------------------------Send change mail fucntion----------------------------------------------------//
          require 'vendor/autoload.php';
 
-           $url = "http://localhost/Chinese_Tour/ChineseTour_NewTheme%20copy/active_change_mail.php?id=" . $id . "&u=" . md5($username)."&m=" .$email;
+           $url = "http://localhost/Chinese_Tour/ChineseTour_NewTheme%20copy/php_active_mail.php?id=" . $id . "&u=" . md5($username)."&m=" .$email;
 
            $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
          try {
