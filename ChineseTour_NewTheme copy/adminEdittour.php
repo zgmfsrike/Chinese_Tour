@@ -184,15 +184,16 @@ if(isset($_GET['id'])){
               <div id="image">
                 <label for="image"><b>Images</b></label>
                 <?php
-                $sql = "SELECT * FROM `tour_image` WHERE tour_id = $id";
-                $result = mysqli_query($conn, $sql);
-                if(mysqli_num_rows($result) > 0){
-                  $i = 1;
-                    while($row = mysqli_fetch_array($result)){
-                        $img_name = $row['img_name'];
-                        ?>
-                        <div id="image_<?php echo $i; ?>">
-                          <img src="images/tours/<?php echo $img_name;?>" height="200" width="300">
+                  $sql = "SELECT * FROM `tour_image` WHERE tour_id = $id";
+              $result = mysqli_query($conn, $sql);
+              if(mysqli_num_rows($result) > 0){
+                  $row = mysqli_fetch_array($result);
+                  for($i = 1; $i <= 10; $i++){
+                      $img = $row['img'.$i];
+                      if($img != ''){
+                          ?>
+                             <div id="image_<?php echo $i; ?>">
+                          <img src="images/tours/<?php echo $img;?>" height="200" width="300">
                         </div>
                 <div class="file-field input-field">
                   <div class="btn">
@@ -205,12 +206,13 @@ if(isset($_GET['id'])){
                 </div>
                 <input id='delete_<?php echo $i; ?>' class='hide' type='text' value='0'/>
                 <button type="button" onclick="delete_image(<?php echo $i; ?>)">Delete</button>
-                <?php
-                $i++;
-            }
-            // Free result set
-            mysqli_free_result($result);
-        }
+                      <?php
+                      }
+                      
+                  }
+                  // Free result set
+                  mysqli_free_result($result);
+              }
         ?>
                   <!-- <label>Image</label><br>
                   <input name='image_1' required class='image' type='file' accept="image/*"/><br> -->

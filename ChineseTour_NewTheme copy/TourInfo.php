@@ -47,13 +47,18 @@ if(isset($_GET['id'])){
               $sql = "SELECT * FROM `tour_image` WHERE tour_id = $id";
               $result = mysqli_query($conn, $sql);
               if(mysqli_num_rows($result) > 0){
-                  while($row = mysqli_fetch_array($result)){
-                      $img_name = $row['img_name'];
-                      ?>
-                      <li>
-                      <img src="images/tours/<?php echo $img_name;?>">
-                    </li>
+                  $row = mysqli_fetch_array($result);
+                    $img_name = $row['img_name'];
+                  for($i = 1; $i <= 10; $i++){
+                      $img = $row['img'.$i];
+                      if($img != ''){
+                          ?>
+                             <li>
+                             <img src="images/tours/<?php echo $img;?>">
+                             </li>
                       <?php
+                      }
+                      
                   }
                   // Free result set
                   mysqli_free_result($result);
