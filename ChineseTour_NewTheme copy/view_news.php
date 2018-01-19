@@ -111,12 +111,18 @@ include('module/session.php');
           </div>
         </div>
       </div>
+      <?php
+            if(isLoginAs(array('admin'))){
+        ?>
       <div class="row">
         <div class="right">
           <a href="EditNews.php?news_id=<?php echo $news_id; ?>" class="btn-large btn-floating tooltipped waves-effect waves-light amber" data-position="top" data-delay="50" data-tooltip="Edit News"><i class="material-icons">edit</i></a>
           <a href="#" id='del_button' onclick="warning();" class="btn-large btn-floating tooltipped waves-effect waves-light red" data-position="top" data-delay="50" data-tooltip="Delete"><i class="material-icons">delete</i></a>
         </div>
       </div>
+      <?php
+            }
+        ?>
       </div>
 
       <!--Footer-->
