@@ -10,21 +10,13 @@ if(isset($_GET['id'])){
     // tour
     $sql = "SELECT * FROM `tour` WHERE tour_id = $id";
     $result = mysqli_query($conn, $sql);
-    
+
     if(mysqli_num_rows($result) == 0){
-<<<<<<< HEAD
       //error no data
       header("location: message.php?msg=tour_not_found");
       return false;
-=======
-        //error no data
-        //      echo "No data match";
-        //      return false;
-        header("location: message.php?msg=no_data");
-
->>>>>>> origin/NewTheme_bun
     }
-    
+
     $data = mysqli_fetch_array($result);
 
     $tour_description = $data['tour_description'];
@@ -68,7 +60,7 @@ if(isset($_GET['id'])){
                              </li>
                       <?php
                       }
-                      
+
                   }
                   // Free result set
                   mysqli_free_result($result);
@@ -223,7 +215,7 @@ if(mysqli_num_rows($result) > 0){
         <?php
             }
         ?>
-          
+
 
         </div>
       </div>

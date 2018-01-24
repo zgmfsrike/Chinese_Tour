@@ -208,7 +208,6 @@ if(isset($_GET['id'])){
                                     while($row = mysqli_fetch_array($result)){
                                         $img_name = $row['img_name'];
                                 ?>
-<<<<<<< HEAD
                       </div>
             <!--  File[] : Image  -->
             <div class="col s12">
@@ -227,72 +226,15 @@ if(isset($_GET['id'])){
                              <div id="image_<?php echo $i; ?>">
                              <a href="#" id='del_button' onclick="delete_image(<?php echo $i; ?>)" class="btn-large btn-floating tooltipped waves-effect waves-light red right" data-position="top" data-delay="50" data-tooltip="Delete"><i class="material-icons">delete</i></a>
                           <img src="images/tours/<?php echo $img;?>" height="200" width="300">
-=======
-                                <div>
-                                    <!--                          <a href="#" id='del_button' onclick="warning();" class="btn-large btn-floating tooltipped waves-effect waves-light red right" data-position="top" data-delay="50" data-tooltip="Delete"><i class="material-icons">delete</i></a>-->
-
-                                    <img src="images/tours/<?php echo $img_name;?>" height="200" width="300">
-                                </div>
-                                <div class="file-field input-field">
-                                    <div class="btn">
-                                        <span>Upload image</span>
-                                        <input name='image_<?php echo $i; ?>' class='image' type='file' accept="image/*"/>
-                                    </div>
-                                    <div class="file-path-wrapper">
-                                        <input class="file-path validate" type="text" placeholder="Image here">
-                                    </div>
-                                </div>
-                                <?php
-                                        $i++;
-                                    }
-                                    // Free result set
-                                    mysqli_free_result($result);
-                                }
-                                ?>
-                                <!-- <label>Image</label><br>
-<input name='image_1' required class='image' type='file' accept="image/*"/><br> -->
-                                <input type="button" class="add_more_image btn amber" value="Add More Image">
-                            </div>
-                            <!--  PDF File : Schedule  -->
-                            <div id="schedule">
-                                <div class="section"></div>
-                                <label for="schedule"><b>Schedule</b></label>
-                                <?php
-                                $sql = "SELECT * FROM `tour_schedule` WHERE tour_id = $id";
-                                $result = mysqli_query($conn, $sql);
-                                if(mysqli_num_rows($result) > 0){
-                                    $row = mysqli_fetch_array($result);
-                                    $file_name = $row['file_name'];
-                                ?>
-                                <!-- <embed src="pdf/tours_schedule/<?php echo $file_name; ?>" type="application/pdf"   height="300px" width="90%"><br> -->
-                                <?php
-                                    // Free result set
-                                    mysqli_free_result($result);
-                                }
-                                ?>
-                                <div class="file-field input-field">
-                                    <div class="btn">
-                                        <span>Upload PDF</span>
-                                        <input name='schedule' type='file' accept="application/pdf"/>
-                                    </div>
-                                    <div class="file-path-wrapper">
-                                        <input class="file-path validate" type="text" placeholder="Schedule here">
-                                    </div>
-                                </div>
-                                <!-- <label>Schedule</label>
-<input required name='schedule' type='file' value="" accept="application/pdf"/>
-<br> -->
-                            </div>
->>>>>>> origin/NewTheme_bun
                         </div>
 
                     </div>
                 </div>
-<<<<<<< HEAD
+
                 <input id='delete_<?php echo $i; ?>' class='hide' type='text' value='0'/>
                       <?php
                       }
-                      
+
                   }
                   // Free result set
                   mysqli_free_result($result);
@@ -328,20 +270,12 @@ if(isset($_GET['id'])){
                   <div class="file-path-wrapper">
                     <input class="file-path validate" type="text" placeholder="Schedule here">
                   </div>
-=======
-
-                <div class="row">
-                    <div class="col s12 center">
-                        <button class="waves-effect waves-light btn amber" type="submit" name="submit">Submit</button>
-                    </div>
->>>>>>> origin/NewTheme_bun
                 </div>
 
             </form>
         </div>
         <div class="section"></div>
 
-<<<<<<< HEAD
   <div class="row">
     <div class="col s12 center">
       <button class="waves-effect waves-light btn amber" type="submit" name="submit">Submit</button>
@@ -389,54 +323,4 @@ include 'component/footer.php';
 }
     </script>
 </body>
-=======
-        <?php
-        include 'component/footer.php';
-        ?>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script>
-            $(document).ready(function(){
-                // add more image
-                $('.add_more_image').click(function(e){
-                    e.preventDefault();
-                    var e = document.getElementsByTagName('input');
-                    var i;
-                    var s = 0;
-                    for(i=0; i < e.length; i++) {
-                        if(e[i].type== "file" && e[i].className=="image" ) {
-                            s++;
-                        }
-                    }
-                    if(s < 10){
-                        s++;
-                        $(this).before("<div class='file-field input-field'><div class='btn'><span>Upload image</span><input name='image_" + s + "' class='image' type='file' accept='image/*'/></div><div class='file-path-wrapper'><input class='file-path validate' type='text' placeholder='Image here'></div></div>");
-                    }
-                });
-
-                // add more tour round
-                $('.add_more_tr').click(function(e){
-                    e.preventDefault();
-                    $(this).before("<div class='col s6'><span><b>Start Date</b></span><input required name='start_date[]' type='date'/></div><div class='col s6'><span><b>End Date</b></span><input required name='end_date[]' type='date'/><br></div>");
-                });
-            });
-
-            //    function warning(){
-            //        swal({
-            //          title: 'Are you sure?',
-            //          text: "You won't be able to revert this!",
-            //          type: 'warning',
-            //          showCancelButton: true,
-            //          confirmButtonColor: '#3085d6',
-            //          cancelButtonColor: '#d33',
-            //          confirmButtonText: '<a style="color:white" href ="DeleteNews.php?news_id=<?php echo $id; ?>">Yes, delete it!</a>'
-            //        }).then((result) => {
-            //          if (result.value) {
-            //            swal()
-            //          }
-            //        })
-            //    }
-
-        </script>
-    </body>
->>>>>>> origin/NewTheme_bun
 </html>
