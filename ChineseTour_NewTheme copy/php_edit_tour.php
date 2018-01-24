@@ -98,17 +98,96 @@ error_reporting(E_ALL | E_STRICT);
                             echo "File can not delete : " . $id;
                         }
                     }
-                        $img_name
+                        
                         // ---- upload pic ----
+                        $ext = pathinfo(basename($_FILES['image_'.$i]['name'] ),PATHINFO_EXTENSION);
+              $check_ext = strtolower( $ext);
+              echo "image : ". $i ." : ". $check_ext . "<br>";
+
+              if($check_ext == "jpeg" or "jpg" or "png" or "gif"){
+                // $new_image_name = $last_id.'_'.$count.".".$ext;
+                $img_path = "images/tours/";
+
+
+                $img_name = $_FILES['image_'.$i]['tmp_name'];
+                $new_image_name = $last_id.'_'.$count;
+                $dst = $img_path.$new_image_name ;
+
+                if (($img_info = getimagesize($img_name)) === FALSE){
+                    die("Image not found or not an image");
+                }
+
+                  $width=1280;
+                  $height=500;
+                  switch ($img_info[2]) {
+                    case IMAGETYPE_GIF  : $src = imagecreatefromgif($img);  break;
+                    case IMAGETYPE_JPEG : $src = imagecreatefromjpeg($img); break;
+                    case IMAGETYPE_PNG  : $src = imagecreatefrompng($img);  break;
+                    default : die("Unknown filetype");
+                  }
+                  $photoX = ImagesX($src);
+                  $photoY = ImagesY($src);
+
+                  $tmp = imagecreatetruecolor($width, $height);
+                  imagecopyresampled($tmp, $src, 0, 0, 0, 0, $width, $height, $photoX, $photoY);
+                  $success= imagejpeg($tmp, $dst.".jpg");
+                  unlink($img_path.$_FILES['image_'.$i]['name'] );
+
+                // $upload_path = $img_path.$new_image_name;
+                // $success = move_uploaded_file($_FILES['image_'.$i]['tmp_name'] ,$upload_path);
+                if($success == FALSE){
+                  echo "Cannot upload images";
+                  exit();
+                }
+                  
                         // --------------------
-                        $img[$count] = $img_name;
+                        $img[$count] = $new_image_name.".jpg";
                         
                         $count += 1;
                     }else{
-                        $img_name
                         // ---- upload pic ----
+                        $ext = pathinfo(basename($_FILES['image_'.$i]['name'] ),PATHINFO_EXTENSION);
+              $check_ext = strtolower( $ext);
+              echo "image : ". $i ." : ". $check_ext . "<br>";
+
+              if($check_ext == "jpeg" or "jpg" or "png" or "gif"){
+                // $new_image_name = $last_id.'_'.$count.".".$ext;
+                $img_path = "images/tours/";
+
+
+                $img_name = $_FILES['image_'.$i]['tmp_name'];
+                $new_image_name = $last_id.'_'.$count;
+                $dst = $img_path.$new_image_name ;
+
+                if (($img_info = getimagesize($img_name)) === FALSE){
+                    die("Image not found or not an image");
+                }
+
+                  $width=1280;
+                  $height=500;
+                  switch ($img_info[2]) {
+                    case IMAGETYPE_GIF  : $src = imagecreatefromgif($img);  break;
+                    case IMAGETYPE_JPEG : $src = imagecreatefromjpeg($img); break;
+                    case IMAGETYPE_PNG  : $src = imagecreatefrompng($img);  break;
+                    default : die("Unknown filetype");
+                  }
+                  $photoX = ImagesX($src);
+                  $photoY = ImagesY($src);
+
+                  $tmp = imagecreatetruecolor($width, $height);
+                  imagecopyresampled($tmp, $src, 0, 0, 0, 0, $width, $height, $photoX, $photoY);
+                  $success= imagejpeg($tmp, $dst.".jpg");
+                  unlink($img_path.$_FILES['image_'.$i]['name'] );
+
+                // $upload_path = $img_path.$new_image_name;
+                // $success = move_uploaded_file($_FILES['image_'.$i]['tmp_name'] ,$upload_path);
+                if($success == FALSE){
+                  echo "Cannot upload images";
+                  exit();
+                }
+                  
                         // --------------------
-                        $img[$count] = $img_name;
+                        $img[$count] = $new_image_name.".jpg";
                         
                         $count += 1;
                     }
@@ -216,7 +295,7 @@ error_reporting(E_ALL | E_STRICT);
                 if(mysqli_num_rows($result) > 0){
                   $row = mysqli_fetch_array($result);
                   $img_name = $row['img_name'];
-                  $flgDelete = unlink("images/tours/".$img_name);
+                  // $flgDelete = unlink("images/tours/".$img_name);
                   // if($flgDelete){
                   //   echo "File Deleted : " . $img_name;
                   // }else{
@@ -224,15 +303,42 @@ error_reporting(E_ALL | E_STRICT);
                   // }
 
 
-                  $new_image_name = $id.'_'.$i.".".$ext;
+                  // $new_image_name = $id.'_'.$i.".".$ext;
                   $img_path = "images/tours/";
-                  $upload_path = $img_path.$new_image_name;
-                  $success = move_uploaded_file($_FILES['image_'.$i]['tmp_name'] ,$upload_path);
+
+
+                  $img = $_FILES['image_'.$i]['tmp_name'];
+                  $new_image_name = $id.'_'.$i;
+                  $dst = $img_path.$new_image_name ;
+
+                  if (($img_info = getimagesize($img)) === FALSE)
+                    die("Image not found or not an image");
+
+                    $width=1280;
+                    $height=500;
+                    switch ($img_info[2]) {
+                      case IMAGETYPE_GIF  : $src = imagecreatefromgif($img);  break;
+                      case IMAGETYPE_JPEG : $src = imagecreatefromjpeg($img); break;
+                      case IMAGETYPE_PNG  : $src = imagecreatefrompng($img);  break;
+                      default : die("Unknown filetype");
+                    }
+                    $photoX = ImagesX($src);
+                    $photoY = ImagesY($src);
+
+                    $tmp = imagecreatetruecolor($width, $height);
+                    imagecopyresampled($tmp, $src, 0, 0, 0, 0, $width, $height, $photoX, $photoY);
+                    $success= imagejpeg($tmp, $dst.".jpg");
+                    unlink($img_path.$_FILES['image_'.$i]['name'] );
+
+
+
+                  // $upload_path = $img_path.$new_image_name;
+                  // $success = move_uploaded_file($_FILES['image_'.$i]['tmp_name'] ,$upload_path);
                   if($success == FALSE){
                     echo "Cannot upload images";
                     exit();
                   }
-                  $image_name = $new_image_name;
+                  $image_name = $new_image_name.".jpg";
 
                   // ----------- insert ----------
                   $sql2 = "UPDATE `tour_image` SET ";
@@ -241,15 +347,43 @@ error_reporting(E_ALL | E_STRICT);
                   $result2 = mysqli_query( $GLOBALS['conn'] , $sql2 );
                 }else{
                   $count++;
-                  $new_image_name = $id.'_'.$count.".".$ext;
+                  // $new_image_name = $id.'_'.$count.".".$ext;
                   $img_path = "images/tours/";
-                  $upload_path = $img_path.$new_image_name;
-                  $success = move_uploaded_file($_FILES['image_'.$i]['tmp_name'] ,$upload_path);
+
+                  $img = $_FILES['image_'.$i]['tmp_name'];
+                  $new_image_name = $id.'_'.$count;
+                  $dst = $img_path.$new_image_name ;
+
+                  if (($img_info = getimagesize($img)) === FALSE)
+                    die("Image not found or not an image");
+
+                    $width=1280;
+                    $height=500;
+                    switch ($img_info[2]) {
+                      case IMAGETYPE_GIF  : $src = imagecreatefromgif($img);  break;
+                      case IMAGETYPE_JPEG : $src = imagecreatefromjpeg($img); break;
+                      case IMAGETYPE_PNG  : $src = imagecreatefrompng($img);  break;
+                      default : die("Unknown filetype");
+                    }
+                    $photoX = ImagesX($src);
+                    $photoY = ImagesY($src);
+
+                    $tmp = imagecreatetruecolor($width, $height);
+                    imagecopyresampled($tmp, $src, 0, 0, 0, 0, $width, $height, $photoX, $photoY);
+                    $success= imagejpeg($tmp, $dst.".jpg");
+                    unlink($img_path.$_FILES['image_'.$i]['name'] );
+
+
+
+                  // $upload_path = $img_path.$new_image_name;
+                  // $success = move_uploaded_file($_FILES['image_'.$i]['tmp_name'] ,$upload_path);
                   if($success == FALSE){
                     echo "Cannot upload images";
                     exit();
                   }
-                  $image_name = $new_image_name;
+                  $image_name = $new_image_name.".jpg";
+
+
 
                   // ----------- insert ----------
                   $sql2 = "INSERT INTO tour_image(tour_id, img_index, img_name) VALUES ('$id','$count','$image_name')";

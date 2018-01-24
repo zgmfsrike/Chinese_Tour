@@ -3,6 +3,9 @@ include('module/session.php');
 if(!isLoginAs(array('admin','member'))){
     header('Location: message.php?msg=please_login');
 }
+//--------------------Link to another page -----------------------------------
+$profile_page = "window.location.href='Profile.php'";
+$change_mail_func = "php_change_mail.php";
  ?>
  <!DOCTYPE html>
    <html>
@@ -23,7 +26,7 @@ if(!isLoginAs(array('admin','member'))){
        <div class="col s12 l9">
 
            <h3>Change Email</h3>
-           <form action="php_change_mail.php" method="post">
+           <form action=<?php echo $change_mail_func; ?> method="post">
                <div class="form-group">
                    <label class="control-label col-sm-8">Email  <span class="text-danger">*</span></label>
                    <div class="col-sm-8">
@@ -48,7 +51,7 @@ if(!isLoginAs(array('admin','member'))){
              <div class="form-group">
                <div class="col-xs-offset-3 col-sm-9 float-none"><br>
                  <button type="submit" class="btn waves-effect waves-light green" value="save" name ="save">Save</button>
-                 <button type="button" value="Cancel" onclick="window.location.href='Profile.php'" class="btn waves-effect waves-light red">Cancle</button>
+                 <button type="button" value="Cancel" onclick=<?php echo $profile_page; ?> class="btn waves-effect waves-light red">Cancle</button>
                </div>
              </div>
            </form>

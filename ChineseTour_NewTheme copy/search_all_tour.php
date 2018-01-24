@@ -5,7 +5,8 @@ include "db_config.php";
 // include "db_configNB.php";
 include "module/hashing.php";
 include "lib/pagination.php";
-
+//--------------------Link to another page -----------------------------------
+$search_all_func ="php_search_tour.php";
 ?>
 <?php
 if(!isLoginAs(array('admin'))){
@@ -34,7 +35,7 @@ if(!isLoginAs(array('admin'))){
                  <h3>Search Tour</h3>
 
                  <a href="search_all_tour.php" class="btn" >Search All</a>
-                 <form  action="php_search_tour.php" method="get"  class="navbar-form navbar-center" role="form" >
+                 <form  action=<?php echo $search_all_func; ?> method="get"  class="navbar-form navbar-center" role="form" >
 
          										<div class="input-group">
          												<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>

@@ -101,22 +101,25 @@ include('module/session.php');
             <div class="col s12">
               <div class="card">
                 <div class="card-content black-text">
-                  <span class="card-title" id="newsTopic"><?php echo $news_topic; ?></span>
-                  <ul>
-                    <li>
-                      <?php echo $news_content; ?>
-                      </li>
-                  </ul>
+                  <span class="card-title" style='white-space: nowrap;width: 17em;overflow: hidden;text-overflow: ellipsis;' id="newsTopic"><?php echo $news_topic; ?></span>
+                  <p><?php echo $news_content; ?></p>
+
                 </div>
           </div>
         </div>
       </div>
+      <?php
+            if(isLoginAs(array('admin'))){
+        ?>
       <div class="row">
         <div class="right">
           <a href="EditNews.php?news_id=<?php echo $news_id; ?>" class="btn-large btn-floating tooltipped waves-effect waves-light amber" data-position="top" data-delay="50" data-tooltip="Edit News"><i class="material-icons">edit</i></a>
           <button id='del_button' class="delete_warn btn-large btn-floating tooltipped waves-effect waves-light red" data-position="top" data-delay="50" data-tooltip="Delete"><i class="delete_warn material-icons">delete</i></button>
         </div>
       </div>
+      <?php
+            }
+        ?>
       </div>
 
       <!--Footer-->
