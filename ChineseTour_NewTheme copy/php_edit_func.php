@@ -34,8 +34,11 @@ $zipcode_db = $data['zipcode'];
 //----------------------------------POST Value------------------------
 
 $firstname = $_POST['firstname'];
+$firstname = addslashes($firstname);
 $middlename = $_POST['middlename'];
+$middlename = addslashes($middlename);
 $surname = $_POST['lastname'];
+$surname =  addslashes($surname);
 $occupation =  $_POST['occupation'];
 $salary = $_POST['salary'];
 $dob = date('Y-m-d',strtotime($_POST['dob']));
@@ -43,8 +46,11 @@ $phone = $_POST['phone'];
 
 
 $address = $_POST['address'];
+$address = addslashes($address);
 $city = $_POST['city'];
+$city = addslashes($city);
 $province = $_POST['province'];
+$province = addslashes($province);
 $zipcode = $_POST['zipcode'];
 $country_code = $_POST['countrycode'];
 //-----------------------------Edit fucntion----------------------------------------------------//

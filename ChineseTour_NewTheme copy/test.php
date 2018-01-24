@@ -1,5 +1,5 @@
 <?php
-$str = "O'Reilly?";
+$str = "O'Reill'sy?";
 echo addslashes($str);
 echo "<br>";
 eval("echo '" . addslashes($str) . "';");
