@@ -1,9 +1,6 @@
 <?php
-include 'module/session.php';
-
-if(isLoginAs(array('admin','member'))){
-    echo 'true';
-}else{
-    echo 'false';
-}
+$str = "O'Reilly?";
+echo addslashes($str);
+echo "<br>";
+eval("echo '" . addslashes($str) . "';");
 ?>

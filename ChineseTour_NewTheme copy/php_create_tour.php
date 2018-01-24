@@ -184,7 +184,7 @@ include "db_config.php";
 
         }
 
-header("location: message.php?msg=create_tour_succ");
+header("location: message.php?msg=create_tour_succ&id=$last_id");
 }else{
   header("location: message.php");
 }
