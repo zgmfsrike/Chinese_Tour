@@ -10,11 +10,15 @@ if(isset($_GET['id'])){
     // tour
     $sql = "SELECT * FROM `tour` WHERE tour_id = $id";
     $result = mysqli_query($conn, $sql);
+    
     if(mysqli_num_rows($result) == 0){
-      //error no data
-      echo "No data match";
-      return false;
+        //error no data
+        //      echo "No data match";
+        //      return false;
+        header("location: message.php?msg=no_data");
+
     }
+    
     $data = mysqli_fetch_array($result);
 
     $tour_description = $data['tour_description'];
