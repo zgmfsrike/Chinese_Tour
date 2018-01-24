@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<head>
+
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <!--Import Google Icon Font-->
@@ -49,8 +48,8 @@
                     <li><a href="Profile.php"><?php echo $_SESSION['login_firstname'];?></a></li>
                     <li><a href="logout.php">Logout</a></li>
                     <?php
-                    
-                }   
+
+                }
             }else{
             ?>
             <li><a href="Login.php">Log in</a></li>
@@ -86,8 +85,8 @@
                     <li class="tab"><a target="_self" href="Profile.php"><?php echo $_SESSION['login_firstname'];?></a></li>
                     <li class="tab"><a target="_self" href="logout.php">Logout</a></li>
                     <?php
-                    
-                }   
+
+                }
             }else{
             ?>
             <li class="tab"><a target="_self" href="Login.php">Log in</a></li>
