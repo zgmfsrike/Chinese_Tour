@@ -101,12 +101,9 @@ include('module/session.php');
             <div class="col s12">
               <div class="card">
                 <div class="card-content black-text">
-                  <span class="card-title" id="newsTopic"><?php echo $news_topic; ?></span>
-                  <ul>
-                    <li>
-                      <?php echo $news_content; ?>
-                      </li>
-                  </ul>
+                  <span class="card-title" style='white-space: nowrap;width: 17em;overflow: hidden;text-overflow: ellipsis;' id="newsTopic"><?php echo $news_topic; ?></span>
+                  <p><?php echo $news_content; ?></p>
+
                 </div>
           </div>
         </div>

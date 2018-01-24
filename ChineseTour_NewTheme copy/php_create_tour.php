@@ -52,7 +52,7 @@ include "db_config.php";
 
 
                 $img = $_FILES['image_'.$i]['tmp_name'];
-                $new_image_name = $last_id.'_'.$count;
+                $new_image_name = $last_id.'_'.$count.".".$ext;
                 $dst = $img_path.$new_image_name ;
 
                 if (($img_info = getimagesize($img)) === FALSE)
@@ -184,7 +184,7 @@ include "db_config.php";
 
         }
 
-header("location: message.php?msg=create_tour_succ");
+header("location: message.php?msg=create_tour_succ&id=$last_id");
 }else{
   header("location: message.php");
 }

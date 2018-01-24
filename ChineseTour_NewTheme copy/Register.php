@@ -137,7 +137,6 @@ if(isLoginAs(array('admin','member'))){
                 <button name="submit" type="submit" class="waves-effect waves-light btn amber" value="Sign Up">Sign Up</button>
               </div>
             </div>
-      </div>
     </form>
     </div>
 </div>

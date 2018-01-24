@@ -33,26 +33,32 @@ if(isset($_SESSION['login_id'])){
 
   //----------------------------------POST Value------------------------
 
-  $firstname = $_POST['firstname'];
-  $middlename = $_POST['middlename'];
-  $surname = $_POST['lastname'];
-  $occupation =  $_POST['occupation'];
-  $salary = $_POST['salary'];
-  $dob = date('Y-m-d',strtotime($_POST['dob']));
-  $phone = $_POST['phone'];
+$firstname = $_POST['firstname'];
+$firstname = addslashes($firstname);
+$middlename = $_POST['middlename'];
+$middlename = addslashes($middlename);
+$surname = $_POST['lastname'];
+$surname =  addslashes($surname);
+$occupation =  $_POST['occupation'];
+$salary = $_POST['salary'];
+$dob = date('Y-m-d',strtotime($_POST['dob']));
+$phone = $_POST['phone'];
 
 
-  $address = $_POST['address'];
-  $city = $_POST['city'];
-  $province = $_POST['province'];
-  $zipcode = $_POST['zipcode'];
-  $country_code = $_POST['countrycode'];
-  //-----------------------------Edit fucntion----------------------------------------------------//
-  if($_POST['save']){
+$address = $_POST['address'];
+$address = addslashes($address);
+$city = $_POST['city'];
+$city = addslashes($city);
+$province = $_POST['province'];
+$province = addslashes($province);
+$zipcode = $_POST['zipcode'];
+$country_code = $_POST['countrycode'];
+//-----------------------------Edit fucntion----------------------------------------------------//
+if($_POST['save']){
 
     $sql= "UPDATE `member` SET `first_name`='$firstname',`middle_name`='$middlename',`last_name`='$surname',
     `phone`='$phone',`occupation`='$occupation',`salary`='$salary',`dob`='$dob',`address`='$address',`city`='$city',`province`='$province',`zipcode`='$zipcode',`country_code`='$country_code'
-    
+
     WHERE id = $id ";
     $result = mysqli_query( $GLOBALS['conn'] , $sql );
     if($result){
