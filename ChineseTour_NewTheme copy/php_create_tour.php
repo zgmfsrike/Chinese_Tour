@@ -52,39 +52,37 @@ include "db_config.php";
 
 
                 $img = $_FILES['image_'.$i]['tmp_name'];
-                $new_image_name = $last_id.'_'.$count.".".$ext;
+                $new_image_name = $last_id.'_'.$count;
                 $dst = $img_path.$new_image_name ;
 
                 if (($img_info = getimagesize($img)) === FALSE)
                   die("Image not found or not an image");
 
-                // $width = $img_info[0];
-                // $height = $img_info[1];
-                // $width=1280;
-                // $height=500;
-                // switch ($img_info[2]) {
-                //   case IMAGETYPE_GIF  : $src = imagecreatefromgif($img);  break;
-                //   case IMAGETYPE_JPEG : $src = imagecreatefromjpeg($img); break;
-                //   case IMAGETYPE_PNG  : $src = imagecreatefrompng($img);  break;
-                //   default : die("Unknown filetype");
-                // }
-                // $photoX = ImagesX($src);
-            		// $photoY = ImagesY($src);
-                //
-                // $tmp = imagecreatetruecolor($width, $height);
-                // imagecopyresampled($tmp, $src, 0, 0, 0, 0, $width, $height, $photoX, $photoY);
-                // $success= imagejpeg($tmp, $dst.".jpg");
-                // unlink($img_path.$_FILES['newsPicAddtopic'.$i]['name'] );
+                  $width=1280;
+                  $height=500;
+                  switch ($img_info[2]) {
+                    case IMAGETYPE_GIF  : $src = imagecreatefromgif($img);  break;
+                    case IMAGETYPE_JPEG : $src = imagecreatefromjpeg($img); break;
+                    case IMAGETYPE_PNG  : $src = imagecreatefrompng($img);  break;
+                    default : die("Unknown filetype");
+                  }
+                  $photoX = ImagesX($src);
+                  $photoY = ImagesY($src);
+
+                  $tmp = imagecreatetruecolor($width, $height);
+                  imagecopyresampled($tmp, $src, 0, 0, 0, 0, $width, $height, $photoX, $photoY);
+                  $success= imagejpeg($tmp, $dst.".jpg");
+                  unlink($img_path.$_FILES['image_'.$i]['name'] );
 
 
 
-                $upload_path = $img_path.$new_image_name;
-                $success = move_uploaded_file($_FILES['image_'.$i]['tmp_name'] ,$upload_path);
+                // $upload_path = $img_path.$new_image_name;
+                // $success = move_uploaded_file($_FILES['image_'.$i]['tmp_name'] ,$upload_path);
                 if($success == FALSE){
                   echo "Cannot upload images";
                   exit();
                 }
-                $image_name = $new_image_name;
+                $image_name = $new_image_name.".jpg";
 
                 // ----------- insert ----------
                 $sql2 = "INSERT INTO tour_image(tour_id, img_index, img_name) VALUES ('$last_id','$count','$image_name')";
