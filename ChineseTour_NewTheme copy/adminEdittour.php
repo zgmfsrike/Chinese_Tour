@@ -23,6 +23,7 @@ if(isset($_GET['id'])){
     $price = $data['price'];
     $max_customer = $data['max_customer'];
     $rating = $data['rating'];
+    
   }
 ?>
 <!DOCTYPE html>
@@ -199,7 +200,7 @@ if(isset($_GET['id'])){
                         $img_name = $row['img_name'];
                         ?>
                         <div>
-                          <a href="#" id='del_button' onclick="warning();" class="btn-large btn-floating tooltipped waves-effect waves-light red right" data-position="top" data-delay="50" data-tooltip="Delete"><i class="material-icons">delete</i></a>
+<!--                          <a href="#" id='del_button' onclick="warning();" class="btn-large btn-floating tooltipped waves-effect waves-light red right" data-position="top" data-delay="50" data-tooltip="Delete"><i class="material-icons">delete</i></a>-->
 
                           <img src="images/tours/<?php echo $img_name;?>" height="200" width="300">
                         </div>
@@ -260,7 +261,7 @@ if(isset($_GET['id'])){
 
   <div class="row">
     <div class="col s12 center">
-      <button class="waves-effect waves-light btn amber" type="submit" name="submit"/>Submit</button>
+      <button class="waves-effect waves-light btn amber" type="submit" name="submit">Submit</button>
     </div>
   </div>
 
@@ -298,27 +299,21 @@ include 'component/footer.php';
             });
     });
 
-    function warning(){
-        swal({
-          title: 'Are you sure?',
-          text: "You won't be able to revert this!",
-          type: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: '<a style="color:white" href ="DeleteNews.php?news_id=<?php echo $news_id; ?>">Yes, delete it!</a>'
-        }).then((result) => {
-          if (result.value) {
-            swal(
-              // let url = getElementById('del_button').innerHTML = "<a href ='DeleteNews.php?news_id=<?php echo $news_id; ?>'></a>";
-
-              // '<a href ="DeleteNews.php?news_id=<?php echo $news_id; ?>">Deleted</a>!'
-              // 'Your file has been deleted.',
-              // 'success'
-            )
-          }
-        })
-    }
+//    function warning(){
+//        swal({
+//          title: 'Are you sure?',
+//          text: "You won't be able to revert this!",
+//          type: 'warning',
+//          showCancelButton: true,
+//          confirmButtonColor: '#3085d6',
+//          cancelButtonColor: '#d33',
+//          confirmButtonText: '<a style="color:white" href ="DeleteNews.php?news_id=<?php echo $id; ?>">Yes, delete it!</a>'
+//        }).then((result) => {
+//          if (result.value) {
+//            swal()
+//          }
+//        })
+//    }
 
     </script>
 </body>
