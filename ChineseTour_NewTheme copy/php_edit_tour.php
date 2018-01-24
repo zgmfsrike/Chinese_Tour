@@ -48,13 +48,22 @@ error_reporting(E_ALL | E_STRICT);
         $img[9] = '';
         $img[10] = '';
         
+        $sql2 = "SELECT * FROM `tour_image` WHERE `tour_id` = ".$id;
+        $result2 = mysqli_query( $GLOBALS['conn'] , $sql2 );
+        $row2 = mysqli_fetch_array($result2);
+        
+        $img_dir = "images/tours/";
+        
         for($i=1;$i<=10;$i++){
+            
+            $image = $row2['img'.$i];
+            
             if(!isset($_FILES['image_'.$i]) || $_FILES['image_'.$i]['error'] == UPLOAD_ERR_NO_FILE){
                 
                 if(isset($_POST['delete_'.$i]) and $_POST['delete_'.$i] == '1'){
                     
-                    if(file_exists("pdf/tours_schedule/".$id.".pdf")){
-                        $flgDelete = unlink("pdf/tours_schedule/".$id.".pdf");
+                    if(file_exists($img_dir.$image)){
+                        $flgDelete = unlink($img_dir.$image);
                         if($flgDelete){
                             echo "File Deleted : " . $id;
                         }else{
@@ -64,7 +73,7 @@ error_reporting(E_ALL | E_STRICT);
     
                 }else if($i > $count){
                     
-                    $flgRename = rename("images/tours/".$id."_".$i.".jpg", "images/tours/".$id."_".$count.".jpg");
+                    $flgRename = rename($img_dir.$image, $img_dir.$id."_".$count.".jpg");
                     if($flgRename){
                         echo "images/tours/".$id."_".$i.".jpg : File Renamed";
                     }else{
@@ -80,11 +89,34 @@ error_reporting(E_ALL | E_STRICT);
             // echo "Image : ".$i." no file ";
             // echo "<br>";
             }else {
-                
-                $sql2 = "SELECT * FROM `tour_image` WHERE `tour_id` = ".$id;
-                $result2 = mysqli_query( $GLOBALS['conn'] , $sql2 );
-                if()
-                
+                    if($image != ""){
+                        if(file_exists($img_dir.$image)){
+                            $flgDelete = unlink($img_dir.$image);
+                        if($flgDelete){
+                            echo "File Deleted : " . $id;
+                        }else{
+                            echo "File can not delete : " . $id;
+                        }
+                    }
+                        $img_name
+                        // ---- upload pic ----
+                        // --------------------
+                        $img[$count] = $img_name;
+                        
+                        $count += 1;
+                    }else{
+                        $img_name
+                        // ---- upload pic ----
+                        // --------------------
+                        $img[$count] = $img_name;
+                        
+                        $count += 1;
+                    }
+                    
+                  }
+                  // Free result set
+                  mysqli_free_result($result);
+              }
             }
             
         }
@@ -138,7 +170,6 @@ error_reporting(E_ALL | E_STRICT);
                   echo "Cannot upload images";
                   exit();
                 }
-                  
                   $img[$count] = $new_image_name.".jpg";
           }
 
@@ -148,8 +179,6 @@ error_reporting(E_ALL | E_STRICT);
         
     $sql2 = "INSERT INTO tour_image(tour_id, img1, img2,img3,img4,img5,img6,img7,img8,img9,img10) VALUES ('$last_id','$img[1]','$img[2]','$img[3]','$img[4]','$img[5]','$img[6]','$img[7]','$img[8]','$img[9]','$img[10]')";
     $result2 = mysqli_query( $GLOBALS['conn'] , $sql2 );
-        
-        
         
         // ------------
         

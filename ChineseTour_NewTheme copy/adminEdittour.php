@@ -200,7 +200,7 @@ if(isset($_GET['id'])){
                       if($img != ''){
                           ?>
                              <div id="image_<?php echo $i; ?>">
-                             <a href="#" id='del_button' onclick="warning();" class="btn-large btn-floating tooltipped waves-effect waves-light red right" data-position="top" data-delay="50" data-tooltip="Delete"><i class="material-icons">delete</i></a>
+                             <a href="#" id='del_button' onclick="delete_image(<?php echo $i; ?>)" class="btn-large btn-floating tooltipped waves-effect waves-light red right" data-position="top" data-delay="50" data-tooltip="Delete"><i class="material-icons">delete</i></a>
                           <img src="images/tours/<?php echo $img;?>" height="200" width="300">
                         </div>
                 <div class="file-field input-field">
@@ -213,7 +213,6 @@ if(isset($_GET['id'])){
                   </div>
                 </div>
                 <input id='delete_<?php echo $i; ?>' class='hide' type='text' value='0'/>
-                <button type="button" onclick="delete_image(<?php echo $i; ?>)">Delete</button>
                       <?php
                       }
                       
