@@ -57,35 +57,31 @@ include "db_config.php";
               $ext = pathinfo(basename($_FILES['image_'.$i]['name'] ),PATHINFO_EXTENSION);
               $check_ext = strtolower( $ext);
               echo "image : ". $i ." : ". $check_ext . "<br>";
-
               if($check_ext == "jpeg" or "jpg" or "png" or "gif"){
                 // $new_image_name = $last_id.'_'.$count.".".$ext;
                 $img_path = "images/tours/";
-
-
                 $img_name = $_FILES['image_'.$i]['tmp_name'];
                 $new_image_name = $last_id.'_'.$count;
                 $dst = $img_path.$new_image_name ;
-
                 if (($img_info = getimagesize($img_name)) === FALSE){
                     die("Image not found or not an image");
                 }
-
-                  $width=1280;
-                  $height=500;
-                  switch ($img_info[2]) {
-                    case IMAGETYPE_GIF  : $src = imagecreatefromgif($img);  break;
-                    case IMAGETYPE_JPEG : $src = imagecreatefromjpeg($img); break;
-                    case IMAGETYPE_PNG  : $src = imagecreatefrompng($img);  break;
-                    default : die("Unknown filetype");
-                  }
-                  $photoX = ImagesX($src);
-                  $photoY = ImagesY($src);
-
-                  $tmp = imagecreatetruecolor($width, $height);
-                  imagecopyresampled($tmp, $src, 0, 0, 0, 0, $width, $height, $photoX, $photoY);
-                  $success= imagejpeg($tmp, $dst.".jpg");
-                  unlink($img_path.$_FILES['image_'.$i]['name'] );
+                // $width = $img_info[0];
+                // $height = $img_info[1];
+                $width=960;
+                $height=720;
+                switch ($img_info[2]) {
+                  case IMAGETYPE_GIF  : $src = imagecreatefromgif($img_name);  break;
+                  case IMAGETYPE_JPEG : $src = imagecreatefromjpeg($img_name); break;
+                  case IMAGETYPE_PNG  : $src = imagecreatefrompng($img_name);  break;
+                  default : die("Unknown filetype");
+                }
+                $photoX = ImagesX($src);
+                $photoY = ImagesY($src);
+                $tmp = imagecreatetruecolor($width, $height);
+                imagecopyresampled($tmp, $src, 0, 0, 0, 0, $width, $height, $photoX, $photoY);
+                $success= imagejpeg($tmp, $dst.".jpg");
+                  
 
                 // $upload_path = $img_path.$new_image_name;
                 // $success = move_uploaded_file($_FILES['image_'.$i]['tmp_name'] ,$upload_path);
