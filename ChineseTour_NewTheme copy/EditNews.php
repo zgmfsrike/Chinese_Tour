@@ -182,13 +182,17 @@ include 'component/header.php';
               while ($data_db_img = mysqli_fetch_array($result_show_img)) {
                 $img_file = $img_path.$data_db_img['news_image'];
 
+                ?>
 
-                echo "
                 <div class='file-field input-field'>
                 <div class='btn'>
                 <span>File</span>
-                <input type='file' name='newsPicAddtopic".$count_img."' accept='image/*'>
+                <input type='file' name='newsPicAddtopic"<?php echo $count_img;?>"' accept='image/*'>
                 </div>
+                <div id="">
+                    <a href="#" id='del_button' onclick="delete_image(<?php echo $i; ?>)" class="btn-large btn-floating tooltipped waves-effect waves-light red right" data-position="top" data-delay="50" data-tooltip="Delete"><i class="material-icons">delete</i></a>
+                </div>
+                <?php echo "
 
                 <div class='file-path-wrapper'>
 

@@ -155,7 +155,8 @@ include('module/session.php');
             }
           });
         });
-          }
+      })
+
       </script>
 
     </body>
