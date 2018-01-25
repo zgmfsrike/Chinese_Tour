@@ -26,6 +26,7 @@
     //--------------------Link to another page -----------------------------------
     $edit_func = 'php_edit_func.php';
     $profile_page = "window.location.href='Profile.php'";
+
   ?>
   <!DOCTYPE html>
     <html>
@@ -44,7 +45,7 @@
         </div>
         <div class="col s12 l9">
           <h3>Account Information</h3>
-          <form action=<?php echo $php_edit_func; ?> method="post">
+          <form action=<?php echo $edit_func; ?> method="post">
             <div class="row">
               <div class="input-field col s12 l6">
                 <input onkeyup = "Validate(this)" id="txt" type="text" class="form-control" name="firstname" id="firstname" value= "<?php echo $firstname_db ?>" required>
@@ -135,8 +136,9 @@
             </div>
             <div class="row">
               <div class="col s12 center">
-                <button type="submit" class="waves-effect waves-light btn green" value="Save" name='save'>Save</button>
-                <button name="cancel" type="button" value="Cancel" onclick=<?php echo $profile_page; ?> class="waves-effect waves-light btn red">Cancel</button>
+              <button name="cancel" type="button" value="Cancel" onclick=<?php echo $profile_page; ?> class="waves-effect waves-light btn red">Cancel</button>
+              <button type="submit" class="waves-effect waves-light btn green" value="Save" name='save'>Save</button>
+
               </div>
             </div>
         </form>

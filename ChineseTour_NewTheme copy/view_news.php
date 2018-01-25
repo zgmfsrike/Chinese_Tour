@@ -72,28 +72,7 @@ include('module/session.php');
 
           </ul>
         </div>
-        <div>
-          <?php
-          $txt = "PDF_";
-          $pdf_path = "./pdf/";
-          $i = 1;
 
-          while ($show_pdf = mysqli_fetch_array($result_pdf)) {
-            $show_txt = $txt.$i;
-            $pdf_name = $show_pdf['pdf_name'];
-
-            $pdf_file = $pdf_path.$pdf_name;
-            echo "<br><a href='$pdf_file' download='$pdf_name'><h4>".$pdf_name."</h4></a>";
-            // echo "<a href='$pdf_file' download='$pdf_name'></a>";
-            // echo "<iframe src='$pdf_file' width='700' height='500'></iframe>";
-            $i++;
-
-          }
-
-
-          ?>
-
-        </div>
       </div>
 
       <div class="container">
@@ -120,7 +99,31 @@ include('module/session.php');
       <?php
             }
         ?>
+        <div>
+          <h4>Download PDF File:</h4>
+          <?php
+          $txt = "PDF_";
+          $pdf_path = "./pdf/";
+          $i = 1;
+
+          while ($show_pdf = mysqli_fetch_array($result_pdf)) {
+            $show_txt = $txt.$i;
+            $pdf_name = $show_pdf['pdf_name'];
+
+            $pdf_file = $pdf_path.$pdf_name;
+            echo "<br><a href='$pdf_file' download='$pdf_name'><h4>".$pdf_name."</h4></a>";
+            // echo "<a href='$pdf_file' download='$pdf_name'></a>";
+            // echo "<iframe src='$pdf_file' width='700' height='500'></iframe>";
+            $i++;
+
+          }
+
+
+          ?>
+
+        </div>
       </div>
+
 
       <!--Footer-->
       <?php
