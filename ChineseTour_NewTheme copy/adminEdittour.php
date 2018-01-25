@@ -6,25 +6,24 @@ if(!isLoginAs(array('admin'))){
     header('Location: message.php?msg=unauthorized');
 }
 
-$tour_description=$hightlight=$region=$province=$price=$max_customer=$rating=0;
+$sql = "SELECT * FROM `tour` WHERE tour_id = $id";
+$result = mysqli_query($conn, $sql);
+if(mysqli_num_rows($result) == 0){
+    //error no data
+    //      echo "No data match";
+    //      return false;
+    header("location: message.php?msg=tour_not_found");
 
+}
+
+
+$tour_description=$hightlight=$region=$province=$price=$max_customer=$rating=0;
 if(isset($_GET['id'])){
     $id = $_GET['id'];
-
     // tour
     $sql = "SELECT * FROM `tour` WHERE tour_id = $id";
     $result = mysqli_query($conn, $sql);
-
-    if(mysqli_num_rows($result) == 0){
-        //error no data
-        //      echo "No data match";
-        //      return false;
-        header("location: message.php?msg=no_data");
-
-    }
-
     $data = mysqli_fetch_array($result);
-
     $tour_description = $data['tour_description'];
     $hightlight = $data['highlight'];
     $region = $data['region'];
@@ -32,7 +31,6 @@ if(isset($_GET['id'])){
     $price = $data['price'];
     $max_customer = $data['max_customer'];
     $rating = $data['rating'];
-
 }
 ?>
 <!DOCTYPE html>
@@ -204,14 +202,14 @@ if(isset($_GET['id'])){
                                 $sql = "SELECT * FROM `tour_image` WHERE tour_id = $id";
                                 $result = mysqli_query($conn, $sql);
                                 if(mysqli_num_rows($result) > 0){
-                                    $i = 1;
-                                    while($row = mysqli_fetch_array($result)){
-                                        $img_name = $row['img_name'];
+                                    $row = mysqli_fetch_array($result);
+                                    for($i = 1; $i <= 10; $i++){
+                                        $img = $row['img'.$i];
+                                        if($img != ''){
                                 ?>
-                                <div>
-                                    <!--                          <a href="#" id='del_button' onclick="warning();" class="btn-large btn-floating tooltipped waves-effect waves-light red right" data-position="top" data-delay="50" data-tooltip="Delete"><i class="material-icons">delete</i></a>-->
-
-                                    <img src="images/tours/<?php echo $img_name;?>" height="200" width="300">
+                                <div id="image_<?php echo $i; ?>">
+                                    <a href="#" id='del_button' onclick="delete_image(<?php echo $i; ?>)" class="btn-large btn-floating tooltipped waves-effect waves-light red right" data-position="top" data-delay="50" data-tooltip="Delete"><i class="material-icons">delete</i></a>
+                                    <img src="images/tours/<?php echo $img;?>" height="200" width="300">
                                 </div>
                                 <div class="file-field input-field">
                                     <div class="btn">
@@ -222,8 +220,10 @@ if(isset($_GET['id'])){
                                         <input class="file-path validate" type="text" placeholder="Image here">
                                     </div>
                                 </div>
+                                <input id='delete_<?php echo $i; ?>' name='delete_<?php echo $i; ?>' class='hide' type='text' value='0'/>
                                 <?php
-                                        $i++;
+                                        }
+
                                     }
                                     // Free result set
                                     mysqli_free_result($result);
@@ -232,6 +232,7 @@ if(isset($_GET['id'])){
                                 <!-- <label>Image</label><br>
 <input name='image_1' required class='image' type='file' accept="image/*"/><br> -->
                                 <input type="button" class="add_more_image btn amber" value="Add More Image">
+                                <span id="limit" style="color: red;"></span>
                             </div>
                             <!--  PDF File : Schedule  -->
                             <div id="schedule">
@@ -298,32 +299,20 @@ if(isset($_GET['id'])){
                     if(s < 10){
                         s++;
                         $(this).before("<div class='file-field input-field'><div class='btn'><span>Upload image</span><input name='image_" + s + "' class='image' type='file' accept='image/*'/></div><div class='file-path-wrapper'><input class='file-path validate' type='text' placeholder='Image here'></div></div>");
+                    }else{
+                        document.getElementById('limit').innerHTML = "<br>Can not add more image.";
                     }
                 });
-
                 // add more tour round
                 $('.add_more_tr').click(function(e){
                     e.preventDefault();
                     $(this).before("<div class='col s6'><span><b>Start Date</b></span><input required name='start_date[]' type='date'/></div><div class='col s6'><span><b>End Date</b></span><input required name='end_date[]' type='date'/><br></div>");
                 });
             });
-
-            //    function warning(){
-            //        swal({
-            //          title: 'Are you sure?',
-            //          text: "You won't be able to revert this!",
-            //          type: 'warning',
-            //          showCancelButton: true,
-            //          confirmButtonColor: '#3085d6',
-            //          cancelButtonColor: '#d33',
-            //          confirmButtonText: '<a style="color:white" href ="DeleteNews.php?news_id=<?php echo $id; ?>">Yes, delete it!</a>'
-            //        }).then((result) => {
-            //          if (result.value) {
-            //            swal()
-            //          }
-            //        })
-            //    }
-
+            function delete_image(id) {
+                document.getElementById("image_"+id).style.display = 'none';
+                document.getElementById("delete_"+id).value = 1;
+            }
         </script>
     </body>
 </html>
