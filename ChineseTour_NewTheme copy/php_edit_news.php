@@ -68,6 +68,15 @@ if($_POST['save']){
           }else {
             // echo "Image : ".$i." have file ";
             // echo "<br>";
+            $file_type = $_FILES['newsPicAddtopic'.$i]['type'];
+
+            $allowed = array("image/jpeg", "image/gif", "image/png");
+            if(!in_array($file_type, $allowed)) {
+              header("location: message.php?msg=not_image");
+
+              exit();
+
+            }
 
               // -----Upload PDF-----
               $ext = pathinfo(basename($_FILES['newsPicAddtopic'.$i]['name'] ),PATHINFO_EXTENSION);
@@ -135,9 +144,21 @@ if($_POST['save']){
 
 
               }else {
-                echo "No img from db";
+                // echo "No img from db";
+
+                $file_type = $_FILES['newsPicAddtopic'.$i]['type'];
+
+                $allowed = array("image/jpeg", "image/gif", "image/png");
+                if(!in_array($file_type, $allowed)) {
+                  header("location: message.php?msg=not_image");
+
+                  exit();
+
+                }
+
                 $count_img++;
                 $img_path = "images/";
+
                 $img = $_FILES['newsPicAddtopic'.$i]['tmp_name'];
                 $new_image_name = 'img_'.$news_id[0].'_'.$count_img;
                 $dst = $img_path.$new_image_name ;
@@ -213,6 +234,16 @@ if($_POST['save']){
             // echo "PDF : ".$j." no file ";
             // echo "<br>";
           }else {
+            $file_type = $_FILES['newsPdf'.$j]['type'];
+
+            $allowed = array("application/pdf");
+            if(!in_array($file_type, $allowed)) {
+
+              header("location: message.php?msg=not_pdf");
+
+              exit();
+
+            }
 
 
             // echo "Image : ".$i." have file ";
@@ -256,6 +287,16 @@ if($_POST['save']){
 
 
               }else{
+                $file_type = $_FILES['newsPdf'.$j]['type'];
+
+                $allowed = array("application/pdf");
+                if(!in_array($file_type, $allowed)) {
+
+                  header("location: message.php?msg=not_pdf");
+
+                  exit();
+
+                }
                 $count_pdf++;
                 // echo "PDF :".$j." count  : ".$count_pdf;
                 $old_pdf_name = basename($_FILES['newsPdf'.$j]['name']);
@@ -292,7 +333,7 @@ if($_POST['save']){
 
         }
 
-        header("location: message.php?msg=edit_news_succ");
+        header("location: message.php?msg=edit_news_succ&id=".$news_id[0]);
   }
 
 

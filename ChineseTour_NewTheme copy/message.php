@@ -106,13 +106,33 @@ if(isset($_GET['msg'])){
 
           // Create News
 
-          case 'create_news_succ': message('Success!','News has been created ','Index.php','Go to home page');
-              break;
+            case 'create_news_succ':
+            if(isset($_GET['id'])){
+                message('Success!','News has been created ','view_news.php?news_id='.$_GET['id'],'back to news page');
+             }else{
+                 message('Request not found','','','');
+             }
+
+                break;
+
+
 
           case 'del_news_succ': message('Success!','News has been deleted ','Index.php','Go to home page');
               break;
 
-          case 'edit_news_succ': message('Success!','News has been changed ','Index.php','Go to home page');
+          case 'edit_news_succ':
+          if(isset($_GET['id'])){
+            message('Success!','News has been changed ','EditNews.php?news_id='.$_GET['id'],'back to news page');
+          }else {
+            message('Request not found','','','');
+          }
+
+              break;
+
+          case 'not_image': message('Sorry!','Only jpg, gif, and png files are allowed. ','Index.php','Go to home page');
+              break;
+
+          case 'not_pdf': message('Sorry!','Only pdf file are allowed. ','Index.php','Go to home page');
               break;
 
           //Index manage
@@ -129,10 +149,10 @@ if(isset($_GET['msg'])){
                 message('Request not found','','','');
             }
             break;
-            
+
           case 'delete_tour_succ':message('Success!','Deleting tour successfully','index.php','Go to home page');
             break;
-            
+
           case 'edit_tour_succ':
             if(isset($_GET['id'])){
                 message('Success!','Editing tour successfully','tourInfo.php?id='.$_GET['id'],'Back to tour page');
@@ -140,7 +160,7 @@ if(isset($_GET['msg'])){
                 message('Request not found','','','');
             }
             break;
-            
+
         case 'tour_not_found':message('Sorry!','Tour not found.','index.php','Go to home page');
             break;
 

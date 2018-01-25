@@ -33,15 +33,27 @@ if(isset($_SESSION['login_id'])){
           if(!isset($_FILES['newsPicAddtopic'.$i]) || $_FILES['newsPicAddtopic'.$i]['error'] == UPLOAD_ERR_NO_FILE){
             // echo "Image : ".$i." no file ";
             // echo "<br>";
+            echo "error upload";
           }else {
             // echo "Image : ".$i." have file ";
             // echo "<br>";
             $count_img++;
             // -----Upload PDF-----
             $ext = pathinfo(basename($_FILES['newsPicAddtopic'.$i]['name'] ),PATHINFO_EXTENSION);
-            $check_ext = strtolower( $ext);
+            // $check_ext = strtolower($ext);
 
-            if($check_ext == "jpeg" or "jpg" or "png" or "gif"){
+            $file_type = $_FILES['newsPicAddtopic'.$i]['type'];
+
+            $allowed = array("image/jpeg", "image/gif", "image/png");
+            if(!in_array($file_type, $allowed)) {
+              header("location: message.php?msg=not_image");
+
+              exit();
+
+            }
+
+            // if($check_ext == "jpeg" or "jpg" or "png" or "gif"){
+
 
               $img_path = "images/";
 
@@ -49,8 +61,12 @@ if(isset($_SESSION['login_id'])){
               $new_image_name = 'img_'.$last_id.'_'.$count_img;
               $dst = $img_path.$new_image_name ;
 
-              if (($img_info = getimagesize($img)) === FALSE)
-              die("Image not found or not an image");
+              if (($img_info = getimagesize($img)) === FALSE){
+              //     // header("location: message.php?msg=not_image");
+              //     // exit();
+              }
+
+
 
               // $width = $img_info[0];
               // $height = $img_info[1];
@@ -68,7 +84,38 @@ if(isset($_SESSION['login_id'])){
               $tmp = imagecreatetruecolor($width, $height);
               imagecopyresampled($tmp, $src, 0, 0, 0, 0, $width, $height, $photoX, $photoY);
               $success= imagejpeg($tmp, $dst.".jpg");
-              unlink($img_path.$_FILES['newsPicAddtopic'.$i]['name'] );
+              // unlink($img_path.$_FILES['newsPicAddtopic'.$i]['name'] );
+
+
+
+
+
+              //
+              // $new_image_name = 'img_'.$last_id.'_'.$i.'.jpg';
+              // $img_path = "images/";
+              // $upload_path = $img_path.$new_image_name;
+              //
+              // $images = $_FILES['newsPicAddtopic'.$i]["tmp_name"];
+              // copy($_FILES['newsPicAddtopic'.$i]["tmp_name"],"images/".$_FILES['newsPicAddtopic'.$i]["name"]);
+              // $width=100; //*** Fix Width & Heigh (Autu caculate) ***//
+              // $size=GetimageSize($images);
+              // $height=round($width*$size[1]/$size[0]);
+              // if($ext=="jpeg" or "jpg"){
+              //     $images_orig = ImageCreateFromJPEG($images);
+              // }else if($ext =="png"){
+              //     $images_orig = imagecreatefrompng($images);
+              // }else if($ext =="gif"){
+              //     $images_orig = imagecreatefromgif($images);
+              // }
+              //
+              // $photoX = ImagesX($images_orig);
+              // $photoY = ImagesY($images_orig);
+              // $images_fin = ImageCreateTrueColor($width, $height);
+              // ImageCopyResampled($images_fin, $images_orig, 0, 0, 0, 0, $width+1, $height+1, $photoX, $photoY);
+              // $success= ImageJPEG($images_fin,"images/".  $new_image_name);
+              // ImageDestroy($images_orig);
+              // ImageDestroy($images_fin);
+
 
 
               // $success = move_uploaded_file($_FILES['newsPicAddtopic'.$i]['tmp_name'] ,$upload_path);
@@ -83,7 +130,7 @@ if(isset($_SESSION['login_id'])){
               $result2 = mysqli_query( $GLOBALS['conn'] , $sql2 );
 
 
-            }
+            // }
 
           }
 
@@ -95,10 +142,20 @@ if(isset($_SESSION['login_id'])){
           }else {
             // echo "Image : ".$i." have file ";
             // echo "<br>";
+            $file_type = $_FILES['newsPdf'.$j]['type'];
+
+            $allowed = array("application/pdf");
+            if(!in_array($file_type, $allowed)) {
+            
+              header("location: message.php?msg=not_pdf");
+
+              exit();
+
+            }
             $count_pdf++;
 
             $ext = pathinfo(basename($_FILES['newsPdf'.$j]['name'] ),PATHINFO_EXTENSION);
-            $check_ext = strtolower( $ext);
+            // $check_ext = strtolower( $ext);
 
             $old_pdf_name = basename($_FILES['newsPdf'.$j]['name']);
             // echo $old_pdf_name;
@@ -132,7 +189,7 @@ if(isset($_SESSION['login_id'])){
 
 
 
-        header("location: message.php?msg=create_news_succ");
+        header("location: message.php?msg=create_news_succ&id=".$last_id);
 
       }
 
