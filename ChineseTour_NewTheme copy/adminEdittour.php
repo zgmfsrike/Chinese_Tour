@@ -6,23 +6,19 @@ if(!isLoginAs(array('admin'))){
     header('Location: message.php?msg=unauthorized');
 }
 
-$sql = "SELECT * FROM `tour` WHERE tour_id = $id";
-$result = mysqli_query($conn, $sql);
-if(mysqli_num_rows($result) == 0){
-    //error no data
-    //      echo "No data match";
-    //      return false;
-    header("location: message.php?msg=tour_not_found");
-
-}
-
-
 $tour_description=$hightlight=$region=$province=$price=$max_customer=$rating=0;
 if(isset($_GET['id'])){
     $id = $_GET['id'];
     // tour
     $sql = "SELECT * FROM `tour` WHERE tour_id = $id";
     $result = mysqli_query($conn, $sql);
+    if(mysqli_num_rows($result) == 0){
+    //error no data
+    //      echo "No data match";
+    //      return false;
+    header("location: message.php?msg=tour_not_found");
+
+}
     $data = mysqli_fetch_array($result);
     $tour_description = $data['tour_description'];
     $hightlight = $data['highlight'];
