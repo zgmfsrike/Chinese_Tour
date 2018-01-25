@@ -121,7 +121,7 @@ if(isset($_GET['msg'])){
           case 'uploadNotSucc': message('Sorry, your file was not uploaded.','Please check neither your file is too large, nor your file type is wrong (Only JPG, JPEG, PNG & GIF files are allowed).','Index.php','Go to home page');
             break;
 
-            // TOUR
+          // TOUR
           case 'create_tour_succ':
             if(isset($_GET['id'])){
                 message('Success!','Create tour successfully','tourInfo.php?id='.$_GET['id'],'Back to tour page');
@@ -129,10 +129,8 @@ if(isset($_GET['msg'])){
                 message('Request not found','','','');
             }
             break;
-            
           case 'delete_tour_succ':message('Success!','Deleting tour successfully','index.php','Go to home page');
             break;
-            
           case 'edit_tour_succ':
             if(isset($_GET['id'])){
                 message('Success!','Editing tour successfully','tourInfo.php?id='.$_GET['id'],'Back to tour page');
@@ -140,7 +138,6 @@ if(isset($_GET['msg'])){
                 message('Request not found','','','');
             }
             break;
-            
         case 'tour_not_found':message('Sorry!','Tour not found.','index.php','Go to home page');
             break;
 

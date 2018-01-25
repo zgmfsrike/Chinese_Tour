@@ -11,7 +11,9 @@ include "lib/pagination.php";
 if(!isLoginAs(array('admin'))){
     header('Location: message.php?msg=unauthorized');
 }
-
+//--------------------Link to another page -----------------------------------
+$search_tour_func = "php_search_tour.php";
+$search_all_page ="search_all_tour.php";
  ?>
 
  <!DOCTYPE html>
@@ -26,26 +28,10 @@ if(!isLoginAs(array('admin'))){
   <div class="container">
     <div class="row">
 
-                  <!-- <div class="col s12">
-                      <div class="section"></div>
-                      <a href="php_search_tour.php" class="black-text"><h3>Search Tour</h3></a>
-                          <div class="search-wrapper card">
-                            <form action="php_search_tour.php" method="get" role="form" >
-                              <div class="col s12 l10">
-                                <div class="input-field">
-                                  <input id="tourName" placeholder="Search Tour Here" type="text" name="tour_description" value="<?php echo $_GET['tourName'];?>" size="20" required>
-                                </div>
-                              </div>
-                                <div class="center col s12 l2">
-                                  <input type="submit" class="btn-large waves-effect waves-light amber" value="Search " />
-                                </div>
-                            </form>
-                          </div>
-                 </div> -->
                  <h3>Search Tour</h3>
 
-                 <a href="search_all_tour.php" class="btn" >Search All</a>
-                 <form  action="php_search_tour.php" method="get"  class="navbar-form navbar-center" role="form" >
+                 <a href=<?php echo $search_all_page; ?> class="btn" >Search All</a>
+                 <form  action=<?php echo $search_tour_func; ?> method="get"  class="navbar-form navbar-center" role="form" >
 
          										<div class="input-group">
          												<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -75,7 +61,7 @@ if(!isLoginAs(array('admin'))){
                      -- INNER JOIN accommodation a ON t.accommodation_id = a.accommodation_id
                          WHERE t.tour_description LIKE '%$tour_description%' ";
                    // $result = mysqli_query( $GLOBALS['conn'] , $sql );
-                  $result = page_query($GLOBALS['conn'],$sql,2);
+                  $result = page_query($GLOBALS['conn'],$sql,3);
                   $count = mysqli_num_rows($result);
                    if($count != 0){
                      ?>

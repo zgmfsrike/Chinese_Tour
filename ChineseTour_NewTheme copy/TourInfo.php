@@ -9,11 +9,13 @@ if(isset($_GET['id'])){
     // tour
     $sql = "SELECT * FROM `tour` WHERE tour_id = $id";
     $result = mysqli_query($conn, $sql);
+
     if(mysqli_num_rows($result) == 0){
         //error no data
         header("location: message.php?msg=tour_not_found");
         return false;
     }
+
     $data = mysqli_fetch_array($result);
     $tour_description = $data['tour_description'];
     $hightlight = $data['highlight'];
@@ -54,7 +56,6 @@ if(isset($_GET['id'])){
                             </li>
                             <?php
             }
-
         }
         // Free result set
         mysqli_free_result($result);
@@ -65,13 +66,13 @@ if(isset($_GET['id'])){
                 </div>
                 <div class="col s12 l6">
                     <div class="card"><br/>
-                        <h5 class="center-align">Sale Price : <?php echo $price; ?> ฿</h5>
+                        <h5 class="center-align"><b>Sale Price :</b> <?php echo $price; ?> ฿</h5>
                         <p class="center-align">Satisfaction <?php echo $rating; ?>% from xxxx people</p>
-                        <p class="center-align">Highlight : <?php echo $hightlight; ?></p><br/>
+                        <p class="center-align"><b>Highlight :</b> <?php echo $hightlight; ?></p><br/>
                     </div>
 
                     <ul>
-                        <li>Tour type :
+                        <li><b>Tour type :</b>
                             <?php
     $sql = "SELECT * FROM `tour_tour_type` INNER JOIN `tour_type` ON tour_tour_type.tour_type_id=tour_type.tour_type_id WHERE tour_id = $id";
     $result = mysqli_query($conn, $sql);
@@ -86,7 +87,7 @@ if(isset($_GET['id'])){
                             ?>
                         </li>
 
-                        <li>Vehicle :
+                        <li><b>Vehicle :</b>
                             <?php
     $sql = "SELECT * FROM `tour_vehicle_type` INNER JOIN `vehicle_type` ON tour_vehicle_type.vehicle_type_id=vehicle_type.vehicle_type_id WHERE tour_id = $id";
     $result = mysqli_query($conn, $sql);
@@ -100,7 +101,7 @@ if(isset($_GET['id'])){
     }
                             ?>
                         </li>
-                        <li>Accommodation :
+                        <li><b>Accommodation :</b>
                             <?php
     $sql = "SELECT * FROM `tour_accommodation` INNER JOIN `accommodation` ON tour_accommodation.accommodation_id=accommodation.accommodation_id WHERE tour_id = $id";
     $result = mysqli_query($conn, $sql);
@@ -168,7 +169,13 @@ if(isset($_GET['id'])){
 </div> -->
 
                     <div class="center col s12">
+                        <?php
+    if(isLoginAs(array('member'))){
+                        ?>
                         <button type="submit" class="waves-effect waves-light btn orange" name="book" value="Book">Book</button>
+                        <?php
+    }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -192,7 +199,6 @@ if(isset($_GET['id'])){
                     ?>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col s12">
                     <?php
@@ -235,49 +241,49 @@ if(isset($_GET['id'])){
                 </div>
             </div>
             <div class="section"></div>
-        </div>
 
-        <!--Footer-->
-        <?php
+            <!--Footer-->
+            <?php
     include 'component/footer.php';
-        ?>
-        <!--สคริปปุ่มโดนแก้กับ Delete Tour แล้วอะนะ-->
-        <script type="text/javascript">
-            function warning(){
-                swal({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
-                    type: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: '<a style="color:white" href ="php_delete_tour.php?id=<?php echo $id; ?>">Yes, delete it!</a>'
-                }).then((result) => {
-                    if (result.value) {
-                        swal(
-                        )
-                    }
-                })
-                //อันนี้คืออันออริจิ เผื่ออยากได้
-                //           swal({
-                //   title: 'Are you sure?',
-                //   text: "You won't be able to revert this!",
-                //   type: 'warning',
-                //   showCancelButton: true,
-                //   confirmButtonColor: '#3085d6',
-                //   cancelButtonColor: '#d33',
-                //   confirmButtonText: 'Yes, delete it!'
-                // }).then((result) => {
-                //   if (result.value) {
-                //     swal(
-                //       'Deleted!',
-                //       'Your file has been deleted.',
-                //       'success'
-                //     )
-                //   }
-                // })
-            }
-        </script>
+            ?>
+            <!--สคริปปุ่มโดนแก้กับ Delete Tour แล้วอะนะ-->
+            <script type="text/javascript">
+                function warning(){
+                    swal({
+                        title: 'Are you sure?',
+                        text: "You won't be able to revert this!",
+                        type: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: '<a style="color:white" href ="php_delete_tour.php?id=<?php echo $id; ?>">Yes, delete it!</a>'
+                    }).then((result) => {
+                        if (result.value) {
+                            swal(
+                            )
+                        }
+                    })
+                    //อันนี้คืออันออริจิ เผื่ออยากได้
+                    //           swal({
+                    //   title: 'Are you sure?',
+                    //   text: "You won't be able to revert this!",
+                    //   type: 'warning',
+                    //   showCancelButton: true,
+                    //   confirmButtonColor: '#3085d6',
+                    //   cancelButtonColor: '#d33',
+                    //   confirmButtonText: 'Yes, delete it!'
+                    // }).then((result) => {
+                    //   if (result.value) {
+                    //     swal(
+                    //       'Deleted!',
+                    //       'Your file has been deleted.',
+                    //       'success'
+                    //     )
+                    //   }
+                    // })
+                }
+            </script>
+        </div>
     </body>
 </html>
 <?php

@@ -4,9 +4,7 @@ include "db_config.php";
 error_reporting(E_ALL | E_STRICT);
 
 function check(){
-
     $count = 1;
-
     $img[1] = '';
     $img[2] = '';
     $img[3] = '';
@@ -17,28 +15,19 @@ function check(){
     $img[8] = '';
     $img[9] = '';
     $img[10] = '';
-
     $id = $_POST['id'];
-
     $sql2 = "SELECT * FROM `tour_image` WHERE `tour_id` = ".$id;
     $result2 = mysqli_query( $GLOBALS['conn'] , $sql2 );
     $row2 = mysqli_fetch_array($result2);
-
     for($i=1;$i<=10;$i++){
         pl('===== '.$i.' =====');
         $image = $row2['img'.$i];
-
         if(!isset($_FILES['image_'.$i]) || $_FILES['image_'.$i]['error'] == UPLOAD_ERR_NO_FILE){
-
             pl('NOFILE or ERROR ?');
-
             if(isset($_FILES['image_'.$i]) and $_FILES['image_'.$i]['name'] == ""){
-
                 pl('No input file');
                 pl('Delete status : '.isset($_POST['delete_'.$i]).'  ||  '.$_POST['delete_'.$i]);
-
                 if(isset($_POST['delete_'.$i]) and $_POST['delete_'.$i] == '1'){
-
                     // DELETE
                     pl('DELETE image'.$i);
                 }else if($i >= $count and $image != ''){
@@ -51,9 +40,12 @@ function check(){
                 }
                 pl('$count = '.$count);
             }else{
-                pl('isset = FLASE');
+                if($image != ''){
+                    $img[$count] = $id.'_'.$count.'.jpg';
+                    $count++;
+                    pl('isset = FLASE');
+                }
             }
-
         }else{
             pl('File uploaded');
             if($image != ""){
@@ -65,7 +57,6 @@ function check(){
             pl('$count = '.$count);
         }
     }
-
     $sum ='';
     for($i=1;$i<=10;$i++){
         $sum .= '['.$img[$i].']';
@@ -73,9 +64,7 @@ function check(){
     pl('=============================');
     pl('*SUMMARY*');
     pl($sum);
-
 }
-
 function pl($string){
     echo $string.'<br>';
 }
@@ -168,7 +157,11 @@ if(isset($_POST['submit']) and isset($_POST['id'])){
                 }
 
             }else {
-                // isset is false
+                if($image != ''){
+                    $img[$count] = $id.'_'.$count.'.jpg';
+                    $count++;
+                    pl('isset = FLASE');
+                }
             }
 
         }else {
@@ -234,20 +227,20 @@ if(isset($_POST['submit']) and isset($_POST['id'])){
     // insert into image table
 
     $sql3 = "UPDATE tour_image SET `img1` = '$img[1]', `img2` = '$img[2]',`img3` = '$img[3]',`img4` = '$img[4]',`img5` = '$img[5]',`img6` = '$img[6]',`img7` = '$img[7]',`img8` = '$img[8]',`img9` = '$img[9]',`img10` = '$img[10]' WHERE tour_id = $id";
-    
+
     // ดูค่า
-//    $sum ='';
-//    for($i=1;$i<=10;$i++){
-//        $sum .= '['.$img[$i].']';
-//    }
-//    pl('=============================');
-//    pl('*SUMMARY*');
-//    pl($sum);
-//    pl($sql3);
-//    
-//    exit();
-    
-    
+    //    $sum ='';
+    //    for($i=1;$i<=10;$i++){
+    //        $sum .= '['.$img[$i].']';
+    //    }
+    //    pl('=============================');
+    //    pl('*SUMMARY*');
+    //    pl($sum);
+    //    pl($sql3);
+    //    
+    //    exit();
+
+
     $result3 = mysqli_query( $GLOBALS['conn'] , $sql3 );
     // result upload image
     // ...

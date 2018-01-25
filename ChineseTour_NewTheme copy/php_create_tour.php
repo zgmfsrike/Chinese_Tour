@@ -2,7 +2,9 @@
 include "db_config.php";
 // error_reporting(E_ALL | E_STRICT);
 //if(isset($_SESSION['login_id'])){
+
 if(isset($_POST['submit'])){
+
     // ===== Insert to "tour" table =====
     $tour_description   = $_POST["tour_description"];
     //        $tour_image         = $_POST["image[]"]; // **
@@ -17,13 +19,16 @@ if(isset($_POST['submit'])){
     $tour_max           = $_POST["max"];
     //        $tour_round_start   = $_POST["start_date[]"]; // ***
     //        $tour_round_end     = $_POST["end_date[]"]; // ***
+
     $sql= "INSERT INTO tour (tour_description, highlight, region, province, price, max_customer) VALUES ('$tour_description','$tour_highlight','$tour_region','$tour_province','$tour_price','$tour_max')";
     $result = mysqli_query( $GLOBALS['conn'] , $sql );
     $last_id = mysqli_insert_id($GLOBALS['conn']);
+
     if (!$result) {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         return false;
     }
+
     // ====== upload images + insert "tour_image" table =====
 
     $count = 0;
@@ -74,21 +79,24 @@ if(isset($_POST['submit'])){
                 $tmp = imagecreatetruecolor($width, $height);
                 imagecopyresampled($tmp, $src, 0, 0, 0, 0, $width, $height, $photoX, $photoY);
                 $success= imagejpeg($tmp, $dst.".jpg");
+
+
                 // $upload_path = $img_path.$new_image_name;
                 // $success = move_uploaded_file($_FILES['image_'.$i]['tmp_name'] ,$upload_path);
                 if($success == FALSE){
                     echo "Cannot upload images";
                     exit();
                 }
-
                 $img[$count] = $new_image_name.".jpg";
             }
+
         }
     }
     // insert into image table
 
     $sql2 = "INSERT INTO tour_image(tour_id, img1, img2,img3,img4,img5,img6,img7,img8,img9,img10) VALUES ('$last_id','$img[1]','$img[2]','$img[3]','$img[4]','$img[5]','$img[6]','$img[7]','$img[8]','$img[9]','$img[10]')";
     $result2 = mysqli_query( $GLOBALS['conn'] , $sql2 );
+
     // upload schedule + insert "tour_schedule" table
     if(!isset($_FILES['schedule']) || $_FILES['schedule']['error'] == UPLOAD_ERR_NO_FILE){
         // echo "Image : ".$i." no file ";
@@ -96,10 +104,12 @@ if(isset($_POST['submit'])){
     }else {
         // echo "Image : ".$i." have file ";
         // echo "<br>";
+
         // -----Upload PDF-----
         $ext = pathinfo(basename($_FILES['schedule']['name'] ),PATHINFO_EXTENSION);
         $check_ext = strtolower( $ext);
         echo $check_ext;
+
         if($check_ext == "pdf"){
             $new_pdf_name = $last_id.".".$ext;
             $pdf_path = "pdf/tours_schedule/";
@@ -110,13 +120,16 @@ if(isset($_POST['submit'])){
                 exit();
             }
             $schedule_pdf = $new_pdf_name;
+
             // ---------------------------
             $sql3 = "INSERT INTO tour_schedule(tour_id, file_name) VALUES ('$last_id','$schedule_pdf')";
             $result3 = mysqli_query( $GLOBALS['conn'] , $sql3 );
         }else{
             echo "not pdf";
         }
+
     }
+
     // ======= check box : type ========
     if(!empty($_POST['type'])) {
         // Counting number of checked checkboxes.
@@ -130,6 +143,7 @@ if(isset($_POST['submit'])){
     }else{
         echo "<b>Please Select Atleast One Option.</b>";
     }
+
     // ======= check box : vehicel ========
     if(!empty($_POST['vehicel'])) {
         // Counting number of checked checkboxes.
@@ -140,9 +154,10 @@ if(isset($_POST['submit'])){
             $sql = "INSERT INTO tour_vehicle_type(tour_id, vehicle_type_id) VALUES ('$last_id','$selected')";
             $result = mysqli_query( $GLOBALS['conn'] , $sql );
         }
-    }else{
-        echo "<b>Please Select Atleast One Option.</b>";
+
+        $img[$count] = $new_image_name.".jpg";
     }
+
     // ======= check box : accommodation  ========
     if(!empty($_POST['accommodation'])) {
         // Counting number of checked checkboxes.
