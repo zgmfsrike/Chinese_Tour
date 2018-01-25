@@ -4,7 +4,6 @@ include('module/session.php');
 <!DOCTYPE html>
   <html>
   <?php
-   //isAdmin();
   include "db_config.php";
    ?>
    <?php
