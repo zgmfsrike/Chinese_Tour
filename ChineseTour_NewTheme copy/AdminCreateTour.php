@@ -161,6 +161,7 @@ if(!isLoginAs(array('admin'))){
                   <!-- <label>Image</label><br>
                   <input name='image_1' required class='image' type='file' accept="image/*"/><br> -->
                   <input type="button" class="add_more_image btn amber" value="Add More Image">
+                  <span id="limit" style="color: red;"></span>
               </div>
               <!--  PDF File : Schedule  -->
               <div id="schedule">
@@ -186,7 +187,7 @@ if(!isLoginAs(array('admin'))){
 
   <div class="row">
     <div class="col s12 center">
-      <button class="waves-effect waves-light btn amber" type="submit" name="submit"/>Submit</button>
+      <button class="waves-effect waves-light btn amber" type="submit" name="submit">Submit</button>
     </div>
   </div>
 
@@ -214,6 +215,8 @@ include 'component/footer.php';
             if(s < 10){
                 s++;
                 $(this).before("<div class='file-field input-field'><div class='btn'><span>Upload image</span><input name='image_" + s + "' class='image' type='file' accept='image/*'/></div><div class='file-path-wrapper'><input class='file-path validate' type='text' placeholder='Image here'></div></div>");
+            }else{
+                document.getElementById('limit').innerHTML = "<br>Can not add more image.";
             }
         });
 

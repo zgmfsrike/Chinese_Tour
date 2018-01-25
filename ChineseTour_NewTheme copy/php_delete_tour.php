@@ -1,38 +1,50 @@
 <?php
 include 'db_config.php';
-// include 'module/session.php';
-// isAdmin();
+include 'module/session.php';
 
 if(isset($_GET['id'])){
     $id = $_GET['id'];
-    $sql = "SELECT * FROM `tour_image` WHERE tour_id = $id";
+
+    // tour
+    $sql = "SELECT * FROM `tour` WHERE tour_id = $id";
     $result = mysqli_query($conn, $sql);
     if(mysqli_num_rows($result) == 0){
-        //error no data
-        //      echo "No data match";
-        //      return false;
-        header("location: message.php?msg=no_data");
-
+      //error no data
+      header("location: message.php?msg=tour_not_found");
+      return false;
     }
+    $data = mysqli_fetch_array($result);
+}
+
+if(isset($_GET['id'])){
+  $id = $_GET['id'];
+
+
+    $sql = "SELECT * FROM `tour_image` WHERE tour_id = $id";
+    $result = mysqli_query($conn, $sql);
     if(mysqli_num_rows($result) > 0){
-        while($row = mysqli_fetch_array($result)){
-            $img_name = $row['img_name'];
-            $flgDelete = unlink("images/tours/".$img_name);
-            if($flgDelete){
-                echo "File Deleted : " . $img_name;
-            }else{
-                echo "File can not delete : " . $img_name;
+        $row = mysqli_fetch_array($result);
+        for($i = 1; $i <= 10; $i++){
+            $img = $row['img'.$i];
+            if($img != ''){
+                $flgDelete = unlink("images/tours/".$img);
+                if($flgDelete){
+                    echo "File Deleted : " . $img;
+                }else{
+                    echo "File can not delete : " . $img;
+                }
             }
         }
+        // Free result set
+        mysqli_free_result($result);
     }
 
-    if(file_exists("pdf/tours_schedule/".$id.".pdf")){
-        $flgDelete = unlink("pdf/tours_schedule/".$id.".pdf");
-        if($flgDelete){
-            echo "File Deleted : " . $id;
-        }else{
-            echo "File can not delete : " . $id;
-        }
+  if(file_exists("pdf/tours_schedule/".$id.".pdf")){
+    $flgDelete = unlink("pdf/tours_schedule/".$id.".pdf");
+    if($flgDelete){
+      echo "File Deleted : " . $id;
+    }else{
+      echo "File can not delete : " . $id;
     }
 
     $sql = "DELETE FROM tour_image WHERE tour_id = $id";
