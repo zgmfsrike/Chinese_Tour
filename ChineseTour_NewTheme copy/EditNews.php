@@ -91,25 +91,31 @@ include 'component/header.php';
             if($data){
               // echo "Have img & pdf";
               $sql_show_img = "SELECT ni.news_image
-              FROM news n INNER JOIN news_image ni on n.news_id =ni.news_id WHERE n.news_id = '$news_id'";
+              FROM news n INNER JOIN news_image ni on n.news_id =ni.news_id WHERE n.news_id = '$news_id'  ORDER BY img_index ASC ";
               $result_show_img = mysqli_query($conn,$sql_show_img);
               while ($data_db_img = mysqli_fetch_array($result_show_img)) {
                 $img_file = $img_path.$data_db_img['news_image'];
                 // echo "<br>Current images : ".$data_db_img['news_image'];
                 // echo "<br><img src ='$img_file' width='200' height='150'>";
                 // echo "<input class='form-control' type='file' name='newsPicAddtopic".$count_img."' accept='image/*'>";
+
+
+
                 echo "
-                <div class='file-field input-field'>
+                <div   class='file-field input-field'>
                 <div class='btn'>
                 <span>File</span>
                 <input type='file' name='newsPicAddtopic".$count_img."' accept='image/*'>
                 </div>
 
                 <div class='file-path-wrapper'>
-
+                <div id='image_$count_img'>
+                <a href='#' id='del_button' onclick='delete_image($count_img)' class='btn-large btn-floating tooltipped waves-effect waves-light red right' data-position='top' data-delay='50' data-tooltip='Delete'><i class='material-icons'>delete</i></a>
                 <img src ='$img_file' width='200' height='150'>
-                <p> Current images : ".$data_db_img['news_image']."</p>
+                </div>
+
                 <input class='file-path validate'  type='text' placeholder='Upload one or more files' >
+                <input id='delete_$count_img' name='delete_$count_img' class='hide' type='text' value='0'/>
                 </div>
                 </div>
                 ";
@@ -132,23 +138,29 @@ include 'component/header.php';
               }
 
               $sql_show_pdf = "SELECT np.news_pdf
-              FROM news n INNER JOIN news_pdf np on n.news_id =np.news_id WHERE n.news_id = '$news_id'";
+              FROM news n INNER JOIN news_pdf np on n.news_id =np.news_id WHERE n.news_id = '$news_id'  ORDER BY pdf_index ASC";
               $result_show_pdf = mysqli_query($conn,$sql_show_pdf);
               echo "<br><h5>Add PDF</h5>";
               while ($data_db_pdf =mysqli_fetch_array($result_show_pdf)){
                 echo "
-                <div class='file-field input-field'>
+                <div  class='file-field input-field'>
                 <div class='btn'>
                 <span>File</span>
                 <input type='file' name='newsPdf".$count_pdf."' accept='application/pdf'>
                 </div>
 
                 <div class='file-path-wrapper'>
+                <div id='pdf_$count_pdf'>
+                <a href='#' id='del_button' onclick='delete_pdf($count_pdf)' class='btn-large btn-floating tooltipped waves-effect waves-light red right' data-position='top' data-delay='50' data-tooltip='Delete'><i class='material-icons'>delete</i></a>
+                </div>
                 <p> Current file : ".$data_db_pdf['news_pdf']."</p>
                 <input class='file-path validate'  type='text' placeholder='Upload one or more files' >
+                <input id='delete_pdf_$count_pdf' name='delete_pdf_$count_pdf' class='hide' type='text' value='0'/>
                 </div>
                 </div>
                 ";
+
+
 
                 // echo "<br>Current file : ".$data_db_pdf['news_pdf'];
                 // echo "<input class='form-control' type='file' name='newsPdf".$count_pdf."' accept='application/pdf'>";
@@ -177,28 +189,27 @@ include 'component/header.php';
             }else if($data_img = mysqli_fetch_array($result_img)) {
 
               $sql_show_img = "SELECT ni.news_image
-              FROM news n INNER JOIN news_image ni on n.news_id =ni.news_id WHERE n.news_id = '$news_id'";
+              FROM news n INNER JOIN news_image ni on n.news_id =ni.news_id WHERE n.news_id = '$news_id' ORDER BY img_index ASC ";
               $result_show_img = mysqli_query($conn,$sql_show_img);
               while ($data_db_img = mysqli_fetch_array($result_show_img)) {
                 $img_file = $img_path.$data_db_img['news_image'];
 
-                ?>
-
-                <div class='file-field input-field'>
+                // <p> Current images : ".$data_db_img['news_image']."</p>
+                echo "
+                <div  class='file-field input-field'>
                 <div class='btn'>
                 <span>File</span>
-                <input type='file' name='newsPicAddtopic"<?php echo $count_img;?>"' accept='image/*'>
+                <input type='file' name='newsPicAddtopic".$count_img."' accept='image/*'>
                 </div>
-                <div id="">
-                    <a href="#" id='del_button' onclick="delete_image(<?php echo $i; ?>)" class="btn-large btn-floating tooltipped waves-effect waves-light red right" data-position="top" data-delay="50" data-tooltip="Delete"><i class="material-icons">delete</i></a>
-                </div>
-                <?php echo "
 
                 <div class='file-path-wrapper'>
-
+                <div id='image_$count_img' >
+                <a href='#' id='del_button' onclick='delete_image($count_img)' class='btn-large btn-floating tooltipped waves-effect waves-light red right' data-position='top' data-delay='50' data-tooltip='Delete'><i class='material-icons'>delete</i></a>
                 <img src ='$img_file' width='200' height='150'>
-                <p> Current images : ".$data_db_img['news_image']."</p>
+                </div>
+
                 <input class='file-path validate'  type='text' placeholder='Upload one or more files' >
+                <input id='delete_$count_img' name='delete_$count_img' class='hide' type='text' value='0'/>
                 </div>
                 </div>
                 ";
@@ -260,20 +271,24 @@ include 'component/header.php';
               }
 
               $sql_show_pdf = "SELECT np.news_pdf
-              FROM news n INNER JOIN news_pdf np on n.news_id =np.news_id WHERE n.news_id = '$news_id'";
+              FROM news n INNER JOIN news_pdf np on n.news_id =np.news_id WHERE n.news_id = '$news_id'  ORDER BY pdf_index ASC ";
               $result_show_pdf = mysqli_query($conn,$sql_show_pdf);
               echo "<br><h5>Add PDF</h5>";
               while ($data_db_pdf =mysqli_fetch_array($result_show_pdf)){
                 echo "
-                <div class='file-field input-field'>
+                <div  class='file-field input-field'>
                 <div class='btn'>
                 <span>File</span>
-                <input type='file'  name='newsPdf".$count_pdf."' accept='application/pdf'>
+                <input type='file' name='newsPdf".$count_pdf."' accept='application/pdf'>
                 </div>
 
-                <div class='file-path-wrapper'>
+                <div  class='file-path-wrapper'>
+                <div id='pdf_$count_pdf'>
+                <a href='#' id='del_button' onclick='delete_pdf($count_pdf)' class='btn-large btn-floating tooltipped waves-effect waves-light red right' data-position='top' data-delay='50' data-tooltip='Delete'><i class='material-icons'>delete</i></a>
+                </div>
                 <p> Current file : ".$data_db_pdf['news_pdf']."</p>
-                <input class='file-path validate'  type='text' placeholder='Upload one or more files'>
+                <input class='file-path validate'  type='text' placeholder='Upload one or more files' >
+                <input id='delete_pdf_$count_pdf' name='delete_pdf_$count_pdf' class='hide' type='text' value='0'/>
                 </div>
                 </div>
                 ";
@@ -376,6 +391,16 @@ include 'component/header.php';
   <?php
   include 'component/footer.php';
   ?>
+  <script>
+  function delete_image(id) {
+      document.getElementById("image_"+id).style.display = 'none';
+      document.getElementById("delete_"+id).value = 1;
+  }
+  function delete_pdf(id) {
+      document.getElementById("pdf_"+id).style.display = 'none';
+      document.getElementById("delete_pdf_"+id).value = 1;
+  }
+  </script>
 
 </body>
 </html>
