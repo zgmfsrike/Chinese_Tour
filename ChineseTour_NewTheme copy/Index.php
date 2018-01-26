@@ -93,7 +93,7 @@ include 'module/session.php';
                     <p style='white-space: nowrap;width: 17em;overflow: hidden;text-overflow: ellipsis;'>".$show['short_description']."</p>
                   </div>
                   <div class='card-action'>
-                  <a href='http://localhost/Chinese_Tour/ChineseTour_NewTheme%20copy/view_news.php?news_id=$news_id'>"."READ MORE"."</a>
+                  <a href='view_news.php?news_id=$news_id'>"."READ MORE"."</a>
                   </div>
                 </div>
               </div>";

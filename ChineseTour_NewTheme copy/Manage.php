@@ -16,8 +16,8 @@ if(!isLoginAs(array('admin'))){
       <div class="section"></div>
       <div class="col s12 l3">
         <div class="collection">
-          <!-- <a href="Profile.php" class="collection-item black-text">Profile</a> -->
-          <a href="Manage.php" class="collection-item active amber">Manage</a>
+          <!-- <a href="profile.php" class="collection-item black-text">Profile</a> -->
+          <a href="manage.php" class="collection-item active amber">Manage</a>
           <a href="php_search_tour.php" class="collection-item black-text">Search Tour</a>
           <!-- <a href="Purchase.php" class="collection-item black-text">Purchase</a> -->
           <!-- <a href="Record.php" class="collection-item black-text">Record</a> -->
@@ -26,21 +26,20 @@ if(!isLoginAs(array('admin'))){
       <div class="col s12 l9">
         <h5>Index Manage</h5><hr/>
         <div class="center">
-          <a href="AdminChangeBanners.php" name="changeBanners" value="Change Banners" class="btn waves-effect waves-light green darken-1">Change Banners</a>
-          <a href="AdminEditAnnounce.php" name="editAnnounce" value="Edit Announce" class="btn waves-effect waves-light green darken-1">Edit Announcesment</a>
-          <a href="CreateNews.php" name="createNews" value="Create News" class="btn waves-effect waves-light green darken-1">Create News</a>
+          <a href="adminchangebanners.php" name="changeBanners" value="Change Banners" class="btn waves-effect waves-light green darken-1">Change Banners</a>
+          <a href="admineditannounce.php" name="editAnnounce" value="Edit Announce" class="btn waves-effect waves-light green darken-1">Edit Announcesment</a>
+          <a href="createnews.php" name="createNews" value="Create News" class="btn waves-effect waves-light green darken-1">Create News</a>
         </div>
         <div class="section"></div>
         <h5>Tour</h5><hr/>
         <div class="center">
           <a href="php_search_tour.php" name="searchTour" class="btn waves-effect waves-light green darken-1">Search Tour</a>
-          <a href="TourList.php" name="tourList" class="btn waves-effect waves-light green darken-1">Tour List</a>
-          <a href="AdminCreateTour.php" name="createTour" class="btn waves-effect waves-light green darken-1">Create Tour</a>
+          <a href="admincreatetour.php" name="createTour" class="btn waves-effect waves-light green darken-1">Create Tour</a>
         </div>
         <div class="section"></div>
         <h5>About Us Manage</h5><hr/>
         <div class="center">
-          <a href="AdminEditAboutUs.php" name="editAboutUs" class="btn waves-effect waves-light green darken-1">Edit AboutUs</a>
+          <a href="admineditaboutus.php" name="editAboutUs" class="btn waves-effect waves-light green darken-1">Edit AboutUs</a>
         </div>
       </div>
     </div>

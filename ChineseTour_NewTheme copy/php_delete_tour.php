@@ -9,17 +9,18 @@ if(isset($_GET['id'])){
     $sql = "SELECT * FROM `tour` WHERE tour_id = $id";
     $result = mysqli_query($conn, $sql);
     if(mysqli_num_rows($result) == 0){
-      //error no data
-      header("location: message.php?msg=tour_not_found");
-      return false;
+        //error no data
+        header("location: message.php?msg=tour_not_found");
+        return false;
     }
     $data = mysqli_fetch_array($result);
+}else{
+    header("location: message.php?msg=unknow_request&id=1");
 }
 
 if(isset($_GET['id'])){
-  $id = $_GET['id'];
-
-
+    $id = $_GET['id'];
+    
     $sql = "SELECT * FROM `tour_image` WHERE tour_id = $id";
     $result = mysqli_query($conn, $sql);
     if(mysqli_num_rows($result) > 0){
@@ -39,12 +40,13 @@ if(isset($_GET['id'])){
         mysqli_free_result($result);
     }
 
-  if(file_exists("pdf/tours_schedule/".$id.".pdf")){
-    $flgDelete = unlink("pdf/tours_schedule/".$id.".pdf");
-    if($flgDelete){
-      echo "File Deleted : " . $id;
-    }else{
-      echo "File can not delete : " . $id;
+    if(file_exists("pdf/tours_schedule/".$id.".pdf")){
+        $flgDelete = unlink("pdf/tours_schedule/".$id.".pdf");
+        if($flgDelete){
+            echo "File Deleted : " . $id;
+        }else{
+            echo "File can not delete : " . $id;
+        }
     }
 
     $sql = "DELETE FROM tour_image WHERE tour_id = $id";
@@ -67,9 +69,7 @@ if(isset($_GET['id'])){
 
     $sql = "DELETE FROM tour WHERE tour_id = $id";
     mysqli_query($conn, $sql);
-
+    
     header("location: message.php?msg=delete_tour_succ");
-}else{
-    header("location: message.php");
 }
 ?>

@@ -18,7 +18,7 @@ if(isLoginAs(array('admin','member'))){
        <div class="section"></div><div class="section"></div>
          <div class="col s10  offset-s1 m8 offset-m2 l6 offset-l3 z-depth-1">
              <div class="section"></div>
-             <a href="Index.php"><h5 id="title" class="center black-text">Login</h5></a>
+             <a href="index.php"><h5 id="title" class="center black-text">Login</h5></a>
              <div class="container">
              <form action="php_login.php" data-toggle="validator" method="post">
                <div class="row">

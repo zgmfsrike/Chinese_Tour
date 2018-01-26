@@ -204,7 +204,7 @@ if(isset($_GET['id'])){
                     <?php
     if(isLoginAs(array('admin'))){
                     ?>
-                    <a href="AdminEditTour.php?id=<?php echo $id?>" class="btn-large btn-floating tooltipped right waves-effect waves-light red" data-position="top" data-delay="50" data-tooltip="Edit Tour"><i class="material-icons">settings</i></a>
+                    <a href="adminedittour.php?id=<?php echo $id?>" class="btn-large btn-floating tooltipped right waves-effect waves-light red" data-position="top" data-delay="50" data-tooltip="Edit Tour"><i class="material-icons">settings</i></a>
                     <a href="#" id='del_button' onclick="warning();" class="btn-large btn-floating tooltipped waves-effect waves-light red" data-position="top" data-delay="50" data-tooltip="Delete"><i class="material-icons">delete</i></a>
                     <?php
     }
