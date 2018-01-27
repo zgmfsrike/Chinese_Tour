@@ -78,8 +78,11 @@ if(isset($_SESSION['login_id']) && isset($_SESSION['news_id'])){
           if(!isset($_FILES['newsPicAddtopic'.$i]) || $_FILES['newsPicAddtopic'.$i]['error'] == UPLOAD_ERR_NO_FILE){
 
 
-
             if(isset($_FILES['newsPicAddtopic'.$i]) and $_FILES['newsPicAddtopic'.$i]['name'] =="" ){
+
+              echo "================================================================<br>";
+              echo "CHECK COUNT round :".$count."<br>" ;
+              echo "================================================================<br>";
               $sql_check = "SELECT * FROM `news_image` WHERE news_id = '$news_id[0]' AND img_index ='$count'";
               $result_check = mysqli_query($conn,$sql_check);
               $count_check = mysqli_num_rows($result_check);
@@ -97,9 +100,12 @@ if(isset($_SESSION['login_id']) && isset($_SESSION['news_id'])){
 
                   $sql_del = "DELETE FROM `news_image` WHERE news_id = '$news_id[0]' AND img_index='$i'";
                   $result_del = mysqli_query($conn,$sql_del);
+                  echo "================================================================<br>";
+                  echo "DEL image round :".$count."<br>" ;
+                  echo "================================================================<br>";
 
                 }
-              }else if($i>=$count ){
+              }else if($i>=$count and $image!=""){
                 if($i>$count and $count_check == 0){
                   $flgRename = rename($img_dir.$image,$img_dir."img_".$news_id[0]."_".$count.".jpg");
                   if($flgRename){
@@ -112,12 +118,11 @@ if(isset($_SESSION['login_id']) && isset($_SESSION['news_id'])){
                   $sql_change_name = "UPDATE `news_image` SET `news_image`='$img_name_change',`img_index`='$count' WHERE news_id = '$news_id[0]'
                   AND img_index ='$i'";
                   $result_change = mysqli_query($conn,$sql_change_name);
+
                 }
                 $count++;
 
               }
-            }else{
-              $count++;
             }
 
           }else {
@@ -199,6 +204,10 @@ if(isset($_SESSION['login_id']) && isset($_SESSION['news_id'])){
               // ---------------------------
               $sql2 = "UPDATE `news_image` SET `news_image`='$news_image',img_index ='$count' WHERE img_index = '$i' AND news_id = '$news_id[0]' ";
               $result2 = mysqli_query( $GLOBALS['conn'] , $sql2 );
+              echo "================================================================<br>";
+              echo "UPDATE image round :".$count."<br>" ;
+              echo "================================================================<br>";
+              $count++;
 
 
               // $sql_result_update = "SELECT `news_image` FROM `news_image` WHERE news_image LIKE '$news_image%'";
@@ -228,7 +237,7 @@ if(isset($_SESSION['login_id']) && isset($_SESSION['news_id'])){
               $img_path = "images/";
 
               $img = $_FILES['newsPicAddtopic'.$i]['tmp_name'];
-              $new_image_name = 'img_'.$news_id[0].'_'.$add_index_img;
+              $new_image_name = 'img_'.$news_id[0].'_'.$count;
               $dst = $img_path.$new_image_name ;
 
               if (($img_info = getimagesize($img)) === FALSE)
@@ -273,8 +282,9 @@ if(isset($_SESSION['login_id']) && isset($_SESSION['news_id'])){
               $news_image = $new_image_name.".jpg";
 
 
-              $sql_add = "INSERT INTO news_image(news_id, news_image,img_index) VALUES ('$news_id[0]','$news_image','$add_index_img')";
+              $sql_add = "INSERT INTO news_image(news_id, news_image,img_index) VALUES ('$news_id[0]','$news_image','$count')";
               $result_add = mysqli_query( $GLOBALS['conn'],$sql_add);
+              $count++;
               $add_index_img++;
 
             }
