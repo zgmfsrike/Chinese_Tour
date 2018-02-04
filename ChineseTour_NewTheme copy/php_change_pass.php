@@ -1,15 +1,20 @@
 <?php
-
+include "module/hashing.php";
+include "db_config.php";
 
 error_reporting (E_ALL ^ E_NOTICE);
 
-if(isset($_POST['save'])){
 
-  if(isset($_SESSION['login_id'])){
-    $id = $_SESSION['login_id'];
+if(isset($_POST['save'])){
+  echo "test";
+
+  if($_GET['id']){
+    $id = $_GET['id'];
+
     $password = $_POST['password'];
 
-    $query = "SELECT * FROM member WHERE id = '$id'";
+
+    $query = "SELECT * FROM member WHERE id = $id";
     $result = mysqli_query($conn, $query);
     $count = mysqli_num_rows($result);
 

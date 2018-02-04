@@ -82,7 +82,7 @@ include "db_config.php";
                 case 'email_error': message('Error!','Request does not match, please check link again.','Profile.php','Go to profile page');
                     break;
 
-                case 'email_old': message('Sorry!','You already use this email, please try again.','','');
+                case 'email_old': message('Sorry!','This is your current email, please try again.','','');
                     break;
 
                 case 'email_not_match': message('Sorry!','Your email is not match, please try again','','');

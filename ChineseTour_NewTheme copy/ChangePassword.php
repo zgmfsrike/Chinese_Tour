@@ -3,11 +3,13 @@ include('module/session.php');
 if(!isLoginAs(array('admin','member'))){
     header('Location: message.php?msg=please_login');
 }
-include "module/hashing.php";
-include "db_config.php";
+
+$id = $_SESSION['login_id'];
 //--------------------Link to another page -----------------------------------
 $profile_page = "window.location.href='Profile.php'";
-$change_pass_func = "php_change_pass.php";
+$change_pass_func = "php_change_pass.php?id=".$id;
+
+
 ?>
 <!DOCTYPE html>
 <html>
