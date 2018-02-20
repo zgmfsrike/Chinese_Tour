@@ -60,7 +60,7 @@
         </div>
           </div>
           <div class="row col s12 center">
-              <button name="Submit" type="submit" value="Cancel" onclick="window.location.href='Manage.php'" class="waves-effect waves-light btn red">Cancel</button>
+              <button name="Submit" type="submit" value="Cancel" onclick="window.location.href='manage.php'" class="waves-effect waves-light btn red">Cancel</button>
               <button type="submit" class="waves-effect waves-light btn green" value="Save">Save</button>
           </div>
       </div>

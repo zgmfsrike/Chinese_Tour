@@ -130,7 +130,7 @@
 
       <div class="row">
         <div class="col s12">
-          <a href="adminEdittour.php" class="btn-large btn-floating tooltipped right waves-effect waves-light red" data-position="top" data-delay="50" data-tooltip="Edit Tour"><i class="material-icons">settings</i></a>
+          <a href="adminedittour.php" class="btn-large btn-floating tooltipped right waves-effect waves-light red" data-position="top" data-delay="50" data-tooltip="Edit Tour"><i class="material-icons">settings</i></a>
         </div>
       </div>
 

@@ -16,14 +16,13 @@ if(isset($_SESSION['login_id']) && isset($_SESSION['news_id'])){
     $news_topic = addslashes($news_topic);
     // $news_image = $_FILES['newsPicAddtopic1'];
 
-    $news_description = $_POST['newsDescription'];
-    $news_description = addslashes($news_description);
-    $last_edit_date = date("Y-m-d");
+  $news_description = $_POST['newsDescription'];
+  $news_description = addslashes($news_description);
+    
+  $last_edit_date = date("Y-m-d");
 
-
-    $news_content = $_POST['newsContent'];
-    $news_content = addslashes($news_content);
-
+  $news_content = $_POST['newsContent'];
+  $news_content = addslashes($news_content);
 
     if($news_topic != "" && $news_description !=""){
       $sql= "UPDATE `news` SET `last_edit_date`='$last_edit_date',`topic`='$news_topic',

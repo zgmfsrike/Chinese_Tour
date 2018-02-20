@@ -4,7 +4,6 @@ include('module/session.php');
 <!DOCTYPE html>
   <html>
   <?php
-   //isAdmin();
   include "db_config.php";
    ?>
    <?php
@@ -92,7 +91,7 @@ include('module/session.php');
         ?>
       <div class="row">
         <div class="right">
-          <a href="EditNews.php?news_id=<?php echo $news_id; ?>" class="btn-large btn-floating tooltipped waves-effect waves-light amber" data-position="top" data-delay="50" data-tooltip="Edit News"><i class="material-icons">edit</i></a>
+          <a href="editnews.php?news_id=<?php echo $news_id; ?>" class="btn-large btn-floating tooltipped waves-effect waves-light amber" data-position="top" data-delay="50" data-tooltip="Edit News"><i class="material-icons">edit</i></a>
           <button id='del_button' class="delete_warn btn-large btn-floating tooltipped waves-effect waves-light red" data-position="top" data-delay="50" data-tooltip="Delete"><i class="delete_warn material-icons">delete</i></button>
         </div>
       </div>
@@ -143,13 +142,13 @@ include('module/session.php');
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: '<a style="color:white" href ="DeleteNews.php?news_id=<?php echo $news_id; ?>">Yes, delete it!</a>'
+            confirmButtonText: '<a style="color:white" href ="deletenews.php?news_id=<?php echo $news_id; ?>">Yes, delete it!</a>'
           }).then((result) => {
             if (result.value) {
               swal(
-                // let url = getElementById('del_button').innerHTML = "<a href ='DeleteNews.php?news_id=<?php echo $news_id; ?>'></a>";
+                // let url = getElementById('del_button').innerHTML = "<a href ='deletenews.php?news_id=<?php echo $news_id; ?>'></a>";
 
-                // '<a href ="DeleteNews.php?news_id=<?php echo $news_id; ?>">Deleted</a>!'
+                // '<a href ="deletenews.php?news_id=<?php echo $news_id; ?>">Deleted</a>!'
                 // 'Your file has been deleted.',
                 // 'success'
               )

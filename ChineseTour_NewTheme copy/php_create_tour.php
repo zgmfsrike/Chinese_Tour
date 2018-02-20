@@ -6,19 +6,12 @@ include "db_config.php";
 if(isset($_POST['submit'])){
 
     // ===== Insert to "tour" table =====
-    $tour_description   = $_POST["tour_description"];
-    //        $tour_image         = $_POST["image[]"]; // **
-    $tour_highlight     = $_POST["highlight"];
-    //        $tour_schedule      = $_POST["schedule"]; // **
-    $tour_region        = $_POST["region"];
-    $tour_province      = $_POST["province"];
+    $tour_description   = addslashes($_POST["tour_description"]);
+    $tour_highlight     = addslashes($_POST["highlight"]);
+    $tour_region        = addslashes($_POST["region"]);
+    $tour_province      = addslashes($_POST["province"]);
     $tour_price         = $_POST["price"];
-    //        $tour_type          = $_POST["type"]; // **
-    //        $tour_vehicel       = $_POST["vehicel"]; // **
-    //        $tour_accommodation = $_POST["accommodation"]; // **
     $tour_max           = $_POST["max"];
-    //        $tour_round_start   = $_POST["start_date[]"]; // ***
-    //        $tour_round_end     = $_POST["end_date[]"]; // ***
 
     $sql= "INSERT INTO tour (tour_description, highlight, region, province, price, max_customer) VALUES ('$tour_description','$tour_highlight','$tour_region','$tour_province','$tour_price','$tour_max')";
     $result = mysqli_query( $GLOBALS['conn'] , $sql );

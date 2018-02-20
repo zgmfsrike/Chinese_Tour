@@ -17,7 +17,7 @@ if(!isLoginAs(array('admin','member'))){
       <div class="row">
         <div class="col s12 l3">
           <div class="collection">
-            <a href="Profile.php" class="collection-item active amber">Profile</a>
+            <a href="profile.php" class="collection-item active amber">Profile</a>
             <a href="Purchase.php" class="collection-item black-text">Purchase</a>
             <a href="Record.php" class="collection-item black-text">Record</a>
           </div>
@@ -53,10 +53,10 @@ if(!isLoginAs(array('admin','member'))){
               <a href="editInfo.php" class="btn waves-effect waves-light red">Edit Profile</a>
             <div class="section"></div></div>
             <div class="col s4">
-              <a href="ChangePassword.php" class="btn waves-effect waves-light red">Change Password</a>
+              <a href="changepassword.php" class="btn waves-effect waves-light red">Change Password</a>
             <div class="section"></div></div>
             <div class="col s4">
-              <a href="changeEmail.php" class="btn waves-effect waves-light red">Change Email</a>
+              <a href="changeemail.php" class="btn waves-effect waves-light red">Change Email</a>
             </div>
           </div>
           </div>

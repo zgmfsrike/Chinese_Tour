@@ -107,7 +107,7 @@ include 'component/header.php';
                   </div>
                 <!-- <div class="row">
                   <div class="center col s12">
-                    <input type="submit" value="Cancel" onclick="window.location.href='AdminIndex.php'" class="waves-effect waves-light btn red">
+                    <input type="submit" value="Cancel" onclick="window.location.href='Adminindex.php'" class="waves-effect waves-light btn red">
                     <input name="changeAll" type="submit" class="waves-effect waves-light btn amber" value="Save All">
                   </div>
                 </div> -->

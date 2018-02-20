@@ -4,7 +4,7 @@ if(!isLoginAs(array('admin','member'))){
     header('Location: message.php?msg=please_login');
 }
 //--------------------Link to another page -----------------------------------
-$profile_page = "window.location.href='Profile.php'";
+$profile_page = "window.location.href='profile.php'";
 $change_mail_func = "php_change_mail.php";
  ?>
  <!DOCTYPE html>
@@ -18,7 +18,7 @@ $change_mail_func = "php_change_mail.php";
      <div class="row">
        <div class="col s12 l3">
          <div class="collection">
-           <a href="Profile.php" class="collection-item active amber">Profile</a>
+           <a href="profile.php" class="collection-item active amber">Profile</a>
            <a href="Purchase.php" class="collection-item black-text">Purchase</a>
            <a href="Record.php" class="collection-item black-text">Record</a>
          </div>
