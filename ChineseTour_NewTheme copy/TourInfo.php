@@ -30,6 +30,7 @@ if(isset($_GET['id'])){
 <!DOCTYPE html>
 <html>
     <?php
+    $title = $tour_description;
     include 'component/header.php';
     ?>
     <body>
@@ -150,8 +151,8 @@ if(isset($_GET['id'])){
     if(mysqli_num_rows($result) > 0){
         while($row = mysqli_fetch_array($result)){
             $tour_round_id = $row['tour_round_id'];
-            $start_date_time = $row['start_date_time'];
-            $end_date_time = $row['end_date_time'];
+            $start_date_time = date("d-m-Y", strtotime($row['start_date_time']));
+            $end_date_time = date("d-m-Y", strtotime($row['end_date_time']));
                         ?>
                         <option value="<?php echo $tour_round_id; ?>"><?php echo $start_date_time; ?> to <?php echo $end_date_time; ?></option>
                         <?php

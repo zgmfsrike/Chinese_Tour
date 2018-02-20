@@ -34,7 +34,7 @@ if(isset($_GET['id'])){
     <?php
     include 'component/header.php';
     ?>
-    
+
     <script>
         function selectEnd(elem){
 
@@ -59,27 +59,39 @@ if(isset($_GET['id'])){
             document.getElementById("end"+index).setAttribute('min',input);
 
         }
-        
-        function initDate(){
-            
-            var today = new Date();
-                var dd = today.getDate();
-                var mm = today.getMonth()+1; //January is 0!
 
-                var yyyy = today.getFullYear();
-                if(dd<10){
-                    dd='0'+dd;
-                } 
-                if(mm<10){
-                    mm='0'+mm;
-                } 
-                var date = yyyy+'-'+mm+'-'+dd;
+        function initDate(index){
+
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth()+1; //January is 0
+
+            var yyyy = today.getFullYear();
+            if(dd<10){
+                dd='0'+dd;
+            } 
+            if(mm<10){
+                mm='0'+mm;
+            } 
+            var date = yyyy+'-'+mm+'-'+dd;
+
+            if(typeof index !== "undefined"){
+
+                console.log(date);
+                console.log("start"+index);
+                console.log("end"+index);
+
+                document.getElementById("start"+index).setAttribute('min',date);
+                document.getElementById("end"+index).setAttribute('min',date);
+
+            }else{
 
                 console.log(date);
 
                 $('.start').attr('min', date);
-                $('.end').attr('min', date);
-            
+
+            }
+
         }
     </script>
 
@@ -137,13 +149,15 @@ if(isset($_GET['id'])){
                                         $start_date = $row['start_date_time'];
                                         $end_date = $row['end_date_time'];
                                 ?>
-                                <div class="col s6">
-                                    <span><b>Start Date</b></span>
-                                    <input required name='start_date[]' type='date' value="<?php echo $start_date; ?>" id="start1" class="start" datagrp="1" onchange="selectStart(this)" max=""/>
-                                </div>
-                                <div class="col s6">
-                                    <span><b>End Date</b></span>
-                                    <input required name='end_date[]' type='date' value="<?php echo $end_date; ?>" id="end1" class="end" datagrp="1" onchange="selectEnd(this)"/><br>
+                                <div class="trdate">
+                                    <div class="col s6">
+                                        <span><b>Start Date</b></span>
+                                        <input required name='start_date[]' type='date' value="<?php echo $start_date; ?>" id="start1" class="start" datagrp="1" onchange="selectStart(this)" max="<?php echo $end_date; ?>"/>
+                                    </div>
+                                    <div class="col s6">
+                                        <span><b>End Date</b></span>
+                                        <input required name='end_date[]' type='date' value="<?php echo $end_date; ?>" id="end1" class="end" datagrp="1" onchange="selectEnd(this)" min="<?php echo $start_date; ?>"/><br>
+                                    </div>
                                 </div>
                                 <?php
                                     }
@@ -355,10 +369,14 @@ if(isset($_GET['id'])){
                     //                    $(this).before('<div class="trdate"><div class="col s6"><span><b>Start Date</b></span><input required name="start_date_'+ s +'" type="date" id="start'+s+'" class="start" datagrp="'+s+'" onchange="selectStart(this)"/></div><div class="col s6"><span><b>End Date</b></span><input required name="end_date_'+s+'" type="date" id="end'+s+'" class="end"  datagrp="'+s+'" onchange="selectEnd(this)"/><br></div></div>');
                     $(this).before('<div class="trdate"><div class="col s6"><span><b>Start Date</b></span><input required name="start_date[]" type="date" id="start'+s+'" class="start" datagrp="'+s+'" onchange="selectStart(this)"/></div><div class="col s6"><span><b>End Date</b></span><input required name="end_date[]" type="date" id="end'+s+'" class="end"  datagrp="'+s+'" onchange="selectEnd(this)"/><br></div></div>');
 
-                    initDate();
+                    initDate(s);
+
                 });
 
+                initDate();
+
             }); 
+
             function delete_image(id) {
                 document.getElementById("image_"+id).style.display = 'none';
                 document.getElementById("delete_"+id).value = 1;

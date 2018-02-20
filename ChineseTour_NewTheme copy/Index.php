@@ -1,7 +1,5 @@
 <?php
 include 'module/session.php';
-
-$title = "Chiang Mai Hong Thai Tour";
 ?>
 <!DOCTYPE html>
 <html>   
@@ -17,6 +15,7 @@ $title = "Chiang Mai Hong Thai Tour";
     }
     ?>
     <?php
+    $title = "Chiang Mai Hong Thai Tour";
     include 'component/header.php';
     ?>
     <body>
