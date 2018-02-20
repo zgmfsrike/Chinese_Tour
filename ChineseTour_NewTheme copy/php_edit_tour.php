@@ -77,10 +77,10 @@ if(isset($_POST['submit']) and isset($_POST['id'])){
     $id = $_POST['id'];
 
     // ===== Insert to "tour" table =====
-    $tour_description   = $_POST["tour_description"];
-    $tour_highlight     = $_POST["highlight"];
-    $tour_region        = $_POST["region"];
-    $tour_province      = $_POST["province"];
+    $tour_description   = addslashes($_POST["tour_description"]);
+    $tour_highlight     = addslashes($_POST["highlight"]);
+    $tour_region        = addslashes($_POST["region"]);
+    $tour_province      = addslashes($_POST["province"]);
     $tour_price         = $_POST["price"];
     $tour_max           = $_POST["max"];
 

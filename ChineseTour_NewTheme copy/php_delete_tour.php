@@ -20,7 +20,7 @@ if(isset($_GET['id'])){
 
 if(isset($_GET['id'])){
     $id = $_GET['id'];
-    
+
     $sql = "SELECT * FROM `tour_image` WHERE tour_id = $id";
     $result = mysqli_query($conn, $sql);
     if(mysqli_num_rows($result) > 0){
@@ -69,7 +69,7 @@ if(isset($_GET['id'])){
 
     $sql = "DELETE FROM tour WHERE tour_id = $id";
     mysqli_query($conn, $sql);
-    
+
     header("location: message.php?msg=delete_tour_succ");
 }
 ?>

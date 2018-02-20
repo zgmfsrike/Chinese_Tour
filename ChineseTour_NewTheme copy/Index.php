@@ -1,8 +1,10 @@
 <?php
 include 'module/session.php';
+
+$title = "Chiang Mai Hong Thai Tour";
 ?>
 <!DOCTYPE html>
-<html>
+<html>   
     <?php
     include('db_config.php');
 

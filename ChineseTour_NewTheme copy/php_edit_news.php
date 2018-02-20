@@ -18,8 +18,8 @@ if($_POST['save']){
 
   $news_description = $_POST['newsDescription'];
   $news_description = addslashes($news_description);
+    
   $last_edit_date = date("Y-m-d");
-
 
   $news_content = $_POST['newsContent'];
   $news_content = addslashes($news_content);

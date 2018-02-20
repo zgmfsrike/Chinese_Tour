@@ -34,6 +34,54 @@ if(isset($_GET['id'])){
     <?php
     include 'component/header.php';
     ?>
+    
+    <script>
+        function selectEnd(elem){
+
+            var index = elem.getAttribute('datagrp');
+            var input = document.getElementById("end"+index).value;
+
+            console.log(index);
+            console.log(input);
+
+            document.getElementById("start"+index).setAttribute('max',input);
+
+        }
+
+        function selectStart(elem){
+
+            var index = elem.getAttribute('datagrp');
+            var input = document.getElementById("start"+index).value;
+
+            console.log(index);
+            console.log(input);
+
+            document.getElementById("end"+index).setAttribute('min',input);
+
+        }
+        
+        function initDate(){
+            
+            var today = new Date();
+                var dd = today.getDate();
+                var mm = today.getMonth()+1; //January is 0!
+
+                var yyyy = today.getFullYear();
+                if(dd<10){
+                    dd='0'+dd;
+                } 
+                if(mm<10){
+                    mm='0'+mm;
+                } 
+                var date = yyyy+'-'+mm+'-'+dd;
+
+                console.log(date);
+
+                $('.start').attr('min', date);
+                $('.end').attr('min', date);
+            
+        }
+    </script>
 
     <body>
         <div class="container">
@@ -91,11 +139,11 @@ if(isset($_GET['id'])){
                                 ?>
                                 <div class="col s6">
                                     <span><b>Start Date</b></span>
-                                    <input required name='start_date[]' type='date' value="<?php echo $start_date; ?>"/>
+                                    <input required name='start_date[]' type='date' value="<?php echo $start_date; ?>" id="start1" class="start" datagrp="1" onchange="selectStart(this)" max=""/>
                                 </div>
                                 <div class="col s6">
                                     <span><b>End Date</b></span>
-                                    <input required name='end_date[]' type='date' value="<?php echo $end_date; ?>"/><br>
+                                    <input required name='end_date[]' type='date' value="<?php echo $end_date; ?>" id="end1" class="end" datagrp="1" onchange="selectEnd(this)"/><br>
                                 </div>
                                 <?php
                                     }
@@ -295,9 +343,22 @@ if(isset($_GET['id'])){
                 // add more tour round
                 $('.add_more_tr').click(function(e){
                     e.preventDefault();
-                    $(this).before("<div class='col s6'><span><b>Start Date</b></span><input required name='start_date[]' type='date'/></div><div class='col s6'><span><b>End Date</b></span><input required name='end_date[]' type='date'/><br></div>");
+                    var e = document.getElementsByClassName('trdate');
+                    var i;
+                    var s = 0;
+                    for(i=0; i < e.length; i++) {
+                        if(e[i].className=="trdate") {
+                            s++;
+                        }
+                    }
+                    s++
+                    //                    $(this).before('<div class="trdate"><div class="col s6"><span><b>Start Date</b></span><input required name="start_date_'+ s +'" type="date" id="start'+s+'" class="start" datagrp="'+s+'" onchange="selectStart(this)"/></div><div class="col s6"><span><b>End Date</b></span><input required name="end_date_'+s+'" type="date" id="end'+s+'" class="end"  datagrp="'+s+'" onchange="selectEnd(this)"/><br></div></div>');
+                    $(this).before('<div class="trdate"><div class="col s6"><span><b>Start Date</b></span><input required name="start_date[]" type="date" id="start'+s+'" class="start" datagrp="'+s+'" onchange="selectStart(this)"/></div><div class="col s6"><span><b>End Date</b></span><input required name="end_date[]" type="date" id="end'+s+'" class="end"  datagrp="'+s+'" onchange="selectEnd(this)"/><br></div></div>');
+
+                    initDate();
                 });
-            });
+
+            }); 
             function delete_image(id) {
                 document.getElementById("image_"+id).style.display = 'none';
                 document.getElementById("delete_"+id).value = 1;

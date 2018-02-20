@@ -24,6 +24,7 @@ include "db_config.php";
                     break;
                 case 'login_already': message('You are already login','','','');
                     break;
+                    
                     // AUTHENTICATION
                 case 'unauthorized': message('Unauthorized','','','');
                     break;
@@ -164,13 +165,14 @@ include "db_config.php";
                     // request
                 case 'unknow_request': message('Unknow request','Something went wrong, please try again.','','');
                     break;
+                case 'error': message('Something went wrong','Please try again.','','');
 
                     // default
                 default: message('Request not found','','','');
 
             }
         }else{
-            message('Request not found.','','index.php','Go to Homepage');
+            message('Request not found.','','','');
         }
 
         ?>

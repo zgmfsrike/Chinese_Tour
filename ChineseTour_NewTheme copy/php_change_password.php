@@ -2,13 +2,13 @@
 if(isset($_POST['save'])){
 
     if(isset($_SESSION['login_id'])){
-	   $id = $_SESSION['login_id'];
-	   $password = $_POST['password'];
-    
+        $id = $_SESSION['login_id'];
+        $password = $_POST['password'];
+
         $query = "SELECT * FROM member WHERE id = '$id'";
         $result = mysqli_query($conn, $query);
         $count = mysqli_num_rows($result);
-    
+
         if($count == 1){
             $objResult = mysqli_fetch_array($result);
             if(verifyPassword($password,$objResult["password"])){
