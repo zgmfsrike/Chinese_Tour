@@ -2,7 +2,7 @@
 include 'module/session.php';
 ?>
 <!DOCTYPE html>
-<html>   
+<html>
     <?php
     include('db_config.php');
 
@@ -54,7 +54,6 @@ include 'module/session.php';
                                     <span class="card-title">Announcement <i class="material-icons">announcement</i></span>
                                     <blockquote>
                                         Welcome to Chiangmai!
-                                        The former seat of the Lanna kingdom is a blissfully calm and laid-back place to relax and recharge your batteries. Yes you'll be surrounded by other wide-eyed travellers but that scarcely takes away from the fabulous food and leisurely wandering. Participate in a vast array of activities on offer, or just stroll around the backstreets, and discover a city that is still firmly Thai in its atmosphere, and attitude.
                                     </blockquote>
                                 </div>
                             </div>
