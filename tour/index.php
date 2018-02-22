@@ -13,6 +13,14 @@ include 'module/session.php';
         $objResult = mysqli_fetch_array($result);
         $username = $objResult['username'];
     }
+
+    $sql = "SELECT * FROM `announcement` WHERE name = 'announce'";
+    $result = mysqli_query($conn, $sql);
+    if(mysqli_num_rows($result) == 0){
+        header("location: message.php");
+    }
+    $data = mysqli_fetch_array($result);
+    $announce = $data['content'];
     ?>
     <?php
     $title = "Chiang Mai Hong Thai Tour";
@@ -53,7 +61,7 @@ include 'module/session.php';
                                 <div class="card-content white-text">
                                     <span class="card-title">Announcement <i class="material-icons">announcement</i></span>
                                     <blockquote>
-                                        Welcome to Chiangmai!
+                                        <?php echo $announce; ?>
                                     </blockquote>
                                 </div>
                             </div>

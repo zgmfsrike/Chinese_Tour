@@ -3,6 +3,10 @@
 include "db_config.php";
 error_reporting(E_ALL | E_STRICT);
 
+if(!isLoginAs(array('admin'))){
+    header('Location: message.php?msg=unauthorized');
+}
+
 function check(){
     $count = 1;
     $img[1] = '';

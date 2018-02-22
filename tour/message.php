@@ -164,6 +164,11 @@ include "db_config.php";
                 case 'unknow_request': message('Unknow request','Something went wrong, please try again.','','');
                     break;
                 case 'error': message('Something went wrong','Please try again.','','');
+                    break;
+
+                    // Announce
+                case 'success_update_announce': message('Complete','Update announce complete','index.php','Go to home page');
+                    break;
 
                     // default
                 default: message('Request not found','','','');
@@ -175,18 +180,13 @@ include "db_config.php";
 
         ?>
 
-        <!-- HTML -->
-
-        <!-- Navigation -->
-
-        <!--login body-->
         <!--- PHP : 4 parameters ----->
 
         <?php
         function message($header,$message,$link,$btn){
 
-          $title = $header;
-         include 'component/header.php';
+            $title = $header;
+            include 'component/header.php';
         ?>
         <div class="container col s12">
             <form>
