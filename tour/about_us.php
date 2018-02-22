@@ -40,7 +40,7 @@ include 'module/session.php';
             <ul>
               <div class="section"></div><div class="section"></div><div class="section"></div><div class="section"></div>
               <li><h5>Contact Us</h5></li>
-              <li>WeChat : @WeChatId</li>
+              <li>WeChat : 591198421 or HTCE888</li>
               <li>Tel : 081-025-0351</li>
               <li><a href="mailto:chiangmaihongthai@hotmail.com">Email : chiangmaihongthai@hotmail.com</a></li>
             </ul>
@@ -48,7 +48,7 @@ include 'module/session.php';
           <div class="col s12 l4 show-on-small hide-on-med-and-up">
             <ul>
               <li><h5>Contact Us</h5></li>
-              <li>WeChat : @WeChatId</li>
+              <li>WeChat : 591198421 or HTCE888</li>
               <li>Tel : 081-025-0351</li>
               <li><a href="mailto:chiangmaihongthai@hotmail.com">Email : chiangmaihongthai@hotmail.com</a></li>
             </ul>

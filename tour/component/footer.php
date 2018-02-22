@@ -8,7 +8,7 @@
        <div class="col l4 offset-l2 s12">
          <h5 class="white-text">Contact Us</h5>
          <ul>
-           <li><a class="grey-text text-lighten-3" href="#!">WeChat : @wechatIdHere</a></li>
+           <li><a class="grey-text text-lighten-3" href="#!">WeChat : 591198421 or HTCE888</a></li>
            <li><a class="grey-text text-lighten-3" href="#!">Tel : 081-025-0351</a></li>
            <li><a class="grey-text text-lighten-3" href="mailto:chiangmaihongthai@hotmail.com">Email : chiangmaihongthai@hotmail.com</a></li>
          </ul>
