@@ -46,7 +46,7 @@ if(isset($title) and $title == ""){
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <a href="index.php" class="show-on-medium-and-down hide-on-large-only">Chiangmai HongThai</a>
         <div class="hide-on-med-and-down"><div class="section"></div>
-        <a class='dropdown-button btn right amber' href='#' data-activates='dropdown2'>Language</a>
+        <a class='dropdown-button btn right teal darken-3' href='#' data-activates='dropdown2'>Language</a>
         <ul id='dropdown2' class='dropdown-content'>
           <li><a href="#!">Chinese</a></li>
           <li><a href="#!">English</a></li>
