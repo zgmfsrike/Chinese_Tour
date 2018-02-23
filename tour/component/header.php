@@ -41,25 +41,32 @@ if(isset($title) and $title == ""){
 </head>
 
 <nav class="nav-extended">
-    <div class="nav-wrapper red darken-2">
-        <a href="index.php" class="brand-logo center hide-on-med-and-down"><img src="images/logo400x300.png" width=20% height=20% alt="logo"></a>
+    <div class="nav-wrapper">
+        <a href="index.php" class="brand-logo center hide-on-med-and-down"><img src="images/logo400x300.png" width=40% height=40% alt="logo"></a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <a href="index.php" class="show-on-medium-and-down hide-on-large-only">Chiangmai HongThai</a>
-
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="#">WeChat</a></li>
-            <li><a href="#">081-025-0351</a></li>
-            <li><a class="grey-text text-lighten-3" href="mailto:chiangmaihongthai@hotmail.com">chiangmaihongthai@hotmail.com</a></li>
+        <div class="hide-on-med-and-down"><div class="section"></div>
+        <a class='dropdown-button btn right teal darken-2' href='#' data-activates='dropdown1'>Language</a>
+        <ul id='dropdown1' class='dropdown-content'>
+          <li><a href="#!">Chinese</a></li>
+          <li><a href="#!">English</a></li>
+          <li><a href="#!">Thai</a></li>
         </ul>
+        </div>
 
+
+
+    </div>
+    <div class="nav-wrapper hide-on-med-and-down"></div>
         <ul class="side-nav" id="mobile-demo">
-            <li><a>Chiangmai HongThai</a></li>
-            <li><div class="divider"></div></li>
+            <li class="red darken-4"><div class="section"></div></li>
+            <li class="red darken-4"><img src="images/logo400x300.png" width=40% height=40% alt="logo">
+            <div class="divider"></div></li>
             <li><a href="<?php echo $index;?>">Home</a></li>
             <li><a href="<?php echo $meeting;?>">Meeting Tour</a></li>
             <li><a href="<?php echo $incentive;?>">Incentive Tour</a></li>
             <li><a href="<?php echo $convension;?>">Convension Tour</a></li>
-            <li><a href="<?php echo $foxhibition;?>">Foxhibition Tour</a></li>
+            <li><a href="<?php echo $foxhibition;?>">Exhibition Tour</a></li>
             <li><a href="<?php echo $business;?>">Business Tour</a></li>
             <li><a href="<?php echo $about_us;?>">About Us</a></li>
             <li><div class="divider"></div></li>
@@ -85,8 +92,16 @@ if(isset($title) and $title == ""){
             <?php
             }
             ?>
+
+            <li><div class="divider"></div></li>
+            <li><a class='dropdown-button btn center red darken-4' href='#' data-activates='dropdown1'>Language</a>
+            <ul id='dropdown1' class='dropdown-content'>
+              <li><a href="#!">Chinese</a></li>
+              <li><a href="#!">English</a></li>
+              <li><a href="#!">Thai</a></li>
+            </ul></li>
         </ul>
-    </div>
+
 
     <div class="nav-content red darken-3 hide-on-med-and-down">
         <ul class="tabs tabs-fixed-width tabs-transparent container">
@@ -94,7 +109,7 @@ if(isset($title) and $title == ""){
             <li class="tab"><a target="_self" href="<?php echo $meeting;?>">Meeting Tour</a></li>
             <li class="tab"><a target="_self" href="<?php echo $incentive;?>">Incentive Tour</a></li>
             <li class="tab"><a target="_self" href="<?php echo $convension;?>">Convension Tour</a></li>
-            <li class="tab"><a target="_self" href="<?php echo $foxhibition;?>">Foxhibition Tour</a></li>
+            <li class="tab"><a target="_self" href="<?php echo $foxhibition;?>">Exhibition Tour</a></li>
             <li class="tab"><a target="_self" href="<?php echo $business;?>">Business Tour</a></li>
             <li class="tab"><a target="_self" href="<?php echo $about_us;?>">About Us</a></li>
             <li style="border-left: 1px solid #fff; border-radius: 0; height:50%; margin-top:1%;" class="tab"></li>
