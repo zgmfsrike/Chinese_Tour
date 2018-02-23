@@ -2,14 +2,14 @@
    <div class="container">
      <div class="row">
        <div class="col l6 s12">
-         <h5 class="white-text">Address</h5>
-         <p class="grey-text text-lighten-4">Chiangmai HongThai SriDonChai Road PhraSingha District Aumphoe Mueang Chiangmai Thailand</p>
+         <h5 class="white-text">Chiangmai Hongthai</h5>
+         <p class="grey-text text-lighten-4">Address</br>Sridonchai Road Phrasingha District Aumphoe Mueang <br/>Chiangmai Thailand</p>
        </div>
        <div class="col l4 offset-l2 s12">
          <h5 class="white-text">Contact Us</h5>
          <ul>
-           <li><a class="grey-text text-lighten-3" href="#!">WeChat : 591198421 or HTCE888</a></li>
-           <li><a class="grey-text text-lighten-3" href="#!">Tel : 081-025-0351</a></li>
+           <li>WeChat : 591198421 or HTCE888</li>
+           <li>Tel : 081-025-0351</li>
            <li><a class="grey-text text-lighten-3" href="mailto:chiangmaihongthai@hotmail.com">Email : chiangmaihongthai@hotmail.com</a></li>
          </ul>
        </div>
