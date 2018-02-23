@@ -8,7 +8,7 @@
        <div class="col l4 offset-l2 s12">
          <h5 class="white-text">Contact Us</h5>
          <ul>
-           <li><a class="modal-trigger white-text" href="#modal1">WeChat : 591198421 or HTCE888</a></li>
+           <li><a class="modal-trigger white-text tooltipped" data-position="top" data-delay="50" data-tooltip="Click to Scan QR Code" href="#modal1">WeChat : 591198421 or HTCE888</a></li>
            <li>Tel : 081-025-0351</li>
            <li><a class="grey-text text-lighten-3" href="mailto:chiangmaihongthai@hotmail.com">Email : chiangmaihongthai@hotmail.com</a></li>
          </ul>
