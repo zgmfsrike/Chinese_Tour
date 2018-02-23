@@ -1,7 +1,7 @@
 $(document).ready(function(){
      $('.slider').slider({full_width: true});
      $('.tooltipped').tooltip();
-     $('#modal1').modal();
+     $('.modal').modal();
 
      $('.datepicker').pickadate({
        selectMonths: true, // Creates a dropdown to control month
