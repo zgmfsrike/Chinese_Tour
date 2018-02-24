@@ -4,21 +4,28 @@ ob_start();
 $cookie_name = "lang";
 
 if(!isset($_COOKIE[$cookie_name])) {
-    
+
     $cookie_value = "en";
     setcookie($cookie_name, $cookie_value, time() + (86400 * 30));
     header("Refresh:0");
 
 }
 
+if(isset($_GET['lang']) and isset($_COOKIE[$cookie_name]) and $_GET['lang'] != $_COOKIE[$cookie_name]){
+    
+    setcookie($cookie_name, $_GET['lang'], time() + (86400 * 30));
+    header("Refresh:0");
+    
+}
+
 if(count($_GET) > 1){
-    echo 'GET<br>' .var_dump($_GET).'<br>';
+    //    echo 'GET<br>' .var_dump($_GET).'<br>';
     $x = '&';
 }else if(count($_GET) == 1 and isset($_GET['lang'])){
-    echo 'NO GET 1<br>';
+    //    echo 'NO GET 1<br>';
     $x = '';
 }else{
-    echo 'NO GET 2<br>';
+    //    echo 'NO GET 2<br>';
     $x = '?';
 }
 
@@ -40,18 +47,5 @@ function new_url( $param )
 
 $new_url = new_url('lang');
 
-?>
-<html>
-    <head>
-        <title>ThaiCreate.Com Tutorial</title>
-    </head>
-    <body>
-        <a href="<?php echo $new_url.$x."lang=th"; ?>">thai</a>
-        <?php echo "ให้ Cookie ทำนายกัน: ".$_COOKIE[$cookie_name]; ?>
-        <br>
-        <?php echo $new_url; ?>
-    </body>
-</html>
-<?php
 ob_end_flush();
 ?>
