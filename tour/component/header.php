@@ -1,30 +1,7 @@
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link rel="stylesheet" href="css/materialize.min.css"/>
-    <link rel="stylesheet" href="css/materialize.css"/>
-    <link rel="stylesheet" href="css/main.css">
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-    <?php 
-    if(isset($title) and $title == ""){
-        $title = 'Chiang Mai Hong Thai Tour';
-    }else{
-        $title = 'Chiang Mai Hong Thai Tour';
-    }
-    ?>
-
-    <title><?php echo "".$title;?></title>
-</head>
-
 <?php
 // *** LINK ***
 $link_index = 'index.php';
-$link_about_us = 'about_us.php';
+$link_aboutus = 'about_us.php';
 
 $link_meeting ='#';
 $link_incentive ='#';
@@ -49,65 +26,67 @@ require 'lang/language_switcher.php';
 $lang = $_COOKIE['lang'];
 
 switch($lang){
-    case 'en': 
-        $lang = 'english';
-        break;
     case 'ch': 
-        $lang = 'chinesse';
+        $string_index = '主页';
+        $string_meeting = '会议旅游';
+        $string_incentive = '奖励旅游';
+        $string_convention = '专题会晤旅游';
+        $string_exhibition = '会展旅游';
+        $string_business = '商务旅游';
+        $string_aboutus = '关于我们';
+        $string_login = '登录';
+        $string_register = '注册';
+        $string_logout = '登出';
         break;
     case 'th': 
-        $lang = 'thai';
+        $string_index = 'หน้าหลัก';
+        $string_meeting = 'Meeting Tour';
+        $string_incentive = 'Incentive Tour';
+        $string_convention = 'Convention Tour';
+        $string_exhibition = 'Exhibition Tour';
+        $string_business = 'Business Tour';
+        $string_aboutus = 'เกี่ยวกับเรา';
+        $string_login = 'ลงชื่อเข้าใช้';
+        $string_register = 'สมัครสมาชิก';
+        $string_logout = 'ออกจากระบบ';
         break;
+    case 'en':
     default:
-        $lang = 'english';
-}
-
-$sql= "SELECT name,$lang FROM page_header";
-$result = mysqli_query( $GLOBALS['conn'] , $sql );
-
-if (mysqli_num_rows($result) > 0) {
-    while($row = mysqli_fetch_assoc($result)) {
-        $content = $row[$lang];
-        switch($row['name']){
-            case 'home':
-                $string_index = $content;
-                break;
-            case 'meeting':
-                $string_meeting = $content;
-                break;
-            case 'incentive':
-                $string_incentive = $content;
-                break;
-            case 'convention':
-                $string_convention = $content;
-                break;
-            case 'exhibition':
-                $string_exhibition = $content;
-                break;
-            case 'business':
-                $string_business = $content;
-                break;
-            case 'about':
-                $string_about = $content;
-                break;
-            case 'login':
-                $string_login = $content;
-                break;
-            case 'register':
-                $string_register = $content;
-                break;
-        }
-    }
-} else {
-    //    echo "0 results";
-    header('message.php');
+        $string_index = 'Home';
+        $string_meeting = 'Meeting Tour';
+        $string_incentive = 'Incentive Tour';
+        $string_convention = 'Convention Tour';
+        $string_exhibition = 'Exhibition Tour';
+        $string_business = 'Business Tour';
+        $string_aboutus = 'About Us';
+        $string_login = 'Sign In';
+        $string_register = 'Register';
+        $string_logout = 'Sign Out';
 }
 
 
-$sql= "SELECT  FROM ";
-$result = mysqli_query( $GLOBALS['conn'] , $sql );
+if(isset($title) and $title == ""){
+    $title = 'Chiang Mai Hong Thai Tour';
+}else{
+    $title = 'Chiang Mai Hong Thai Tour';
+}
 
 ?>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="css/materialize.min.css"/>
+    <link rel="stylesheet" href="css/materialize.css"/>
+    <link rel="stylesheet" href="css/main.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title><?php echo "".$title;?></title>
+</head>
 
 <nav class="nav-extended">
     <div class="nav-wrapper">
@@ -137,20 +116,20 @@ $result = mysqli_query( $GLOBALS['conn'] , $sql );
         <li><a href="<?php echo $link_convention;?>"><?php echo $string_convention;?></a></li>
         <li><a href="<?php echo $link_exhibition;?>"><?php echo $string_exhibition;?></a></li>
         <li><a href="<?php echo $link_business;?>"><?php echo $string_business;?></a></li>
-        <li><a href="<?php echo $link_about_us;?>"><?php echo $string_about;?></a></li>
+        <li><a href="<?php echo $link_aboutus;?>"><?php echo $string_aboutus;?></a></li>
         <li><div class="divider"></div></li>
         <?php
         if(isLoginAs(array('admin','member'))){
             if(isLoginAs(array('admin'))){
         ?>
         <li><a href="<?php echo $link_manage;?>">Manage</a></li>
-        <li><a href="<?php echo $link_logout;?>">Logout</a></li>
+        <li><a href="<?php echo $link_logout;?>"><?php echo $string_logout;?></a></li>
         <?php
             }
             if(isLoginAs(array('member'))){
         ?>
         <li><a href="<?php echo $link_profile;?>"><?php echo $_SESSION['login_firstname'];?></a></li>
-        <li><a href="<?php echo $link_logout;?>">Logout</a></li>
+        <li><a href="<?php echo $link_logout;?>"><?php echo $string_logout;?></a></li>
         <?php
 
             }
@@ -180,7 +159,7 @@ $result = mysqli_query( $GLOBALS['conn'] , $sql );
             <li class="tab"><a target="_self" href="<?php echo $link_convention;?>"><?php echo $string_convention;?></a></li>
             <li class="tab"><a target="_self" href="<?php echo $link_exhibition;?>"><?php echo $string_exhibition;?></a></li>
             <li class="tab"><a target="_self" href="<?php echo $link_business;?>"><?php echo $string_business;?></a></li>
-            <li class="tab"><a target="_self" href="<?php echo $link_about_us;?>"><?php echo $string_about;?></a></li>
+            <li class="tab"><a target="_self" href="<?php echo $link_aboutus;?>"><?php echo $string_aboutus;?></a></li>
             <li style="border-left: 1px solid #fff; border-radius: 0; height:50%; margin-top:1%;" class="tab"></li>
 
             <!--PHP : Check Login-->
@@ -189,20 +168,20 @@ $result = mysqli_query( $GLOBALS['conn'] , $sql );
                 if(isLoginAs(array('admin'))){
             ?>
             <li class="tab"><a target="_self" href="<?php echo $link_manage;?>">Manage</a></li>
-            <li class="tab"><a target="_self" href="<?php echo $link_logout;?>">Logout</a></li>
+            <li class="tab"><a target="_self" href="<?php echo $link_logout;?>"><?php echo $string_logout;?></a></li>
             <?php
                 }
                 if(isLoginAs(array('member'))){
             ?>
             <li class="tab"><a target="_self" href="<?php echo $link_profile;?>"><?php echo $_SESSION['login_firstname'];?></a></li>
-            <li class="tab"><a target="_self" href="<?php echo $link_logout;?>">Logout</a></li>
+            <li class="tab"><a target="_self" href="<?php echo $link_logout;?>"><?php echo $string_logout;?></a></li>
             <?php
 
                 }
             }else{
             ?>
-            <li class="tab"><a target="_self" href="<?php echo $link_login;?>">Log in</a></li>
-            <li class="tab"><a target="_self" href="<?php echo $link_register;?>">Register</a></li>
+            <li class="tab"><a target="_self" href="<?php echo $link_login;?>"><?php echo $string_login;?></a></li>
+            <li class="tab"><a target="_self" href="<?php echo $link_register;?>"><?php echo $string_register;?></a></li>
             <?php
             }
             ?>
