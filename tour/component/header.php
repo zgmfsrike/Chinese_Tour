@@ -26,7 +26,7 @@ require 'lang/language_switcher.php';
 $lang = $_COOKIE['lang'];
 
 switch($lang){
-    case 'ch': 
+    case 'ch':
         $string_index = '主页';
         $string_meeting = '会议旅游';
         $string_incentive = '奖励旅游';
@@ -37,8 +37,18 @@ switch($lang){
         $string_login = '登录';
         $string_register = '注册';
         $string_logout = '登出';
+        //login page
+        $string_username = '用户名';
+        $string_password ='密码';
+        //about_us page
+        $string_aboutus_topic = '清迈宏泰旅游公司商业领域';
+        $string_contact = '联系方式';
+        $string_wechat = '微信：591198421 or HTCE888';
+        $string_tel = '电话号码：081-025-0351';
+        $string_email = '邮箱：ChiangMaihongthai@hotmail.com';
+
         break;
-    case 'th': 
+    case 'th':
         $string_index = 'หน้าหลัก';
         $string_meeting = 'Meeting Tour';
         $string_incentive = 'Incentive Tour';
@@ -49,6 +59,16 @@ switch($lang){
         $string_login = 'ลงชื่อเข้าใช้';
         $string_register = 'สมัครสมาชิก';
         $string_logout = 'ออกจากระบบ';
+        //login page
+        $string_username = 'ชื่อผู้ใช้งาน';
+        $string_password ='รหัสผ่าน';
+        //about_us page
+        $string_aboutus_topic = 'Chiangmai Hong Thai Business Consultant';
+        $string_contact = 'ติดต่อเรา';
+        $string_wechat = 'WeChat : 591198421 or HTCE888';
+        $string_tel = 'โทร : 081-025-0351';
+        $string_email = 'Email: chiangmaihongthai@hotmail.com';
+
         break;
     case 'en':
     default:
@@ -62,6 +82,15 @@ switch($lang){
         $string_login = 'Sign In';
         $string_register = 'Register';
         $string_logout = 'Sign Out';
+        //login page
+        $string_username = 'Username';
+        $string_password ='Password';
+        //about_us page
+        $string_aboutus_topic = 'Chiangmai Hong Thai Business Consultant';
+        $string_contact = 'Contact us';
+        $string_wechat = 'WeChat : 591198421 or HTCE888';
+        $string_tel = 'Tel : 081-025-0351';
+        $string_email = 'Email: chiangmaihongthai@hotmail.com';
 }
 
 
