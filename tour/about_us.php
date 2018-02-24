@@ -42,7 +42,7 @@ include 'module/session.php';
               <li><h5><?php echo $string_contact; ?></h5></li>
               <li><?php echo $string_wechat; ?></li>
               <li><?php echo $string_tel; ?></li>
-              <li><a href="mailto:chiangmaihongthai@hotmail.com"><?php echo $string_email; ?></a></li>
+              <li><a href="<?php echo $link_mail; ?>"><?php echo $string_email; ?></a></li>
             </ul>
           </div>
           <div class="col s12 l4 show-on-small hide-on-med-and-up">
@@ -50,7 +50,7 @@ include 'module/session.php';
               <li><h5>Contact Us</h5></li>
               <li>WeChat : 591198421 or HTCE888</li>
               <li>Tel : 081-025-0351</li>
-              <li><a href="mailto:chiangmaihongthai@hotmail.com">Email : chiangmaihongthai@hotmail.com</a></li>
+              <li><a href="<?php echo $link_mail; ?>">Email : chiangmaihongthai@hotmail.com</a></li>
             </ul>
           </div>
         </div>

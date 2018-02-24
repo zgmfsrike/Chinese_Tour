@@ -11,7 +11,7 @@ $link_business ='#';
 
 $link_wechat = '#';
 $link_tel = '#';
-$link_mail ='mailto:chiangmaihongthai@hotmail.com';
+$link_mail ='contact.php';
 
 $link_manage = 'manage.php';
 $link_profile = 'profile.php';

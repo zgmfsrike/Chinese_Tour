@@ -22,6 +22,7 @@ include 'db_config.php';
     $announce = $data['content'];
     ?>
     <?php
+
     $title = "Chiang Mai Hong Thai Tour";
     include 'component/header.php';
 
@@ -127,12 +128,12 @@ include 'db_config.php';
                 ?>
             </div>
         </div>
-
-
-        <!--Footer-->
-        <?php
-        include 'component/footer.php';
-        ?>
-
     </body>
+
+
+    <!--Footer-->
+    <?php
+    include 'component/footer.php';
+    ?>
+
 </html>

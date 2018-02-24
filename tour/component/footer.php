@@ -55,7 +55,7 @@ switch($lang){
                 <ul>
                     <li><a class="modal-trigger white-text tooltipped" data-position="top" data-delay="50" data-tooltip="Click to Scan QR Code" href="#modal1"><?php echo $string_wechat; ?> : <?php echo $string_wechat_cont; ?></a></li>
                     <li><?php echo $string_tel; ?> : <?php echo $string_tel_num; ?></li>
-                    <li><a class="grey-text text-lighten-3" href="mailto:chiangmaihongthai@hotmail.com"><?php echo $string_email; ?> : <?php echo $string_email_cont; ?></a></li>
+                    <li><a class="grey-text text-lighten-3" href="<?php echo $link_mail; ?>"><?php echo $string_email; ?> : <?php echo $string_email_cont; ?></a></li>
                 </ul>
             </div>
         </div>
