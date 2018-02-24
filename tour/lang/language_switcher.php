@@ -24,8 +24,10 @@ if(count($_GET) > 1){
 }else if(count($_GET) == 1 and isset($_GET['lang'])){
     //    echo 'NO GET 1<br>';
     $x = '';
-}else{
+}else if(count($_GET) == 1 and !isset($_GET['lang'])){
     //    echo 'NO GET 2<br>';
+    $x = '&';
+}else{
     $x = '?';
 }
 
