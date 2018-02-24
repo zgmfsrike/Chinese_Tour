@@ -46,6 +46,25 @@ switch($lang){
         $string_wechat = '微信：591198421 or HTCE888';
         $string_tel = '电话号码：081-025-0351';
         $string_email = '邮箱：ChiangMaihongthai@hotmail.com';
+        //register page
+        $string_account_info ='账号信息';
+        $string_confirm_password ='再次确认密码';
+        $string_personal_info = '个人信息';
+        $string_first_name = '姓氏';
+        $string_middle_name ='名字的中间的那个字';
+        $string_last_name = '名字的最后一个字';
+        $string_birth = '出生日期';
+        $string_occupation = '职业';
+        $string_salary = '收入';
+        $string_mail = '邮箱号';
+        $string_country_code = '城市编码';
+        $string_tel_number ='电话号码';
+        $string_address = '地址';
+        $string_city ='城市';
+        $string_province = '省份';
+        $string_zipcode = '邮政编码';
+        $string_cancel = '取消';
+
 
         break;
     case 'th':
@@ -68,6 +87,24 @@ switch($lang){
         $string_wechat = 'WeChat : 591198421 or HTCE888';
         $string_tel = 'โทร : 081-025-0351';
         $string_email = 'Email: chiangmaihongthai@hotmail.com';
+        //register page
+        $string_account_info ='ข้อมูลเกี่ยวกับบัญชี';
+        $string_confirm_password ='ยืนยันรหัสผ่าน';
+        $string_personal_info = 'ข้อมูลส่วนบุคคล';
+        $string_first_name = 'ชื่อ';
+        $string_middle_name ='ชื่อกลาง';
+        $string_last_name = 'นามสกุล';
+        $string_birth = 'วันเกิด';
+        $string_occupation = 'อาชีพ';
+        $string_salary = 'เงินเดือน';
+        $string_mail = 'E-mail';
+        $string_country_code = 'รหัสประเทศ';
+        $string_tel_number ='หมายเลขโทรศัพท์';
+        $string_address = 'ที่อยุ่';
+        $string_city ='เมือง';
+        $string_province = 'จังหวัด';
+        $string_zipcode = 'รหัสไปรษณีย์';
+        $string_cancel = 'ยกเลิก';
 
         break;
     case 'en':
@@ -91,6 +128,24 @@ switch($lang){
         $string_wechat = 'WeChat : 591198421 or HTCE888';
         $string_tel = 'Tel : 081-025-0351';
         $string_email = 'Email: chiangmaihongthai@hotmail.com';
+        //register page
+        $string_account_info ='Account information';
+        $string_confirm_password ='Confirm password';
+        $string_personal_info = 'Personal information';
+        $string_first_name = 'First name';
+        $string_middle_name ='Middle name';
+        $string_last_name = 'Last name';
+        $string_birth = 'Birthday';
+        $string_occupation = 'Occupation';
+        $string_salary = 'Salary';
+        $string_mail = 'E-mail';
+        $string_country_code = 'country code';
+        $string_tel_number ='Telephone Number';
+        $string_address = 'Address';
+        $string_city ='City';
+        $string_province = 'Province';
+        $string_zipcode = 'Zipcode';
+        $string_cancel = 'Cancel';
 }
 
 
