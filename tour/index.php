@@ -1,10 +1,10 @@
 <?php
 include 'module/session.php';
-include 'db_config.php';
 ?>
 <!DOCTYPE html>
 <html>
     <?php
+    include('db_config.php');
 
     if(isset($_SESSION['login_id'])){
         $user_id = $_SESSION['login_id'];
