@@ -64,6 +64,7 @@ switch($lang){
         $string_province = '省份';
         $string_zipcode = '邮政编码';
         $string_cancel = '取消';
+        $string_save = '保存';
 
 
         break;
@@ -96,7 +97,7 @@ switch($lang){
         $string_last_name = 'นามสกุล';
         $string_birth = 'วันเกิด';
         $string_occupation = 'อาชีพ';
-        $string_salary = 'เงินเดือน';
+        $string_salary = 'รายได้';
         $string_mail = 'E-mail';
         $string_country_code = 'รหัสประเทศ';
         $string_tel_number ='หมายเลขโทรศัพท์';
@@ -105,6 +106,7 @@ switch($lang){
         $string_province = 'จังหวัด';
         $string_zipcode = 'รหัสไปรษณีย์';
         $string_cancel = 'ยกเลิก';
+        $string_save = 'บันทึก';
 
         break;
     case 'en':
@@ -146,6 +148,7 @@ switch($lang){
         $string_province = 'Province';
         $string_zipcode = 'Zipcode';
         $string_cancel = 'Cancel';
+        $string_save = 'Save';
 }
 
 
