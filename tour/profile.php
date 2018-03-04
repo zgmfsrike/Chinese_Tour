@@ -24,27 +24,27 @@ if(!isLoginAs(array('admin','member'))){
           </div>
         </div>
         <div class="col s12 l9">
-            <h4>Account Information</h4><hr/>
+            <h4><?php echo $string_account_info; ?></h4><hr/>
             <div class="container">
               <div class="row">
                 <ul>
                   <li>
-                    <b>Username&nbsp;:</b>&nbsp;<?php echo $username_db ?>
+                    <b><?php echo $string_username; ?>&nbsp;:</b>&nbsp;<?php echo $username_db ?>
                   </li>
                   <li>
-                    <b>Firstname&nbsp;:</b>&nbsp;<?php echo $firstname_db ?>
+                    <b><?php echo $string_first_name; ?>&nbsp;:</b>&nbsp;<?php echo $firstname_db ?>
                   </li>
                   <li>
-                    <b>Middlename&nbsp;:</b>&nbsp;<?php echo $middlename_db ?>
+                    <b><?php echo $string_middle_name; ?>&nbsp;:</b>&nbsp;<?php echo $middlename_db ?>
                   </li>
                   <li>
-                    <b>Surname&nbsp;:</b>&nbsp;<?php echo $lastname_db ?>
+                    <b><?php echo $string_last_name; ?>&nbsp;:</b>&nbsp;<?php echo $lastname_db ?>
                   </li>
                   <li>
-                    <b>Contact No.&nbsp;:</b>&nbsp;<?php echo "+".$countrycode.$phone_db ?>
+                    <b><?php echo $string_tel_number; ?>&nbsp;:</b>&nbsp;<?php echo "+".$countrycode.$phone_db ?>
                   </li>
                   <li>
-                    <b>Date Of Birth&nbsp;:</b>&nbsp;<?php echo $date_of_birth ?>
+                    <b><?php echo $string_birth; ?>&nbsp;:</b>&nbsp;<?php echo $date_of_birth ?>
                   </li>
                 </ul>
               </div>

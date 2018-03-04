@@ -12,7 +12,7 @@ include 'module/session.php';
       <div class="container">
         <div class="row col s12">
           <div class="section"></div>
-          <h4 class="center">Chiangmai Hong Thai Business Consultant</h4><hr/>
+          <h4 class="center"><?php echo $string_aboutus_topic; ?></h4><hr/>
           <p>We are proud to serve our customers with the past experience of our knowledge as long as personal relationship with other also with the expertise, dedication and experience of our dynamic professional team to ensure our customer in dealing with competitive and cost effective rates as well as to assure our customers in order to perform every task with care also to maintain the highest standard services.</p>
         </div>
         <div class="row">
@@ -39,10 +39,10 @@ include 'module/session.php';
           <div class="col s12 l4 show-on-medium-and-up hide-on-small-only">
             <ul>
               <div class="section"></div><div class="section"></div><div class="section"></div><div class="section"></div>
-              <li><h5>Contact Us</h5></li>
-              <li>WeChat : 591198421 or HTCE888</li>
-              <li>Tel : 081-025-0351</li>
-              <li><a href="mailto:chiangmaihongthai@hotmail.com">Email : chiangmaihongthai@hotmail.com</a></li>
+              <li><h5><?php echo $string_contact; ?></h5></li>
+              <li><?php echo $string_wechat; ?></li>
+              <li><?php echo $string_tel; ?></li>
+              <li><a href="<?php echo $link_mail; ?>"><?php echo $string_email; ?></a></li>
             </ul>
           </div>
           <div class="col s12 l4 show-on-small hide-on-med-and-up">
@@ -50,7 +50,7 @@ include 'module/session.php';
               <li><h5>Contact Us</h5></li>
               <li>WeChat : 591198421 or HTCE888</li>
               <li>Tel : 081-025-0351</li>
-              <li><a href="mailto:chiangmaihongthai@hotmail.com">Email : chiangmaihongthai@hotmail.com</a></li>
+              <li><a href="<?php echo $link_mail; ?>">Email : chiangmaihongthai@hotmail.com</a></li>
             </ul>
           </div>
         </div>

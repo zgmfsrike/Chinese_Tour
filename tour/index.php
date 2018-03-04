@@ -1,11 +1,10 @@
 <?php
 include 'module/session.php';
+include 'db_config.php';
 ?>
 <!DOCTYPE html>
 <html>
     <?php
-    include('db_config.php');
-
     if(isset($_SESSION['login_id'])){
         $user_id = $_SESSION['login_id'];
         $query = "SELECT * FROM member WHERE id = '$user_id'";
@@ -23,8 +22,27 @@ include 'module/session.php';
     $announce = $data['content'];
     ?>
     <?php
+
     $title = "Chiang Mai Hong Thai Tour";
     include 'component/header.php';
+
+    switch($lang){
+        case 'ch': 
+            $string_announce = '布告';
+            $string_fullname = '清迈宏泰旅游公司商业领域';
+            $string_news = '新闻';
+            break;
+        case 'th': 
+            $string_announce = 'ประกาศ';
+            $string_fullname = 'We\'re Chiangmai Hong Thai Business Consultant';
+            $string_news = 'ข่าวสาร';
+            break;
+        case 'en':
+        default:
+            $string_announce = 'Announcement';
+            $string_fullname = 'We\'re Chiangmai Hong Thai Business Consultant';
+            $string_news = 'News';
+    }
     ?>
     <body>
 
@@ -59,7 +77,7 @@ include 'module/session.php';
                         <div class="col s12 m12">
                             <div class="card orange lighten-1">
                                 <div class="card-content white-text">
-                                    <span class="card-title">Announcement <i class="material-icons">announcement</i></span>
+                                    <span class="card-title"><?php echo $string_announce;?> <i class="material-icons">announcement</i></span>
                                     <blockquote>
                                         <?php echo $announce; ?>
                                     </blockquote>
@@ -71,7 +89,7 @@ include 'module/session.php';
             </div>
             <!--News-->
             <div class="container row">
-                <h3>News</h3>
+                <h3><?php echo $string_news;?></h3>
             </div>
             <div class="container row">
                 <?php
@@ -110,12 +128,12 @@ include 'module/session.php';
                 ?>
             </div>
         </div>
-
-
-        <!--Footer-->
-        <?php
-        include 'component/footer.php';
-        ?>
-
     </body>
+
+
+    <!--Footer-->
+    <?php
+    include 'component/footer.php';
+    ?>
+
 </html>
