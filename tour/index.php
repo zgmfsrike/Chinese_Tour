@@ -13,13 +13,13 @@ include 'db_config.php';
         $username = $objResult['username'];
     }
 
-    $sql = "SELECT * FROM `announcement` WHERE name = 'announce'";
-    $result = mysqli_query($conn, $sql);
-    if(mysqli_num_rows($result) == 0){
-        header("location: message.php");
-    }
-    $data = mysqli_fetch_array($result);
-    $announce = $data['content'];
+    // $sql = "SELECT * FROM `announcement` WHERE name = 'announce'";
+    // $result = mysqli_query($conn, $sql);
+    // if(mysqli_num_rows($result) == 0){
+    //     header("location: message.php");
+    // }
+    // $data = mysqli_fetch_array($result);
+    // $announce = $data['content'];
     ?>
     <?php
 
@@ -27,12 +27,12 @@ include 'db_config.php';
     include 'component/header.php';
 
     switch($lang){
-        case 'ch': 
+        case 'ch':
             $string_announce = '布告';
             $string_fullname = '清迈宏泰旅游公司商业领域';
             $string_news = '新闻';
             break;
-        case 'th': 
+        case 'th':
             $string_announce = 'ประกาศ';
             $string_fullname = 'We\'re Chiangmai Hong Thai Business Consultant';
             $string_news = 'ข่าวสาร';
