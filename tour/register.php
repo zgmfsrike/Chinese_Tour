@@ -16,7 +16,6 @@ $title = "Register";
       <div class="container">
         <div class="row">
           <h3 class="center">Registration</h3>
-          <div class="col s12">
             <h4>Account Information</h4>
             <form class="form-horizontal" method="post" action="php_register.php" id="fileForm" role="form">
 
@@ -139,7 +138,6 @@ $title = "Register";
               </div>
             </div>
     </form>
-    </div>
 </div>
   </div>
 
