@@ -99,6 +99,7 @@ $search_all_page ="search_all_tour.php";
                         </tr>
                      </thead>
                      <?php
+                     $id = 1;
                      while($show = mysqli_fetch_array($result)) {
                        $tourId = $show['tour_id'];
                        ?>
@@ -106,7 +107,7 @@ $search_all_page ="search_all_tour.php";
                          <?php
                        // echo "<td align ='center'>" .$show['tour_name'] .  "</td> ";
                        ?>
-                       <td align ='center'><?php echo $tourId;?></td>
+                       <td align ='center'><?php echo $id;?></td>
                        <td align ='center'><?php echo $show['tour_description'];?></td>
                        <?php
                        // echo "<td align ='center'>" .$show['rating'] .  "</td> ";
@@ -121,6 +122,7 @@ $search_all_page ="search_all_tour.php";
                         </td>
                        </tr>
                        <?php
+                       $id++;
                      }
                      ?>
                      </table>

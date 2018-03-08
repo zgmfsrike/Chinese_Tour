@@ -89,14 +89,16 @@ $result = mysqli_query($conn,$sql);
               </tr>
             </thead>
             <?php
+            $id = 1;
             while($show = mysqli_fetch_array($result)) {
               $tourId = $show['tour_id'];
+
               ?>
               <tr>
                 <?php
                 // echo "<td align ='center'>" .$show['tour_name'] .  "</td> ";
                 ?>
-                <td align ='center'><?php echo $tourId;?></td>
+                <td align ='center'><?php echo $id;?></td>
                 <td align ='center'><?php echo $show['tour_description'];?></td>
                 <?php
                 // echo "<td align ='center'>" .$show['rating'] .  "</td> ";
@@ -111,6 +113,7 @@ $result = mysqli_query($conn,$sql);
                 </td>
               </tr>
               <?php
+              $id++;
             }
             ?>
           </table><br>

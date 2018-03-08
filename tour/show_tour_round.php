@@ -67,11 +67,12 @@ include "module/hashing.php";
                    echo "<tr align='center'><th>TourRound Id</th><th>Trip status</th><th>Start Date</th><th>End date</th><th>Departure Point</th><th>DropOff Point</th><th>Member</th>";
                    echo "</tr>";
                    echo "</thead>";
+                   $id = 1;
                    while($show = mysqli_fetch_array($result)) {
                      $tour_round_id = $show['tour_round_id'];
 
                      echo "<tr>";
-                     echo "<td align ='center'>" .$show['tour_round_id'] .  "</td> ";
+                     echo "<td align ='center'>" .$id .  "</td> ";
                      echo "<td align ='center'>" .$show['trip_status'] .  "</td> ";
                      echo "<td align ='center'>" .$show['start_date_time'] .  "</td> ";
                      echo "<td align ='center'>" .$show['end_date_time'] .  "</td> ";
@@ -80,6 +81,7 @@ include "module/hashing.php";
                      // echo "<td align ='center'><input class='waves-effect waves-light btn green' type='button' value='View' onclick=\"window.location.href='http://localhost:8080/Chinese_TourChineseTour_NewTheme%20copy/tour_round_member.php?tour_round_id=$tour_round_id'\"></td>";
                      echo "<td align ='center'><a href='tour_round_member.php?tour_round_id=$tour_round_id'><button class='waves-effect waves-light btn green' type='button' value='View'>View</button></a></td>";
                      echo "</tr>";
+                     $id++;
 
                    }
                    echo "</table>";
