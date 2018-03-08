@@ -48,9 +48,9 @@ if(isset($title) and $title == ""){
         <div class="hide-on-med-and-down"><div class="section"></div>
         <a class='dropdown-button btn right teal darken-3' href='#' data-activates='dropdown2'>Language</a>
         <ul id='dropdown2' class='dropdown-content'>
-          <li><a href="#!">Chinese</a></li>
+          <li><a href="#!">中文</a></li>
           <li><a href="#!">English</a></li>
-          <li><a href="#!">Thai</a></li>
+          <li><a href="#!">ไทย</a></li>
         </ul>
         </div>
     </div>
@@ -102,9 +102,9 @@ if(isset($title) and $title == ""){
             <li><div class="divider"></div></li>
             <li><a class='dropdown-button btn center red darken-4' href='#' data-activates='dropdown1'>Language</a>
             <ul id='dropdown1' class='dropdown-content'>
-              <li><a href="#!">Chinese</a></li>
+              <li><a href="#!">中文</a></li>
               <li><a href="#!">English</a></li>
-              <li><a href="#!">Thai</a></li>
+              <li><a href="#!">ไทย</a></li>
             </ul></li>
 
 
