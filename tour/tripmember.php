@@ -96,7 +96,7 @@ include 'module/session.php';
           </div>
         </fieldset>
 
-      </form>
+
 
       <div class="section"></div>
 
@@ -106,6 +106,7 @@ include 'module/session.php';
           <button name="submit" type="submit" class="btn amber" value="Sign Up">Submit</button>
         </div>
       </div>
+      </form>
     </div>
   </div>
 
