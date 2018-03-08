@@ -9,6 +9,7 @@ include 'module/session.php';
 ?>
 <body>
     <div class="container">
+      <!--Search Part 1-->
       <div class="row">
         <div class="section"></div>
         <h4 class="center">Search Tour</h4>
@@ -78,6 +79,8 @@ include 'module/session.php';
           </li>
         </ul>
       </div>
+
+      <!--Search Part2-->
       <div class="row collection">
         <div class="input-field col s1">
           <select>
@@ -129,7 +132,7 @@ include 'module/session.php';
         </div>
       </div>
 
-
+      <!--Result Part-->
       <div class="row collection">
       <div class="row">
             <div class="col s12 l4">
@@ -188,6 +191,7 @@ include 'module/session.php';
             </div>
       </div>
     </div>
+    <!--Pages-->
       <div class="right-align">
         <ul class="pagination">
           <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
