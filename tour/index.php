@@ -1,10 +1,12 @@
 <?php
 include 'module/session.php';
-include 'db_config.php';
 ?>
 <!DOCTYPE html>
 <html>
     <?php
+
+    include('db_config.php');
+
     if(isset($_SESSION['login_id'])){
         $user_id = $_SESSION['login_id'];
         $query = "SELECT * FROM member WHERE id = '$user_id'";
@@ -45,7 +47,12 @@ include 'db_config.php';
     }
     ?>
     <body>
-
+      <!--Admin Manage-->
+      <?php
+        if (isLoginAs(array('admin'))) {
+          include 'component/manage.php';
+        }
+      ?>
         <div id="home" class="col s12">
             <div class="slider">
                 <ul class="slides">
@@ -70,6 +77,7 @@ include 'db_config.php';
                     </li>
                 </ul>
             </div>
+
             <!--Notice-->
             <div class="container row">
                 <div class="col s12 m12">

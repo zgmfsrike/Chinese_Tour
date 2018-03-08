@@ -1,7 +1,7 @@
 <?php
 
 switch($lang){
-    case 'ch': 
+    case 'ch':
         $string_name = 'Chiangmai Hongthai';
         $string_address = '地址';
         $string_address_cont = '泰国清迈八佛区席东差路 清迈宏泰旅游公司';
@@ -13,7 +13,7 @@ switch($lang){
         $string_email = '邮箱';
         $string_email_cont = 'chiangmaihongthai@hotmail.com';
         break;
-    case 'th': 
+    case 'th':
         $string_name = 'Chiangmai Hongthai';
         $string_address = 'ที่อยู่';
         $string_address_cont = 'ถนนศรีดอนชัย ตำบลพระสิงห์ อำเภอเมือง จังหวัดเชียงใหม่ ประเทศไทย';
