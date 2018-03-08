@@ -81,7 +81,7 @@ include 'module/session.php';
       </div>
 
       <!--Search Part2-->
-      <div class="row collection">
+      <div class="row card">
         <div class="input-field col s1">
           <select>
             <option value="" disabled selected>Rating</option>
