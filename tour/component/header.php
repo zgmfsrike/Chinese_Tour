@@ -53,28 +53,34 @@ if(isset($title) and $title == ""){
           <li><a href="#!">Thai</a></li>
         </ul>
         </div>
-
-
-
     </div>
+
     <div class="nav-wrapper hide-on-med-and-down"></div>
         <ul class="side-nav" id="mobile-demo">
             <li class="red darken-4"><div class="section"></div></li>
             <li class="red darken-4"><img src="images/logo400x300.png" width=40% height=40% alt="logo">
             <div class="divider"></div></li>
-            <li><a href="<?php echo $index;?>">Home</a></li>
+            <li><a href="<?php echo $index;?>" class="collection-item active grey lighten-4">Home</a></li>
             <li><a href="<?php echo $meeting;?>">Meeting Tour</a></li>
             <li><a href="<?php echo $incentive;?>">Incentive Tour</a></li>
             <li><a href="<?php echo $convension;?>">Convension Tour</a></li>
             <li><a href="<?php echo $foxhibition;?>">Exhibition Tour</a></li>
             <li><a href="<?php echo $business;?>">Business Tour</a></li>
             <li><a href="<?php echo $about_us;?>">About Us</a></li>
-            <li><div class="divider"></div></li>
+
             <?php
             if(isLoginAs(array('admin','member'))){
                 if(isLoginAs(array('admin'))){
             ?>
-            <li><a href="<?php echo $manage;?>">Manage</a></li>
+            <li><a class="collection-item active grey lighten-4">Admin Tools</a></li>
+            <li><a href="admin_change_banners.php">Change Banners</a></li>
+            <li><a href="admin_create_news.php">Create News</a></li>
+            <li><a href="admin_edit_announce.php">Edit Announcesment</a></li>
+            <li><a href="admin_edit_about_us.php">Edit AboutUs</a></li>
+            <li><a href="php_search_tour.php">Search Tour</a></li>
+            <li><a href="admin_create_tour.php">Create Tour</a></li>
+
+            <li><div class="divider"></div></li>
             <li><a href="<?php echo $logout;?>">Logout</a></li>
             <?php
                 }
@@ -100,6 +106,8 @@ if(isset($title) and $title == ""){
               <li><a href="#!">English</a></li>
               <li><a href="#!">Thai</a></li>
             </ul></li>
+
+
         </ul>
 
 
@@ -119,7 +127,6 @@ if(isset($title) and $title == ""){
             if(isLoginAs(array('admin','member'))){
                 if(isLoginAs(array('admin'))){
             ?>
-            <li class="tab"><a target="_self" href="<?php echo $manage;?>">Manage</a></li>
             <li class="tab"><a target="_self" href="<?php echo $logout;?>">Logout</a></li>
             <?php
                 }

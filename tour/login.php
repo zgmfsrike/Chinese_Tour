@@ -37,7 +37,7 @@ if(isLoginAs(array('admin','member'))){
                <div class="row col s12 center">
                  <button type="submit" class="waves-effect waves-light btn orange col s12 l5" name="login" value="Login">Login</button>
                  <div class="col l2"></div>
-                 <button type="button" onclick="window.location.href='Register.php'" class="col s12 l5 waves-effect waves-light btn amber" value="Register">Register</button>
+                 <button type="button" onclick="window.location.href='register.php'" class="col s12 l5 waves-effect waves-light btn amber" value="Register">Register</button>
                  <div class="section"></div>
                  <div class="section"></div>
                  <div class="section"></div>
