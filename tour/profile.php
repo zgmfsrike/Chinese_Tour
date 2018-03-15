@@ -4,13 +4,15 @@ include 'module/session.php';
 if(!isLoginAs(array('admin','member'))){
     header('Location: message.php?msg=please_login');
 }
+
+require 'module/language/init.php';
 ?>
 <!DOCTYPE html>
 <html>
     <?php
     include 'php_profile_func.php';
     $title = $username_db."'s Profile";
-    
+
     include 'component/header.php';
     ?>
     <body>

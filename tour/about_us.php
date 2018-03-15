@@ -1,6 +1,7 @@
 <?php
 include 'db_config.php';
 include 'module/session.php';
+
 require 'module/language/init.php';
 require 'module/language/lang_aboutus.php';
 ?>

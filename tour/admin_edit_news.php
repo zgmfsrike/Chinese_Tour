@@ -4,6 +4,8 @@ include 'module/session.php';
 if(!isLoginAs(array('admin'))){
     header('Location: message.php?msg=unauthorized');
 }
+
+require 'module/language/init.php';
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +13,7 @@ if(!isLoginAs(array('admin'))){
     <?php
     $title = "Edit News: " . $news_topic;
     include 'component/header.php';
-    
+
     if($_GET['news_id'] != ""){
         $news_id = $_GET['news_id'];
         $_SESSION['news_id'] = $news_id;

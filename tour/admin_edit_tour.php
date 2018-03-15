@@ -5,6 +5,8 @@ if(!isLoginAs(array('admin'))){
     header('Location: message.php?msg=unauthorized');
 }
 
+require 'module/language/init.php';
+
 $tour_description=$hightlight=$region=$province=$price=$max_customer=$rating=0;
 if(isset($_GET['id'])){
     $id = $_GET['id'];

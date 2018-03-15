@@ -4,6 +4,9 @@ include('module/session.php');
 if(!isLoginAs(array('admin','member'))){
     header('Location: message.php?msg=please_login');
 }
+
+require 'module/language/init.php';
+
 //--------------------Link to another page -----------------------------------
 $profile_page = "window.location.href='profile.php'";
 $change_mail_func = "php_change_mail.php";

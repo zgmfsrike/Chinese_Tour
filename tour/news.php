@@ -1,6 +1,8 @@
 <?php
 include 'db_config.php';
 include 'module/session.php';
+
+require 'module/language/init.php';
 ?>
 <!DOCTYPE html>
 <html>

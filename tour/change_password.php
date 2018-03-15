@@ -5,6 +5,8 @@ if(!isLoginAs(array('admin','member'))){
     header('Location: message.php?msg=please_login');
 }
 
+require 'module/language/init.php';
+
 $id = $_SESSION['login_id'];
 //--------------------Link to another page -----------------------------------
 $profile_page = "window.location.href='profile.php'";

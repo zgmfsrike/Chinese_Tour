@@ -27,8 +27,6 @@ require 'module/language/lang_index.php';
     $title = "Chiang Mai Hong Thai Tour";
     include 'component/header.php';
     ?>
-    <body>
-
         <div id="home" class="col s12">
             <div class="slider">
                 <ul class="slides">

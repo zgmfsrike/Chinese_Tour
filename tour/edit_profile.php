@@ -5,6 +5,8 @@ if(!isLoginAs(array('admin','member'))){
     header('Location: message.php?msg=please_login');
 }
 
+require 'module/language/init.php';
+
 //requireLogin();
 $id = $_SESSION['login_id'];
 //---------------------- DB Value----------------------

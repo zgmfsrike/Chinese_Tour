@@ -4,6 +4,7 @@ include 'module/session.php';
 if(!isLoginAs(array('admin'))){
     header('Location: message.php?msg=unauthorized');
 }
+
 if($_GET['news_id'] != ""){
   $news_id = $_GET['news_id'];
   $img_path = "./images/";
