@@ -1,11 +1,12 @@
 <?php
-include 'module/session.php';
 include 'db_config.php';
+include 'module/session.php';
+require 'module/language/init.php';
+require 'module/language/lang_index.php';
 ?>
 <!DOCTYPE html>
 <html>
     <?php
-
     if(isset($_SESSION['login_id'])){
         $user_id = $_SESSION['login_id'];
         $query = "SELECT * FROM member WHERE id = '$user_id'";
@@ -20,7 +21,7 @@ include 'db_config.php';
         header("location: message.php");
     }
     $data = mysqli_fetch_array($result);
-    $announce = $data['content'];
+    $string_index_announce_cont = $data['content'];
     ?>
     <?php
     $title = "Chiang Mai Hong Thai Tour";
@@ -59,9 +60,9 @@ include 'db_config.php';
                         <div class="col s12 m12">
                             <div class="card orange lighten-1">
                                 <div class="card-content white-text">
-                                    <span class="card-title">Announcement <i class="material-icons">announcement</i></span>
+                                    <span class="card-title"><?php echo $string_index_announcement;?> <i class="material-icons">announcement</i></span>
                                     <blockquote>
-                                        <?php echo $announce; ?>
+                                        <?php echo  $string_index_announce_cont; ?>
                                     </blockquote>
                                 </div>
                             </div>
@@ -71,7 +72,7 @@ include 'db_config.php';
             </div>
             <!--News-->
             <div class="container row">
-                <h3>News</h3>
+                <h3><?php echo $string_index_news;?></h3>
             </div>
             <div class="container row">
                 <?php

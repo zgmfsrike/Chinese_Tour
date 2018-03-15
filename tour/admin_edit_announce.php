@@ -1,24 +1,23 @@
 <?php
-include('module/session.php');
 include 'db_config.php';
+include 'module/session.php';
 if(!isLoginAs(array('admin'))){
     header('Location: message.php?msg=unauthorized');
 }
-
-$sql = "SELECT * FROM `announcement` WHERE name = 'announce'";
-$result = mysqli_query($conn, $sql);
-if(mysqli_num_rows($result) == 0){
-    header("location: message.php");
-}
-$data = mysqli_fetch_array($result);
-$announce = $data['content'];
-
 ?>
 <!DOCTYPE html>
 <html>
     <?php
     $title = "Edit Announcement";
     include 'component/header.php';
+
+    $sql = "SELECT * FROM `announcement` WHERE name = 'announce'";
+    $result = mysqli_query($conn, $sql);
+    if(mysqli_num_rows($result) == 0){
+        header("location: message.php");
+    }
+    $data = mysqli_fetch_array($result);
+    $announce = $data['content'];
     ?>
     <body>
 

@@ -1,6 +1,4 @@
 <?php
-include "db_config.php";
-
 if(isset($_GET['id']) and isset($_GET['h'])){
     $id = $_GET['id'];
     $h = $_GET['h'];

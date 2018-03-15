@@ -1,7 +1,6 @@
 <?php
-include 'module/session.php';
 include 'db_config.php';
-
+include 'module/session.php';
 if(!isLoginAs(array('admin'))){
     header('Location: message.php?msg=unauthorized');
 }
@@ -13,10 +12,7 @@ if(isset($_GET['id'])){
     $sql = "SELECT * FROM `tour` WHERE tour_id = $id";
     $result = mysqli_query($conn, $sql);
     if(mysqli_num_rows($result) == 0){
-        //error no data
-        //      echo "No data match";
-        //      return false;
-        header("location: message.php?msg=tour_not_found");
+        header('location: message.php?msg=tour_not_found');
 
     }
     $data = mysqli_fetch_array($result);
@@ -27,6 +23,8 @@ if(isset($_GET['id'])){
     $price = $data['price'];
     $max_customer = $data['max_customer'];
     $rating = $data['rating'];
+}else{
+    header('location: message.php?msg=tour_not_found');
 }
 ?>
 <!DOCTYPE html>

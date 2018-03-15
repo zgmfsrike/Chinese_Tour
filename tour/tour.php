@@ -1,6 +1,9 @@
 <?php
 include 'module/session.php';
 include 'db_config.php';
+
+// require 'module/language_switcher.php';
+require 'module/language/init.php';
 ?>
 
 <?php
