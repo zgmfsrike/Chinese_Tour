@@ -6,6 +6,8 @@ include "db_config.php";
 include "module/hashing.php";
 include "lib/pagination.php";
 
+require 'module/language/init.php';
+
 ?>
 <?php
 if(!isLoginAs(array('admin'))){

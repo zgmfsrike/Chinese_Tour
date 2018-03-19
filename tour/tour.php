@@ -20,10 +20,10 @@ if(isset($_GET['id'])){
     }
 
     $data = mysqli_fetch_array($result);
-    $tour_description = $data['tour_description'];
-    $hightlight = $data['highlight'];
-    $region = $data['region'];
-    $province = $data['province'];
+    $tour_description = $data['tour_description_'.$_COOKIE['lang']];
+    $hightlight = $data['highlight_'.$_COOKIE['lang']];
+    $region = $data['region_'.$_COOKIE['lang']];
+    $province = $data['province_'.$_COOKIE['lang']];
     $price = $data['price'];
     $max_customer = $data['max_customer'];
     $rating = $data['rating'];

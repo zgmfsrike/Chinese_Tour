@@ -1,6 +1,7 @@
 <?php
 include 'db_config.php';
 include 'module/session.php';
+
 require 'module/language/init.php';
 require 'module/language/lang_index.php';
 ?>
@@ -14,14 +15,6 @@ require 'module/language/lang_index.php';
         $objResult = mysqli_fetch_array($result);
         $username = $objResult['username'];
     }
-
-    $sql = "SELECT * FROM `announcement` WHERE name = 'announce'";
-    $result = mysqli_query($conn, $sql);
-    if(mysqli_num_rows($result) == 0){
-        header("location: message.php");
-    }
-    $data = mysqli_fetch_array($result);
-    $string_index_announce_cont = $data['content'];
     ?>
     <?php
     $title = "Chiang Mai Hong Thai Tour";
@@ -60,7 +53,7 @@ require 'module/language/lang_index.php';
                                 <div class="card-content white-text">
                                     <span class="card-title"><?php echo $string_index_announcement;?> <i class="material-icons">announcement</i></span>
                                     <blockquote>
-                                        <?php echo  $string_index_announce_cont; ?>
+                                        <?php echo  $string_index_announcement_cont; ?>
                                     </blockquote>
                                 </div>
                             </div>
