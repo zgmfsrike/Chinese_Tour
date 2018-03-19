@@ -3,7 +3,7 @@
 $link_index = 'index.php';
 $link_aboutus = 'about_us.php';
 
-$link_meeting ='#';
+$link_meeting ='test_search_category.php?tour_type=meeting';
 $link_incentive ='#';
 $link_convention ='#';
 $link_exhibition ='#';
@@ -141,7 +141,7 @@ switch($lang){
         $string_occupation = 'Occupation';
         $string_salary = 'Salary';
         $string_mail = 'E-mail';
-        $string_country_code = 'country code';
+        $string_country_code = 'Country code';
         $string_tel_number ='Telephone Number';
         $string_address = 'Address';
         $string_city ='City';

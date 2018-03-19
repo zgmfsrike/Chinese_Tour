@@ -36,7 +36,7 @@ $search_all_page ="search_all_tour.php";
          										<div class="input-group">
          												<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
          												<input id="tourName" type="text" class="form-control" name="tourName" value="<?php echo $_GET['tourName'];?>" size="20" >
-                                 <input type="submit" class="btn btn-primary" value="Search " /><br><br>
+                                 <input type="submit" class="btn btn-primary" value="Search " name="search" /><br><br>
 
          										</div>
                              <br>
@@ -49,6 +49,7 @@ $search_all_page ="search_all_tour.php";
 
 
                //-----------------------------Search fucntion----------------------------------------------------//
+              
                if($_GET['tourName'] != ""){
 
                    $tour_description = $_GET['tourName'];
