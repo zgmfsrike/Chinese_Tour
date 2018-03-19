@@ -4,7 +4,9 @@ error_reporting (E_ALL ^ E_NOTICE);
 include "db_config.php";
 // include "db_configNB.php";
 include "module/hashing.php";
-// include "lib/pagination.php";
+include "lib/pagination.php";
+
+require 'module/language/init.php';
 //--------------------Link to another page -----------------------------------
 $search_all_func ="php_search_tour.php";
 ?>

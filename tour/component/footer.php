@@ -44,18 +44,21 @@ switch($lang){
 
 
 <footer class="page-footer red darken-3">
+    <?php
+    require 'module/language/lang_footer.php';
+    ?>
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
-                <h5 class="white-text"><?php echo $string_name; ?></h5>
-                <p class="grey-text text-lighten-4"><?php echo $string_address; ?><br><?php echo $string_address_cont; ?></p>
+                <h5 class="white-text"><?php echo $string_footer_name; ?></h5>
+                <p class="grey-text text-lighten-4"><?php echo $string_footer_address; ?><br><?php echo $string_footer_address_cont; ?></p>
             </div>
             <div class="col l4 offset-l2 s12">
-                <h5 class="white-text"><?php echo $string_contactus; ?></h5>
+                <h5 class="white-text"><?php echo $string_footer_contactus; ?></h5>
                 <ul>
-                    <li><a class="modal-trigger white-text tooltipped" data-position="top" data-delay="50" data-tooltip="Click to Scan QR Code" href="#modal1"><?php echo $string_wechat; ?> : <?php echo $string_wechat_cont; ?></a></li>
-                    <li><?php echo $string_tel; ?> : <?php echo $string_tel_num; ?></li>
-                    <li><a class="grey-text text-lighten-3" href="<?php echo $link_mail; ?>"><?php echo $string_email; ?> : <?php echo $string_email_cont; ?></a></li>
+                    <li><a class="modal-trigger white-text tooltipped" data-position="top" data-delay="50" data-tooltip="Click to Scan QR Code" href="#modal1"><?php echo $string_footer_wechat; ?></a></li>
+                    <li><?php echo $string_footer_tel; ?></li>
+                    <li><a class="grey-text text-lighten-3" href="mailto:chiangmaihongthai@hotmail.com"><?php echo $string_footer_email; ?></a></li>
                 </ul>
             </div>
         </div>
@@ -74,23 +77,23 @@ switch($lang){
         <div class="modal-content">
             <div class="row">
                 <div class="col s7 hide-on-med-and-down">
-                    <h5 class="black-text center"><b><?php echo $string_wechat; ?> QR Code</b></h5>
+                    <h5 class="black-text center"><b><?php echo $string_footer_wechat_qr; ?></b></h5>
                     <img width="100%" src="images/wecharQR.jpg">
                 </div>
 
                 <div class="col s12 hide-on-large-only">
-                    <h5 class="black-text center"><b><?php echo $string_wechat; ?> QR Code</b></h5>
+                    <h5 class="black-text center"><b><?php echo $string_footer_wechat_qr; ?></b></h5>
                     <img width="100%" src="images/wecharQR.jpg">
                 </div>
 
                 <div class="col s5 black-text hide-on-med-and-down">
-                    <h5 class="center"><?php echo $string_contactus; ?></h5><br>
-                    <p><b><?php echo $string_name; ?></b></p>
-                    <p><b><?php echo $string_address; ?></b><br>
-                        <?php echo $string_address_cont; ?></p>
-                    <p><b><?php echo $string_wechat; ?></b><br><?php echo $string_wechat_cont; ?></p>
-                    <p><b><?php echo $string_tel; ?></b><br><?php echo $string_tel_num; ?></p>
-                    <p><b><?php echo $string_email; ?></b><br><?php echo $string_email_cont; ?></p>
+                    <h5 class="center"><?php echo $string_footer_contactus; ?></h5><br>
+                    <p><b><?php echo $string_footer_name; ?></b></p>
+                    <p><?php echo $string_footer_address; ?><br>
+                        <?php echo $string_footer_address_cont; ?></p>
+                    <p><?php echo $string_footer_wechat; ?></p>
+                    <p><?php echo $string_footer_tel; ?></p>
+                    <p><?php echo $string_footer_email; ?></p>
                 </div>
             </div>
 

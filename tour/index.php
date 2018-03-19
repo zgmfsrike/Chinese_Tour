@@ -1,12 +1,13 @@
 <?php
+include 'db_config.php';
 include 'module/session.php';
+
+require 'module/language/init.php';
+require 'module/language/lang_index.php';
 ?>
 <!DOCTYPE html>
 <html>
     <?php
-
-    include('db_config.php');
-
     if(isset($_SESSION['login_id'])){
         $user_id = $_SESSION['login_id'];
         $query = "SELECT * FROM member WHERE id = '$user_id'";
@@ -14,14 +15,6 @@ include 'module/session.php';
         $objResult = mysqli_fetch_array($result);
         $username = $objResult['username'];
     }
-
-    // $sql = "SELECT * FROM `announcement` WHERE name = 'announce'";
-    // $result = mysqli_query($conn, $sql);
-    // if(mysqli_num_rows($result) == 0){
-    //     header("location: message.php");
-    // }
-    // $data = mysqli_fetch_array($result);
-    // $announce = $data['content'];
     ?>
     <?php
 
@@ -85,9 +78,9 @@ include 'module/session.php';
                         <div class="col s12 m12">
                             <div class="card orange lighten-1">
                                 <div class="card-content white-text">
-                                    <span class="card-title"><?php echo $string_announce;?> <i class="material-icons">announcement</i></span>
+                                    <span class="card-title"><?php echo $string_index_announcement;?> <i class="material-icons">announcement</i></span>
                                     <blockquote>
-                                        <?php echo $announce; ?>
+                                        <?php echo  $string_index_announcement_cont; ?>
                                     </blockquote>
                                 </div>
                             </div>
@@ -97,7 +90,7 @@ include 'module/session.php';
             </div>
             <!--News-->
             <div class="container row">
-                <h3><?php echo $string_news;?></h3>
+                <h3><?php echo $string_index_news;?></h3>
             </div>
             <div class="container row">
                 <?php
