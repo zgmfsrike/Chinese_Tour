@@ -1,6 +1,7 @@
 $(document).ready(function(){
      $('.slider').slider({full_width: true});
      $('.tooltipped').tooltip();
+     $('.modal').modal();
 
      $('.datepicker').pickadate({
        selectMonths: true, // Creates a dropdown to control month
@@ -33,5 +34,7 @@ $(document).ready(function(){
     $('select').material_select();
     $(".button-collapse").sideNav();
     $('.chips-initial').material_chip('data');
+
+    $('.materialboxed').materialbox();
 
 });

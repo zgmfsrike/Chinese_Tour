@@ -4,7 +4,7 @@ error_reporting (E_ALL ^ E_NOTICE);
 include "db_config.php";
 // include "db_configNB.php";
 include "module/hashing.php";
-include "lib/pagination.php";
+// include "lib/pagination.php";
 
 ?>
 <?php
@@ -36,7 +36,7 @@ $search_all_page ="search_all_tour.php";
          										<div class="input-group">
          												<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
          												<input id="tourName" type="text" class="form-control" name="tourName" value="<?php echo $_GET['tourName'];?>" size="20" >
-                                 <input type="submit" class="btn btn-primary" value="Search " /><br><br>
+                                 <input type="submit" class="btn btn-primary" value="Search " name="search" /><br><br>
 
          										</div>
                              <br>
@@ -49,6 +49,7 @@ $search_all_page ="search_all_tour.php";
 
 
                //-----------------------------Search fucntion----------------------------------------------------//
+              
                if($_GET['tourName'] != ""){
 
                    $tour_description = $_GET['tourName'];
@@ -60,8 +61,31 @@ $search_all_page ="search_all_tour.php";
                  -- INNER JOIN vehicle_type vt  ON t.vehicle_type_id = vt.vehicle_type_id
                      -- INNER JOIN accommodation a ON t.accommodation_id = a.accommodation_id
                          WHERE t.tour_description LIKE '%$tour_description%' ";
-                   // $result = mysqli_query( $GLOBALS['conn'] , $sql );
-                  $result = page_query($GLOBALS['conn'],$sql,3);
+                   $result = mysqli_query( $GLOBALS['conn'] , $sql );
+                  // $result = page_query($GLOBALS['conn'],$sql,3);
+                  $num_row =mysqli_num_rows($result);
+
+                  $per_page = 3;
+                  $page = $_GET['page'];
+                  if(!$_GET['page']){
+                    $page =1 ;
+                  }
+
+                  $prev_page = $page-1;
+                  $next_page = $page+1;
+
+                  $page_start = (($per_page*$page)-$per_page);
+
+                  if($num_row<=$per_page){
+                    $num_page = 1;
+                  }else if(($num_row%$per_page)==0){
+                    $num_page =($num_row/$per_page);
+                  }else{
+                    $num_page=($num_row/$per_page)+1;
+                    $num_page=(int)$num_page;
+                  }
+                  $sql .=  " LIMIT $page_start,$per_page";
+                  $result = mysqli_query($conn,$sql);
                   $count = mysqli_num_rows($result);
                    if($count != 0){
                      ?>
@@ -76,6 +100,7 @@ $search_all_page ="search_all_tour.php";
                         </tr>
                      </thead>
                      <?php
+                     $id = 1;
                      while($show = mysqli_fetch_array($result)) {
                        $tourId = $show['tour_id'];
                        ?>
@@ -83,7 +108,7 @@ $search_all_page ="search_all_tour.php";
                          <?php
                        // echo "<td align ='center'>" .$show['tour_name'] .  "</td> ";
                        ?>
-                       <td align ='center'><?php echo $tourId;?></td>
+                       <td align ='center'><?php echo $id;?></td>
                        <td align ='center'><?php echo $show['tour_description'];?></td>
                        <?php
                        // echo "<td align ='center'>" .$show['rating'] .  "</td> ";
@@ -98,12 +123,33 @@ $search_all_page ="search_all_tour.php";
                         </td>
                        </tr>
                        <?php
+                       $id++;
                      }
                      ?>
                      </table>
+                     <ul class="pagination">
+                       <?php
+                       if($prev_page){
+                         echo "<li class='disabled'><a href ='php_search_tour.php?page=$prev_page&tourName=$tour_description'><i class='material-icons'>chevron_left</i></a></li>";
+                       }
+                       for($i =1;$i<=$num_page;$i++){
+                         if($i != $page){
+                           echo "<li><a href='php_search_tour.php?page=$i&tourName=$tour_description'>$i</a></li>";
+                         }else if($i = $page){
+                           echo "<li class='active'><a href='php_search_tour.php?page=$i&tourName=$tour_description'>$i</a></li>";
+                         }
+                       }
+                       if($page !=$num_page){
+                         echo "<li class='waves-effect'><a href='php_search_tour.php?page=$next_page&tourName=$tour_description'><i class='material-icons'>chevron_right</i></a></li>";
+                       }
+                       ?>
+
+
+
+                     </ul>
 
                      <?php
-                     page_echo_pagenums(6,true,true);
+                     // page_echo_pagenums(6,true,true);
 
                    }else{
                      ?>
