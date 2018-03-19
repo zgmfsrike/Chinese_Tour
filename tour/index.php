@@ -20,6 +20,13 @@ require 'module/language/lang_index.php';
     $title = "Chiang Mai Hong Thai Tour";
     include 'component/header.php';
     ?>
+    <body>
+      <!--Admin Manage-->
+      <?php
+        if (isLoginAs(array('admin'))) {
+          include 'component/manage.php';
+        }
+      ?>
         <div id="home" class="col s12">
             <div class="slider">
                 <ul class="slides">
@@ -44,6 +51,7 @@ require 'module/language/lang_index.php';
                     </li>
                 </ul>
             </div>
+
             <!--Notice-->
             <div class="container row">
                 <div class="col s12 m12">

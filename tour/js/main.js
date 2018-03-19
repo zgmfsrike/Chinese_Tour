@@ -35,4 +35,6 @@ $(document).ready(function(){
     $(".button-collapse").sideNav();
     $('.chips-initial').material_chip('data');
 
+    $('.materialboxed').materialbox();
+
 });

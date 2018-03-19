@@ -54,21 +54,19 @@ require 'module/language/lang_header.php';
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <a href="index.php" class="show-on-medium-and-down hide-on-large-only">Chiangmai HongThai</a>
         <div class="hide-on-med-and-down"><div class="section"></div>
-            <a class='dropdown-button btn right teal darken-3' href='#' data-activates='dropdown2'>Language</a>
-            <ul id='dropdown2' class='dropdown-content'>
-                <li><a href="<?php echo $new_url.$x."lang=ch"; ?>">Chinese</a></li>
-                <li><a href="<?php echo $new_url.$x."lang=en"; ?>">English</a></li>
-                <li><a href="<?php echo $new_url.$x."lang=th"; ?>">Thai</a></li>
-            </ul>
+        <a class='dropdown-button btn right teal darken-3' href='#' data-activates='dropdown2'>Language</a>
+        <ul id='dropdown2' class='dropdown-content'>
+          <li><a href="#!">中文</a></li>
+          <li><a href="#!">English</a></li>
+          <li><a href="#!">ไทย</a></li>
+        </ul>
         </div>
-
-
-
     </div>
+
     <div class="nav-wrapper hide-on-med-and-down"></div>
-    <ul class="side-nav" id="mobile-demo">
-        <li class="red darken-4"><div class="section"></div></li>
-        <li class="red darken-4"><img src="images/logo400x300.png" width=40% height=40% alt="logo">
+        <ul class="side-nav" id="mobile-demo">
+            <li class="red darken-4"><div class="section"></div></li>
+            <li class="red darken-4"><img src="images/logo400x300.png" width=40% height=40% alt="logo">
             <div class="divider"></div></li>
         <li><a href="<?php echo $link_index;?>"><?php echo $string_header_index;?></a></li>
         <li><a href="<?php echo $link_meeting;?>"><?php echo $string_header_meeting;?></a></li>
@@ -92,6 +90,12 @@ require 'module/language/lang_header.php';
         <li><a href="<?php echo $link_logout;?>"><?php echo $string_header_logout;?></a></li>
         <?php
 
+                }
+            }else{
+            ?>
+            <li><a href="<?php echo $login;?>">Log in</a></li>
+            <li><a href="<?php echo $register;?>">Register</a></li>
+            <?php
             }
         }else{
         ?>
@@ -104,11 +108,13 @@ require 'module/language/lang_header.php';
         <li><div class="divider"></div></li>
         <li><a class='dropdown-button btn center red darken-4' href='#' data-activates='dropdown1'>Language</a>
             <ul id='dropdown1' class='dropdown-content'>
-                <li><a href="<?php echo $new_url.$x."lang=ch"; ?>">Chinese</a></li>
-                <li><a href="<?php echo $new_url.$x."lang=en"; ?>">English</a></li>
-                <li><a href="<?php echo $new_url.$x."lang=th"; ?>">Thai</a></li>
+              <li><a href="#!">中文</a></li>
+              <li><a href="#!">English</a></li>
+              <li><a href="#!">ไทย</a></li>
             </ul></li>
-    </ul>
+
+
+        </ul>
 
 
     <div class="nav-content red darken-3 hide-on-med-and-down">
@@ -145,6 +151,7 @@ require 'module/language/lang_header.php';
             <?php
             }
             ?>
+
         </ul>
     </div>
 </nav>
