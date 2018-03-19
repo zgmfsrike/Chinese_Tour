@@ -37,18 +37,8 @@ require 'module/language/lang_header.php';
     <link rel="stylesheet" href="css/main.css">
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<<<<<<< HEAD
-=======
 
-    <?php
-    if(!isset($title)){
-        $title = 'Chiang Mai Hong Thai Tour';
-    }else if($title == ""){
-        $title = 'Chiang Mai Hong Thai Tour';
-    }
-    ?>
 
->>>>>>> language
     <title><?php echo "".$title;?></title>
 </head>
 
@@ -73,15 +63,7 @@ require 'module/language/lang_header.php';
             <li class="red darken-4"><div class="section"></div></li>
             <li class="red darken-4"><img src="images/logo400x300.png" width=40% height=40% alt="logo">
             <div class="divider"></div></li>
-<<<<<<< HEAD
-        <li><a href="<?php echo $link_index;?>"><?php echo $string_index;?></a></li>
-        <li><a href="<?php echo $link_meeting;?>"><?php echo $string_meeting;?></a></li>
-        <li><a href="<?php echo $link_incentive;?>"><?php echo $string_incentive;?></a></li>
-        <li><a href="<?php echo $link_convention;?>"><?php echo $string_convention;?></a></li>
-        <li><a href="<?php echo $link_exhibition;?>"><?php echo $string_exhibition;?></a></li>
-        <li><a href="<?php echo $link_business;?>"><?php echo $string_business;?></a></li>
-        <li><a href="<?php echo $link_aboutus;?>"><?php echo $string_aboutus;?></a></li>
-=======
+
         <li><a href="<?php echo $link_index;?>"><?php echo $string_header_index;?></a></li>
         <li><a href="<?php echo $link_meeting;?>"><?php echo $string_header_meeting;?></a></li>
         <li><a href="<?php echo $link_incentive;?>"><?php echo $string_header_incentive;?></a></li>
@@ -89,28 +71,23 @@ require 'module/language/lang_header.php';
         <li><a href="<?php echo $link_exhibition;?>"><?php echo $string_header_exhibition;?></a></li>
         <li><a href="<?php echo $link_business;?>"><?php echo $string_header_business;?></a></li>
         <li><a href="<?php echo $link_about_us;?>"><?php echo $string_header_about;?></a></li>
->>>>>>> language
+
         <li><div class="divider"></div></li>
         <?php
         if(isLoginAs(array('admin','member'))){
             if(isLoginAs(array('admin'))){
         ?>
         <li><a href="<?php echo $link_manage;?>">Manage</a></li>
-<<<<<<< HEAD
-        <li><a href="<?php echo $link_logout;?>"><?php echo $string_logout;?></a></li>
-=======
+
         <li><a href="<?php echo $link_logout;?>"><?php echo $string_header_logout;?></a></li>
->>>>>>> language
+
         <?php
             }
             if(isLoginAs(array('member'))){
         ?>
         <li><a href="<?php echo $link_profile;?>"><?php echo $_SESSION['login_firstname'];?></a></li>
-<<<<<<< HEAD
-        <li><a href="<?php echo $link_logout;?>"><?php echo $string_logout;?></a></li>
-=======
         <li><a href="<?php echo $link_logout;?>"><?php echo $string_header_logout;?></a></li>
->>>>>>> language
+
         <?php
 
                 }
