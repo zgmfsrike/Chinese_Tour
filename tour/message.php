@@ -22,6 +22,8 @@ include "db_config.php";
                     break;
                 case 'login_already': message('You are already login','','','');
                     break;
+                case 'session_book_expired': message('Session book tour expired','Please try again','test_search_category.php','');
+                    break;
 
                     // AUTHENTICATION
                 case 'unauthorized': message('Unauthorized','','','');

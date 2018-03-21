@@ -1,9 +1,13 @@
 <?php
 include('module/session.php');
+$current_time = time();
+$_SESSION['book_tour_expired'] = $current_time+(60*15);
+
 if(!isLoginAs(array('admin','member'))){
     header('Location: message.php?msg=please_login');
 }
   include 'db_config.php';
+  include 'module/del_book_tour.php';
   if(isset($_GET['tour_round_id']) and isset($_SESSION['login_id'])){
     $member_id = $_SESSION['login_id'];
     $tour_round_id = $_GET['tour_round_id'];
@@ -16,7 +20,7 @@ if(!isLoginAs(array('admin','member'))){
         echo "<br>End date : ".$end_date;
         echo "<br>Member id : ".$member_id;
         //delete null value
-        $sql_delete_null = "DELETE FROM tour_round_member  WHERE id = 2 AND last_name =''
+        $sql_delete_null = "DELETE FROM tour_round_member  WHERE id = $member_id AND last_name =''
         AND dob ='0000-00-00' AND country_code =0 AND phone =0 AND email='' AND address='' AND city=''
         AND province ='' AND zipcode = 0 AND passport_id =0 AND reservation_age =0 AND avoid_food =''";
         $result_delete = mysqli_query($conn,$sql_delete_null);
@@ -27,7 +31,7 @@ if(!isLoginAs(array('admin','member'))){
         if($result_group){
           $data = mysqli_fetch_array($result_group);
           $last_group = $data['group_member'];
-          echo "<br> Last group : ".$last_group                         ;
+          echo "<br> Last group : ".$last_group;
           $group_member = $last_group+1;
           echo "<br> Group member : ".$group_member;
           echo "<br> Amount people :".$amount_people;
@@ -78,10 +82,6 @@ if(!isLoginAs(array('admin','member'))){
 
 
 
-    //session
-    // $current_time = time();
-    // $_SESSION['tour_round_expired'] = $current_time+(60*15);
-
 
 
     //
@@ -94,4 +94,3 @@ if(!isLoginAs(array('admin','member'))){
   }
 
 ?><br>
-<a href="test_del.php?del=<?php echo $member_id;?>&group=<?php echo $group_member;?>"><button>DEL</button></a>
