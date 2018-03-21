@@ -64,21 +64,55 @@ include 'module/session.php';
               <label for="region2">Central</label>
             </form>
           </li>
+
           <li class="collection-item">Province
-            <form class="secondary-content"method="post">
-              <input type="checkbox" id="province1" />
-              <label for="province1">Chiangmai</label>
-              &nbsp;&nbsp;&nbsp;&nbsp;
-              <input type="checkbox" id="province2" />
-              <label for="province2">Lamphun</label>
-              &nbsp;&nbsp;&nbsp;&nbsp;
-              <input type="checkbox" id="province3" />
-              <label for="province3">Lampang</label>
-            </form>
+            <div class="secondary-content">
+              <form method="post">
+                <input type="checkbox" id="Chiangmai" />
+                <label for="Chiangmai">Chiangmai</label>
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+
+                <input type="checkbox" id="Lamphun" />
+                <label for="Lamphun">Lamphun</label>
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+
+                <input type="checkbox" id="Lampang" />
+                <label for="Lampang">Lampang</label>
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+
+                <input type="checkbox" id="Chiangrai" />
+                <label for="Chiangrai">Chiangrai</label>
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+
+                <input type="checkbox" id="Phayao" />
+                <label for="Phayao">Phayao</label>
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+
+                <input type="checkbox" id="Phrae" />
+                <label for="Phrae">Phrae</label>
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+
+                <input type="checkbox" id="Nan" />
+                <label for="Nan">Nan</label>
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+
+                <input type="checkbox" id="Maehongson" />
+                <label for="Maehongson">Maehongson</label>
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+
+                <input type="checkbox" id="Uttaradit" />
+                <label for="Uttaradit">Uttaradit</label>
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+
+              </form>
+            </div>
+
           </li>
         </ul>
       </div>
-      <div class="row collection">
+
+      <!--Search Part2-->
+      <div class="row card">
         <div class="input-field col s1">
           <select>
             <option value="" disabled selected>Rating</option>
@@ -129,7 +163,7 @@ include 'module/session.php';
         </div>
       </div>
 
-
+      <!--Result Part-->
       <div class="row collection">
       <div class="row">
             <div class="col s12 l4">
@@ -188,6 +222,7 @@ include 'module/session.php';
             </div>
       </div>
     </div>
+    <!--Pages-->
       <div class="right-align">
         <ul class="pagination">
           <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
