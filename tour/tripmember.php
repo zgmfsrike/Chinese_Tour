@@ -63,12 +63,6 @@ include 'module/session.php';
                 </select>
             </div>
           </div>
-        </fieldset>
-
-        <div class="section"></div>
-
-        <fieldset>
-          <legend>Address:</legend>
           <div class="row">
             <div class="input-field col s12 l6">
               <input required name="address" type="text" class="form-control inputpass" minlength="4" data-length="50" maxlength="50"  id="address" placeholder="Address" />
@@ -96,9 +90,11 @@ include 'module/session.php';
           </div>
         </fieldset>
 
-
-
       <div class="section"></div>
+
+      <div class="row right">
+          <button class="btn-floating btn-large red tooltipped" data-position="top" data-delay="50" data-tooltip="Add Member Here"><i class="material-icons">add</i></button>
+      </div>
 
       <div class="row">
         <div class="center col s12">
