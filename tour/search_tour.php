@@ -8,7 +8,9 @@ include 'module/session.php';
       include 'component/header.php';
 ?>
 <body>
-    <div class="container">
+
+    <div class="container hide-on-med-and-down">
+      <!-- Desktop Version -->
       <!--Search Part 1-->
       <div class="row">
         <div class="section"></div>
@@ -133,9 +135,8 @@ include 'module/session.php';
         <div class="input-field col s2">
           <select>
             <option value="" disabled selected>Alphabet</option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
+            <option value="1">A to Z</option>
+            <option value="2">Z to A</option>
           </select>
         </div>
         <div class="input-field col s1">
@@ -223,6 +224,7 @@ include 'module/session.php';
             </div>
       </div>
     </div>
+
     <!--Pages-->
       <div class="right-align">
         <ul class="pagination">
@@ -237,6 +239,8 @@ include 'module/session.php';
       </div>
       <br/>
     </div>
+
+    <!---                  Mobile Verison                  -->
 
       <!--Footer-->
 
