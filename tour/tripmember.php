@@ -15,7 +15,6 @@ include 'module/session.php';
       <div class="section"></div>
       <h4 class="center">Trip Member</h4>
       <form class="form-horizontal" role="form" method="post">
-
         <fieldset>
           <legend>Personalia:</legend>
           <div class="row">
@@ -93,7 +92,7 @@ include 'module/session.php';
       <div class="section"></div>
 
       <div class="row right">
-          <button class="btn-floating btn-large red tooltipped" data-position="top" data-delay="50" data-tooltip="Add Member Here"><i class="material-icons">add</i></button>
+          <button onclick="addmember()" class="btn-floating btn-large red tooltipped add_tour" data-position="top" data-delay="50" data-tooltip="Add Member Here"><i class="material-icons">add</i></button>
       </div>
 
       <div class="row">
@@ -110,6 +109,5 @@ include 'module/session.php';
       <?php
       include 'component/footer.php';
       ?>
-
     </body>
   </html>
