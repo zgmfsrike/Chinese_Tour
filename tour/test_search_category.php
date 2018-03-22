@@ -1,9 +1,10 @@
 <?php
+session_cache_limiter('private_no_expire');
 error_reporting (E_ALL ^ E_NOTICE);
 include('module/session.php');
 include 'db_config.php';
 include 'module/del_book_tour.php';
-if($_GET['tour_type']!==""){
+if(isset($_GET['tour_type'])){
   $tour_type = $_GET['tour_type'];
 }
 $search_page = "test_search_category.php?";

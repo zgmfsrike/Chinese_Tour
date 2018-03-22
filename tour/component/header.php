@@ -3,11 +3,11 @@
 $link_index = 'index.php';
 $link_aboutus = 'about_us.php';
 
-$link_meeting ='test_search_category.php?tour_type=meeting';
-$link_incentive ='#';
-$link_convention ='#';
-$link_exhibition ='#';
-$link_business ='#';
+$link_meeting ='search_tour.php?tour_type=meeting';
+$link_incentive ='search_tour.php?tour_type=incentive';
+$link_convention ='search_tour.php?tour_type=convention';
+$link_exhibition ='search_tour.php?tour_type=exhibition';
+$link_business ='search_tour.php?tour_type=business';
 
 $link_wechat = '#';
 $link_tel = '#';

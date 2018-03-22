@@ -3,6 +3,7 @@
 //if($_POST['']){
 
 // }
+$_POST['passport'.$i]
 
 $_SESSION['tour']['p1']['first_name'] = 'p1';
 $_SESSION['tour']['p2']['first_name'] = 'p2';

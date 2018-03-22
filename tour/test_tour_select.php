@@ -2,7 +2,7 @@
 include('module/session.php');
 include 'db_config.php';
 include 'module/del_book_tour.php';
-if($_GET['tour_id'] !==''&& $_GET['tour_type']!==''){
+if(isset($_GET['tour_id'] )&& isset($_GET['tour_type'])){
 $tour_id = $_GET['tour_id'];
 $tour_type = $_GET['tour_type'];
 
