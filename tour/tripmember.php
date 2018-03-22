@@ -14,7 +14,7 @@ include 'module/session.php';
     <div class="row">
       <div class="section"></div>
       <h4 class="center">Trip Member</h4>
-      <form class="form-horizontal" role="form" method="post">
+      <form class="form-horizontal" role="form" method="post" action="">
 
         <fieldset>
           <legend>Personalia:</legend>
@@ -56,7 +56,7 @@ include 'module/session.php';
             </div>
             <div class="col s12 l6">
               <label>Reservation Age</label>
-                <select class="browser-default">
+                <select class="browser-default" name="reservation_age">
                   <option value="" disabled selected>Choose your Reservation age</option>
                   <option value="1">Adult</option>
                   <option value="2">Child</option>

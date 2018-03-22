@@ -150,6 +150,9 @@ include 'component/header.php';
             if($_POST['search']){
               $tour_type_id = $_POST['tour_type_id'];
               // echo $tour_type_id;
+
+
+
               $accommodation_id1 = $_POST['accommodation1'];
               $accommodation_id2 = $_POST['accommodation2'];
               $accommodation_id3 = $_POST['accommodation3'];
