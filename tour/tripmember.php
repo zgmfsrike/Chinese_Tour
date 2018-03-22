@@ -94,6 +94,7 @@ include 'module/session.php';
               <label for="avoidfood">Avoid Food<b class="red-text"> *</b></label>
             </div>
           </div>
+          <input type="button" class="add_more_tr btn amber" value="Add More">
         </fieldset>
 
 
