@@ -23,17 +23,17 @@ include 'component/header.php';
       <!--Search Part 1-->
       <div class="row">
         <div class="section"></div>
-        <h4 class="center">Search Tour</h4>
+        <h4 class="center">Search Tour <?php echo   $_SESSION['tour_type'];?></h4>
         <ul class="collection">
 
           <li class="collection-item">Tour Type
             <select name='tour_type_id'>
-              <option value='1'<?php if($tour_type =="casual") echo "selected";?>>Casual</option>
-              <option value='2'<?php if($tour_type =="meeting") echo "selected";?>>Meeting</option>
-              <option value='3'<?php if($tour_type =="incentive") echo "selected";?>>Incentive</option>
-              <option value='4'<?php if($tour_type =="convention") echo "selected";?>>Convention</option>
-              <option value='5'<?php if($tour_type =="exhibition") echo "selected";?>>Exhibition</option>
-              <option value='6'<?php if($tour_type =="business") echo "selected";?>>Business</option>
+              <option value='1'<?php if($tour_type =="1") echo "selected";?>>Casual</option>
+              <option value='2'<?php if($tour_type =="2") echo "selected";?>>Meeting</option>
+              <option value='3'<?php if($tour_type =="3") echo "selected";?>>Incentive</option>
+              <option value='4'<?php if($tour_type =="4") echo "selected";?>>Convention</option>
+              <option value='5'<?php if($tour_type =="5") echo "selected";?>>Exhibition</option>
+              <option value='6'<?php if($tour_type =="6") echo "selected";?>>Business</option>
             </select>
           </li>
           <li class="collection-item">Accommodation :
@@ -149,6 +149,7 @@ include 'component/header.php';
             <?php
             if($_POST['search']){
               $tour_type_id = $_POST['tour_type_id'];
+              $_SESSION['tour_type'] = $tour_type_id;
               // echo $tour_type_id;
 
 

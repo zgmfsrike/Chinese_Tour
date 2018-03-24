@@ -1,5 +1,5 @@
 <?php
-
+$lang = 'en';
 switch($lang){
     case 'ch':
         $string_name = 'Chiangmai Hongthai';

@@ -171,6 +171,10 @@ include "db_config.php";
                     // Announce
                 case 'success_update_announce': message('Complete','Update announce complete','index.php','Go to home page');
                     break;
+                    //book tour
+
+                case 'book_tour_succ': message('Success!','Send e-mail to member complete','index.php','Go to home page');
+                    break;
 
                     // default
                 default: message('Request not found','','','');

@@ -146,7 +146,7 @@ if(isset($_GET['id'])){
 
 
             <label>Tour round</label>
-            <select class="browser-default" name="tour_date" required>
+            <select class="browser-default" name="tour_round" required>
               <option value="">Please select</option>
               <?php
               $sql = "SELECT * FROM `tour_round` WHERE tour_id = $id";
