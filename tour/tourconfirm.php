@@ -17,53 +17,6 @@ include 'db_config.php';
     <form action='<?php echo $php_tour_add_member_info;?>' method="POST">
     <div class="row">
       <h3>Confirm Information</h3><br/>
-      <fieldset>
-        <legend>Tour Schedule</legend>
-        <!--Day row-->
-        <div class="row">
-          <div class="col s2 center">
-            <ul>
-              <li><b>Day 1</b></li>
-            </ul>
-          </div>
-          <div class="col s2 center">
-            <ul>
-              <li>08.00-11.00</li>
-              <li>11.00-13.00</li>
-            </ul>
-          </div>
-          <div class="col s5">
-            <ul>
-              <li>attraction1</li>
-              <li>attraction1</li>
-            </ul>
-          </div>
-        </div>
-      <!--End row-->
-
-      <!--Day row-->
-      <div class="row">
-        <div class="col s2 center">
-          <ul>
-            <li><b>Day 1</b></li>
-          </ul>
-        </div>
-        <div class="col s2 center">
-          <ul>
-            <li>08.00-11.00</li>
-            <li>11.00-13.00</li>
-          </ul>
-        </div>
-        <div class="col s5">
-          <ul>
-            <li>attraction1</li>
-            <li>attraction1</li>
-          </ul>
-        </div>
-      </div>
-    <!--End row-->
-
-      </fieldset>
       <div class="section"></div>
       <fieldset>
         <legend>Tour Group Member</legend>
@@ -128,6 +81,7 @@ include 'db_config.php';
               $result = mysqli_query($conn,$sql);
               $data = mysqli_fetch_array($result);
 
+
             }
 
             ?>
@@ -145,8 +99,7 @@ include 'db_config.php';
     <div class="row">
         <div class="section"></div>
       <div class="center col s12">
-        <button type="submit" value="Cancel" onclick="window.location.href='index.php'" class="btn red">Cancel</button>
-        <button name="submit" type="submit" class="btn amber" value="Sign Up">Submit</button>
+        <button name="submit" type="submit" class="btn amber" value="Sign Up">Confirm</button>
       </div>
     </div>
     <div class="section"></div>

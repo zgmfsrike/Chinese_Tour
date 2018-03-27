@@ -138,7 +138,7 @@ include 'component/header.php';
         </div>
         <div class="col s1">
           <br/>
-          <input class="btn-floating red" type="submit" name="search" value="GO">
+          <input class="btn  red" type="submit" name="search" value="GO">
         </div>
       </div>
     </form>

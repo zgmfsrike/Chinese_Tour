@@ -6,6 +6,7 @@ include 'db_config.php';
 <?php
 if(isset($_GET['id'])){
   $id = $_GET['id'];
+  $_SESSION['tour_id'] = $id;
   // tour
   $sql = "SELECT * FROM `tour` WHERE tour_id = $id";
   $result = mysqli_query($conn, $sql);

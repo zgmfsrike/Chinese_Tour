@@ -9,6 +9,7 @@ if(isset($_POST['book'])){
     $_SESSION['amount_people'] = $amount_people;
     $tour_round_id = $_POST['tour_round'];
 
+
   }
 }
 
@@ -119,7 +120,7 @@ if(isset($_POST['book'])){
 
       <div class="row">
         <div class="center col s12">
-          <button type="submit" value="Cancel" onclick="window.location.href='index.php'" class="btn red">Cancel</button>
+          <button type="button" value="Cancel" onclick="window.location.href='tour.php?id=<?php echo $_SESSION['tour_id'];?>'" class="btn red">Cancel</button>
           <button name="submit" type="submit" class="btn amber" value="Sign Up">Submit</button>
         </div>
       </div>
@@ -162,8 +163,8 @@ if(isset($_POST['book'])){
                     '<label for="lastname'+counter+'">Lastname<b class="red-text"> *</b></label>'+
                   '</div>'+
                   '<div class="input-field col s12 l6">'+
-                  '  <input type="date" class="datepicker" name="dob'+counter+'" id="dob'+counter+'">'+
-                    '<label for="dob'+counter+'">Birthday<b class="red-text"> *</b></label>'+
+                  '  <input type="date" class="datepicker" name="dob2" id="dob2">'+
+                    '<label for="dob2">Birthday<b class="red-text"> *</b></label>'+
                   '</div>'+
                 '</div>'+
 

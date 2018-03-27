@@ -6,10 +6,24 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 if(isset($_POST['submit'])){
-  if(isset($_SESSION['login_id']) and isset($_SESSION['amount_people']) and isset($_SESSION['tour_round_id'])){
+  if(isset($_SESSION['login_id']) and isset($_SESSION['amount_people']) and isset($_SESSION['tour_round_id']) and
+  isset($_SESSION['tour_type'])){
     $member_id = $_SESSION['login_id'];
     $amount_people = $_SESSION['amount_people'];
-    $tour_round_id =   $_SESSION['tour_round_id'];
+    $tour_round_id =  $_SESSION['tour_round_id'];
+    $tour_type_id =  $_SESSION['tour_type'];
+    $sql ="SELECT *
+      FROM tour_round tr INNER JOIN tour t on tr.tour_id = t.tour_id
+       INNER JOIN tour_tour_type ttt ON t.tour_id = ttt.tour_id
+       INNER JOIN tour_type tt ON tt.tour_type_id = ttt.tour_type_id
+       INNER JOIN tour_vehicle_type tvt on t.tour_id = tvt.tour_id
+       INNER JOIN vehicle_type vt on tvt.vehicle_type_id = vt.vehicle_type_id
+       INNER JOIN tour_accommodation ta on t.tour_id = ta.tour_id
+       INNER JOIN accommodation a on ta.accommodation_id = a.accommodation_id
+       WHERE tr.tour_round_id = $tour_round_id and ttt.tour_type_id = $tour_type_id";
+    $result = mysqli_query($conn,$sql);
+    $data = mysqli_fetch_array($result);
+
     for($i = 1 ; $i<=$amount_people;$i++){
       if(isset($_SESSION['tour']['p'.$i]['first_name'])  and isset($_SESSION['tour']['p'.$i]['middlename']) and isset($_SESSION['tour']['p'.$i]['last_name']) and
       isset($_SESSION['tour']['p'.$i]['dob']) and isset( $_SESSION['tour']['p'.$i]['passport']) and isset($_SESSION['tour']['p'.$i]['email']) and
@@ -44,6 +58,16 @@ if(isset($_POST['submit'])){
             $result = mysqli_query($conn,$sql);
             if($result){
 
+              $subject = "Tour information";
+              $description = "Tour Type :".$data['tour_type']."<br>
+              Vehicle : ".$data['vehicle_type']."<br>
+              Accommodation : ".$data['accommodation_level']."<br>
+              Departure Location : XXX <br>
+              Drop off Location : XXX <br>
+              Start Date : ".$data['start_date_time']."<br>
+              End Date : ".$data['end_date_time'];
+
+
               unset($_SESSION['tour']['p'.$i]['first_name']);
               unset($_SESSION['tour']['p'.$i]['middlename']);
               unset($_SESSION['tour']['p'.$i]['last_name']);
@@ -60,8 +84,7 @@ if(isset($_POST['submit'])){
               unset($_SESSION['tour']['p'.$i]['avoidfood']);
 
 
-              $subject = "Book tour";
-              $description = "Book tour information";
+
 
               //-----------------------------Send change mail fucntion----------------------------------------------------//
               require 'vendor/autoload.php';
@@ -130,6 +153,8 @@ if(isset($_POST['submit'])){
           }
 
         }
+          unset($_SESSION['tour_type']);
+          unset($_SESSION['tour_round_id']);
           unset($_SESSION['amount_people']);
 
       }
