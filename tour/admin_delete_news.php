@@ -2,7 +2,7 @@
 include 'db_config.php';
 include 'module/session.php';
 if(!isLoginAs(array('admin'))){
-    header('Location: message.php?msg=unauthorized');
+  header('Location: message.php?msg=unauthorized');
 }
 
 if($_GET['news_id'] != ""){
@@ -16,21 +16,29 @@ if($_GET['news_id'] != ""){
   $sql_img = "DELETE FROM `news_image` WHERE news_id = $news_id";
   $result_img = mysqli_query($GLOBALS['conn'],$sql_img);
 
-  $sql = "DELETE FROM `news` WHERE news_id = $news_id";
+  $sql = "DELETE FROM `news_en` WHERE news_id = $news_id";
   $result = mysqli_query($GLOBALS['conn'],$sql);
+
+  $sql = "DELETE FROM `news_ch` WHERE news_id = $news_id";
+  $result = mysqli_query($GLOBALS['conn'],$sql);
+
+  $sql = "DELETE FROM `news_th` WHERE news_id = $news_id";
+  $result = mysqli_query($GLOBALS['conn'],$sql);
+
   for($i=1;$i<6;$i++){
     $img_name = 'img_'.$news_id.'_'.$i;
     $img_file = $img_path.$img_name.".jpg";
-      unlink($img_file);
+    unlink($img_file);
   }
+
   for($j=1;$j<6;$j++){
     $pdf_name = 'pdf_'.$news_id.'_'.$j;
     $pdf_file = $pdf_path.$pdf_name.".pdf";
-      unlink($pdf_file);
+    unlink($pdf_file);
   }
 
   if($result){
-      header("location: message.php?msg=del_news_succ");
+    header("location: message.php?msg=del_news_succ");
   }
 
 }

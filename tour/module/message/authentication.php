@@ -8,7 +8,7 @@ if($msg == 'reg_fail_username') $message = message('Register fail!','This userna
 if($msg == 'reg_fail_email') $message = message('Register fail!','This email address is already used','','');
 // ++active_account
 if($msg == 'active_succ') $message = message('Thank you!','account has been actived','index.php','Go to home page');
-if($msg == 'active_fail') $message = message('Fail to acctive!','Please try again later.','index.php','Go to home page');
+if($msg == 'active_fail') $message = message('Fail to acctive !','Please try again later.','index.php','Go to home page');
 if($msg == 'active_already') $message = message('Sorry!','Your account had already actived.','index.php','Go to home page');
 if($msg == 'active_error') $message = message('Error!','Request does not match, please check link again.','index.php','Go to home page');
 ?>

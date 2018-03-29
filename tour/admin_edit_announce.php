@@ -34,15 +34,15 @@ require 'module/language/init.php';
                 <form class="col s12" method="post" name="announce" action="php_edit_announce.php">
                     <div class="row">
                         <div class="input-field col s12">
-                            <textarea id="textarea1" class="materialize-textarea" name="announce"><?php echo $announce_en; ?></textarea>
+                            <textarea id="textarea1" class="materialize-textarea" name="announce_en"><?php echo $announce_en; ?></textarea>
                             <label for="textarea1">Announcement (English)</label>
                         </div>
                         <div class="input-field col s12">
-                            <textarea id="textarea1" class="materialize-textarea" name="announce"><?php echo $announce_ch; ?></textarea>
+                            <textarea id="textarea1" class="materialize-textarea" name="announce_ch"><?php echo $announce_ch; ?></textarea>
                             <label for="textarea1">Announcement (Chinese)</label>
                         </div>
                         <div class="input-field col s12">
-                            <textarea id="textarea1" class="materialize-textarea" name="announce"><?php echo $announce_th; ?></textarea>
+                            <textarea id="textarea1" class="materialize-textarea" name="announce_th"><?php echo $announce_th; ?></textarea>
                             <label for="textarea1">Announcement (Thai)</label>
                         </div>
                     </div>

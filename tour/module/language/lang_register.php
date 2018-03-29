@@ -73,6 +73,9 @@ if (mysqli_num_rows($result) > 0) {
       case 'signup':
       $string_register_signup = $content;
       break;
+      case 'please_select':
+      $string_register_please_select = $content;
+      break;
     }
   }
 } else {

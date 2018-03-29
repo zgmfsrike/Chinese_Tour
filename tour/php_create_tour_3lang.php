@@ -21,23 +21,46 @@ if(isset($_POST['submit'])){
     $tour_price         = $_POST["price"];
     $tour_max           = $_POST["max"];
 
-    $sql= "INSERT INTO tour (tour_description_en, highlight_en, region_en, province_en,";
-    $sql.= "tour_description_ch, highlight_ch, region_ch, province_ch,";
-    $sql.= "tour_description_th, highlight_th, region_th, province_th,";
+    // $sql.= "tour_description_ch, highlight_ch, region_ch, province_ch,";
+    // $sql.= "tour_description_th, highlight_th, region_th, province_th,";
+
+    // $sql.="'$tour_description_ch','$tour_highlight_ch','$tour_region_ch','$tour_province_ch',";
+    // $sql.="'$tour_description_th','$tour_highlight_th','$tour_region_th','$tour_province_th',";
+
+    $sql= "INSERT INTO tour_en (tour_description, highlight, region, province,";
     $sql.=" price, max_customer)";
     $sql.="VALUES ('$tour_description_en','$tour_highlight_en','$tour_region_en','$tour_province_en',";
-    $sql.="'$tour_description_ch','$tour_highlight_ch','$tour_region_ch','$tour_province_ch',";
-    $sql.="'$tour_description_th','$tour_highlight_th','$tour_region_th','$tour_province_th',";
     $sql.="'$tour_price','$tour_max')";
-    echo $sql;
     $result = mysqli_query( $GLOBALS['conn'] , $sql );
-    $last_id = mysqli_insert_id($GLOBALS['conn']);
 
     if (!$result) {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         return false;
     }
 
+    $sql= "INSERT INTO tour_ch (tour_description, highlight, region, province,";
+    $sql.=" price, max_customer)";
+    $sql.="VALUES ('$tour_description_ch','$tour_highlight_ch','$tour_region_ch','$tour_province_ch',";
+    $sql.="'$tour_price','$tour_max')";
+    $result = mysqli_query( $GLOBALS['conn'] , $sql );
+
+    if (!$result) {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        return false;
+    }
+
+    $sql= "INSERT INTO tour_th (tour_description, highlight, region, province,";
+    $sql.=" price, max_customer)";
+    $sql.="VALUES ('$tour_description_th','$tour_highlight_th','$tour_region_th','$tour_province_th',";
+    $sql.="'$tour_price','$tour_max')";
+    $result = mysqli_query( $GLOBALS['conn'] , $sql );
+
+    if (!$result) {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        return false;
+    }
+
+    $last_id = mysqli_insert_id($GLOBALS['conn']);
     // ====== upload images + insert "tour_image" table =====
 
     $count = 0;

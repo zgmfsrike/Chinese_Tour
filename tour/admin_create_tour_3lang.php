@@ -104,6 +104,11 @@ require 'module/language/init.php';
                                 <input placeholder="Province" required name='province_en' type='text'/>
                                 <label for="province">province</label>
                             </div>
+                            <!--  Price sale  -->
+                            <div class="input-field" id="price" name='price'>
+                                <input placeholder="Price sale" required name='price_en' type='number' min="1"/>
+                                <label for="price">Price sale</label>
+                            </div>
                         </fieldset>
                         <br>
                         <fieldset>
@@ -128,6 +133,11 @@ require 'module/language/init.php';
                             <div class="input-field" id="province" name='province'>
                                 <input placeholder="Province" required name='province_ch' type='text'/>
                                 <label for="province">province</label>
+                            </div>
+                            <!--  Price sale  -->
+                            <div class="input-field" id="price" name='price'>
+                                <input placeholder="Price sale" required name='price_ch' type='number' min="1"/>
+                                <label for="price">Price sale</label>
                             </div>
                         </fieldset>
                         <br>
@@ -154,15 +164,15 @@ require 'module/language/init.php';
                                 <input placeholder="Province" required name='province_th' type='text'/>
                                 <label for="province">province</label>
                             </div>
+                            <!--  Price sale  -->
+                            <div class="input-field" id="price" name='price'>
+                                <input placeholder="Price sale" required name='price_th' type='number' min="1"/>
+                                <label for="price">Price sale</label>
+                            </div>
                         </fieldset>
                         <!--Start-End Date-->
                     </div>
                     <div class="col s12 l6">
-                      <!--  Price sale  -->
-                      <div class="input-field" id="price" name='price'>
-                          <input placeholder="Price sale" required name='price' type='number' min="1"/>
-                          <label for="price">Price sale</label>
-                      </div>
                       <!--  Max # of customer  -->
                       <div class="input-field" id="max" name="max">
                           <input placeholder="Max number of customer" required name='max' type='number' min="1"/>
