@@ -134,7 +134,7 @@ if(!isLoginAs(array('admin'))){
         <?php
         include 'component/footer.php';
         ?>
-        <script>
+        <!-- <script>
             function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
@@ -150,6 +150,21 @@ if(!isLoginAs(array('admin'))){
             }
         }
 
-        </script>
+        function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#pic2')
+                    .attr('src', e.target.result)
+                    .width(150)
+                    .height(150);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+        </script> -->
     </body>
 </html>
