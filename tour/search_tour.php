@@ -96,7 +96,7 @@ include 'component/header.php';
       <div class="row ">
         <div class="collection">
           <br class="hide-on-med-and-down" />
-        <div class="col s12 l2">
+        <div class="col s12 l1">
           <label class="show-on-medium-and-down hide-on-large-only">Rating</label>
           <select class="browser-default">
             <option value="" disabled selected>Rating</option>
@@ -156,8 +156,8 @@ include 'component/header.php';
               <input name="price2" type="number" class="validate browser-default col s3" min="0" onkeyup="validatephone(this);" placeholder="9000">
             </div>
         </div>
-          <div class="col s12 l1 center">
-            <button class="btn-floating red" type="submit" name="search">GO</button>
+          <div class="col s12 l2 center">
+            <input class="btn red" type="submit" name="search" value="GO"></input>
             <br/><br/>
           </div>
         </div>
