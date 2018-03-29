@@ -17,7 +17,7 @@ include 'component/header.php';
 ?>
 <body>
 
-  <div class="container hide-on-med-and-down">
+  <div class="container">
     <!-- Desktop Version -->
     <form action="<?php echo $search_page; ?>" method="post">
       <!--Search Part 1-->
@@ -27,7 +27,7 @@ include 'component/header.php';
         <ul class="collection">
 
           <li class="collection-item">Tour Type
-            <select name='tour_type_id'>
+            <select class="browser-default" name='tour_type_id'>
               <option value='1'<?php if($tour_type =="1") echo "selected";?>>Casual</option>
               <option value='2'<?php if($tour_type =="2") echo "selected";?>>Meeting</option>
               <option value='3'<?php if($tour_type =="3") echo "selected";?>>Incentive</option>
