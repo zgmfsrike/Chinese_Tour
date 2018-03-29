@@ -1,7 +1,7 @@
 <?php
 include('module/session.php');
-$current_time = time();
-$_SESSION['book_tour_expired'] = $current_time+(60*15);
+// $current_time = time();
+// $_SESSION['book_tour_expired'] = $current_time+(60*15);
 
 if(!isLoginAs(array('admin','member'))){
     header('Location: message.php?msg=please_login');

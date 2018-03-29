@@ -20,6 +20,7 @@ include('module/session.php');
       $sql= "SELECT n.news_id,n.topic,n.content FROM news n WHERE n.news_id = '$news_id'";
       $result = mysqli_query( $GLOBALS['conn'] , $sql );
       $show = mysqli_fetch_array($result);
+      
       $news_topic = $show['topic'];
       $news_content = $show['content'];
 

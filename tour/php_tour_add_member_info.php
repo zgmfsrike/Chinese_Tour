@@ -6,12 +6,15 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 if(isset($_POST['submit'])){
-  if(isset($_SESSION['login_id']) and isset($_SESSION['amount_people']) and isset($_SESSION['tour_round_id']) and
-  isset($_SESSION['tour_type'])){
+  if(isset($_SESSION['login_id']) and isset($_SESSION['seat']) and isset($_SESSION['tour_round']) and
+  isset($_SESSION['tour_type']) and isset($_SESSION['ref_code'])){
     $member_id = $_SESSION['login_id'];
-    $amount_people = $_SESSION['amount_people'];
-    $tour_round_id =  $_SESSION['tour_round_id'];
+    $amount_people = $_SESSION['seat'];
+    $tour_round_id =  $_SESSION['tour_round'];
     $tour_type_id =  $_SESSION['tour_type'];
+
+    $reference_code = $_SESSION['ref_code'];
+    $trigger = false;
     $sql ="SELECT *
       FROM tour_round tr INNER JOIN tour t on tr.tour_id = t.tour_id
        INNER JOIN tour_tour_type ttt ON t.tour_id = ttt.tour_id
@@ -29,8 +32,10 @@ if(isset($_POST['submit'])){
       isset($_SESSION['tour']['p'.$i]['dob']) and isset( $_SESSION['tour']['p'.$i]['passport']) and isset($_SESSION['tour']['p'.$i]['email']) and
       isset($_SESSION['tour']['p'.$i]['countrycode']) and isset($_SESSION['tour']['p'.$i]['reservation_age']) and isset($_SESSION['tour']['p'.$i]['address']) and
       isset($_SESSION['tour']['p'.$i]['city']) and isset($_SESSION['tour']['p'.$i]['province']) and isset($_SESSION['tour']['p'.$i]['phone']) and
-      isset($_SESSION['tour']['p'.$i]['zipcode']) and isset($_SESSION['tour']['p'.$i]['avoidfood'])){
+      isset($_SESSION['tour']['p'.$i]['zipcode']) and isset($_SESSION['tour']['p'.$i]['avoidfood']) and isset($_SESSION['result_price']) and
+      isset($_SESSION['departure_location']) and isset($_SESSION['dropoff_location'])){
 
+        $reserve_member = "reserve".$i;
         $first_name =  $_SESSION['tour']['p'.$i]['first_name'];
         $middlename = $_SESSION['tour']['p'.$i]['middlename'];
         $last_name = $_SESSION['tour']['p'.$i]['last_name'];
@@ -45,16 +50,22 @@ if(isset($_POST['submit'])){
         $province = $_SESSION['tour']['p'.$i]['province'];
         $zipcode = $_SESSION['tour']['p'.$i]['zipcode'];
         $avoidfood = $_SESSION['tour']['p'.$i]['avoidfood'] ;
+        $result_price = $_SESSION['result_price'];
+        $departure_location = $_SESSION['departure_location'];
+        $dropoff_location = $_SESSION['dropoff_location'];
 
 
 
+        // $sql = "INSERT INTO `tour_round_member`(`id`, `tour_round_id`, `first_name`, `middle_name`, `last_name`, `dob`,
+        //   `country_code`, `phone`, `email`, `address`, `city`, `province`, `zipcode`, `passport_id`, `reservation_age`, `avoid_food`)
+        //   VALUES ('$member_id','$tour_round_id','$first_name','$middlename','$last_name','$dob','$countrycode','$phone','$email','$address','$city',
+        //     '$province','$zipcode','$passport','$reservation_age','$avoidfood')";
 
-
-
-        $sql = "INSERT INTO `tour_round_member`(`id`, `tour_round_id`, `first_name`, `middle_name`, `last_name`, `dob`,
-          `country_code`, `phone`, `email`, `address`, `city`, `province`, `zipcode`, `passport_id`, `reservation_age`, `avoid_food`)
-          VALUES ('$member_id','$tour_round_id','$first_name','$middlename','$last_name','$dob','$countrycode','$phone','$email','$address','$city',
-            '$province','$zipcode','$passport','$reservation_age','$avoidfood')";
+        $sql="UPDATE `tour_round_member` SET `first_name`='$first_name',`middle_name`='$middlename',`last_name`='$last_name',`dob`='$dob',
+        `country_code`='$countrycode',`phone`= '$phone',`email`=  '$email',`address`='$address',`city`='$city',`province`='$province',`zipcode`='$zipcode',
+        `passport_id`='$passport',`reservation_age`='$reservation_age',`avoid_food`='$avoidfood',`add_on_price`='$result_price',`departure_location`='$departure_location',
+        `dropoff_location` = '$dropoff_location'
+         WHERE id = '$member_id' AND tour_round_id = '$tour_round_id' AND reference_code = '$reference_code' AND first_name = '$reserve_member'";
             $result = mysqli_query($conn,$sql);
             if($result){
 
@@ -65,7 +76,8 @@ if(isset($_POST['submit'])){
               Departure Location : XXX <br>
               Drop off Location : XXX <br>
               Start Date : ".$data['start_date_time']."<br>
-              End Date : ".$data['end_date_time'];
+              End Date : ".$data['end_date_time']."<br>
+              Reference Code : ".$reference_code;
 
 
               unset($_SESSION['tour']['p'.$i]['first_name']);
@@ -122,6 +134,8 @@ if(isset($_POST['submit'])){
                 $mail->send();
                 $mail->ClearAddresses();
 
+                $trigger = true;
+
 
 
 
@@ -153,9 +167,16 @@ if(isset($_POST['submit'])){
           }
 
         }
+        if($trigger){
           unset($_SESSION['tour_type']);
           unset($_SESSION['tour_round_id']);
           unset($_SESSION['amount_people']);
+          unset($_SESSION['ref_code']);
+          unset($_SESSION['result_price']);
+          unset($_SESSION['departure_location']);
+          unset($_SESSION['dropoff_location']);
+        }
+
 
       }
 

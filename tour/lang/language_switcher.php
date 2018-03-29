@@ -12,10 +12,10 @@ if(!isset($_COOKIE[$cookie_name])) {
 }
 
 if(isset($_GET['lang']) and isset($_COOKIE[$cookie_name]) and $_GET['lang'] != $_COOKIE[$cookie_name]){
-    
+
     setcookie($cookie_name, $_GET['lang'], time() + (86400 * 30));
     header("Refresh:0");
-    
+
 }
 
 if(count($_GET) > 1){
@@ -35,7 +35,7 @@ function new_url( $param )
 {
     $url = "//{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
     $base_url = strtok($url, '?');              // Get the base url
-    $parsed_url = parse_url($url);              // Parse it 
+    $parsed_url = parse_url($url);              // Parse it
     if(isset($parsed_url['query'])){
         $query = $parsed_url['query'];              // Get the query string
         parse_str( $query, $parameters );           // Convert Parameters into array

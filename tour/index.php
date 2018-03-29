@@ -1,5 +1,6 @@
 <?php
 include 'module/session.php';
+include 'module/del_book_tour.php';
 ?>
 <!DOCTYPE html>
 <html>

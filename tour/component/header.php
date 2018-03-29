@@ -1,4 +1,5 @@
 <?php
+
 // *** LINK ***
 $link_index = 'index.php';
 $link_aboutus = 'about_us.php';

@@ -3,13 +3,29 @@
 include 'module/session.php';
 include 'db_config.php';
 
+
+
+
 ?>
 <!DOCTYPE html>
 <html>
     <?php
      $title = "Trip Member";
       include 'component/header.php';
-      $php_tour_add_member_info = "php_tour_add_member_info.php"
+      $php_tour_add_member_info = "php_tour_add_member_info.php";
+      if(isset($_SESSION['book_tour_expired'])){
+        $time = $_SESSION['book_tour_expired'];
+      }else {
+        $time = 'nothing';
+      }
+
+      if(isset($_SESSION['result_price']) and isset($_SESSION['departure_location'])
+    and isset($_SESSION['dropoff_location'])){
+      $result_price = $_SESSION['result_price'];
+      $departure_location = $_SESSION['departure_location'];
+      $dropoff_location = $_SESSION['dropoff_location'];
+
+      }
 ?>
 <body>
 
@@ -24,7 +40,10 @@ include 'db_config.php';
 
           <!--Name-->
           <?php
-          $amount_people = $_SESSION['amount_people'];
+          if(isset($_SESSION['seat'])){
+              $amount_people = $_SESSION['seat'];
+          }
+
           $counter = 1;
           for($i=1; $i<=$amount_people;$i++){
             if(isset($_SESSION['tour']['p'.$i]['first_name']) and isset($_SESSION['tour']['p'.$i]['email'])){
@@ -66,8 +85,8 @@ include 'db_config.php';
         <div class="col s12">
           <ul>
             <?php
-            if(isset($_SESSION['tour_round_id']) and isset($_SESSION['tour_type'])){
-              $tour_round_id = $_SESSION['tour_round_id'];
+            if(isset($_SESSION['tour_round']) and isset($_SESSION['tour_type'])){
+              $tour_round_id = $_SESSION['tour_round'];
               $tour_type_id =  $_SESSION['tour_type'];
               $sql ="SELECT *
                 FROM tour_round tr INNER JOIN tour t on tr.tour_id = t.tour_id
@@ -88,10 +107,11 @@ include 'db_config.php';
             <li><b>Tour Type :  </b><?php echo $data['tour_type'];?></li>
             <li><b>Vehicle : </b><?php echo $data['vehicle_type'];?></li>
             <li><b>Accommodation : </b><?php echo $data['accommodation_level'];?></li>
-            <li><b>Departure Location : </b>XXXX</li>
-            <li><b>Drop off Location : </b>XXXX</li>
+            <li><b>Departure Location : </b><?php echo $departure_location;?></li>
+            <li><b>Drop off Location : </b><?php echo $dropoff_location;?></li>
             <li><b>Start Date : </b><?php echo $data['start_date_time'];?></li>
             <li><b>End Date : </b><?php echo $data['end_date_time'];?></li>
+            <li><b>Price : </b><?php echo $result_price?></li>
           </ul>
         </div>
       </fieldset>

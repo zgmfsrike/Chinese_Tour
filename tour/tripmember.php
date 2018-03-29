@@ -3,15 +3,16 @@ session_cache_limiter('private_no_expire');
 error_reporting (E_ALL ^ E_NOTICE);
 include 'module/session.php';
 include 'db_config.php';
-if(isset($_POST['book'])){
-  if(isset($_POST['amount_people']) and isset($_POST['tour_round'])){
-    $amount_people = $_POST['amount_people'];
-    $_SESSION['amount_people'] = $amount_people;
-    $tour_round_id = $_POST['tour_round'];
 
+  if(isset($_SESSION['tour_round'])){
+    $tour_round_id = $_SESSION['tour_round'];
 
   }
-}
+  if(isset($_SESSION['result_price'])){
+    $result_price = $_SESSION['result_price'];
+  }
+
+
 
 ?>
 <!DOCTYPE html>
@@ -19,7 +20,7 @@ if(isset($_POST['book'])){
     <?php
      $title = "Trip Member";
       include 'component/header.php';
-      $confirm_page = 'php_book_tour_info.php?tour_round='.$tour_round_id.'&&amount_people='.$amount_people;
+      $confirm_page = 'php_book_tour_info.php';
 ?>
 <body>
 
@@ -108,7 +109,104 @@ if(isset($_POST['book'])){
               </div>
             </div>
           </fieldset>
-          <input type="button" class="add_more_member btn amber" value="Add More">
+          <div class="section"></div>
+          <?php
+          if(isset($_SESSION['seat'])){
+            $counter = 2;
+            $seat = $_SESSION['seat'];
+            for($i =1 ;$i<$seat;$i++){
+              echo ' <div class="trip_member">'.
+                '  <div class="section"></div>'.
+                '<fieldset>'.
+                  '<legend>Personalia:'.$counter.'</legend>'.
+                  '<div class="row">'.
+                  '  <div class="input-field col s12 l6">'.
+                      '<input onkeyup = "Validate(this)" id="txt" type="text" class="form-control" placeholder="Enter your Firstname" name="firstname'.$counter.'" id="firstname" required>'.
+                      '<label for="firstname'.$counter.'">Firstname<b class="red-text"> *</b></label>'.
+                    '</div>'.
+                    '<div class="input-field col s12 l6">'.
+                    '  <input onkeyup = "Validate(this)" type="text" class="form-control" name="middlename'.$counter.'" placeholder="Enter your Middlename" id="middlename'.$counter.'">'.
+                      '<label for="middlename'.$counter.'">Middle Name</label>'.
+                    '</div>'.
+                    '<div class="input-field col s12 l6">'.
+                      '<input onkeyup="Validate(this)" type="text" class="form-control" name="lastname'.$counter.'" placeholder="Enter your Lastname" id="lastname'.$counter.'" required>'.
+                      '<label for="lastname'.$counter.'">Lastname<b class="red-text"> *</b></label>'.
+                    '</div>'.
+                    '<div class="input-field col s12 l6">'.
+                    '  <input type="date" class="datepicker" name="dob2" id="dob2">'.
+                      '<label for="dob2">Birthday<b class="red-text"> *</b></label>'.
+                    '</div>'.
+                  '</div>'.
+
+                  '<div class="row">'.
+                    '<div class="input-field col s12 l6">'.
+                      '<input onkeyup="ValidateUsername(this)" id="passport'.$counter.'" type="text" name="passport'.$counter.'"  minlength="3" maxlength="16" placeholder="Passport Id Here" required/>'.
+                      '<label for="passport'.$counter.'">Passport ID<b class="red-text"> *</b></label>'.
+                    '</div>'.
+                  '  <div class="input-field col s12 l6">'.
+                      '<input onchange="email_validate(this.value);" type="email" class="form-control" name="email'.$counter.'" id="email'.$counter.'" placeholder="Enter your Email"  required>'.
+                      '<label for="email'.$counter.'">Email<b class="red-text"> *</b></label>'.
+                    '</div>'.
+                  '  <div class="input-field col s2 l2">'.
+                      '<input class="col-sm-3" onkeyup="validatephone(this);" maxlength="3" type="text" name="countrycode'.$counter.'" id="countrycode'.$counter.'" placeholder="Countrycode Number" required>'.
+                      '<label for="countrycode'.$counter.'">Countrycode<b class="red-text"> *</b></label>'.
+                    '</div>'.
+                    '<div class="input-field col s10 l4">'.
+                    '<input onkeyup="validatephone(this);" type="text" class="form-control phone" maxlength="15" name="phone'.$counter.'" id="phone'.$counter.'" placeholder="Your Phone Number Here" required>'.
+                    '<label for="phone'.$counter.'">Telephone Number<b class="red-text"> *</b></label>'.
+                    '</div>'.
+                    '<div class="col s12 l6">'.
+                  '    <label>Reservation Age</label>'.
+                        '<select class="browser-default" name="reservation_age'.$counter.'">'.
+                        '  <option value="" disabled selected>Choose your Reservation age</option>'.
+                          '<option value="Adult">Adult</option>'.
+                          '<option value="Child">Child</option>'.
+                        '</select>'.
+                    '</div>'.
+                  '</div>'.
+                '</fieldset>'.
+
+              '  <div class="section"></div>'.
+
+                '<fieldset>'.
+                '  <legend>Address:</legend>'.
+                  '<div class="row">'.
+                    '<div class="input-field col s12 l6">'.
+                      '<input required name="address'.$counter.'" type="text" class="form-control inputpass" minlength="4" data-length="50" maxlength="50"  id="address'.$counter.'" placeholder="Address" />'.
+                      '<label for="address'.$counter.'">Address<b class="red-text"> *</b></label>'.
+                    '</div>'.
+                  '  <div class="input-field col s12 l6">'.
+                      '<input onkeyup = "Validate(this)" id="txt" type="text" class="form-control inputpass" name="city'.$counter.'" id="city'.$counter.'" placeholder="City" required>'.
+                      '<label for="city'.$counter.'">City<b class="red-text"> *</b></label>'.
+                    '</div>'.
+                  '</div>'.
+                  '<div class="row">'.
+                    '<div class="input-field col s12 l6">'.
+                      '<input onkeyup = "Validate(this)" id="txt" type="text" class="form-control inputpass" name="province'.$counter.'" id="province'.$counter.'" placeholder="Province" required>'.
+                      '<label for="province'.$counter.'">Province<b class="red-text"> *</b></label>'.
+                    '</div>'.
+                  '  <div class="input-field col s12 l6">'.
+                    '  <input onkeyup="validatephone(this);" type="text" class="form-control phone" maxlength="10" name="zipcode'.$counter.'" id="zipcode'.$counter.'" placeholder="Zip Code" required>'.
+                      '<label for="zipcode'.$counter.'">Zipcode<b class="red-text"> *</b></label>'.
+                    '</div>'.
+                    '<div class="input-field col s12">'.
+                      '<input required name="avoidfood'.$counter.'" type="text" class="form-control inputpass" maxlength="140" data-length="140"  id="avoidfood'.$counter.'" placeholder="Avoid Food" />'.
+                      '<label for="avoidfood'.$counter.'">Avoid Food<b class="red-text"> *</b></label>'.
+                    '</div>'.
+                  '</div>'.
+                '</fieldset>'.
+                '</div>
+                <div class="section"></div>';
+                $counter++;
+
+            }
+
+
+          }
+
+
+
+          ?>
 
         </div>
 
@@ -116,7 +214,8 @@ if(isset($_POST['book'])){
 
 
 
-      <div class="section"></div>
+
+
 
       <div class="row">
         <div class="center col s12">

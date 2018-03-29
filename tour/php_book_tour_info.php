@@ -3,12 +3,13 @@ include 'module/session.php';
 
 if(isset($_POST['submit'])){
   //check amount of people in group
-  if(isset($_GET['amount_people']) and isset($_GET['tour_round'])){
-    $_SESSION['amount_people'] = $_GET['amount_people'];
-    $amount_people = $_SESSION['amount_people'];
-    $_SESSION['tour_round_id'] = $_GET['tour_round'];
+  if(isset($_SESSION['seat']) and isset($_SESSION['tour_round'])){
+    $amount_people = $_SESSION['seat'];
+    // echo $amount_people."<br>";
+    // echo $_SESSION['tour_round_id'];
     // echo "Tour round : ".$_SESSION['tour_round_id'];
     for($i = 1 ; $i<=$amount_people;$i++){
+      // echo $i;
       if(isset($_POST['firstname'.$i]) and isset($_POST['middlename'.$i]) and isset($_POST['phone'.$i])
       and isset($_POST['lastname'.$i]) and isset($_POST['dob'.$i]) and isset( $_POST['passport'.$i]) and
       isset($_POST['email'.$i]) and isset($_POST['countrycode'.$i]) and isset($_POST['reservation_age'.$i]) and
@@ -29,6 +30,9 @@ if(isset($_POST['submit'])){
         $_SESSION['tour']['p'.$i]['province'] = $_POST['province'.$i];
         $_SESSION['tour']['p'.$i]['zipcode'] = $_POST['zipcode'.$i];
         $_SESSION['tour']['p'.$i]['avoidfood'] = $_POST['avoidfood'.$i];
+        
+
+
 
       }
 

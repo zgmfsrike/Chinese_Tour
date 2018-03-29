@@ -15,6 +15,7 @@ include "db_config.php";
                     // use '' in LINK or BUTTON_VALUE to use DEFAULT as back button
 
                     // SESSION
+
                 case 'session_expired': message('Session expired','Please login','login.php','Login');
                     break;
 
@@ -22,7 +23,7 @@ include "db_config.php";
                     break;
                 case 'login_already': message('You are already login','','','');
                     break;
-                case 'session_book_expired': message('Session book tour expired','Please try again','test_search_category.php','');
+                case 'session_book_expired': message('Session book tour expired','Please try again','search_tour.php','');
                     break;
 
                     // AUTHENTICATION
