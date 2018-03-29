@@ -93,70 +93,75 @@ include 'component/header.php';
       </div>
 
       <!--Search Part2-->
-      <div class="row card">
-        <div class="input-field col s1">
-          <select>
+      <div class="row ">
+        <div class="collection">
+          <br class="hide-on-med-and-down" />
+        <div class="col s12 l2">
+          <label class="show-on-medium-and-down hide-on-large-only">Rating</label>
+          <select class="browser-default">
             <option value="" disabled selected>Rating</option>
             <option value="1">Option 1</option>
             <option value="2">Option 2</option>
             <option value="3">Option 3</option>
           </select>
         </div>
-        <div class="input-field col s2">
-          <select>
+        <div class="col s12 l2">
+          <label class="show-on-medium-and-down hide-on-large-only">Popularity</label>
+          <select class="browser-default">
             <option value="" disabled selected>Popularity</option>
             <option value="1">Option 1</option>
             <option value="2">Option 2</option>
             <option value="3">Option 3</option>
           </select>
         </div>
-        <div class="input-field col s2">
-          <select>
+        <div class="col s12 l1">
+          <label class="show-on-medium-and-down hide-on-large-only">Alphabet</label>
+          <select class="browser-default">
             <option value="" disabled selected>Alphabet</option>
             <option value="1">A to Z</option>
             <option value="2">Z to A</option>
           </select>
         </div>
-        <!-- <div class="input-field col s1">
-        <select>
-        <option value="" disabled selected>Price</option>
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
-        <option value="3">Option 3</option>
-      </select>
-    </div> -->
-    <div class="input-field col s1">
-      <select name='amount_people' required>
-        <option value='1'>1</option>
-        <option value='2'>2</option>
-        <option value='3'>3</option>
-        <option value='4'>4</option>
-        <option value='5'>5</option>
-        <option value='6'>6</option>
-        <option value='7'>7</option>
-        <option value='8'>8</option>
-        <option value='9'>9</option>
-        <option value='10'>10</option>
-      </select>
-    </div>
-    <div class="col s12 l5">
-      Price range
-      <div class="input-field inline">
-        <input type="number" class="validate" min="0" name="price1" value="" onkeyup="validatephone(this);">
-        <label></label>
+        <div class="col s12 l1">
+          <label class="show-on-medium-and-down hide-on-large-only">Price</label>
+          <select class="browser-default">
+            <option value="" disabled selected>Price</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+          </select>
+          <br class="hide-on-med-and-down" />
+        </div>
+        <div class="col s12 l1">
+          <label class="show-on-medium-and-down hide-on-large-only">Amount of People</label>
+          <select class="browser-default" name='amount_people' required>
+            <option value="" disabled selected>Amount of People</option>
+            <option value='1'>1</option>
+            <option value='2'>2</option>
+            <option value='3'>3</option>
+            <option value='4'>4</option>
+            <option value='5'>5</option>
+            <option value='6'>6</option>
+            <option value='7'>7</option>
+            <option value='8'>8</option>
+            <option value='9'>9</option>
+            <option value='10'>10</option>
+        </select>
+        </div>
+        <div class="col s12 l4">
+            <div class="input-field inline">
+              <text class="left">Price range&emsp;</text>
+              <input name="price1" type="number" class="validate browser-default col s3" min="0" onkeyup="validatephone(this);" placeholder="1000">
+              <span class="col s1">-</span>
+              <input name="price2" type="number" class="validate browser-default col s3" min="0" onkeyup="validatephone(this);" placeholder="9000">
+            </div>
+        </div>
+          <div class="col s12 l1 center">
+            <button class="btn-floating red" type="submit" name="search">GO</button>
+            <br/><br/>
+          </div>
+        </div>
       </div>
-      -
-      <div class="input-field inline">
-        <input type="number" class="validate" min="0" name="price2" value="" onkeyup="validatephone(this);">
-        <label></label>
-      </div>
-    </div>
-    <div class="col s1 right">
-      <br>
-      <input class="btn  red" type="submit" name="search" value="GO">
-    </div>
-
-  </div>
 
 </form>
 
@@ -241,7 +246,7 @@ if($_POST['search']){
 
 
         echo "
-        <div class='row collection'>
+        <div class='row collection hide-on-med-and-down'>
         <div class='row'>
         <div class='col s12 l4'>
         <img class='materialboxed' width='250' src='images/wechatQR.jpg'>
@@ -262,6 +267,26 @@ if($_POST['search']){
         </div>
         </div>
 
+        <div class='row collection show-on-medium-and-down hide-on-large-only'>
+        <div class='row center'>
+        <div class='col s12 l4'>
+        <img class='materialboxed' width='250' src='images/wechatQR.jpg'>
+        </div>
+        <div class='col s12 l4'>
+        <br/>
+        <h5><a href='tour.php?id=$tour_id'>" .$show['tour_description'] .  "</a></h5>
+        <h6>Tour Type :" .$show['tour_type'] .  "</h6>
+        <h6>Accommodation :" .$show['accommodation_level'] .  "</h6>
+        <h6>Vehicle : " .$show['vehicle_type'] .  "</h6>
+        </div>
+        <div class='col s12 l3 right-align'>
+        <br/><br/>
+        <h5>฿ " .$show['price'] .  "</h5>
+        <h6>Available Seat :".$seat_in_tour."</h6><br/>
+        <a href='$link'><button type='button' class='btn ' name='button'>Select</button></a>
+        </div>
+        </div>
+        </div>
         ";
 
       }

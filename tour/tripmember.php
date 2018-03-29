@@ -30,7 +30,8 @@ include 'db_config.php';
       <h4 class="center">Trip Member</h4>
       <form class="form-horizontal" role="form" method="post" action="<?php echo $confirm_page;?>">
         <div class="trip_member">
-          <fieldset>
+          <h5>Member</h5>
+          <fieldset class="yellow lighten-5">
             <legend>Personalia:1</legend>
             <div class="row">
               <div class="input-field col s12 l6">
@@ -70,7 +71,7 @@ include 'db_config.php';
               </div>
               <div class="col s12 l6">
                 <label>Reservation Age</label>
-                  <select class="browser-default" name="reservation_age1">
+                  <select class="browser-default yellow lighten-5" name="reservation_age1">
                     <option value="" disabled selected>Choose your Reservation age</option>
                     <option value="Adult">Adult</option>
                     <option value="Child">Child</option>
@@ -81,7 +82,7 @@ include 'db_config.php';
 
           <div class="section"></div>
 
-          <fieldset>
+          <fieldset class="yellow lighten-5">
             <legend>Address:</legend>
             <div class="row">
               <div class="input-field col s12 l6">
@@ -117,7 +118,8 @@ include 'db_config.php';
             for($i =1 ;$i<$seat;$i++){
               echo ' <div class="trip_member">'.
                 '  <div class="section"></div>'.
-                '<fieldset>'.
+                '<h5>Member</h5>'.
+                '<fieldset class="yellow lighten-5">'.
                   '<legend>Personalia:'.$counter.'</legend>'.
                   '<div class="row">'.
                   '  <div class="input-field col s12 l6">'.
@@ -157,7 +159,7 @@ include 'db_config.php';
                     '</div>'.
                     '<div class="col s12 l6">'.
                   '    <label>Reservation Age</label>'.
-                        '<select class="browser-default" name="reservation_age'.$counter.'">'.
+                        '<select class="browser-default yellow lighten-5" name="reservation_age'.$counter.'">'.
                         '  <option value="" disabled selected>Choose your Reservation age</option>'.
                           '<option value="Adult">Adult</option>'.
                           '<option value="Child">Child</option>'.
@@ -168,7 +170,7 @@ include 'db_config.php';
 
               '  <div class="section"></div>'.
 
-                '<fieldset>'.
+                '<fieldset class="yellow lighten-5">'.
                 '  <legend>Address:</legend>'.
                   '<div class="row">'.
                     '<div class="input-field col s12 l6">'.
