@@ -28,19 +28,24 @@ if(isset($title) and $title == ""){
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--jQuery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <!--Import materialize.css-->
     <link rel="stylesheet" href="css/materialize.min.css"/>
     <link rel="stylesheet" href="css/materialize.css"/>
     <link rel="stylesheet" href="css/main.css">
+
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     <title><?php echo "".$title;?></title>
 </head>
 
-<nav class="nav-extended">
+<nav class="nav-extended" id="watermark">
     <div class="nav-wrapper">
         <a href="index.php" class="brand-logo center hide-on-med-and-down"><img src="images/logo400x300.png" width=40% height=40% alt="logo"></a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>

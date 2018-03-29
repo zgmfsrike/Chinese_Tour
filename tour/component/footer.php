@@ -57,5 +57,4 @@
    <script src="js/validate.js"></script>
    <script src="js/validate2.js"></script>
    <script type="text/javascript" src="https://unpkg.com/sweetalert2@7.1.2/dist/sweetalert2.all.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
  </footer>

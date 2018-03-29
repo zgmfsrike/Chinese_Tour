@@ -1,1 +1,4 @@
-
+.nav {
+  background-image: url("images/watermark.png") !important;
+  background-repeat: repeat !important;
+}
