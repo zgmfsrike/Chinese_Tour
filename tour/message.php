@@ -54,6 +54,8 @@ require 'module/language/init.php';
     require 'module/message/authentication.php';
     require 'module/message/manage_account.php';
 
+    if($msg ==  'session_book_expired') message('Session book tour expired','Please try again','search_tour.php','');
+
     // manage_account.php
 
     // AUTHENTICATIO
@@ -73,8 +75,6 @@ require 'module/language/init.php';
     }else {
       $message = message('Request not found','','','');
     }
-
-
 
     if($msg == 'not_image') $message = message('Sorry!','Only jpg, gif, and png files are allowed. ','index.php','Go to home page');
 

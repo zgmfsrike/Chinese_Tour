@@ -2,11 +2,11 @@
 $link_index = 'index.php';
 $link_about_us = 'about_us.php';
 
-$link_meeting ='message.php?msg=under_construction';
-$link_incentive ='message.php?msg=under_construction';
-$link_convention ='message.php?msg=under_construction';
-$link_exhibition ='message.php?msg=under_construction';
-$link_business ='message.php?msg=under_construction';
+$link_meeting ='search_tour.php?tour_type=2';
+$link_incentive ='search_tour.php?tour_type=3';
+$link_convention ='search_tour.php?tour_type=4';
+$link_exhibition ='search_tour.php?tour_type=5';
+$link_business ='search_tour.php?tour_type=6';
 
 $link_wechat = '#';
 $link_tel = '#';

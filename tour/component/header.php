@@ -4,6 +4,8 @@ require 'module/language_switcher.php';
 require 'module/language/lang_header.php';
 require 'module/string/string_header.php';
 ?>
+
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -44,11 +46,11 @@ require 'module/string/string_header.php';
     </div>
   </div>
 
-<div class="nav-wrapper hide-on-med-and-down"></div>
-<ul class="side-nav" id="mobile-demo">
-  <li class="red darken-4"><div class="section"></div></li>
-  <li class="red darken-4"><img src="images/logo400x300.png" width=40% height=40% alt="logo">
-    <div class="divider"></div></li>
+  <div class="nav-wrapper hide-on-med-and-down"></div>
+  <ul class="side-nav" id="mobile-demo">
+    <li class="red darken-4"><div class="section"></div></li>
+    <li class="red darken-4"><img src="images/logo400x300.png" width=40% height=40% alt="logo"></li>
+    <div class="divider"></div>
     <li><a href="<?php echo $link_index;?>"><?php echo $string_header_index;?></a></li>
     <li><a href="<?php echo $link_meeting;?>"><?php echo $string_header_meeting;?></a></li>
     <li><a href="<?php echo $link_incentive;?>"><?php echo $string_header_incentive;?></a></li>

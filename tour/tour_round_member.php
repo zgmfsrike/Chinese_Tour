@@ -53,18 +53,18 @@ $tour_round_id = $_GET['tour_round_id'];
                if($_GET['tour_round_id'] != ""){
 
 
-                   $sql= "SELECT m.first_name,m.middle_name,m.last_name,trm.passport_id,trm.reservation_age,trm.avoid_food,trm.group_member,m.id,m.email
+                   $sql= "SELECT trm.first_name,trm.middle_name,trm.last_name,trm.passport_id,trm.reservation_age,trm.avoid_food,trm.tour_round_member_id,trm.email
                           FROM tour_round_member trm INNER JOIN tour_round tr ON trm.tour_round_id = tr.tour_round_id INNER JOIN member m ON trm.id = m.id
                           WHERE trm.tour_round_id = $tour_round_id ";
                    // $result = mysqli_query( $GLOBALS['conn'] , $sql );
                      $result = page_query($GLOBALS['conn'],$sql,2);
                    echo "<table style='overflow-x:auto;' class='responsive-table table table-striped highlight centered'>";
                    echo "<thead>";
-                   echo "<tr align='center'><th>Member ID</th><th>First Name</th><th>Middle Name</th><th>Last Name</th><th>Passport Id</th><th>Reservation Age</th><th>Avoid Food</th><th>Group Member</th><th>Email</th>";
+                   echo "<tr align='center'><th>Member ID</th><th>First Name</th><th>Middle Name</th><th>Last Name</th><th>Passport Id</th><th>Reservation Age</th><th>Avoid Food</th><th>Email</th>";
                    echo "</tr>";
                    echo "</thead>";
                    while($show = mysqli_fetch_array($result)) {
-                     $member_id = $show['id'];
+                     $member_id = $show['tour_round_member_id'];
 
                      echo "<tr>";
                      echo "<td align ='center'>" . $member_id.  "</td> ";
@@ -74,7 +74,6 @@ $tour_round_id = $_GET['tour_round_id'];
                      echo "<td align ='center'>" .$show['passport_id'] .  "</td> ";
                      echo "<td align ='center'>" .$show['reservation_age'] .  "</td> ";
                      echo "<td align ='center'>" .$show['avoid_food'] .  "</td> ";
-                     echo "<td align ='center'>" .$show['group_member'] .  "</td> ";
                      echo "<td align ='center'><a href='tour_send_mail.php?member_id=$member_id'>" .$show['email'] .  "</a></td> ";
                      // echo "<td align ='center'><input  type='button' value='Send Mail' onclick=\"window.location.href='http://localhost/Chinese_Tour/Chinese_Tour/tour_send_mail.php?member_id=$member_id.'\"></td>";
                      echo "</tr>";
