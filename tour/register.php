@@ -141,13 +141,10 @@ if(isLoginAs(array('admin','member'))){
                     </form>
                 </div>
             </div>
-<<<<<<< HEAD
         </div>
-=======
     </form>
 </div>
   </div>
->>>>>>> origin/ui
 
 
         <!--Footer-->
