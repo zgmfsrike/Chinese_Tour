@@ -7,24 +7,51 @@ if(!isLoginAs(array('admin'))){
 
 require 'module/language/init.php';
 
-$tour_description=$hightlight=$region=$province=$price=$max_customer=$rating=0;
+$max_customer=$rating=0;
 if(isset($_GET['id'])){
   $id = $_GET['id'];
   // tour
-  $sql = "SELECT * FROM `tour` WHERE tour_id = $id";
+  $sql = "SELECT * FROM `tour_en` WHERE tour_id = $id";
   $result = mysqli_query($conn, $sql);
   if(mysqli_num_rows($result) == 0){
     header('location: message.php?msg=tour_not_found');
 
   }
   $data = mysqli_fetch_array($result);
-  $tour_description = $data['tour_description'];
-  $hightlight = $data['highlight'];
-  $region = $data['region'];
-  $province = $data['province'];
-  $price = $data['price'];
+  $tour_description_en = $data['tour_description'];
+  $hightlight_en = $data['highlight'];
+  $region_en = $data['region'];
+  $province_en = $data['province'];
+  $price_en = $data['price'];
+
   $max_customer = $data['max_customer'];
   $rating = $data['rating'];
+
+  $sql = "SELECT * FROM `tour_ch` WHERE tour_id = $id";
+  $result = mysqli_query($conn, $sql);
+  if(mysqli_num_rows($result) == 0){
+    header('location: message.php?msg=tour_not_found');
+
+  }
+  $data = mysqli_fetch_array($result);
+  $tour_description_ch = $data['tour_description'];
+  $hightlight_ch = $data['highlight'];
+  $region_ch = $data['region'];
+  $province_ch = $data['province'];
+  $price_ch = $data['price'];
+
+  $sql = "SELECT * FROM `tour_th` WHERE tour_id = $id";
+  $result = mysqli_query($conn, $sql);
+  if(mysqli_num_rows($result) == 0){
+    header('location: message.php?msg=tour_not_found');
+
+  }
+  $data = mysqli_fetch_array($result);
+  $tour_description_th = $data['tour_description'];
+  $hightlight_th = $data['highlight'];
+  $region_th = $data['region'];
+  $province_th = $data['province'];
+  $price_th = $data['price'];
 }else{
   header('location: message.php?msg=tour_not_found');
 }
@@ -32,7 +59,7 @@ if(isset($_GET['id'])){
 <!DOCTYPE html>
 <html>
 <?php
-$title = "Edit Tour: " . $tour_description;
+$title = "Edit Tour: " . $tour_description_en;
 include 'component/header.php';
 ?>
 
@@ -104,36 +131,91 @@ function initDate(index){
       <div class="row">
         <div class="col s12 l6">
           <fieldset>
-            <legend><b>Tour Details</b></legend>
+            <legend><b>Tour Details (English)</b></legend>
             <!--  Text : Tour name  -->
             <div class="input-field" id="name" name="tour_description">
 
-              <input placeholder="Tour description here" required name="tour_description" type="text" value="<?php echo $tour_description; ?>"/>
+              <input placeholder="Tour description here" required name="tour_description_en" type="text" value="<?php echo $tour_description_en; ?>"/>
               <label for="tour_description">Tour description</label>
             </div>
             <!--  Text : Highlight  -->
             <div class="input-field" id="highlight" name='highlight'>
-              <input placeholder="Highlight" required name='highlight' type='text' value="<?php echo $hightlight; ?>"/>
+              <input placeholder="Highlight" required name='highlight_en' type='text' value="<?php echo $hightlight_en; ?>"/>
               <label for="highlight">Highlight</label>
             </div>
             <!--  Price sale  -->
             <div class="input-field" id="price" name='price'>
-              <input placeholder="Price sale" required name='price' type='number' min="1" value="<?php echo $price; ?>"/>
+              <input placeholder="Price sale" required name='price_en' type='number' min="1" value="<?php echo $price_en; ?>"/>
               <label for="price">Price sale</label>
-            </div>
-            <!--  Max # of customer  -->
-            <div class="input-field" id="max" name="max">
-              <input placeholder="Max number of customer" required name='max' type='number' min="1" value="<?php echo $max_customer; ?>"/>
-              <label for="max">Max</label>
             </div>
             <!--  Region  -->
             <div class="input-field" id="region" name='price'>
-              <input placeholder="Region" required name='region' type='text' value="<?php echo $region; ?>"/>
+              <input placeholder="Region" required name='region_en' type='text' value="<?php echo $region_en; ?>"/>
               <label for="region">Region</label>
             </div>
             <!--  Province  -->
             <div class="input-field" id="province" name='province'>
-              <input placeholder="Province" required name='province' type='text' value="<?php echo $province; ?>"/>
+              <input placeholder="Province" required name='province_en' type='text' value="<?php echo $province_en; ?>"/>
+              <label for="province">province</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend><b>Tour Details (Chinese)</b></legend>
+            <!--  Text : Tour name  -->
+            <div class="input-field" id="name" name="tour_description">
+
+              <input placeholder="Tour description here" required name="tour_description_ch" type="text" value="<?php echo $tour_description_ch; ?>"/>
+              <label for="tour_description">Tour description</label>
+            </div>
+            <!--  Text : Highlight  -->
+            <div class="input-field" id="highlight" name='highlight'>
+              <input placeholder="Highlight" required name='highlight_ch' type='text' value="<?php echo $hightlight_ch; ?>"/>
+              <label for="highlight">Highlight</label>
+            </div>
+            <!--  Price sale  -->
+            <div class="input-field" id="price" name='price'>
+              <input placeholder="Price sale" required name='price_ch' type='number' min="1" value="<?php echo $price_ch; ?>"/>
+              <label for="price">Price sale</label>
+            </div>
+            <!--  Region  -->
+            <div class="input-field" id="region" name='price'>
+              <input placeholder="Region" required name='region_ch' type='text' value="<?php echo $region_ch; ?>"/>
+              <label for="region">Region</label>
+            </div>
+            <!--  Province  -->
+            <div class="input-field" id="province" name='province'>
+              <input placeholder="Province" required name='province_ch' type='text' value="<?php echo $province_ch; ?>"/>
+              <label for="province">province</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend><b>Tour Details (Thai)</b></legend>
+            <!--  Text : Tour name  -->
+            <div class="input-field" id="name" name="tour_description">
+
+              <input placeholder="Tour description here" required name="tour_description_th" type="text" value="<?php echo $tour_description_th; ?>"/>
+              <label for="tour_description">Tour description</label>
+            </div>
+            <!--  Text : Highlight  -->
+            <div class="input-field" id="highlight" name='highlight'>
+              <input placeholder="Highlight" required name='highlight_th' type='text' value="<?php echo $hightlight_th; ?>"/>
+              <label for="highlight">Highlight</label>
+            </div>
+            <!--  Price sale  -->
+            <div class="input-field" id="price" name='price'>
+              <input placeholder="Price sale" required name='price_th' type='number' min="1" value="<?php echo $price_th; ?>"/>
+              <label for="price">Price sale</label>
+            </div>
+            <!--  Region  -->
+            <div class="input-field" id="region" name='price'>
+              <input placeholder="Region" required name='region_th' type='text' value="<?php echo $region_th; ?>"/>
+              <label for="region">Region</label>
+            </div>
+            <!--  Province  -->
+            <div class="input-field" id="province" name='province'>
+              <input placeholder="Province" required name='province_th' type='text' value="<?php echo $province_th; ?>"/>
               <label for="province">province</label>
             </div>
           </fieldset>
@@ -172,6 +254,13 @@ function initDate(index){
 
         </div>
         <div class="col s12 l6">
+          <div>
+            <!--  Max # of customer  -->
+            <div class="input-field" id="max" name="max">
+              <input placeholder="Max number of customer" required name='max' type='number' min="1" value="<?php echo $max_customer; ?>"/>
+              <label for="max">Max seat</label>
+            </div>
+          </div>
           <div class="col s12 l4" id="type">
             <!--  Tour type  -->
             <h5>Tour Type</h5>

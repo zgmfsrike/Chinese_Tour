@@ -24,6 +24,7 @@ function check(){
     $sql2 = "SELECT * FROM `tour_image` WHERE `tour_id` = ".$id;
     $result2 = mysqli_query( $GLOBALS['conn'] , $sql2 );
     $row2 = mysqli_fetch_array($result2);
+
     for($i=1;$i<=10;$i++){
         pl('===== '.$i.' =====');
         $image = $row2['img'.$i];
@@ -62,6 +63,7 @@ function check(){
             pl('$count = '.$count);
         }
     }
+
     $sum ='';
     for($i=1;$i<=10;$i++){
         $sum .= '['.$img[$i].']';
@@ -82,26 +84,72 @@ if(isset($_POST['submit']) and isset($_POST['id'])){
     $id = $_POST['id'];
 
     // ===== Insert to "tour" table =====
-    $tour_description   = addslashes($_POST["tour_description"]);
-    $tour_highlight     = addslashes($_POST["highlight"]);
-    $tour_region        = addslashes($_POST["region"]);
-    $tour_province      = addslashes($_POST["province"]);
-    $tour_price         = $_POST["price"];
-    $tour_max           = $_POST["max"];
+    $tour_description_en   = addslashes($_POST["tour_description_en"]);
+    $tour_highlight_en     = addslashes($_POST["highlight_en"]);
+    $tour_region_en        = addslashes($_POST["region_en"]);
+    $tour_province_en      = addslashes($_POST["province_en"]);
+    $tour_price_en         = $_POST["price_en"];
 
-    $sql = "UPDATE `tour` SET ";
-    $sql .= "`tour_description`='$tour_description' ";
-    $sql .= ",`highlight`='$tour_highlight' ";
-    $sql .= ",`region`='$tour_region' ";
-    $sql .= ",`province`='$tour_province' ";
-    $sql .= ",`price`='$tour_price' ";
+    $tour_description_ch   = addslashes($_POST["tour_description_ch"]);
+    $tour_highlight_ch     = addslashes($_POST["highlight_ch"]);
+    $tour_region_ch        = addslashes($_POST["region_ch"]);
+    $tour_province_ch      = addslashes($_POST["province_ch"]);
+    $tour_price_ch         = $_POST["price_ch"];
+
+    $tour_description_th   = addslashes($_POST["tour_description_th"]);
+    $tour_highlight_th     = addslashes($_POST["highlight_th"]);
+    $tour_region_th        = addslashes($_POST["region_th"]);
+    $tour_province_th      = addslashes($_POST["province_th"]);
+    $tour_price_th         = $_POST["price_th"];
+
+    $tour_max              = $_POST["max"];
+
+    $sql = "UPDATE `tour_en` SET ";
+    $sql .= "`tour_description`='$tour_description_en' ";
+    $sql .= ",`highlight`='$tour_highlight_en' ";
+    $sql .= ",`region`='$tour_region_en' ";
+    $sql .= ",`province`='$tour_province_en' ";
+    $sql .= ",`price`='$tour_price_en' ";
     $sql .= ",`max_customer`='$tour_max' ";
 
     $sql .= "WHERE `tour_id` = '$id';";
+
     $result = mysqli_query( $GLOBALS['conn'] , $sql );
     if (!$result) {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-        return false;
+        header("location: message.php?msg=error");
+    }
+
+    $sql = "UPDATE `tour_ch` SET ";
+    $sql .= "`tour_description`='$tour_description_ch' ";
+    $sql .= ",`highlight`='$tour_highlight_ch' ";
+    $sql .= ",`region`='$tour_region_ch' ";
+    $sql .= ",`province`='$tour_province_ch' ";
+    $sql .= ",`price`='$tour_price_ch' ";
+    $sql .= ",`max_customer`='$tour_max' ";
+
+    $sql .= "WHERE `tour_id` = '$id';";
+
+    $result = mysqli_query( $GLOBALS['conn'] , $sql );
+    if (!$result) {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        header("location: message.php?msg=error");
+    }
+
+    $sql = "UPDATE `tour_th` SET ";
+    $sql .= "`tour_description`='$tour_description_th' ";
+    $sql .= ",`highlight`='$tour_highlight_th' ";
+    $sql .= ",`region`='$tour_region_th' ";
+    $sql .= ",`province`='$tour_province_th' ";
+    $sql .= ",`price`='$tour_price_th' ";
+    $sql .= ",`max_customer`='$tour_max' ";
+
+    $sql .= "WHERE `tour_id` = '$id';";
+
+    $result = mysqli_query( $GLOBALS['conn'] , $sql );
+    if (!$result) {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        header("location: message.php?msg=error");
     }
 
     // ------------
@@ -337,19 +385,39 @@ if(isset($_POST['submit']) and isset($_POST['id'])){
     }
 
     // ======= Tour round ========
-    $sql = "DELETE FROM tour_round WHERE tour_id = $id";
-    mysqli_query($conn, $sql);
+    // $sql = "DELETE FROM tour_round WHERE tour_id = $id";
+    // mysqli_query($conn, $sql);
 
     if(!empty($_POST['start_date']) and !empty($_POST['end_date'])){
-        for($i = 0; $i < count($_POST['start_date']);$i++ ){
-            $start = $_POST['start_date'][$i];
-            $end = $_POST['end_date'][$i];
-            $sql = "INSERT INTO tour_round(tour_id, start_date_time,end_date_time) VALUES ('$id','$start','$end')";
-            $result = mysqli_query( $GLOBALS['conn'] , $sql );
+        // for($i = 0; $i < count($_POST['start_date']);$i++ ){
+        //     $start = $_POST['start_date'][$i];
+        //     $end = $_POST['end_date'][$i];
+        //     $sql = "INSERT INTO tour_round(tour_id, start_date_time,end_date_time) VALUES ('$id','$start','$end')";
+        //     $result = mysqli_query( $GLOBALS['conn'] , $sql );
+        // }
+
+        $sql = "SELECT tour_round_id FROM tour_round WHERE tour_id = $id";
+        $result = mysqli_query( $GLOBALS['conn'] , $sql );
+
+
+
+        if(count($_POST['start_date']) > mysqli_num_rows($result)){
+
         }
+
+        for($i = 0; $i < count($_POST['start_date']);$i++ ){
+          $start = $_POST['start_date'][$i];
+          $end = $_POST['end_date'][$i];
+          $sql = "INSERT INTO tour_round(tour_id, start_date_time,end_date_time) VALUES ('$id','$start','$end')";
+          $result = mysqli_query( $GLOBALS['conn'] , $sql );
+        }
+
+
+    }else{
+      header("location: message.php?msg=error");
     }
     header("location: message.php?msg=edit_tour_succ&id=$id");
 }else{
-    header("location: message.php");
+    header("location: message.php?msg=error");
 }
 ?>

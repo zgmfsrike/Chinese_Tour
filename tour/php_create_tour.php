@@ -6,22 +6,66 @@ include "db_config.php";
 if(isset($_POST['submit'])){
 
     // ===== Insert to "tour" table =====
-    $tour_description   = addslashes($_POST["tour_description"]);
-    $tour_highlight     = addslashes($_POST["highlight"]);
-    $tour_region        = addslashes($_POST["region"]);
-    $tour_province      = addslashes($_POST["province"]);
-    $tour_price         = $_POST["price"];
+    $tour_description_en   = addslashes($_POST["tour_description_en"]);
+    $tour_highlight_en     = addslashes($_POST["highlight_en"]);
+    $tour_region_en        = addslashes($_POST["region_en"]);
+    $tour_province_en      = addslashes($_POST["province_en"]);
+    $tour_price_en         = $_POST["price_en"];
+
+    $tour_description_ch   = addslashes($_POST["tour_description_ch"]);
+    $tour_highlight_ch     = addslashes($_POST["highlight_ch"]);
+    $tour_region_ch        = addslashes($_POST["region_ch"]);
+    $tour_province_ch      = addslashes($_POST["province_ch"]);
+    $tour_price_ch         = $_POST["price_ch"];
+
+    $tour_description_th   = addslashes($_POST["tour_description_th"]);
+    $tour_highlight_th     = addslashes($_POST["highlight_th"]);
+    $tour_region_th        = addslashes($_POST["region_th"]);
+    $tour_province_th      = addslashes($_POST["province_th"]);
+    $tour_price_th         = $_POST["price_th"];
+
     $tour_max           = $_POST["max"];
 
-    $sql= "INSERT INTO tour (tour_description, highlight, region, province, price, max_customer) VALUES ('$tour_description','$tour_highlight','$tour_region','$tour_province','$tour_price','$tour_max')";
+    // $sql.= "tour_description_ch, highlight_ch, region_ch, province_ch,";
+    // $sql.= "tour_description_th, highlight_th, region_th, province_th,";
+
+    // $sql.="'$tour_description_ch','$tour_highlight_ch','$tour_region_ch','$tour_province_ch',";
+    // $sql.="'$tour_description_th','$tour_highlight_th','$tour_region_th','$tour_province_th',";
+
+    $sql= "INSERT INTO tour_en (tour_description, highlight, region, province,";
+    $sql.=" price, max_customer)";
+    $sql.="VALUES ('$tour_description_en','$tour_highlight_en','$tour_region_en','$tour_province_en',";
+    $sql.="'$tour_price_en','$tour_max')";
     $result = mysqli_query( $GLOBALS['conn'] , $sql );
-    $last_id = mysqli_insert_id($GLOBALS['conn']);
 
     if (!$result) {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         return false;
     }
 
+    $sql= "INSERT INTO tour_ch (tour_description, highlight, region, province,";
+    $sql.=" price, max_customer)";
+    $sql.="VALUES ('$tour_description_ch','$tour_highlight_ch','$tour_region_ch','$tour_province_ch',";
+    $sql.="'$tour_price_ch','$tour_max')";
+    $result = mysqli_query( $GLOBALS['conn'] , $sql );
+
+    if (!$result) {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        return false;
+    }
+
+    $sql= "INSERT INTO tour_th (tour_description, highlight, region, province,";
+    $sql.=" price, max_customer)";
+    $sql.="VALUES ('$tour_description_th','$tour_highlight_th','$tour_region_th','$tour_province_th',";
+    $sql.="'$tour_price_th','$tour_max')";
+    $result = mysqli_query( $GLOBALS['conn'] , $sql );
+
+    if (!$result) {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        return false;
+    }
+
+    $last_id = mysqli_insert_id($GLOBALS['conn']);
     // ====== upload images + insert "tour_image" table =====
 
     $count = 0;

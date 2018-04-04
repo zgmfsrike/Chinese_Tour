@@ -111,7 +111,7 @@ require 'module/string/string_header.php';
       if(isLoginAs(array('admin','member'))){
         if(isLoginAs(array('admin'))){
           ?>
-          <li class="tab"><a target="_self" href="<?php echo $link_manage;?>"><?php echo $string_header_manage;?></a></li>
+          <!-- <li class="tab"><a target="_self" href="<?php echo $link_manage;?>"><?php echo $string_header_manage;?></a></li> -->
           <?php
         }
         if(isLoginAs(array('member'))){
@@ -133,3 +133,8 @@ require 'module/string/string_header.php';
     </ul>
   </div>
 </nav>
+<?php
+if (isLoginAs(array('admin'))) {
+  include 'component/manage.php';
+}
+?>

@@ -71,7 +71,7 @@ require 'module/language/init.php';
 
     if($msg == 'edit_news_succ')
     if(isset($_GET['id'])){
-      $message = message('Success!','News has been changed ','news.php?news_id='.$_GET['id'],'back to news page');
+      $message = message('Success!','News has been updated.','news.php?news_id='.$_GET['id'],'back to news page');
     }else {
       $message = message('Request not found','','','');
     }

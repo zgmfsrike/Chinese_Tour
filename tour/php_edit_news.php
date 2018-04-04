@@ -1,6 +1,5 @@
 <?php
-session_cache_expire(30);
-error_reporting (E_ALL ^ E_NOTICE);
+// error_reporting (E_ALL ^ E_NOTICE);
 include "db_config.php";
 // include "db_configNB.php";
 include "module/hashing.php";
@@ -12,21 +11,32 @@ if(isset($_SESSION['login_id']) && isset($_SESSION['news_id'])){
   if($_POST['save']){
     $news_id =  $_SESSION['news_id'];
 
-    $news_topic = $_POST['newsAddtopic'];
-    $news_topic = addslashes($news_topic);
+    $news_topic_en = addslashes($_POST['newstopic_en']);
+    $news_description_en = addslashes($_POST['newsDescription_en']);
+    $news_content_en = addslashes($_POST['newsContent_en']);
+
+    $news_topic_ch = addslashes($_POST['newstopic_ch']);
+    $news_description_ch = addslashes($_POST['newsDescription_ch']);
+    $news_content_ch = addslashes($_POST['newsContent_ch']);
+
+    $news_topic_th = addslashes($_POST['newstopic_th']);
+    $news_description_th = addslashes($_POST['newsDescription_th']);
+    $news_content_th = addslashes($_POST['newsContent_th']);
     // $news_image = $_FILES['newsPicAddtopic1'];
 
-  $news_description = $_POST['newsDescription'];
-  $news_description = addslashes($news_description);
+    $last_edit_date = date("Y-m-d");
 
-  $last_edit_date = date("Y-m-d");
+    if($news_topic_en != "" && $news_description_en !="" && $news_topic_ch != "" && $news_description_ch !="" && $news_topic_th != "" && $news_description_th !=""){
+      $sql= "UPDATE `news_en` SET `last_edit_date`='$last_edit_date',`topic`='$news_topic_en',
+      `short_description`='$news_description_en',`content`='$news_content_en' WHERE news_id = $news_id";
+      $result = mysqli_query( $GLOBALS['conn'] , $sql );
 
-  $news_content = $_POST['newsContent'];
-  $news_content = addslashes($news_content);
+      $sql= "UPDATE `news_ch` SET `last_edit_date`='$last_edit_date',`topic`='$news_topic_ch',
+      `short_description`='$news_description_ch',`content`='$news_content_ch' WHERE news_id = $news_id";
+      $result = mysqli_query( $GLOBALS['conn'] , $sql );
 
-    if($news_topic != "" && $news_description !=""){
-      $sql= "UPDATE `news` SET `last_edit_date`='$last_edit_date',`topic`='$news_topic',
-      `short_description`='$news_description',`content`='$news_content' WHERE news_id = $news_id";
+      $sql= "UPDATE `news_th` SET `last_edit_date`='$last_edit_date',`topic`='$news_topic_th',
+      `short_description`='$news_description_th',`content`='$news_content_th' WHERE news_id = $news_id";
       $result = mysqli_query( $GLOBALS['conn'] , $sql );
       // $last_id = mysqli_insert_id($GLOBALS['conn']);
 
@@ -120,10 +130,8 @@ if(isset($_SESSION['login_id']) && isset($_SESSION['news_id'])){
 
                 }
                 $count++;
-
               }
             }
-
           }else {
             // echo "Image : ".$i." have file ";
             // echo "<br>";
@@ -139,11 +147,6 @@ if(isset($_SESSION['login_id']) && isset($_SESSION['news_id'])){
             $sql_check = "SELECT * FROM `news_image` WHERE news_id = '$news_id[0]' AND img_index ='$c'";
             $result_check = mysqli_query($conn,$sql_check);
             $count_check = mysqli_num_rows($result_check);
-
-
-
-
-
 
             // -----Upload PDF-----
             $ext = pathinfo(basename($_FILES['newsPicAddtopic'.$i]['name'] ),PATHINFO_EXTENSION);
@@ -179,11 +182,6 @@ if(isset($_SESSION['login_id']) && isset($_SESSION['news_id'])){
               imagecopyresampled($tmp, $src, 0, 0, 0, 0, $width, $height, $photoX, $photoY);
               $success= imagejpeg($tmp, $dst.".jpg");
               // unlink($img_path.$_FILES['newsPicAddtopic'.$i]['name'] );
-
-
-
-
-
 
               // $upload_path = $img_path.$new_image_name.'.'.$ext;
               // if(file_exists($upload_path)){
@@ -260,11 +258,6 @@ if(isset($_SESSION['login_id']) && isset($_SESSION['news_id'])){
               $success= imagejpeg($tmp, $dst.".jpg");
               // unlink($img_path.$_FILES['newsPicAddtopic'.$i]['name'] );
 
-
-
-
-
-
               // $upload_path = $img_path.$new_image_name.'.'.$ext;
               // if(file_exists($upload_path)){
               //       unlink($upload_path);
@@ -291,11 +284,6 @@ if(isset($_SESSION['login_id']) && isset($_SESSION['news_id'])){
             // if($check_ext == "jpeg" or "jpg" or "png" or "gif"){
 
             // $new_image_name = 'img_'.$news_id[0].'_'.$i.'.'.$ext;
-
-
-
-
-
             // }
 
           }
@@ -359,7 +347,7 @@ if(isset($_SESSION['login_id']) && isset($_SESSION['news_id'])){
                 if($result_change){
                   echo "change name : ".$pdf_name_change;
                 }
-                echo "helooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo";
+                // echo "helooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo";
                 $count_p++;
 
               }
@@ -455,36 +443,14 @@ if(isset($_SESSION['login_id']) && isset($_SESSION['news_id'])){
                 $count_p++;
 
               }
-
-
-
-
-
             }
-
-
           }
-
         }
-
         header("location: message.php?msg=edit_news_succ&id=".$news_id[0]);
       }
-
-
     } else {
       echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
-    // -------------------------
-
-
-
-
   }
-
-
-
 }
-
-
-
 ?>

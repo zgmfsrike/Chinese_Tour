@@ -83,59 +83,101 @@ require 'module/language/init.php';
                 <div class="row">
                     <div class="col s12 l6">
                         <fieldset>
-                            <legend><b>Tour Details</b></legend>
+                            <legend><b>Tour Details (English)</b></legend>
                             <!--  Text : Tour name  -->
                             <div class="input-field" id="name" name="tour_description">
-
-                                <input placeholder="Tour description here" required name="tour_description" type="text"/>
+                                <input placeholder="Tour description here" required name="tour_description_en" type="text"/>
                                 <label for="tour_description">Tour description</label>
                             </div>
                             <!--  Text : Highlight  -->
                             <div class="input-field" id="highlight" name='highlight'>
-                                <input placeholder="Highlight" required name='highlight' type='text'/>
+                                <input placeholder="Highlight" required name='highlight_en' type='text'/>
                                 <label for="highlight">Highlight</label>
-                            </div>
-                            <!--  Price sale  -->
-                            <div class="input-field" id="price" name='price'>
-                                <input placeholder="Price sale" required name='price' type='number' min="1"/>
-                                <label for="price">Price sale</label>
-                            </div>
-                            <!--  Max # of customer  -->
-                            <div class="input-field" id="max" name="max">
-                                <input placeholder="Max number of customer" required name='max' type='number' min="1"/>
-                                <label for="max">Max</label>
                             </div>
                             <!--  Region  -->
                             <div class="input-field" id="region" name='price'>
-                                <input placeholder="Region" required name='region' type='text'/>
+                                <input placeholder="Region" required name='region_en' type='text'/>
                                 <label for="region">Region</label>
                             </div>
                             <!--  Province  -->
                             <div class="input-field" id="province" name='province'>
-                                <input placeholder="Province" required name='province' type='text'/>
+                                <input placeholder="Province" required name='province_en' type='text'/>
                                 <label for="province">province</label>
+                            </div>
+                            <!--  Price sale  -->
+                            <div class="input-field" id="price" name='price'>
+                                <input placeholder="Price sale" required name='price_en' type='number' min="1"/>
+                                <label for="price">Price sale</label>
+                            </div>
+                        </fieldset>
+                        <br>
+                        <fieldset>
+                            <legend><b>Tour Details (Chinese)</b></legend>
+                            <!--  Text : Tour name  -->
+                            <div class="input-field" id="name" name="tour_description">
+
+                                <input placeholder="Tour description here" required name="tour_description_ch" type="text"/>
+                                <label for="tour_description">Tour description</label>
+                            </div>
+                            <!--  Text : Highlight  -->
+                            <div class="input-field" id="highlight" name='highlight'>
+                                <input placeholder="Highlight" required name='highlight_ch' type='text'/>
+                                <label for="highlight">Highlight</label>
+                            </div>
+                            <!--  Region  -->
+                            <div class="input-field" id="region" name='price'>
+                                <input placeholder="Region" required name='region_ch' type='text'/>
+                                <label for="region">Region</label>
+                            </div>
+                            <!--  Province  -->
+                            <div class="input-field" id="province" name='province'>
+                                <input placeholder="Province" required name='province_ch' type='text'/>
+                                <label for="province">province</label>
+                            </div>
+                            <!--  Price sale  -->
+                            <div class="input-field" id="price" name='price'>
+                                <input placeholder="Price sale" required name='price_ch' type='number' min="1"/>
+                                <label for="price">Price sale</label>
+                            </div>
+                        </fieldset>
+                        <br>
+                        <fieldset>
+                            <legend><b>Tour Details (Thai)</b></legend>
+                            <!--  Text : Tour name  -->
+                            <div class="input-field" id="name" name="tour_description">
+
+                                <input placeholder="Tour description here" required name="tour_description_th" type="text"/>
+                                <label for="tour_description">Tour description</label>
+                            </div>
+                            <!--  Text : Highlight  -->
+                            <div class="input-field" id="highlight" name='highlight'>
+                                <input placeholder="Highlight" required name='highlight_th' type='text'/>
+                                <label for="highlight">Highlight</label>
+                            </div>
+                            <!--  Region  -->
+                            <div class="input-field" id="region" name='price'>
+                                <input placeholder="Region" required name='region_th' type='text'/>
+                                <label for="region">Region</label>
+                            </div>
+                            <!--  Province  -->
+                            <div class="input-field" id="province" name='province'>
+                                <input placeholder="Province" required name='province_th' type='text'/>
+                                <label for="province">province</label>
+                            </div>
+                            <!--  Price sale  -->
+                            <div class="input-field" id="price" name='price'>
+                                <input placeholder="Price sale" required name='price_th' type='number' min="1"/>
+                                <label for="price">Price sale</label>
                             </div>
                         </fieldset>
                         <!--Start-End Date-->
-                        <div id="tour_round" class="col s12">
-                            <div class="section"></div>
-                            <fieldset>
-                                <legend>Tour Round</legend>
-                                <div class="trdate">
-                                    <div class="col s6">
-                                        <span><b>Start Date</b></span>
-                                        <input required name='start_date[]' type='date' id="start1" class="start" datagrp="1" onchange="selectStart(this)"/>
-                                    </div>
-                                    <div class="col s6">
-                                        <span><b>End Date</b></span>
-                                        <input required name='end_date[]' type='date' id="end1" class="end"  datagrp="1" onchange="selectEnd(this)"/><br>
-                                    </div>
-                                </div>
-                                <input type="button" class="add_more_tr btn amber" value="Add More">
-                            </fieldset>
-                        </div>
                     </div>
                     <div class="col s12 l6">
+                      <!--  Max # of customer  -->
+                      <div class="input-field" id="max" name="max">
+                          <input placeholder="Max number of customer" required name='max' type='number' min="1"/>
+                          <label for="max">Max</label>
+                      </div>
                         <div class="col s12 l4" id="type">
                             <!--  Tour type  -->
                             <h5>Tour Type</h5>
@@ -242,6 +284,23 @@ require 'module/language/init.php';
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div id="tour_round" class="col s12">
+                            <div class="section"></div>
+                            <fieldset>
+                                <legend>Tour Round</legend>
+                                <div class="trdate">
+                                    <div class="col s6">
+                                        <span><b>Start Date</b></span>
+                                        <input required name='start_date[]' type='date' id="start1" class="start" datagrp="1" onchange="selectStart(this)"/>
+                                    </div>
+                                    <div class="col s6">
+                                        <span><b>End Date</b></span>
+                                        <input required name='end_date[]' type='date' id="end1" class="end"  datagrp="1" onchange="selectEnd(this)"/><br>
+                                    </div>
+                                </div>
+                                <input type="button" class="add_more_tr btn amber" value="Add More">
+                            </fieldset>
                         </div>
 
                     </div>

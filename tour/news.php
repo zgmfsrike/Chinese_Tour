@@ -100,7 +100,11 @@ $string_news_download_pdf = 'Download PDF File:';
     }
     ?>
     <div>
-      <h4><?php echo $string_news_download_pdf;?></h4>
+      <?php
+      if(mysqli_num_rows($result_pdf) > 0){
+        ?>
+        <h4><?php echo $string_news_download_pdf;?></h4>
+      <?php } ?>
       <!-- Download PDF File: -->
       <?php
       $txt = "PDF_";

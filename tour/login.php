@@ -21,7 +21,7 @@ require 'module/language/lang_login.php';
                 <div class="section"></div><div class="section"></div>
                 <div class="col s10  offset-s1 m8 offset-m2 l6 offset-l3 z-depth-1">
                     <div class="section"></div>
-                    <a href="index.php"><h5 id="title" class="center black-text"><?php echo $string_login_login;?></h5></a>
+                    <h5 id="title" class="center black-text"><?php echo $string_login_login;?></h5>
                     <div class="container">
                         <form action="php_login.php" data-toggle="validator" method="post">
                             <div class="row">

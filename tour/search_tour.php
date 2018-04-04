@@ -1,9 +1,12 @@
 <?php
 // session_cache_limiter('private_no_expire');
 include 'module/session.php';
-error_reporting (E_ALL ^ E_NOTICE);
+// error_reporting (E_ALL ^ E_NOTICE);
 include 'db_config.php';
 // include 'module/del_book_tour.php';
+
+require 'module/language/init.php';
+
 if(isset($_GET['tour_type'])){
   $tour_type = $_GET['tour_type'];
 }
@@ -153,7 +156,7 @@ include 'component/header.php';
     </div>
     <div class="col s1 right">
       <br>
-      <input class="btn  red" type="submit" name="search" value="GO">
+      <input class="btn red" type="submit" name="search" value="GO">
     </div>
 
   </div>
@@ -164,7 +167,7 @@ include 'component/header.php';
 
 
 <?php
-if($_POST['search']){
+if(isset($_POST['search'])){
   $tour_type_id = $_POST['tour_type_id'];
   $_SESSION['tour_type'] = $tour_type_id;
   // echo $tour_type_id;
@@ -240,29 +243,29 @@ if($_POST['search']){
         $link = "tour.php?id=".$tour_id."&seat=".$amount_people;
 
 
-        echo "
+        ?>
         <div class='row collection'>
-        <div class='row'>
-        <div class='col s12 l4'>
-        <img class='materialboxed' width='250' src='images/wechatQR.jpg'>
-        </div>
-        <div class='col s12 l4'>
-        <br/>
-        <h5><a href='tour.php?id=$tour_id'>" .$show['tour_description'] .  "</a></h5>
-        <h6>Tour Type :" .$show['tour_type'] .  "</h6>
-        <h6>Accommodation :" .$show['accommodation_level'] .  "</h6>
-        <h6>Vehicle : " .$show['vehicle_type'] .  "</h6>
-        </div>
-        <div class='col s12 l3 right-align'>
-        <br/><br/>
-        <h5>฿ " .$show['price'] .  "</h5>
-        <h6>Available Seat :".$seat_in_tour."</h6><br/>
-        <a href='$link'><button type='button' class='btn ' name='button'>Select</button></a>
-        </div>
-        </div>
+          <div class='row'>
+            <div class='col s12 l4'>
+              <img class='materialboxed' width='250' src='images/wechatQR.jpg'>
+            </div>
+            <div class='col s12 l4'>
+              <br/>
+              <h5><a href='tour.php?id=<?php echo $tour_id;?>'><?php echo $show['tour_description'];?></a></h5>
+              <h6>Tour Type: <?php echo $show['tour_type'];?></h6>
+              <h6>Accommodation: <?php echo $show['accommodation_level'];?></h6>
+              <h6>Vehicle: <?php echo ['vehicle_type'];?></h6>
+            </div>
+            <div class='col s12 l3 right-align'>
+              <br/><br/>
+              <h5>฿ <?php echo $show['price'];?></h5>
+              <h6>Available Seat :<?php echo $seat_in_tour;?></h6><br/>
+              <a href="<?php echo $link;?>"><button type='button' class='btn ' name='button'>Select</button></a>
+            </div>
+          </div>
         </div>
 
-        ";
+        <?php
 
       }
     }else {
