@@ -4,11 +4,14 @@ include 'db_config.php';
 ?>
 
 <?php
-if(isset($_GET['id']) and isset($_GET['seat'])){
+if(isset($_GET['id'])){
+  if(isset($_GET['seat'])){
+    $seat = $_GET['seat'];
+    $_SESSION['seat'] = $seat;
+  }
   $id = $_GET['id'];
-  $seat = $_GET['seat'];
   $_SESSION['tour_id'] = $id;
-  $_SESSION['seat'] = $seat;
+
   // tour
   $sql = "SELECT * FROM `tour` WHERE tour_id = $id";
   $result = mysqli_query($conn, $sql);
