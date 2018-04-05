@@ -1,58 +1,63 @@
-<?php
- header('Content-Type: text/html; charset=utf-8');
-include "module/hashing.php";
-include "db_config.php";
-
-
-if($_GET['lang']==''){
-  $lang = 'ewa';
-}else {
-  $_SESSION['lang'] = $_GET['lang'];
-  $lang = $_GET['lang'];
-  $sql ='SELECT * FROM `language` WHERE lang_id =1';
-  $result =mysqli_query($conn,$sql);
-  $data = mysqli_fetch_array($result);
-
-  $text = $data[$lang];
-  $text2 ='';
-}
-
-
-
-?>
 <!DOCTYPE html>
-<head>
-    <meta charset="UTF-8">
-</head>
-<body>
-  <select id='language' onchange="chang_lang(this)">
-    <option  disabled selected>Language</option>
-    <option value='en' >EN</option>
-    <option value='ch' >CH</option>
-  </select>
-  <script>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div class="container">
+      <form  action="test.php" method="post">
+        <div class="test">
 
-  function chang_lang(lang){
-    var lang = lang.options[lang.selectedIndex].value ;
-    var text = document.getElementById('test').innerHTML = lang;
-    if(text =='en'){
-      var text2 = document.getElementById('test2').innerHTML = "en";
-      window.location.href = 'test.php?lang=en';
-    }else if(text =='ch'){
-      var text2 = document.getElementById('test2').innerHTML = "ch";
-      window.location.href = 'test.php?lang=ch';
+          <input type="text" name="test[]">
+          <input type="text"name="test[]">
+          <input type="text"name="test[]">
+
+        </div>
+        <br>
+        <div class="name">
+          <input type="text" name="name[]">
+          <input type="text" name="name[]">
+          <input type="text" name="name[]">
+        </div>
+
+
+        <input type="submit" name="submit" value="submit">
+      </form>
+    </div>
+
+
+  </body>
+</html>
+<?php
+if(isset($_POST['submit'])){
+
+  if(isset($_POST['test'])){
+    $test = $_POST['test'];
+
+    for ($i=0; $i <4 ; $i++) {
+      if($test[$i] !==""){
+          echo "test".$test[$i];
+      }
 
     }
 
   }
 
+  if ($_POST['name']) {
+    $test2 = $_POST['name'];
 
-  </script>
-</body>
-<p id='test'></p>
-<p id='test2'></p>
-<?php
-echo "current lang : ".$lang."<br>";
-echo "Text : ".$text;
-?>
-</html>
+    foreach ($test2 as $key => $value) {
+      echo "name".$value."<br>";
+    }
+
+  }
+
+}
+
+
+
+
+
+
+ ?>

@@ -73,8 +73,8 @@ if(isset($_POST['submit'])){
               $description = "Tour Type :".$data['tour_type']."<br>
               Vehicle : ".$data['vehicle_type']."<br>
               Accommodation : ".$data['accommodation_level']."<br>
-              Departure Location : XXX <br>
-              Drop off Location : XXX <br>
+              Departure Location :".$departure_location." <br>
+              Drop off Location : ".  $dropoff_location." <br>
               Start Date : ".$data['start_date_time']."<br>
               End Date : ".$data['end_date_time']."<br>
               Reference Code : ".$reference_code;
