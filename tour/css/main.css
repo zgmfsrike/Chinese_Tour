@@ -1,1 +1,4 @@
-
+#img {
+  background-image: url("../images/watermark.png");
+  background-repeat: repeat;
+}
