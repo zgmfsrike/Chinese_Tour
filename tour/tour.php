@@ -8,7 +8,13 @@ require 'module/language/init.php';
 
 <?php
 if(isset($_GET['id'])){
+  if(isset($_GET['seat'])){
+    $seat = $_GET['seat'];
+    $_SESSION['seat'] = $seat;
+  }
   $id = $_GET['id'];
+  $_SESSION['tour_id'] = $id;
+
   // tour
   $sql = "SELECT * FROM tour_".$_COOKIE['lang']." WHERE tour_id = $id";
   $result = mysqli_query($conn, $sql);

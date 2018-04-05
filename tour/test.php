@@ -1,22 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div class="container">
+      <form  action="test.php" method="post">
+        <div class="test">
+
+          <input type="text" name="test[]">
+          <input type="text"name="test[]">
+          <input type="text"name="test[]">
+
+        </div>
+        <br>
+        <div class="name">
+          <input type="text" name="name[]">
+          <input type="text" name="name[]">
+          <input type="text" name="name[]">
+        </div>
+
+
+        <input type="submit" name="submit" value="submit">
+      </form>
+    </div>
+
+
+  </body>
+</html>
 <?php
-require 'module/db_config.php';
+if(isset($_POST['submit'])){
 
-$table_name = "message_dummy";
-$sql= "SELECT * FROM $table_name";
-$result = mysqli_query( $GLOBALS['conn'] , $sql );
+  if(isset($_POST['test'])){
+    $test = $_POST['test'];
 
-if (mysqli_num_rows($result) > 0) {
+    for ($i=0; $i <4 ; $i++) {
+      if($test[$i] !==""){
+          echo "test".$test[$i];
+      }
 
-  $row = mysqli_fetch_assoc($result);
+    }
 
-  $message_head = sprintf($row['head'], $_GET['msg'],'');
-  $message_body = sprintf($row['body'], $_GET['id'],'','');
-  $message_btn_text = $row['btn_text'];
-  $message_btn_link = $row['btn_link'];
+  }
 
-  // echo $message_head;
-  // echo $message_body;
-  // echo $message_btn_text;
-  // echo $message_btn_link;
+  if ($_POST['name']) {
+    $test2 = $_POST['name'];
+
+    foreach ($test2 as $key => $value) {
+      echo "name".$value."<br>";
+    }
+
+  }
+
 }
+
  ?>
