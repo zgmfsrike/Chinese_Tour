@@ -38,3 +38,10 @@ $(document).ready(function(){
     $('.materialboxed').materialbox();
 
 });
+
+$('.imagebox').bind('mouseenter mouseleave', function(e){
+  var label = $(this).children('.label');
+  label_ = (e.type === 'mouseenter') ?
+  label.stop(1).fadeTo(300,0.9) :
+  label.stop(1).fadeTo(300,0) ;
+});
