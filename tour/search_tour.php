@@ -6,6 +6,9 @@ include 'db_config.php';
 // include 'module/del_book_tour.php';
 
 require 'module/language/init.php';
+if(isset($_SESSION['tour_id'])){
+$id = $_SESSION['tour_id'];
+}
 
 
 $search_page = "search_tour.php";
@@ -55,7 +58,7 @@ include 'component/header.php';
       <!--Search Part 1-->
       <div class="row">
         <div class="section"></div>
-        <h4 class="center">Search Tour</h4>
+        <h4 class="center " >Search Tour</h4>
         <ul class="collection">
 
           <li class="collection-item">Tour Type
@@ -303,6 +306,8 @@ include 'component/header.php';
       if($price1!='' and $price2 !=''){
         $sql_search .= " AND (t.price BETWEEN $price1 AND $price2)";
       }
+
+      $sql_search .=" GROUP BY t.tour_id";
       $_SESSION['sql_search'] = $sql_search;
 
       //info per page
@@ -327,6 +332,7 @@ include 'component/header.php';
         $num_page=($num_row/$per_page)+1;
         $num_page=(int)$num_page;
       }
+
       $sql_search .=  " ORDER BY t.tour_id ASC LIMIT $page_start,$per_page";
 
 
@@ -338,6 +344,34 @@ include 'component/header.php';
 
 
       if($count !==0){
+        $sql_tour = "SELECT * FROM `tour_tour_type` INNER JOIN `tour_type` ON tour_tour_type.tour_type_id=tour_type.tour_type_id WHERE tour_id = $id";
+        $result_tour = mysqli_query($conn, $sql_tour);
+        $tour_type_all ="";
+        while ($type = mysqli_fetch_array($result_tour)) {
+          $tour_type_all .= $type['tour_type']." ";
+          # code...
+        }
+
+        $sql_acc = "SELECT * FROM `tour_accommodation` INNER JOIN `accommodation` ON tour_accommodation.accommodation_id=accommodation.accommodation_id WHERE tour_id = $id";
+        $result_acc = mysqli_query($conn, $sql_acc);
+        $acc_all = "";
+
+        while ($acc = mysqli_fetch_array($result_acc)) {
+          $acc_all .= $acc['accommodation_level']." ";
+          # code...
+        }
+
+        $sql_v = "SELECT * FROM `tour_vehicle_type` INNER JOIN `vehicle_type` ON tour_vehicle_type.vehicle_type_id=vehicle_type.vehicle_type_id WHERE tour_id = $id";
+        $result_v = mysqli_query($conn, $sql_v);
+        $vehicle_all  = "";
+
+        while ($v_all = mysqli_fetch_array($result_v)) {
+          $vehicle_all .= $v_all['vehicle_type']." ";
+          # code...
+        }
+
+
+
         while($show = mysqli_fetch_array($result)) {
           $tour_id = $show['tour_id'];
           $tour_type = $show['tour_type'];
@@ -356,9 +390,9 @@ include 'component/header.php';
           <div class='col s12 l4'>
           <br/>
           <h5><a href='tour.php?id=$tour_id'>" .$show['tour_description'] .  "</a></h5>
-          <h6>Tour Type :" .$show['tour_type'] .  "</h6>
-          <h6>Accommodation :" .$show['accommodation_level'] .  "</h6>
-          <h6>Vehicle : " .$show['vehicle_type'] .  "</h6>
+          <h6>Tour Type :" .$tour_type_all .  "</h6>
+          <h6>Accommodation :" .$acc_all .  "</h6>
+          <h6>Vehicle : " .$vehicle_all.  "</h6>
           </div>
           <div class='col s12 l3 right-align'>
           <br/><br/>
