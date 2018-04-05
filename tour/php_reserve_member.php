@@ -33,9 +33,10 @@ if(isset($_POST['book'])){
     AND province ='' AND zipcode = 0 AND passport_id =0 AND reservation_age =0 AND avoid_food =''
     ";
     $result_delete = mysqli_query($conn,$sql_delete_null);
+    $tour = "tour_".$_COOKIE['lang'];
 
     $sql = "SELECT  t.tour_id,t.max_customer, t.available_seat
-    FROM tour t INNER JOIN tour_round tr on t.tour_id = tr.tour_id
+    FROM $tour t INNER JOIN tour_round tr on t.tour_id = tr.tour_id
     WHERE tr.tour_round_id = $tour_round_id";
     $result = mysqli_query($conn,$sql);
     if($result){

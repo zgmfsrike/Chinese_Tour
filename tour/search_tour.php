@@ -242,12 +242,12 @@ include 'component/header.php';
           $flag_close_tag_acc = true;
         }else if(!empty($accommodation_id[$i])){
           $sql_search .=" OR ";
-          $sql_search_search .=" ta.accommodation_id ='$accommodation_id[$i]'";
+          $sql_search .=" ta.accommodation_id ='$accommodation_id[$i]'";
           $flag_close_tag_acc = true;
         }
       }
       if($flag_close_tag_acc == true){
-        $sql_search_search .=")";
+        $sql_search .=")";
       }
       for ($j=0; $j<=3 ; $j++) {
         if($j ==0 && !empty($vehicle_id[$j])){
