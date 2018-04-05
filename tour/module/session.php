@@ -29,10 +29,11 @@ if(isset($_SESSION['book_tour_expired'])){
           AND reference_code = '$reference_code'";
       $result_count = mysqli_query($conn,$sql_count);
       if($result_count){
+        $tour = "tour_".$_COOKIE['lang'];
 
         $count = mysqli_num_rows($result_count);
         $sql = "SELECT  t.tour_id,t.max_customer, t.available_seat
-        FROM tour t INNER JOIN tour_round tr on t.tour_id = tr.tour_id
+        FROM $tour t INNER JOIN tour_round tr on t.tour_id = tr.tour_id
         WHERE tr.tour_round_id = '$tour_round_id'";
         $result = mysqli_query($conn,$sql);
         if($result){
@@ -41,7 +42,7 @@ if(isset($_SESSION['book_tour_expired'])){
           $tour_id = $data['tour_id'];
           $current_seat = $available_seat+$count;
 
-          $sql_update="UPDATE `tour` SET `available_seat`='$current_seat' WHERE tour_id = '$tour_id'";
+          $sql_update="UPDATE $tour SET `available_seat`='$current_seat' WHERE tour_id = '$tour_id'";
           $result_update = mysqli_query($conn,$sql_update);
           if($result_update){
             $sql_delete_null = "DELETE FROM tour_round_member  WHERE id = '$member_id' AND last_name =''
