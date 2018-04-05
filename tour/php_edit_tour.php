@@ -420,8 +420,6 @@ if(isset($_POST['submit']) and isset($_POST['id'])){
       // exit();
 
       $result = mysqli_query( $GLOBALS['conn'] , $sql );
-
-
     }
 
     for($i = $db_count; $i < count($_POST['start_date']);$i++ ){
