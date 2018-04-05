@@ -2,9 +2,11 @@
 include 'module/session.php';
 
 if(isset($_POST['submit'])){
+
   //check amount of people in group
   if(isset($_SESSION['seat']) and isset($_SESSION['tour_round'])){
     $amount_people = $_SESSION['seat'];
+    echo "now";
     // echo $amount_people."<br>";
     // echo $_SESSION['tour_round_id'];
     // echo "Tour round : ".$_SESSION['tour_round_id'];
@@ -30,7 +32,7 @@ if(isset($_POST['submit'])){
         $_SESSION['tour']['p'.$i]['province'] = $_POST['province'.$i];
         $_SESSION['tour']['p'.$i]['zipcode'] = $_POST['zipcode'.$i];
         $_SESSION['tour']['p'.$i]['avoidfood'] = $_POST['avoidfood'.$i];
-        
+
 
 
 

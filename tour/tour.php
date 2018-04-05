@@ -33,6 +33,8 @@ if(isset($_GET['id'])){
   $price = $data['price'];
   $max_customer = $data['max_customer'];
   $rating = $data['rating'];
+
+  $trip_page = 'php_reserve_member.php';
   ?>
 
 
@@ -46,6 +48,7 @@ if(isset($_GET['id'])){
 
     <!--tour body-->
     <div class="container">
+      <form action="<?php echo $trip_page;?>" method="POST">
       <div class="section"></div><div class="section"></div>
       <div class="row">
         <h3 class=""> <?php echo $tour_description; ?></h3>
@@ -146,7 +149,7 @@ if(isset($_GET['id'])){
           <input type="text" name="result_price" id='result_price' value="" style="display:none" >
 
           <label>Tour round</label>
-          <select class="browser-default" name="dropOff" required>
+          <select class="browser-default" name="tour_round" required>
             <option value="">Please select</option>
             <?php
             $sql = "SELECT * FROM `tour_round` WHERE tour_id = $id";
@@ -183,6 +186,7 @@ if(isset($_GET['id'])){
         </div>
       </div>
     </div>
+    </form>
     <div class="section"></div>
     <div class="row card">
       <div class="col s12">
@@ -315,6 +319,7 @@ if(isset($_GET['id'])){
         // })
       }
       </script>
+
 
     </div>
   </body>

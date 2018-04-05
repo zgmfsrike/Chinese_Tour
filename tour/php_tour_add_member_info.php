@@ -15,8 +15,9 @@ if(isset($_POST['submit'])){
 
     $reference_code = $_SESSION['ref_code'];
     $trigger = false;
+    $tour = "tour_".$_COOKIE['lang'];
     $sql ="SELECT *
-      FROM tour_round tr INNER JOIN tour t on tr.tour_id = t.tour_id
+      FROM tour_round tr INNER JOIN $tour t on tr.tour_id = t.tour_id
        INNER JOIN tour_tour_type ttt ON t.tour_id = ttt.tour_id
        INNER JOIN tour_type tt ON tt.tour_type_id = ttt.tour_type_id
        INNER JOIN tour_vehicle_type tvt on t.tour_id = tvt.tour_id

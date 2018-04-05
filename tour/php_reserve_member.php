@@ -7,12 +7,14 @@ $_SESSION['book_tour_expired'] = $time+(60*50);
 
 if(isset($_POST['book'])){
   if(isset($_SESSION['seat']) and isset($_SESSION['login_id'])){
+
     if(isset($_POST['tour_round']) and isset($_POST['result_price'])){
       $tour_round_id = $_POST['tour_round'];
       $_SESSION['tour_round'] =$tour_round_id;
       $_SESSION['result_price'] = $_POST['result_price'];
       $_SESSION['departure_location'] = $_POST['depart'];
       $_SESSION['dropoff_location'] = $_POST['dropOff'];
+      // echo "ผ่าน";
 
     }
 

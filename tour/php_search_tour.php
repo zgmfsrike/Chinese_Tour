@@ -51,23 +51,20 @@ $search_all_page ="search_all_tour.php";
 
 
                //-----------------------------Search fucntion----------------------------------------------------//
-              
+
                if($_GET['tourName'] != ""){
 
                    $tour_description = $_GET['tourName'];
                    $sql= "SELECT t.tour_description,
-                   -- t.rating,tt.tour_type,vt.vehicle_type,a.accommodation_level,
                    t.tour_id
-               FROM tour t
-               -- INNER JOIN tour_type tt ON t.tour_type_id = tt.tour_type_id
-                 -- INNER JOIN vehicle_type vt  ON t.vehicle_type_id = vt.vehicle_type_id
-                     -- INNER JOIN accommodation a ON t.accommodation_id = a.accommodation_id
+               FROM tour_".$_COOKIE['lang']." t
                          WHERE t.tour_description LIKE '%$tour_description%' ";
                    $result = mysqli_query( $GLOBALS['conn'] , $sql );
                   // $result = page_query($GLOBALS['conn'],$sql,3);
+                  // echo $sql;
                   $num_row =mysqli_num_rows($result);
 
-                  $per_page = 3;
+                  $per_page = 1;
                   $page = $_GET['page'];
                   if(!$_GET['page']){
                     $page =1 ;

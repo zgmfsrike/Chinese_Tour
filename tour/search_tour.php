@@ -7,12 +7,14 @@ include 'db_config.php';
 
 require 'module/language/init.php';
 
+
+$search_page = "search_tour.php";
 if(isset($_GET['tour_type'])){
   $tour_type = $_GET['tour_type'];
 }else{
   $tour_type = 1;
 }
-$search_page = "search_tour.php";
+
 if(isset($_POST['tour_type_id'])){
   $tour_type = $_POST['tour_type_id'];
 
@@ -35,6 +37,7 @@ if(!empty($_POST['region'])){
 if(!empty($_POST['province'])){
   $province = $_POST['province'];
 }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -198,7 +201,7 @@ include 'component/header.php';
 
 
     <?php
-    if($_POST['search']){
+    if(isset($_POST['search'])){
       $tour_type_id = $_POST['tour_type_id'];
       $_SESSION['tour_type'] = $tour_type_id;
       // echo $tour_type_id;
@@ -216,90 +219,120 @@ include 'component/header.php';
 
       $amount_people = $_POST['amount_people'];
 
+      $tour = "tour_".$_COOKIE['lang'];
 
-      $sql = 'SELECT t.tour_description,tt.tour_type,ac.accommodation_level,vt.vehicle_type ,t.price,t.tour_id,t.highlight,t.available_seat
-      FROM tour t INNER JOIN tour_vehicle_type tv ON t.tour_id = tv.tour_id
+
+      $sql_search = "SELECT t.tour_description,tt.tour_type,ac.accommodation_level,vt.vehicle_type ,t.price,t.tour_id,t.highlight,t.available_seat
+      FROM $tour t INNER JOIN tour_vehicle_type tv ON t.tour_id = tv.tour_id
       INNER JOIN vehicle_type vt ON tv.vehicle_type_id = vt.vehicle_type_id
       INNER JOIN tour_accommodation ta ON t.tour_id = ta.tour_id
       INNER JOIN accommodation ac ON ta.accommodation_id = ac.accommodation_id
       INNER JOIN tour_tour_type ttt ON t.tour_id = ttt.tour_id
-      INNER JOIN tour_type tt on ttt.tour_type_id = tt.tour_type_id WHERE';
+      INNER JOIN tour_type tt on ttt.tour_type_id = tt.tour_type_id WHERE";
+
+
       if($tour_type_id!==''){
-        $sql .= " ttt.tour_type_id =$tour_type_id AND t.available_seat >=$amount_people" ;
+        $sql_search .= " ttt.tour_type_id =$tour_type_id AND t.available_seat >=$amount_people" ;
       }
 
       for($i=0;$i<=4;$i++){
         if($i == 0 && !empty($accommodation_id[$i])){
-          $sql .= " AND";
-          $sql .= "(ta.accommodation_id ='$accommodation_id[$i]'";
+          $sql_search .= " AND";
+          $sql_search .= "(ta.accommodation_id ='$accommodation_id[$i]'";
           $flag_close_tag_acc = true;
         }else if(!empty($accommodation_id[$i])){
-          $sql .=" OR ";
-          $sql .=" ta.accommodation_id ='$accommodation_id[$i]'";
+          $sql_search .=" OR ";
+          $sql_search_search .=" ta.accommodation_id ='$accommodation_id[$i]'";
           $flag_close_tag_acc = true;
         }
       }
       if($flag_close_tag_acc == true){
-        $sql .=")";
+        $sql_search_search .=")";
       }
       for ($j=0; $j<=3 ; $j++) {
         if($j ==0 && !empty($vehicle_id[$j])){
-          $sql .=" AND ";
-          $sql .="(tv.vehicle_type_id = '$vehicle_id[$j]' ";
+          $sql_search .=" AND ";
+          $sql_search .="(tv.vehicle_type_id = '$vehicle_id[$j]' ";
           $flag_close_tag_vehicle = true;
 
         }else if(!empty($vehicle_id[$j])){
-          $sql .= " OR ";
-          $sql .= " tv.vehicle_type_id = '$vehicle_id[$j]' ";
+          $sql_search .= " OR ";
+          $sql_search .= " tv.vehicle_type_id = '$vehicle_id[$j]' ";
           $flag_close_tag_vehicle = true;
 
         }
       }
       if($flag_close_tag_vehicle == true){
-        $sql .=" )";
+        $sql_search .=" )";
       }
 
       for ($k=0; $k <=1 ; $k++) {
         if ($k ==0 && !empty($region[$k])) {
-          $sql .= " AND ";
-          $sql .= "(t.region ='$region[$k]'";
+          $sql_search .= " AND ";
+          $sql_search .= "(t.region ='$region[$k]'";
           $flag_close_tag_region = true;
         }else if (!empty($region[$k])) {
-          $sql .= " OR ";
-          $sql .= " t.region ='$region[$k]'";
+          $sql_search .= " OR ";
+          $sql_search .= " t.region ='$region[$k]'";
           $flag_close_tag_region = true;
           # code...
         }
       }
       if($flag_close_tag_region == true){
-        $sql .= ")";
+        $sql_search .= ")";
       }
 
 
       for ($l=0; $l <=2 ; $l++) {
         if ($l ==0 && !empty($province[$l])) {
-          $sql .= " AND ";
-          $sql .= "(t.province = '$province[$l]'";
+          $sql_search .= " AND ";
+          $sql_search .= "(t.province = '$province[$l]'";
           $flag_close_tag_pv = true;
         }else if (!empty($province[$l])) {
-          $sql .= " OR ";
-          $sql .= "t.province = '$province[$l]'";
+          $sql_search .= " OR ";
+          $sql_search .= "t.province = '$province[$l]'";
           $flag_close_tag_pv = true;
         }
       }
       if($flag_close_tag_pv == true){
-        $sql .= ")";
+        $sql_search .= ")";
 
       }
 
 
       if($price1!='' and $price2 !=''){
-        $sql .= " AND (t.price BETWEEN $price1 AND $price2)";
+        $sql_search .= " AND (t.price BETWEEN $price1 AND $price2)";
       }
+      $_SESSION['sql_search'] = $sql_search;
 
-      $result = mysqli_query($conn,$sql);
+      //info per page
+      $result = mysqli_query($conn,$sql_search);
+      $num_row =mysqli_num_rows($result);
+      $per_page = 5;
+      if(isset($_GET['page'])){
+          $page = $_GET['page'];
+      }else{
+          $page =1 ;
+      }
+      $prev_page = $page-1;
+      $next_page = $page+1;
+
+      $page_start = (($per_page*$page)-$per_page);
+
+      if($num_row<=$per_page){
+        $num_page = 1;
+      }else if(($num_row%$per_page)==0){
+        $num_page =($num_row/$per_page);
+      }else{
+        $num_page=($num_row/$per_page)+1;
+        $num_page=(int)$num_page;
+      }
+      $sql_search .=  " ORDER BY t.tour_id ASC LIMIT $page_start,$per_page";
+
+
+      $result = mysqli_query($conn,$sql_search);
       $count = mysqli_num_rows($result);
-      // echo $sql."<br>";
+      // echo $sql_search."<br>";
 
 
 
@@ -358,10 +391,162 @@ include 'component/header.php';
           </div>
           ";
 
+
+
+
         }
+        ?>
+        <div class="right-align">
+          <ul class="pagination">
+            <?php
+
+              if($prev_page){
+                echo "<li class='disabled'><a href ='search_tour.php?page=$prev_page&seat=$amount_people'><i class='material-icons'>chevron_left</i></a></li>";
+              }
+              for($i =1;$i<=$num_page;$i++){
+                if($i != $page){
+                  echo "<li><a href='search_tour.php?page=$i&seat=$amount_people'>$i</a></li>";
+                }else if($i = $page){
+                  echo "<li class='active'><a href='search_tour.php?page=$i&seat=$amount_people'>$i</a></li>";
+                }
+              }
+              if($page !=$num_page){
+                echo "<li class='waves-effect'><a href='search_tour.php?page=$next_page&seat=$amount_people'><i class='material-icons'>chevron_right</i></a></li>";
+              }
+
+
+            ?>
+          </ul>
+        </div>
+
+        <?php
       }else {
         echo "Nothning found";
       }
+    }else if(isset($_GET['page'])){
+      if(isset($_SESSION['sql_search'])){
+        if(isset($_GET['seat'])){
+          $amount_people = $_GET['seat'];
+
+        }
+        $sql_search = $_SESSION['sql_search'];
+        $result = mysqli_query($conn,$sql_search);
+        $num_row =mysqli_num_rows($result);
+        $per_page = 5;
+        if(isset($_GET['page'])){
+            $page = $_GET['page'];
+        }else{
+            $page =1 ;
+        }
+        $prev_page = $page-1;
+        $next_page = $page+1;
+
+        $page_start = (($per_page*$page)-$per_page);
+
+        if($num_row<=$per_page){
+          $num_page = 1;
+        }else if(($num_row%$per_page)==0){
+          $num_page =($num_row/$per_page);
+        }else{
+          $num_page=($num_row/$per_page)+1;
+          $num_page=(int)$num_page;
+        }
+        $sql_search .=  " ORDER BY t.tour_id ASC LIMIT $page_start,$per_page";
+        $result = mysqli_query($conn,$sql_search);
+        $count = mysqli_num_rows($result);
+
+        if($count !==0){
+          while($show = mysqli_fetch_array($result)) {
+            $tour_id = $show['tour_id'];
+            $tour_type = $show['tour_type'];
+            $seat_in_tour = $show['available_seat'];
+
+
+            $link = "tour.php?id=".$tour_id."&seat=".$amount_people;
+
+
+            echo "
+            <div class='row collection hide-on-med-and-down'>
+            <div class='row'>
+            <div class='col s12 l4'>
+            <img class='materialboxed' width='250' src='images/wechatQR.jpg'>
+            </div>
+            <div class='col s12 l4'>
+            <br/>
+            <h5><a href='tour.php?id=$tour_id'>" .$show['tour_description'] .  "</a></h5>
+            <h6>Tour Type :" .$show['tour_type'] .  "</h6>
+            <h6>Accommodation :" .$show['accommodation_level'] .  "</h6>
+            <h6>Vehicle : " .$show['vehicle_type'] .  "</h6>
+            </div>
+            <div class='col s12 l3 right-align'>
+            <br/><br/>
+            <h5>฿ " .$show['price'] .  "</h5>
+            <h6>Available Seat :".$seat_in_tour."</h6><br/>
+            <a href='$link'><button type='button' class='btn ' name='button'>Select</button></a>
+            </div>
+            </div>
+            </div>
+
+            <div class='row collection show-on-medium-and-down hide-on-large-only'>
+            <div class='row center'>
+            <div class='col s12 l4'>
+            <img class='materialboxed' width='250' src='images/wechatQR.jpg'>
+            </div>
+            <div class='col s12 l4'>
+            <br/>
+            <h5><a href='tour.php?id=$tour_id'>" .$show['tour_description'] .  "</a></h5>
+            <h6>Tour Type :" .$show['tour_type'] .  "</h6>
+            <h6>Accommodation :" .$show['accommodation_level'] .  "</h6>
+            <h6>Vehicle : " .$show['vehicle_type'] .  "</h6>
+            </div>
+            <div class='col s12 l3 right-align'>
+            <br/><br/>
+            <h5>฿ " .$show['price'] .  "</h5>
+            <h6>Available Seat :".$seat_in_tour."</h6><br/>
+            <a href='$link'><button type='button' class='btn ' name='button'>Select</button></a>
+            </div>
+            </div>
+            </div>
+            ";
+
+          }
+          ?>
+          <div class="right-align">
+            <ul class="pagination">
+              <?php
+
+                if($prev_page){
+                  echo "<li class='disabled'><a href ='search_tour.php?page=$prev_page&seat=$amount_people'><i class='material-icons'>chevron_left</i></a></li>";
+                }
+                for($i =1;$i<=$num_page;$i++){
+                  if($i != $page){
+                    echo "<li><a href='search_tour.php?page=$i&seat=$amount_people'>$i</a></li>";
+                  }else if($i = $page){
+                    echo "<li class='active'><a href='search_tour.php?page=$i&seat=$amount_people'>$i</a></li>";
+                  }
+                }
+                if($page !=$num_page){
+                  echo "<li class='waves-effect'><a href='search_tour.php?page=$next_page&seat=$amount_people'><i class='material-icons'>chevron_right</i></a></li>";
+                }
+
+
+              ?>
+            </ul>
+          </div>
+
+
+
+    <?php
+
+      }else {
+        echo "Nothning found";
+      }
+
+
+
+      }
+
+
     }
 
 
@@ -369,17 +554,7 @@ include 'component/header.php';
 
 
     <!--Pages-->
-    <div class="right-align">
-      <ul class="pagination">
-        <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-        <li class="active"><a href="#!">1</a></li>
-        <li class="waves-effect"><a href="#!">2</a></li>
-        <li class="waves-effect"><a href="#!">3</a></li>
-        <li class="waves-effect"><a href="#!">4</a></li>
-        <li class="waves-effect"><a href="#!">5</a></li>
-        <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-      </ul>
-    </div>
+
     <br/>
   </div>
 

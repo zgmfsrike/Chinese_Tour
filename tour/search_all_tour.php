@@ -25,12 +25,15 @@ include 'component/header.php';
 // include 'module/session.php';
 // isLogin();
 // include 'php_profile_func.php';
-$sql = "SELECT * FROM `tour`";
+
+$sql = "SELECT * FROM tour_".$_COOKIE['lang'];
+
+
 // $result = page_query($GLOBALS['conn'],$sql,3);
 $result = mysqli_query($conn,$sql);
 $num_row =mysqli_num_rows($result);
 
-$per_page = 3;
+$per_page = 1;
 $page = $_GET['page'];
 if(!$_GET['page']){
   $page =1 ;
@@ -49,8 +52,11 @@ if($num_row<=$per_page){
   $num_page=($num_row/$per_page)+1;
   $num_page=(int)$num_page;
 }
+
+
 $sql .=  " ORDER BY tour_id ASC LIMIT $page_start,$per_page";
 $result = mysqli_query($conn,$sql);
+
 
 
 ?>
@@ -91,7 +97,7 @@ $result = mysqli_query($conn,$sql);
               </tr>
             </thead>
             <?php
-            $id = 1;
+
             while($show = mysqli_fetch_array($result)) {
               $tourId = $show['tour_id'];
 
@@ -100,7 +106,7 @@ $result = mysqli_query($conn,$sql);
                 <?php
                 // echo "<td align ='center'>" .$show['tour_name'] .  "</td> ";
                 ?>
-                <td align ='center'><?php echo $id;?></td>
+                <td align ='center'><?php echo $tourId;?></td>
                 <td align ='center'><?php echo $show['tour_description'];?></td>
                 <?php
                 // echo "<td align ='center'>" .$show['rating'] .  "</td> ";
@@ -115,7 +121,6 @@ $result = mysqli_query($conn,$sql);
                 </td>
               </tr>
               <?php
-              $id++;
             }
             ?>
           </table><br>
@@ -162,7 +167,7 @@ $result = mysqli_query($conn,$sql);
           $result = mysqli_query($conn,$sql);
           $num_row =mysqli_num_rows($result);
 
-          $per_page = 3;
+          $per_page = 1;
           $page = $_GET['page'];
           if(!$_GET['page']){
             $page =1 ;

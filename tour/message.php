@@ -120,6 +120,11 @@ require 'module/language/init.php';
     // under construction
     if($msg == 'under_construction') $message = message('This page is under construction','Sorry for inconvenient','index.php','Go to home page');
 
+    if($msg == 'book_tour_succ')  message('Success!','Send e-mail to member complete','index.php','Go to home page');
+
+
+
+
     // default
     if(!isset($message)){
       message('Request not found','','','');

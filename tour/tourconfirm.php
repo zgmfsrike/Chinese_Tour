@@ -2,6 +2,8 @@
 <?php
 include 'module/session.php';
 include 'db_config.php';
+require 'module/language/init.php';
+
 
 
 
@@ -88,8 +90,10 @@ include 'db_config.php';
             if(isset($_SESSION['tour_round']) and isset($_SESSION['tour_type'])){
               $tour_round_id = $_SESSION['tour_round'];
               $tour_type_id =  $_SESSION['tour_type'];
+
+              $tour = "tour_".$_COOKIE['lang'];
               $sql ="SELECT *
-                FROM tour_round tr INNER JOIN tour t on tr.tour_id = t.tour_id
+                FROM tour_round tr INNER JOIN $tour t on tr.tour_id = t.tour_id
                  INNER JOIN tour_tour_type ttt ON t.tour_id = ttt.tour_id
                  INNER JOIN tour_type tt ON tt.tour_type_id = ttt.tour_type_id
                  INNER JOIN tour_vehicle_type tvt on t.tour_id = tvt.tour_id
