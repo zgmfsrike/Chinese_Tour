@@ -98,29 +98,26 @@ if($_GET['news_id'] != ""){
             <div class="row">
               <h5 class="center">English</h5>
               <div class="col s12">
-                <h5>News Topic (English)</h5>
                 <div class="input-field col s12">
                   <input id="newsTopic" name="newstopic_en" type="text" class="validate" value="<?php echo $news_topic_en; ?>">
-                  <label for="newsTopic">Topic</label>
+                  <label for="newsTopic">News Topic (English)</label>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col s12">
-                <h5>Content</h5>
                 <div class="input-field col s12">
                   <textarea id="textarea2" name="newsContent_en" class="materialize-textarea" required><?php echo $news_content_en; ?></textarea>
-                  <label for="textarea1"></label>
+                  <label for="textarea1">News Content</label>
                 </div>
               </div>
             </div>
 
             <div class="row">
               <div class="col s12">
-                <h5>Description</h5>
                 <div class="input-field col s12">
                   <textarea id="textarea1" name="newsDescription_en" class="materialize-textarea"><?php echo $news_description_en; ?></textarea>
-                  <label for="textarea1"></label>
+                  <label for="textarea1">News Description</label>
                 </div>
               </div>
             </div>
@@ -130,29 +127,26 @@ if($_GET['news_id'] != ""){
             <div class="row">
               <h5 class="center">中文</h5>
               <div class="col s12">
-                <h5>News Topic (中文)</h5>
                 <div class="input-field col s12">
                   <input id="newsTopic" name="newstopic_ch" type="text" class="validate" value="<?php echo $news_topic_ch; ?>">
-                  <label for="newsTopic">Topic</label>
+                  <label for="newsTopic">News Topic (中文)</label>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col s12">
-                <h5>Content</h5>
                 <div class="input-field col s12">
                   <textarea id="textarea2" name="newsContent_ch" class="materialize-textarea" required><?php echo $news_content_ch; ?></textarea>
-                  <label for="textarea1"></label>
+                  <label for="textarea1">News Content</label>
                 </div>
               </div>
             </div>
 
             <div class="row">
               <div class="col s12">
-                <h5>Description</h5>
                 <div class="input-field col s12">
                   <textarea id="textarea1" name="newsDescription_ch" class="materialize-textarea"><?php echo $news_description_ch; ?></textarea>
-                  <label for="textarea1"></label>
+                  <label for="textarea1">News Description</label>
                 </div>
               </div>
             </div>
@@ -162,29 +156,26 @@ if($_GET['news_id'] != ""){
             <div class="row">
               <h5 class="center">ภาษาไทย</h5>
               <div class="col s12">
-                <h5>News Topic (ภาษาไทย)</h5>
                 <div class="input-field col s12">
                   <input id="newsTopic" name="newstopic_th" type="text" class="validate" value="<?php echo $news_topic_th; ?>">
-                  <label for="newsTopic">Topic</label>
+                  <label for="newsTopic">News Topic (ภาษาไทย)</label>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col s12">
-                <h5>Content</h5>
                 <div class="input-field col s12">
                   <textarea id="textarea2" name="newsContent_th" class="materialize-textarea" required><?php echo $news_content_th; ?></textarea>
-                  <label for="textarea1"></label>
+                  <label for="textarea1">News Content</label>
                 </div>
               </div>
             </div>
 
             <div class="row">
               <div class="col s12">
-                <h5>Description</h5>
                 <div class="input-field col s12">
                   <textarea id="textarea1" name="newsDescription_th" class="materialize-textarea"><?php echo $news_description_th; ?></textarea>
-                  <label for="textarea1"></label>
+                  <label for="textarea1">News Description</label>
                 </div>
               </div>
             </div>

@@ -30,29 +30,25 @@ include 'component/header.php';
           <div class="row">
             <h5 class="center">English</h5>
             <div class="col s12">
-              <h5>News Topic (English)</h5>
               <div class="input-field col s12">
                 <input id="newsTopic" type="text" class="validate" name="newsAddtopic_en" required>
-                <label for="newsTopic">Topic</label>
+                <label for="newsTopic">News Topic (English)</label>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col s12 l12">
-              <h5>Content</h5>
               <div class="input-field col s12">
                 <textarea id="textarea2" name="newsContent_en" class="materialize-textarea" required></textarea>
-                <label for="textarea1">
-                </label>
+                <label for="textarea1">News Content</label>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col s12 l12">
-              <h5>Description</h5>
               <div class="input-field col s12">
                 <textarea name="newsDescription_en" id="textarea1" class="materialize-textarea" required></textarea>
-                <label for="textarea1">Textarea</label>
+                <label for="textarea1">News Description</label>
               </div>
             </div>
           </div>
@@ -62,29 +58,26 @@ include 'component/header.php';
           <div class="row">
             <h5 class="center">中文</h5>
             <div class="col s12 l12">
-              <h5>News Topic (中文)</h5>
               <div class="input-field col s12">
                 <input id="newsTopic" type="text" class="validate" name="newsAddtopic_ch" required>
-                <label for="newsTopic">Topic</label>
+                <label for="newsTopic">News Topic (中文)</label>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col s12 l12">
-              <h5>Content</h5>
               <div class="input-field col s12">
                 <textarea id="textarea2" name="newsContent_ch" class="materialize-textarea" required></textarea>
-                <label for="textarea1">
+                <label for="textarea1">News Content
                 </label>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col s12 l12">
-              <h5>Description</h5>
               <div class="input-field col s12">
                 <textarea name="newsDescription_ch" id="textarea1" class="materialize-textarea" required></textarea>
-                <label for="textarea1">Textarea</label>
+                <label for="textarea1">News Description</label>
               </div>
             </div>
           </div>
@@ -94,29 +87,26 @@ include 'component/header.php';
           <div class="row">
             <h5 class="center">ภาษาไทย</h5>
             <div class="col s12 l12">
-              <h5>News Topic (Thai)</h5>
               <div class="input-field col s12">
                 <input id="newsTopic" type="text" class="validate" name="newsAddtopic_th" required>
-                <label for="newsTopic">Topic</label>
+                <label for="newsTopic">News Topic (ภาษาไทย)</label>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col s12 l12">
-              <h5>Content</h5>
               <div class="input-field col s12">
                 <textarea id="textarea2" name="newsContent_th" class="materialize-textarea" required></textarea>
-                <label for="textarea1">
+                <label for="textarea1">News Content
                 </label>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col s12 l12">
-              <h5>Description</h5>
               <div class="input-field col s12">
                 <textarea name="newsDescription_th" id="textarea1" class="materialize-textarea" required></textarea>
-                <label for="textarea1">Textarea</label>
+                <label for="textarea1">News Description</label>
               </div>
             </div>
           </div>
