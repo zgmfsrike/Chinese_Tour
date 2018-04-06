@@ -11,6 +11,7 @@ require 'module/language/init.php';
 <!DOCTYPE html>
 <html>
 <?php
+
 if(!isset($_GET['news_id']) && $_GET['news_id'] == ""){
   header("location: message.php?msg=unknow_request");
 }
