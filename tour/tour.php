@@ -181,6 +181,11 @@ if(isset($_GET['id'])){
             ?>
             <button type="submit" class="waves-effect waves-light btn orange" name="book" value="Book">Book</button>
             <?php
+          }else if (!(isLoginAs(array('member')) || isLoginAs(array('admin')))){
+            ?>
+            <button type="submit" class="waves-effect btn orange disabled" name="book" value="Book">Book</button>
+            <p class="center" style="color:red;"><b>Please login before booking</b></p>
+            <?php
           }
           ?>
         </div>
