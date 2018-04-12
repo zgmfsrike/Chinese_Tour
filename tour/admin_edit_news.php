@@ -14,6 +14,7 @@ require 'module/language/init.php';
 if(!isset($_GET['news_id']) && $_GET['news_id'] == ""){
   header("location: message.php?msg=unknow_request");
 }
+$news = " news_".$_COOKIE['lang'];
 $news_id = $_GET['news_id'];
 $sql= "SELECT n.news_id,n.topic FROM news_".$_COOKIE['lang']." n WHERE n.news_id = '$news_id'";
 $result = mysqli_query( $GLOBALS['conn'] , $sql );
@@ -51,7 +52,7 @@ if($_GET['news_id'] != ""){
 
   // ----------- IMG & PDF---------------
   $sql_db =  "SELECT n.topic,n.topic,n.short_description,ni.news_image,np.news_pdf
-  FROM news n INNER JOIN news_image ni ON n.news_id = ni.news_id  INNER JOIN news_pdf np ON n.news_id = np.news_id
+  FROM $news n INNER JOIN news_image ni ON n.news_id = ni.news_id  INNER JOIN news_pdf np ON n.news_id = np.news_id
   WHERE n.news_id = $news_id" ;
   $result_db = mysqli_query($conn,$sql_db);
   $data =  mysqli_fetch_array($result_db);
@@ -61,7 +62,7 @@ if($_GET['news_id'] != ""){
 
   // -------------Only IMG---------- ------
   $sql_db_img = "SELECT n.topic,n.short_description,ni.news_image
-  FROM news n INNER JOIN news_image ni on n.news_id = ni.news_id
+  FROM $news n INNER JOIN news_image ni on n.news_id = ni.news_id
   WHERE n.news_id = $news_id";
   $result_img = mysqli_query($conn,$sql_db_img);
 
@@ -71,7 +72,7 @@ if($_GET['news_id'] != ""){
 
   // -----------------------Only PDF-------------------
   $sql_db_pdf = "SELECT n.topic,n.short_description,np.news_pdf
-  FROM news n INNER JOIN news_pdf np ON n.news_id = np.news_id
+  FROM $news n INNER JOIN news_pdf np ON n.news_id = np.news_id
   WHERE n.news_id = $news_id";
   $result_pdf = mysqli_query($conn,$sql_db_pdf);
 
@@ -192,10 +193,12 @@ if($_GET['news_id'] != ""){
               $count_pdf = 1;
               $img_path = "./images/";
 
+
               if($data){
                 // echo "Have img & pdf";
+
                 $sql_show_img = "SELECT ni.news_image
-                FROM news n INNER JOIN news_image ni on n.news_id =ni.news_id WHERE n.news_id = '$news_id'  ORDER BY img_index ASC ";
+                FROM $news n INNER JOIN news_image ni on n.news_id =ni.news_id WHERE n.news_id = '$news_id'  ORDER BY img_index ASC ";
                 $result_show_img = mysqli_query($conn,$sql_show_img);
                 while ($data_db_img = mysqli_fetch_array($result_show_img)) {
                   $img_file = $img_path.$data_db_img['news_image'];
@@ -240,7 +243,7 @@ if($_GET['news_id'] != ""){
                 }
 
                 $sql_show_pdf = "SELECT np.news_pdf
-                FROM news n INNER JOIN news_pdf np on n.news_id =np.news_id WHERE n.news_id = '$news_id'  ORDER BY pdf_index ASC";
+                FROM $news n INNER JOIN news_pdf np on n.news_id =np.news_id WHERE n.news_id = '$news_id'  ORDER BY pdf_index ASC";
                 $result_show_pdf = mysqli_query($conn,$sql_show_pdf);
                 echo "<br><h5>Add PDF</h5>";
                 while ($data_db_pdf =mysqli_fetch_array($result_show_pdf)){
@@ -291,7 +294,7 @@ if($_GET['news_id'] != ""){
               }else if($data_img = mysqli_fetch_array($result_img)) {
 
                 $sql_show_img = "SELECT ni.news_image
-                FROM news n INNER JOIN news_image ni on n.news_id =ni.news_id WHERE n.news_id = '$news_id' ORDER BY img_index ASC ";
+                FROM $news n INNER JOIN news_image ni on n.news_id =ni.news_id WHERE n.news_id = '$news_id' ORDER BY img_index ASC ";
                 $result_show_img = mysqli_query($conn,$sql_show_img);
                 while ($data_db_img = mysqli_fetch_array($result_show_img)) {
                   $img_file = $img_path.$data_db_img['news_image'];
@@ -373,7 +376,7 @@ if($_GET['news_id'] != ""){
                 }
 
                 $sql_show_pdf = "SELECT np.news_pdf
-                FROM news n INNER JOIN news_pdf np on n.news_id =np.news_id WHERE n.news_id = '$news_id'  ORDER BY pdf_index ASC ";
+                FROM $news n INNER JOIN news_pdf np on n.news_id =np.news_id WHERE n.news_id = '$news_id'  ORDER BY pdf_index ASC ";
                 $result_show_pdf = mysqli_query($conn,$sql_show_pdf);
                 echo "<br><h5>Add PDF</h5>";
                 while ($data_db_pdf =mysqli_fetch_array($result_show_pdf)){
