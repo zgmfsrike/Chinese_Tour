@@ -235,7 +235,8 @@ include 'component/header.php';
 
 
       if($tour_type_id!==''){
-        $sql_search .= " ttt.tour_type_id =$tour_type_id AND t.available_seat >=$amount_people" ;
+        $sql_search .= " ttt.tour_type_id =$tour_type_id ";
+        // $sql_search.= "AND t.available_seat >=$amount_people";
       }
 
       for($i=0;$i<=4;$i++){
@@ -402,7 +403,6 @@ include 'component/header.php';
           <div class='col s12 l3 right-align'>
           <br/><br/>
           <h5>฿ " .$show['price'] .  "</h5>
-          <h6>Available Seat :".$seat_in_tour."</h6><br/>
           <a href='$link'><button type='button' class='btn ' name='button'>Select</button></a>
           </div>
           </div>
@@ -460,7 +460,7 @@ include 'component/header.php';
 
         <?php
       }else {
-        echo "Nothning found";
+        echo "<h1>Nothing found</h1>";
       }
     }else if(isset($_GET['page'])){
       if(isset($_SESSION['sql_search'])){
@@ -578,7 +578,7 @@ include 'component/header.php';
     <?php
 
       }else {
-        echo "Nothning found";
+        echo "<h1>Nothing found</h1>";
       }
 
 

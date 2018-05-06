@@ -155,6 +155,7 @@ if(isset($_POST['submit'])){
             if($success == FALSE){
                 echo "Cannot upload pdf";
                 exit();
+
             }
             $schedule_pdf = $new_pdf_name;
 
@@ -191,7 +192,6 @@ if(isset($_POST['submit'])){
             $sql = "INSERT INTO tour_vehicle_type(tour_id, vehicle_type_id) VALUES ('$last_id','$selected')";
             $result = mysqli_query( $GLOBALS['conn'] , $sql );
         }
-
         $img[$count] = $new_image_name.".jpg";
     }
 
