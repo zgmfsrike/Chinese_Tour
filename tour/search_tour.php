@@ -6,9 +6,9 @@ include 'db_config.php';
 // include 'module/del_book_tour.php';
 
 require 'module/language/init.php';
-if(isset($_SESSION['tour_id'])){
-$id = $_SESSION['tour_id'];
-}
+// if(isset($_SESSION['tour_id'])){
+// $tour_id = $_SESSION['tour_id'];
+// }
 
 
 $search_page = "search_tour.php";
@@ -339,43 +339,48 @@ include 'component/header.php';
       $result = mysqli_query($conn,$sql_search);
       $count = mysqli_num_rows($result);
       // echo $sql_search."<br>";
+      // echo "this is id ".$id;
+
+
+
+
 
 
 
 
       if($count !==0){
-        $sql_tour = "SELECT * FROM `tour_tour_type` INNER JOIN `tour_type` ON tour_tour_type.tour_type_id=tour_type.tour_type_id WHERE tour_id = $id";
-        $result_tour = mysqli_query($conn, $sql_tour);
-        $tour_type_all ="";
-        while ($type = mysqli_fetch_array($result_tour)) {
-          $tour_type_all .= $type['tour_type']." ";
-          # code...
-        }
-
-        $sql_acc = "SELECT * FROM `tour_accommodation` INNER JOIN `accommodation` ON tour_accommodation.accommodation_id=accommodation.accommodation_id WHERE tour_id = $id";
-        $result_acc = mysqli_query($conn, $sql_acc);
-        $acc_all = "";
-
-        while ($acc = mysqli_fetch_array($result_acc)) {
-          $acc_all .= $acc['accommodation_level']." ";
-          # code...
-        }
-
-        $sql_v = "SELECT * FROM `tour_vehicle_type` INNER JOIN `vehicle_type` ON tour_vehicle_type.vehicle_type_id=vehicle_type.vehicle_type_id WHERE tour_id = $id";
-        $result_v = mysqli_query($conn, $sql_v);
-        $vehicle_all  = "";
-
-        while ($v_all = mysqli_fetch_array($result_v)) {
-          $vehicle_all .= $v_all['vehicle_type']." ";
-          # code...
-        }
-
 
 
         while($show = mysqli_fetch_array($result)) {
           $tour_id = $show['tour_id'];
           $tour_type = $show['tour_type'];
           $seat_in_tour = $show['available_seat'];
+
+          $sql_tour = "SELECT * FROM `tour_tour_type` INNER JOIN `tour_type` ON tour_tour_type.tour_type_id=tour_type.tour_type_id WHERE tour_id = $tour_id";
+          $result_tour = mysqli_query($conn, $sql_tour);
+          $tour_type_all ="";
+          while ($type = mysqli_fetch_array($result_tour)) {
+            $tour_type_all .= $type['tour_type']." ";
+            # code...
+          }
+
+          $sql_acc = "SELECT * FROM `tour_accommodation` INNER JOIN `accommodation` ON tour_accommodation.accommodation_id=accommodation.accommodation_id WHERE tour_id = $tour_id";
+          $result_acc = mysqli_query($conn, $sql_acc);
+          $acc_all = "";
+
+          while ($acc = mysqli_fetch_array($result_acc)) {
+            $acc_all .= $acc['accommodation_level']." ";
+            # code...
+          }
+
+          $sql_v = "SELECT * FROM `tour_vehicle_type` INNER JOIN `vehicle_type` ON tour_vehicle_type.vehicle_type_id=vehicle_type.vehicle_type_id WHERE tour_id = $tour_id";
+          $result_v = mysqli_query($conn, $sql_v);
+          $vehicle_all  = "";
+
+          while ($v_all = mysqli_fetch_array($result_v)) {
+            $vehicle_all .= $v_all['vehicle_type']." ";
+            # code...
+          }
 
 
           $link = "tour.php?id=".$tour_id."&seat=".$amount_people;

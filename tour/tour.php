@@ -197,6 +197,7 @@ if(isset($_GET['id'])){
         if(mysqli_num_rows($result) > 0){
           $row = mysqli_fetch_array($result);
           $file_name = $row['file_name'];
+
           ?>
           <embed src="pdf/tours_schedule/<?php echo $file_name; ?>" type="application/pdf"   height="800px" width="90%"><br>
             <a href="pdf/tours_schedule/'.$file_name.'">download</a>
