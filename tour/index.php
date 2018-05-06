@@ -96,7 +96,7 @@ include 'component/header.php';
         <p style='white-space: nowrap;width: 17em;overflow: hidden;text-overflow: ellipsis;'>".$show['short_description']."</p>
         </div>
         <div class='card-action'>
-        <a href='news.php?news_id=$news_id'>"."READ MORE"."</a>
+        <a href='news.php?news_id=$news_id'>"."$string_index_readmore"."</a>
         </div>
         </div>
         </div>";

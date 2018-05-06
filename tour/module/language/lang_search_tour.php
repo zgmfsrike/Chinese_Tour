@@ -1,5 +1,5 @@
 <?php
-$table_name = "page_index";
+$table_name = "page_search_tour";
 $sql= "SELECT name,$lang FROM $table_name";
 $result = mysqli_query( $GLOBALS['conn'] , $sql );
 
