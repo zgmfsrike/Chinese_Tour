@@ -20,7 +20,7 @@ if(isset($_SESSION['login_id'])){
 //-----------------------------Search fucntion----------------------------------------------------//
 if($_GET['member_id'] != ""){
     $member_id = $_GET['member_id'];
-    $sql= "SELECT  m.email FROM member m WHERE m.id = $member_id ";
+    $sql= "SELECT  email FROM tour_round_member WHERE tour_round_member_id = $member_id ";
     $result = mysqli_query( $GLOBALS['conn'] , $sql );
     $show = mysqli_fetch_array($result);
     $email = $show['email'];

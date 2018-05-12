@@ -11,7 +11,7 @@ include "db_config.php";
 if(isset($_SESSION['email'])){
   $email = $_SESSION['email'];
   $subject = $_POST['subject'];
-  $description = $_POST['description'];
+  $description = nl2br($_POST['description']);
 
 //-----------------------------Edit fucntion----------------------------------------------------//
 
@@ -49,7 +49,12 @@ if($_POST['send'] && $subject !== "" && $description !==""){
                $mail->isHTML(true);
                $mail->Subject = $subject;
                $mail->addAddress($email);
-               $body = $description;
+
+               $mail->AddEmbeddedImage('component/header.png', 'header');
+               $mail->AddEmbeddedImage('component/footer.png', 'footer');
+               $body = "<center><p><img src='cid:header' /></p></center>";
+               $body .="<center>".$description."</center>";
+               $body .="<center><p><img src='cid:footer' /></p></center>";
                $mail->Body    = $body;
                $mail->AltBody = strip_tags($body);
                $mail->send();
