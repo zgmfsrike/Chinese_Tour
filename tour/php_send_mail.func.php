@@ -11,7 +11,8 @@ include "db_config.php";
 if(isset($_SESSION['email'])){
   $email = $_SESSION['email'];
   $subject = $_POST['subject'];
-  $description = nl2br($_POST['description']);
+  // $description = nl2br($_POST['description']);
+  $description =wordwrap($_POST['description'], 20, "<br />", true);
 
 //-----------------------------Edit fucntion----------------------------------------------------//
 

@@ -11,7 +11,7 @@ include "db_config.php";
 if($_GET['tour_round_id']){
   $tour_round_id = $_GET['tour_round_id'];
   $subject = $_POST['subject'];
-  $description = nl2br($_POST['description']);
+  $description =wordwrap($_POST['description'], 20, "<br />", true);
 
   $sql= "SELECT m.email
   FROM member m INNER JOIN tour_round_member trm on m.id  = trm.id
