@@ -5,7 +5,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 ob_start();
 $time = date('Y-m-d');
-echo $time;
+// echo $time;
 
 $sql ="SELECT tr.tour_round_id FROM tour_round tr where tr.end_date_time ='$time'";
 $result_t= mysqli_query($conn, $sql);
@@ -66,7 +66,11 @@ if($result_t){
                      $mail->addAddress($email);
 
                    }
-                  $body = $description;
+                  $mail->AddEmbeddedImage('component/header.png', 'header');
+                  $mail->AddEmbeddedImage('component/footer.png', 'footer');
+                  $body = "<center><p><img src='cid:header' /></p></center>";
+                  $body .="<center>".$description."</center><br />";
+                  $body .="<center><p><img src='cid:footer' /></p></center>";
                   $mail->Body    = $body;
                   $mail->AltBody = strip_tags($body);
                   $mail->send();
