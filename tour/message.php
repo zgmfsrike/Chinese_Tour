@@ -124,6 +124,8 @@ require 'module/language/init.php';
 
     // feedback
     if($msg == 'edit_feedback_question_complete') $result =  message('Success!','Edit feedback form successfully.','','');
+    if($msg == 'feedback_send_succ') $result =  message('Success!','Feedback has already send.','','');
+    if($msg == 'feedback_send_fail') $result =  message('Sorry!','Something went wrong, please try again.','','');
 
 
 

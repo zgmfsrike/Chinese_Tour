@@ -5,16 +5,17 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 ob_start();
 $time = date('Y-m-d');
+$flag = false;
 // echo $time;
 
 $sql ="SELECT tr.tour_round_id FROM tour_round tr where tr.end_date_time ='$time'";
 $result_t= mysqli_query($conn, $sql);
 if($result_t){
-  $counter = 0;
+  $counter = 1;
+
   while ($data = mysqli_fetch_array($result_t)) {
 
-    echo "Counter : ".$counter;
-      $counter++;
+
 
     $tour_round_id = $data['tour_round_id'];
     echo "Tour round id :".$tour_round_id;
@@ -24,6 +25,7 @@ if($result_t){
     $result= mysqli_query($conn, $sql);
     if($result){
       // sendmail
+
       $subject = "TEST FEEDBACK";
       $description = "Test send mail on date :".$time;
 
@@ -60,22 +62,31 @@ if($result_t){
 
                   while($show = mysqli_fetch_array($result)) {                             // Passing `true` enables exceptions
                      $email = $show['email'];
+                     // $feedback_id=md5(123);
+                     $time_sec = time();
+                     $feedback_id=$time_sec;
+                     $feedback_id =hash("crc32", $feedback_id);
+
+                     $link = "http://localhost/Chinese_Tour/tour/feedback.php?feedback_id=".$feedback_id;
 
                      // $mail_collect  .= "'$email'".",";
                      // $mail_result = rtrim($mail_collect,", ");
                      $mail->addAddress($email);
+                     $counter++;
 
                    }
                   $mail->AddEmbeddedImage('component/header.png', 'header');
                   $mail->AddEmbeddedImage('component/footer.png', 'footer');
                   $body = "<center><p><img src='cid:header' /></p></center>";
                   $body .="<center>".$description."</center><br />";
+                  $body .="<center>From this link :".$link."</center><br />";
                   $body .="<center><p><img src='cid:footer' /></p></center>";
                   $mail->Body    = $body;
                   $mail->AltBody = strip_tags($body);
                   $mail->send();
                   $mail->ClearAllRecipients();
                   $mail->ClearAttachments();
+                  $flag = true;
 
 
 
@@ -104,8 +115,14 @@ if($result_t){
 
 
 
+
   }
-  header("location: message.php?msg=email_send_succ");
+  if($flag){
+    header("location: message.php?msg=feedback_send_succ");
+  }else{
+    header("location: message.php?msg=feedback_send_fail");
+  }
+
   ob_end_flush();
 
 
