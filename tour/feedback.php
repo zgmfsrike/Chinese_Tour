@@ -34,14 +34,14 @@ include 'component/header.php';
           </thead>
           <tbody>
             <?php
-            //
-            // $sql="";
-            // $result = mysqli_query($conn, $sql);
-            // if($result){
-            //   $counter = 1;
-            //   while($data = mysqli_fetch_array($result)){
-                // $question = $data[''];
-                $question = "Q!";
+
+            $sql="SELECT * FROM feedback_question WHERE enable = 1";
+            $result = mysqli_query($conn, $sql);
+            if($result){
+              $counter = 1;
+              while($data = mysqli_fetch_array($result)){
+                $question = $data['question'];
+                // $question = "Q!";
                 ?>
                 <tr>
                   <td><?php echo $question;?></td>
@@ -67,9 +67,9 @@ include 'component/header.php';
                   </td>
                 </tr>
                 <?php
-            //     $counter++;
-            //   }
-            // }
+                $counter++;
+              }
+            }
 
             ?>
 
