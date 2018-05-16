@@ -25,7 +25,7 @@ if(isset($_POST['book'])){
     $member_id = $_SESSION['login_id'];
     $time = time();
     $hash_text= $time.$member_id;
-    $reference_code = md5($hash_text);
+    $reference_code = hash("crc32", $hash_text);
     $_SESSION['ref_code'] = $reference_code;
 
     $sql_delete_null = "DELETE FROM tour_round_member  WHERE id = '$member_id' AND last_name =''

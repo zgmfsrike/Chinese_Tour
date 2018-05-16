@@ -5,6 +5,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 ob_start();
 $time = date('Y-m-d');
+$flag = false;
 // echo $time;
 
 $sql ="SELECT tr.tour_round_id FROM tour_round tr where tr.end_date_time ='$time'";
@@ -61,7 +62,11 @@ if($result_t){
 
                   while($show = mysqli_fetch_array($result)) {                             // Passing `true` enables exceptions
                      $email = $show['email'];
-                     $feedback_id=md5(123);
+                     // $feedback_id=md5(123);
+                     $time_sec = time();
+                     $feedback_id=$time_sec;
+                     $feedback_id =hash("crc32", $feedback_id);
+
                      $link = "http://localhost/Chinese_Tour/tour/feedback.php?feedback_id=".$feedback_id;
 
                      // $mail_collect  .= "'$email'".",";
@@ -81,6 +86,7 @@ if($result_t){
                   $mail->send();
                   $mail->ClearAllRecipients();
                   $mail->ClearAttachments();
+                  $flag = true;
 
 
 
@@ -111,7 +117,12 @@ if($result_t){
 
 
   }
-  header("location: message.php?msg=email_send_succ");
+  if($flag){
+    header("location: message.php?msg=feedback_send_succ");
+  }else{
+    header("location: message.php?msg=feedback_send_fail");
+  }
+
   ob_end_flush();
 
 
