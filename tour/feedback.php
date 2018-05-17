@@ -8,12 +8,13 @@ require 'module/language/lang_index.php';
 <!DOCTYPE html>
 <html>
 <?php
+$feedback_id="";
 if(isset($_GET['feedback_id'])){
   $feedback_id = $_GET['feedback_id'];
 }
 $link = "php_feedback.php";
 $title = "Feedback Form";
-include 'component/header.php';
+// include 'component/header.php';
 ?>
 <body>
   <div class="container">
@@ -35,7 +36,9 @@ include 'component/header.php';
           <tbody>
             <?php
 
-            $sql="SELECT * FROM feedback_question WHERE enable = 1";
+
+
+            $sql = "SELECT * FROM feedback_question WHERE version = (SELECT MAX(version) FROM feedback_question) AND enable=1";
             $result = mysqli_query($conn, $sql);
             if($result){
               $counter = 1;
@@ -79,9 +82,9 @@ include 'component/header.php';
 
         </table>
       </div>
-      <input type="text" name="ref_code" id='feedback_id' value="<?php if($feedback_id !==""){ echo $feedback_id;}?>" style="display:none" >
+      <input type="text" name="feedback_id" id='feedback_id' value="<?php if($feedback_id !==""){ echo $feedback_id;}?>" style="display:none" >
       <lable for="comment">Comment</lable>
-      <textarea id="comment" name="commment"></textarea>
+      <textarea id="comment" name="comment"></textarea>
       <div class="right-align">
         <input class="btn green " type="submit" name="submit" value="Confirm"><br />
       </div>
@@ -98,7 +101,7 @@ include 'component/header.php';
 <!--Footer-->
 
 <?php
-include 'component/footer.php';
+// include 'component/footer.php';
 ?>
 
 
