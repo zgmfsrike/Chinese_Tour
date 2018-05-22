@@ -131,7 +131,7 @@ include 'component/header.php';
       <div class="row ">
         <div class="collection">
           <br class="hide-on-med-and-down" />
-          <div class="col s12 l2">
+          <div class="col s12 l1">
             <label class="show-on-medium-and-down hide-on-large-only">Rating</label>
             <select class="browser-default">
               <option value="" disabled selected>Rating</option>
