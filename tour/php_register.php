@@ -6,7 +6,7 @@ ob_start();
 include "db_config.php";
 include "module/hashing.php";
 
-$acctive_url = "http://www.chiangmaihongthai.com/active_account.php";
+
 
 
 // check connection
@@ -25,6 +25,7 @@ if(isset($_POST['submit'])){
 
 // register method
 function register(){
+  $acctive_url = "http://www.chiangmaihongthai.com/active_account.php";
 
     // recieve data from form
     $username   = $_POST["username"];
