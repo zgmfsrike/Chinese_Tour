@@ -26,10 +26,11 @@ $string_news_download_pdf = 'Download PDF File:';
     $news_content = $show['content'];
 
     $sql_pdf = "SELECT n.news_id,np.news_pdf,np.pdf_name
-    FROM news n INNER JOIN news_pdf np on n.news_id = np.news_id
+    FROM news_".$_COOKIE['lang']." n INNER JOIN news_pdf np on n.news_id = np.news_id
     WHERE n.news_id = $news_id";
 
     $result_pdf = mysqli_query($GLOBALS['conn'] , $sql_pdf);
+
 
   }else{
     header("location: message.php");
@@ -47,6 +48,7 @@ $string_news_download_pdf = 'Download PDF File:';
     <div class="section"></div>
     <div class="slider">
       <ul class="slides">
+
 
         <?php
         $img_path = "./images/";
