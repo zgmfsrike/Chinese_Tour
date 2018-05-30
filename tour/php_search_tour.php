@@ -64,7 +64,7 @@ $search_all_page ="search_all_tour.php";
                   // echo $sql;
                   $num_row =mysqli_num_rows($result);
 
-                  $per_page = 1;
+                  $per_page = 5;
                   $page = $_GET['page'];
                   if(!$_GET['page']){
                     $page =1 ;
