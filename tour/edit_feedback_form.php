@@ -60,7 +60,7 @@ include 'component/header.php';
       <?php
 
 
-      echo 'Q'.$i.': <input type="text" name="question_'.$i.'" value="'.$question.'"/> enable: <input type="checkbox" name="enable_'.$i.'" '.$enable.'/> <br>';
+      // echo 'Q'.$i.': <input type="text" name="question_'.$i.'" value="'.$question.'"/> enable: <input type="checkbox" name="enable_'.$i.'" '.$enable.'/> <br>';
     }
      ?>
      </tbody>
