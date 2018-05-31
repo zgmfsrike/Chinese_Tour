@@ -7,8 +7,7 @@ require 'module/language/lang_index.php';
 // $edit_feedback_question = "php_edit_feedback_question.php";
 $edit_feedback_question = "php_edit_feedback_form.php";
 
-$sql = "SELECT * FROM feedback_question WHERE version = (SELECT MAX(version) FROM feedback_question)";
-$result = mysqli_query($conn,$sql);
+
 
  ?>
 <!DOCTYPE html>
@@ -33,6 +32,8 @@ include 'component/header.php';
       </thead>
       <tbody>
     <?php
+    $sql = "SELECT * FROM feedback_question WHERE version = (SELECT MAX(version) FROM feedback_question)";
+    $result = mysqli_query($conn,$sql);
     for($i = 1; $i <= 15; $i++){
 
       $row = mysqli_fetch_array($result);
@@ -48,19 +49,18 @@ include 'component/header.php';
       ?>
     <tr>
       <td><?php echo $i; ?></td>
-      <td><input type="text" name="question_<?php echo $i;?>"></td>
+      <td><input type="text" name="question_<?php echo $i;?>" value="<?php echo $question;?>"></td>
       <td>
-          <label>
-            <input type="checkbox" id="<?php echo $i;?>" name="enable_<?php echo $i;?>" checked="checked"/>
-            <span></span>
-          </label>
+
+            <input type="checkbox" id="<?php echo $i;?>" name="enable_<?php echo $i;?>" <?php echo $enable?>/>
+            <label for="<?php echo $i;?>" ></label>
         </td>
     </tr>
 
       <?php
 
 
-      echo 'Q'.$i.': <input type="text" name="question_'.$i.'" value="'.$question.'"/> enable: <input type="checkbox" name="enable_'.$i.'" '.$enable.'/> <br>';
+      // echo 'Q'.$i.': <input type="text" name="question_'.$i.'" value="'.$question.'"/> enable: <input type="checkbox" name="enable_'.$i.'" '.$enable.'/> <br>';
     }
      ?>
      </tbody>
