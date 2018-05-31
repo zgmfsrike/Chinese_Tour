@@ -7,34 +7,38 @@ require 'module/language/init.php';
 ?>
 
 <?php
-// if(isset($_GET['id'])){
-//   if(isset($_GET['seat'])){
-//     $seat = $_GET['seat'];
-//     $_SESSION['seat'] = $seat;
-//   }
-//   $id = $_GET['id'];
-//   $_SESSION['tour_id'] = $id;
-//
-//   // tour
-//   $sql = "SELECT * FROM tour_".$_COOKIE['lang']." WHERE tour_id = $id";
-//   $result = mysqli_query($conn, $sql);
-//
-//   if(mysqli_num_rows($result) == 0){
-//     //error no data
-//     header("location: message.php?msg=tour_not_found");
-//     return false;
-//   }
-//
-//   $data = mysqli_fetch_array($result);
-//   $tour_description = $data['tour_description'];
-//   $hightlight = $data['highlight'];
-//   $region = $data['region'];
-//   $province = $data['province'];
-//   $price = $data['price'];
-//   $max_customer = $data['max_customer'];
-//   $rating = $data['rating'];
-//
-//   $trip_page = 'php_reserve_member.php';
+if(isset($_GET['type']) AND isset($_GET['style']) AND isset($_GET['plan'])){
+
+
+
+}
+
+
+
+  $id = $_GET['id'];
+  $_SESSION['tour_id'] = $id;
+
+  // tour
+  $sql = "SELECT * FROM tour_".$_COOKIE['lang']." WHERE tour_id = $id";
+  $result = mysqli_query($conn, $sql);
+
+  if(mysqli_num_rows($result) == 0){
+    //error no data
+    // header("location: message.php?msg=tour_not_found");
+    // return false;
+  }
+
+  $data = mysqli_fetch_array($result);
+  $tour_description = $data['tour_description'];
+  $hightlight = $data['highlight'];
+  $region = $data['region'];
+  $province = $data['province'];
+  $price = $data['price'];
+  $max_customer = $data['max_customer'];
+  $rating = $data['rating'];
+
+  $trip_page = 'php_reserve_member.php';
+
   ?>
 
 
@@ -91,7 +95,7 @@ require 'module/language/init.php';
           $file_name = $row['file_name'];
 
           ?>
-          <embed src="pdf/tours_schedule/<?php echo $file_name; ?>" type="application/pdf"   height="800px" width="90%"><br>
+          <embed src="pdf/tours_static_detail/<?php echo $file_name; ?>" type="application/pdf"   height="800px" width="90%"><br>
             <a href="pdf/tours_schedule/'.$file_name.'">download</a>
             <?php
             // Free result set
