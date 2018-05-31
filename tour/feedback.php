@@ -26,7 +26,7 @@ include 'component/header.php';
       <br/>
       <h3 class="center"><b>Feedback Form</b></h3>
       <div>
-        <table class="responsive-table">
+        <table class="responsive-table centered">
           <thead>
             <tr>
               <th class="center-align">Question</th>
@@ -38,7 +38,7 @@ include 'component/header.php';
             </tr>
           </thead>
 
-          <tbody>
+          <tbody >
             <?php
             $sql = "SELECT * FROM feedback_question WHERE version = (SELECT MAX(version) FROM feedback_question) AND enable=1";
             $result = mysqli_query($conn, $sql);
@@ -48,27 +48,27 @@ include 'component/header.php';
                 $question = $data['question'];
                 // $question = "Q!";
                 ?>
-                <tr>
+                <tr >
                   <td><?php echo $question;?></td>
                   <td>
                     <input class="with-gap" type="radio" id="radio1_g<?php echo $counter;?>" name="group_<?php echo $counter;?>" value="1"   />
-                    <label for="rad1_g<?php echo $counter;?>"></label>
+                    <label for="radio1_g<?php echo $counter;?>"></label>
                   </td>
                   <td>
                     <input class="with-gap" type="radio" id="radio2_g<?php echo $counter;?>" name="group_<?php echo $counter;?>" value="2"   />
-                    <label for="rad2_g<?php echo $counter;?>"></label>
+                    <label for="radio2_g<?php echo $counter;?>"></label>
                   </td>
                   <td>
                     <input class="with-gap" type="radio" id="radio3_g<?php echo $counter;?>" name="group_<?php echo $counter;?>" value="3"   />
-                    <label for="rad3_g<?php echo $counter;?>"></label>
+                    <label for="radio3_g<?php echo $counter;?>"></label>
                   </td>
                   <td>
                     <input class="with-gap" type="radio" id="radio4_g<?php echo $counter;?>" name="group_<?php echo $counter;?>" value="4"   />
-                    <label for="rad4_g<?php echo $counter;?>"></label>
+                    <label for="radio4_g<?php echo $counter;?>"></label>
                   </td>
                   <td>
                     <input class="with-gap" type="radio" id="radio5_g<?php echo $counter;?>" name="group_<?php echo $counter;?>" value="5"   />
-                    <label for="rad5_g<?php echo $counter;?>"></label>
+                    <label for="radio5_g<?php echo $counter;?>"></label>
                   </td>
                 </tr>
                 <?php
@@ -90,10 +90,12 @@ include 'component/header.php';
           <textarea placeholder="Comment Here" id="comment" name="comment" class="materialize-textarea" style="overflow-y: scroll; border: 1px solid;padding: 10px; margin-top:10px;"></textarea>
         </div>
 
+
       <div class="right-align">
         <input class="btn green " type="submit" name="submit" value="Confirm"><br />
         <br/>
       </div>
+
 
     </form>
   </div>
