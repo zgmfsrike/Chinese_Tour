@@ -38,7 +38,7 @@ include 'component/header.php';
       }
 
 
-      echo 'Q'.$i.': <input type="text" name="question_'.$i.'" value="'.$question.'"/> enable: <input type="checkbox" name="enable_'.$i.'" '.$enable.'/> <br>';
+      echo 'Q'.$i.': <input type="text" name="question_'.$i.'" id="question_'.$i.'" value="'.$question.'"/> <input type="checkbox" name="enable_'.$i.'" '.$enable.' id="enable_'.$i.'" '.$enable.'/><label for="enable_'.$i.'" '.$enable.'>Enable</label> <br>';
     }
      ?>
   <div class="center-align" style="margin-bottom:30px; margin-top:30px;">
