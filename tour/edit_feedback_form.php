@@ -23,6 +23,15 @@ include 'component/header.php';
   <br/>
   <h3 class="center"><b>Feedback Questionnaire</b></h3>
   <form action="<?php echo $edit_feedback_question; ?>" method="post">
+    <table style='overflow-x:auto;' class='responsive-table table table-striped highlight centered'>
+      <thead>
+        <tr align='center'>
+          <th>#</th>
+          <th>Question</th>
+          <th>Enable</th>
+        </tr>
+      </thead>
+      <tbody>
     <?php
     for($i = 1; $i <= 15; $i++){
 
@@ -36,11 +45,26 @@ include 'component/header.php';
       }else{
         $enable = "";
       }
+      ?>
+    <tr>
+      <td><?php echo $i; ?></td>
+      <td><input type="text" name="question_<?php echo $i;?>"></td>
+      <td>
+          <label>
+            <input type="checkbox" id="<?php echo $i;?>" name="enable_<?php echo $i;?>" checked="checked"/>
+            <span></span>
+          </label>
+        </td>
+    </tr>
+
+      <?php
 
 
-      echo 'Q'.$i.': <input type="text" name="question_'.$i.'" id="question_'.$i.'" value="'.$question.'"/> <input type="checkbox" name="enable_'.$i.'" '.$enable.' id="enable_'.$i.'" '.$enable.'/><label for="enable_'.$i.'" '.$enable.'>Enable</label> <br>';
+      echo 'Q'.$i.': <input type="text" name="question_'.$i.'" value="'.$question.'"/> enable: <input type="checkbox" name="enable_'.$i.'" '.$enable.'/> <br>';
     }
      ?>
+     </tbody>
+   </table>
   <div class="center-align" style="margin-bottom:30px; margin-top:30px;">
     <input class="btn green" type="submit" name="save" value="Save">
   </div>
