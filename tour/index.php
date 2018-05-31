@@ -4,6 +4,8 @@ include 'module/session.php';
 
 require 'module/language/init.php';
 require 'module/language/lang_index.php';
+
+$string_index_tour = "Tours";
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,6 +17,12 @@ if(isset($_SESSION['login_id'])){
   $objResult = mysqli_fetch_array($result);
   $username = $objResult['username'];
 }
+
+
+
+$sql_tour_3 = "SELECT * FROM tour_".$_COOKIE['lang']." t INNER JOIN tour_round tr ON t.tour_id = tr.tour_id where
+NOT tr.start_date_time < CURDATE() and tr.end_date_time >CURDATE() ORDER BY tr.tour_id DESC LIMIT 3" ;
+$result_tour_3 = mysqli_query( $GLOBALS['conn'] , $sql_tour_3 );
 ?>
 <?php
 $title = "Chiang Mai Hong Thai Tour";
@@ -101,6 +109,74 @@ include 'component/header.php';
         </div>
         </div>";
 
+      }
+      ?>
+    </div>
+    <div class="container row">
+      <h3><?php echo $string_index_tour;?></h3>
+    </div>
+    <div class="container row">
+      <?php
+      $count = mysqli_num_rows($result_tour_3);
+      if($count != 0){
+
+        ?>
+        <?php
+        while($show_tour = mysqli_fetch_array($result_tour_3)) {
+          $tour_id = $show_tour['tour_id'];
+          $current_date = date('Y-m-d');
+
+
+          $sql_tour = "SELECT * FROM `tour_tour_type` INNER JOIN `tour_type` ON tour_tour_type.tour_type_id=tour_type.tour_type_id WHERE tour_id = $tour_id";
+          $result_tour = mysqli_query($conn, $sql_tour);
+          $tour_type_all ="";
+          while ($type = mysqli_fetch_array($result_tour)) {
+            $tour_type_all .= $type['tour_type']." ";
+            # code...
+          }
+
+          $sql_acc = "SELECT * FROM `tour_accommodation` INNER JOIN `accommodation` ON tour_accommodation.accommodation_id=accommodation.accommodation_id WHERE tour_id = $tour_id";
+          $result_acc = mysqli_query($conn, $sql_acc);
+          $acc_all = "";
+
+          while ($acc = mysqli_fetch_array($result_acc)) {
+            $acc_all .= $acc['accommodation_level']." ";
+            # code...
+          }
+
+          $sql_v = "SELECT * FROM `tour_vehicle_type` INNER JOIN `vehicle_type` ON tour_vehicle_type.vehicle_type_id=vehicle_type.vehicle_type_id WHERE tour_id = $tour_id";
+          $result_v = mysqli_query($conn, $sql_v);
+          $vehicle_all  = "";
+
+          while ($v_all = mysqli_fetch_array($result_v)) {
+            $vehicle_all .= $v_all['vehicle_type']." ";
+            # code...
+          }
+          $link = "tour.php?id=".$tour_id."&seat=1";
+          echo "
+          <div class='row collection hide-on-med-and-down'>
+          <div class='row'>
+          <div class='col s12 l4'>
+          <img class='materialboxed' width='250' src='images/wechatQR.jpg'>
+          </div>
+          <div class='col s12 l4'>
+          <br/>
+          <h5><a href='tour.php?id=$tour_id'>" .$show_tour['tour_description'] .  "</a></h5>
+          <h6>Tour Type :" .$tour_type_all .  "</h6>
+          <h6>Accommodation :" .$acc_all .  "</h6>
+          <h6>Vehicle : " .$vehicle_all.  "</h6>
+          </div>
+          <div class='col s12 l3 right-align'>
+          <br/><br/>
+          <h5>฿ " .$show_tour['price'] .  "</h5>
+          <a href='$link'><button type='button' class='btn ' name='button'>Select</button></a>
+          </div>
+          </div>
+          </div>
+
+
+          ";
+        }
       }
       ?>
     </div>
