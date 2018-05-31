@@ -1,58 +1,58 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <div class="container">
-      <form  action="test.php" method="post">
-        <div class="test">
-
-          <input type="text" name="test[]">
-          <input type="text"name="test[]">
-          <input type="text"name="test[]">
-
-        </div>
-        <br>
-        <div class="name">
-          <input type="text" name="name[]">
-          <input type="text" name="name[]">
-          <input type="text" name="name[]">
-        </div>
-
-
-        <input type="submit" name="submit" value="submit">
-      </form>
-    </div>
-
-
-  </body>
-</html>
 <?php
-if(isset($_POST['submit'])){
+include 'module/session.php';
+include 'db_config.php';
+require 'module/language/init.php';
+require 'module/language/lang_index.php';
 
-  if(isset($_POST['test'])){
-    $test = $_POST['test'];
+// $edit_feedback_question = "php_edit_feedback_question.php";
+$edit_feedback_question = "php_edit_feedback_form.php";
 
-    for ($i=0; $i <4 ; $i++) {
-      if($test[$i] !==""){
-          echo "test".$test[$i];
-      }
+$sql = "SELECT * FROM feedback_question WHERE version = (SELECT MAX(version) FROM feedback_question)";
+$result = mysqli_query($conn,$sql);
 
-    }
-
-  }
-
-  if ($_POST['name']) {
-    $test2 = $_POST['name'];
-
-    foreach ($test2 as $key => $value) {
-      echo "name".$value."<br>";
-    }
-
-  }
-
-}
 
  ?>
+<!DOCTYPE html>
+<html>
+<?php
+$title = "Chiang Mai Hong Thai Tour";
+include 'component/header.php';
+?>
+<body>
+<div class="container col s12">
+  <br/>
+  <h3 class="center"><b>Feedback Questionnaire</b></h3>
+  <form action="<?php echo $edit_feedback_question; ?>" method="post">
+    <?php
+    for($i = 1; $i <= 15; $i++){
+
+      $row = mysqli_fetch_array($result);
+
+      $question = $row['question'];
+      $enable = $row['enable'];
+
+      if($enable == 1){
+        $enable = "checked";
+      }else{
+        $enable = "";
+      }
+
+
+
+      echo 'Q'.$i.': <input type="text" name="question_'.$i.'" id="question_'.$i.'" value="'.$question.'"/> <input type="checkbox" name="enable_'.$i.'"  id="enable_'.$i.'" '.$enable.'/><label for="enable_'.$i.'" >Enable</label> <br>';
+    }
+     ?>
+  <div class="center-align" style="margin-bottom:30px; margin-top:30px;">
+    <input class="btn green" type="submit" name="save" value="Save">
+  </div>
+
+  </form>
+</div>
+
+  <!--Footer-->
+  <?php
+  include 'component/footer.php';
+  ?>
+
+</body>
+</html>
