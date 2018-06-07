@@ -5,23 +5,23 @@ include 'module/session.php';
 include 'db_config.php';
 require 'module/language/init.php';
 
-  if(isset($_SESSION['tour_round'])){
-    $tour_round_id = $_SESSION['tour_round'];
+if(isset($_SESSION['tour_round'])){
+  $tour_round_id = $_SESSION['tour_round'];
 
-  }
-  if(isset($_SESSION['result_price'])){
-    $result_price = $_SESSION['result_price'];
-  }
+}
+if(isset($_SESSION['result_price'])){
+  $result_price = $_SESSION['result_price'];
+}
 
 
 
 ?>
 <!DOCTYPE html>
 <html>
-    <?php
-     $title = "Trip Member";
-      include 'component/header.php';
-      $confirm_page = 'php_book_tour_info.php';
+<?php
+$title = "Trip Member";
+include 'component/header.php';
+$confirm_page = 'php_book_tour_info.php';
 ?>
 <body>
 
@@ -48,7 +48,7 @@ require 'module/language/init.php';
                 <label for="lastname1">Lastname<b class="red-text"> *</b></label>
               </div>
               <div class="input-field col s12 l6">
-                <input type="date" class="datepicker" name="dob1" id="dob1">
+                <input required type="date" class="datepicker" name="dob1" id="dob1">
                 <label for="dob1">Birthday<b class="red-text"> *</b></label>
               </div>
             </div>
@@ -67,16 +67,16 @@ require 'module/language/init.php';
                 <label for="countrycode1">Countrycode<b class="red-text"> *</b></label>
               </div>
               <div class="input-field col s10 l4">
-              <input onkeyup="validatephone(this);" type="text" class="form-control phone" maxlength="15" name="phone1" id="phone1" placeholder="Your Phone Number Here" required>
-              <label for="phone1">Telephone Number<b class="red-text"> *</b></label>
+                <input onkeyup="validatephone(this);" type="text" class="form-control phone" maxlength="15" name="phone1" id="phone1" placeholder="Your Phone Number Here" required>
+                <label for="phone1">Telephone Number<b class="red-text"> *</b></label>
               </div>
               <div class="col s12 l6">
                 <label>Reservation Age</label>
-                  <select class="browser-default yellow lighten-5" name="reservation_age1">
-                    <option value="" disabled selected>Choose your Reservation age</option>
-                    <option value="Adult">Adult</option>
-                    <option value="Child">Child</option>
-                  </select>
+                <select required class="browser-default yellow lighten-5" name="reservation_age1">
+                  <option value="" disabled selected>Choose your Reservation age</option>
+                  <option value="Adult">Adult</option>
+                  <option value="Child">Child</option>
+                </select>
               </div>
             </div>
           </fieldset>
@@ -106,101 +106,99 @@ require 'module/language/init.php';
                 <label for="zipcode1">Zipcode<b class="red-text"> *</b></label>
               </div>
               <div class="input-field col s12">
-                <input required name="avoidfood1" type="text" class="form-control inputpass" maxlength="140" data-length="140"  id="avoidfood1" placeholder="Avoid Food" />
-                <label for="avoidfood1">Avoid Food<b class="red-text"> *</b></label>
+                <input  name="avoidfood1" type="text" class="form-control inputpass" maxlength="140" data-length="140"  id="avoidfood1" placeholder="Avoid Food" />
+                <label for="avoidfood1">Avoid Food</label>
               </div>
             </div>
           </fieldset>
           <div class="section"></div>
           <?php
           if(isset($_SESSION['seat'])){
-            $counter = 2;
             $seat = $_SESSION['seat'];
-            for($i =1 ;$i<$seat;$i++){
+            for($i =2 ;$i<=$seat;$i++){
               echo ' <div class="trip_member">'.
-                '  <div class="section"></div>'.
-                '<h5>Member</h5>'.
-                '<fieldset class="yellow lighten-5">'.
-                  '<legend>Personalia:'.$counter.'</legend>'.
-                  '<div class="row">'.
-                  '  <div class="input-field col s12 l6">'.
-                      '<input onkeyup = "Validate(this)" id="txt" type="text" class="form-control" placeholder="Enter your Firstname" name="firstname'.$counter.'" id="firstname" required>'.
-                      '<label for="firstname'.$counter.'">Firstname<b class="red-text"> *</b></label>'.
-                    '</div>'.
-                    '<div class="input-field col s12 l6">'.
-                    '  <input onkeyup = "Validate(this)" type="text" class="form-control" name="middlename'.$counter.'" placeholder="Enter your Middlename" id="middlename'.$counter.'">'.
-                      '<label for="middlename'.$counter.'">Middle Name</label>'.
-                    '</div>'.
-                    '<div class="input-field col s12 l6">'.
-                      '<input onkeyup="Validate(this)" type="text" class="form-control" name="lastname'.$counter.'" placeholder="Enter your Lastname" id="lastname'.$counter.'" required>'.
-                      '<label for="lastname'.$counter.'">Lastname<b class="red-text"> *</b></label>'.
-                    '</div>'.
-                    '<div class="input-field col s12 l6">'.
-                    '  <input type="date" class="datepicker" name="dob2" id="dob2">'.
-                      '<label for="dob2">Birthday<b class="red-text"> *</b></label>'.
-                    '</div>'.
-                  '</div>'.
+              '  <div class="section"></div>'.
+              '<h5>Member</h5>'.
+              '<fieldset class="yellow lighten-5">'.
+              '<legend>Personalia:'.$i.'</legend>'.
+              '<div class="row">'.
+              '  <div class="input-field col s12 l6">'.
+              '<input onkeyup = "Validate(this)" id="txt" type="text" class="form-control" placeholder="Enter your Firstname" name="firstname'.$i.'" id="firstname" required>'.
+              '<label for="firstname'.$i.'">Firstname<b class="red-text"> *</b></label>'.
+              '</div>'.
+              '<div class="input-field col s12 l6">'.
+              '  <input onkeyup = "Validate(this)" type="text" class="form-control" name="middlename'.$i.'" placeholder="Enter your Middlename" id="middlename'.$i.'">'.
+              '<label for="middlename'.$i.'">Middle Name</label>'.
+              '</div>'.
+              '<div class="input-field col s12 l6">'.
+              '<input onkeyup="Validate(this)" type="text" class="form-control" name="lastname'.$i.'" placeholder="Enter your Lastname" id="lastname'.$i.'" required>'.
+              '<label for="lastname'.$i.'">Lastname<b class="red-text"> *</b></label>'.
+              '</div>'.
+              '<div class="input-field col s12 l6">'.
+              '  <input required type="date" class="datepicker" name="dob'.$i.'" id="dob'.$i.'">'.
+              '<label for="dob'.$i.'">Birthday<b class="red-text"> *</b></label>'.
+              '</div>'.
+              '</div>'.
 
-                  '<div class="row">'.
-                    '<div class="input-field col s12 l6">'.
-                      '<input onkeyup="ValidateUsername(this)" id="passport'.$counter.'" type="text" name="passport'.$counter.'"  minlength="3" maxlength="16" placeholder="Passport Id Here" required/>'.
-                      '<label for="passport'.$counter.'">Passport ID<b class="red-text"> *</b></label>'.
-                    '</div>'.
-                  '  <div class="input-field col s12 l6">'.
-                      '<input onchange="email_validate(this.value);" type="email" class="form-control" name="email'.$counter.'" id="email'.$counter.'" placeholder="Enter your Email"  required>'.
-                      '<label for="email'.$counter.'">Email<b class="red-text"> *</b></label>'.
-                    '</div>'.
-                  '  <div class="input-field col s2 l2">'.
-                      '<input class="col-sm-3" onkeyup="validatephone(this);" maxlength="3" type="text" name="countrycode'.$counter.'" id="countrycode'.$counter.'" placeholder="Countrycode Number" required>'.
-                      '<label for="countrycode'.$counter.'">Countrycode<b class="red-text"> *</b></label>'.
-                    '</div>'.
-                    '<div class="input-field col s10 l4">'.
-                    '<input onkeyup="validatephone(this);" type="text" class="form-control phone" maxlength="15" name="phone'.$counter.'" id="phone'.$counter.'" placeholder="Your Phone Number Here" required>'.
-                    '<label for="phone'.$counter.'">Telephone Number<b class="red-text"> *</b></label>'.
-                    '</div>'.
-                    '<div class="col s12 l6">'.
-                  '    <label>Reservation Age</label>'.
-                        '<select class="browser-default yellow lighten-5" name="reservation_age'.$counter.'">'.
-                        '  <option value="" disabled selected>Choose your Reservation age</option>'.
-                          '<option value="Adult">Adult</option>'.
-                          '<option value="Child">Child</option>'.
-                        '</select>'.
-                    '</div>'.
-                  '</div>'.
-                '</fieldset>'.
+              '<div class="row">'.
+              '<div class="input-field col s12 l6">'.
+              '<input onkeyup="ValidateUsername(this)" id="passport'.$i.'" type="text" name="passport'.$i.'"  minlength="3" maxlength="16" placeholder="Passport Id Here" required/>'.
+              '<label for="passport'.$i.'">Passport ID<b class="red-text"> *</b></label>'.
+              '</div>'.
+              '  <div class="input-field col s12 l6">'.
+              '<input onchange="email_validate(this.value);" type="email" class="form-control" name="email'.$i.'" id="email'.$i.'" placeholder="Enter your Email"  required>'.
+              '<label for="email'.$i.'">Email<b class="red-text"> *</b></label>'.
+              '</div>'.
+              '  <div class="input-field col s2 l2">'.
+              '<input class="col-sm-3" onkeyup="validatephone(this);" maxlength="3" type="text" name="countrycode'.$i.'" id="countrycode'.$i.'" placeholder="Countrycode Number" required>'.
+              '<label for="countrycode'.$i.'">Countrycode<b class="red-text"> *</b></label>'.
+              '</div>'.
+              '<div class="input-field col s10 l4">'.
+              '<input onkeyup="validatephone(this);" type="text" class="form-control phone" maxlength="15" name="phone'.$i.'" id="phone'.$i.'" placeholder="Your Phone Number Here" required>'.
+              '<label for="phone'.$i.'">Telephone Number<b class="red-text"> *</b></label>'.
+              '</div>'.
+              '<div class="col s12 l6">'.
+              '    <label>Reservation Age</label>'.
+              '<select required class="browser-default yellow lighten-5" name="reservation_age'.$i.'">'.
+              '  <option value="" disabled selected>Choose your Reservation age</option>'.
+              '<option value="Adult">Adult</option>'.
+              '<option value="Child">Child</option>'.
+              '</select>'.
+              '</div>'.
+              '</div>'.
+              '</fieldset>'.
 
               '  <div class="section"></div>'.
 
-                '<fieldset class="yellow lighten-5">'.
-                '  <legend>Address:</legend>'.
-                  '<div class="row">'.
-                    '<div class="input-field col s12 l6">'.
-                      '<input required name="address'.$counter.'" type="text" class="form-control inputpass" minlength="4" data-length="50" maxlength="50"  id="address'.$counter.'" placeholder="Address" />'.
-                      '<label for="address'.$counter.'">Address<b class="red-text"> *</b></label>'.
-                    '</div>'.
-                  '  <div class="input-field col s12 l6">'.
-                      '<input onkeyup = "Validate(this)" id="txt" type="text" class="form-control inputpass" name="city'.$counter.'" id="city'.$counter.'" placeholder="City" required>'.
-                      '<label for="city'.$counter.'">City<b class="red-text"> *</b></label>'.
-                    '</div>'.
-                  '</div>'.
-                  '<div class="row">'.
-                    '<div class="input-field col s12 l6">'.
-                      '<input onkeyup = "Validate(this)" id="txt" type="text" class="form-control inputpass" name="province'.$counter.'" id="province'.$counter.'" placeholder="Province" required>'.
-                      '<label for="province'.$counter.'">Province<b class="red-text"> *</b></label>'.
-                    '</div>'.
-                  '  <div class="input-field col s12 l6">'.
-                    '  <input onkeyup="validatephone(this);" type="text" class="form-control phone" maxlength="10" name="zipcode'.$counter.'" id="zipcode'.$counter.'" placeholder="Zip Code" required>'.
-                      '<label for="zipcode'.$counter.'">Zipcode<b class="red-text"> *</b></label>'.
-                    '</div>'.
-                    '<div class="input-field col s12">'.
-                      '<input required name="avoidfood'.$counter.'" type="text" class="form-control inputpass" maxlength="140" data-length="140"  id="avoidfood'.$counter.'" placeholder="Avoid Food" />'.
-                      '<label for="avoidfood'.$counter.'">Avoid Food<b class="red-text"> *</b></label>'.
-                    '</div>'.
-                  '</div>'.
-                '</fieldset>'.
-                '</div>
-                <div class="section"></div>';
-                $counter++;
+              '<fieldset class="yellow lighten-5">'.
+              '  <legend>Address:</legend>'.
+              '<div class="row">'.
+              '<div class="input-field col s12 l6">'.
+              '<input required name="address'.$i.'" type="text" class="form-control inputpass" minlength="4" data-length="50" maxlength="50"  id="address'.$i.'" placeholder="Address" />'.
+              '<label for="address'.$i.'">Address<b class="red-text"> *</b></label>'.
+              '</div>'.
+              '  <div class="input-field col s12 l6">'.
+              '<input onkeyup = "Validate(this)" id="txt" type="text" class="form-control inputpass" name="city'.$i.'" id="city'.$i.'" placeholder="City" required>'.
+              '<label for="city'.$i.'">City<b class="red-text"> *</b></label>'.
+              '</div>'.
+              '</div>'.
+              '<div class="row">'.
+              '<div class="input-field col s12 l6">'.
+              '<input onkeyup = "Validate(this)" id="txt" type="text" class="form-control inputpass" name="province'.$i.'" id="province'.$i.'" placeholder="Province" required>'.
+              '<label for="province'.$i.'">Province<b class="red-text"> *</b></label>'.
+              '</div>'.
+              '  <div class="input-field col s12 l6">'.
+              '  <input onkeyup="validatephone(this);" type="text" class="form-control phone" maxlength="10" name="zipcode'.$i.'" id="zipcode'.$i.'" placeholder="Zip Code" required>'.
+              '<label for="zipcode'.$i.'">Zipcode<b class="red-text"> *</b></label>'.
+              '</div>'.
+              '<div class="input-field col s12">'.
+              '<input  name="avoidfood'.$i.'" type="text" class="form-control inputpass" maxlength="140" data-length="140"  id="avoidfood'.$i.'" placeholder="Avoid Food" />'.
+              '<label for="avoidfood'.$i.'">Avoid Food</label>'.
+              '</div>'.
+              '</div>'.
+              '</fieldset>'.
+              '</div>
+              <div class="section"></div>';
 
             }
 
@@ -220,123 +218,127 @@ require 'module/language/init.php';
 
 
 
-      <div class="row">
-        <div class="center col s12">
-          <button type="button" value="Cancel" onclick="window.location.href='tour.php?id=<?php echo $_SESSION['tour_id'];?>'" class="btn red">Cancel</button>
-          <button name="submit" type="submit" class="btn amber" value="Sign Up">Submit</button>
+        <div class="row">
+          <div class="center col s12">
+            <button type="button" value="Cancel" onclick="window.location.href='tour.php?id=<?php echo $_SESSION['tour_id'];?>'" class="btn red">Cancel</button>
+            <button name="submit" type="submit" class="btn amber" value="Sign Up">Submit</button>
+          </div>
         </div>
-      </div>
       </form>
     </div>
   </div>
 
-      <!--Footer-->
-      <?php
-      include 'component/footer.php';
-      ?>
-      <script>
-      $(document).ready(function(){
-      $('.add_more_member').click(function(e){
-          e.preventDefault();
-          var e = document.getElementsByClassName('trip_member');
-          var i;
-          var counter = 1;
-          for(i=0; i <e.length; i++) {
-            if(e[i].className=="trip_member") {
-                counter++;
-            }
-          }
-          if(counter <= <?php echo $amount_people;?>){
-            $(this).before(' <div class="section"></div><div class="trip_member"'+
-              '  <div class="section"></div>'+
-              '<fieldset>'+
-                '<legend>Personalia:'+counter+'</legend>'+
-                '<div class="row">'+
-                '  <div class="input-field col s12 l6">'+
-                    '<input onkeyup = "Validate(this)" id="txt" type="text" class="form-control" placeholder="Enter your Firstname" name="firstname'+counter+'" id="firstname" required>'+
-                    '<label for="firstname'+counter+'">Firstname<b class="red-text"> *</b></label>'+
-                  '</div>'+
-                  '<div class="input-field col s12 l6">'+
-                  '  <input onkeyup = "Validate(this)" type="text" class="form-control" name="middlename'+counter+'" placeholder="Enter your Middlename" id="middlename'+counter+'">'+
-                    '<label for="middlename'+counter+'">Middle Name</label>'+
-                  '</div>'+
-                  '<div class="input-field col s12 l6">'+
-                    '<input onkeyup="Validate(this)" type="text" class="form-control" name="lastname'+counter+'" placeholder="Enter your Lastname" id="lastname'+counter+'" required>'+
-                    '<label for="lastname'+counter+'">Lastname<b class="red-text"> *</b></label>'+
-                  '</div>'+
-                  '<div class="input-field col s12 l6">'+
-                  '  <input type="date" class="datepicker" name="dob2" id="dob2">'+
-                    '<label for="dob2">Birthday<b class="red-text"> *</b></label>'+
-                  '</div>'+
-                '</div>'+
+  <!--Footer-->
+  <?php
+  include 'component/footer.php';
+  ?>
+  <script>
+  $(document).ready(function(){
+    $('.add_more_member').click(function(e){
+      e.preventDefault();
+      var e = document.getElementsByClassName('trip_member');
+      var i;
+      var counter = 1;
+      for(i=0; i <e.length; i++) {
+        if(e[i].className=="trip_member") {
+          counter++;
+        }
+      }
+      if(counter <= <?php echo $amount_people;?>){
+        $(this).before(' <div class="section"></div><div class="trip_member"'+
+        '  <div class="section"></div>'+
+        '<fieldset>'+
+        '<legend>Personalia:'+counter+'</legend>'+
+        '<div class="row">'+
+        '  <div class="input-field col s12 l6">'+
+        '<input onkeyup = "Validate(this)" id="txt" type="text" class="form-control" placeholder="Enter your Firstname" name="firstname'+counter+'" id="firstname" required>'+
+        '<label for="firstname'+counter+'">Firstname<b class="red-text"> *</b></label>'+
+        '</div>'+
+        '<div class="input-field col s12 l6">'+
+        '  <input onkeyup = "Validate(this)" type="text" class="form-control" name="middlename'+counter+'" placeholder="Enter your Middlename" id="middlename'+counter+'">'+
+        '<label for="middlename'+counter+'">Middle Name</label>'+
+        '</div>'+
+        '<div class="input-field col s12 l6">'+
+        '<input onkeyup="Validate(this)" type="text" class="form-control" name="lastname'+counter+'" placeholder="Enter your Lastname" id="lastname'+counter+'" required>'+
+        '<label for="lastname'+counter+'">Lastname<b class="red-text"> *</b></label>'+
+        '</div>'+
+        '<div class="input-field col s12 l6">'+
+        '  <input required type="date" class="datepicker" name="dob2" id="dob2">'+
+        '<label for="dob'+counter+'">Birthday<b class="red-text"> *</b></label>'+
+        '</div>'+
+        '</div>'+
 
-                '<div class="row">'+
-                  '<div class="input-field col s12 l6">'+
-                    '<input onkeyup="ValidateUsername(this)" id="passport'+counter+'" type="text" name="passport'+counter+'"  minlength="3" maxlength="16" placeholder="Passport Id Here" required/>'+
-                    '<label for="passport'+counter+'">Passport ID<b class="red-text"> *</b></label>'+
-                  '</div>'+
-                '  <div class="input-field col s12 l6">'+
-                    '<input onchange="email_validate(this.value);" type="email" class="form-control" name="email'+counter+'" id="email'+counter+'" placeholder="Enter your Email"  required>'+
-                    '<label for="email'+counter+'">Email<b class="red-text"> *</b></label>'+
-                  '</div>'+
-                '  <div class="input-field col s2 l2">'+
-                    '<input class="col-sm-3" onkeyup="validatephone(this);" maxlength="3" type="text" name="countrycode'+counter+'" id="countrycode'+counter+'" placeholder="Countrycode Number" required>'+
-                    '<label for="countrycode'+counter+'">Countrycode<b class="red-text"> *</b></label>'+
-                  '</div>'+
-                  '<div class="input-field col s10 l4">'+
-                  '<input onkeyup="validatephone(this);" type="text" class="form-control phone" maxlength="15" name="phone'+counter+'" id="phone'+counter+'" placeholder="Your Phone Number Here" required>'+
-                  '<label for="phone'+counter+'">Telephone Number<b class="red-text"> *</b></label>'+
-                  '</div>'+
-                  '<div class="col s12 l6">'+
-                '    <label>Reservation Age</label>'+
-                      '<select class="browser-default" name="reservation_age'+counter+'">'+
-                      '  <option value="" disabled selected>Choose your Reservation age</option>'+
-                        '<option value="Adult">Adult</option>'+
-                        '<option value="Child">Child</option>'+
-                      '</select>'+
-                  '</div>'+
-                '</div>'+
-              '</fieldset>'+
+        '<div class="row">'+
+        '<div class="input-field col s12 l6">'+
+        '<input onkeyup="ValidateUsername(this)" id="passport'+counter+'" type="text" name="passport'+counter+'"  minlength="3" maxlength="16" placeholder="Passport Id Here" required/>'+
+        '<label for="passport'+counter+'">Passport ID<b class="red-text"> *</b></label>'+
+        '</div>'+
+        '  <div class="input-field col s12 l6">'+
+        '<input onchange="email_validate(this.value);" type="email" class="form-control" name="email'+counter+'" id="email'+counter+'" placeholder="Enter your Email"  required>'+
+        '<label for="email'+counter+'">Email<b class="red-text"> *</b></label>'+
+        '</div>'+
+        '  <div class="input-field col s2 l2">'+
+        '<input class="col-sm-3" onkeyup="validatephone(this);" maxlength="3" type="text" name="countrycode'+counter+'" id="countrycode'+counter+'" placeholder="Countrycode Number" required>'+
+        '<label for="countrycode'+counter+'">Countrycode<b class="red-text"> *</b></label>'+
+        '</div>'+
+        '<div class="input-field col s10 l4">'+
+        '<input onkeyup="validatephone(this);" type="text" class="form-control phone" maxlength="15" name="phone'+counter+'" id="phone'+counter+'" placeholder="Your Phone Number Here" required>'+
+        '<label for="phone'+counter+'">Telephone Number<b class="red-text"> *</b></label>'+
+        '</div>'+
+        '<div class="col s12 l6">'+
+        '    <label>Reservation Age</label>'+
+        '<select required class="browser-default" name="reservation_age'+counter+'">'+
+        '  <option value="" disabled selected>Choose your Reservation age</option>'+
+        '<option value="Adult">Adult</option>'+
+        '<option value="Child">Child</option>'+
+        '</select>'+
+        '</div>'+
+        '</div>'+
+        '</fieldset>'+
 
-            '  <div class="section"></div>'+
+        '  <div class="section"></div>'+
 
-              '<fieldset>'+
-              '  <legend>Address:</legend>'+
-                '<div class="row">'+
-                  '<div class="input-field col s12 l6">'+
-                    '<input required name="address'+counter+'" type="text" class="form-control inputpass" minlength="4" data-length="50" maxlength="50"  id="address'+counter+'" placeholder="Address" />'+
-                    '<label for="address'+counter+'">Address<b class="red-text"> *</b></label>'+
-                  '</div>'+
-                '  <div class="input-field col s12 l6">'+
-                    '<input onkeyup = "Validate(this)" id="txt" type="text" class="form-control inputpass" name="city'+counter+'" id="city'+counter+'" placeholder="City" required>'+
-                    '<label for="city'+counter+'">City<b class="red-text"> *</b></label>'+
-                  '</div>'+
-                '</div>'+
-                '<div class="row">'+
-                  '<div class="input-field col s12 l6">'+
-                    '<input onkeyup = "Validate(this)" id="txt" type="text" class="form-control inputpass" name="province'+counter+'" id="province'+counter+'" placeholder="Province" required>'+
-                    '<label for="province'+counter+'">Province<b class="red-text"> *</b></label>'+
-                  '</div>'+
-                '  <div class="input-field col s12 l6">'+
-                  '  <input onkeyup="validatephone(this);" type="text" class="form-control phone" maxlength="10" name="zipcode'+counter+'" id="zipcode'+counter+'" placeholder="Zip Code" required>'+
-                    '<label for="zipcode'+counter+'">Zipcode<b class="red-text"> *</b></label>'+
-                  '</div>'+
-                  '<div class="input-field col s12">'+
-                    '<input required name="avoidfood'+counter+'" type="text" class="form-control inputpass" maxlength="140" data-length="140"  id="avoidfood'+counter+'" placeholder="Avoid Food" />'+
-                    '<label for="avoidfood'+counter+'">Avoid Food<b class="red-text"> *</b></label>'+
-                  '</div>'+
-                '</div>'+
-              '</fieldset>'+
-              '</div>'
-            );
+        '<fieldset>'+
+        '  <legend>Address:</legend>'+
+        '<div class="row">'+
+        '<div class="input-field col s12 l6">'+
+        '<input required name="address'+counter+'" type="text" class="form-control inputpass" minlength="4" data-length="50" maxlength="50"  id="address'+counter+'" placeholder="Address" />'+
+        '<label for="address'+counter+'">Address<b class="red-text"> *</b></label>'+
+        '</div>'+
+        '  <div class="input-field col s12 l6">'+
+        '<input onkeyup = "Validate(this)" id="txt" type="text" class="form-control inputpass" name="city'+counter+'" id="city'+counter+'" placeholder="City" required>'+
+        '<label for="city'+counter+'">City<b class="red-text"> *</b></label>'+
+        '</div>'+
+        '</div>'+
+        '<div class="row">'+
+        '<div class="input-field col s12 l6">'+
+        '<input onkeyup = "Validate(this)" id="txt" type="text" class="form-control inputpass" name="province'+counter+'" id="province'+counter+'" placeholder="Province" required>'+
+        '<label for="province'+counter+'">Province<b class="red-text"> *</b></label>'+
+        '</div>'+
+        '  <div class="input-field col s12 l6">'+
+        '  <input onkeyup="validatephone(this);" type="text" class="form-control phone" maxlength="10" name="zipcode'+counter+'" id="zipcode'+counter+'" placeholder="Zip Code" required>'+
+        '<label for="zipcode'+counter+'">Zipcode<b class="red-text"> *</b></label>'+
+        '</div>'+
+        '<div class="input-field col s12">'+
+        '<input name="avoidfood'+counter+'" type="text" class="form-control inputpass" maxlength="140" data-length="140"  id="avoidfood'+counter+'" placeholder="Avoid Food" />'+
+        '<label for="avoidfood'+counter+'">Avoid Food<b class="red-text"> *</b></label>'+
+        '</div>'+
+        '</div>'+
+        '</fieldset>'+
+        '</div>'
+      );
 
-          }
+    }
 
 
 
-      });
-      });
-      </script>
+  });
+});
 
-    </body>
-  </html>
+
+
+
+</script>
+
+</body>
+</html>

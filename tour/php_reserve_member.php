@@ -6,7 +6,7 @@ $time = time();
 $_SESSION['book_tour_expired'] = $time+(60*50);
 
 if(isset($_POST['book'])){
-  if(isset($_SESSION['seat']) and isset($_SESSION['login_id'])){
+  if(isset($_SESSION['login_id'])){
 
     if(isset($_POST['tour_round']) and isset($_POST['result_price'])){
       $tour_round_id = $_POST['tour_round'];
@@ -14,7 +14,11 @@ if(isset($_POST['book'])){
       $_SESSION['result_price'] = $_POST['result_price'];
       $_SESSION['departure_location'] = $_POST['depart'];
       $_SESSION['dropoff_location'] = $_POST['dropOff'];
+      $_SESSION['seat'] = $_POST['amount_people'];
       // echo "ผ่าน";
+      if(isset($_POST['tour_type'])){
+        $_SESSION['tour_type'] = $_POST['tour_type'];
+      }
 
     }
 
@@ -35,24 +39,6 @@ if(isset($_POST['book'])){
     $result_delete = mysqli_query($conn,$sql_delete_null);
     $tour = "tour_".$_COOKIE['lang'];
 
-    $sql = "SELECT  t.tour_id,t.max_customer, t.available_seat
-    FROM $tour t INNER JOIN tour_round tr on t.tour_id = tr.tour_id
-    WHERE tr.tour_round_id = $tour_round_id";
-    $result = mysqli_query($conn,$sql);
-    if($result){
-      echo "เข้าไหม";
-      $data = mysqli_fetch_array($result);
-      $available_seat = $data['available_seat'];
-      $tour_id = $data['tour_id'];
-      $current_seat = $available_seat-$amount_people;
-
-      $sql_update="UPDATE `tour` SET `available_seat`=$current_seat WHERE tour_id = $tour_id";
-      $result_update = mysqli_query($conn,$sql_update);
-      if ($result_update) {
-        echo "เข้า";
-      }
-
-    }
 
 
     for($i =1 ;$i<=$amount_people;$i++){

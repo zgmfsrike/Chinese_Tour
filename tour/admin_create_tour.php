@@ -95,9 +95,11 @@ function initDate(index){
               <label for="highlight">Highlight</label>
             </div>
             <!--  Region  -->
-            <div class="input-field" id="region" name='price'>
-              <input placeholder="Region" required name='region_en' type='text'/>
-              <label for="region">Region</label>
+            <div  id="region" name='region'>
+              <label>Region</label>
+              <select class="browser-default" name='region_en' required>
+                <option selected value='Northern'>Northern</option>
+              </select><br />
             </div>
             <!--  Province  -->
             <div  id="province" name='province'>
@@ -139,9 +141,11 @@ function initDate(index){
               <label for="highlight">Highlight</label>
             </div>
             <!--  Region  -->
-            <div class="input-field" id="region" name='price'>
-              <input placeholder="Region" required name='region_ch' type='text'/>
-              <label for="region">Region</label>
+            <div  id="region" name='region'>
+              <label>Region</label>
+              <select class="browser-default" name='region_ch' required>
+                <option selected value='Northern'>Northern</option>
+              </select><br />
             </div>
             <!--  Province  -->
             <div id="province" name='province'>
@@ -183,9 +187,11 @@ function initDate(index){
               <label for="highlight">Highlight</label>
             </div>
             <!--  Region  -->
-            <div class="input-field" id="region" name='price'>
-              <input placeholder="Region" required name='region_th' type='text'/>
-              <label for="region">Region</label>
+            <div  id="region" name='region'>
+              <label>Region</label>
+              <select class="browser-default" name='region_th' required>
+                <option selected value='Northern'>Northern</option>
+              </select><br />
             </div>
             <!--  Province  -->
             <div id="province" name='province'>

@@ -105,6 +105,7 @@ require 'module/language/init.php';
               $data = mysqli_fetch_array($result);
 
 
+
             }
 
             ?>
@@ -115,7 +116,7 @@ require 'module/language/init.php';
             <li><b>Drop off Location : </b><?php echo $dropoff_location;?></li>
             <li><b>Start Date : </b><?php echo $data['start_date_time'];?></li>
             <li><b>End Date : </b><?php echo $data['end_date_time'];?></li>
-            <li><b>Price : </b><?php echo $result_price?></li>
+            <li><b>Price : </b><?php echo $result_price?> ฿</li>
           </ul>
         </div>
       </fieldset>

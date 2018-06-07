@@ -163,7 +163,7 @@ include 'component/header.php';
             $tour_img ="";
           }
 
-          $link = "tour.php?id=".$tour_id."&seat=1";
+          $link = "tour.php?id=".$tour_id."";
           echo "
           <div class='row collection '>
           <div class='row'>

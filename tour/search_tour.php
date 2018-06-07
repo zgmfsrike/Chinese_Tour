@@ -22,9 +22,6 @@ if(isset($_POST['tour_type_id'])){
   $tour_type = $_POST['tour_type_id'];
 
 }
-if(isset($_POST['amount_people'])){
-  $amount_people = $_POST['amount_people'];
-}
 if(!empty($_POST['accommodation'])){
   $accommodation_id = $_POST['accommodation'];
 }
@@ -40,7 +37,7 @@ if(!empty($_POST['region'])){
 if(!empty($_POST['province'])){
   $province = $_POST['province'];
 }
-
+$tour = "tour_".$_COOKIE['lang'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -167,22 +164,7 @@ include 'component/header.php';
             </select>
             <br class="hide-on-med-and-down" />
           </div>
-          <div class="col s12 l1">
-            <label class="show-on-medium-and-down hide-on-large-only">Amount of People</label>
-            <select class="browser-default" name='amount_people' required>
-              <option value="" disabled selected>Amount of People</option>
-              <option value='1' <?php if(isset($amount_people) && $amount_people ==1) echo "selected";?>>1</option>
-              <option value='2'<?php if(isset($amount_people) && $amount_people ==2) echo "selected";?>>2</option>
-              <option value='3'<?php if(isset($amount_people) && $amount_people ==3) echo "selected";?>>3</option>
-              <option value='4'<?php if(isset($amount_people) && $amount_people ==4) echo "selected";?>>4</option>
-              <option value='5'<?php if(isset($amount_people) && $amount_people ==5) echo "selected";?>>5</option>
-              <option value='6'<?php if(isset($amount_people) && $amount_people ==6) echo "selected";?>>6</option>
-              <option value='7'<?php if(isset($amount_people) && $amount_people ==7) echo "selected";?>>7</option>
-              <option value='8'<?php if(isset($amount_people) && $amount_people ==8) echo "selected";?>>8</option>
-              <option value='9'<?php if(isset($amount_people) && $amount_people ==9) echo "selected";?>>9</option>
-              <option value='10'<?php if(isset($amount_people) && $amount_people ==10) echo "selected";?>>10</option>
-            </select>
-          </div>
+
           <div class="col s12 l4">
             <div class="input-field inline">
               <text class="left">Price range&emsp;</text>
@@ -220,12 +202,11 @@ include 'component/header.php';
       $price1 = $_POST['price1'];
       $price2 = $_POST['price2'];
 
-      $amount_people = $_POST['amount_people'];
-
-      $tour = "tour_".$_COOKIE['lang'];
 
 
-      $sql_search = "SELECT t.tour_description,tt.tour_type,ac.accommodation_level,vt.vehicle_type ,t.price,t.tour_id,t.highlight,t.available_seat
+
+
+      $sql_search = "SELECT t.tour_description,tt.tour_type,ac.accommodation_level,vt.vehicle_type ,t.price,t.tour_id,t.highlight,t.max_customer
       FROM $tour t INNER JOIN tour_vehicle_type tv ON t.tour_id = tv.tour_id
       INNER JOIN vehicle_type vt ON tv.vehicle_type_id = vt.vehicle_type_id
       INNER JOIN tour_accommodation ta ON t.tour_id = ta.tour_id
@@ -315,9 +296,9 @@ include 'component/header.php';
       $num_row =mysqli_num_rows($result);
       $per_page = 5;
       if(isset($_GET['page'])){
-          $page = $_GET['page'];
+        $page = $_GET['page'];
       }else{
-          $page =1 ;
+        $page =1 ;
       }
       $prev_page = $page-1;
       $next_page = $page+1;
@@ -354,7 +335,19 @@ include 'component/header.php';
         while($show = mysqli_fetch_array($result)) {
           $tour_id = $show['tour_id'];
           $tour_type = $show['tour_type'];
-          $seat_in_tour = $show['available_seat'];
+
+          $sql_show_customer = "SELECT * FROM tour_round_member trm INNER JOIN tour_round tr ON trm.tour_round_id = tr.tour_round_id
+          INNER JOIN $tour t ON tr.tour_id = t.tour_id WHERE t.tour_id = $tour_id";
+
+          $result_show_customer = mysqli_query($conn, $sql_show_customer);
+          if($result_show_customer){
+            $count_customer = mysqli_num_rows($result_show_customer);
+          }else{
+            $count_customer = 0;
+          }
+
+          $max_customer =  $show['max_customer'];
+          $seat_in_tour = $max_customer-$count_customer;
 
           $sql_tour = "SELECT * FROM `tour_tour_type` INNER JOIN `tour_type` ON tour_tour_type.tour_type_id=tour_type.tour_type_id WHERE tour_id = $tour_id";
           $result_tour = mysqli_query($conn, $sql_tour);
@@ -393,7 +386,7 @@ include 'component/header.php';
           }
 
 
-          $link = "tour.php?id=".$tour_id."&seat=".$amount_people;
+          $link = "tour.php?id=".$tour_id."";
 
 
           echo "
@@ -421,7 +414,7 @@ include 'component/header.php';
           <div class='row collection show-on-medium-and-down hide-on-large-only'>
           <div class='row center'>
           <div class='col s12 l4'>
-          <img class='materialboxed' width='250' src='images/wechatQR.jpg'>
+          <img class='materialboxed' width='250' src='$tour_img'>
           </div>
           <div class='col s12 l4'>
           <br/>
@@ -449,19 +442,19 @@ include 'component/header.php';
           <ul class="pagination">
             <?php
 
-              if($prev_page){
-                echo "<li class='disabled'><a href ='search_tour.php?page=$prev_page&seat=$amount_people'><i class='material-icons'>chevron_left</i></a></li>";
+            if($prev_page){
+              echo "<li class='disabled'><a href ='search_tour.php?page=$prev_page'><i class='material-icons'>chevron_left</i></a></li>";
+            }
+            for($i =1;$i<=$num_page;$i++){
+              if($i != $page){
+                echo "<li><a href='search_tour.php?page=$i'>$i</a></li>";
+              }else if($i = $page){
+                echo "<li class='active'><a href='search_tour.php?page=$i'>$i</a></li>";
               }
-              for($i =1;$i<=$num_page;$i++){
-                if($i != $page){
-                  echo "<li><a href='search_tour.php?page=$i&seat=$amount_people'>$i</a></li>";
-                }else if($i = $page){
-                  echo "<li class='active'><a href='search_tour.php?page=$i&seat=$amount_people'>$i</a></li>";
-                }
-              }
-              if($page !=$num_page){
-                echo "<li class='waves-effect'><a href='search_tour.php?page=$next_page&seat=$amount_people'><i class='material-icons'>chevron_right</i></a></li>";
-              }
+            }
+            if($page !=$num_page){
+              echo "<li class='waves-effect'><a href='search_tour.php?page=$next_page'><i class='material-icons'>chevron_right</i></a></li>";
+            }
 
 
             ?>
@@ -474,18 +467,14 @@ include 'component/header.php';
       }
     }else if(isset($_GET['page'])){
       if(isset($_SESSION['sql_search'])){
-        if(isset($_GET['seat'])){
-          $amount_people = $_GET['seat'];
-
-        }
         $sql_search = $_SESSION['sql_search'];
         $result = mysqli_query($conn,$sql_search);
         $num_row =mysqli_num_rows($result);
         $per_page = 5;
         if(isset($_GET['page'])){
-            $page = $_GET['page'];
+          $page = $_GET['page'];
         }else{
-            $page =1 ;
+          $page =1 ;
         }
         $prev_page = $page-1;
         $next_page = $page+1;
@@ -510,7 +499,19 @@ include 'component/header.php';
           while($show = mysqli_fetch_array($result)) {
             $tour_id = $show['tour_id'];
             $tour_type = $show['tour_type'];
-            $seat_in_tour = $show['available_seat'];
+
+            $sql_show_customer = "SELECT * FROM tour_round_member trm INNER JOIN tour_round tr ON trm.tour_round_id = tr.tour_round_id
+            INNER JOIN $tour t ON tr.tour_id = t.tour_id WHERE t.tour_id = $tour_id";
+
+            $result_show_customer = mysqli_query($conn, $sql_show_customer);
+            if($result_show_customer){
+              $count_customer = mysqli_num_rows($result_show_customer);
+            }else{
+              $count_customer = 0;
+            }
+
+            $max_customer =  $show['max_customer'];
+            $seat_in_tour = $max_customer-$count_customer;
 
             $sql_tour_img = "SELECT * FROM `tour_image` where tour_id = $tour_id";
             $result_tour_img = mysqli_query($conn, $sql_tour_img);
@@ -523,7 +524,7 @@ include 'component/header.php';
             }
 
 
-            $link = "tour.php?id=".$tour_id."&seat=".$amount_people;
+            $link = "tour.php?id=".$tour_id."";
 
 
             echo "
@@ -576,19 +577,19 @@ include 'component/header.php';
             <ul class="pagination">
               <?php
 
-                if($prev_page){
-                  echo "<li class='disabled'><a href ='search_tour.php?page=$prev_page&seat=$amount_people'><i class='material-icons'>chevron_left</i></a></li>";
+              if($prev_page){
+                echo "<li class='disabled'><a href ='search_tour.php?page=$prev_page'><i class='material-icons'>chevron_left</i></a></li>";
+              }
+              for($i =1;$i<=$num_page;$i++){
+                if($i != $page){
+                  echo "<li><a href='search_tour.php?page=$i'>$i</a></li>";
+                }else if($i = $page){
+                  echo "<li class='active'><a href='search_tour.php?page=$i'>$i</a></li>";
                 }
-                for($i =1;$i<=$num_page;$i++){
-                  if($i != $page){
-                    echo "<li><a href='search_tour.php?page=$i&seat=$amount_people'>$i</a></li>";
-                  }else if($i = $page){
-                    echo "<li class='active'><a href='search_tour.php?page=$i&seat=$amount_people'>$i</a></li>";
-                  }
-                }
-                if($page !=$num_page){
-                  echo "<li class='waves-effect'><a href='search_tour.php?page=$next_page&seat=$amount_people'><i class='material-icons'>chevron_right</i></a></li>";
-                }
+              }
+              if($page !=$num_page){
+                echo "<li class='waves-effect'><a href='search_tour.php?page=$next_page'><i class='material-icons'>chevron_right</i></a></li>";
+              }
 
 
               ?>
@@ -597,11 +598,11 @@ include 'component/header.php';
 
 
 
-    <?php
+          <?php
 
-      }else {
-        echo "Nothning found";
-      }
+        }else {
+          echo "Nothning found";
+        }
 
 
 

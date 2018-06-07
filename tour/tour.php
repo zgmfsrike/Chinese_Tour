@@ -8,10 +8,6 @@ require 'module/language/init.php';
 
 <?php
 if(isset($_GET['id'])){
-  if(isset($_GET['seat'])){
-    $seat = $_GET['seat'];
-    $_SESSION['seat'] = $seat;
-  }
   $id = $_GET['id'];
   $_SESSION['tour_id'] = $id;
 
@@ -85,19 +81,58 @@ if(isset($_GET['id'])){
             </div>
 
             <ul>
-              <li><b>Tour type :</b>
+              <li><b>Tour type </b>
                 <?php
                 $sql = "SELECT * FROM `tour_tour_type` INNER JOIN `tour_type` ON tour_tour_type.tour_type_id=tour_type.tour_type_id WHERE tour_id = $id";
                 $result = mysqli_query($conn, $sql);
-                if(mysqli_num_rows($result) > 0){
-                  while($row = mysqli_fetch_array($result)){
-                    $type = $row['tour_type'];
-                    echo '<span> '.$type.' </span>';
-                  }
-                  // Free result set
-                  mysqli_free_result($result);
-                }
                 ?>
+                <select class="browser-default" name="tour_type" required>
+                  <option value="">Please select</option>
+                  <?php
+                  if(mysqli_num_rows($result) > 0){
+                    while($row = mysqli_fetch_array($result)){
+                      $type = $row['tour_type'];
+                      $tour_type_value = 0 ;
+
+                      switch ($type) {
+                        case 'Casual':
+                        $tour_type_value = 1;
+                        break;
+
+                        case 'Meeting':
+                        $tour_type_value = 2;
+                        break;
+
+                        case 'Incentive':
+                        $tour_type_value = 3;
+                        break;
+
+                        case 'Convention':
+                        $tour_type_value = 4;
+                        break;
+
+                        case 'Exhibition':
+                        $tour_type_value = 5;
+                        break;
+
+                        case 'Business':
+                        $tour_type_value = 6;
+                        break;
+
+                        default:
+                        // code...
+                        break;
+                      }
+
+                      ?>
+                      <option value="<?php echo $tour_type_value; ?>"><?php echo $type; ?></option>
+                      <?php
+                    }
+                    // Free result set
+                    mysqli_free_result($result);
+                  }
+                  ?>
+                </select>
               </li>
 
               <li><b>Vehicle :</b>
@@ -129,6 +164,21 @@ if(isset($_GET['id'])){
                 ?>
               </li>
             </ul>
+            <label>Amount of People</label>
+            <label class="show-on-medium-and-down hide-on-large-only">Amount of People</label>
+            <select class="browser-default" name='amount_people' required>
+              <option value="" disabled selected>Amount of People</option>
+              <option value='1'>1</option>
+              <option value='2'>2</option>
+              <option value='3'>3</option>
+              <option value='4'>4</option>
+              <option value='5'>5</option>
+              <option value='6'>6</option>
+              <option value='7'>7</option>
+              <option value='8'>8</option>
+              <option value='9'>9</option>
+              <option value='10'>10</option>
+            </select>
 
             <label>Departure Location</label>
             <select class="browser-default" name="depart" required>
@@ -257,75 +307,75 @@ if(isset($_GET['id'])){
       <div class="section"></div>
     </div>
 
-<!--Footer-->
-<?php
-include 'component/footer.php';
-?>
+    <!--Footer-->
+    <?php
+    include 'component/footer.php';
+    ?>
 
-<script>
-var price_id = document.getElementById('price');
-price_id.innerHTML = <?php echo intval($price);?>;
-var result_price = document.getElementById('result_price');
-result_price.value = <?php echo intval($price);?>;
-function dropChange(){
-  var dropOff = document.getElementById('dropOff').value;
-  switch (dropOff) {
-    case "Airport": var drop_price = 0;
-    break;
-    case "Nimman": var drop_price = 300;
-    break;
-    case "Lung More": var drop_price = 500;
-    break;
-    case "Suandork": var drop_price = 400;
-    break;
-    case "Khu Mueang": var drop_price = 200;
-    break;
-    default:
+    <script>
+    var price_id = document.getElementById('price');
+    price_id.innerHTML = <?php echo intval($price);?>;
+    var result_price = document.getElementById('result_price');
+    result_price.value = <?php echo intval($price);?>;
+    function dropChange(){
+      var dropOff = document.getElementById('dropOff').value;
+      switch (dropOff) {
+        case "Airport": var drop_price = 0;
+        break;
+        case "Nimman": var drop_price = 300;
+        break;
+        case "Lung More": var drop_price = 500;
+        break;
+        case "Suandork": var drop_price = 400;
+        break;
+        case "Khu Mueang": var drop_price = 200;
+        break;
+        default:
 
-  }
+      }
 
-  price.innerHTML =  <?php echo intval($price);?>+ parseInt(drop_price);
-  result_price.value = <?php echo intval($price);?>+ parseInt(drop_price);
+      price.innerHTML =  <?php echo intval($price);?>+ parseInt(drop_price);
+      result_price.value = <?php echo intval($price);?>+ parseInt(drop_price);
 
-}
-</script>
-<!--สคริปปุ่มโดนแก้กับ Delete Tour แล้วอะนะ-->
-<script type="text/javascript">
-function warning(){
-  swal({
-    title: 'Are you sure?',
-    text: "You won't be able to revert this!",
-    type: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: '<a style="color:white" href ="php_delete_tour.php?id=<?php echo $id; ?>">Yes, delete it!</a>'
-  }).then((result) => {
-    if (result.value) {
-      swal(
-      )
     }
-  })
-  //อันนี้คืออันออริจิ เผื่ออยากได้
-  //           swal({
-  //   title: 'Are you sure?',
-  //   text: "You won't be able to revert this!",
-  //   type: 'warning',
-  //   showCancelButton: true,
-  //   confirmButtonColor: '#3085d6',
-  //   cancelButtonColor: '#d33',
-  //   confirmButtonText: 'Yes, delete it!'
-  // }).then((result) => {
-  //   if (result.value) {
-  //     swal(
-  //       'Deleted!',
-  //       'Your file has been deleted.',
-  //       'success'
-  //     )
-  //   }
-  // })
-}
-</script>
+    </script>
+    <!--สคริปปุ่มโดนแก้กับ Delete Tour แล้วอะนะ-->
+    <script type="text/javascript">
+    function warning(){
+      swal({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '<a style="color:white" href ="php_delete_tour.php?id=<?php echo $id; ?>">Yes, delete it!</a>'
+      }).then((result) => {
+        if (result.value) {
+          swal(
+          )
+        }
+      })
+      //อันนี้คืออันออริจิ เผื่ออยากได้
+      //           swal({
+      //   title: 'Are you sure?',
+      //   text: "You won't be able to revert this!",
+      //   type: 'warning',
+      //   showCancelButton: true,
+      //   confirmButtonColor: '#3085d6',
+      //   cancelButtonColor: '#d33',
+      //   confirmButtonText: 'Yes, delete it!'
+      // }).then((result) => {
+      //   if (result.value) {
+      //     swal(
+      //       'Deleted!',
+      //       'Your file has been deleted.',
+      //       'success'
+      //     )
+      //   }
+      // })
+    }
+  </script>
 </body>
 </html>
 <?php
