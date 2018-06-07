@@ -15,20 +15,9 @@ require 'module/language/lang_aboutus.php';
         <div class="container">
             <div class="row col s12">
                 <div class="section"></div>
-                <h4 class="center"><?php echo $string_aboutus_name;?></h4><hr/>
-                <p>We are proud to serve our customers with the past experience of our knowledge as long as personal relationship with other also with the expertise, dedication and experience of our dynamic professional team to ensure our customer in dealing with competitive and cost effective rates as well as to assure our customers in order to perform every task with care also to maintain the highest standard services.</p>
-            </div>
-            <div class="row">
-                <div class="col s12 l8">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed voluptate nihil eum consectetur similique? Consectetur, quod, incidunt, harum nisi dolores delectus reprehenderit voluptatem perferendis dicta dolorem non blanditiis ex fugiat.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed voluptate nihil eum consectetur similique? Consectetur, quod, incidunt, harum nisi dolores delectus reprehenderit voluptatem perferendis dicta dolorem non blanditiis ex fugiat.Lorem ipsum fugiat.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed voluptate nihil eum consectetur similique? Consectetur, quod, incidunt, harum nisi dolores delectus reprehenderit voluptatem perferendis dicta dolorem non blanditiis ex fugiat.
-                </div>
-                <div class="col s12 l4">
-                    <div class="card">
-                        <div class="card-image">
-                            <img class="activator" src="images/home3.jpg">
-                        </div>
-                    </div>
-                </div>
+                <h4 class="center"><?php echo $string_aboutus_name;?></h4>
+                <hr/>
+                <p>About us here</p>
             </div>
             <hr/>
             <div class="row">
