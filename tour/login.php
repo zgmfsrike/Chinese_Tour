@@ -43,6 +43,7 @@ require 'module/language/lang_login.php';
                                 <div class="section"></div>
                                 <div class="section"></div>
                                 <div class="section"></div>
+                                <span><a href="admin_login.php">Login (Admin)</a></span>
                                 <!-- <a href="/password/reset">Forgot Your Password?</a> -->
                             </div>
                         </form>
