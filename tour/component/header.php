@@ -57,6 +57,7 @@ require 'module/string/string_header.php';
     <li><a href="<?php echo $link_convention;?>"><?php echo $string_header_convention;?></a></li>
     <li><a href="<?php echo $link_exhibition;?>"><?php echo $string_header_exhibition;?></a></li>
     <li><a href="<?php echo $link_business;?>"><?php echo $string_header_business;?></a></li>
+    <li><a href="<?php echo $link_other;?>"><?php echo $string_header_other;?></a></li>
     <li><a href="<?php echo $link_about_us;?>"><?php echo $string_header_about;?></a></li>
     <li><div class="divider"></div></li>
     <?php
@@ -103,6 +104,7 @@ require 'module/string/string_header.php';
       <li class="tab"><a target="_self" href="<?php echo $link_convention;?>"><?php echo $string_header_convention;?></a></li>
       <li class="tab"><a target="_self" href="<?php echo $link_exhibition;?>"><?php echo $string_header_exhibition;?></a></li>
       <li class="tab"><a target="_self" href="<?php echo $link_business;?>"><?php echo $string_header_business;?></a></li>
+      <li class="tab"><a target="_self" href="<?php echo $link_other;?>"><?php echo $string_header_other;?></a></li>
       <li class="tab"><a target="_self" href="<?php echo $link_about_us;?>"><?php echo $string_header_about;?></a></li>
       <li style="border-left: 1px solid #fff; border-radius: 0; height:50%; margin-top:1%;" class="tab"></li>
 

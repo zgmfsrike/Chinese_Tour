@@ -25,6 +25,9 @@ if (mysqli_num_rows($result) > 0) {
       case 'business':
       $string_header_business = $content;
       break;
+      case 'other':
+      $string_header_other = $content;
+      break;
       case 'about':
       $string_header_about = $content;
       break;
