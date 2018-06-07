@@ -235,7 +235,7 @@ include 'component/header.php';
 
 
       if($tour_type_id!==''){
-        $sql_search .= " ttt.tour_type_id =$tour_type_id AND t.available_seat >=$amount_people" ;
+        $sql_search .= " ttt.tour_type_id =$tour_type_id " ;
       }
 
       for($i=0;$i<=4;$i++){
@@ -382,6 +382,16 @@ include 'component/header.php';
             # code...
           }
 
+          $sql_tour_img = "SELECT * FROM `tour_image` where tour_id = $tour_id";
+          $result_tour_img = mysqli_query($conn, $sql_tour_img);
+          $path = "images/tours/";
+          if($result_tour_img){
+            $data = mysqli_fetch_array($result_tour_img);
+            $tour_img = $path.$data['img1'];
+          }else{
+            $tour_img ="";
+          }
+
 
           $link = "tour.php?id=".$tour_id."&seat=".$amount_people;
 
@@ -390,7 +400,7 @@ include 'component/header.php';
           <div class='row collection hide-on-med-and-down'>
           <div class='row'>
           <div class='col s12 l4'>
-          <img class='materialboxed' width='250' src='images/wechatQR.jpg'>
+          <img class='materialboxed' width='250' src='$tour_img'>
           </div>
           <div class='col s12 l4'>
           <br/>
@@ -494,11 +504,23 @@ include 'component/header.php';
         $result = mysqli_query($conn,$sql_search);
         $count = mysqli_num_rows($result);
 
+
+
         if($count !==0){
           while($show = mysqli_fetch_array($result)) {
             $tour_id = $show['tour_id'];
             $tour_type = $show['tour_type'];
             $seat_in_tour = $show['available_seat'];
+
+            $sql_tour_img = "SELECT * FROM `tour_image` where tour_id = $tour_id";
+            $result_tour_img = mysqli_query($conn, $sql_tour_img);
+            $path = "images/tours/";
+            if($result_tour_img){
+              $data = mysqli_fetch_array($result_tour_img);
+              $tour_img = $path.$data['img1'];
+            }else{
+              $tour_img ="";
+            }
 
 
             $link = "tour.php?id=".$tour_id."&seat=".$amount_people;
@@ -508,7 +530,7 @@ include 'component/header.php';
             <div class='row collection hide-on-med-and-down'>
             <div class='row'>
             <div class='col s12 l4'>
-            <img class='materialboxed' width='250' src='images/wechatQR.jpg'>
+            <img class='materialboxed' width='250' src='$tour_img'>
             </div>
             <div class='col s12 l4'>
             <br/>
