@@ -33,7 +33,20 @@ include 'component/header.php';
   <div id="home" class="col s12">
     <div class="slider">
       <ul class="slides">
-        <li>
+        <?php
+        for($i=1; $i<=5; $i++){
+          $filename = 'images/home' . $i . '.jpg';
+          if (file_exists($filename)) {
+            ?>
+            <li>
+              <img src="images/home<?php echo $i;?>.jpg">
+            </li>
+            <?php
+          }
+        }
+        ?>
+
+        <!-- <li>
           <img src="images/home1.jpg">
           <div class="caption center-align">
             <h3>Welcome!</h3>
@@ -51,7 +64,7 @@ include 'component/header.php';
         </li>
         <li>
           <img src="images/home5.jpg">
-        </li>
+        </li> -->
       </ul>
     </div>
 

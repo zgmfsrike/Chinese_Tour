@@ -3,7 +3,7 @@ include 'db_config.php';
 include 'module/session.php';
 include 'db_config.php';
 if(!isLoginAs(array('admin'))){
-    header('Location: message.php?msg=unauthorized');
+  header('Location: message.php?msg=unauthorized');
 }
 
 require 'module/language/init.php';
@@ -11,167 +11,108 @@ require 'module/language/init.php';
 <!DOCTYPE html>
 <html>
 
-    <?php
-    $title = "Change Banner";
-    include 'component/header.php';
-    ?>
+<?php
+$title = "Change Banner";
+include 'component/header.php';
+?>
 
-    <body>
-        <div class="container">
+<body>
+  <div class="container">
 
-            <form action="php_upload_banner.php" enctype="multipart/form-data" method="post">
-                <div class="row">
-                    <div class="col s12">
-                      <br/>
-                      <h3 class="center">Change Banners</h3>
-                        <!--  File[] : Image  -->
-                        <div class="row">
-                          <img src="images/home1.jpg" height="300" width="450">
-                            <div class="col s9 l8">
-                              <div class="file-field input-field">
-                                <div class="btn">
-                                  <span>File</span>
-                                  <input type="file" onchange="readURL(this);" name="banner1">
-                                </div>
-                                <div class="file-path-wrapper">
-                                  <input class="file-path validate" type="text" placeholder="Upload Picture for Index Banner 1">
-                                </div>
-                                <!-- <div class="hide-on-med-and-down">
-                                  <img id="pic1" src="#" alt="your image" />
-                                </div> -->
-                              </div>
-                            </div>
-                            <div class="s3 l4">
-                              <button type="submit" class="waves-effect waves-light btn green" value="Change" name="changeBanner1">Change</button>
-                            </div>
-                        </div>
-                        <!--Banner 2-->
-                        <div class="row">
-                          <img src="images/home2.jpg" height="300" width="450">
-                            <div class="col s9 l8">
-                              <div class="file-field input-field">
-                                <div class="btn">
-                                  <span>File</span>
-                                  <input type="file" onchange="readURL(this);" name="banner2">
-                                </div>
-                                <div class="file-path-wrapper">
-                                  <input class="file-path validate" type="text" placeholder="Upload Picture for Index Banner 2">
-                                </div>
-                                <!-- <div class="hide-on-med-and-down">
-                                  <img id="pic2" src="#" alt="your image" />
-                                </div> -->
-                              </div>
-                            </div>
-                            <div class="s3 l4">
-                              <button type="submit" class="waves-effect waves-light btn green" value="Change" name="changeBanner2">Change</button>
-                            </div>
-                        </div>
-                        <!--Banner 3-->
-                        <div class="row">
-                          <img src="images/home3.jpg" height="300" width="450">
-                            <div class="col s9 l8">
-                              <div class="file-field input-field">
-                                <div class="btn">
-                                  <span>File</span>
-                                  <input type="file" onchange="readURL(this);" name="banner3">
-                                </div>
-                                <div class="file-path-wrapper">
-                                  <input class="file-path validate" type="text" placeholder="Upload Picture for Index Banner 3">
-                                </div>
-                                <!-- <div class="hide-on-med-and-down">
-                                  <img id="pic3" src="#" alt="your image" />
-                                </div> -->
-                              </div>
-                            </div>
-                            <div class="s3 l4">
-                              <button type="submit" class="waves-effect waves-light btn green" value="Change" name="changeBanner3">Change</button>
-                            </div>
-                        </div>
-                        <!--Banner 4-->
-                        <div class="row">
-                          <img src="images/home4.jpg" height="300" width="450">
-                            <div class="col s9 l8">
-                              <div class="file-field input-field">
-                                <div class="btn">
-                                  <span>File</span>
-                                  <input type="file" onchange="readURL(this);" name="banner4">
-                                </div>
-                                <div class="file-path-wrapper">
-                                  <input class="file-path validate" type="text" placeholder="Upload Picture for Index Banner 4">
-                                </div>
-                                <!-- <div class="hide-on-med-and-down">
-                                  <img id="pic4" src="#" alt="your image" />
-                                </div> -->
-                              </div>
-                            </div>
-                            <div class="s3 l4">
-                              <button type="submit" class="waves-effect waves-light btn green" value="Change" name="changeBanner4">Change</button>
-                            </div>
-                        </div>
-                        <!--Banner 5-->
-                        <div class="row">
-                          <img src="images/home5.jpg" height="300" width="450">
-                            <div class="col s9 l8">
-                              <div class="file-field input-field">
-                                <div class="btn">
-                                  <span>File</span>
-                                  <input type="file" onchange="readURL(this);" name="banner5">
-                                </div>
-                                <div class="file-path-wrapper">
-                                  <input class="file-path validate" type="text" placeholder="Upload Picture for Index Banner 5">
-                                </div>
-                                <!-- <div class="hide-on-med-and-down">
-                                  <img id="pic5" src="#" alt="your image" />
-                                </div> -->
-                              </div>
-                            </div>
-                            <div class="s3 l4">
-                              <button type="submit" class="waves-effect waves-light btn green" value="Change" name="changeBanner4">Change</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
+    <form action="php_upload_banner.php" enctype="multipart/form-data" method="post">
+      <div class="row">
+        <div class="col s12">
+          <br/>
+          <h3 class="center">Change Banners</h3>
+          <!--  File[] : Image  -->
+          <?php
 
-                </div>
-            </form>
-        </div>
-        <div class="section"></div>
+          for ($i=1; $i<=5; $i++) {
 
-        <?php
-        include 'component/footer.php';
+            $filename = 'images/home' . $i . '.jpg';
+
+            ?>
+            <div class="row">
+              <?php
+              if (file_exists($filename)) {
+                ?>
+                <img src="images/home<?php echo $i;?>.jpg" height="300" width="450">
+                <?php
+              }
+              ?>
+              <div class="col s9 l8">
+                <div class="file-field input-field">
+                  <div class="btn">
+                    <span>File</span>
+                    <input type="file" onchange="readURL(this);" name="banner<?php echo $i;?>" accept="image/jpeg">
+                  </div>
+                  <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" placeholder="Upload Picture for Index Banner <?php echo $i;?>">
+                  </div>
+                  <!-- <div class="hide-on-med-and-down">
+                  <img id="pic1" src="#" alt="your image" />
+                </div> -->
+              </div>
+            </div>
+            <div class="s3 l4">
+              <button type="submit" class="waves-effect waves-light btn green" value="Change" name="changeBanner<?php echo $i;?>">Change</button>
+              <button type="submit" class="waves-effect waves-light btn red" value="<?php echo $i;?>" name="delete"
+              <?php
+              if (!file_exists($filename)) {
+                ?>
+                disabled
+                <?php
+              }
+              ?>
+              >Delete</button>
+            </div>
+          </div>
+          <?php
+        }
         ?>
-        <!-- <script>
-            function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
+      </div>
+    </div>
+    <div class="row">
 
-                reader.onload = function (e) {
-                    $('#pic1')
-                        .attr('src', e.target.result)
-                        .width(150)
-                        .height(150);
-                };
+    </div>
+  </form>
+</div>
+<div class="section"></div>
 
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
+<?php
+include 'component/footer.php';
+?>
+<!-- <script>
+function readURL(input) {
+if (input.files && input.files[0]) {
+var reader = new FileReader();
 
-        function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
+reader.onload = function (e) {
+$('#pic1')
+.attr('src', e.target.result)
+.width(150)
+.height(150);
+};
 
-            reader.onload = function (e) {
-                $('#pic2')
-                    .attr('src', e.target.result)
-                    .width(150)
-                    .height(150);
-            };
+reader.readAsDataURL(input.files[0]);
+}
+}
 
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
+function readURL(input) {
+if (input.files && input.files[0]) {
+var reader = new FileReader();
 
-        </script> -->
-    </body>
+reader.onload = function (e) {
+$('#pic2')
+.attr('src', e.target.result)
+.width(150)
+.height(150);
+};
+
+reader.readAsDataURL(input.files[0]);
+}
+}
+
+</script> -->
+</body>
 </html>
