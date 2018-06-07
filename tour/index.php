@@ -152,12 +152,23 @@ include 'component/header.php';
             $vehicle_all .= $v_all['vehicle_type']." ";
             # code...
           }
+
+          $sql_tour_img = "SELECT * FROM `tour_image` where tour_id = $tour_id";
+          $result_tour_img = mysqli_query($conn, $sql_tour_img);
+          $path = "images/tours/";
+          if($result_tour_img){
+            $data = mysqli_fetch_array($result_tour_img);
+            $tour_img = $path.$data['img1'];
+          }else{
+            $tour_img ="";
+          }
+
           $link = "tour.php?id=".$tour_id."&seat=1";
           echo "
-          <div class='row collection hide-on-med-and-down'>
+          <div class='row collection '>
           <div class='row'>
           <div class='col s12 l4'>
-          <img class='materialboxed' width='250' src='images/wechatQR.jpg'>
+          <img class='materialboxed' width='300'  src='$tour_img'>
           </div>
           <div class='col s12 l4'>
           <br/>
@@ -173,8 +184,6 @@ include 'component/header.php';
           </div>
           </div>
           </div>
-
-
           ";
         }
       }
