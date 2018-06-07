@@ -26,6 +26,7 @@ require 'module/language/init.php';
                       <h3 class="center">Change Banners</h3>
                         <!--  File[] : Image  -->
                         <div class="row">
+                          <img src="images/home1.jpg" height="300" width="450">
                             <div class="col s9 l8">
                               <div class="file-field input-field">
                                 <div class="btn">
@@ -43,10 +44,10 @@ require 'module/language/init.php';
                             <div class="s3 l4">
                               <button type="submit" class="waves-effect waves-light btn green" value="Change" name="changeBanner1">Change</button>
                             </div>
-
                         </div>
                         <!--Banner 2-->
                         <div class="row">
+                          <img src="images/home2.jpg" height="300" width="450">
                             <div class="col s9 l8">
                               <div class="file-field input-field">
                                 <div class="btn">
@@ -67,6 +68,7 @@ require 'module/language/init.php';
                         </div>
                         <!--Banner 3-->
                         <div class="row">
+                          <img src="images/home3.jpg" height="300" width="450">
                             <div class="col s9 l8">
                               <div class="file-field input-field">
                                 <div class="btn">
@@ -87,6 +89,7 @@ require 'module/language/init.php';
                         </div>
                         <!--Banner 4-->
                         <div class="row">
+                          <img src="images/home4.jpg" height="300" width="450">
                             <div class="col s9 l8">
                               <div class="file-field input-field">
                                 <div class="btn">
@@ -107,6 +110,7 @@ require 'module/language/init.php';
                         </div>
                         <!--Banner 5-->
                         <div class="row">
+                          <img src="images/home5.jpg" height="300" width="450">
                             <div class="col s9 l8">
                               <div class="file-field input-field">
                                 <div class="btn">
