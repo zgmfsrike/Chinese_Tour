@@ -204,8 +204,8 @@ if(isset($_GET['id'])){
           $file_name = $row['file_name'];
 
           ?>
-          <embed src="pdf/tours_schedule/<?php echo $file_name; ?>" type="application/pdf"   height="800px" width="90%"><br>
-            <a href="pdf/tours_schedule/'.$file_name.'">download</a>
+          <embed src="pdf/tours_schedule/<?php echo $file_name; ?>" type="application/pdf"   height="800px" width="100%"><br>
+            <a href="pdf/tours_schedule/<?php echo $file_name; ?>">download</a>
             <?php
             // Free result set
             mysqli_free_result($result);
