@@ -38,7 +38,7 @@ include 'component/header.php';
             </tr>
           </thead>
 
-          <tbody >
+          <tbody>
             <?php
             $sql = "SELECT * FROM feedback_question WHERE version = (SELECT MAX(version) FROM feedback_question) AND enable=1";
             $result = mysqli_query($conn, $sql);

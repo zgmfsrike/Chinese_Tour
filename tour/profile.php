@@ -25,7 +25,7 @@ include 'component/header.php';
         <div class="collection">
           <a href="profile.php" class="collection-item active amber"><?php echo $string_profile_profile;?></a>
           <!-- <a href="#" class="collection-item black-text">Purchase</a> -->
-          <a href="#" class="collection-item black-text">Record</a>
+          <a href="booking_history.php" class="collection-item black-text">Booking History</a>
         </div>
       </div>
       <div class="col s12 l9">

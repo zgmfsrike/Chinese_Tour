@@ -62,6 +62,13 @@ if(isset($_POST['submit'])){
         $departure_location = $_SESSION['departure_location'];
         $dropoff_location = $_SESSION['dropoff_location'];
 
+        // Insert booking status
+        $current_date = date("Y-m-d");
+        $expiry_date = '';
+        $sql = "INSERT INTO `tour_booking_status` (`reference_code`, `member_id`, `booking_date`, `expiry_date`) ";
+        $sql .= "VALUES ('$reference_code', '$member_id', '$current_date', '$expiry_date');";
+        $result = mysqli_query($conn,$sql);
+
 
 
         // $sql = "INSERT INTO `tour_round_member`(`id`, `tour_round_id`, `first_name`, `middle_name`, `last_name`, `dob`,
@@ -93,12 +100,6 @@ if(isset($_POST['submit'])){
           unset($_SESSION['tour']['p'.$i]['avoidfood']);
 
         }
-
-
-
-
-
-
 
       }
 
@@ -165,12 +166,6 @@ if(isset($_POST['submit'])){
 
         $trigger = true;
 
-
-
-
-
-
-
         // echo 'Message has been sent';
       } catch (Exception $e) {
         echo 'Message could not be sent.';
@@ -179,13 +174,6 @@ if(isset($_POST['submit'])){
       header("location: message.php?msg=book_tour_succ");
       ob_end_flush();
     }
-
-
-
-
-
-
-
     if($trigger){
       unset($_SESSION['tour_type']);
       unset($_SESSION['tour_round_id']);
@@ -195,11 +183,7 @@ if(isset($_POST['submit'])){
       unset($_SESSION['departure_location']);
       unset($_SESSION['dropoff_location']);
     }
-
-
   }
-
-
 }
 
 

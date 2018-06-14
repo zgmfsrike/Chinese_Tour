@@ -54,7 +54,7 @@ require 'module/language/init.php';
     require 'module/message/authentication.php';
     require 'module/message/manage_account.php';
 
-    if($msg ==  'session_book_expired') message('Session book tour expired','Please try again','search_tour.php','');
+    if($msg ==  'session_book_expired') $result = message('Session book tour expired','Please try again','search_tour.php','');
 
     // manage_account.php
 
