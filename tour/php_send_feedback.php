@@ -35,6 +35,7 @@ if($result_t){
     if($result){
       // sendmail
       while($show = mysqli_fetch_array($result)) {
+        $ref_code = $show['reference_code'];
         $tour_round_member_id = $show['tour_round_member_id'];
 
 
@@ -85,8 +86,8 @@ if($result_t){
           echo $expiry_date;
 
 
-          $sql_insert_feedback = "INSERT INTO feedback(`feedback_id`,`tour_round_id`,`feedback_version`,`expiry_date`)
-          VALUES('$feedback_id','$tour_round_id',$feedback_version,'$expiry_date')";
+          $sql_insert_feedback = "INSERT INTO feedback(`feedback_id`,`group_member_ref`,`tour_round_id`,`feedback_version`,`expiry_date`)
+          VALUES('$feedback_id','$ref_code','$tour_round_id',$feedback_version,'$expiry_date')";
           $result_feedback = mysqli_query($conn, $sql_insert_feedback);
 
           $link = "http://localhost/Chinese_Tour/tour/feedback.php?feedback_id=".$feedback_id;
@@ -143,9 +144,9 @@ if($result_t){
 
   }
   if($flag){
-    // header("location: message.php?msg=feedback_send_succ");
+    header("location: message.php?msg=feedback_send_succ");
   }else{
-    // header("location: message.php?msg=feedback_send_fail");
+    header("location: message.php?msg=feedback_send_fail");
   }
 
   ob_end_flush();

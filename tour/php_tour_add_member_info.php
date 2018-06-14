@@ -34,7 +34,7 @@ if(isset($_POST['submit'])){
 
       $tour_member_list.=" <b>No.".$i."</b><br />
       <b>Name : </b>".$_SESSION['tour']['p'.$i]['first_name']."\t\t
-      <b>Email : </b>".$_SESSION['tour']['p'.$i]['email']."<br />";
+      , <b>Email : </b>".$_SESSION['tour']['p'.$i]['email']."<br />";
 
       if(isset($_SESSION['tour']['p'.$i]['first_name'])  and isset($_SESSION['tour']['p'.$i]['middlename']) and isset($_SESSION['tour']['p'.$i]['last_name']) and
       isset($_SESSION['tour']['p'.$i]['dob']) and isset( $_SESSION['tour']['p'.$i]['passport']) and isset($_SESSION['tour']['p'.$i]['email']) and
@@ -119,7 +119,7 @@ if(isset($_POST['submit'])){
       Departure Location :".$departure_location." <br>
       Drop off Location : ".  $dropoff_location." <br>
       Start Date : ".$data['start_date_time']."<br>
-      End Date : ".$data['end_date_time']."<br>
+      End Date : ".$data['end_date_time']."<br>"
       ;
 
       $description = $tour_member_field.$tour_info;

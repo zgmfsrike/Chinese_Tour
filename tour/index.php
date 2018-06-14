@@ -18,6 +18,7 @@ if(isset($_SESSION['login_id'])){
   $username = $objResult['username'];
 }
 
+$link_all_news = "news_list.php";
 
 
 $sql_tour_3 = "SELECT * FROM tour_".$_COOKIE['lang']." t INNER JOIN tour_round tr ON t.tour_id = tr.tour_id where
@@ -91,7 +92,7 @@ include 'component/header.php';
     </div>
     <div class="container row">
       <?php
-      $sql= "SELECT n.news_id,n.topic,n.short_description FROM news_".$_COOKIE['lang']." n";
+      $sql= "SELECT n.news_id,n.topic,n.short_description FROM news_".$_COOKIE['lang']." n ORDER BY n.news_id DESC limit 3";
       $result = mysqli_query( $GLOBALS['conn'] , $sql );
       $img_path = "./images/";
 
@@ -124,6 +125,11 @@ include 'component/header.php';
 
       }
       ?>
+      <div class="container row">
+        <a href='<?php echo $link_all_news; ?>'><button type='button' class='btn ' name='button'>View All News</button></a>
+      </div>
+
+
     </div>
     <div class="container row">
       <h3><?php echo $string_index_tour;?></h3>
