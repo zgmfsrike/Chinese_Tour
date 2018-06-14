@@ -20,7 +20,7 @@ if(isset($_GET['tour_id'])){
 <!DOCTYPE html>
 <html>
 <?php
-$title = "Tour Round";
+$title = "Comment Management";
 include 'component/header.php';
 ?>
 <body>
