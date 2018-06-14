@@ -64,14 +64,20 @@ include "module/hashing.php";
                   $result = mysqli_query($conn,$sql);
 
 
+
+
                    echo "<table style='overflow-x:auto;' class='responsive-table table table-striped highlight centered'>";
                    echo "<thead>";
-                   echo "<tr align='center'><th>TourRound Id</th><th>Trip status</th><th>Start Date</th><th>End date</th><th>Departure Point</th><th>DropOff Point</th><th>Member</th>";
+                   echo "<tr align='center'><th>TourRound Id</th><th>Trip status</th><th>Start Date</th><th>End date</th><th>Departure Point</th><th>DropOff Point</th><<th>Amount of Member</th><th>Member</th>";
                    echo "</tr>";
                    echo "</thead>";
                    $id = 1;
                    while($show = mysqli_fetch_array($result)) {
                      $tour_round_id = $show['tour_round_id'];
+                     $sql_member = "SELECT * FROM tour_round_member WHERE tour_round_id =$tour_round_id ";
+                     $result_member = mysqli_query($conn, $sql_member);
+
+                     $count_member = mysqli_num_rows($result_member);
 
                      echo "<tr>";
                      echo "<td align ='center'>" .$id .  "</td> ";
@@ -80,6 +86,7 @@ include "module/hashing.php";
                      echo "<td align ='center'>" .$show['end_date_time'] .  "</td> ";
                      echo "<td align ='center'>" .$show['departure_point'] .  "</td> ";
                      echo "<td align ='center'>" .$show['drop_off_point'] .  "</td> ";
+                     echo "<td align ='center'>" .$count_member.  "</td> ";
                      // echo "<td align ='center'><input class='waves-effect waves-light btn green' type='button' value='View' onclick=\"window.location.href='http://localhost:8080/Chinese_TourChineseTour_NewTheme%20copy/tour_round_member.php?tour_round_id=$tour_round_id'\"></td>";
                      echo "<td align ='center'><a href='tour_round_member.php?tour_round_id=$tour_round_id'><button class='waves-effect waves-light btn green' type='button' value='View'>View</button></a></td>";
                      echo "</tr>";

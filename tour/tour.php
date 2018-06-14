@@ -299,8 +299,36 @@ if(isset($_GET['id'])){
             $sql_comment = "SELECT * FROM feedback f
             INNER JOIN tour_round tr ON tr.tour_round_id = f.tour_round_id
             INNER JOIN tour_".$_COOKIE['lang']." t on tr.tour_id = t.tour_id
-            WHERE t.tour_id =".$id." AND f.filled_date != 0000-00-00";
+            WHERE t.tour_id =".$id." AND f.filled_date != 0000-00-00 AND f.enable = 1";
             $result_comment = mysqli_query($conn,$sql_comment);
+
+            $num_row =mysqli_num_rows($result_comment);
+
+            $per_page = 1;
+            if(isset($_GET['page'])){
+              $page = $_GET['page'];
+            }else{
+              $page =1 ;
+            }
+
+
+
+            $prev_page = $page-1;
+            $next_page = $page+1;
+
+            $page_start = (($per_page*$page)-$per_page);
+
+            if($num_row<=$per_page){
+              $num_page = 1;
+            }else if(($num_row%$per_page)==0){
+              $num_page =($num_row/$per_page);
+            }else{
+              $num_page=($num_row/$per_page)+1;
+              $num_page=(int)$num_page;
+            }
+            $sql_comment .=  " LIMIT $page_start,$per_page";
+            $result_comment = mysqli_query($conn,$sql_comment);
+
             while ($show = mysqli_fetch_array($result_comment)) {
               $comment= $show['comment'];
               $feedback_id = $show['feedback_id'];
@@ -312,6 +340,26 @@ if(isset($_GET['id'])){
               }
 
              ?>
+          </ul>
+          <ul class="pagination">
+            <?php
+            if($prev_page){
+              echo "<li class='disabled'><a href ='tour.php?page=$prev_page&id=$id'><i class='material-icons'>chevron_left</i></a></li>";
+            }
+            for($i =1;$i<=$num_page;$i++){
+              if($i != $page){
+                echo "<li><a href='tour.php?page=$i&id=$id'>$i</a></li>";
+              }else if($i = $page){
+                echo "<li class='active'><a href='tour.php?page=$i&id=$id'>$i</a></li>";
+              }
+            }
+            if($page !=$num_page){
+              echo "<li class='waves-effect'><a href='tour.php?page=$next_page&id=$id'><i class='material-icons'>chevron_right</i></a></li>";
+            }
+            ?>
+
+
+
           </ul>
         </div>
       </div>

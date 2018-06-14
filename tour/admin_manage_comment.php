@@ -143,17 +143,17 @@ include 'component/header.php';
       <ul class="pagination">
         <?php
         if($prev_page){
-          echo "<li class='disabled'><a href ='show_tour_round.php?page=$prev_page&tourId=$tourId'><i class='material-icons'>chevron_left</i></a></li>";
+          echo "<li class='disabled'><a href ='$link_manage_comment?page=$prev_page&tour_id=$tour_id'><i class='material-icons'>chevron_left</i></a></li>";
         }
         for($i =1;$i<=$num_page;$i++){
           if($i != $page){
-            echo "<li><a href='show_tour_round.php?page=$i&tourId=$tourId'>$i</a></li>";
+            echo "<li><a href='$link_manage_comment?page=$i&tour_id=$tour_id'>$i</a></li>";
           }else if($i = $page){
-            echo "<li class='active'><a href='show_tour_round.php?page=$i&tourId=$tourId'>$i</a></li>";
+            echo "<li class='active'><a href='$link_manage_comment?page=$i&tour_id=$tour_id'>$i</a></li>";
           }
         }
         if($page !=$num_page){
-          echo "<li class='waves-effect'><a href='show_tour_round.php?page=$next_page&tourId=$tourId'><i class='material-icons'>chevron_right</i></a></li>";
+          echo "<li class='waves-effect'><a href='$link_manage_comment?page=$next_page&tour_id=$tour_id'><i class='material-icons'>chevron_right</i></a></li>";
         }
         ?>
 
