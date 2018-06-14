@@ -127,6 +127,7 @@ require 'module/language/init.php';
     if($msg == 'feedback_send_succ') $result =  message('Success!','Feedback has already send.','','');
     if($msg == 'feedback_send_fail') $result =  message('Sorry!','Something went wrong, please try again.','','');
     if($msg == 'feedback_succ') $result =  message('Success!','Send success','','');
+    if($msg == 'edit_comment_success') $result =  message('Success!','Edit comment successfully','','');
 
 
 

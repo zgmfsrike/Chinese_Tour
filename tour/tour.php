@@ -295,12 +295,23 @@ if(isset($_GET['id'])){
         </div>
         <div class="col s12">
           <ul>
-            <li><div class="chip">niranam@gmail.com</div> <span>: ...</span> </li>
-            <li><div class="chip">ana@gmail.com</div>: ggez</li>
-            <li><div class="chip">noburaz@gmail.com</div>: salt</li>
-            <li><div class="chip">longcomment@gmail.com</div>:I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.
-            </li>
+            <?php
+            $sql_comment = "SELECT * FROM feedback f
+            INNER JOIN tour_round tr ON tr.tour_round_id = f.tour_round_id
+            INNER JOIN tour_".$_COOKIE['lang']." t on tr.tour_id = t.tour_id
+            WHERE t.tour_id =".$id." AND f.filled_date != 0000-00-00";
+            $result_comment = mysqli_query($conn,$sql_comment);
+            while ($show = mysqli_fetch_array($result_comment)) {
+              $comment= $show['comment'];
+              $feedback_id = $show['feedback_id'];
+             ?>
+
+            <li><div class="chip"><?php echo $feedback_id; ?></div> <span>: <?php echo $comment; ?></span> </li>
+
+            <?php
+              }
+
+             ?>
           </ul>
         </div>
       </div>
