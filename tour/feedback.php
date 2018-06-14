@@ -92,7 +92,7 @@ include 'component/header.php';
 
 
       <div class="right-align">
-        <input class="btn green " type="submit" name="submit" value="Confirm"><br />
+        <input class="btn green " type="submit" name="submit" value="Confirm"><br/>
         <br/>
       </div>
 
