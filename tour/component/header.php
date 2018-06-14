@@ -1,6 +1,6 @@
 <?php
 // *** Content ***
-require 'module/language_switcher.php';
+require_once 'module/language_switcher.php';
 require 'module/language/lang_header.php';
 require 'module/string/string_header.php';
 ?>
