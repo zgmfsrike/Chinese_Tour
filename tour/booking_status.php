@@ -22,55 +22,22 @@ include 'component/header.php';
   <!-- body -->
   <div class="container">
 
-    <h2>No payment</h2>
-    <table class="responsive-table centered">
-      <thead>
-        <tr>
-          <th class="center-align">Tour description</th>
-          <th class="center-align">Start</th>
-          <th class="center-align">End</th>
-          <th class="center-align">Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php
-        $id = $_SESSION['login_id'];
-        $sql =  "SELECT distinct  T.tour_description, TR.start_date_time, TR.end_date_time, BH.status FROM tour_booking_history BH ";
-        $sql .= "LEFT JOIN tour_round_member RM ON BH.member_id = RM.id ";
-        $sql .= "LEFT JOIN tour_round TR ON RM.tour_round_id = TR.tour_round_id ";
-        $sql .= "LEFT JOIN tour_en T ON TR.tour_id = T.tour_id ";
-        $sql .= "WHERE BH.status=1";
-        // echo $sql;
-        $result = mysqli_query($conn,$sql);
-
-        while($data = mysqli_fetch_array($result)) {
-          ?>
-          <tr>
-            <td><?php echo $data['tour_description'];?></td>
-            <td><?php echo $data['start_date_time'];?></td>
-            <td><?php echo $data['end_date_time'];?></td>
-            <td><?php echo $data['status'];?></td>
-          </tr>
-          <?php
-        }
-        ?>
-      </tbody>
-    </table>
-
+    <!-- Waiting -->
     <h2>Waiting for confirmation</h2>
     <table class="responsive-table centered">
       <thead>
         <tr>
           <th class="center-align">Tour description</th>
+          <th class="center-align">Ref code</th>
           <th class="center-align">Start</th>
           <th class="center-align">End</th>
-          <th class="center-align">Status</th>
+          <th class="center-align">Details</th>
         </tr>
       </thead>
       <tbody>
         <?php
         $id = $_SESSION['login_id'];
-        $sql =  "SELECT distinct  T.tour_description, TR.start_date_time, TR.end_date_time, BH.status FROM tour_booking_history BH ";
+        $sql =  "SELECT distinct  T.tour_description, BH.reference_code , TR.start_date_time, TR.end_date_time, BH.status FROM tour_booking_history BH ";
         $sql .= "LEFT JOIN tour_round_member RM ON BH.member_id = RM.id ";
         $sql .= "LEFT JOIN tour_round TR ON RM.tour_round_id = TR.tour_round_id ";
         $sql .= "LEFT JOIN tour_en T ON TR.tour_id = T.tour_id ";
@@ -82,9 +49,12 @@ include 'component/header.php';
           ?>
           <tr>
             <td><?php echo $data['tour_description'];?></td>
+            <td><?php echo $data['reference_code'];?></td>
             <td><?php echo $data['start_date_time'];?></td>
             <td><?php echo $data['end_date_time'];?></td>
-            <td><?php echo $data['status'];?></td>
+            <td>
+              <a href="booking_detail.php?ref=<?php echo $data['reference_code'];?>">>Detail<</a>
+            </td>
           </tr>
           <?php
         }
@@ -92,20 +62,62 @@ include 'component/header.php';
       </tbody>
     </table>
 
-    <h2>Payment confirmed</h2>
+    <!-- No payment -->
+    <h2>No payment</h2>
     <table class="responsive-table centered">
       <thead>
         <tr>
           <th class="center-align">Tour description</th>
+          <th class="center-align">Ref code</th>
           <th class="center-align">Start</th>
           <th class="center-align">End</th>
-          <th class="center-align">Status</th>
+          <th class="center-align">Details</th>
         </tr>
       </thead>
       <tbody>
         <?php
         $id = $_SESSION['login_id'];
-        $sql =  "SELECT distinct  T.tour_description, TR.start_date_time, TR.end_date_time, BH.status FROM tour_booking_history BH ";
+        $sql =  "SELECT distinct  T.tour_description, BH.reference_code , TR.start_date_time, TR.end_date_time, BH.status FROM tour_booking_history BH ";
+        $sql .= "LEFT JOIN tour_round_member RM ON BH.member_id = RM.id ";
+        $sql .= "LEFT JOIN tour_round TR ON RM.tour_round_id = TR.tour_round_id ";
+        $sql .= "LEFT JOIN tour_en T ON TR.tour_id = T.tour_id ";
+        $sql .= "WHERE BH.status=1";
+        // echo $sql;
+        $result = mysqli_query($conn,$sql);
+
+        while($data = mysqli_fetch_array($result)) {
+          ?>
+          <tr>
+            <td><?php echo $data['tour_description'];?></td>
+            <td><?php echo $data['reference_code'];?></td>
+            <td><?php echo $data['start_date_time'];?></td>
+            <td><?php echo $data['end_date_time'];?></td>
+            <td>
+              <a href="booking_detail.php?ref=<?php echo $data['reference_code'];?>">>Detail<</a>
+            </td>
+          </tr>
+          <?php
+        }
+        ?>
+      </tbody>
+    </table>
+
+    <!-- Payment confirmed -->
+    <h2>Payment confirmed</h2>
+    <table class="responsive-table centered">
+      <thead>
+        <tr>
+          <th class="center-align">Tour description</th>
+          <th class="center-align">Ref code</th>
+          <th class="center-align">Start</th>
+          <th class="center-align">End</th>
+          <th class="center-align">Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+        $id = $_SESSION['login_id'];
+        $sql =  "SELECT distinct  T.tour_description, BH.reference_code , TR.start_date_time, TR.end_date_time, BH.status FROM tour_booking_history BH ";
         $sql .= "LEFT JOIN tour_round_member RM ON BH.member_id = RM.id ";
         $sql .= "LEFT JOIN tour_round TR ON RM.tour_round_id = TR.tour_round_id ";
         $sql .= "LEFT JOIN tour_en T ON TR.tour_id = T.tour_id ";
@@ -117,15 +129,19 @@ include 'component/header.php';
           ?>
           <tr>
             <td><?php echo $data['tour_description'];?></td>
+            <td><?php echo $data['reference_code'];?></td>
             <td><?php echo $data['start_date_time'];?></td>
             <td><?php echo $data['end_date_time'];?></td>
-            <td><?php echo $data['status'];?></td>
+            <td>
+              <a href="booking_detail.php?ref=<?php echo $data['reference_code'];?>">>Detail<</a>
+            </td>
           </tr>
           <?php
         }
         ?>
       </tbody>
     </table>
+
   </div>
 
   <?php
