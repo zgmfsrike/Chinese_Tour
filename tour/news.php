@@ -115,10 +115,13 @@ $string_news_download_pdf = 'Download PDF File:';
 
       while ($show_pdf = mysqli_fetch_array($result_pdf)) {
         $show_txt = $txt.$i;
-        $pdf_name = $show_pdf['pdf_name'];
+        $pdf_original_name = $show_pdf['pdf_name'];
+        $pdf_name = $show_pdf['news_pdf'];
 
-        $pdf_file = $pdf_path.$pdf_name;
-        echo "<br><a href='$pdf_file' download='$pdf_name'><h4>".$pdf_name."</h4></a>";
+        // $pdf_file = $pdf_path.$pdf_name;
+
+        echo "<br><a target = '_blank' href='read_pdf.php?file_name=$pdf_name'><h4>".$pdf_original_name."</h4></a>";
+        // echo "<br><a href='$pdf_file' download='$pdf_name'><h4>".$pdf_name."</h4></a>";
         // echo "<a href='$pdf_file' download='$pdf_name'></a>";
         // echo "<iframe src='$pdf_file' width='700' height='500'></iframe>";
         $i++;
