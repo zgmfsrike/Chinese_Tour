@@ -21,8 +21,9 @@ if(isset($_SESSION['login_id'])){
 $link_all_news = "news_list.php";
 
 
-$sql_tour_3 = "SELECT * FROM tour_".$_COOKIE['lang']." t INNER JOIN tour_round tr ON t.tour_id = tr.tour_id where
-NOT tr.start_date_time < CURDATE() and tr.end_date_time >CURDATE() ORDER BY tr.tour_id DESC LIMIT 3" ;
+$sql_tour_3 = "SELECT * FROM tour_".$_COOKIE['lang']." t INNER JOIN tour_round tr ON t.tour_id = tr.tour_id  " ;
+// $sql_tour_3 .="where NOT tr.start_date_time < CURDATE() and tr.end_date_time >CURDATE()";
+$sql_tour_3 .= "ORDER BY tr.tour_id DESC LIMIT 3";
 $result_tour_3 = mysqli_query( $GLOBALS['conn'] , $sql_tour_3 );
 ?>
 <?php

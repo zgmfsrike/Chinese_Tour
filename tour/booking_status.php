@@ -35,11 +35,11 @@ include 'component/header.php';
       <tbody>
         <?php
         $id = $_SESSION['login_id'];
-        $sql =  "SELECT distinct  T.tour_description, TR.start_date_time, TR.end_date_time, BS.status FROM tour_booking_status BS ";
-        $sql .= "LEFT JOIN tour_round_member RM ON BS.member_id = RM.id ";
+        $sql =  "SELECT distinct  T.tour_description, TR.start_date_time, TR.end_date_time, BH.status FROM tour_booking_history BH ";
+        $sql .= "LEFT JOIN tour_round_member RM ON BH.member_id = RM.id ";
         $sql .= "LEFT JOIN tour_round TR ON RM.tour_round_id = TR.tour_round_id ";
         $sql .= "LEFT JOIN tour_en T ON TR.tour_id = T.tour_id ";
-        $sql .= "WHERE BS.status=1";
+        $sql .= "WHERE BH.status=1";
         // echo $sql;
         $result = mysqli_query($conn,$sql);
 
@@ -70,11 +70,11 @@ include 'component/header.php';
       <tbody>
         <?php
         $id = $_SESSION['login_id'];
-        $sql =  "SELECT distinct  T.tour_description, TR.start_date_time, TR.end_date_time, BS.status FROM tour_booking_status BS ";
-        $sql .= "LEFT JOIN tour_round_member RM ON BS.member_id = RM.id ";
+        $sql =  "SELECT distinct  T.tour_description, TR.start_date_time, TR.end_date_time, BH.status FROM tour_booking_history BH ";
+        $sql .= "LEFT JOIN tour_round_member RM ON BH.member_id = RM.id ";
         $sql .= "LEFT JOIN tour_round TR ON RM.tour_round_id = TR.tour_round_id ";
         $sql .= "LEFT JOIN tour_en T ON TR.tour_id = T.tour_id ";
-        $sql .= "WHERE BS.status=2";
+        $sql .= "WHERE BH.status=2";
         // echo $sql;
         $result = mysqli_query($conn,$sql);
 
@@ -105,11 +105,11 @@ include 'component/header.php';
       <tbody>
         <?php
         $id = $_SESSION['login_id'];
-        $sql =  "SELECT distinct  T.tour_description, TR.start_date_time, TR.end_date_time, BS.status FROM tour_booking_status BS ";
-        $sql .= "LEFT JOIN tour_round_member RM ON BS.member_id = RM.id ";
+        $sql =  "SELECT distinct  T.tour_description, TR.start_date_time, TR.end_date_time, BH.status FROM tour_booking_history BH ";
+        $sql .= "LEFT JOIN tour_round_member RM ON BH.member_id = RM.id ";
         $sql .= "LEFT JOIN tour_round TR ON RM.tour_round_id = TR.tour_round_id ";
         $sql .= "LEFT JOIN tour_en T ON TR.tour_id = T.tour_id ";
-        $sql .= "WHERE BS.status=3";
+        $sql .= "WHERE BH.status=3";
         // echo $sql;
         $result = mysqli_query($conn,$sql);
 

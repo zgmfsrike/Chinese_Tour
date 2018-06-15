@@ -31,14 +31,14 @@ $link_news_list = "news_list.php";
       <?php
       if(isset($_SESSION['login_id'])){
 
-        //-----------------------------Search fucntion----------------------------------------------------//
+        //-----------------------------News list----------------------------------------------------//
         $sql = "SELECT * FROM news_".$_COOKIE['lang']."";
         $result = mysqli_query($conn, $sql);
 
         // $result = page_query($GLOBALS['conn'],$sql,2);
         $num_row =mysqli_num_rows($result);
 
-        $per_page = 1;
+        $per_page = 10;
         $page = $_GET['page'];
         if(!$_GET['page']){
           $page =1 ;
@@ -123,17 +123,17 @@ $link_news_list = "news_list.php";
       <ul class="pagination">
         <?php
         if($prev_page){
-          echo "<li class='disabled'><a href ='$link_news_list&page=$prev_page'><i class='material-icons'>chevron_left</i></a></li>";
+          echo "<li class='disabled'><a href ='$link_news_list?page=$prev_page'><i class='material-icons'>chevron_left</i></a></li>";
         }
         for($i =1;$i<=$num_page;$i++){
           if($i != $page){
-            echo "<li><a href='$link_news_list&page=$i'>$i</a></li>";
+            echo "<li><a href='$link_news_list?page=$i'>$i</a></li>";
           }else if($i = $page){
-            echo "<li class='active'><a href='$link_news_list&page=$i'>$i</a></li>";
+            echo "<li class='active'><a href='$link_news_list?page=$i'>$i</a></li>";
           }
         }
         if($page !=$num_page){
-          echo "<li class='waves-effect'><a href='news_list.php&page=$next_page'><i class='material-icons'>chevron_right</i></a></li>";
+          echo "<li class='waves-effect'><a href='$link_news_list?page=$next_page'><i class='material-icons'>chevron_right</i></a></li>";
         }
         ?>
 

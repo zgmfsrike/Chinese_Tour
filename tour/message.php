@@ -9,10 +9,13 @@ require 'module/language/init.php';
 <html>
 <body>
   <?php
+  include 'component/header.php';
+  ?>
+  <?php
   function message($header,$message,$link,$btn){
     $title = $header;
     $lang = $GLOBALS['lang'];
-    include 'component/header.php';
+
     ?>
     <div class="container col s12">
       <form>
@@ -83,7 +86,7 @@ require 'module/language/init.php';
 
 
     //Index manage
-    if($msg == 'uploadSucc') $result = message('Got it!',' The file has been uploaded.','index.php','Go to home page');
+    if($msg == 'uploadSucc') $result = message('Success!',' The file has been uploaded.','index.php','Go to home page');
 
     if($msg == 'uploadNotSucc') $result = message('Sorry, your file was not uploaded.','Please check neither your file is too large, nor your file type is wrong (Only JPG, JPEG, PNG & GIF files are allowed).','index.php','Go to home page');
 
@@ -127,6 +130,7 @@ require 'module/language/init.php';
     if($msg == 'feedback_send_succ') $result =  message('Success!','Feedback has already send.','','');
     if($msg == 'feedback_send_fail') $result =  message('Sorry!','Something went wrong, please try again.','','');
     if($msg == 'feedback_succ') $result =  message('Success!','Send success','','');
+    if($msg == 'edit_comment_success') $result =  message('Success!','Edit comment successfully','','');
 
 
 

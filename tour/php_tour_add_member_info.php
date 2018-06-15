@@ -110,6 +110,7 @@ if(isset($_POST['submit'])){
       $show = mysqli_fetch_array($result_show_user);
       $member_email = $show['email'];
       $subject = "Tour information";
+      $start_date = $show['start_date_time'];
       $tour_member_field = "Reference Code : ".$reference_code."
       <legend>Tour Group Member</legend>".$tour_member_list."
       ";
@@ -119,7 +120,7 @@ if(isset($_POST['submit'])){
       Accommodation : ".$data['accommodation_level']."<br>
       Departure Location :".$departure_location." <br>
       Drop off Location : ".  $dropoff_location." <br>
-      Start Date : ".$data['start_date_time']."<br>
+      Start Date : ".$start_date."<br>
       End Date : ".$data['end_date_time']."<br>"
       ;
 
@@ -171,9 +172,14 @@ if(isset($_POST['submit'])){
         echo 'Message could not be sent.';
         echo 'Mailer Error: ' . $mail->ErrorInfo;
       }
+      $expiry_date = date('Y-m-d',strtotime($start_date.' - 3 days'));
+      $sql_add_book_status = "INSERT INTO `book_status`(`reference_code`, `member_id`, `status`, `expiry_date`)
+      VALUES ('$reference_code',$member_id,0,'$expiry_date')";
+      $result_status = mysqli_query($conn, $sql_add_book_status);
       header("location: message.php?msg=book_tour_succ");
       ob_end_flush();
     }
+
     if($trigger){
       unset($_SESSION['tour_type']);
       unset($_SESSION['tour_round_id']);

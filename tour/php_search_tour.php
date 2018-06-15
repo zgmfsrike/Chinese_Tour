@@ -119,6 +119,7 @@ $search_all_page ="search_all_tour.php";
                         <td align ='center'>
                           <a href='show_tour_round.php?tourId=<?php echo $tourId;?>'><input class='waves-effect waves-light btn green' type='button' value='Tour round'></a>
                           <a href='tour.php?id=<?php echo $tourId;?>'><input class='waves-effect waves-light btn green' type='button' value='Detail'></a>
+                          <a href='admin_manage_comment.php?tour_id=<?php echo $tourId;?>'><input class='waves-effect waves-light btn green' type='button' value='View Comment'></a>
                         </td>
                        </tr>
                        <?php
