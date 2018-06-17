@@ -22,8 +22,9 @@ include 'component/header.php';
     <form action="php_upload_banner.php" enctype="multipart/form-data" method="post">
       <div class="row">
         <div class="col s12">
-          <br/>
-          <h3 class="center">Change Banners</h3>
+          <div class="section"></div>
+          <h3 class="center"><b>Change Banners</b></h3>
+          <div class="section"></div>
           <!--  File[] : Image  -->
           <?php
 
