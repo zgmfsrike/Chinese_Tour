@@ -18,6 +18,7 @@ include 'component/header.php';
   <!--Register-->
   <div class="container">
     <div class="row">
+      <div class="section"></div>
       <h3 class="center"><b><?php echo $string_register_title;?></b></h3>
       <div class="col s12">
         <h4><b><?php echo $string_register_account_info;?></b></h4>
@@ -62,7 +63,7 @@ include 'component/header.php';
             </div>
             <div class="input-field col s12 l6">
               <h5 for="dob"><?php echo $string_register_birth;?><b class="red-text"> *</b></h5>
-              <input type="date" class="datepicker" name="dob" id="dob">
+              <input placeholder="<?php echo $string_register_birth;?>" type="date" class="datepicker" name="dob" id="dob">
             </div>
           </div>
           <div class="row">
