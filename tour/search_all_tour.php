@@ -63,23 +63,24 @@ $result = mysqli_query($conn,$sql);
 <body>
   <div class="container">
     <div class="row">
+      <div class="section"></div>
+        <div class="col s12">
+          <h3 class="center"><b>Search Tour</b></h3>
+          <form  action=<?php echo $search_tour_func; ?> method="get"  class="navbar-form navbar-center" role="form" >
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">search</i>
+                <input style="border: 1px solid gray;border-radius: 8px; padding-right:10px; padding-left:10px;" placeholder="Search Tour Here" id="tourName" type="text" class="form-control" name="tourName" value="<?php echo $_GET['tourName'];?>" size="20" />
+              </div>
+              <div class="center">
+                <input type="submit" class="btn btn-primary" value="Search " name="search" />
+                <a href="search_all_tour.php" class="btn amber" >Search All</a>
+              </div>
+            </div>
+            <br/>
+            </div>
+          </form>
 
-
-      <h3>Search Tour</h3>
-
-      <a href="search_all_tour.php" class="btn" >Search All</a>
-      <form  action=<?php echo $search_all_func; ?> method="get"  class="navbar-form navbar-center" role="form" >
-
-        <div class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input id="tourName" type="text" class="form-control" name="tourName" value="<?php echo $_GET['tourName'];?>" size="20" >
-          <input type="submit" class="btn btn-primary" value="Search " /><br><br>
-
-        </div>
-        <br>
-
-
-      </form>
 
       <?php
       if(isset($_SESSION['login_id'])){
@@ -125,7 +126,7 @@ $result = mysqli_query($conn,$sql);
             }
             ?>
           </table><br>
-          <ul class="pagination">
+          <ul class="pagination center">
             <?php
             if($prev_page){
               echo "<li class='disabled'><a href ='search_all_tour.php?page=$prev_page'><i class='material-icons'>chevron_left</i></a></li>";
@@ -230,7 +231,7 @@ $result = mysqli_query($conn,$sql);
               }
               ?>
             </table><br>
-            <ul class="pagination">
+            <ul class="pagination center">
               <?php
               if($prev_page){
                 echo "<li class='disabled'><a href ='search_all_tour.php?page=$prev_page'><i class='material-icons'>chevron_left</i></a></li>";
