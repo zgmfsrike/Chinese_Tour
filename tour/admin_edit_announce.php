@@ -30,24 +30,27 @@ require 'module/language/init.php';
 
         <div class="container">
             <div class="row">
-                <h3>Edit Announcement</h3>
+              <div class="section"></div>
+                <h3 class="center"><b>Edit Announcement</b></h3>
                 <form class="col s12" method="post" name="announce" action="php_edit_announce.php">
                     <div class="row">
                         <div class="input-field col s12">
-                            <textarea id="textarea1" class="materialize-textarea" name="announce_en"><?php echo $announce_en; ?></textarea>
-                            <label for="textarea1">Announcement (English)</label>
+                            <h5 for="textarea1">Announcement (English)</h5>
+                            <textarea placeholder="Announcement (English)" id="textarea1" class="materialize-textarea" name="announce_en"><?php echo $announce_en; ?></textarea>
                         </div>
                         <div class="input-field col s12">
-                            <textarea id="textarea1" class="materialize-textarea" name="announce_ch"><?php echo $announce_ch; ?></textarea>
-                            <label for="textarea1">Announcement (Chinese)</label>
+                            <h5 for="textarea1">Announcement (Chinese)</h5>
+                            <textarea placeholder="Announcement (Chinese)" id="textarea1" class="materialize-textarea" name="announce_ch"><?php echo $announce_ch; ?></textarea>
                         </div>
                         <div class="input-field col s12">
-                            <textarea id="textarea1" class="materialize-textarea" name="announce_th"><?php echo $announce_th; ?></textarea>
-                            <label for="textarea1">Announcement (Thai)</label>
+                            <h5 for="textarea1">Announcement (Thai)</h5>
+                            <textarea placeholder="Announcement (Thai)" id="textarea1" class="materialize-textarea" name="announce_th"><?php echo $announce_th; ?></textarea>
                         </div>
                     </div>
-                    <button value="Cancel" onclick="window.location.href='index.php'" class="waves-effect waves-light btn red">Cancel</button>
-                    <button class="waves-effect waves-light btn amber" type="submit" name="save">save</button>
+                    <div class="center">
+                      <button value="Cancel" onclick="window.location.href='index.php'" class="btn red">Cancel</button>
+                      <button class="btn amber" type="submit" name="save">save</button>
+                    </div>
                 </form>
             </div>
         </div>
