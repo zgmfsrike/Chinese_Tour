@@ -115,12 +115,12 @@ $result = mysqli_query($conn,$sql);
                 // echo "<td align ='center'>" .$show['tour_type'] .  "</td> ";
                 // echo "<td align ='center'>" .$show['vehicle_type'] .  "</td> ";
                 // echo "<td align ='center'>" .$show['accommodation_level'] .  "</td> ";
-                // echo "<td align ='center'><input class='waves-effect waves-light btn green' type='button' value='View' onclick=\"window.location.href='http://localhost:8080/Chinese_Tour/ChineseTour_NewTheme%20copy/show_tour_round.php?tourId=$tourId'\"></td>";
+                // echo "<td align ='center'><input class='btn green' type='button' value='View' onclick=\"window.location.href='http://localhost:8080/Chinese_Tour/ChineseTour_NewTheme%20copy/show_tour_round.php?tourId=$tourId'\"></td>";
                 ?>
                 <td align ='center'>
-                  <a href='show_tour_round.php?tourId=<?php echo $tourId;?>'><input class='waves-effect waves-light btn green' type='button' value='Tour round'></a>
-                  <a href='tour.php?id=<?php echo $tourId;?>'><input class='waves-effect waves-light btn green' type='button' value='Detail'></a>
-                  <a href='admin_manage_comment.php?tour_id=<?php echo $tourId;?>'><input class='waves-effect waves-light btn green' type='button' value='View Comment'></a>
+                  <a href='show_tour_round.php?tourId=<?php echo $tourId;?>'><input class='btn green' type='button' value='Tour round'></a>
+                  <a href='tour.php?id=<?php echo $tourId;?>'><input class='btn green' type='button' value='Detail'></a>
+                  <a href='admin_manage_comment.php?tour_id=<?php echo $tourId;?>'><input class='btn green' type='button' value='View Comment'></a>
                 </td>
               </tr>
               <?php
@@ -220,12 +220,12 @@ $result = mysqli_query($conn,$sql);
                   // echo "<td align ='center'>" .$show['tour_type'] .  "</td> ";
                   // echo "<td align ='center'>" .$show['vehicle_type'] .  "</td> ";
                   // echo "<td align ='center'>" .$show['accommodation_level'] .  "</td> ";
-                  // echo "<td align ='center'><input class='waves-effect waves-light btn green' type='button' value='View' onclick=\"window.location.href='http://localhost:8080/Chinese_Tour/ChineseTour_NewTheme%20copy/show_tour_round.php?tourId=$tourId'\"></td>";
+                  // echo "<td align ='center'><input class='btn green' type='button' value='View' onclick=\"window.location.href='http://localhost:8080/Chinese_Tour/ChineseTour_NewTheme%20copy/show_tour_round.php?tourId=$tourId'\"></td>";
                   ?>
                   <td align ='center'>
-                    <a href='show_tour_round.php?tourId=<?php echo $tourId;?>'><input class='waves-effect waves-light btn green' type='button' value='Tour round'></a>
-                    <a href='tour.php?id=<?php echo $tourId;?>'><input class='waves-effect waves-light btn green' type='button' value='Detail'></a>
-                    <a href='admin_manage_comment.php?tour_id=<?php echo $tourId;?>'><input class='waves-effect waves-light btn green' type='button' value='View Comment'></a>
+                    <a href='show_tour_round.php?tourId=<?php echo $tourId;?>'><input class='btn green' type='button' value='Tour round'></a>
+                    <a href='tour.php?id=<?php echo $tourId;?>'><input class='btn green' type='button' value='Detail'></a>
+                    <a href='admin_manage_comment.php?tour_id=<?php echo $tourId;?>'><input class='btn green' type='button' value='View Comment'></a>
                   </td>
                 </tr>
                 <?php

@@ -39,7 +39,7 @@ $tour_round_id = $_GET['tour_round_id'];
             <h3>Tour Round Member</h3>
           </li>
           <li class="right">
-            <a href='tour_send_mail_all.php?tour_round_id=<?php echo $tour_round_id; ?>'><input class='waves-effect waves-light btn green' type='button' value='Send E-mail All'></a>
+            <a href='tour_send_mail_all.php?tour_round_id=<?php echo $tour_round_id; ?>'><input class='btn green' type='button' value='Send E-mail All'></a>
             <!-- <input type="button" class="waves-effect waves-light btn amber" value="Send All" name ="send_all" onclick="window.location.href ='http://localhost:8080/ChineseTour/Chinese_Tour/ChineseTour_NewTheme%20copy/tour_send_mail_all.php?tour_round_id=<?php echo $tour_round_id; ?>'"> -->
         </li>
         </ul>

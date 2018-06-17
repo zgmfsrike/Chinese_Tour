@@ -94,8 +94,8 @@ $string_news_download_pdf = 'Download PDF File:';
       ?>
       <div class="row">
         <div class="right">
-          <a href="admin_edit_news.php?news_id=<?php echo $news_id; ?>" class="btn-large btn-floating tooltipped waves-effect waves-light amber" data-position="top" data-delay="50" data-tooltip="Edit News"><i class="material-icons">edit</i></a>
-          <button id='del_button' class="delete_warn btn-large btn-floating tooltipped waves-effect waves-light red" data-position="top" data-delay="50" data-tooltip="Delete"><i class="delete_warn material-icons">delete</i></button>
+          <a href="admin_edit_news.php?news_id=<?php echo $news_id; ?>" class="btn-large btn-floating tooltipped amber" data-position="top" data-delay="50" data-tooltip="Edit News"><i class="material-icons">edit</i></a>
+          <button id='del_button' class="delete_warn btn-large btn-floating tooltipped red" data-position="top" data-delay="50" data-tooltip="Delete"><i class="delete_warn material-icons">delete</i></button>
         </div>
       </div>
       <?php

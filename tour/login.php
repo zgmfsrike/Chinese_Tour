@@ -37,9 +37,9 @@ require 'module/language/lang_login.php';
                                 </div>
                             </div>
                             <div class="row col s12 center">
-                                <button type="submit" class="waves-effect waves-light btn orange col s12 l5" name="login" value="Login"><?php echo $string_login_login;?></button>
+                                <button type="submit" class="btn orange col s12 l5" name="login" value="Login"><?php echo $string_login_login;?></button>
                                 <div class="col l2"></div>
-                                <button type="button" onclick="window.location.href='register.php'" class="col s12 l5 waves-effect waves-light btn amber" value="Register"><?php echo $string_login_register;?></button>
+                                <button type="button" onclick="window.location.href='register.php'" class="col s12 l5 btn amber" value="Register"><?php echo $string_login_register;?></button>
                                 <div class="section"></div>
                                 <div class="section"></div>
                                 <div class="section"></div>

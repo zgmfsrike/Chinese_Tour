@@ -229,7 +229,7 @@ if(isset($_GET['id'])){
             <?php
             if(isLoginAs(array('member'))){
               ?>
-              <button type="submit" class="waves-effect waves-light btn orange" name="book" value="Book">Book</button>
+              <button type="submit" class="btn orange" name="book" value="Book">Book</button>
               <?php
             }else if (!(isLoginAs(array('member')) || isLoginAs(array('admin')))){
               ?>
@@ -268,8 +268,8 @@ if(isset($_GET['id'])){
           <?php
           if(isLoginAs(array('admin'))){
             ?>
-            <a href="admin_edit_tour.php?id=<?php echo $id?>" class="btn-large btn-floating tooltipped right waves-effect waves-light red" data-position="top" data-delay="50" data-tooltip="Edit Tour"><i class="material-icons">settings</i></a>
-            <a href="#" id='del_button' onclick="warning();" class="btn-large btn-floating tooltipped waves-effect waves-light red" data-position="top" data-delay="50" data-tooltip="Delete"><i class="material-icons">delete</i></a>
+            <a href="admin_edit_tour.php?id=<?php echo $id?>" class="btn-large btn-floating tooltipped right red" data-position="top" data-delay="50" data-tooltip="Edit Tour"><i class="material-icons">settings</i></a>
+            <a href="#" id='del_button' onclick="warning();" class="btn-large btn-floating tooltipped red" data-position="top" data-delay="50" data-tooltip="Delete"><i class="material-icons">delete</i></a>
             <?php
           }
           ?>
