@@ -89,11 +89,12 @@ $search_all_page ="search_all_tour.php";
                   $count = mysqli_num_rows($result);
                    if($count != 0){
                      ?>
-                     <table style='overflow-x:auto;' class='responsive-table table table-striped highlight centered'>
+                     <table style='overflow-x:auto; border: 1px solid gray;' class='responsive-table table table-striped highlight centered'>
                        <thead>
                          <tr align='center'>
                            <th>Tour ID</th>
                            <th>Tour Description</th>
+                           <th></th>
                            <?php
                             // <th>Rating</th><th>Tour type</th><th>Vehicle type</th><th>Accommodation</th><th>View detail</th>";
                             ?>
