@@ -150,8 +150,8 @@ include 'component/header.php';
           </div>
         </div>
         <div class="row col s12">
-          <button name="cancel" type="button" value="Cancel" onclick=<?php echo $manage_page; ?> class="waves-effect waves-light btn red">Cancel</button>
-          <button type="submit" name="save" class="waves-effect waves-light btn green" value="Save">Save</button>
+          <button name="cancel" type="button" value="Cancel" onclick=<?php echo $manage_page; ?> class="btn red">Cancel</button>
+          <button type="submit" name="save" class="btn green" value="Save">Save</button>
         </div>
       </form>
     </div>

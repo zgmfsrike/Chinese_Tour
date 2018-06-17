@@ -38,7 +38,7 @@ require 'module/language/lang_admin_login.php';
                                 </div>
                             </div>
                             <div class="row col s12 center">
-                                <button type="submit" class="waves-effect waves-light btn orange col s12" name="login" value="Login"><?php echo $string_login_btn_login;?></button>
+                                <button type="submit" class="btn orange col s12" name="login" value="Login"><?php echo $string_login_btn_login;?></button>
                                 <div class="section"></div>
                                 <div class="section"></div>
                                 <!-- <a href="/password/reset">Forgot Your Password?</a> -->

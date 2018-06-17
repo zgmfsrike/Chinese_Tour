@@ -212,7 +212,7 @@ if($_GET['news_id'] != ""){
 
                 <div class='file-path-wrapper'>
                 <div id='image_$count_img'>
-                <a href='#' id='del_button' onclick='delete_image($count_img)' class='btn-large btn-floating tooltipped waves-effect waves-light red right' data-position='top' data-delay='50' data-tooltip='Delete'><i class='material-icons'>delete</i></a>
+                <a href='#' id='del_button' onclick='delete_image($count_img)' class='btn-large btn-floating tooltipped red right' data-position='top' data-delay='50' data-tooltip='Delete'><i class='material-icons'>delete</i></a>
                 <img src ='$img_file' width='200' height='150'>
                 </div>
 
@@ -253,7 +253,7 @@ if($_GET['news_id'] != ""){
 
                 <div class='file-path-wrapper'>
                 <div id='pdf_$count_pdf'>
-                <a href='#' id='del_button' onclick='delete_pdf($count_pdf)' class='btn-large btn-floating tooltipped waves-effect waves-light red right' data-position='top' data-delay='50' data-tooltip='Delete'><i class='material-icons'>delete</i></a>
+                <a href='#' id='del_button' onclick='delete_pdf($count_pdf)' class='btn-large btn-floating tooltipped  red right' data-position='top' data-delay='50' data-tooltip='Delete'><i class='material-icons'>delete</i></a>
                 </div>
                 <p> Current file : ".$data_db_pdf['news_pdf']."</p>
                 <input class='file-path validate'  type='text' placeholder='Upload one or more files' >
@@ -306,7 +306,7 @@ if($_GET['news_id'] != ""){
 
                 <div class='file-path-wrapper'>
                 <div id='image_$count_img' >
-                <a href='#' id='del_button' onclick='delete_image($count_img)' class='btn-large btn-floating tooltipped waves-effect waves-light red right' data-position='top' data-delay='50' data-tooltip='Delete'><i class='material-icons'>delete</i></a>
+                <a href='#' id='del_button' onclick='delete_image($count_img)' class='btn-large btn-floating tooltipped  red right' data-position='top' data-delay='50' data-tooltip='Delete'><i class='material-icons'>delete</i></a>
                 <img src ='$img_file' width='200' height='150'>
                 </div>
 
@@ -386,7 +386,7 @@ if($_GET['news_id'] != ""){
 
                 <div  class='file-path-wrapper'>
                 <div id='pdf_$count_pdf'>
-                <a href='#' id='del_button' onclick='delete_pdf($count_pdf)' class='btn-large btn-floating tooltipped waves-effect waves-light red right' data-position='top' data-delay='50' data-tooltip='Delete'><i class='material-icons'>delete</i></a>
+                <a href='#' id='del_button' onclick='delete_pdf($count_pdf)' class='btn-large btn-floating tooltipped  red right' data-position='top' data-delay='50' data-tooltip='Delete'><i class='material-icons'>delete</i></a>
                 </div>
                 <p> Current file : ".$data_db_pdf['news_pdf']."</p>
                 <input class='file-path validate'  type='text' placeholder='Upload one or more files' >
@@ -461,8 +461,8 @@ if($_GET['news_id'] != ""){
           </div>
         </div>
         <div class="row col s12">
-          <button type="button" value="Cancel" onclick="window.location.href='news.php?news_id=<?php echo $news_id?>'" class="waves-effect waves-light btn red">Cancel</button>
-          <button name="save" type="submit" class="waves-effect waves-light btn green" value="Save">Save</button>
+          <button type="button" value="Cancel" onclick="window.location.href='news.php?news_id=<?php echo $news_id?>'" class=" btn red">Cancel</button>
+          <button name="save" type="submit" class=" btn green" value="Save">Save</button>
         </div>
       </form>
     </div>

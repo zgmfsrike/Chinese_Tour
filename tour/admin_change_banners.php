@@ -56,8 +56,8 @@ include 'component/header.php';
               </div>
             </div>
             <div class="s3 l4">
-              <button type="submit" class="waves-effect waves-light btn green" value="Change" name="changeBanner<?php echo $i;?>">Change</button>
-              <button type="submit" class="waves-effect waves-light btn red" value="<?php echo $i;?>" name="delete"
+              <button type="submit" class="btn green" value="Change" name="changeBanner<?php echo $i;?>">Change</button>
+              <button type="submit" class="btn red" value="<?php echo $i;?>" name="delete"
               <?php
               if (!file_exists($filename)) {
                 ?>
