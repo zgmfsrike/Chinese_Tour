@@ -25,7 +25,7 @@ include 'component/header.php';
     <!-- Waiting -->
     <div class="section"></div>
     <h4><b>Waiting for confirmation</b></h4>
-    <table class="centered highlight" style="border: 1px solid gray;border-radius: 8px; overflow-x:auto;">
+    <table class="responsive-table centered highlight" style="border: 1px solid gray;border-radius: 8px; overflow-x:auto;">
       <thead>
         <tr>
           <th class="center-align">Tour description</th>
@@ -66,7 +66,7 @@ include 'component/header.php';
 
     <!-- No payment -->
     <h4><b>No payment</b></h4>
-    <table class="centered highlight" style="border: 1px solid gray;border-radius: 8px; overflow-x:auto;">
+    <table class="centered highlight responsive-table" style="border: 1px solid gray;border-radius: 8px; overflow-x:auto;">
       <thead>
         <tr>
           <th class="center-align">Tour description</th>
@@ -107,7 +107,7 @@ include 'component/header.php';
 
     <!-- Payment confirmed -->
     <h4><b>Payment confirmed</b></h4>
-    <table class="centered highlight" style="border: 1px solid gray;border-radius: 8px; overflow-x:auto;">
+    <table class="centered highlight responsive-table" style="border: 1px solid gray;border-radius: 8px; overflow-x:auto;">
       <thead>
         <tr>
           <th class="center-align">Tour description</th>
