@@ -65,7 +65,7 @@ if(isset($_POST['submit'])){
         // Insert booking status
         $current_date = date("Y-m-d");
         $expiry_date = '';
-        $sql = "INSERT INTO `tour_booking_status` (`reference_code`, `member_id`, `booking_date`, `expiry_date`) ";
+        $sql = "INSERT INTO `tour_booking_history` (`reference_code`, `member_id`, `booking_date`, `expiry_date`) ";
         $sql .= "VALUES ('$reference_code', '$member_id', '$current_date', '$expiry_date');";
         $result = mysqli_query($conn,$sql);
 
@@ -172,10 +172,10 @@ if(isset($_POST['submit'])){
         echo 'Message could not be sent.';
         echo 'Mailer Error: ' . $mail->ErrorInfo;
       }
-      $expiry_date = date('Y-m-d',strtotime($start_date.' - 3 days'));
-      $sql_add_book_status = "INSERT INTO `book_status`(`reference_code`, `member_id`, `status`, `expiry_date`)
-      VALUES ('$reference_code',$member_id,0,'$expiry_date')";
-      $result_status = mysqli_query($conn, $sql_add_book_status);
+      // $expiry_date = date('Y-m-d',strtotime($start_date.' - 3 days'));
+      // $sql_add_book_status = "INSERT INTO `book_status`(`reference_code`, `member_id`, `status`, `expiry_date`)
+      // VALUES ('$reference_code',$member_id,0,'$expiry_date')";
+      // $result_status = mysqli_query($conn, $sql_add_book_status);
       header("location: message.php?msg=book_tour_succ");
       ob_end_flush();
     }
