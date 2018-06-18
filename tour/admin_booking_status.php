@@ -23,7 +23,7 @@ include 'component/header.php';
   <div class="container">
 
     <!-- Waiting -->
-    <h2>Waiting for confirmation</h2>
+    <h3><b>Waiting for confirmation</b></h3>
     <table class="responsive-table centered">
       <thead>
         <tr>
@@ -63,7 +63,7 @@ include 'component/header.php';
     </table>
 
     <!-- No payment -->
-    <h2>No payment</h2>
+    <h3><b>No payment</b></h3>
     <table class="responsive-table centered">
       <thead>
         <tr>
@@ -103,7 +103,7 @@ include 'component/header.php';
     </table>
 
     <!-- Payment confirmed -->
-    <h2>Payment confirmed</h2>
+    <h3><b>Payment confirmed</b></h3>
     <table class="responsive-table centered">
       <thead>
         <tr>

@@ -97,7 +97,7 @@ require 'module/string/string_header.php';
 
 
   <div class="nav-content red darken-3 hide-on-med-and-down">
-    <ul class="tabs tabs-fixed-width tabs-transparent container">
+    <ul class="tabs tabs-fixed-width tabs-transparent">
       <li class="tab"><a target="_self" href="<?php echo $link_index;?>"><?php echo $string_header_index;?></a></li>
       <li class="tab"><a target="_self" href="<?php echo $link_meeting;?>"><?php echo $string_header_meeting;?></a></li>
       <li class="tab"><a target="_self" href="<?php echo $link_incentive;?>"><?php echo $string_header_incentive;?></a></li>
