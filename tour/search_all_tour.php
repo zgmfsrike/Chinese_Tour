@@ -63,34 +63,36 @@ $result = mysqli_query($conn,$sql);
 <body>
   <div class="container">
     <div class="row">
+      <div class="section"></div>
+        <div class="col s12">
+          <h3 class="center"><b>Search Tour</b></h3>
+          <form  action=<?php echo $search_tour_func; ?> method="get"  class="navbar-form navbar-center" role="form" >
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">search</i>
+                <input style="border: 1px solid gray;border-radius: 8px; padding-right:10px; padding-left:10px;" placeholder="Search Tour Here" id="tourName" type="text" class="form-control" name="tourName" value="<?php echo $_GET['tourName'];?>" size="20" />
+              </div>
+              <div class="center">
+                <input type="submit" class="btn btn-primary" value="Search " name="search" />
+                <a href="search_all_tour.php" class="btn amber" >Search All</a>
+              </div>
+            </div>
+            <br/>
+            </div>
+          </form>
 
-
-      <h3>Search Tour</h3>
-
-      <a href="search_all_tour.php" class="btn" >Search All</a>
-      <form  action=<?php echo $search_all_func; ?> method="get"  class="navbar-form navbar-center" role="form" >
-
-        <div class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input id="tourName" type="text" class="form-control" name="tourName" value="<?php echo $_GET['tourName'];?>" size="20" >
-          <input type="submit" class="btn btn-primary" value="Search " /><br><br>
-
-        </div>
-        <br>
-
-
-      </form>
 
       <?php
       if(isset($_SESSION['login_id'])){
         $count = mysqli_num_rows($result);
         if($count != 0){
           ?>
-          <table style='overflow-x:auto;' class='responsive-table table table-striped highlight centered'>
+          <table style='overflow-x:auto; border: 1px solid gray;' class='responsive-table table table-striped highlight centered'>
             <thead>
               <tr align='center'>
                 <th>Tour ID</th>
                 <th>Tour Description</th>
+                <th></th>
                 <?php
                 // <th>Rating</th><th>Tour type</th><th>Vehicle type</th><th>Accommodation</th><th>View detail</th>";
                 ?>
@@ -113,19 +115,19 @@ $result = mysqli_query($conn,$sql);
                 // echo "<td align ='center'>" .$show['tour_type'] .  "</td> ";
                 // echo "<td align ='center'>" .$show['vehicle_type'] .  "</td> ";
                 // echo "<td align ='center'>" .$show['accommodation_level'] .  "</td> ";
-                // echo "<td align ='center'><input class='waves-effect waves-light btn green' type='button' value='View' onclick=\"window.location.href='http://localhost:8080/Chinese_Tour/ChineseTour_NewTheme%20copy/show_tour_round.php?tourId=$tourId'\"></td>";
+                // echo "<td align ='center'><input class='btn green' type='button' value='View' onclick=\"window.location.href='http://localhost:8080/Chinese_Tour/ChineseTour_NewTheme%20copy/show_tour_round.php?tourId=$tourId'\"></td>";
                 ?>
                 <td align ='center'>
-                  <a href='show_tour_round.php?tourId=<?php echo $tourId;?>'><input class='waves-effect waves-light btn green' type='button' value='Tour round'></a>
-                  <a href='tour.php?id=<?php echo $tourId;?>'><input class='waves-effect waves-light btn green' type='button' value='Detail'></a>
-                  <a href='admin_manage_comment.php?tour_id=<?php echo $tourId;?>'><input class='waves-effect waves-light btn green' type='button' value='View Comment'></a>
+                  <a href='show_tour_round.php?tourId=<?php echo $tourId;?>'><input class='btn green' type='button' value='Tour round'></a>
+                  <a href='tour.php?id=<?php echo $tourId;?>'><input class='btn green' type='button' value='Detail'></a>
+                  <a href='admin_manage_comment.php?tour_id=<?php echo $tourId;?>'><input class='btn green' type='button' value='View Comment'></a>
                 </td>
               </tr>
               <?php
             }
             ?>
           </table><br>
-          <ul class="pagination">
+          <ul class="pagination center">
             <?php
             if($prev_page){
               echo "<li class='disabled'><a href ='search_all_tour.php?page=$prev_page'><i class='material-icons'>chevron_left</i></a></li>";
@@ -218,19 +220,19 @@ $result = mysqli_query($conn,$sql);
                   // echo "<td align ='center'>" .$show['tour_type'] .  "</td> ";
                   // echo "<td align ='center'>" .$show['vehicle_type'] .  "</td> ";
                   // echo "<td align ='center'>" .$show['accommodation_level'] .  "</td> ";
-                  // echo "<td align ='center'><input class='waves-effect waves-light btn green' type='button' value='View' onclick=\"window.location.href='http://localhost:8080/Chinese_Tour/ChineseTour_NewTheme%20copy/show_tour_round.php?tourId=$tourId'\"></td>";
+                  // echo "<td align ='center'><input class='btn green' type='button' value='View' onclick=\"window.location.href='http://localhost:8080/Chinese_Tour/ChineseTour_NewTheme%20copy/show_tour_round.php?tourId=$tourId'\"></td>";
                   ?>
                   <td align ='center'>
-                    <a href='show_tour_round.php?tourId=<?php echo $tourId;?>'><input class='waves-effect waves-light btn green' type='button' value='Tour round'></a>
-                    <a href='tour.php?id=<?php echo $tourId;?>'><input class='waves-effect waves-light btn green' type='button' value='Detail'></a>
-                    <a href='admin_manage_comment.php?tour_id=<?php echo $tourId;?>'><input class='waves-effect waves-light btn green' type='button' value='View Comment'></a>
+                    <a href='show_tour_round.php?tourId=<?php echo $tourId;?>'><input class='btn green' type='button' value='Tour round'></a>
+                    <a href='tour.php?id=<?php echo $tourId;?>'><input class='btn green' type='button' value='Detail'></a>
+                    <a href='admin_manage_comment.php?tour_id=<?php echo $tourId;?>'><input class='btn green' type='button' value='View Comment'></a>
                   </td>
                 </tr>
                 <?php
               }
               ?>
             </table><br>
-            <ul class="pagination">
+            <ul class="pagination center">
               <?php
               if($prev_page){
                 echo "<li class='disabled'><a href ='search_all_tour.php?page=$prev_page'><i class='material-icons'>chevron_left</i></a></li>";

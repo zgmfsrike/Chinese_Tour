@@ -19,5 +19,7 @@ if( isset($_POST['status_id']) AND isset($_POST['ref_code']) ) {
     header("location: message.php?msg=error");
   }
   header("location: booking_detail.php?ref=" . $ref_code);
+}else{
+  header("location: message.php?msg=error");
 }
 ?>

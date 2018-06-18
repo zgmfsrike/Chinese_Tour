@@ -57,8 +57,8 @@ $change_mail_func = "php_change_mail.php";
 
                         <div class="form-group">
                             <div class="col-xs-offset-3 col-sm-9 float-none"><br>
-                                <button type="submit" class="btn waves-effect waves-light green" value="save" name ="save"><?php echo $string_change_email_save;?></button>
-                                <button type="button" value="Cancel" onclick="<?php echo $profile_page; ?>" class="btn waves-effect waves-light red"><?php echo $string_change_email_cancel;?></button>
+                                <button type="submit" class="btn green" value="save" name ="save"><?php echo $string_change_email_save;?></button>
+                                <button type="button" value="Cancel" onclick="<?php echo $profile_page; ?>" class="btn red"><?php echo $string_change_email_cancel;?></button>
                             </div>
                         </div>
                     </form>

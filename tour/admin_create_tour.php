@@ -354,7 +354,7 @@ function initDate(index){
       </div>
       <div class="row">
         <div class="col s12 center">
-          <button class="waves-effect waves-light btn amber" type="submit" name="submit">Submit</button>
+          <button class="btn amber" type="submit" name="submit">Submit</button>
         </div>
       </div>
     </form>

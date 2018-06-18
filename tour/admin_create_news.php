@@ -22,62 +22,34 @@ include 'component/header.php';
 
   <div class="container">
     <div class="row">
+      <br/><br/>
+      <h3 class="center"><b>Create News</b></h3>
       <br/>
-      <h3>Create News</h3>
       <form class="col s12" action=<?php echo $create_news_func; ?> method="post" enctype="multipart/form-data">
 
         <div style="border-style: solid;border-width: 1px;">
           <div class="row">
-            <h5 class="center">English</h5>
+            <br/><h5 class="center"><b>English</b></h5>
             <div class="col s12">
               <div class="input-field col s12">
-                <input id="newsTopic" type="text" class="validate" name="newsAddtopic_en" required>
-                <label for="newsTopic">News Topic (English)</label>
+                <h5 for="newsTopic">News Topic (English)</h5>
+                <input placeholder="News Topic (English)" id="newsTopic" type="text" class="validate" name="newsAddtopic_en" required>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col s12 l12">
               <div class="input-field col s12">
-                <textarea id="textarea2" name="newsContent_en" class="materialize-textarea" required></textarea>
-                <label for="textarea1">News Content</label>
+                <h5 for="textarea1">News Content</h5>
+                <textarea placeholder="News Content" id="textarea2" name="newsContent_en" class="materialize-textarea" required></textarea>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col s12 l12">
               <div class="input-field col s12">
-                <textarea name="newsDescription_en" id="textarea1" class="materialize-textarea" required></textarea>
-                <label for="textarea1">News Description</label>
-              </div>
-            </div>
-          </div>
-        </div><br/>
-
-        <div style="border-style: solid;border-width: 1px;">
-          <div class="row">
-            <h5 class="center">中文</h5>
-            <div class="col s12 l12">
-              <div class="input-field col s12">
-                <input id="newsTopic" type="text" class="validate" name="newsAddtopic_ch" required>
-                <label for="newsTopic">News Topic (中文)</label>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s12 l12">
-              <div class="input-field col s12">
-                <textarea id="textarea2" name="newsContent_ch" class="materialize-textarea" required></textarea>
-                <label for="textarea1">News Content
-                </label>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s12 l12">
-              <div class="input-field col s12">
-                <textarea name="newsDescription_ch" id="textarea1" class="materialize-textarea" required></textarea>
-                <label for="textarea1">News Description</label>
+                <h5 for="textarea1">News Description</h5>
+                <textarea placeholder="News Description" name="newsDescription_en" id="textarea1" class="materialize-textarea" required></textarea>
               </div>
             </div>
           </div>
@@ -85,39 +57,66 @@ include 'component/header.php';
 
         <div style="border-style: solid;border-width: 1px;">
           <div class="row">
-            <h5 class="center">ภาษาไทย</h5>
+            <br/><h5 class="center"><b>中文</b></h5>
             <div class="col s12 l12">
               <div class="input-field col s12">
-                <input id="newsTopic" type="text" class="validate" name="newsAddtopic_th" required>
-                <label for="newsTopic">News Topic (ภาษาไทย)</label>
+                <h5 for="newsTopic">News Topic (中文)</h5>
+                <input placeholder="News Topic (中文)" id="newsTopic" type="text" class="validate" name="newsAddtopic_ch" required>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col s12 l12">
               <div class="input-field col s12">
-                <textarea id="textarea2" name="newsContent_th" class="materialize-textarea" required></textarea>
-                <label for="textarea1">News Content
-                </label>
+                <h5 for="textarea1">News Content</h5>
+                <textarea placeholder="News Content" id="textarea2" name="newsContent_ch" class="materialize-textarea" required></textarea>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col s12 l12">
               <div class="input-field col s12">
-                <textarea name="newsDescription_th" id="textarea1" class="materialize-textarea" required></textarea>
-                <label for="textarea1">News Description</label>
+                <h5 for="textarea1">News Description</h5>
+                <textarea placeholder="News Description" name="newsDescription_ch" id="textarea1" class="materialize-textarea" required></textarea>
+              </div>
+            </div>
+          </div>
+        </div><br/>
+
+        <div style="border-style: solid;border-width: 1px;">
+          <div class="row">
+            <br/><h5 class="center"><b>ภาษาไทย</b></h5>
+            <div class="col s12 l12">
+              <div class="input-field col s12">
+                <h5 for="newsTopic">News Topic (ภาษาไทย)</h5>
+                <input placeholder="News Topic (ภาษาไทย)" id="newsTopic" type="text" class="validate" name="newsAddtopic_th" required>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12 l12">
+              <div class="input-field col s12">
+                <h5 for="textarea1">News Content</h5>
+                <textarea placeholder="News Content" id="textarea2" name="newsContent_th" class="materialize-textarea" required></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12 l12">
+              <div class="input-field col s12">
+                <h5 for="textarea1">News Description</h5>
+                <textarea placeholder="News Description" name="newsDescription_th" id="textarea1" class="materialize-textarea" required></textarea>
               </div>
             </div>
           </div>
         </div>
         <br/>
         <div class="row">
-          <h5>Add Images</h5>
+          <h5><b>Add Images</b></h5>
           <div class="col s12">
             <div class="section"></div>
             <div id="image">
-              <label for="image"><b>Images</b></label>
+              <h5 for="image"><b>Images</b></h5>
               <div class="file-field input-field">
                 <div class="btn">
                   <span>Upload image</span>
@@ -134,7 +133,7 @@ include 'component/header.php';
             <!--  PDF File : Schedule  -->
             <div id="pdf">
               <div class="section"></div>
-              <label for="pdf"><b>PDF</b></label>
+              <h5 for="pdf"><b>PDF</b></h5>
               <div class="file-field input-field">
                 <div class="btn">
                   <span>Upload file</span>
@@ -153,8 +152,8 @@ include 'component/header.php';
         </div>
         <br/>
         <div class="row col s12 center">
-          <button name="cancel" type="button" value="Cancel" onclick=<?php echo $manage_page; ?> class="waves-effect waves-light btn red">Cancel</button>
-          <button type="submit" name="save" class="waves-effect waves-light btn green" value="Save">Save</button>
+          <button name="cancel" type="button" value="Cancel" onclick=<?php echo $manage_page; ?> class="btn red">Cancel</button>
+          <button type="submit" name="save" class="btn green" value="Save">Save</button>
         </div>
       </form>
     </div>

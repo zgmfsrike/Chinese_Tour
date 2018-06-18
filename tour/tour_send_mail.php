@@ -66,8 +66,8 @@ if($_GET['member_id'] != ""){
          </div>
        </div>
        <div class="row s12 center">
-         <button type="reset" value ="Reset" name ="reset" class="waves-effect waves-light btn amber"/>Reset</button>
-         <button type="submit" value ="Send" name ="send" class="waves-effect waves-light btn green"/>Send</button>
+         <button type="reset" value ="Reset" name ="reset" class="btn amber"/>Reset</button>
+         <button type="submit" value ="Send" name ="send" class="btn green"/>Send</button>
        </div>
          <br>
        </form>

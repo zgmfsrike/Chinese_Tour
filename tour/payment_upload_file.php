@@ -66,8 +66,8 @@ function preview_image(event)
         </div>
         <img id="output_image"/>
         <div class="row col s12 center">
-          <a href="payment.php"><button name="cancel" type="button" value="Cancel"  class="waves-effect waves-light btn red">Cancel</button></a>
-          <button type="submit" name="save" class="waves-effect waves-light btn green" value="Save">Save</button>
+          <a href="payment.php"><button name="cancel" type="button" value="Cancel"  class="btn red">Cancel</button></a>
+          <button type="submit" name="save" class="btn green" value="Save">Save</button>
         </div>
 
 
