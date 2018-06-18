@@ -46,7 +46,7 @@ function preview_image(event)
         <h3 class="center"><b>Payment Upload File</b></h3>
         <h5 class="left">Reference Code : <?php echo $ref_code; ?></h5>
         <?php
-        $sql = "SELECT * FROM book_status WHERE reference_code = '$ref_code'";
+        $sql = "SELECT * FROM tour_booking_history WHERE reference_code = '$ref_code'";
         $result = mysqli_query($conn, $sql);
 
         ?>
