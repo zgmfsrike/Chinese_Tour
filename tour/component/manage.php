@@ -12,7 +12,7 @@
           <p class="collection-item active amber">Tour Management</p>
           <a href="php_search_tour.php" class="collection-item black-text">Search Tour</a>
           <a href="admin_create_tour.php" class="collection-item black-text">Create Tour</a>
-          <a href="booking_status.php" class="collection-item black-text">Check Status</a>
+          <a href="admin_booking_status.php" class="collection-item black-text">Check Status</a>
         </div>
       </div>
   </div>
