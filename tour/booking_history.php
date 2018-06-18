@@ -27,9 +27,9 @@ $link_tour_detail = 'booking_detail.php?ref=';
 <body>
   <!-- body -->
   <div class="container">
-
-    <h2>Booking History</h2>
-    <table class="responsive-table centered">
+    <div class="section"></div>
+    <h4><b>Booking History</b></h4>
+    <table class="responsive-table centered" style="border: 1px solid gray;border-radius: 8px;">
       <thead>
         <tr>
           <th class="center-align">Ref. code</th>
@@ -92,7 +92,7 @@ $link_tour_detail = 'booking_detail.php?ref=';
       </tbody>
     </table>
 
-    <ul class="pagination">
+    <ul class="pagination center">
       <?php
       if($prev_page){
         echo "<li class='disabled'><a href ='$link?page=$prev_page'><i class='material-icons'>chevron_left</i></a></li>";

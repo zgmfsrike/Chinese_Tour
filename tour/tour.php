@@ -341,7 +341,7 @@ if(isset($_GET['id'])){
 
              ?>
           </ul>
-          <ul class="pagination">
+          <ul class="pagination center">
             <?php
             if($prev_page){
               echo "<li class='disabled'><a href ='tour.php?page=$prev_page&id=$id'><i class='material-icons'>chevron_left</i></a></li>";
