@@ -53,49 +53,77 @@ $data = mysqli_fetch_array($result);
   <div class="container">
 
     <!-- Waiting -->
-    <h2>Booking detail</h2>
-
-    <table class="responsive-table centered">
+    <div class="section"></div><div class="section"></div>
+    <h4 class="center"><b>Booking detail</b></h4>
+    <!-- desktop -->
+    <table class="responsive-table hide-on-med-and-down highlight container" style="border: 1px solid gray;border-radius: 8px;">
       <tbody>
         <tr>
-          <td>Reference code</td>
+          <th class="center" style="width:30%;">Reference code</th>
           <td><?php echo $data['reference_code'];?></td>
         </tr>
         <tr>
-          <td>Tour detail</td>
+          <th class="center">Tour detail</th>
           <td><?php echo $data['reference_code'];?></td>
         </tr>
         <tr>
-          <td>Start date</td>
+          <th class="center">Start date</th>
           <td><?php echo $data['reference_code'];?></td>
         </tr>
         <tr>
-          <td>End date</td>
+          <th class="center">End date</th>
           <td><?php echo $data['reference_code'];?></td>
         </tr>
         <tr>
-          <td>Member</td>
+          <th class="center">Member</th>
           <td><?php echo $data['reference_code'];?></td>
         </tr>
         <tr>
-          <td>Number of seat</td>
+          <th class="center">Number of seat</th>
           <td><?php echo $data['reference_code'];?></td>
         </tr>
         <tr>
-          <td>Add-on</td>
+          <th class="center">Add-on</th>
           <td><?php echo $data['reference_code'];?></td>
         </tr>
         <tr>
-          <td>Net Price</td>
+          <th class="center">Net Price</th>
           <td><?php echo $data['reference_code'];?></td>
         </tr>
         <tr>
-          <td>Status</td>
+          <th class="center">Status</th>
           <td><?php echo $data['reference_code'];?></td>
         </tr>
       </tbody>
     </table>
 
+    <!-- mobile and tablet -->
+    <table class="responsive-table hide-on-large-only" style="border: 1px solid gray;border-radius: 8px;">
+      <tbody>
+        <tr>
+          <th>Reference code</th>
+          <th>Tour detail</th>
+          <th>Start date</th>
+          <th>End date</th>
+          <th>Member</th>
+          <th>Number of seat</th>
+          <th>Add-on</th>
+          <th>Net Price</th>
+          <th>Status</th>
+        </tr>
+        <tr>
+          <td><?php echo $data['reference_code'];?></td>
+          <td><?php echo $data['reference_code'];?></td>
+          <td><?php echo $data['reference_code'];?></td>
+          <td><?php echo $data['reference_code'];?></td>
+          <td><?php echo $data['reference_code'];?></td>
+          <td><?php echo $data['reference_code'];?></td>
+          <td><?php echo $data['reference_code'];?></td>
+          <td><?php echo $data['reference_code'];?></td>
+          <td><?php echo $data['reference_code'];?></td>
+        </tr>
+      </tbody>
+    </table>
 
     <?php
     /*
@@ -154,7 +182,8 @@ $data = mysqli_fetch_array($result);
     if(isLoginAs(array('admin'))){
       ?>
       <form action="<?php echo $link_update_booking_status; ?>" method="post" enctype="multipart/form-data">
-        <h4>Update booking status</h4>
+        <div class="section"></div>
+        <h4 class="center"><b>Update booking status</b></h4>
         <input type="text" name="ref_code" value="<?php echo $ref_code; ?>" style="display:none">
         <div class="container col s12">
           <label>Update booking status</label>
@@ -166,10 +195,12 @@ $data = mysqli_fetch_array($result);
             <option value="4" <?php echo $data['status'] == 4 ? "selected" : "" ?>>Cancel</option>
           </select>
         </div>
+        <div class="section"></div><div class="section"></div>
         <div class="row col s12 center">
-          <a href="payment.php"><button name="cancel" type="button" value="Cancel"  class="waves-effect waves-light btn red">Cancel</button></a>
-          <button type="submit" name="save" class="waves-effect waves-light btn green" value="Save">Save</button>
+          <a href="payment.php"><button name="cancel" type="button" value="Cancel"  class="btn red">Cancel</button></a>
+          <button type="submit" name="save" class="btn green" value="Save">Save</button>
         </div>
+        <div class="section"></div>
       </form>
       <?php
     }

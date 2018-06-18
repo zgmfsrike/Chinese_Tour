@@ -23,8 +23,9 @@ include 'component/header.php';
   <div class="container">
 
     <!-- Waiting -->
-    <h3><b>Waiting for confirmation</b></h3>
-    <table class="responsive-table centered">
+    <div class="section"></div>
+    <h4><b>Waiting for confirmation</b></h4>
+    <table class="centered highlight" style="border: 1px solid gray;border-radius: 8px; overflow-x:auto;">
       <thead>
         <tr>
           <th class="center-align">Tour description</th>
@@ -53,7 +54,7 @@ include 'component/header.php';
             <td><?php echo $data['start_date_time'];?></td>
             <td><?php echo $data['end_date_time'];?></td>
             <td>
-              <a href="booking_detail.php?ref=<?php echo $data['reference_code'];?>">>Detail<</a>
+              <a href="booking_detail.php?ref=<?php echo $data['reference_code'];?>"><b>Detail</b></a>
             </td>
           </tr>
           <?php
@@ -61,10 +62,11 @@ include 'component/header.php';
         ?>
       </tbody>
     </table>
+    <div class="section"></div>
 
     <!-- No payment -->
-    <h3><b>No payment</b></h3>
-    <table class="responsive-table centered">
+    <h4><b>No payment</b></h4>
+    <table class="centered highlight" style="border: 1px solid gray;border-radius: 8px; overflow-x:auto;">
       <thead>
         <tr>
           <th class="center-align">Tour description</th>
@@ -93,7 +95,7 @@ include 'component/header.php';
             <td><?php echo $data['start_date_time'];?></td>
             <td><?php echo $data['end_date_time'];?></td>
             <td>
-              <a href="booking_detail.php?ref=<?php echo $data['reference_code'];?>">>Detail<</a>
+              <a href="booking_detail.php?ref=<?php echo $data['reference_code'];?>"><b>Detail</b></a>
             </td>
           </tr>
           <?php
@@ -101,10 +103,11 @@ include 'component/header.php';
         ?>
       </tbody>
     </table>
+    <div class="section"></div>
 
     <!-- Payment confirmed -->
-    <h3><b>Payment confirmed</b></h3>
-    <table class="responsive-table centered">
+    <h4><b>Payment confirmed</b></h4>
+    <table class="centered highlight" style="border: 1px solid gray;border-radius: 8px; overflow-x:auto;">
       <thead>
         <tr>
           <th class="center-align">Tour description</th>
@@ -133,7 +136,7 @@ include 'component/header.php';
             <td><?php echo $data['start_date_time'];?></td>
             <td><?php echo $data['end_date_time'];?></td>
             <td>
-              <a href="booking_detail.php?ref=<?php echo $data['reference_code'];?>">>Detail<</a>
+              <a href="booking_detail.php?ref=<?php echo $data['reference_code'];?>"><b>Detail</b></a>
             </td>
           </tr>
           <?php
@@ -141,7 +144,7 @@ include 'component/header.php';
         ?>
       </tbody>
     </table>
-
+    <div class="section"></div>
   </div>
 
   <?php
