@@ -2651,13 +2651,13 @@ if (Vel) {
         }
 
         // append indicator then set indicator width to tab width
-        if (!$this.find('.indicator').length) {
-          $this.append('<li class="indicator"></li>');
-        }
-        $indicator = $this.find('.indicator');
+        // if (!$this.find('.indicator').length) {
+        //   $this.append('<li class="indicator"></li>');
+        // }
+        // $indicator = $this.find('.indicator');
 
         // we make sure that the indicator is at the end of the tabs
-        $this.append($indicator);
+        // $this.append($indicator);
 
         if ($this.is(":visible")) {
           // $indicator.css({"right": $tabs_width - ((index + 1) * $tab_width)});
