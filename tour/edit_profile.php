@@ -178,8 +178,8 @@ $profile_page = "window.location.href='profile.php'";
                         </div>
                         <div class="row">
                             <div class="col s12 center">
-                                <button name="cancel" type="button" value="Cancel" onclick=<?php echo $profile_page; ?> class="waves-effect waves-light btn red"><?php echo $string_edit_profile_cancel; ?></button>
-                                <button type="submit" class="waves-effect waves-light btn green" value="Save" name='save'><?php echo $string_edit_profile_save; ?></button>
+                                <button name="cancel" type="button" value="Cancel" onclick=<?php echo $profile_page; ?> class="btn red"><?php echo $string_edit_profile_cancel; ?></button>
+                                <button type="submit" class="btn green" value="Save" name='save'><?php echo $string_edit_profile_save; ?></button>
 
                             </div>
                         </div>

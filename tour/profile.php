@@ -58,15 +58,15 @@ include 'component/header.php';
         </div>
         <div class="row">
           <div class="col s3">
-            <a href="edit_profile.php" class="btn waves-effect waves-light red"><?php echo $string_profile_edit_profile;?></a>
+            <a href="edit_profile.php" class="btn red"><?php echo $string_profile_edit_profile;?></a>
             <div class="section"></div>
           </div>
           <div class="col s4">
-            <a href="change_password.php" class="btn waves-effect waves-light red"><?php echo $string_profile_change_password;?></a>
+            <a href="change_password.php" class="btn red"><?php echo $string_profile_change_password;?></a>
             <div class="section"></div>
           </div>
           <div class="col s4">
-            <a href="change_email.php" class="btn waves-effect waves-light red"><?php echo $string_profile_change_email;?></a>
+            <a href="change_email.php" class="btn red"><?php echo $string_profile_change_email;?></a>
           </div>
         </div>
       </div>

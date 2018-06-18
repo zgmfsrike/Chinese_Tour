@@ -24,7 +24,7 @@ include 'db_config.php';
             <br>
             <h5>Email is already sent.</h5>
             <br>
-            <button type="button" onclick="window.location.href='index.php'" class="waves-effect waves-light btn amber" value="Back">Go to mainpage</button>
+            <button type="button" onclick="window.location.href='index.php'" class="btn amber" value="Back">Go to mainpage</button>
             <br><br><br><br><br>
         </div>
     </body>
@@ -52,7 +52,7 @@ include 'db_config.php';
                     <label for="content">Content<b class="red-text"> *</b></label>
                 </div>
 
-                <input type="submit" class="waves-effect waves-light btn green"  name="submit" value="Submit">
+                <input type="submit" class="btn green"  name="submit" value="Submit">
             </form>
             <br>
 

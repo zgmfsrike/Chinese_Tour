@@ -22,8 +22,9 @@ include 'component/header.php';
     <form action="php_upload_banner.php" enctype="multipart/form-data" method="post">
       <div class="row">
         <div class="col s12">
-          <br/>
-          <h3 class="center">Change Banners</h3>
+          <div class="section"></div>
+          <h3 class="center"><b>Change Banners</b></h3>
+          <div class="section"></div>
           <!--  File[] : Image  -->
           <?php
 
@@ -55,8 +56,8 @@ include 'component/header.php';
               </div>
             </div>
             <div class="s3 l4">
-              <button type="submit" class="waves-effect waves-light btn green" value="Change" name="changeBanner<?php echo $i;?>">Change</button>
-              <button type="submit" class="waves-effect waves-light btn red" value="<?php echo $i;?>" name="delete"
+              <button type="submit" class="btn green" value="Change" name="changeBanner<?php echo $i;?>">Change</button>
+              <button type="submit" class="btn red" value="<?php echo $i;?>" name="delete"
               <?php
               if (!file_exists($filename)) {
                 ?>

@@ -29,24 +29,24 @@ $about_th = $data['thai'];
 
   <div class="container">
     <form class="col s12" method="post" name="announce" action="php_edit_aboutus.php">
-      <h3>Edit About Us</h3>
+      <h3 class="center"><b>Edit About Us</b></h3>
       <div class="row">
         <div class="col s12">
-          <p>English</p>
+          <h5>About us in English</h5>
           <div class="input-field col s12">
             <textarea id="textarea1" class="materialize-textarea" name="about_en"><?php echo $about_en;?></textarea>
             <label for="textarea1">Enlish</label>
           </div>
         </div>
         <div class="col s12">
-          <p>Chinese</p>
+          <h5>About us in Chinese</h5>
           <div class="input-field col s12">
             <textarea id="textarea1" class="materialize-textarea" name="about_ch"><?php echo $about_ch;?></textarea>
             <label for="textarea1">Chinese</label>
           </div>
         </div>
         <div class="col s12">
-          <p>Thai</p>
+          <h5>About us in Thai</h5>
           <div class="input-field col s12">
             <textarea id="textarea1" class="materialize-textarea" name="about_th"><?php echo $about_th;?></textarea>
             <label for="textarea1">Thai</label>
@@ -55,8 +55,8 @@ $about_th = $data['thai'];
       </div>
     </div>
     <div class="row col s12 center">
-      <button name="Submit" type="submit" value="Cancel" onclick="window.location.href='manage.php'" class="waves-effect waves-light btn red">Cancel</button>
-      <button type="submit" class="waves-effect waves-light btn green" value="save" name="save">Save</button>
+      <button name="Submit" type="submit" value="Cancel" onclick="window.location.href='manage.php'" class="btn red">Cancel</button>
+      <button type="submit" class="btn green" value="save" name="save">Save</button>
     </div>
   </form>
 </div>

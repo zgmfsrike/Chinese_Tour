@@ -33,7 +33,7 @@ require 'module/language/init.php';
           <hr>
         </div>
         <div class="row">
-          <button type="button" onclick=<?php echo (!$link == "") ? "window.location.href='$link'" : "history.go(-1)"; ?> class="waves-effect waves-light btn amber" value="<?php echo(!$btn == '') ? $btn : 'Back' ?>">
+          <button type="button" onclick=<?php echo (!$link == "") ? "window.location.href='$link'" : "history.go(-1)"; ?> class="btn amber" value="<?php echo(!$btn == '') ? $btn : 'Back' ?>">
             <?php echo(!$btn == '') ? $btn : 'Back' ?>
           </button>
         </div>

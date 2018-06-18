@@ -109,8 +109,8 @@ if(isset($_GET['type']) AND isset($_GET['style']) AND isset($_GET['plan'])){
           <?php
           if(isLoginAs(array('admin'))){
             ?>
-            <a href="admin_edit_tour.php?id=<?php echo $id?>" class="btn-large btn-floating tooltipped right waves-effect waves-light red" data-position="top" data-delay="50" data-tooltip="Edit Tour"><i class="material-icons">settings</i></a>
-            <a href="#" id='del_button' onclick="warning();" class="btn-large btn-floating tooltipped waves-effect waves-light red" data-position="top" data-delay="50" data-tooltip="Delete"><i class="material-icons">delete</i></a>
+            <a href="admin_edit_tour.php?id=<?php echo $id?>" class="btn-large btn-floating tooltipped right red" data-position="top" data-delay="50" data-tooltip="Edit Tour"><i class="material-icons">settings</i></a>
+            <a href="#" id='del_button' onclick="warning();" class="btn-large btn-floating tooltipped red" data-position="top" data-delay="50" data-tooltip="Delete"><i class="material-icons">delete</i></a>
             <?php
           }
           ?>
