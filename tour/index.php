@@ -41,7 +41,7 @@ include 'component/header.php';
           if (file_exists($filename)) {
             ?>
             <li>
-              <img src="images/home<?php echo $i;?>.jpg">
+              <img src="images/home<?php echo $i;?>.jpg" >
             </li>
             <?php
           }

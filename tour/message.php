@@ -123,7 +123,7 @@ require 'module/language/init.php';
     // under construction
     if($msg == 'under_construction') $result = message('This page is under construction','Sorry for inconvenient','index.php','Go to home page');
 
-    if($msg == 'book_tour_succ') $result =  message('Success!','Send e-mail to member complete','index.php','Go to home page');
+    if($msg == 'book_tour_succ') $result =  message('Success!','Send e-mail to member complete','booking_history.php','Go to home book status page');
 
     // feedback
     if($msg == 'edit_feedback_question_complete') $result =  message('Success!','Edit feedback form successfully.','','');
@@ -131,6 +131,7 @@ require 'module/language/init.php';
     if($msg == 'feedback_send_fail') $result =  message('Sorry!','Something went wrong, please try again.','','');
     if($msg == 'feedback_succ') $result =  message('Success!','Send success','','');
     if($msg == 'edit_comment_success') $result =  message('Success!','Edit comment successfully','','');
+    if($msg == 'error_booking') $result =  message('Something went wrong','Please try again.','index.php','');
 
 
 

@@ -6,13 +6,15 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 if(isset($_POST['submit'])){
-  if(isset($_SESSION['login_id']) and isset($_SESSION['seat']) and isset($_SESSION['tour_round']) and
-  isset($_SESSION['tour_type']) and isset($_SESSION['ref_code'])){
+  if(isset($_SESSION['login_id']) and isset($_SESSION['seat']) and isset($_SESSION['tour_round']) and isset($_SESSION['ref_code'])){
     $tour_member_list="";
     $member_id = $_SESSION['login_id'];
     $amount_people = $_SESSION['seat'];
     $tour_round_id =  $_SESSION['tour_round'];
-    $tour_type_id =  $_SESSION['tour_type'];
+
+    $tour_type_all = $_SESSION['tour_type_all'];
+    $acc_all = $_SESSION['acc_all'];
+    $vehicle_all = $_SESSION['vehicle_all'];
 
     $reference_code = $_SESSION['ref_code'];
     $trigger = false;
@@ -25,7 +27,7 @@ if(isset($_POST['submit'])){
     INNER JOIN vehicle_type vt on tvt.vehicle_type_id = vt.vehicle_type_id
     INNER JOIN tour_accommodation ta on t.tour_id = ta.tour_id
     INNER JOIN accommodation a on ta.accommodation_id = a.accommodation_id
-    WHERE tr.tour_round_id = $tour_round_id and ttt.tour_type_id = $tour_type_id";
+    WHERE tr.tour_round_id = $tour_round_id";
     $result = mysqli_query($conn,$sql);
     $data = mysqli_fetch_array($result);
 
@@ -110,22 +112,31 @@ if(isset($_POST['submit'])){
       $show = mysqli_fetch_array($result_show_user);
       $member_email = $show['email'];
       $subject = "Tour information";
-      $start_date = $show['start_date_time'];
+      // $start_date = $show['start_date_time'];
       $tour_member_field = "Reference Code : ".$reference_code."
       <legend>Tour Group Member</legend>".$tour_member_list."
       ";
       $tour_info = "<br /><legend>Tour Information</legend>
-      Tour Type :".$data['tour_type']."<br>
-      Vehicle : ".$data['vehicle_type']."<br>
-      Accommodation : ".$data['accommodation_level']."<br>
+      Tour Type :".$tour_type_all."<br>
+      Vehicle : ".$vehicle_all."<br>
+      Accommodation : ".  $acc_all ."<br>
       Departure Location :".$departure_location." <br>
       Drop off Location : ".  $dropoff_location." <br>
-      Start Date : ".$start_date."<br>
+      Start Date : ".$data['start_date_time']."<br>
       End Date : ".$data['end_date_time']."<br>"
       ;
 
       $description = $tour_member_field.$tour_info;
       //-----------------------------Send change mail fucntion----------------------------------------------------//
+      switch ($_COOKIE['lang']) {
+        case 'th':
+          $footer = "footer_th-en.png";
+          break;
+
+        default:
+          $footer = "footer_en-cn.png";
+          break;
+      }
       require 'vendor/autoload.php';
 
       $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
@@ -156,7 +167,7 @@ if(isset($_POST['submit'])){
         $mail->Subject = $subject;
         $mail->addAddress($member_email);
         $mail->AddEmbeddedImage('component/header.png', 'header');
-        $mail->AddEmbeddedImage('component/footer.png', 'footer');
+        $mail->AddEmbeddedImage('component/'.$footer, 'footer');
         $body = "<center><p><img src='cid:header' /></p></center>";
         $body .="<center>".$description."</center>";
         $body .="<center><p><img src='cid:footer' /></p></center>";
@@ -181,13 +192,13 @@ if(isset($_POST['submit'])){
     }
 
     if($trigger){
-      unset($_SESSION['tour_type']);
       unset($_SESSION['tour_round_id']);
       unset($_SESSION['amount_people']);
       unset($_SESSION['ref_code']);
       unset($_SESSION['result_price']);
       unset($_SESSION['departure_location']);
       unset($_SESSION['dropoff_location']);
+      unset($_SESSION['book_info']);
     }
   }
 }

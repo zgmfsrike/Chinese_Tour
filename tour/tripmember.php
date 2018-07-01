@@ -4,7 +4,9 @@ error_reporting (E_ALL ^ E_NOTICE);
 include 'module/session.php';
 include 'db_config.php';
 require 'module/language/init.php';
-
+if(!isset($_SESSION['book_info'])){
+  header('Location: message.php?msg=error_booking');
+}
 if(isset($_SESSION['tour_round'])){
   $tour_round_id = $_SESSION['tour_round'];
 

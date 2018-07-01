@@ -4,7 +4,9 @@ include 'module/session.php';
 include 'db_config.php';
 require 'module/language/init.php';
 
-
+if(!isset($_SESSION['book_info'])){
+  header('Location: message.php?msg=error_booking');
+}
 
 
 
@@ -26,6 +28,7 @@ require 'module/language/init.php';
       $result_price = $_SESSION['result_price'];
       $departure_location = $_SESSION['departure_location'];
       $dropoff_location = $_SESSION['dropoff_location'];
+
 
       }
 ?>
@@ -87,11 +90,22 @@ require 'module/language/init.php';
         <div class="col s12">
           <ul>
             <?php
-            if(isset($_SESSION['tour_round']) and isset($_SESSION['tour_type'])){
+            // if(isset($_SESSION['tour_round']) and isset($_SESSION['tour_type'])){
+              if(isset($_SESSION['tour_round'])){
               $tour_round_id = $_SESSION['tour_round'];
-              $tour_type_id =  $_SESSION['tour_type'];
+              $tour_id = $_SESSION['tour_id'];
+              // $tour_type_id =  $_SESSION['tour_type']
 
               $tour = "tour_".$_COOKIE['lang'];
+              // $sql ="SELECT *
+              //   FROM tour_round tr INNER JOIN $tour t on tr.tour_id = t.tour_id
+              //    INNER JOIN tour_tour_type ttt ON t.tour_id = ttt.tour_id
+              //    INNER JOIN tour_type tt ON tt.tour_type_id = ttt.tour_type_id
+              //    INNER JOIN tour_vehicle_type tvt on t.tour_id = tvt.tour_id
+              //    INNER JOIN vehicle_type vt on tvt.vehicle_type_id = vt.vehicle_type_id
+              //    INNER JOIN tour_accommodation ta on t.tour_id = ta.tour_id
+              //    INNER JOIN accommodation a on ta.accommodation_id = a.accommodation_id
+              //    WHERE tr.tour_round_id = $tour_round_id and ttt.tour_type_id = $tour_type_id";
               $sql ="SELECT *
                 FROM tour_round tr INNER JOIN $tour t on tr.tour_id = t.tour_id
                  INNER JOIN tour_tour_type ttt ON t.tour_id = ttt.tour_id
@@ -100,18 +114,52 @@ require 'module/language/init.php';
                  INNER JOIN vehicle_type vt on tvt.vehicle_type_id = vt.vehicle_type_id
                  INNER JOIN tour_accommodation ta on t.tour_id = ta.tour_id
                  INNER JOIN accommodation a on ta.accommodation_id = a.accommodation_id
-                 WHERE tr.tour_round_id = $tour_round_id and ttt.tour_type_id = $tour_type_id";
+                 WHERE tr.tour_round_id = $tour_round_id";
               $result = mysqli_query($conn,$sql);
               $data = mysqli_fetch_array($result);
+              //tour type
+              $sql_tour = "SELECT * FROM `tour_tour_type` INNER JOIN `tour_type` ON tour_tour_type.tour_type_id=tour_type.tour_type_id WHERE tour_id = $tour_id";
+              $result_tour = mysqli_query($conn, $sql_tour);
+              $tour_type_all ="";
+              while ($type = mysqli_fetch_array($result_tour)) {
+                $tour_type_all .= $type['tour_type']." ";
+                $_SESSION['tour_type_all']= $tour_type_all;
+                # code...
+              }
+              //accommodation
+
+              $sql_acc = "SELECT * FROM `tour_accommodation` INNER JOIN `accommodation` ON tour_accommodation.accommodation_id=accommodation.accommodation_id WHERE tour_id = $tour_id";
+              $result_acc = mysqli_query($conn, $sql_acc);
+              $acc_all = "";
+
+              while ($acc = mysqli_fetch_array($result_acc)) {
+                $acc_all .= $acc['accommodation_level']." ";
+                $_SESSION['acc_all'] = $acc_all;
+                # code...
+              }
+              //vehicle type
+              $sql_v = "SELECT * FROM `tour_vehicle_type` INNER JOIN `vehicle_type` ON tour_vehicle_type.vehicle_type_id=vehicle_type.vehicle_type_id WHERE tour_id = $tour_id";
+              $result_v = mysqli_query($conn, $sql_v);
+              $vehicle_all  = "";
+
+
+              while ($v_all = mysqli_fetch_array($result_v)) {
+                $vehicle_all .= $v_all['vehicle_type']." ";
+                $_SESSION['vehicle_all'] = $vehicle_all;
+
+                # code...
+              }
+
+
 
 
 
             }
 
             ?>
-            <li><b>Tour Type :  </b><?php echo $data['tour_type'];?></li>
-            <li><b>Vehicle : </b><?php echo $data['vehicle_type'];?></li>
-            <li><b>Accommodation : </b><?php echo $data['accommodation_level'];?></li>
+            <li><b>Tour Type :  </b><?php echo $tour_type_all;?></li>
+            <li><b>Vehicle : </b><?php echo $vehicle_all;?></li>
+            <li><b>Accommodation : </b><?php echo $acc_all;?></li>
             <li><b>Departure Location : </b><?php echo $departure_location;?></li>
             <li><b>Drop off Location : </b><?php echo $dropoff_location;?></li>
             <li><b>Start Date : </b><?php echo $data['start_date_time'];?></li>

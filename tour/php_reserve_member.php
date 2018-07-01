@@ -15,10 +15,11 @@ if(isset($_POST['book'])){
       $_SESSION['departure_location'] = $_POST['depart'];
       $_SESSION['dropoff_location'] = $_POST['dropOff'];
       $_SESSION['seat'] = $_POST['amount_people'];
+      $_SESSION['book_info'] = "exist";
       // echo "ผ่าน";
-      if(isset($_POST['tour_type'])){
-        $_SESSION['tour_type'] = $_POST['tour_type'];
-      }
+      // if(isset($_POST['tour_type'])){
+      //   $_SESSION['tour_type'] = $_POST['tour_type'];
+      // }
 
     }
 
