@@ -24,6 +24,7 @@ if($_GET['tour_round_id']){
   //-----------------------------Edit fucntion----------------------------------------------------//
 
   if($_POST['send'] && $subject !== "" && $description !==""){
+    $footer = "footer_en-cn.png";
 
 
     require 'vendor/autoload.php';
@@ -64,7 +65,7 @@ if($_GET['tour_round_id']){
         $mail->addAddress($email);
       }
       $mail->AddEmbeddedImage('component/header.png', 'header');
-      $mail->AddEmbeddedImage('component/footer.png', 'footer');
+      $mail->AddEmbeddedImage('component/'.$footer, 'footer');
       $body = "<center><p><img src='cid:header' /></p></center>";
       $body .="<center>".$description."</center>";
       $body .="<center><p><img src='cid:footer' /></p></center>";

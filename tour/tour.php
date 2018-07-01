@@ -81,7 +81,7 @@ if(isset($_GET['id'])){
             </div>
 
             <ul>
-              
+
 
               <li><b>Vehicle :</b>
                 <?php
@@ -280,9 +280,10 @@ if(isset($_GET['id'])){
             while ($show = mysqli_fetch_array($result_comment)) {
               $comment= $show['comment'];
               $feedback_id = $show['feedback_id'];
+              $fill_date = $show['filled_date'];
              ?>
 
-            <li><div class="chip"><?php echo $feedback_id; ?></div> <span>: <?php echo $comment; ?></span> </li>
+            <li><div class="chip"><?php echo $feedback_id; ?></div> <?php echo $fill_date;?><span>: <?php echo $comment; ?></span> </li>
 
             <?php
               }
