@@ -16,6 +16,11 @@ include 'php_profile_func.php';
 $title = "Booking history";
 
 include 'component/header.php';
+
+$query_tour_round_id = '';
+if(isset($_GET['tour_round_id'])){
+  $query_tour_round_id .= "AND TR.tour_round_id = " . $_GET['tour_round_id'];
+}
 ?>
 
 <body>
@@ -41,7 +46,8 @@ include 'component/header.php';
         $sql .= "LEFT JOIN tour_round_member RM ON BH.member_id = RM.id ";
         $sql .= "LEFT JOIN tour_round TR ON RM.tour_round_id = TR.tour_round_id ";
         $sql .= "LEFT JOIN tour_en T ON TR.tour_id = T.tour_id ";
-        $sql .= "WHERE BH.status=2";
+        $sql .= "WHERE BH.status=2 ";
+        $sql .= $query_tour_round_id;
         // echo $sql;
         $result = mysqli_query($conn,$sql);
 
@@ -81,7 +87,8 @@ include 'component/header.php';
         $sql .= "LEFT JOIN tour_round_member RM ON BH.member_id = RM.id ";
         $sql .= "LEFT JOIN tour_round TR ON RM.tour_round_id = TR.tour_round_id ";
         $sql .= "LEFT JOIN tour_en T ON TR.tour_id = T.tour_id ";
-        $sql .= "WHERE BH.status=1";
+        $sql .= "WHERE BH.status=1 ";
+        $sql .= $query_tour_round_id;
         // echo $sql;
         $result = mysqli_query($conn,$sql);
 
@@ -121,7 +128,8 @@ include 'component/header.php';
         $sql .= "LEFT JOIN tour_round_member RM ON BH.member_id = RM.id ";
         $sql .= "LEFT JOIN tour_round TR ON RM.tour_round_id = TR.tour_round_id ";
         $sql .= "LEFT JOIN tour_en T ON TR.tour_id = T.tour_id ";
-        $sql .= "WHERE BH.status=3";
+        $sql .= "WHERE BH.status=3 ";
+        $sql .= $query_tour_round_id;
         // echo $sql;
         $result = mysqli_query($conn,$sql);
 
