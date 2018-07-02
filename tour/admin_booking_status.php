@@ -37,7 +37,6 @@ include 'component/header.php';
       </thead>
       <tbody>
         <?php
-        $id = $_SESSION['login_id'];
         $sql =  "SELECT distinct  T.tour_description, BH.reference_code , TR.start_date_time, TR.end_date_time, BH.status FROM tour_booking_history BH ";
         $sql .= "LEFT JOIN tour_round_member RM ON BH.member_id = RM.id ";
         $sql .= "LEFT JOIN tour_round TR ON RM.tour_round_id = TR.tour_round_id ";
@@ -78,7 +77,6 @@ include 'component/header.php';
       </thead>
       <tbody>
         <?php
-        $id = $_SESSION['login_id'];
         $sql =  "SELECT distinct  T.tour_description, BH.reference_code , TR.start_date_time, TR.end_date_time, BH.status FROM tour_booking_history BH ";
         $sql .= "LEFT JOIN tour_round_member RM ON BH.member_id = RM.id ";
         $sql .= "LEFT JOIN tour_round TR ON RM.tour_round_id = TR.tour_round_id ";
@@ -119,7 +117,6 @@ include 'component/header.php';
       </thead>
       <tbody>
         <?php
-        $id = $_SESSION['login_id'];
         $sql =  "SELECT distinct  T.tour_description, BH.reference_code , TR.start_date_time, TR.end_date_time, BH.status FROM tour_booking_history BH ";
         $sql .= "LEFT JOIN tour_round_member RM ON BH.member_id = RM.id ";
         $sql .= "LEFT JOIN tour_round TR ON RM.tour_round_id = TR.tour_round_id ";

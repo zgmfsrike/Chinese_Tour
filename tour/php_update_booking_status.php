@@ -4,9 +4,10 @@ include "db_config.php";
 if( isset($_POST['status_id']) AND isset($_POST['ref_code']) ) {
 
   $status_id = $_POST['status_id'];
+  $note = $_POST['note'];
   $ref_code = $_POST['ref_code'];
 
-  $sql = "UPDATE `tour_booking_history` SET `status` = '$status_id' ";
+  $sql = "UPDATE `tour_booking_history` SET `status` = '$status_id', `note` = '$note'";
 
   $sql .= "WHERE `reference_code` = '$ref_code'";
 
