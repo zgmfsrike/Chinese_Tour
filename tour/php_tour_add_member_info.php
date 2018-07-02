@@ -12,7 +12,7 @@ if(isset($_POST['submit'])){
     $amount_people = $_SESSION['seat'];
     $tour_round_id =  $_SESSION['tour_round'];
 
-    $tour_type_all = $_SESSION['tour_type_all'];
+    // $tour_type_all = $_SESSION['tour_type_all'];
     $acc_all = $_SESSION['acc_all'];
     $vehicle_all = $_SESSION['vehicle_all'];
 
@@ -108,6 +108,7 @@ if(isset($_POST['submit'])){
     }
     $sql_show_user = "SELECT email FROM member WHERE id = $member_id";
     $result_show_user = mysqli_query($conn, $sql_show_user);
+    // Tour Type :".$tour_type_all."<br>
     if($result_show_user){
       $show = mysqli_fetch_array($result_show_user);
       $member_email = $show['email'];
@@ -117,7 +118,7 @@ if(isset($_POST['submit'])){
       <legend>Tour Group Member</legend>".$tour_member_list."
       ";
       $tour_info = "<br /><legend>Tour Information</legend>
-      Tour Type :".$tour_type_all."<br>
+
       Vehicle : ".$vehicle_all."<br>
       Accommodation : ".  $acc_all ."<br>
       Departure Location :".$departure_location." <br>

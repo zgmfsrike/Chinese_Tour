@@ -155,9 +155,10 @@ if(!isset($_SESSION['book_info'])){
 
 
             }
+            // <li><b>Tour Type :  </b><?php echo $tour_type_all;</li>
 
             ?>
-            <li><b>Tour Type :  </b><?php echo $tour_type_all;?></li>
+
             <li><b>Vehicle : </b><?php echo $vehicle_all;?></li>
             <li><b>Accommodation : </b><?php echo $acc_all;?></li>
             <li><b>Departure Location : </b><?php echo $departure_location;?></li>
