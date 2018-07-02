@@ -66,7 +66,7 @@ $result = mysqli_query($conn,$sql);
       <div class="section"></div>
         <div class="col s12">
           <h3 class="center"><b>Search Tour</b></h3>
-          <form  action=<?php echo $search_tour_func; ?> method="get"  class="navbar-form navbar-center" role="form" >
+          <form  action=<?php echo $search_all_func; ?> method="get"  class="navbar-form navbar-center" role="form" >
             <div class="row">
               <div class="input-field col s12">
                 <i class="material-icons prefix">search</i>
