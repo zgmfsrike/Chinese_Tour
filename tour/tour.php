@@ -252,7 +252,7 @@ if(isset($_GET['id'])){
 
             $num_row =mysqli_num_rows($result_comment);
 
-            $per_page = 3;
+            $per_page = 5;
             if(isset($_GET['page'])){
               $page = $_GET['page'];
             }else{

@@ -61,7 +61,7 @@ function register(){
     VALUES ('$username', '$password', '$firstName', '$middleName', '$lastName', '$dob', '$countrycode','$phone', '$email', '$address', '$city', '$province', '$zipcode', '$occupation', '$salary', '$hash')";
     // execute
     $result = mysqli_query( $GLOBALS['conn'] , $sql );
-    
+
       $footer = "footer_en-cn.png";
 
       // confirmation url
@@ -130,7 +130,7 @@ function register(){
     }
 
   }
-}
+
 
 function check_available($username,$email){
 

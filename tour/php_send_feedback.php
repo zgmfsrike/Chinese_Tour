@@ -101,7 +101,9 @@ if($result_t){
           VALUES('$feedback_id','$ref_code','$tour_round_id',$feedback_version,'$expiry_date')";
           $result_feedback = mysqli_query($conn, $sql_insert_feedback);
 
-          $link = "http://localhost/Chinese_Tour/tour/feedback.php?feedback_id=".$feedback_id;
+          // $link = "http://localhost/Chinese_Tour/tour/feedback.php?feedback_id=".$feedback_id;
+
+          $link = "http://www.chiangmaihongthai.com/feedback.php?feedback_id=".$feedback_id;
 
           // $mail_collect  .= "'$email'".",";
           // $mail_result = rtrim($mail_collect,", ");
