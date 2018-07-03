@@ -25,7 +25,8 @@ $link_news_list = "news_list.php";
 
       <!-- Content Column -->
       <div class="col s12">
-        <h3>News</h3>
+        <br/>
+        <h3><b>News</b></h3>
       </div>
 
       <?php
@@ -120,7 +121,7 @@ $link_news_list = "news_list.php";
 
       ?>
 
-      <ul class="pagination">
+      <ul class="pagination center">
         <?php
         if($prev_page){
           echo "<li class='disabled'><a href ='$link_news_list?page=$prev_page'><i class='material-icons'>chevron_left</i></a></li>";

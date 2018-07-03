@@ -31,7 +31,7 @@ $title = "Chiang Mai Hong Thai Tour";
 include 'component/header.php';
 ?>
 <body>
-  <!--Admin Manage-->
+  <!--Slider-->
   <div id="home" class="col s12">
     <div class="slider">
       <ul class="slides">
@@ -47,26 +47,6 @@ include 'component/header.php';
           }
         }
         ?>
-
-        <!-- <li>
-          <img src="images/home1.jpg">
-          <div class="caption center-align">
-            <h3>Welcome!</h3>
-            <h5 class="light grey-text text-lighten-3">We're Chiangmai Hong Thai Business Consultant</h5>
-          </div>
-        </li>
-        <li>
-          <img src="images/home2.jpg">
-        </li>
-        <li>
-          <img src="images/home3.jpg">
-        </li>
-        <li>
-          <img src="images/home4.jpg">
-        </li>
-        <li>
-          <img src="images/home5.jpg">
-        </li> -->
       </ul>
     </div>
 
@@ -87,6 +67,7 @@ include 'component/header.php';
         </div>
       </div>
     </div>
+
     <!--News-->
     <div class="container row">
       <h3><?php echo $string_index_news;?></h3>
@@ -126,10 +107,9 @@ include 'component/header.php';
 
       }
       ?>
-      <div class="container row">
-        <a href='<?php echo $link_all_news; ?>'><button type='button' class='btn ' name='button'>View All News</button></a>
+      <div class="right">
+        <a href='<?php echo $link_all_news; ?>'><button type='button' class='btn' name='button'>View All News</button></a>
       </div>
-
 
     </div>
     <div class="container row">

@@ -24,11 +24,7 @@ include "module/hashing.php";
   <div class="container">
     <!-- Content Row -->
     <div class="row">
-
-      <!-- Content Column -->
-      <div class="col s12">
-        <h3>Tour Round</h3>
-      </div>
+        <h3 class="center"><b>Tour Round</b></h3>
 
                <?php
                if(isset($_SESSION['login_id'])){
@@ -64,9 +60,7 @@ include "module/hashing.php";
                   $result = mysqli_query($conn,$sql);
 
 
-
-
-                   echo "<table style='overflow-x:auto;' class='responsive-table table table-striped highlight centered'>";
+                   echo "<table style='overflow-x:auto; border: 1px solid gray;' class='responsive-table table table-striped highlight centered'>";
                    echo "<thead>";
                    echo "<tr align='center'><th>TourRound Id</th><th>Trip status</th><th>Start Date</th><th>End date</th><th>Departure Point</th><th>DropOff Point</th><<th>Amount of Member</th><th>Member</th>";
                    echo "</tr>";
@@ -99,7 +93,7 @@ include "module/hashing.php";
                }
 
                ?>
-               <ul class="pagination">
+               <ul class="pagination center">
                  <?php
                  if($prev_page){
                    echo "<li class='disabled'><a href ='show_tour_round.php?page=$prev_page&tourId=$tourId'><i class='material-icons'>chevron_left</i></a></li>";
@@ -115,8 +109,6 @@ include "module/hashing.php";
                    echo "<li class='waves-effect'><a href='show_tour_round.php?page=$next_page&tourId=$tourId'><i class='material-icons'>chevron_right</i></a></li>";
                  }
                  ?>
-
-
 
                </ul>
 

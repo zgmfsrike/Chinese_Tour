@@ -36,13 +36,14 @@ $tour_round_id = $_GET['tour_round_id'];
       <div class="col s12">
         <ul>
           <li>
-            <h3>Tour Round Member</h3>
+            <h3 class="center"><b>Tour Round Member</b></h3>
           </li>
           <li class="right">
             <a href='tour_send_mail_all.php?tour_round_id=<?php echo $tour_round_id; ?>'><input class='btn green' type='button' value='Send E-mail All'></a>
             <!-- <input type="button" class="waves-effect waves-light btn amber" value="Send All" name ="send_all" onclick="window.location.href ='http://localhost:8080/ChineseTour/Chinese_Tour/ChineseTour_NewTheme%20copy/tour_send_mail_all.php?tour_round_id=<?php echo $tour_round_id; ?>'"> -->
         </li>
         </ul>
+      </div>
       </div>
 
                <?php
@@ -58,7 +59,7 @@ $tour_round_id = $_GET['tour_round_id'];
                           WHERE trm.tour_round_id = $tour_round_id ";
                    // $result = mysqli_query( $GLOBALS['conn'] , $sql );
                      $result = page_query($GLOBALS['conn'],$sql,2);
-                   echo "<table style='overflow-x:auto;' class='responsive-table table table-striped highlight centered'>";
+                   echo "<table style='overflow-x:auto; border: 1px solid gray;' class='responsive-table table table-striped highlight centered'>";
                    echo "<thead>";
                    echo "<tr align='center'><th>Member ID</th><th>First Name</th><th>Middle Name</th><th>Last Name</th><th>Passport Id</th><th>Reservation Age</th><th>Avoid Food</th><th>Email</th>";
                    echo "</tr>";
@@ -79,16 +80,23 @@ $tour_round_id = $_GET['tour_round_id'];
                      echo "</tr>";
                    }
                    echo "</table>";
-                     page_echo_pagenums(6,true,true);
+
+
                }
                }
 
                ?>
+               <ul class="center">
+                 <?php
+                 page_echo_pagenums(6,true,true);
+                 ?>
+
+               </ul>
 
 
     <!-- /.row -->
 
-</div>
+
 </div>
     <?php
     include 'component/footer.php';

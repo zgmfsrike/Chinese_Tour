@@ -6,7 +6,7 @@ if(!isLoginAs(array('admin'))){
 }
 //--------------------Link to another page -----------------------------------
 $create_news_func = "php_create_news.php";
-$manage_page = "window.location.href='manage.php'";
+$manage_page = "window.location.href='index.php'";
 
 require 'module/language/init.php';
 ?>

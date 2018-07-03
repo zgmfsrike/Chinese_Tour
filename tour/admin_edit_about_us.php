@@ -55,7 +55,7 @@ $about_th = $data['thai'];
       </div>
     </div>
     <div class="row col s12 center">
-      <button name="Submit" type="submit" value="Cancel" onclick="window.location.href='manage.php'" class="btn red">Cancel</button>
+      <button name="Submit" type="submit" value="Cancel" onclick="window.location.href='index.php'" class="btn red">Cancel</button>
       <button type="submit" class="btn green" value="save" name="save">Save</button>
     </div>
   </form>
