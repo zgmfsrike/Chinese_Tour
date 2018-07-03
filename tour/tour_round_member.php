@@ -16,8 +16,6 @@ include "lib/pagination.php";
 <?php
 // include('module/session.php');
 
-$tour_round_id = $_GET['tour_round_id'];
-
 ?>
 
 <!DOCTYPE html>
@@ -52,10 +50,18 @@ include 'component/header.php';
         //-----------------------------Search fucntion----------------------------------------------------//
         if($_GET['tour_round_id'] != ""){
 
+          $tour_round_id = $_GET['tour_round_id'];
 
           $sql= "SELECT trm.first_name,trm.middle_name,trm.last_name,trm.passport_id,trm.reservation_age,trm.avoid_food,trm.tour_round_member_id,trm.email
           FROM tour_round_member trm INNER JOIN tour_round tr ON trm.tour_round_id = tr.tour_round_id INNER JOIN member m ON trm.id = m.id
           WHERE trm.tour_round_id = $tour_round_id ";
+
+          if(isset($_GET['ref'])){
+            $sql .= " AND trm.reference_code = '{$_GET['ref']}'";
+          }
+
+          // echo $sql;
+
           $result = mysqli_query($conn, $sql);
           $num_row =mysqli_num_rows($result);
 
