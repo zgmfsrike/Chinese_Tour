@@ -141,16 +141,21 @@ if(isset($_GET['id'])){
           <label class="show-on-medium-and-down hide-on-large-only">Amount of People</label>
           <select class="browser-default" name='amount_people' required>
             <option value="" disabled selected>Amount of People</option>
-            <option value='1'>1</option>
-            <option value='2'>2</option>
-            <option value='3'>3</option>
-            <option value='4'>4</option>
-            <option value='5'>5</option>
-            <option value='6'>6</option>
-            <option value='7'>7</option>
-            <option value='8'>8</option>
-            <option value='9'>9</option>
-            <option value='10'>10</option>
+            <?php
+            if ($seat_in_tour>= 10) {
+              $max_amount_people = 10;
+            }else{
+              $max_amount_people = $seat_in_tour;
+            }
+
+            for ($i=1; $i <=$max_amount_people ; $i++) {
+              // code...
+             ?>
+            <option value='<?php echo $i;?>'><?php echo $i ?></option>
+            <?php
+          }
+
+             ?>
           </select>
 
           <label>Departure Location</label>

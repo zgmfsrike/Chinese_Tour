@@ -353,89 +353,93 @@ if(isset($_POST['search'])){
       $max_customer =  $show['max_customer'];
       $seat_in_tour = $max_customer-$count_customer;
 
-      // $sql_tour = "SELECT * FROM `tour_tour_type` INNER JOIN `tour_type` ON tour_tour_type.tour_type_id=tour_type.tour_type_id WHERE tour_id = $tour_id";
-      // $result_tour = mysqli_query($conn, $sql_tour);
-      // $tour_type_all ="";
-      // while ($type = mysqli_fetch_array($result_tour)) {
-      //   $tour_type_all .= $type['tour_type']." ";
-      //   # code...
-      // }
+      if ($seat_in_tour > 0) {
 
-      $sql_acc = "SELECT * FROM `tour_accommodation` INNER JOIN `accommodation` ON tour_accommodation.accommodation_id=accommodation.accommodation_id WHERE tour_id = $tour_id";
-      $result_acc = mysqli_query($conn, $sql_acc);
-      $acc_all = "";
+              // $sql_tour = "SELECT * FROM `tour_tour_type` INNER JOIN `tour_type` ON tour_tour_type.tour_type_id=tour_type.tour_type_id WHERE tour_id = $tour_id";
+              // $result_tour = mysqli_query($conn, $sql_tour);
+              // $tour_type_all ="";
+              // while ($type = mysqli_fetch_array($result_tour)) {
+              //   $tour_type_all .= $type['tour_type']." ";
+              //   # code...
+              // }
 
-      while ($acc = mysqli_fetch_array($result_acc)) {
-        $acc_all .= $acc['accommodation_level']." ";
-        # code...
+              $sql_acc = "SELECT * FROM `tour_accommodation` INNER JOIN `accommodation` ON tour_accommodation.accommodation_id=accommodation.accommodation_id WHERE tour_id = $tour_id";
+              $result_acc = mysqli_query($conn, $sql_acc);
+              $acc_all = "";
+
+              while ($acc = mysqli_fetch_array($result_acc)) {
+                $acc_all .= $acc['accommodation_level']." ";
+                # code...
+              }
+
+              $sql_v = "SELECT * FROM `tour_vehicle_type` INNER JOIN `vehicle_type` ON tour_vehicle_type.vehicle_type_id=vehicle_type.vehicle_type_id WHERE tour_id = $tour_id";
+              $result_v = mysqli_query($conn, $sql_v);
+              $vehicle_all  = "";
+
+              while ($v_all = mysqli_fetch_array($result_v)) {
+                $vehicle_all .= $v_all['vehicle_type']." ";
+                # code...
+              }
+
+              $sql_tour_img = "SELECT * FROM `tour_image` where tour_id = $tour_id";
+              $result_tour_img = mysqli_query($conn, $sql_tour_img);
+              $path = "images/tours/";
+              if($result_tour_img){
+                $data = mysqli_fetch_array($result_tour_img);
+                $tour_img = $path.$data['img1'];
+              }else{
+                $tour_img ="";
+              }
+
+
+              $link = "tour.php?id=".$tour_id."";
+
+              // <h6>Tour Type :" .$tour_type_all .  "</h6>
+              echo "
+              <div class='row collection hide-on-med-and-down'>
+              <div class='row'>
+              <div class='col s12 l4'>
+              <img class='materialboxed' width='250' src='$tour_img'>
+              </div>
+              <div class='col s12 l4'>
+              <br/>
+              <h5><a href='tour.php?id=$tour_id'>" .$show['tour_description'] .  "</a></h5>
+
+              <h6>Accommodation :" .$acc_all .  "</h6>
+              <h6>Vehicle : " .$vehicle_all.  "</h6>
+              </div>
+              <div class='col s12 l3 right-align'>
+              <br/><br/>
+              <h5>฿ " .$show['price'] .  "</h5>
+              <h6>Available Seat :".$seat_in_tour."</h6><br/>
+              <a href='$link'><button type='button' class='btn ' name='button'>Select</button></a>
+              </div>
+              </div>
+              </div>
+
+              <div class='row collection show-on-medium-and-down hide-on-large-only'>
+              <div class='row center'>
+              <div class='col s12 l4'>
+              <img class='materialboxed' width='250' src='$tour_img'>
+              </div>
+              <div class='col s12 l4'>
+              <br/>
+              <h5><a href='tour.php?id=$tour_id'>" .$show['tour_description'] .  "</a></h5>
+              <h6>Tour Type :" .$show['tour_type'] .  "</h6>
+              <h6>Accommodation :" .$show['accommodation_level'] .  "</h6>
+              <h6>Vehicle : " .$show['vehicle_type'] .  "</h6>
+              </div>
+              <div class='col s12 l3 right-align'>
+              <br/><br/>
+              <h5>฿ " .$show['price'] .  "</h5>
+              <h6>Available Seat :".$seat_in_tour."</h6><br/>
+              <a href='$link'><button type='button' class='btn ' name='button'>Select</button></a>
+              </div>
+              </div>
+              </div>
+              ";
+
       }
-
-      $sql_v = "SELECT * FROM `tour_vehicle_type` INNER JOIN `vehicle_type` ON tour_vehicle_type.vehicle_type_id=vehicle_type.vehicle_type_id WHERE tour_id = $tour_id";
-      $result_v = mysqli_query($conn, $sql_v);
-      $vehicle_all  = "";
-
-      while ($v_all = mysqli_fetch_array($result_v)) {
-        $vehicle_all .= $v_all['vehicle_type']." ";
-        # code...
-      }
-
-      $sql_tour_img = "SELECT * FROM `tour_image` where tour_id = $tour_id";
-      $result_tour_img = mysqli_query($conn, $sql_tour_img);
-      $path = "images/tours/";
-      if($result_tour_img){
-        $data = mysqli_fetch_array($result_tour_img);
-        $tour_img = $path.$data['img1'];
-      }else{
-        $tour_img ="";
-      }
-
-
-      $link = "tour.php?id=".$tour_id."";
-
-      // <h6>Tour Type :" .$tour_type_all .  "</h6>
-      echo "
-      <div class='row collection hide-on-med-and-down'>
-      <div class='row'>
-      <div class='col s12 l4'>
-      <img class='materialboxed' width='250' src='$tour_img'>
-      </div>
-      <div class='col s12 l4'>
-      <br/>
-      <h5><a href='tour.php?id=$tour_id'>" .$show['tour_description'] .  "</a></h5>
-
-      <h6>Accommodation :" .$acc_all .  "</h6>
-      <h6>Vehicle : " .$vehicle_all.  "</h6>
-      </div>
-      <div class='col s12 l3 right-align'>
-      <br/><br/>
-      <h5>฿ " .$show['price'] .  "</h5>
-      <h6>Available Seat :".$seat_in_tour."</h6><br/>
-      <a href='$link'><button type='button' class='btn ' name='button'>Select</button></a>
-      </div>
-      </div>
-      </div>
-
-      <div class='row collection show-on-medium-and-down hide-on-large-only'>
-      <div class='row center'>
-      <div class='col s12 l4'>
-      <img class='materialboxed' width='250' src='$tour_img'>
-      </div>
-      <div class='col s12 l4'>
-      <br/>
-      <h5><a href='tour.php?id=$tour_id'>" .$show['tour_description'] .  "</a></h5>
-      <h6>Tour Type :" .$show['tour_type'] .  "</h6>
-      <h6>Accommodation :" .$show['accommodation_level'] .  "</h6>
-      <h6>Vehicle : " .$show['vehicle_type'] .  "</h6>
-      </div>
-      <div class='col s12 l3 right-align'>
-      <br/><br/>
-      <h5>฿ " .$show['price'] .  "</h5>
-      <h6>Available Seat :".$seat_in_tour."</h6><br/>
-      <a href='$link'><button type='button' class='btn ' name='button'>Select</button></a>
-      </div>
-      </div>
-      </div>
-      ";
 
 
 
