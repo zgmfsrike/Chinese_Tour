@@ -18,7 +18,7 @@ $counter = 1;
 while ($show = mysqli_fetch_array($result_comment)) {
   $id = $show['id'];
 
-  if(isset($_POST['enable_'.$counter])){
+  if(isset($_POST['enable_'.$id])){
     $enable = 1;
   }else{
     $enable = 0;

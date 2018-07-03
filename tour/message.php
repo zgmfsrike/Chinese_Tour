@@ -99,7 +99,7 @@ require 'module/language/init.php';
       $result = message('Request not found','','','');
     }
 
-    if($msg == 'delete_tour_succ') $result = message('Success!','Deleting tour successfully','index.php','Go to home page');
+    if($msg == 'delete_tour_succ') $result = message('Success!','Deleting tour successfully','search_all_tour.php','Go to list tour page');
 
     if($msg == 'edit_tour_succ')
     if(isset($_GET['id'])){
