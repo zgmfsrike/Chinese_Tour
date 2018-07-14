@@ -223,8 +223,8 @@ $data = mysqli_fetch_array($result);
         <label>Update booking status</label>
         <select class="browser-default" name="status_id">
           <option value="" disabled>Payment status</option>
-          <option value="1" <?php echo $data['status_code'] == 1 ? "selected" : "" ?>>Waiting for payment slip</option>
-          <option value="2" <?php echo $data['status_code'] == 2 ? "selected" : "" ?>>Payment slip checking</option>
+          <option value="1" <?php echo $data['status_code'] == 1 ? "selected" : "" ?>>Waiting for payment slip (waiting)</option>
+          <option value="2" <?php echo $data['status_code'] == 2 ? "selected" : "" ?>>Payment slip checking (checking)</option>
           <option value="3" <?php echo $data['status_code'] == 3 ? "selected" : "" ?>>Complete</option>
           <option value="4" <?php echo $data['status_code'] == 4 ? "selected" : "" ?>>Cancel</option>
         </select>

@@ -31,8 +31,8 @@ include 'component/header.php';
           <th class="center-align">Tour description</th>
           <th class="center-align">Start</th>
           <th class="center-align">End</th>
-          <th class="center-align">booked/all</th>
-          <th class="center-align">waiting/checking/completed</th>
+          <th class="center-align">reserved/max<br />(seats)</th>
+          <th class="center-align">checking/waiting/complete</th>
         </tr>
       </thead>
       <tbody>
@@ -91,7 +91,7 @@ include 'component/header.php';
             <td><?php echo $count_booked;?>/<?php echo $max_seat;?></td>
             <td>
               <a href="admin_booking_status.php<?php echo "?tour_round_id=" . $tour_round_id?>">
-                <?php echo $sum_waiting;?>/<?php echo $sum_checking;?>/<?php echo $sum_complete;?>
+                <?php echo $sum_checking;?>/<?php echo $sum_waiting;?>/<?php echo $sum_complete;?>
               </a>
             </td>
           </tr>

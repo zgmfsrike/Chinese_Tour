@@ -29,7 +29,7 @@ if(isset($_GET['tour_round_id'])){
 
     <!-- Waiting -->
     <div class="section"></div>
-    <h4><b>Waiting for confirmation</b></h4>
+    <h4><b>Payment slip checking</b></h4>
     <table class="responsive-table centered highlight" style="border: 1px solid gray;border-radius: 8px; overflow-x:auto;">
       <thead>
         <tr>
@@ -69,7 +69,7 @@ if(isset($_GET['tour_round_id'])){
     <div class="section"></div>
 
     <!-- No payment -->
-    <h4><b>No payment</b></h4>
+    <h4><b>Waiting for payment slip</b></h4>
     <table class="centered highlight responsive-table" style="border: 1px solid gray;border-radius: 8px; overflow-x:auto;">
       <thead>
         <tr>
@@ -109,7 +109,7 @@ if(isset($_GET['tour_round_id'])){
     <div class="section"></div>
 
     <!-- Payment confirmed -->
-    <h4><b>Payment confirmed</b></h4>
+    <h4><b>Complete</b></h4>
     <table class="centered highlight responsive-table" style="border: 1px solid gray;border-radius: 8px; overflow-x:auto;">
       <thead>
         <tr>
