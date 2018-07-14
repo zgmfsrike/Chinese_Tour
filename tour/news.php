@@ -83,7 +83,9 @@ $string_news_download_pdf = 'Download PDF File:';
         <div class="card">
           <div class="card-content black-text">
             <span class="card-title" style='white-space: nowrap;width: 17em;overflow: hidden;text-overflow: ellipsis;' id="newsTopic"><?php echo $news_topic; ?></span>
-            <p><?php echo $news_content; ?></p>
+            <span style="width:100%; word-wrap:break-word; display:inline-block;">
+            <p style="white-space: pre-wrap;"><?php echo $news_content; ?> </p>
+            </span>
 
           </div>
         </div>
