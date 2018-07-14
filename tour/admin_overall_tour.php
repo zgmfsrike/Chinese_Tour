@@ -74,13 +74,13 @@ include 'component/header.php';
           $sql2 .= "FROM tour_booking_history BH ";
           $sql2 .= "JOIN tour_round_member RM ON RM.reference_code = BH.reference_code ";
           $sql2 .= "WHERE RM.tour_round_id = $tour_round_id;";
-          // echo $sql2 . "<br>";
+          echo $sql2 . "<br>";
           $result2 = mysqli_query($conn,$sql2);
           $data2 = mysqli_fetch_array($result2);
 
-          $sum_waiting = $data2['sum_waiting'];
-          $sum_checking = $data2['sum_checking'];
-          $sum_complete = $data2['sum_complete'];
+          $sum_waiting = $data2['sum_waiting'] == "" ? "0" : $data2['sum_waiting'];
+          $sum_checking = $data2['sum_checking'] == "" ? "0" : $data2['sum_checking'];
+          $sum_complete = $data2['sum_complete'] == "" ? "0" : $data2['sum_complete'];
 
           ?>
           <tr>

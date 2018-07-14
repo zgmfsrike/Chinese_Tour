@@ -59,7 +59,8 @@ if(isLoginAs(array('member'))){
         $sql .= "LEFT JOIN tour_round TR ON RM.tour_round_id = TR.tour_round_id ";
         $sql .= "LEFT JOIN tour_{$_COOKIE['lang']} T ON TR.tour_id = T.tour_id ";
         $sql .= "LEFT JOIN booking_status S ON BH.status = S.id ";
-        $sql .= "WHERE BH.member_id=$id";
+        $sql .= "WHERE BH.member_id=$id ";
+        $sql .= "GROUP BY BH.reference_code ";
         // echo $sql;
         $result = mysqli_query($conn,$sql);
 
