@@ -26,8 +26,8 @@ if(!isset($_SESSION['book_info'])){
       if(isset($_SESSION['result_price']) and isset($_SESSION['departure_location'])
     and isset($_SESSION['dropoff_location'])){
       $result_price = $_SESSION['result_price'];
-      $departure_location = $_SESSION['departure_location'];
-      $dropoff_location = $_SESSION['dropoff_location'];
+      $departure_location_id = $_SESSION['departure_location'];
+      $dropoff_location_id = $_SESSION['dropoff_location'];
 
 
       }
@@ -155,6 +155,21 @@ if(!isset($_SESSION['book_info'])){
 
                 # code...
               }
+              $departure_lang = ' departure_'.$_COOKIE['lang'];
+
+              $sql_departure_location = "SELECT $departure_lang AS departure FROM `departure_location` WHERE departure_id =".$departure_location_id;
+              $result_departure = mysqli_query($conn, $sql_departure_location);
+              $d_location = mysqli_fetch_array($result_departure);
+              $departure_location = $d_location['departure'];
+              $_SESSION['departure_location'] = $departure_location ;
+
+
+              $dropoff_lang = 'dropoff_'.$_COOKIE['lang'];
+              $sql_dropoff_location = "SELECT $dropoff_lang AS dropoff FROM `dropoff_location` WHERE dropoff_id = ".$dropoff_location_id;
+              $result_dropoff = mysqli_query($conn, $sql_dropoff_location);
+              $drop_location = mysqli_fetch_array($result_dropoff);
+              $dropoff_location = $drop_location['dropoff'];
+              $_SESSION['dropoff_location'] = $dropoff_location;
 
 
 

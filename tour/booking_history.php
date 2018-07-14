@@ -54,9 +54,10 @@ if(isLoginAs(array('member'))){
       </thead>
       <tbody>
         <?php
-        $sql =  "SELECT distinct  BH.reference_code, T.tour_description, TR.start_date_time, TR.end_date_time, S.status_{$_COOKIE['lang']} AS status, BH.status AS status_id FROM tour_booking_history BH ";
-        $sql .= "LEFT JOIN tour_round_member RM ON BH.member_id = RM.id ";
-        $sql .= "LEFT JOIN tour_round TR ON RM.tour_round_id = TR.tour_round_id ";
+        $sql =  "SELECT distinct  BH.reference_code, T.tour_description, TR.start_date_time, TR.end_date_time, S.status_{$_COOKIE['lang']} AS status, BH.status AS status_id
+        FROM tour_booking_history BH ";
+        // $sql .= "LEFT JOIN tour_round_member RM ON BH.member_id = RM.id ";
+        $sql .= "LEFT JOIN tour_round TR ON BH.tour_round_id = TR.tour_round_id ";
         $sql .= "LEFT JOIN tour_{$_COOKIE['lang']} T ON TR.tour_id = T.tour_id ";
         $sql .= "LEFT JOIN booking_status S ON BH.status = S.id ";
         $sql .= "WHERE BH.member_id=$id ";

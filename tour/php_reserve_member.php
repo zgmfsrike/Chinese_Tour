@@ -12,8 +12,8 @@ if(isset($_POST['book'])){
       $tour_round_id = $_POST['tour_round'];
       $_SESSION['tour_round'] =$tour_round_id;
       $_SESSION['result_price'] = $_POST['result_price'];
-      $_SESSION['departure_location'] = $_POST['depart'];
-      $_SESSION['dropoff_location'] = $_POST['dropOff'];
+      $_SESSION['departure_location'] = $_POST['departure'];
+      $_SESSION['dropoff_location'] = $_POST['dropoff'];
       $_SESSION['seat'] = $_POST['amount_people'];
       $_SESSION['book_info'] = "exist";
       // echo "ผ่าน";
@@ -31,13 +31,13 @@ if(isset($_POST['book'])){
     $time = time();
     $hash_text= $time.$member_id;
     $reference_code = hash("crc32", $hash_text);
+    $session_ref = $_SESSION['ref_code'];
 
 
-    $sql_delete_null = "DELETE FROM tour_round_member  WHERE reference_code = '$_SESSION['ref_code']' AND last_name =''
+    $sql_delete_null = "DELETE FROM tour_round_member  WHERE reference_code = '$session_ref' AND last_name =''
     AND dob ='0000-00-00' AND country_code =0 AND phone =0 AND email='' AND address='' AND city=''
-    AND province ='' AND zipcode = 0 AND passport_id =0 AND reservation_age =0 AND avoid_food =''";
+    AND province ='' AND zipcode = 0 AND passport_id =0 AND reservation_age =0 AND avoid_food ='' ";
     $result_delete = mysqli_query($conn,$sql_delete_null);
-
     $_SESSION['ref_code'] = $reference_code;
     // $tour = "tour_".$_COOKIE['lang'];
 
