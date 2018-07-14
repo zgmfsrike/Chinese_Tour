@@ -43,8 +43,7 @@ if(isset($_GET['tour_round_id'])){
       <tbody>
         <?php
         $sql =  "SELECT distinct  T.tour_description, BH.reference_code , TR.start_date_time, TR.end_date_time, BH.status FROM tour_booking_history BH ";
-        $sql .= "LEFT JOIN tour_round_member RM ON BH.member_id = RM.id ";
-        $sql .= "LEFT JOIN tour_round TR ON RM.tour_round_id = TR.tour_round_id ";
+        $sql .= "LEFT JOIN tour_round TR ON BH.tour_round_id = TR.tour_round_id ";
         $sql .= "LEFT JOIN tour_en T ON TR.tour_id = T.tour_id ";
         $sql .= "WHERE BH.status=2 ";
         $sql .= $query_tour_round_id;
@@ -84,8 +83,7 @@ if(isset($_GET['tour_round_id'])){
       <tbody>
         <?php
         $sql =  "SELECT distinct  T.tour_description, BH.reference_code , TR.start_date_time, TR.end_date_time, BH.status FROM tour_booking_history BH ";
-        $sql .= "LEFT JOIN tour_round_member RM ON BH.member_id = RM.id ";
-        $sql .= "LEFT JOIN tour_round TR ON RM.tour_round_id = TR.tour_round_id ";
+        $sql .= "LEFT JOIN tour_round TR ON BH.tour_round_id = TR.tour_round_id ";
         $sql .= "LEFT JOIN tour_en T ON TR.tour_id = T.tour_id ";
         $sql .= "WHERE BH.status=1 ";
         $sql .= $query_tour_round_id;
@@ -125,8 +123,7 @@ if(isset($_GET['tour_round_id'])){
       <tbody>
         <?php
         $sql =  "SELECT distinct  T.tour_description, BH.reference_code , TR.start_date_time, TR.end_date_time, BH.status FROM tour_booking_history BH ";
-        $sql .= "LEFT JOIN tour_round_member RM ON BH.member_id = RM.id ";
-        $sql .= "LEFT JOIN tour_round TR ON RM.tour_round_id = TR.tour_round_id ";
+        $sql .= "LEFT JOIN tour_round TR ON BH.tour_round_id = TR.tour_round_id ";
         $sql .= "LEFT JOIN tour_en T ON TR.tour_id = T.tour_id ";
         $sql .= "WHERE BH.status=3 ";
         $sql .= $query_tour_round_id;

@@ -39,7 +39,7 @@ include 'component/header.php';
         <?php
         $sql =  "SELECT distinct * , DATE(TR.start_date_time) AS date FROM tour_round TR ";
         $sql .= "JOIN tour_en T ON T.tour_id = TR.tour_id ";
-        $sql .= "WHERE TR.start_date_time >= CURDATE() ";
+        // $sql .= "WHERE TR.start_date_time >= CURDATE() ";
         $sql .= "ORDER BY date ASC";
         // echo $sql. "<br>";
         $result = mysqli_query($conn,$sql);
@@ -53,7 +53,8 @@ include 'component/header.php';
           // SUM( CASE WHEN BH.status = 3 THEN 1 ELSE 0 END ) AS sum_complete
           $sql2 = "SELECT COUNT( RM.tour_round_member_id ) AS count_booked ";
           $sql2 .= "FROM tour_round TR ";
-          $sql2 .= "LEFT JOIN tour_round_member RM ON RM.id = TR.tour_round_id ";
+          $sql2 .= " LEFT JOIN tour_booking_history BH ON BH.tour_round_id = TR.tour_round_id ";
+          $sql2 .= " LEFT JOIN tour_round_member RM ON RM.reference_code = BH.reference_code ";
           // $sql2 .= "UNION ";
           // $sql2 .= "SELECT *, COUNT( RM.tour_round_member_id ) AS count_booked ";
           // $sql2 .= "FROM tour_round TR ";
@@ -72,9 +73,9 @@ include 'component/header.php';
 
           $sql2 = "SELECT SUM( CASE WHEN BH.status = 1 THEN 1 ELSE 0 END ) AS sum_waiting, SUM( CASE WHEN BH.status = 2 THEN 1 ELSE 0 END ) AS sum_checking, SUM( CASE WHEN BH.status = 3 THEN 1 ELSE 0 END ) AS sum_complete ";
           $sql2 .= "FROM tour_booking_history BH ";
-          $sql2 .= "JOIN tour_round_member RM ON RM.reference_code = BH.reference_code ";
-          $sql2 .= "WHERE RM.tour_round_id = $tour_round_id;";
-          echo $sql2 . "<br>";
+          // $sql2 .= "JOIN tour_round_member RM ON RM.reference_code = BH.reference_code ";
+          $sql2 .= "WHERE BH.tour_round_id = $tour_round_id;";
+          // echo $sql2 . "<br>";
           $result2 = mysqli_query($conn,$sql2);
           $data2 = mysqli_fetch_array($result2);
 
