@@ -40,7 +40,8 @@ if($result_t){
     echo "Tour round id :".$tour_round_id;
 
 
-    $sql ="SELECT * FROM tour_round_member trm WHERE trm.tour_round_id='$tour_round_id'";
+    $sql ="SELECT * FROM tour_round_member trm INNER JOIN tour_booking_history tbh ON trm.reference_code = tbh.reference_code
+    WHERE tbh.tour_round_id = '$tour_round_id '";
     $result= mysqli_query($conn, $sql);
     if($result){
       // sendmail
