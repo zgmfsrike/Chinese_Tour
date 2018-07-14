@@ -3,23 +3,22 @@ include 'db_config.php';
 include 'module/session.php';
 
 require 'module/language/init.php';
-require 'module/language/lang_meeting.php';
+require 'module/language/lang_exhibition.php';
 
-$pdf_path = 'pdf/tours_static_detail/meeting';
+$pdf_path = 'pdf/tours_static_detail/exhibition';
 ?>
 <!DOCTYPE html>
 <html>
 <?php
-$title = $string_meeting_title;
+$title = $string_exhibition_title;
 include 'component/header.php';
-
 ?>
 <body>
   <div class="container row">
-    <h3><?php echo $string_meeting_title;?></h3>
+    <h3><?php echo $string_exhibition_title;?></h3>
 <ul class="collapsible">
   <li>
-    <div class="collapsible-header"><?php echo $string_meeting_type1;?></div>
+    <div class="collapsible-header"><?php echo $string_exhibition_type1;?></div>
     <div class="collapsible-body">
       <span>
         <embed src="<?php echo $pdf_path; ?>/<?php echo $_COOKIE['lang'];?>/type_1.pdf" type="application/pdf"   height="800px" width="100%"/>
@@ -27,7 +26,7 @@ include 'component/header.php';
     </div>
   </li>
   <li>
-    <div class="collapsible-header"><?php echo $string_meeting_type2;?></div>
+    <div class="collapsible-header"><?php echo $string_exhibition_type2;?></div>
     <div class="collapsible-body">
       <span>
         <embed src="<?php echo $pdf_path; ?>/<?php echo $_COOKIE['lang'];?>/type_2.pdf" type="application/pdf"   height="800px" width="100%"/>
@@ -35,7 +34,7 @@ include 'component/header.php';
     </div>
   </li>
   <li>
-    <div class="collapsible-header"><?php echo $string_meeting_type3;?></div>
+    <div class="collapsible-header"><?php echo $string_exhibition_type3;?></div>
     <div class="collapsible-body">
       <span>
         <embed src="<?php echo $pdf_path; ?>/<?php echo $_COOKIE['lang'];?>/type_3.pdf" type="application/pdf"   height="800px" width="100%"/>
