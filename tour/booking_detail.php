@@ -96,7 +96,7 @@ $data = mysqli_fetch_array($result);
       </tr>
       <tr>
         <th class="center">Net Price</th>
-        <td><?php echo ($data['price'] + $data['net_price']);?></td>
+        <td><?php echo $data['net_price'];?></td>
       </tr>
       <tr>
         <th class="center">Status</th>
