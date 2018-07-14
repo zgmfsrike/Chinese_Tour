@@ -13,9 +13,9 @@ if($_GET['tour_round_id']){
   $subject = $_POST['subject'];
   $description =wordwrap($_POST['description'], 20, "<br />", true);
 
-  $sql= "SELECT m.email
-  FROM member m INNER JOIN tour_round_member trm on m.id  = trm.id
-  WHERE trm.tour_round_id = $tour_round_id ";
+  $sql= "SELECT trm.email FROM tour_round_member trm
+  INNER JOIN tour_booking_history tbh ON trm.reference_code = tbh.reference_code
+  WHERE tbh.tour_round_id =$tour_round_id ";
   $result = mysqli_query( $GLOBALS['conn'] , $sql );
   // $show = mysqli_fetch_array($result);
   // $email = $show['email'];

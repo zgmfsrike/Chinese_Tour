@@ -33,7 +33,6 @@ if(isset($_POST['submit'])){
 
 
     for($i = 1 ; $i<=$amount_people;$i++){
-
       $tour_member_list.=" <b>No.".$i."</b><br />
       <b>Name : </b>".$_SESSION['tour']['p'.$i]['first_name']."\t\t
       , <b>Email : </b>".$_SESSION['tour']['p'.$i]['email']."<br />
