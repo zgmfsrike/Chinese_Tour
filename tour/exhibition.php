@@ -41,6 +41,14 @@ include 'component/header.php';
       </span>
     </div>
   </li>
+  <li>
+    <div class="collapsible-header"><?php echo $string_exhibition_type4;?></div>
+    <div class="collapsible-body">
+      <span>
+        <embed src="<?php echo $pdf_path; ?>/<?php echo $_COOKIE['lang'];?>/type_4.pdf" type="application/pdf"   height="800px" width="100%"/>
+      </span>
+    </div>
+  </li>
 </ul>
 </div>
 

@@ -98,8 +98,8 @@ if($result_t){
           echo $expiry_date;
 
 
-          $sql_insert_feedback = "INSERT INTO feedback(`feedback_id`,`group_member_ref`,`tour_round_id`,`feedback_version`,`expiry_date`)
-          VALUES('$feedback_id','$ref_code','$tour_round_id',$feedback_version,'$expiry_date')";
+          $sql_insert_feedback = "INSERT INTO feedback(`feedback_id`,`group_member_ref`,`tour_round_member_id`,`tour_round_id`,`feedback_version`,`expiry_date`)
+          VALUES('$feedback_id','$ref_code','$tour_round_member_id','$tour_round_id',$feedback_version,'$expiry_date')";
           $result_feedback = mysqli_query($conn, $sql_insert_feedback);
 
           // $link = "http://localhost/Chinese_Tour/tour/feedback.php?feedback_id=".$feedback_id;

@@ -19,6 +19,9 @@ if (mysqli_num_rows($result) > 0) {
       case 'type3':
       $string_exhibition_type3 = $content;
       break;
+      case 'type4':
+      $string_exhibition_type4 = $content;
+      break;
     }
   }
 } else {
