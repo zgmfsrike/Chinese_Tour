@@ -1,4 +1,4 @@
-<?php
+ <?php
 include 'module/session.php';
 include 'db_config.php';
 
@@ -31,20 +31,26 @@ if(isset($_POST['book'])){
     $time = time();
     $hash_text= $time.$member_id;
     $reference_code = hash("crc32", $hash_text);
-    $_SESSION['ref_code'] = $reference_code;
 
-    $sql_delete_null = "DELETE FROM tour_round_member  WHERE id = '$member_id' AND last_name =''
+
+    $sql_delete_null = "DELETE FROM tour_round_member  WHERE reference_code = '$_SESSION['ref_code']' AND last_name =''
     AND dob ='0000-00-00' AND country_code =0 AND phone =0 AND email='' AND address='' AND city=''
-    AND province ='' AND zipcode = 0 AND passport_id =0 AND reservation_age =0 AND avoid_food =''
-    ";
+    AND province ='' AND zipcode = 0 AND passport_id =0 AND reservation_age =0 AND avoid_food =''";
     $result_delete = mysqli_query($conn,$sql_delete_null);
-    $tour = "tour_".$_COOKIE['lang'];
+
+    $_SESSION['ref_code'] = $reference_code;
+    // $tour = "tour_".$_COOKIE['lang'];
+
+    //add reserve group to tour booking history
+    //
+    // $sql_reserve_tour_book = "INSERT INTO tour_booking_history(reference_code,member_id) values('$reference_code','$tour_round_id')";
+    // $result_tour_book = mysqli_query($conn, $sql_reserve_tour_book);
 
 
-
+    //add reserve member according to amount of member when booking
     for($i =1 ;$i<=$amount_people;$i++){
       $reserve_member = "reserve".$i;
-      $sql_add_reserve ="INSERT INTO  tour_round_member(id,tour_round_id,first_name,reference_code) values('$member_id','$tour_round_id','$reserve_member','$reference_code')";
+      $sql_add_reserve ="INSERT INTO  tour_round_member(first_name,reference_code) values('$reserve_member','$reference_code')";
       $result_reserve = mysqli_query($conn,$sql_add_reserve);
 
     }

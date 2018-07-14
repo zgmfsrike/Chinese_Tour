@@ -49,6 +49,7 @@ if(!isset($_SESSION['book_info'])){
               $amount_people = $_SESSION['seat'];
           }
 
+
           $counter = 1;
           for($i=1; $i<=$amount_people;$i++){
             if(isset($_SESSION['tour']['p'.$i]['first_name']) and isset($_SESSION['tour']['p'.$i]['email'])){
@@ -65,9 +66,14 @@ if(!isset($_SESSION['book_info'])){
                 </ul>
               </div>
               <!--Email-->
-              <div class='col s5'>
+              <div class='col s2 center'>
                 <ul>
                   <li>".$_SESSION['tour']['p'.$i]['email']."</li>
+                </ul>
+              </div>
+              <div class='col s2 center'>
+                <ul>
+                  <li>Avoid Food : ".$_SESSION['tour']['p'.$i]['avoidfood']."</li>
                 </ul>
               </div>
               </div>
