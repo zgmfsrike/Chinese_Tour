@@ -36,7 +36,8 @@ if(isset($_POST['submit'])){
 
       $tour_member_list.=" <b>No.".$i."</b><br />
       <b>Name : </b>".$_SESSION['tour']['p'.$i]['first_name']."\t\t
-      , <b>Email : </b>".$_SESSION['tour']['p'.$i]['email']."<br />";
+      , <b>Email : </b>".$_SESSION['tour']['p'.$i]['email']."<br />
+      <b>Avoid Food : </b>".$_SESSION['tour']['p'.$i]['avoidfood']."<br />";
 
       if(isset($_SESSION['tour']['p'.$i]['first_name'])  and isset($_SESSION['tour']['p'.$i]['middlename']) and isset($_SESSION['tour']['p'.$i]['last_name']) and
       isset($_SESSION['tour']['p'.$i]['dob']) and isset( $_SESSION['tour']['p'.$i]['passport']) and isset($_SESSION['tour']['p'.$i]['email']) and
@@ -67,8 +68,8 @@ if(isset($_POST['submit'])){
         // Insert booking status
         $current_date = date("Y-m-d");
         $expiry_date = '';
-        $sql = "INSERT INTO `tour_booking_history` (`reference_code`, `member_id`, `booking_date`, `expiry_date`) ";
-        $sql .= "VALUES ('$reference_code', '$member_id', '$current_date', '$expiry_date');";
+        $sql = "INSERT INTO `tour_booking_history` (`reference_code`, `member_id`, `booking_date`, `expiry_date`,`tour_round_id`,`departure_id`,`dropoff_id`,`net_price`) ";
+        $sql .= "VALUES ('$reference_code', '$member_id', '$current_date', '$expiry_date','$tour_round_id','$departure_location','$dropoff_location','$result_price')";
         $result = mysqli_query($conn,$sql);
 
 
@@ -80,9 +81,8 @@ if(isset($_POST['submit'])){
 
         $sql="UPDATE `tour_round_member` SET `first_name`='$first_name',`middle_name`='$middlename',`last_name`='$last_name',`dob`='$dob',
         `country_code`='$countrycode',`phone`= '$phone',`email`=  '$email',`address`='$address',`city`='$city',`province`='$province',`zipcode`='$zipcode',
-        `passport_id`='$passport',`reservation_age`='$reservation_age',`avoid_food`='$avoidfood',`add_on_price`='$result_price',`departure_location`='$departure_location',
-        `dropoff_location` = '$dropoff_location'
-        WHERE id = '$member_id' AND tour_round_id = '$tour_round_id' AND reference_code = '$reference_code' AND first_name = '$reserve_member'";
+        `passport_id`='$passport',`reservation_age`='$reservation_age',`avoid_food`='$avoidfood'
+        WHERE  reference_code = '$reference_code' AND first_name = '$reserve_member'";
         $result = mysqli_query($conn,$sql);
         if($result){
 
@@ -131,12 +131,12 @@ if(isset($_POST['submit'])){
       //-----------------------------Send change mail fucntion----------------------------------------------------//
       switch ($_COOKIE['lang']) {
         case 'th':
-          $footer = "footer_th-en.png";
-          break;
+        $footer = "footer_th-en.png";
+        break;
 
         default:
-          $footer = "footer_en-cn.png";
-          break;
+        $footer = "footer_en-cn.png";
+        break;
       }
       require 'vendor/autoload.php';
 
