@@ -46,7 +46,6 @@ include 'component/header.php';
       <?php
       if(isset($_SESSION['login_id'])){
 
-
         //-----------------------------Search fucntion----------------------------------------------------//
         if($_GET['tour_round_id'] != ""){
 
@@ -133,10 +132,7 @@ include 'component/header.php';
         }
         ?>
 
-
-
       </ul>
-
 
       <!-- /.row -->
 
