@@ -12,6 +12,16 @@ $sql_version = "SELECT MAX(version) version FROM feedback_question";
 $result_version = mysqli_query($conn,$sql_version);
 $data_v= mysqli_fetch_array($result_version);
 $feedback_version = $data_v['version'];
+$footer = "footer_en-cn.png";
+// switch ($_COOKIE['lang']) {
+//   case 'th':
+//     $footer = "footer_th-en.png";
+//     break;
+//
+//   default:
+//
+//     break;
+// }
 
 
 
@@ -39,8 +49,9 @@ if($result_t){
         $tour_round_member_id = $show['tour_round_member_id'];
 
 
-        $subject = "TEST FEEDBACK";
-        $description = "Test send mail on date :".$current_date;
+
+        $subject = "FEEDBACK FORM";
+        $description = "Send mail on date :".$current_date;
 
         require 'vendor/autoload.php';
         $mail = new PHPMailer(true);
@@ -90,7 +101,9 @@ if($result_t){
           VALUES('$feedback_id','$ref_code','$tour_round_id',$feedback_version,'$expiry_date')";
           $result_feedback = mysqli_query($conn, $sql_insert_feedback);
 
-          $link = "http://localhost/Chinese_Tour/tour/feedback.php?feedback_id=".$feedback_id;
+          // $link = "http://localhost/Chinese_Tour/tour/feedback.php?feedback_id=".$feedback_id;
+
+          $link = "http://www.chiangmaihongthai.com/feedback.php?feedback_id=".$feedback_id;
 
           // $mail_collect  .= "'$email'".",";
           // $mail_result = rtrim($mail_collect,", ");
@@ -99,7 +112,7 @@ if($result_t){
 
 
           $mail->AddEmbeddedImage('component/header.png', 'header');
-          $mail->AddEmbeddedImage('component/footer.png', 'footer');
+          $mail->AddEmbeddedImage('component/'.$footer, 'footer');
           $body = "<center><p><img src='cid:header' /></p></center>";
           $body .="<center>".$description."</center><br />";
           $body .="<center>From this link :".$link."</center><br />";

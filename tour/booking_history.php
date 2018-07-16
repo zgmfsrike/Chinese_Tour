@@ -22,6 +22,18 @@ $title = "Booking history";
 include 'component/header.php';
 
 $link_tour_detail = 'booking_detail.php?ref=';
+$upload_tag = '#upload-anchor';
+
+if(isLoginAs(array('member'))){
+  $id = $_SESSION['login_id'];
+}else{
+  if(isset($_GET['id'])){
+    $id = $_GET['id'];
+    $id_parameter = "?id=" . $id;
+  }else{
+    header("location: message.php?msg=error");
+  }
+}
 ?>
 
 <body>
@@ -37,11 +49,11 @@ $link_tour_detail = 'booking_detail.php?ref=';
           <th class="center-align">Start</th>
           <th class="center-align">End</th>
           <th class="center-align">Status</th>
+          <th class="center-align">Details</th>
         </tr>
       </thead>
       <tbody>
         <?php
-        $id = $_SESSION['login_id'];
         $sql =  "SELECT distinct  BH.reference_code, T.tour_description, TR.start_date_time, TR.end_date_time, S.status_{$_COOKIE['lang']} AS status, BH.status AS status_id FROM tour_booking_history BH ";
         $sql .= "LEFT JOIN tour_round_member RM ON BH.member_id = RM.id ";
         $sql .= "LEFT JOIN tour_round TR ON RM.tour_round_id = TR.tour_round_id ";
@@ -84,7 +96,15 @@ $link_tour_detail = 'booking_detail.php?ref=';
             <td><?php echo $data['tour_description'];?></td>
             <td><?php echo $data['start_date_time'];?></td>
             <td><?php echo $data['end_date_time'];?></td>
-            <td><?php echo $data['status'];?> <?php echo $data['status_id'] == 1 ? "(<a href='{$link_tour_detail}{$ref_code}')>upload</a>)" : "" ;?></td>
+            <td><?php echo $data['status'];?></td>
+            <td>
+              <a href="<?php echo $link_tour_detail . $ref_code;?>"><button>Detail</button></a> <br>
+              <?php
+              if(isLoginAs(array('member'))){
+                echo ($data['status_id'] == 1 || $data['status_id'] == 2)  ? "( <a href='{$link_tour_detail}{$ref_code}{$upload_tag}')>upload</a> )" : "" ;
+              }
+              ?>
+            </td>
           </tr>
           <?php
         }

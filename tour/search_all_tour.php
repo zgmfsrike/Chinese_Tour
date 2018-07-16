@@ -64,22 +64,22 @@ $result = mysqli_query($conn,$sql);
   <div class="container">
     <div class="row">
       <div class="section"></div>
-        <div class="col s12">
-          <h3 class="center"><b>Search Tour</b></h3>
-          <form  action=<?php echo $search_tour_func; ?> method="get"  class="navbar-form navbar-center" role="form" >
-            <div class="row">
-              <div class="input-field col s12">
-                <i class="material-icons prefix">search</i>
-                <input style="border: 1px solid gray;border-radius: 8px; padding-right:10px; padding-left:10px;" placeholder="Search Tour Here" id="tourName" type="text" class="form-control" name="tourName" value="<?php echo $_GET['tourName'];?>" size="20" />
-              </div>
-              <div class="center">
-                <input type="submit" class="btn btn-primary" value="Search " name="search" />
-                <a href="search_all_tour.php" class="btn amber" >Search All</a>
-              </div>
+      <div class="col s12">
+        <h3 class="center"><b>Search Tour</b></h3>
+        <form  action=<?php echo $search_all_func; ?> method="get"  class="navbar-form navbar-center" role="form" >
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">search</i>
+              <input style="border: 1px solid gray;border-radius: 8px; padding-right:10px; padding-left:10px;" placeholder="Search Tour Here" id="tourName" type="text" class="form-control" name="tourName" value="<?php echo $_GET['tourName'];?>" size="20" />
             </div>
-            <br/>
+            <div class="center">
+              <input type="submit" class="btn btn-primary" value="Search " name="search" />
+              <a href="search_all_tour.php" class="btn amber" >Search All</a>
             </div>
-          </form>
+          </div>
+          <br/>
+        </div>
+      </form>
 
 
       <?php
@@ -92,6 +92,7 @@ $result = mysqli_query($conn,$sql);
               <tr align='center'>
                 <th>Tour ID</th>
                 <th>Tour Description</th>
+                <th>Max Customer</th>
                 <th></th>
                 <?php
                 // <th>Rating</th><th>Tour type</th><th>Vehicle type</th><th>Accommodation</th><th>View detail</th>";
@@ -110,6 +111,7 @@ $result = mysqli_query($conn,$sql);
                 ?>
                 <td align ='center'><?php echo $tourId;?></td>
                 <td align ='center'><?php echo $show['tour_description'];?></td>
+                <td align ='center'><?php echo $show['max_customer'];?></td>
                 <?php
                 // echo "<td align ='center'>" .$show['rating'] .  "</td> ";
                 // echo "<td align ='center'>" .$show['tour_type'] .  "</td> ";
@@ -279,5 +281,5 @@ $result = mysqli_query($conn,$sql);
   <script src="js/validate.js"></script>
 
 
-  </body>
-  </html>
+</body>
+</html>

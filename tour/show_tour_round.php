@@ -62,7 +62,9 @@ include "module/hashing.php";
 
                    echo "<table style='overflow-x:auto; border: 1px solid gray;' class='responsive-table table table-striped highlight centered'>";
                    echo "<thead>";
-                   echo "<tr align='center'><th>TourRound Id</th><th>Trip status</th><th>Start Date</th><th>End date</th><th>Departure Point</th><th>DropOff Point</th><<th>Amount of Member</th><th>Member</th>";
+                   // echo "<tr align='center'><th>TourRound Id</th><th>Trip status</th><th>Start Date</th><th>End date</th><th>Departure Point</th><th>DropOff Point</th><<th>Amount of Member</th><th>Member</th>";
+                   echo "<tr align='center'><th>TourRound Id</th><th>Start Date</th><th>End date</th><th>Amount of Member</th><th>Member</th>";
+
                    echo "</tr>";
                    echo "</thead>";
                    $id = 1;
@@ -75,11 +77,11 @@ include "module/hashing.php";
 
                      echo "<tr>";
                      echo "<td align ='center'>" .$id .  "</td> ";
-                     echo "<td align ='center'>" .$show['trip_status'] .  "</td> ";
+                     // echo "<td align ='center'>" .$show['trip_status'] .  "</td> ";
                      echo "<td align ='center'>" .$show['start_date_time'] .  "</td> ";
                      echo "<td align ='center'>" .$show['end_date_time'] .  "</td> ";
-                     echo "<td align ='center'>" .$show['departure_point'] .  "</td> ";
-                     echo "<td align ='center'>" .$show['drop_off_point'] .  "</td> ";
+                     // echo "<td align ='center'>" .$show['departure_point'] .  "</td> ";
+                     // echo "<td align ='center'>" .$show['drop_off_point'] .  "</td> ";
                      echo "<td align ='center'>" .$count_member.  "</td> ";
                      // echo "<td align ='center'><input class='waves-effect waves-light btn green' type='button' value='View' onclick=\"window.location.href='http://localhost:8080/Chinese_TourChineseTour_NewTheme%20copy/tour_round_member.php?tour_round_id=$tour_round_id'\"></td>";
                      echo "<td align ='center'><a href='tour_round_member.php?tour_round_id=$tour_round_id'><button class='btn green' type='button' value='View'>View</button></a></td>";
