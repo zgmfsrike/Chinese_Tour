@@ -10,19 +10,23 @@ if(isset($_POST['submit'])){
     $tour_highlight_en     = addslashes($_POST["highlight_en"]);
     $tour_region_en        = addslashes($_POST["region_en"]);
     $tour_province_en      = addslashes($_POST["province_en"]);
+    // $tour_price_en         = $_POST["price_en"];
     $tour_price_en         = $_POST["price_en"];
 
     $tour_description_ch   = addslashes($_POST["tour_description_ch"]);
     $tour_highlight_ch     = addslashes($_POST["highlight_ch"]);
     $tour_region_ch        = addslashes($_POST["region_ch"]);
     $tour_province_ch      = addslashes($_POST["province_ch"]);
-    $tour_price_ch         = $_POST["price_ch"];
+    // $tour_price_ch         = $_POST["price_ch"];
+    $tour_price_ch         = $_POST["price_en"];
+
 
     $tour_description_th   = addslashes($_POST["tour_description_th"]);
     $tour_highlight_th     = addslashes($_POST["highlight_th"]);
     $tour_region_th        = addslashes($_POST["region_th"]);
     $tour_province_th      = addslashes($_POST["province_th"]);
-    $tour_price_th         = $_POST["price_th"];
+    // $tour_price_th         = $_POST["price_th"];
+    $tour_price_th         = $_POST["price_en"];
 
     $tour_max           = $_POST["max"];
 
@@ -155,18 +159,15 @@ if(isset($_POST['submit'])){
             if($success == FALSE){
                 echo "Cannot upload pdf";
                 exit();
-
             }
             $schedule_pdf = $new_pdf_name;
-
-            // ---------------------------
-            $sql3 = "INSERT INTO tour_schedule(tour_id, file_name) VALUES ('$last_id','$schedule_pdf')";
-            $result3 = mysqli_query( $GLOBALS['conn'] , $sql3 );
         }else{
             echo "not pdf";
         }
 
     }
+    $sql3 = "INSERT INTO tour_schedule(tour_id, file_name) VALUES ('$last_id','$schedule_pdf')";
+    $result3 = mysqli_query( $GLOBALS['conn'] , $sql3 );
 
     // ======= check box : type ========
     if(!empty($_POST['type'])) {

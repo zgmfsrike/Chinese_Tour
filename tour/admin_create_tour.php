@@ -95,16 +95,16 @@ function initDate(index){
               <label for="highlight">Highlight</label>
             </div>
             <!--  Region  -->
-            <div  id="region" name='region'>
+            <!-- <div  id="region" name='region'>
               <label>Region</label>
               <select class="browser-default" name='region_en' required>
                 <option selected value='Northern'>Northern</option>
               </select><br />
-            </div>
+            </div> -->
             <!--  Province  -->
-            <div  id="province" name='province'>
+            <!-- <div  id="province" name='province'> -->
               <!-- <input placeholder="Province" required name='province_en' type='text'/>-->
-              <label>Province</label>
+              <!-- <label>Province</label>
               <select class="browser-default" name='province_en' required>
                 <option selected disabled>Please Select</option>
                 <option value='Chiang Mai'>Chiang Mai</option>
@@ -117,14 +117,16 @@ function initDate(index){
                 <option value='Phayao'>Phayao</option>
                 <option value='Mae Hong Son'>Mae Hong Son</option>
               </select><br />
-
-
+            </div> -->
+            <div class="input-field" id="province" name='province'>
+              <input placeholder="Province" required name='province_en' type='text'/>
+              <label for="province">province</label>
             </div>
             <!--  Price sale  -->
-            <div class="input-field" id="price" name='price'>
+            <!-- <div class="input-field" id="price" name='price'>
               <input placeholder="Price sale" required name='price_en' type='number' min="1"/>
               <label for="price">Price sale</label>
-            </div>
+            </div> -->
           </fieldset>
           <br>
           <fieldset>
@@ -141,17 +143,17 @@ function initDate(index){
               <label for="highlight">Highlight</label>
             </div>
             <!--  Region  -->
-            <div  id="region" name='region'>
+            <!-- <div  id="region" name='region'>
               <label>Region</label>
               <select class="browser-default" name='region_ch' required>
                 <option selected value='Northern'>Northern</option>
               </select><br />
-            </div>
+            </div> -->
             <!--  Province  -->
-            <div id="province" name='province'>
+            <!-- <div id="province" name='province'> -->
               <!-- <input placeholder="Province" required name='province_ch' type='text'/>
               <label for="province">province</label> -->
-              <label>Province</label>
+              <!-- <label>Province</label>
               <select class="browser-default" name='province_ch' required>
                 <option selected disabled>Please Select</option>
                 <option value='Chiang Mai'>Chiang Mai</option>
@@ -164,13 +166,16 @@ function initDate(index){
                 <option value='Phayao'>Phayao</option>
                 <option value='Mae Hong Son'>Mae Hong Son</option>
               </select><br />
-
+            </div> -->
+            <div class="input-field" id="province" name='province'>
+              <input placeholder="Province" required name='province_ch' type='text'/>
+              <label for="province">province</label>
             </div>
             <!--  Price sale  -->
-            <div class="input-field" id="price" name='price'>
+            <!-- <div class="input-field" id="price" name='price'>
               <input placeholder="Price sale" required name='price_ch' type='number' min="1"/>
               <label for="price">Price sale</label>
-            </div>
+            </div> -->
           </fieldset>
           <br>
           <fieldset>
@@ -187,17 +192,17 @@ function initDate(index){
               <label for="highlight">Highlight</label>
             </div>
             <!--  Region  -->
-            <div  id="region" name='region'>
+            <!-- <div  id="region" name='region'>
               <label>Region</label>
               <select class="browser-default" name='region_th' required>
                 <option selected value='Northern'>Northern</option>
               </select><br />
-            </div>
+            </div> -->
             <!--  Province  -->
-            <div id="province" name='province'>
+            <!-- <div id="province" name='province'> -->
               <!-- <input placeholder="Province" required name='province_th' type='text'/>
               <label for="province">province</label> -->
-              <label>Province</label>
+              <!-- <label>Province</label>
               <select class="browser-default" name='province_th' required>
                 <option selected disabled>Please Select</option>
                 <option value='Chiang Mai'>Chiang Mai</option>
@@ -210,16 +215,25 @@ function initDate(index){
                 <option value='Phayao'>Phayao</option>
                 <option value='Mae Hong Son'>Mae Hong Son</option>
               </select><br />
+            </div> -->
+            <div class="input-field" id="province" name='province'>
+              <input placeholder="Province" required name='province_th' type='text'/>
+              <label for="province">province</label>
             </div>
             <!--  Price sale  -->
-            <div class="input-field" id="price" name='price'>
+            <!-- <div class="input-field" id="price" name='price'>
               <input placeholder="Price sale" required name='price_th' type='number' min="1"/>
               <label for="price">Price sale</label>
-            </div>
+            </div> -->
           </fieldset>
           <!--Start-End Date-->
         </div>
         <div class="col s12 l6">
+          <!-- price_en -->
+          <div class="input-field" id="price" name='price'>
+            <input placeholder="Price sale" required name='price_en' type='number' min="1"/>
+            <label for="price">Price sale</label>
+          </div>
           <!--  Max # of customer  -->
           <div class="input-field" id="max" name="max">
             <input placeholder="Max number of customer" required name='max' type='number' min="1"/>

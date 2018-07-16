@@ -94,13 +94,16 @@ if(isset($_POST['submit']) and isset($_POST['id'])){
   $tour_highlight_ch     = addslashes($_POST["highlight_ch"]);
   $tour_region_ch        = addslashes($_POST["region_ch"]);
   $tour_province_ch      = addslashes($_POST["province_ch"]);
-  $tour_price_ch         = $_POST["price_ch"];
+  // $tour_price_ch         = $_POST["price_ch"];
+    $tour_price_ch         = $_POST["price_en"];
 
   $tour_description_th   = addslashes($_POST["tour_description_th"]);
   $tour_highlight_th     = addslashes($_POST["highlight_th"]);
   $tour_region_th        = addslashes($_POST["region_th"]);
   $tour_province_th      = addslashes($_POST["province_th"]);
-  $tour_price_th         = $_POST["price_th"];
+  // $tour_price_th         = $_POST["price_th"];
+  $tour_price_th         = $_POST["price_en"];
+
 
   $tour_max              = $_POST["max"];
 
@@ -332,6 +335,8 @@ if(isset($_POST['submit']) and isset($_POST['id'])){
       echo "not pdf";
     }
 
+    $sql4 = "UPDATE tour_schedule SET `file_name` = '{$id}.pdf' WHERE `tour_id` = '$id'";
+    $result4 = mysqli_query( $GLOBALS['conn'] , $sql4 );
   }
 
   $sql = "DELETE FROM tour_accommodation WHERE tour_id = $id";

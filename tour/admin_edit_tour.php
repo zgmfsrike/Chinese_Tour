@@ -144,15 +144,15 @@ function initDate(index){
               <label for="highlight">Highlight</label>
             </div>
             <!--  Price sale  -->
-            <div class="input-field" id="price" name='price'>
+            <!-- <div class="input-field" id="price" name='price'>
               <input placeholder="Price sale" required name='price_en' type='number' min="1" value="<?php echo $price_en; ?>"/>
               <label for="price">Price sale</label>
-            </div>
+            </div> -->
             <!--  Region  -->
-            <div class="input-field" id="region" name='price'>
+            <!-- <div class="input-field" id="region" name='price'>
               <input placeholder="Region" required name='region_en' type='text' value="<?php echo $region_en; ?>"/>
               <label for="region">Region</label>
-            </div>
+            </div> -->
             <!--  Province  -->
             <div class="input-field" id="province" name='province'>
               <input placeholder="Province" required name='province_en' type='text' value="<?php echo $province_en; ?>"/>
@@ -174,15 +174,15 @@ function initDate(index){
               <label for="highlight">Highlight</label>
             </div>
             <!--  Price sale  -->
-            <div class="input-field" id="price" name='price'>
+            <!-- <div class="input-field" id="price" name='price'>
               <input placeholder="Price sale" required name='price_ch' type='number' min="1" value="<?php echo $price_ch; ?>"/>
               <label for="price">Price sale</label>
-            </div>
+            </div> -->
             <!--  Region  -->
-            <div class="input-field" id="region" name='price'>
+            <!-- <div class="input-field" id="region" name='price'>
               <input placeholder="Region" required name='region_ch' type='text' value="<?php echo $region_ch; ?>"/>
               <label for="region">Region</label>
-            </div>
+            </div> -->
             <!--  Province  -->
             <div class="input-field" id="province" name='province'>
               <input placeholder="Province" required name='province_ch' type='text' value="<?php echo $province_ch; ?>"/>
@@ -204,15 +204,15 @@ function initDate(index){
               <label for="highlight">Highlight</label>
             </div>
             <!--  Price sale  -->
-            <div class="input-field" id="price" name='price'>
+            <!-- <div class="input-field" id="price" name='price'>
               <input placeholder="Price sale" required name='price_th' type='number' min="1" value="<?php echo $price_th; ?>"/>
               <label for="price">Price sale</label>
-            </div>
+            </div> -->
             <!--  Region  -->
-            <div class="input-field" id="region" name='price'>
+            <!-- <div class="input-field" id="region" name='price'>
               <input placeholder="Region" required name='region_th' type='text' value="<?php echo $region_th; ?>"/>
               <label for="region">Region</label>
-            </div>
+            </div> -->
             <!--  Province  -->
             <div class="input-field" id="province" name='province'>
               <input placeholder="Province" required name='province_th' type='text' value="<?php echo $province_th; ?>"/>
@@ -255,6 +255,11 @@ function initDate(index){
         </div>
         <div class="col s12 l6">
           <div>
+            <!--  Price sale  -->
+            <div class="input-field" id="price" name='price'>
+              <input placeholder="Price sale" required name='price_en' type='number' min="1" value="<?php echo $price_en; ?>"/>
+              <label for="price">Price sale</label>
+            </div>
             <!--  Max # of customer  -->
             <div class="input-field" id="max" name="max">
               <input placeholder="Max number of customer" required name='max' type='number' min="1" value="<?php echo $max_customer; ?>"/>
