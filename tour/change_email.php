@@ -26,8 +26,6 @@ $change_mail_func = "php_change_mail.php";
                 <div class="col s12 l3">
                     <div class="collection">
                         <a href="profile.php" class="collection-item active amber"><?php echo $profile;?></a>
-                        <a href="#" class="collection-item black-text">Purchase</a>
-                        <a href="#" class="collection-item black-text">Record</a>
                     </div>
                 </div>
                 <div class="col s12 l9">

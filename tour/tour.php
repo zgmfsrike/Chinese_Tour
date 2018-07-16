@@ -4,6 +4,7 @@ include 'db_config.php';
 
 // require 'module/language_switcher.php';
 require 'module/language/init.php';
+$time = time();
 ?>
 
 <?php
@@ -124,7 +125,7 @@ if(isset($_GET['id'])){
                     if($img != ''){
                       ?>
                       <li>
-                        <img src="images/tours/<?php echo $img;?>">
+                        <img src="images/tours/<?php echo $img."?".$time;?>">
                       </li>
                       <?php
                     }
@@ -180,7 +181,9 @@ if(isset($_GET['id'])){
                 $result_max_customer = mysqli_query($conn, $sql_show_max_customer);
                 $show = mysqli_fetch_array($result_max_customer);
 
-                $sql_show_customer = "SELECT * FROM tour_round_member trm INNER JOIN tour_round tr ON trm.tour_round_id = tr.tour_round_id
+                $sql_show_customer = "SELECT * FROM tour_round_member trm
+                INNER JOIN tour_booking_history tbh ON trm.reference_code = tbh.reference_code
+                INNER JOIN tour_round tr ON tbh.tour_round_id = tr.tour_round_id
                 INNER JOIN $tour t ON tr.tour_id = t.tour_id WHERE t.tour_id = $id";
 
                 $result_show_customer = mysqli_query($conn, $sql_show_customer);
@@ -393,11 +396,15 @@ if(isset($_GET['id'])){
 
                 while ($show = mysqli_fetch_array($result_comment)) {
                   $comment= $show['comment'];
-                  $feedback_id = $show['feedback_id'];
+                  $tour_round_member_id = $show['tour_round_member_id'];
+                  $sql = "SELECT first_name FROM tour_round_member WHERE tour_round_member_id =".$tour_round_member_id;
+                  $result = mysqli_query($conn, $sql);
+                  $data = mysqli_fetch_array($result);
+                  $member_name = $data['first_name'];
                   $fill_date = $show['filled_date'];
                   ?>
 
-                  <li><div class="chip"><?php echo $feedback_id; ?></div> <?php echo $fill_date;?><span>: <?php echo $comment; ?></span> </li>
+                  <li><div class="chip"><?php echo $member_name; ?></div> <?php echo $fill_date;?><span>: <?php echo $comment; ?></span> </li>
 
                   <?php
                 }

@@ -24,11 +24,7 @@ include 'component/header.php';
   <div class="container">
     <!-- Content Row -->
     <div class="row">
-
-      <!-- Content Column -->
-      <div class="col s12">
-        <h3>Tour Round</h3>
-      </div>
+        <h3 class="center"><b>Tour Round</b></h3>
 
       <?php
       if(isset($_SESSION['login_id'])){

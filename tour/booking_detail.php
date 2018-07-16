@@ -166,9 +166,10 @@ $data = mysqli_fetch_array($result);
   if(isLoginAs(array('member'))){
     ?>
     <form action="<?php echo $link_upload; ?>" method="post" enctype="multipart/form-data">
+      <div class="container col s12">
       <h4 id="upload-anchor">Upload payment slip</h4>
       <input type="text" name="ref_code" value="<?php echo $ref_code; ?>" style="display:none">
-      <div class="container col s12">
+
         <div class="file-field input-field">
           <div class="btn">
             <span>Upload Image</span>
@@ -219,7 +220,7 @@ $data = mysqli_fetch_array($result);
       <div class="section"></div>
       <h4 class="center"><b>Update booking status</b></h4>
       <input type="text" name="ref_code" value="<?php echo $ref_code; ?>" style="display:none">
-      <div class="container col s12">
+      <div class="col s12">
         <label>Update booking status</label>
         <select class="browser-default" name="status_id">
           <option value="" disabled>Payment status</option>
