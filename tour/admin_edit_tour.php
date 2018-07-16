@@ -4,7 +4,7 @@ include 'module/session.php';
 if(!isLoginAs(array('admin'))){
   header('Location: message.php?msg=unauthorized');
 }
-
+$time = time();
 require 'module/language/init.php';
 
 $max_customer=$rating=0;
@@ -357,7 +357,7 @@ function initDate(index){
                     ?>
                     <div id="image_<?php echo $i; ?>">
                       <a href="#" id='del_button' onclick="delete_image(<?php echo $i; ?>)" class="btn-large btn-floating tooltipped red right" data-position="top" data-delay="50" data-tooltip="Delete"><i class="material-icons">delete</i></a>
-                      <img src="images/tours/<?php echo $img;?>" height="200" width="300">
+                      <img src="images/tours/<?php echo $img."?".$time;?>" height="200" width="300">
 
                     </div>
                     <div class="file-field input-field">

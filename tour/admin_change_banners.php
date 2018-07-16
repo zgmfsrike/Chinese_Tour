@@ -7,6 +7,7 @@ if(!isLoginAs(array('admin'))){
 }
 
 require 'module/language/init.php';
+$time = time();
 ?>
 <!DOCTYPE html>
 <html>
@@ -37,7 +38,7 @@ include 'component/header.php';
               <?php
               if (file_exists($filename)) {
                 ?>
-                <img src="images/home<?php echo $i;?>.jpg" height="300" width="450">
+                <img src="images/home<?php echo $i;?>.jpg?<?php echo $time;?>" height="300" width="450">
                 <?php
               }
               ?>

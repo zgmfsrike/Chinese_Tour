@@ -6,6 +6,7 @@ require 'module/language/init.php';
 require 'module/language/lang_index.php';
 
 $string_index_tour = "Tours";
+$time = time();
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,7 +25,7 @@ $tour = "tour_".$_COOKIE['lang'];
 
 $sql_tour_3 = "SELECT * FROM tour_".$_COOKIE['lang']." t INNER JOIN tour_round tr ON t.tour_id = tr.tour_id  " ;
 // $sql_tour_3 .="where NOT tr.start_date_time < CURDATE() and tr.end_date_time >CURDATE()";
-$sql_tour_3 .= "ORDER BY tr.tour_id DESC LIMIT 3";
+$sql_tour_3 .= "GROUP BY tr.tour_id DESC LIMIT 3";
 $result_tour_3 = mysqli_query( $GLOBALS['conn'] , $sql_tour_3 );
 
 
@@ -44,7 +45,7 @@ include 'component/header.php';
           if (file_exists($filename)) {
             ?>
             <li>
-              <img src="images/home<?php echo $i;?>.jpg" >
+              <img src="images/home<?php echo $i;?>.jpg?<?php echo $time;?>" >
             </li>
             <?php
           }
@@ -110,7 +111,7 @@ include 'component/header.php';
     if(!$show_img){
       $img_name = "No_Image_Available.png";
     }
-    $img_file = $img_path.$img_name;
+    $img_file = $img_path.$img_name."?".$time;
     echo "<div class='col s12 m4'>
     <div class='card small'>
     <div class='card-image'>
@@ -200,8 +201,9 @@ include 'component/header.php';
         $result_tour_img = mysqli_query($conn, $sql_tour_img);
         $path = "images/tours/";
         if($result_tour_img){
+
           $data = mysqli_fetch_array($result_tour_img);
-          $tour_img = $path.$data['img1'];
+          $tour_img = $path.$data['img1']."?".$time;
         }else{
           $tour_img ="";
         }

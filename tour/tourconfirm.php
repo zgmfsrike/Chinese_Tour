@@ -161,7 +161,6 @@ if(!isset($_SESSION['book_info'])){
               $result_departure = mysqli_query($conn, $sql_departure_location);
               $d_location = mysqli_fetch_array($result_departure);
               $departure_location = $d_location['departure'];
-              $_SESSION['departure_location'] = $departure_location ;
 
 
               $dropoff_lang = 'dropoff_'.$_COOKIE['lang'];
@@ -169,7 +168,6 @@ if(!isset($_SESSION['book_info'])){
               $result_dropoff = mysqli_query($conn, $sql_dropoff_location);
               $drop_location = mysqli_fetch_array($result_dropoff);
               $dropoff_location = $drop_location['dropoff'];
-              $_SESSION['dropoff_location'] = $dropoff_location;
 
 
 
