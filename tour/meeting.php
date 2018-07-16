@@ -10,19 +10,9 @@ $pdf_path = 'pdf/tours_static_detail/meeting';
 <!DOCTYPE html>
 <html>
 <?php
-if(isset($_SESSION['login_id'])){
-  $user_id = $_SESSION['login_id'];
-  $query = "SELECT * FROM member WHERE id = '$user_id'";
-  $result = mysqli_query($conn, $query);
-  $objResult = mysqli_fetch_array($result);
-  $username = $objResult['username'];
-}
-?>
-<?php
 $title = $string_meeting_title;
 include 'component/header.php';
 
-$sublink = "tour_static_detail.php?type=meeting&";
 ?>
 <body>
   <div class="container row">

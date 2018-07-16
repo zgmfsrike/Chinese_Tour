@@ -29,7 +29,7 @@ if(isset($_GET['tour_round_id'])){
 
     <!-- Waiting -->
     <div class="section"></div>
-    <h4><b>Waiting for confirmation</b></h4>
+    <h4><b>Payment slip checking</b></h4>
     <table class="responsive-table centered highlight" style="border: 1px solid gray;border-radius: 8px; overflow-x:auto;">
       <thead>
         <tr>
@@ -43,8 +43,7 @@ if(isset($_GET['tour_round_id'])){
       <tbody>
         <?php
         $sql =  "SELECT distinct  T.tour_description, BH.reference_code , TR.start_date_time, TR.end_date_time, BH.status FROM tour_booking_history BH ";
-        $sql .= "LEFT JOIN tour_round_member RM ON BH.member_id = RM.id ";
-        $sql .= "LEFT JOIN tour_round TR ON RM.tour_round_id = TR.tour_round_id ";
+        $sql .= "LEFT JOIN tour_round TR ON BH.tour_round_id = TR.tour_round_id ";
         $sql .= "LEFT JOIN tour_en T ON TR.tour_id = T.tour_id ";
         $sql .= "WHERE BH.status=2 ";
         $sql .= $query_tour_round_id;
@@ -70,7 +69,7 @@ if(isset($_GET['tour_round_id'])){
     <div class="section"></div>
 
     <!-- No payment -->
-    <h4><b>No payment</b></h4>
+    <h4><b>Waiting for payment slip</b></h4>
     <table class="centered highlight responsive-table" style="border: 1px solid gray;border-radius: 8px; overflow-x:auto;">
       <thead>
         <tr>
@@ -84,8 +83,7 @@ if(isset($_GET['tour_round_id'])){
       <tbody>
         <?php
         $sql =  "SELECT distinct  T.tour_description, BH.reference_code , TR.start_date_time, TR.end_date_time, BH.status FROM tour_booking_history BH ";
-        $sql .= "LEFT JOIN tour_round_member RM ON BH.member_id = RM.id ";
-        $sql .= "LEFT JOIN tour_round TR ON RM.tour_round_id = TR.tour_round_id ";
+        $sql .= "LEFT JOIN tour_round TR ON BH.tour_round_id = TR.tour_round_id ";
         $sql .= "LEFT JOIN tour_en T ON TR.tour_id = T.tour_id ";
         $sql .= "WHERE BH.status=1 ";
         $sql .= $query_tour_round_id;
@@ -111,7 +109,7 @@ if(isset($_GET['tour_round_id'])){
     <div class="section"></div>
 
     <!-- Payment confirmed -->
-    <h4><b>Payment confirmed</b></h4>
+    <h4><b>Complete</b></h4>
     <table class="centered highlight responsive-table" style="border: 1px solid gray;border-radius: 8px; overflow-x:auto;">
       <thead>
         <tr>
@@ -125,8 +123,7 @@ if(isset($_GET['tour_round_id'])){
       <tbody>
         <?php
         $sql =  "SELECT distinct  T.tour_description, BH.reference_code , TR.start_date_time, TR.end_date_time, BH.status FROM tour_booking_history BH ";
-        $sql .= "LEFT JOIN tour_round_member RM ON BH.member_id = RM.id ";
-        $sql .= "LEFT JOIN tour_round TR ON RM.tour_round_id = TR.tour_round_id ";
+        $sql .= "LEFT JOIN tour_round TR ON BH.tour_round_id = TR.tour_round_id ";
         $sql .= "LEFT JOIN tour_en T ON TR.tour_id = T.tour_id ";
         $sql .= "WHERE BH.status=3 ";
         $sql .= $query_tour_round_id;

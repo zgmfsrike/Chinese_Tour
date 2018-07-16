@@ -37,7 +37,7 @@ include 'component/header.php';
             <h3 class="center"><b>Tour Round Member</b></h3>
           </li>
           <li class="right">
-            <a href='tour_send_mail_all.php?tour_round_id=<?php echo $tour_round_id; ?>'><input class='btn green' type='button' value='Send E-mail All'></a>
+            <a href='tour_send_mail_all.php?tour_round_id=<?php echo $_GET['tour_round_id']; ?>'><input class='btn green' type='button' value='Send E-mail All'></a>
             <!-- <input type="button" class="waves-effect waves-light btn amber" value="Send All" name ="send_all" onclick="window.location.href ='http://localhost:8080/ChineseTour/Chinese_Tour/ChineseTour_NewTheme%20copy/tour_send_mail_all.php?tour_round_id=<?php echo $tour_round_id; ?>'"> -->
           </li>
         </ul>
@@ -101,15 +101,14 @@ include 'component/header.php';
       <?php
       if(isset($_SESSION['login_id'])){
 
-
         //-----------------------------Search fucntion----------------------------------------------------//
         if($_GET['tour_round_id'] != ""){
 
           $tour_round_id = $_GET['tour_round_id'];
 
           $sql= "SELECT trm.first_name,trm.middle_name,trm.last_name,trm.passport_id,trm.reservation_age,trm.avoid_food,trm.tour_round_member_id,trm.email
-          FROM tour_round_member trm INNER JOIN tour_round tr ON trm.tour_round_id = tr.tour_round_id INNER JOIN member m ON trm.id = m.id
-          WHERE trm.tour_round_id = $tour_round_id ";
+          FROM tour_round_member trm INNER JOIN tour_booking_history tbh ON trm.reference_code = tbh.reference_code
+          WHERE tbh.tour_round_id = $tour_round_id ";
 
           if(isset($_GET['ref'])){
             $sql .= " AND trm.reference_code = '{$_GET['ref']}'";
@@ -188,10 +187,7 @@ include 'component/header.php';
         }
         ?>
 
-
-
       </ul>
-
 
       <!-- /.row -->
 

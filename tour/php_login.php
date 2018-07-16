@@ -18,7 +18,7 @@ if(isset($_POST['login'])){
             $active = $objResult['active'];
             if ($active == 1){
                 $_SESSION['login_id'] = $objResult['id'];
-                $_SESSION['login_firstname'] = $objResult['first_name'];
+                $_SESSION['login_firstname'] = $objResult['username'];
                 $_SESSION['user_type'] = "member";
                 $_SESSION['start'] = time(); // Taking now logged in time.
                 // Ending a session in 30 minutes from the starting time.

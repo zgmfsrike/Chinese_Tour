@@ -4,7 +4,7 @@ include 'module/session.php';
 if(!isLoginAs(array('admin'))){
   header('Location: message.php?msg=unauthorized');
 }
-
+$time = time();
 require 'module/language/init.php';
 ?>
 
@@ -216,7 +216,7 @@ if($_GET['news_id'] != ""){
                   <div class='file-path-wrapper'>
                   <div id='image_$count_img'>
                   <a href='#' id='del_button' onclick='delete_image($count_img)' class='btn-large btn-floating tooltipped red right' data-position='top' data-delay='50' data-tooltip='Delete'><i class='material-icons'>delete</i></a>
-                  <img src ='$img_file' width='200' height='150'>
+                  <img src ='".$img_file."?".$time."' width='200' height='150'>
                   </div>
 
                   <input class='file-path validate'  type='text' placeholder='Upload one or more files' >
@@ -310,7 +310,7 @@ if($_GET['news_id'] != ""){
                   <div class='file-path-wrapper'>
                   <div id='image_$count_img' >
                   <a href='#' id='del_button' onclick='delete_image($count_img)' class='btn-large btn-floating tooltipped red right' data-position='top' data-delay='50' data-tooltip='Delete'><i class='material-icons'>delete</i></a>
-                  <img src ='$img_file' width='200' height='150'>
+                  <img src ='".$img_file."?".$time."' width='200' height='150'>
                   </div>
 
                   <input class='file-path validate'  type='text' placeholder='Upload one or more files' >

@@ -39,15 +39,17 @@ function preview_image(event)
 // GET data from database
 $id = $_SESSION['login_id'];
 $sql =  "SELECT distinct  T.tour_description, T.price, BH.reference_code, TR.tour_round_id, TR.start_date_time, TR.end_date_time, BH.status as status_code, BH.uploaded_file, BH.note, ";
-$sql .= "M.id, M.first_name, M.middle_name, M.last_name, M.country_code, M.phone, M.email, COUNT(RM.id) AS member_count, BS.status_{$_COOKIE['lang']} as status, RM.add_on_price, RM.departure_location, RM.dropoff_location ";
+$sql .= "M.id, M.first_name, M.middle_name, M.last_name, M.country_code, M.phone, M.email, COUNT(RM.tour_round_member_id) AS member_count, BS.status_{$_COOKIE['lang']} as status, BH.net_price, DPL.departure_{$_COOKIE['lang']} as departure_location, DOL.dropoff_{$_COOKIE['lang']} as dropoff_location ";
 
 $sql .= "FROM tour_booking_history BH ";
 // $sql .= "LEFT JOIN tour_round_member RM ON RM.id = BH.member_id ";
 $sql .= "LEFT JOIN tour_round_member RM ON RM.reference_code = BH.reference_code ";
-$sql .= "LEFT JOIN tour_round TR ON TR.tour_round_id = RM.tour_round_id ";
+$sql .= "LEFT JOIN tour_round TR ON TR.tour_round_id = BH.tour_round_id ";
 $sql .= "LEFT JOIN tour_en T ON T.tour_id = TR.tour_id ";
 $sql .= "LEFT JOIN member M ON M.id = BH.member_id ";
 $sql .= "LEFT JOIN booking_status BS ON BS.id = BH.status ";
+$sql .= "LEFT JOIN departure_location DPL ON DPL.departure_id = BH.departure_id ";
+$sql .= "LEFT JOIN dropoff_location DOL ON DOL.dropoff_id = BH.dropoff_id ";
 // $sql .= "LEFT JOIN tour_round_member RM ON RM.reference_code = BH.reference_code ";
 $sql .= "WHERE BH.reference_code = '$ref_code'";
 // echo $sql;
@@ -85,7 +87,6 @@ $data = mysqli_fetch_array($result);
           <th class="center">Number of seat</th>
           <td><?php echo $data['member_count'];?></td>
         </tr>
-        tr>
         <th class="center">Add-on (departure)</th>
         <td><?php echo $data['departure_location'] == "" ? "-" : $data['departure_location'];?></td>
       </tr>
@@ -95,7 +96,7 @@ $data = mysqli_fetch_array($result);
       </tr>
       <tr>
         <th class="center">Net Price</th>
-        <td><?php echo ($data['price'] + $data['add_on_price']);?></td>
+        <td><?php echo $data['net_price'];?></td>
       </tr>
       <tr>
         <th class="center">Status</th>
@@ -223,8 +224,8 @@ $data = mysqli_fetch_array($result);
         <label>Update booking status</label>
         <select class="browser-default" name="status_id">
           <option value="" disabled>Payment status</option>
-          <option value="1" <?php echo $data['status_code'] == 1 ? "selected" : "" ?>>Waiting for payment slip</option>
-          <option value="2" <?php echo $data['status_code'] == 2 ? "selected" : "" ?>>Payment slip checking</option>
+          <option value="1" <?php echo $data['status_code'] == 1 ? "selected" : "" ?>>Waiting for payment slip (waiting)</option>
+          <option value="2" <?php echo $data['status_code'] == 2 ? "selected" : "" ?>>Payment slip checking (checking)</option>
           <option value="3" <?php echo $data['status_code'] == 3 ? "selected" : "" ?>>Complete</option>
           <option value="4" <?php echo $data['status_code'] == 4 ? "selected" : "" ?>>Cancel</option>
         </select>

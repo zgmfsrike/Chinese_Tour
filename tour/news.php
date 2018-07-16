@@ -4,7 +4,9 @@ include 'module/session.php';
 
 require 'module/language/init.php';
 
+
 $string_news_download_pdf = 'Download PDF File:';
+$time = time();
 ?>
 <!DOCTYPE html>
 <html>
@@ -55,7 +57,7 @@ $string_news_download_pdf = 'Download PDF File:';
         $c = 1;
         while ($show_img = mysqli_fetch_array($result_img)) {
           $img_name = $show_img['news_image'];
-          $img_file = $img_path.$img_name;
+          $img_file = $img_path.$img_name."?".$time;
           // $active ="";
           // if($c==1){
           //   $active = "active";
@@ -83,7 +85,9 @@ $string_news_download_pdf = 'Download PDF File:';
         <div class="card">
           <div class="card-content black-text">
             <span class="card-title" style='white-space: nowrap;width: 17em;overflow: hidden;text-overflow: ellipsis;' id="newsTopic"><?php echo $news_topic; ?></span>
-            <p><?php echo $news_content; ?></p>
+            <span style="width:100%; word-wrap:break-word; display:inline-block;">
+            <p style="white-space: pre-wrap;"><?php echo $news_content; ?> </p>
+            </span>
 
           </div>
         </div>
