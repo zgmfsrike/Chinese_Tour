@@ -4,6 +4,10 @@ include 'db_config.php';
 require 'module/language/init.php';
 require 'module/language/lang_index.php';
 
+if(!isLoginAs(array('admin'))){
+  header('Location: message.php?msg=unauthorized');
+}
+
 // $edit_feedback_question = "php_edit_feedback_question.php";
 $edit_feedback_question = "php_edit_feedback_form.php";
 
