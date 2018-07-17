@@ -1,6 +1,6 @@
 <?php
 include 'module/session.php';
-if(!isLoginAs(array('admin'))){
+if(!isLoginAs(array('admin','member'))){
   header('Location: message.php?msg=unauthorized');
 }
 
@@ -37,8 +37,13 @@ include 'component/header.php';
             <h3 class="center"><b>Tour Round Member</b></h3>
           </li>
           <li class="right">
+            <?php
+            if(isLoginAs(array('admin'))){
+             ?>
             <a href='tour_send_mail_all.php?tour_round_id=<?php echo $_GET['tour_round_id']; ?>'><input class='btn green' type='button' value='Send E-mail All'></a>
             <!-- <input type="button" class="waves-effect waves-light btn amber" value="Send All" name ="send_all" onclick="window.location.href ='http://localhost:8080/ChineseTour/Chinese_Tour/ChineseTour_NewTheme%20copy/tour_send_mail_all.php?tour_round_id=<?php echo $tour_round_id; ?>'"> -->
+            <?php
+          } ?>
           </li>
         </ul>
       </div>
