@@ -62,7 +62,7 @@ include 'component/header.php';
 
 
 
-          echo "<table style='overflow-x:auto;' class='responsive-table table table-striped highlight centered'>";
+          echo "<table style='overflow-x:auto; border: 1px solid gray;border-radius: 8px; padding-right:10px; padding-left:10px;' class='responsive-table table table-striped highlight centered'>";
           echo "<thead>";
           // echo "<tr align='center'><th>TourRound Id</th><th>Trip status</th><th>Start Date</th><th>End date</th><th>Departure Point</th><th>DropOff Point</th><<th>Amount of Member</th><th>Member</th>";
           echo "<tr align='center'><th>TourRound Id</th><th>Start Date</th><th>End date</th><th>Amount of Member</th><th>Member</th>";

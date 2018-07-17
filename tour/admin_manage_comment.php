@@ -37,7 +37,7 @@ include 'component/header.php';
         <h3 class="center"><b>Comment Management</b></h3>
         <form action="<?php echo $link_manage_comment; ?>" method="post">
           <input type="text" name="tour_id" id='tour_id' value="<?php echo $tour_id;?>" style="display:none" >
-          <table style='overflow-x:auto;' class='responsive-table table table-striped highlight centered'>
+          <table style='overflow-x:auto;border: 1px solid gray;border-radius: 8px; padding-right:10px; padding-left:10px;' class='responsive-table table table-striped highlight centered'>
             <thead>
               <tr align='center'>
                 <th>No.</th>
