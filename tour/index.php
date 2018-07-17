@@ -61,7 +61,7 @@ include 'component/header.php';
       <div class="col s12 m12">
         <div class="card orange lighten-1">
           <div class="card-content white-text">
-            <span class="card-title"><?php echo $string_index_announcement;?> <i class="material-icons">announcement</i></span>
+            <span class="card-title"> <h4><?php echo $string_index_announcement;?> <i class="material-icons">announcement</i></h4> </span>
             <blockquote style="font-size:130%;">
               <?php echo  $string_index_announcement_cont; ?>
             </blockquote>
