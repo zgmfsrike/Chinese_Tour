@@ -96,7 +96,7 @@ include 'component/header.php';
       $result = mysqli_query($conn,$sql);
       // $result = mysqli_query( $GLOBALS['conn'] , $sql );
       // $result = page_query($GLOBALS['conn'],$sql,2);
-      echo "<table style='overflow-x:auto;' class='responsive-table table table-striped highlight centered'>";
+      echo "<table style='overflow-x:auto;border: 1px solid gray;border-radius: 8px; padding-right:10px; padding-left:10px;' class='responsive-table table table-striped highlight centered'>";
       echo "<thead>";
       echo "<tr align='center'><th>Member ID</th><th>First Name</th><th>Middle Name</th><th>Last Name</th><th>Passport Id</th><th>Reservation Age</th><th>Avoid Food</th><th>Email</th>";
       echo "</tr>";
