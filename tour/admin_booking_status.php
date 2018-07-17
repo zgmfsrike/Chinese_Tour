@@ -1,8 +1,8 @@
 <?php
 include 'db_config.php';
 include 'module/session.php';
-if(!isLoginAs(array('admin','member'))){
-  header('Location: message.php?msg=please_login');
+if(!isLoginAs(array('admin'))){
+    header('Location: message.php?msg=unauthorized');
 }
 
 require 'module/language/init.php';
