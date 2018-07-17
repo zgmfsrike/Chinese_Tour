@@ -70,6 +70,7 @@ include 'component/header.php';
       </div>
     </div>
 
+<!--News-->
   <!-- ก๊อปเกิน????-->
   <div class="container row">
   <h3><?php echo $string_index_news;?></h3>
