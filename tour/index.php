@@ -71,7 +71,7 @@ include 'component/header.php';
       </div>
     </div>
 
-    
+
 
 <!--News-->
   <!-- ก๊อปเกิน????-->
