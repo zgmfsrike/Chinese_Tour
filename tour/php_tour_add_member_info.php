@@ -64,12 +64,7 @@ if(isset($_POST['submit'])){
         $departure_location = $_SESSION['departure_location'];
         $dropoff_location = $_SESSION['dropoff_location'];
 
-        // Insert booking status
-        $current_date = date("Y-m-d");
-        $expiry_date = '';
-        $sql = "INSERT INTO `tour_booking_history` (`reference_code`, `member_id`, `booking_date`, `expiry_date`,`tour_round_id`,`departure_id`,`dropoff_id`,`net_price`) ";
-        $sql .= "VALUES ('$reference_code', '$member_id', '$current_date', '$expiry_date','$tour_round_id','$departure_location','$dropoff_location','$result_price')";
-        $result = mysqli_query($conn,$sql);
+
 
 
 
@@ -105,6 +100,12 @@ if(isset($_POST['submit'])){
       }
 
     }
+    // Insert booking status
+    $current_date = date("Y-m-d");
+    $expiry_date = '';
+    $sql = "INSERT INTO `tour_booking_history` (`reference_code`, `member_id`, `booking_date`, `expiry_date`,`tour_round_id`,`departure_id`,`dropoff_id`,`net_price`) ";
+    $sql .= "VALUES ('$reference_code', '$member_id', '$current_date', '$expiry_date','$tour_round_id','$departure_location','$dropoff_location','$result_price')";
+    $result = mysqli_query($conn,$sql);
     $sql_show_user = "SELECT email FROM member WHERE id = $member_id";
     $result_show_user = mysqli_query($conn, $sql_show_user);
     // Tour Type :".$tour_type_all."<br>
