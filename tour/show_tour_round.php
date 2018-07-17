@@ -99,7 +99,7 @@ include 'component/header.php';
       }
 
       ?>
-      <ul class="pagination">
+      <ul class="pagination center">
         <?php
         if($prev_page){
           echo "<li class='disabled'><a href ='show_tour_round.php?page=$prev_page&tourId=$tourId'><i class='material-icons'>chevron_left</i></a></li>";

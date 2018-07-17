@@ -140,7 +140,7 @@ include 'component/header.php';
         </form>
       </div>
 
-      <ul class="pagination">
+      <ul class="pagination center">
         <?php
         if($prev_page){
           echo "<li class='disabled'><a href ='$link_manage_comment?page=$prev_page&tour_id=$tour_id'><i class='material-icons'>chevron_left</i></a></li>";
