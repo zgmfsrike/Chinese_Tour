@@ -54,6 +54,7 @@ include 'component/header.php';
       </ul>
     </div>
 
+
 <!--Notice-->
 <div class="container row">
   <div class="col s12 m12">
@@ -61,8 +62,8 @@ include 'component/header.php';
       <div class="col s12 m12">
         <div class="card orange lighten-1">
           <div class="card-content white-text">
-            <span class="card-title"> <h4><?php echo $string_index_announcement;?> <i class="material-icons">announcement</i></h4> </span>
-            <blockquote style="font-size:130%;">
+            <span class="card-title"><?php echo $string_index_announcement;?> <i class="material-icons">announcement</i></span>
+            <blockquote>
               <?php echo  $string_index_announcement_cont; ?>
             </blockquote>
           </div>
@@ -70,9 +71,10 @@ include 'component/header.php';
       </div>
     </div>
 
+
+
 <!--News-->
   <!-- ก๊อปเกิน????-->
-  <div class="container row col s12">
   <h3><?php echo $string_index_news;?></h3>
   <?php
   $sql= "SELECT n.news_id,n.topic,n.short_description FROM news_".$_COOKIE['lang']." n ORDER BY n.news_id DESC limit 3";
@@ -108,9 +110,8 @@ include 'component/header.php';
 
   }
   ?>
-</div>
-  <a href='<?php echo $link_all_news; ?>'><button type='button' class='btn' name='button'>View All News</button></a>
 
+  <a href='<?php echo $link_all_news; ?>'><button type='button' class='btn ' name='button'>View All News</button></a>
   <!-- ^ ก๊อปเกิน???? ^-->
 
     <h3><?php echo $string_index_tour;?></h3>
