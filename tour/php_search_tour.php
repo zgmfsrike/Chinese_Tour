@@ -55,7 +55,7 @@ include 'component/header.php';
 
         if($_GET['tourName'] != ""){
 
-          $tour_description = $_GET['tourName'];
+          $tour_description =  mysqli_real_escape_string($conn,$_GET['tourName']);
           $sql= "SELECT t.tour_description,
           t.tour_id,t.max_customer
           FROM tour_".$_COOKIE['lang']." t

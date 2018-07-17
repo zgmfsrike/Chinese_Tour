@@ -82,7 +82,7 @@ require 'module/language/init.php';
     if($msg == 'not_image') $result = message('Sorry!','Only jpg, gif, and png files are allowed. ','index.php','Go to home page');
 
 
-    if($msg == 'not_pdf') $result = message('Sorry!','Only pdf file are allowed. ','index.php','Go to home page');
+    if($msg == 'not_pdf') $result = message('Sorry!','Only pdf file are allowed. ','','Back');
 
 
     //Index manage

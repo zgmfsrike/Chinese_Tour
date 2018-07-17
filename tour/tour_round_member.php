@@ -129,82 +129,78 @@ include 'component/header.php';
         $page = $_GET['page'];
       }else{
         $page =1 ;
-      }
+        $prev_page = $page-1;
+        $next_page = $page+1;
 
+        $page_start = (($per_page*$page)-$per_page);
 
-
-      $prev_page = $page-1;
-      $next_page = $page+1;
-
-      $page_start = (($per_page*$page)-$per_page);
-
-      if($num_row<=$per_page){
-        $num_page = 1;
-      }else if(($num_row%$per_page)==0){
-        $num_page =($num_row/$per_page);
-      }else{
-        $num_page=($num_row/$per_page)+1;
-        $num_page=(int)$num_page;
-      }
-      $sql .=  " LIMIT $page_start,$per_page";
-      $result = mysqli_query($conn,$sql);
-      // $result = mysqli_query( $GLOBALS['conn'] , $sql );
-      // $result = page_query($GLOBALS['conn'],$sql,2);
-      echo "<table style='overflow-x:auto;' class='responsive-table table table-striped highlight centered'>";
-      echo "<thead>";
-      echo "<tr align='center'><th>Member ID</th><th>First Name</th><th>Middle Name</th><th>Last Name</th><th>Passport Id</th><th>Reservation Age</th><th>Avoid Food</th><th>Email</th>";
-      echo "</tr>";
-      echo "</thead>";
-      while($show = mysqli_fetch_array($result)) {
-        $member_id = $show['tour_round_member_id'];
-
-        echo "<tr>";
-        echo "<td align ='center'>" . $member_id.  "</td> ";
-        echo "<td align ='center'>" .$show['first_name'] .  "</td> ";
-        echo "<td align ='center'>" .$show['middle_name'] .  "</td> ";
-        echo "<td align ='center'>" .$show['last_name'] .  "</td> ";
-        echo "<td align ='center'>" .$show['passport_id'] .  "</td> ";
-        echo "<td align ='center'>" .$show['reservation_age'] .  "</td> ";
-        echo "<td align ='center'>" .$show['avoid_food'] .  "</td> ";
-        echo "<td align ='center'>";
-        if(isLoginAs(array('admin'))){
-          echo "<a href='tour_send_mail.php?member_id=$member_id'>";
+        if($num_row<=$per_page){
+          $num_page = 1;
+        }else if(($num_row%$per_page)==0){
+          $num_page =($num_row/$per_page);
+        }else{
+          $num_page=($num_row/$per_page)+1;
+          $num_page=(int)$num_page;
         }
-        echo $show['email'];
-        if(isLoginAs(array('admin'))){
-          echo "</a>";
-        }
-        echo "</td>";
-        // echo "<td align ='center'><input  type='button' value='Send Mail' onclick=\"window.location.href='http://localhost/Chinese_Tour/Chinese_Tour/tour_send_mail.php?member_id=$member_id.'\"></td>";
+        $sql .=  " LIMIT $page_start,$per_page";
+        $result = mysqli_query($conn,$sql);
+        // $result = mysqli_query( $GLOBALS['conn'] , $sql );
+        // $result = page_query($GLOBALS['conn'],$sql,2);
+        echo "<table style='overflow-x:auto;' class='responsive-table table table-striped highlight centered'>";
+        echo "<thead>";
+        echo "<tr align='center'><th>Member ID</th><th>First Name</th><th>Middle Name</th><th>Last Name</th><th>Passport Id</th><th>Reservation Age</th><th>Avoid Food</th><th>Email</th>";
         echo "</tr>";
-      }
-      echo "</table>";
-    }
-  }
+        echo "</thead>";
+        while($show = mysqli_fetch_array($result)) {
+          $member_id = $show['tour_round_member_id'];
 
-  ?>
-  <ul class="pagination center">
-    <?php
-    if($prev_page){
-      echo "<li class='disabled'><a href ='tour_round_member.php?page=$prev_page&tour_round_id=$tour_round_id'><i class='material-icons'>chevron_left</i></a></li>";
-    }
-    for($i =1;$i<=$num_page;$i++){
-      if($i != $page){
-        echo "<li><a href='tour_round_member.php?page=$i&tour_round_id=$tour_round_id'>$i</a></li>";
-      }else if($i = $page){
-        echo "<li class='active'><a href='tour_round_member.php?page=$i&tour_round_id=$tour_round_id'>$i</a></li>";
+          echo "<tr>";
+          echo "<td align ='center'>" . $member_id.  "</td> ";
+          echo "<td align ='center'>" .$show['first_name'] .  "</td> ";
+          echo "<td align ='center'>" .$show['middle_name'] .  "</td> ";
+          echo "<td align ='center'>" .$show['last_name'] .  "</td> ";
+          echo "<td align ='center'>" .$show['passport_id'] .  "</td> ";
+          echo "<td align ='center'>" .$show['reservation_age'] .  "</td> ";
+          echo "<td align ='center'>" .$show['avoid_food'] .  "</td> ";
+          echo "<td align ='center'>";
+          if(isLoginAs(array('admin'))){
+            echo "<a href='tour_send_mail.php?member_id=$member_id'>";
+          }
+          echo $show['email'];
+          if(isLoginAs(array('admin'))){
+            echo "</a>";
+          }
+          echo "</td>";
+          // echo "<td align ='center'><input  type='button' value='Send Mail' onclick=\"window.location.href='http://localhost/Chinese_Tour/Chinese_Tour/tour_send_mail.php?member_id=$member_id.'\"></td>";
+          echo "</tr>";
+        }
+        echo "</table>";
       }
     }
-    if($page !=$num_page){
-      echo "<li class='waves-effect'><a href='tour_round_member.php?page=$next_page&tour_round_id=$tour_round_id'><i class='material-icons'>chevron_right</i></a></li>";
-    }
+
     ?>
+    <ul class="pagination center">
+      <?php
+      if($prev_page){
+        echo "<li class='disabled'><a href ='tour_round_member.php?page=$prev_page&tour_round_id=$tour_round_id'><i class='material-icons'>chevron_left</i></a></li>";
+      }
+      for($i =1;$i<=$num_page;$i++){
+        if($i != $page){
+          echo "<li><a href='tour_round_member.php?page=$i&tour_round_id=$tour_round_id'>$i</a></li>";
+        }else if($i = $page){
+          echo "<li class='active'><a href='tour_round_member.php?page=$i&tour_round_id=$tour_round_id'>$i</a></li>";
+        }
+      }
+      if($page !=$num_page){
+        echo "<li class='waves-effect'><a href='tour_round_member.php?page=$next_page&tour_round_id=$tour_round_id'><i class='material-icons'>chevron_right</i></a></li>";
+      }
+      ?>
 
-  </ul>
+    </ul>
 
-  <!-- /.row -->
+    <!-- /.row -->
 
-</div>
+  </div>
 </div>
 <?php
 include 'component/footer.php';
