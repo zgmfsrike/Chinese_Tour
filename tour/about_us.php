@@ -34,7 +34,7 @@ require 'module/language/lang_aboutus.php';
           <li><h5><?php echo $string_aboutus_contactus;?></h5></li>
           <li><?php echo $string_aboutus_wechat;?></li>
           <li><?php echo $string_aboutus_tel;?></li>
-          <li><a href="<?php echo $link_mail;?>"><?php echo $string_aboutus_email;?></a></li>
+          <li><?php echo $string_aboutus_email;?></li>
         </ul>
       </div>
       <div class="col s12 l4 show-on-small hide-on-med-and-up">
@@ -42,7 +42,7 @@ require 'module/language/lang_aboutus.php';
           <li><h5><?php echo $string_aboutus_contactus;?></h5></li>
           <li><?php echo $string_aboutus_wechat;?></li>
           <li><?php echo $string_aboutus_tel;?></li>
-          <li><a href="<?php echo $link_mail;?>"><?php echo $string_aboutus_email;?></a></li>
+          <li><?php echo $string_aboutus_email;?></li>
         </ul>
       </div>
     </div>
