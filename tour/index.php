@@ -72,7 +72,7 @@ include 'component/header.php';
 
 <!--News-->
   <!-- ก๊อปเกิน????-->
-  <div class="container row">
+  <div class="container row col s12">
   <h3><?php echo $string_index_news;?></h3>
   <?php
   $sql= "SELECT n.news_id,n.topic,n.short_description FROM news_".$_COOKIE['lang']." n ORDER BY n.news_id DESC limit 3";
