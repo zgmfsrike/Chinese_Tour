@@ -14,6 +14,7 @@
           <a href="admin_create_tour.php" class="collection-item black-text">Create Tour</a>
           <a href="admin_overall_tour.php" class="collection-item black-text">Overall Tour</a>
           <a href="admin_booking_status.php" class="collection-item black-text">Booking Status</a>
+          <a href="edit_feedback_form.php" class="collection-item black-text">Edit Feedback</a>
         </div>
       </div>
   </div>
