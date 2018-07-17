@@ -12,7 +12,7 @@
             <div class="col l4 offset-l2 s12">
                 <h5 class="white-text"><?php echo $string_footer_contactus; ?></h5>
                 <ul>
-                    <li><a class="modal-trigger white-text tooltipped" data-position="top" data-delay="50" data-tooltip="Click to Scan QR Code" href="#modal1"><?php echo $string_footer_wechat; ?></a></li>
+                    <li><a class="modal-trigger white-text tooltipped" data-position="top" data-delay="50" data-tooltip="Click to Scan QR Code" href="#modal1"><u><?php echo $string_footer_wechat; ?></u></a></li>
                     <li><?php echo $string_footer_tel; ?></li>
                     <li><a class="grey-text text-lighten-3" href="<?php echo $link_mail;?>"><?php echo $string_footer_email; ?></a></li>
                 </ul>
