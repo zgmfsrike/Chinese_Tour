@@ -122,11 +122,11 @@ $data = mysqli_fetch_array($result);
         <th>Start date</th>
         <th>End date</th>
         <th>Number of seat</th>
-        <th>Member</th>
         <th>Add-on (departure)</th>
         <th>Add-on (drop-off)</th>
         <th>Net Price</th>
         <th>Status</th>
+        <th>Member</th>
       </tr>
       <tr>
         <td><?php echo $data['reference_code'];?></td>
