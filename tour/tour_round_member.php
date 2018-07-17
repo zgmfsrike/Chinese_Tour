@@ -39,48 +39,96 @@ include 'component/header.php';
           <li class="right">
             <?php
             if(isLoginAs(array('admin'))){
-             ?>
-            <a href='tour_send_mail_all.php?tour_round_id=<?php echo $_GET['tour_round_id']; ?>'><input class='btn green' type='button' value='Send E-mail All'></a>
-            <!-- <input type="button" class="waves-effect waves-light btn amber" value="Send All" name ="send_all" onclick="window.location.href ='http://localhost:8080/ChineseTour/Chinese_Tour/ChineseTour_NewTheme%20copy/tour_send_mail_all.php?tour_round_id=<?php echo $tour_round_id; ?>'"> -->
-            <?php
-          } ?>
+              ?>
+              <a href='tour_send_mail_all.php?tour_round_id=<?php echo $_GET['tour_round_id']; ?>'><input class='btn green' type='button' value='Send E-mail All'></a>
+              <!-- <input type="button" class="waves-effect waves-light btn amber" value="Send All" name ="send_all" onclick="window.location.href ='http://localhost:8080/ChineseTour/Chinese_Tour/ChineseTour_NewTheme%20copy/tour_send_mail_all.php?tour_round_id=<?php echo $tour_round_id; ?>'"> -->
+              <?php
+            } ?>
           </li>
         </ul>
       </div>
     </div>
-
-
-
     <?php
     if(isset($_SESSION['login_id'])){
+
 
       //-----------------------------Search fucntion----------------------------------------------------//
       if($_GET['tour_round_id'] != ""){
 
-        $tour_round_id = $_GET['tour_round_id'];
 
         $sql= "SELECT trm.first_name,trm.middle_name,trm.last_name,trm.passport_id,trm.reservation_age,trm.avoid_food,trm.tour_round_member_id,trm.email
-        FROM tour_round_member trm INNER JOIN tour_booking_history tbh ON trm.reference_code = tbh.reference_code
-        WHERE tbh.tour_round_id = $tour_round_id ";
+        FROM tour_round_member trm INNER JOIN tour_round tr ON trm.tour_round_id = tr.tour_round_id INNER JOIN member m ON trm.id = m.id
+        WHERE trm.tour_round_id = $tour_round_id ";
+        // $result = mysqli_query( $GLOBALS['conn'] , $sql );
+        $result = page_query($GLOBALS['conn'],$sql,2);
+        echo "<table style='overflow-x:auto; border: 1px solid gray;' class='responsive-table table table-striped highlight centered'>";
+        echo "<thead>";
+        echo "<tr align='center'><th>Member ID</th><th>First Name</th><th>Middle Name</th><th>Last Name</th><th>Passport Id</th><th>Reservation Age</th><th>Avoid Food</th><th>Email</th>";
+        echo "</tr>";
+        echo "</thead>";
+        while($show = mysqli_fetch_array($result)) {
+          $member_id = $show['tour_round_member_id'];
 
-        if(isset($_GET['ref'])){
-          $sql .= " AND trm.reference_code = '{$_GET['ref']}'";
+          echo "<tr>";
+          echo "<td align ='center'>" . $member_id.  "</td> ";
+          echo "<td align ='center'>" .$show['first_name'] .  "</td> ";
+          echo "<td align ='center'>" .$show['middle_name'] .  "</td> ";
+          echo "<td align ='center'>" .$show['last_name'] .  "</td> ";
+          echo "<td align ='center'>" .$show['passport_id'] .  "</td> ";
+          echo "<td align ='center'>" .$show['reservation_age'] .  "</td> ";
+          echo "<td align ='center'>" .$show['avoid_food'] .  "</td> ";
+          echo "<td align ='center'><a href='tour_send_mail.php?member_id=$member_id'>" .$show['email'] .  "</a></td> ";
+          // echo "<td align ='center'><input  type='button' value='Send Mail' onclick=\"window.location.href='http://localhost/Chinese_Tour/Chinese_Tour/tour_send_mail.php?member_id=$member_id.'\"></td>";
+          echo "</tr>";
         }
-
-        // echo $sql;
-
-        $result = mysqli_query($conn, $sql);
-        $num_row =mysqli_num_rows($result);
-
-        $per_page = 10;
-        if(isset($_GET['page'])){
-          $page = $_GET['page'];
-        }else{
-          $page =1 ;
-        }
+        echo "</table>";
 
 
+      }
+    }
 
+    ?>
+    <ul class="center">
+      <?php
+      page_echo_pagenums(6,true,true);
+      ?>
+
+    </ul>
+
+
+    <!-- /.row -->
+
+
+  </div>
+  <?php
+  include 'component/footer.php';
+  ?>
+  <?php
+  if(isset($_SESSION['login_id'])){
+
+    //-----------------------------Search fucntion----------------------------------------------------//
+    if($_GET['tour_round_id'] != ""){
+
+      $tour_round_id = $_GET['tour_round_id'];
+
+      $sql= "SELECT trm.first_name,trm.middle_name,trm.last_name,trm.passport_id,trm.reservation_age,trm.avoid_food,trm.tour_round_member_id,trm.email
+      FROM tour_round_member trm INNER JOIN tour_booking_history tbh ON trm.reference_code = tbh.reference_code
+      WHERE tbh.tour_round_id = $tour_round_id ";
+
+      if(isset($_GET['ref'])){
+        $sql .= " AND trm.reference_code = '{$_GET['ref']}'";
+      }
+
+      // echo $sql;
+
+      $result = mysqli_query($conn, $sql);
+      $num_row =mysqli_num_rows($result);
+
+      $per_page = 10;
+      if(isset($_GET['page'])){
+        $page = $_GET['page'];
+      }else{
+        $page =1 ;
         $prev_page = $page-1;
         $next_page = $page+1;
 
@@ -114,7 +162,15 @@ include 'component/header.php';
           echo "<td align ='center'>" .$show['passport_id'] .  "</td> ";
           echo "<td align ='center'>" .$show['reservation_age'] .  "</td> ";
           echo "<td align ='center'>" .$show['avoid_food'] .  "</td> ";
-          echo "<td align ='center'><a href='tour_send_mail.php?member_id=$member_id'>" .$show['email'] .  "</a></td> ";
+          echo "<td align ='center'>";
+          if(isLoginAs(array('admin'))){
+            echo "<a href='tour_send_mail.php?member_id=$member_id'>";
+          }
+          echo $show['email'];
+          if(isLoginAs(array('admin'))){
+            echo "</a>";
+          }
+          echo "</td>";
           // echo "<td align ='center'><input  type='button' value='Send Mail' onclick=\"window.location.href='http://localhost/Chinese_Tour/Chinese_Tour/tour_send_mail.php?member_id=$member_id.'\"></td>";
           echo "</tr>";
         }
@@ -145,7 +201,6 @@ include 'component/header.php';
     <!-- /.row -->
 
   </div>
-</div>
 </div>
 <?php
 include 'component/footer.php';
