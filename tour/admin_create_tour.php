@@ -231,8 +231,8 @@ function initDate(index){
         <div class="col s12 l6">
           <!-- price_en -->
           <div class="input-field" id="price" name='price'>
-            <input placeholder="Price sale" required name='price_en' type='number' min="1"/>
-            <label for="price">Price sale</label>
+            <input placeholder="Price sale (Thai Baht)" required name='price_en' type='number' min="1"/>
+            <label for="price">Price sale (Thai Baht)</label>
           </div>
           <!--  Max # of customer  -->
           <div class="input-field" id="max" name="max">
