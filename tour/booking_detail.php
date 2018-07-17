@@ -122,21 +122,27 @@ $data = mysqli_fetch_array($result);
         <th>Start date</th>
         <th>End date</th>
         <th>Number of seat</th>
-        <th>Member</th>
-        <th>Add-on</th>
+        <th>Add-on (departure)</th>
+        <th>Add-on (drop-off)</th>
         <th>Net Price</th>
         <th>Status</th>
+        <th>Member</th>
       </tr>
       <tr>
         <td><?php echo $data['reference_code'];?></td>
-        <td><?php echo $data['reference_code'];?></td>
-        <td><?php echo $data['reference_code'];?></td>
-        <td><?php echo $data['reference_code'];?></td>
-        <td><?php echo $data['reference_code'];?></td>
-        <td><?php echo $data['reference_code'];?></td>
-        <td><?php echo $data['reference_code'];?></td>
-        <td><?php echo $data['reference_code'];?></td>
-        <td><?php echo $data['reference_code'];?></td>
+        <td><?php echo $data['tour_description'];?></td>
+        <td><?php echo $data['start_date_time'];?></td>
+        <td><?php echo $data['end_date_time'];?></td>
+        <td><?php echo $data['member_count'];?></td>
+        <td><?php echo $data['departure_location'] == "" ? "-" : $data['departure_location'];?></td>
+        <td><?php echo $data['dropoff_location'] == "" ? "-" : $data['dropoff_location'];?></td>
+        <td><?php echo $data['net_price'];?></td>
+        <td><?php echo $data['status'];?></td>
+        <td>
+          <a href="tour_round_member.php?tour_round_id=<?php echo $data['tour_round_id'];?>&ref=<?php echo $data['reference_code'];?>">
+          <?php echo "View members";?>
+        </a>
+      </td>
       </tr>
     </tbody>
   </table>
@@ -163,7 +169,7 @@ $data = mysqli_fetch_array($result);
   Role: member
   Detail: upload booking payment file
   */
-  if(isLoginAs(array('member'))){
+  if(isLoginAs(array('member')) && ( $data['status_code'] == 1 || $data['status_code'] == 2 )){
     ?>
     <form action="<?php echo $link_upload; ?>" method="post" enctype="multipart/form-data">
       <div class="container col s12">
