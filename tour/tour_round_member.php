@@ -106,9 +106,9 @@ include 'component/header.php';
 
         echo "<tr>";
         echo "<td align ='center'>" . $member_id.  "</td> ";
-        echo "<td align ='center'>" .$show['first_name'] .  "</td> ";
-        echo "<td align ='center'>" .$show['middle_name'] .  "</td> ";
-        echo "<td align ='center'>" .$show['last_name'] .  "</td> ";
+        echo "<td align ='left'>" .$show['first_name'] .  "</td> ";
+        echo "<td align ='left'>" .$show['middle_name'] .  "</td> ";
+        echo "<td align ='left'>" .$show['last_name'] .  "</td> ";
         echo "<td align ='center'>" .$show['passport_id'] .  "</td> ";
         echo "<td align ='center'>" .$show['reservation_age'] .  "</td> ";
         echo "<td align ='center'>" .$show['avoid_food'] .  "</td> ";

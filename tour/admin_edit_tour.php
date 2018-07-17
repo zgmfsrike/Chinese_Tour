@@ -257,8 +257,8 @@ function initDate(index){
           <div>
             <!--  Price sale  -->
             <div class="input-field" id="price" name='price'>
-              <input placeholder="Price sale" required name='price_en' type='number' min="1" value="<?php echo $price_en; ?>"/>
-              <label for="price">Price sale</label>
+              <input placeholder="Price sale (Thai Baht)" required name='price_en' type='number' min="1" value="<?php echo $price_en; ?>"/>
+              <label for="price">Price sale (Thai Baht)</label>
             </div>
             <!--  Max # of customer  -->
             <div class="input-field" id="max" name="max">
