@@ -6,7 +6,7 @@
           <p class="collection-item active amber">Index Management</p>
           <a href="admin_change_banners.php" class="collection-item black-text">Change Banners</a>
           <a href="admin_create_news.php" class="collection-item black-text">Create News</a>
-          <a href="admin_edit_announce.php" class="collection-item black-text">Edit Announcesment</a>
+          <a href="admin_edit_announce.php" class="collection-item black-text">Edit Announcement</a>
           <a href="admin_edit_about_us.php" class="collection-item black-text">Edit About Us</a>
 
           <p class="collection-item active amber">Tour Management</p>
