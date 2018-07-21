@@ -15,6 +15,7 @@ if(isset($_SESSION['login_id'])){
     // echo "hello stage 1 <br />";
     if(!isset($_FILES['image']) || $_FILES['image']['error'] == UPLOAD_ERR_NO_FILE){
       echo "Error Upload File";
+      header("location: message.php?msg=error");
     }else{
       $ext = pathinfo(basename($_FILES['image']['name'] ),PATHINFO_EXTENSION);
       $file_type = $_FILES['image']['type'];
