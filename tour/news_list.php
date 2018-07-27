@@ -75,44 +75,45 @@ $link_news_list = "news_list.php";
           $show_img = mysqli_fetch_array($result_img);
           $img_name = $show_img['news_image'];
           $img_file = $img_path.$img_name;
-        ?>
-        <div class='row collection hide-on-med-and-down'>
-        <div class='row'>
-        <div class='col s12 l4'>
-        <img class='materialboxed' width='400' src='<?php echo $img_file; ?>'>
-        </div>
-        <div class='col s12 l4'>
-        <br/>
-        <h4><a href="<?php echo $link_news;?>"><?php echo $news_topic;?></a></h4>
-        <h5><?php echo $news_description; ?></h5>
-        <h6>Created Date : <?php echo $news_created; ?></h6>
-        </div>
-        <div class='col s12 l3 right-align'>
-        <br/><br/>
-        <a href="<?php echo $link_news; ?>"><button type='button' class='btn ' name='button'>Read More</button></a>
-        </div>
-        </div>
-        </div>
+          ?>
+          <div class=' row collection hide-on-med-and-down '>
+            <div class='row'>
+              <div class='col s12 l4 ' >
+                <img  style="padding:10px" class='materialboxed' width='80%' src='<?php echo $img_file; ?>'>
+              </div>
+              <div class='col s12 l4 '>
+                <br/>
 
-        <div class='row collection show-on-medium-and-down hide-on-large-only'>
-        <div class='row center'>
-        <div class='col s12 l4'>
-        <img class='materialboxed' width='400' src='<?php echo $img_file; ?>'>
-        </div>
-        <div class='col s12 l4'>
-        <br/>
-        <h4><a href="<?php echo $link_news;?>"><?php echo $news_topic;?></a></h4>
-        <h5><?php echo $news_description; ?></h5>
-        <h6>Created Date : <?php echo $news_created; ?></h6>
-        </div>
-        <div class='col s12 l3 right-align'>
-        <br/><br/>
-        <a href="<?php echo $link_news; ?>"><button type='button' class='btn ' name='button'>Read More</button></a>
-        </div>
-        </div>
-        </div>
+                <h4 style='white-space: nowrap;width: 17em;overflow: hidden;text-overflow: ellipsis;'><a href="<?php echo $link_news;?>"><?php echo $news_topic;?></a></h4>
+                <h5 style='white-space: nowrap;width: 17em;overflow: hidden;text-overflow: ellipsis;'><?php echo $news_description; ?></h5>
+                <h6>Created Date : <?php echo $news_created; ?></h6>
+              </div>
+            </div>
+              <div class='row right-align'>
+                <a href="<?php echo $link_news; ?>"><button style="margin-right:50px" type='button' class='btn ' name='button'>Read More</button></a>
+              </div>
+          </div>
 
-        <?php
+          <div class='row collection show-on-medium-and-down hide-on-large-only'>
+            <div class='row center'>
+              <div class='col s12 l4 '>
+                <img  style="padding:10px" class='materialboxed section' width='80%' src='<?php echo $img_file; ?>'>
+              </div>
+              <div class='col s12 l4 '>
+                <br/>
+
+                <h4 style='white-space: nowrap;overflow: hidden;text-overflow: ellipsis;'><a href="<?php echo $link_news;?>"><?php echo $news_topic;?></a></h4>
+                <h5 style='white-space: nowrap;overflow: hidden;text-overflow: ellipsis;'><?php echo $news_description; ?></h5>
+                <h6>Created Date : <?php echo $news_created; ?></h6>
+              </div>
+                </div>
+              <div class='row right-align'>
+                <a href="<?php echo $link_news; ?>"><button style="margin:20px" type='button' class='btn ' name='button'>Read More</button></a>
+              </div>
+
+          </div>
+
+          <?php
         }
 
 
