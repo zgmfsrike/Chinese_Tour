@@ -54,6 +54,8 @@ if(isset($_POST['book'])){
       $result_reserve = mysqli_query($conn,$sql_add_reserve);
 
     }
+    $sql_add_book_session = "INSERT INTO `booking_session`(`time`, `reference_code`) VALUES (NOW(),'$reference_code')";
+    $result_add_book_session = mysqli_query($conn, $sql_add_book_session);
     header("location: tripmember.php");
   }
 
