@@ -44,6 +44,16 @@ function register(){
   $city       = $_POST["city"];
   $province   = $_POST["province"];
   $zipcode    = $_POST["zipcode"];
+  //escape string
+  $username = addslashes($username);
+  $password = addslashes($password);
+  $firstName = addslashes($firstName);
+  $middleName = addslashes($middleName);
+  $lastName =  addslashes($lastName);
+  $address = addslashes($address);
+  $email = addslashes($email);
+  $city = addslashes($city);
+  $province = addslashes($province);
 
   $countrycode = $_POST["countrycode"];
 
