@@ -84,7 +84,7 @@ $time = time();
       <div class="col s12">
         <div class="card">
           <div class="card-content black-text">
-            <span class="card-title" style='white-space: nowrap;width: 17em;overflow: hidden;text-overflow: ellipsis;' id="newsTopic"><?php echo $news_topic; ?></span>
+            <span class="card-title" style='white-space: nowrap;width: 100%;overflow: hidden;text-overflow: ellipsis;' id="newsTopic"><?php echo $news_topic; ?></span>
             <span style="width:100%; word-wrap:break-word; display:inline-block;">
             <p style="white-space: pre-wrap;"><?php echo $news_content; ?> </p>
             </span>
