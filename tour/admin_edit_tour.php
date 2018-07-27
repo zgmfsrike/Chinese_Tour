@@ -225,7 +225,7 @@ function initDate(index){
             <fieldset>
               <legend>Tour Round</legend>
               <?php
-              $sql = "SELECT * FROM `tour_round` WHERE tour_id = $id";
+              $sql = "SELECT * FROM `tour_round` WHERE tour_id = $id AND start_date_time > CURDATE()";
               $result = mysqli_query($conn, $sql);
               if(mysqli_num_rows($result) > 0){
                 while($row = mysqli_fetch_array($result)){

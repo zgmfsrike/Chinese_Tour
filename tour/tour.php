@@ -266,7 +266,7 @@ if(isset($_GET['id'])){
                 <select class="browser-default" name="tour_round" required>
                   <option value="">Please select</option>
                   <?php
-                  $sql = "SELECT * FROM `tour_round` WHERE tour_id = $id";
+                  $sql = "SELECT * FROM `tour_round` WHERE tour_id = $id AND start_date_time > CURDATE()";
                   $result = mysqli_query($conn, $sql);
                   if(mysqli_num_rows($result) > 0){
                     while($row = mysqli_fetch_array($result)){

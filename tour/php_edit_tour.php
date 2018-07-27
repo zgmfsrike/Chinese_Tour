@@ -408,7 +408,7 @@ if(isset($_POST['submit']) and isset($_POST['id'])){
     insert เพิ่ม
     */
 
-    $sql = "SELECT tour_round_id FROM tour_round WHERE tour_id = $id";
+    $sql = "SELECT tour_round_id FROM tour_round WHERE tour_id = $id AND start_date_time > CURDATE()";
     $result = mysqli_query( $GLOBALS['conn'] , $sql );
     $db_count = mysqli_num_rows($result);
 
@@ -416,7 +416,7 @@ if(isset($_POST['submit']) and isset($_POST['id'])){
       $start = $_POST['start_date'][$i];
       $end = $_POST['end_date'][$i];
 
-      $sql = "UPDATE `tour_round` JOIN (SELECT tour_round_id FROM tour_round WHERE tour_id = $id ORDER BY tour_round_id LIMIT $i,1) tr ";
+      $sql = "UPDATE `tour_round` JOIN (SELECT tour_round_id FROM tour_round WHERE tour_id = $id AND start_date_time > CURDATE() ORDER BY tour_round_id LIMIT $i,1) tr ";
       $sql .= "ON tour_round.tour_round_id = tr.tour_round_id SET `start_date_time`='$start', `end_date_time` = '$end'";
 
       // echo "<br><br>----------------------------------------------------------------------------------------<br>";
