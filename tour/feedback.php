@@ -29,12 +29,12 @@ include 'component/header.php';
         <table class="responsive-table centered">
           <thead>
             <tr>
-              <th class="center-align">Question</th>
-              <th class="center-align">Very Satisfied</th>
-              <th class="center-align">Satisfied</th>
-              <th class="center-align">Neutral</th>
-              <th class="center-align">Unsatisfied</th>
               <th class="center-align">Very Unsatisfied</th>
+              <th class="center-align">Unsatisfied</th>
+              <th class="center-align">Question</th>
+              <th class="center-align">Neutral</th>
+              <th class="center-align">Satisfied</th>
+              <th class="center-align">Very Satisfied</th>
             </tr>
           </thead>
 

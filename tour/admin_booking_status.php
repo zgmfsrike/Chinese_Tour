@@ -2,7 +2,7 @@
 include 'db_config.php';
 include 'module/session.php';
 if(!isLoginAs(array('admin'))){
-    header('Location: message.php?msg=unauthorized');
+  header('Location: message.php?msg=unauthorized');
 }
 
 require 'module/language/init.php';
@@ -43,10 +43,12 @@ if(isset($_GET['tour_round_id'])){
       <tbody>
         <?php
         $sql =  "SELECT distinct  T.tour_description, BH.reference_code , TR.start_date_time, TR.end_date_time, BH.status FROM tour_booking_history BH ";
-        $sql .= "LEFT JOIN tour_round TR ON BH.tour_round_id = TR.tour_round_id ";
-        $sql .= "LEFT JOIN tour_en T ON TR.tour_id = T.tour_id ";
-        $sql .= "WHERE BH.status=2 ";
+        $sql .= " LEFT JOIN tour_round TR ON BH.tour_round_id = TR.tour_round_id ";
+        $sql .= " LEFT JOIN tour_en T ON TR.tour_id = T.tour_id ";
+        $sql .= " WHERE BH.status=2 ";
+        $sql .= "AND TR.start_date_time >= CURDATE() ";
         $sql .= $query_tour_round_id;
+        $sql .= " ORDER BY date ASC";
         // echo $sql;
         $result = mysqli_query($conn,$sql);
 
@@ -83,10 +85,12 @@ if(isset($_GET['tour_round_id'])){
       <tbody>
         <?php
         $sql =  "SELECT distinct  T.tour_description, BH.reference_code , TR.start_date_time, TR.end_date_time, BH.status FROM tour_booking_history BH ";
-        $sql .= "LEFT JOIN tour_round TR ON BH.tour_round_id = TR.tour_round_id ";
-        $sql .= "LEFT JOIN tour_en T ON TR.tour_id = T.tour_id ";
-        $sql .= "WHERE BH.status=1 ";
+        $sql .= " LEFT JOIN tour_round TR ON BH.tour_round_id = TR.tour_round_id ";
+        $sql .= " LEFT JOIN tour_en T ON TR.tour_id = T.tour_id ";
+        $sql .= " WHERE BH.status=1 ";
+        $sql .= " AND TR.start_date_time >= CURDATE() ";
         $sql .= $query_tour_round_id;
+        $sql .= " ORDER BY date ASC";
         // echo $sql;
         $result = mysqli_query($conn,$sql);
 
@@ -126,6 +130,8 @@ if(isset($_GET['tour_round_id'])){
         $sql .= "LEFT JOIN tour_round TR ON BH.tour_round_id = TR.tour_round_id ";
         $sql .= "LEFT JOIN tour_en T ON TR.tour_id = T.tour_id ";
         $sql .= "WHERE BH.status=3 ";
+        $sql .= "AND TR.start_date_time >= CURDATE() ";
+        $sql .= "ORDER BY date ASC";
         $sql .= $query_tour_round_id;
         // echo $sql;
         $result = mysqli_query($conn,$sql);

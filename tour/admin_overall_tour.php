@@ -37,9 +37,9 @@ include 'component/header.php';
       </thead>
       <tbody>
         <?php
-        $sql =  "SELECT distinct * , DATE(TR.start_date_time) AS date FROM tour_round TR ";
+        $sql =  "SELECT distinct * , TR.start_date_time AS date FROM tour_round TR ";
         $sql .= "JOIN tour_en T ON T.tour_id = TR.tour_id ";
-        // $sql .= "WHERE TR.start_date_time >= CURDATE() ";
+        $sql .= "WHERE TR.start_date_time >= CURDATE() ";
         $sql .= "ORDER BY date ASC";
         // echo $sql. "<br>";
         $result = mysqli_query($conn,$sql);
