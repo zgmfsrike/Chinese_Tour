@@ -16,51 +16,54 @@ include 'component/header.php';
 <body>
   <div class="container row">
     <h3><b><?php echo $string_business_title;?></b></h3>
-<ul class="collapsible">
-  <li>
-    <div class="collapsible-header tooltipped" data-position="left" data-delay="50" data-tooltip="Click Me!"><u><?php echo $string_business_type1;?></u></div>
-    <div class="collapsible-body">
-      <span>
-        <embed src="<?php echo $pdf_path; ?>/<?php echo $_COOKIE['lang'];?>/type_1.pdf" type="application/pdf"   height="800px" width="100%"/>
-      </span>
-    </div>
-  </li>
-  <li>
-    <div class="collapsible-header tooltipped" data-position="left" data-delay="50" data-tooltip="Click Me!"><u><?php echo $string_business_type2;?></u></div>
-    <div class="collapsible-body">
-      <span>
-        <embed src="<?php echo $pdf_path; ?>/<?php echo $_COOKIE['lang'];?>/type_2.pdf" type="application/pdf"   height="800px" width="100%"/>
-      </span>
-    </div>
-  </li>
-  <li>
-    <div class="collapsible-header tooltipped" data-position="left" data-delay="50" data-tooltip="Click Me!"> <u><?php echo $string_business_type3;?></u> </div>
-    <div class="collapsible-body">
-      <span>
-        <embed src="<?php echo $pdf_path; ?>/<?php echo $_COOKIE['lang'];?>/type_3.pdf" type="application/pdf"   height="800px" width="100%"/>
-      </span>
-    </div>
-  </li>
-</ul>
-</div>
+    <ul class="collapsible">
+      <li>
+        <div class="collapsible-header tooltipped" data-position="left" data-delay="50" data-tooltip="Click Me!"><u><?php echo $string_business_type1;?></u></div>
+        <div class="collapsible-body">
+          <span>
+            <embed src="<?php echo $pdf_path; ?>/<?php echo $_COOKIE['lang'];?>/type_1.pdf" type="application/pdf" height="800px" width="100%"/>
+              <a href="<?php echo $pdf_path; ?>/<?php echo $_COOKIE['lang'];?>/type_1.pdf">download</a>
+            </span>
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header tooltipped" data-position="left" data-delay="50" data-tooltip="Click Me!"><u><?php echo $string_business_type2;?></u></div>
+          <div class="collapsible-body">
+            <span>
+              <embed src="<?php echo $pdf_path; ?>/<?php echo $_COOKIE['lang'];?>/type_2.pdf" type="application/pdf" height="800px" width="100%"/>
+                <a href="<?php echo $pdf_path; ?>/<?php echo $_COOKIE['lang'];?>/type_2.pdf">download</a>
+              </span>
+            </div>
+          </li>
+          <li>
+            <div class="collapsible-header tooltipped" data-position="left" data-delay="50" data-tooltip="Click Me!"> <u><?php echo $string_business_type3;?></u> </div>
+            <div class="collapsible-body">
+              <span>
+                <embed src="<?php echo $pdf_path; ?>/<?php echo $_COOKIE['lang'];?>/type_3.pdf" type="application/pdf" height="800px" width="100%"/>
+                  <a href="<?php echo $pdf_path; ?>/<?php echo $_COOKIE['lang'];?>/type_3.pdf">download</a>
+                </span>
+              </div>
+            </li>
+          </ul>
+        </div>
 
 
-<?php
-include 'component/footer.php';
-?>
+        <?php
+        include 'component/footer.php';
+        ?>
 
-</body>
+      </body>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.collapsible');
-    var instances = M.Collapsible.init(elems, options);
-  });
+      <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.collapsible');
+        var instances = M.Collapsible.init(elems, options);
+      });
 
-  // Or with jQuery
+      // Or with jQuery
 
-  $(document).ready(function(){
-    $('.collapsible').collapsible();
-  });
-</script>
-</html>
+      $(document).ready(function(){
+        $('.collapsible').collapsible();
+      });
+      </script>
+      </html>

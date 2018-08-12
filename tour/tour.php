@@ -318,7 +318,7 @@ if(isset($_GET['id'])){
               $file_name = $row['file_name'];
               if ($file_name != '') {
                 ?>
-                <embed src="pdf/tours_schedule/<?php echo $file_name; ?>" type="application/pdf"   height="800px" width="100%"><br>
+                <embed src="pdf/tours_schedule/<?php echo $file_name; ?>" type="application/pdf"   height="800px" width="100%"/><br>
                   <a href="pdf/tours_schedule/<?php echo $file_name; ?>">download</a>
                   <?php
                 }
