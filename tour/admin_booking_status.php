@@ -6,7 +6,6 @@ if(!isLoginAs(array('admin'))){
 }
 
 require 'module/language/init.php';
-// require 'module/language/lang_profile.php';
 ?>
 
 <!DOCTYPE html>
@@ -48,23 +47,27 @@ if(isset($_GET['tour_round_id'])){
         $sql .= " WHERE BH.status=2 ";
         $sql .= "AND TR.start_date_time >= CURDATE() ";
         $sql .= $query_tour_round_id;
-        $sql .= " ORDER BY date ASC";
+        $sql .= " ORDER BY TR.start_date_time ASC";
         // echo $sql;
         $result = mysqli_query($conn,$sql);
 
-        while($data = mysqli_fetch_array($result)) {
-          ?>
-          <tr>
-            <td><?php echo $data['tour_description'];?></td>
-            <td><?php echo $data['reference_code'];?></td>
-            <td><?php echo $data['start_date_time'];?></td>
-            <td><?php echo $data['end_date_time'];?></td>
-            <td>
-              <a href="booking_detail.php?ref=<?php echo $data['reference_code'];?>"><b>Detail</b></a>
-            </td>
-          </tr>
-          <?php
+        $num_row =mysqli_num_rows($result);
+        if ($num_row > 0) {
+          while($data = mysqli_fetch_array($result)) {
+            ?>
+            <tr>
+              <td><?php echo $data['tour_description'];?></td>
+              <td><?php echo $data['reference_code'];?></td>
+              <td><?php echo $data['start_date_time'];?></td>
+              <td><?php echo $data['end_date_time'];?></td>
+              <td>
+                <a href="booking_detail.php?ref=<?php echo $data['reference_code'];?>"><b>Detail</b></a>
+              </td>
+            </tr>
+            <?php
+          }
         }
+
         ?>
       </tbody>
     </table>
@@ -90,22 +93,25 @@ if(isset($_GET['tour_round_id'])){
         $sql .= " WHERE BH.status=1 ";
         $sql .= " AND TR.start_date_time >= CURDATE() ";
         $sql .= $query_tour_round_id;
-        $sql .= " ORDER BY date ASC";
+        $sql .= " ORDER BY TR.start_date_time ASC";
         // echo $sql;
         $result = mysqli_query($conn,$sql);
 
-        while($data = mysqli_fetch_array($result)) {
-          ?>
-          <tr>
-            <td><?php echo $data['tour_description'];?></td>
-            <td><?php echo $data['reference_code'];?></td>
-            <td><?php echo $data['start_date_time'];?></td>
-            <td><?php echo $data['end_date_time'];?></td>
-            <td>
-              <a href="booking_detail.php?ref=<?php echo $data['reference_code'];?>"><b>Detail</b></a>
-            </td>
-          </tr>
-          <?php
+        $num_row =mysqli_num_rows($result);
+        if ($num_row > 0) {
+          while($data = mysqli_fetch_array($result)) {
+            ?>
+            <tr>
+              <td><?php echo $data['tour_description'];?></td>
+              <td><?php echo $data['reference_code'];?></td>
+              <td><?php echo $data['start_date_time'];?></td>
+              <td><?php echo $data['end_date_time'];?></td>
+              <td>
+                <a href="booking_detail.php?ref=<?php echo $data['reference_code'];?>"><b>Detail</b></a>
+              </td>
+            </tr>
+            <?php
+          }
         }
         ?>
       </tbody>
@@ -131,7 +137,7 @@ if(isset($_GET['tour_round_id'])){
         $sql .= "LEFT JOIN tour_en T ON TR.tour_id = T.tour_id ";
         $sql .= "WHERE BH.status=3 ";
         $sql .= "AND TR.start_date_time >= CURDATE() ";
-        $sql .= "ORDER BY date ASC";
+        $sql .= "ORDER BY TR.start_date_time ASC";
         $sql .= $query_tour_round_id;
         // echo $sql;
         $result = mysqli_query($conn,$sql);
