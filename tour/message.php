@@ -56,66 +56,16 @@ require 'module/language/init.php';
     require 'module/message/session.php';
     require 'module/message/authentication.php';
     require 'module/message/manage_account.php';
-
-    if($msg ==  'session_book_expired') $result = message('Session book tour expired','Please try again','search_tour.php','');
-
-    // manage_account.php
-
-    // AUTHENTICATION
-    if($msg == 'create_news_succ')
-    if(isset($_GET['id'])){
-      $result = message('Success!','News has been created ','news.php?news_id='.$_GET['id'],'back to news page');
-    }else{
-      $result = message('Request not found','','','');
-    }
-
-    if($msg == 'del_news_succ') $result = message('Success!','News has been deleted ','index.php','Go to home page');
-
-
-    if($msg == 'edit_news_succ')
-    if(isset($_GET['id'])){
-      $result = message('Success!','News has been updated.','news.php?news_id='.$_GET['id'],'back to news page');
-    }else {
-      $result = message('Request not found','','','');
-    }
-
-    if($msg == 'not_image') $result = message('Sorry!','Only jpg, gif, and png files are allowed. ','index.php','Go to home page');
-
-
-    if($msg == 'not_pdf') $result = message('Sorry!','Only pdf file are allowed. ','','Back');
-
-
-    //Index manage
-    if($msg == 'uploadSucc') $result = message('Success!',' The file has been uploaded.','index.php','Go to home page');
-
-    if($msg == 'uploadNotSucc') $result = message('Sorry, your file was not uploaded.','Please check neither your file is too large, nor your file type is wrong (Only JPG, JPEG, PNG & GIF files are allowed).','index.php','Go to home page');
-
-
-    // TOUR
-    if($msg == 'create_tour_succ')
-    if(isset($_GET['id'])){
-      $result = message('Success!','Create tour successfully','tour.php?id='.$_GET['id'],'Back to tour page');
-    }else{
-      $result = message('Request not found','','','');
-    }
-
-    if($msg == 'delete_tour_succ') $result = message('Success!','Deleting tour successfully','search_all_tour.php','Go to list tour page');
-
-    if($msg == 'edit_tour_succ')
-    if(isset($_GET['id'])){
-      $result = message('Success!','Editing tour successfully','tour.php?id='.$_GET['id'],'Back to tour page');
-    }else{
-      $result = message('Request not found','','','');
-    }
-
-    if($msg == 'tour_not_found')$result = message('Sorry!','Tour not found.','index.php','Go to home page');
-
+    require 'module/message/tour.php';
+    require 'module/message/feedback.php';
+    require 'module/message/book_tour.php';
+    require 'module/message/news.php';
+    require 'module/message/file_upload.php';
 
     // request
     if($msg == 'unknow_request') $result = message('Unknow request','Something went wrong, please try again.','','');
 
     if($msg == 'error') $result = message('Something went wrong','Please try again.','','');
-
 
     // Announce
     if($msg == 'success_update_announce') $result = message('Complete','Update announce complete','index.php','Go to home page');
@@ -123,24 +73,13 @@ require 'module/language/init.php';
     // under construction
     if($msg == 'under_construction') $result = message('This page is under construction','Sorry for inconvenient','index.php','Go to home page');
 
-    if($msg == 'book_tour_succ') $result =  message('Success!','Send e-mail to member complete','booking_history.php','Go to home book status page');
-
-    // feedback
-    if($msg == 'edit_feedback_question_complete') $result =  message('Success!','Edit feedback form successfully.','','');
-    if($msg == 'feedback_send_succ') $result =  message('Success!','Feedback has already send.','index.php','');
-    if($msg == 'feedback_send_fail') $result =  message('Sorry!','Something went wrong, please try again.','','');
-    if($msg == 'feedback_succ') $result =  message('Thank You!','Your Form has been successfully submitted!.','index.php','');
-    if($msg == 'edit_comment_success') $result =  message('Success!','Edit comment successfully','','');
-    if($msg == 'error_booking') $result =  message('Something went wrong','Please try again.','index.php','');
-
-
-
-
-    // default
+    // default - if the message is not match with all of above
     if(!isset($result)){
       message('Request not found','','','');
     }
+
   }else{
+    // if no 'msg'
     message('Request not found.','','','');
   }
   ?>
