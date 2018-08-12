@@ -23,9 +23,6 @@ $footer = "footer_en-cn.png";
 //     break;
 // }
 
-
-
-
 $sql ="SELECT tr.tour_round_id FROM tour_round tr where tr.end_date_time ='$current_date'";
 $result_t= mysqli_query($conn, $sql);
 if($result_t){
