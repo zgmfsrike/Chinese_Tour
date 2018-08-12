@@ -6,7 +6,7 @@ if(!isLoginAs(array('admin','member'))){
 }
 
 require 'module/language/init.php';
-// require 'module/language/lang_profile.php';
+require 'module/language/lang_booking_history.php';
 
 if(!isset($_SESSION['login_id'])){
   header("location: message.php");
@@ -17,7 +17,7 @@ if(!isset($_SESSION['login_id'])){
 <html>
 <?php
 include 'php_profile_func.php';
-$title = "Booking history";
+$title = $string_booking_history_title;
 
 include 'component/header.php';
 
@@ -40,16 +40,16 @@ if(isLoginAs(array('member'))){
   <!-- body -->
   <div class="container">
     <div class="section"></div>
-    <h4><b>Booking History</b></h4>
+    <h4><b><?php echo $string_booking_history_title ?></b></h4>
     <table class="responsive-table centered" style="border: 1px solid gray;border-radius: 8px;">
       <thead>
         <tr>
-          <th class="center-align">Ref. code</th>
-          <th class="center-align">Tour description</th>
-          <th class="center-align">Start</th>
-          <th class="center-align">End</th>
-          <th class="center-align">Status</th>
-          <th class="center-align">Details</th>
+          <th class="center-align"><?php echo $string_booking_history_ref ?></th>
+          <th class="center-align"><?php echo $string_booking_history_description ?></th>
+          <th class="center-align"><?php echo $string_booking_history_start ?></th>
+          <th class="center-align"><?php echo $string_booking_history_end ?></th>
+          <th class="center-align"><?php echo $string_booking_history_status ?></th>
+          <th class="center-align"><?php echo $string_booking_history_details ?></th>
         </tr>
       </thead>
       <tbody>
@@ -100,7 +100,7 @@ if(isLoginAs(array('member'))){
             <td><?php echo $data['end_date_time'];?></td>
             <td><?php echo $data['status'];?></td>
             <td>
-              <a href="<?php echo $link_tour_detail . $ref_code;?>"><button>Detail</button></a> <br>
+              <a href="<?php echo $link_tour_detail . $ref_code;?>"><button><?php echo $string_booking_history_details ?></button></a> <br>
               <?php
               if(isLoginAs(array('member'))){
                 echo ($data['status_id'] == 1 || $data['status_id'] == 2)  ? "( <a href='{$link_tour_detail}{$ref_code}{$upload_tag}')>upload</a> )" : "" ;
