@@ -241,7 +241,6 @@ $data = mysqli_fetch_array($result);
       <textarea name="note"><?php echo $data['note'];?></textarea>
       <div class="section"></div>
       <div class="row col s12 center">
-        <a href="payment.php"><button name="cancel" type="button" value="Cancel"  class="btn red">Cancel</button></a>
         <button type="submit" name="save" class="btn green" value="Save">Save</button>
       </div>
       <div class="section"></div>
