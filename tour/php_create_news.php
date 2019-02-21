@@ -84,9 +84,6 @@ if(isset($_SESSION['login_id'])){
               //     // header("location: message.php?msg=not_image");
               //     // exit();
             }
-
-
-
             // $width = $img_info[0];
             // $height = $img_info[1];
             $width=1280;
@@ -103,41 +100,6 @@ if(isset($_SESSION['login_id'])){
             $tmp = imagecreatetruecolor($width, $height);
             imagecopyresampled($tmp, $src, 0, 0, 0, 0, $width, $height, $photoX, $photoY);
             $success= imagejpeg($tmp, $dst.".jpg");
-            // unlink($img_path.$_FILES['newsPicAddtopic'.$i]['name'] );
-
-
-
-
-
-            //
-            // $new_image_name = 'img_'.$last_id.'_'.$i.'.jpg';
-            // $img_path = "images/";
-            // $upload_path = $img_path.$new_image_name;
-            //
-            // $images = $_FILES['newsPicAddtopic'.$i]["tmp_name"];
-            // copy($_FILES['newsPicAddtopic'.$i]["tmp_name"],"images/".$_FILES['newsPicAddtopic'.$i]["name"]);
-            // $width=100; //*** Fix Width & Heigh (Autu caculate) ***//
-            // $size=GetimageSize($images);
-            // $height=round($width*$size[1]/$size[0]);
-            // if($ext=="jpeg" or "jpg"){
-            //     $images_orig = ImageCreateFromJPEG($images);
-            // }else if($ext =="png"){
-            //     $images_orig = imagecreatefrompng($images);
-            // }else if($ext =="gif"){
-            //     $images_orig = imagecreatefromgif($images);
-            // }
-            //
-            // $photoX = ImagesX($images_orig);
-            // $photoY = ImagesY($images_orig);
-            // $images_fin = ImageCreateTrueColor($width, $height);
-            // ImageCopyResampled($images_fin, $images_orig, 0, 0, 0, 0, $width+1, $height+1, $photoX, $photoY);
-            // $success= ImageJPEG($images_fin,"images/".  $new_image_name);
-            // ImageDestroy($images_orig);
-            // ImageDestroy($images_fin);
-
-
-
-            // $success = move_uploaded_file($_FILES['newsPicAddtopic'.$i]['tmp_name'] ,$upload_path);
             if($success == FALSE){
               echo "Cannot upload images";
               exit();

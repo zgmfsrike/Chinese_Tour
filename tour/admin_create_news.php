@@ -6,6 +6,7 @@ if(!isLoginAs(array('admin'))){
 }
 //--------------------Link to another page -----------------------------------
 $create_news_func = "php_create_news.php";
+$createNewsFunction = "mvc/controller/news-controller.php";
 $manage_page = "window.location.href='index.php'";
 
 require 'module/language/init.php';
@@ -25,7 +26,8 @@ include 'component/header.php';
       <br/><br/>
       <h3 class="center"><b>Create News</b></h3>
       <br/>
-      <form class="col s12" action=<?php echo $create_news_func; ?> method="post" enctype="multipart/form-data">
+      <form class="col s12" action=<?php echo $createNewsFunction; ?> method="post" enctype="multipart/form-data">
+        <input type="hidden" name="action" value="store">
 
         <div style="border-style: solid;border-width: 1px;">
           <div class="row">
