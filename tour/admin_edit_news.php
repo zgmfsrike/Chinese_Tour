@@ -79,6 +79,7 @@ if($_GET['news_id'] != ""){
 
   //--------------------Link to another page --------------
   $edit_news_func = "php_edit_news.php";
+  $newsController = "mvc/controller/news-controller.php";
 
 
 }
@@ -93,8 +94,9 @@ if($_GET['news_id'] != ""){
     <div class="row">
       <br/>
       <h3>Edit News</h3>
-      <form class="form-horizonta" action=<?php echo $edit_news_func; ?> method="post" enctype="multipart/form-data">
+      <form class="form-horizonta" action=<?php echo $newsController; ?> method="post" enctype="multipart/form-data">
           <!--English-->
+          <input type="hidden" name="action" value="update">
           <div style="border-style: solid;border-width: 1px;">
             <div class="row">
               <h5 class="center">English</h5>
