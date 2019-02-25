@@ -62,18 +62,17 @@ class NewsService
     }
   }
 
-  public function uploadImage($lastId,$index)
+  public function uploadImage($lastId,$index,$imgPath,$counter)
   {
     $imageFile = "newsPicAddtopic";
     if(!isset($_FILES[$imageFile.$index]) || $_FILES[$imageFile.$index]['error'] == UPLOAD_ERR_NO_FILE){
-      echo "error upload";
+      echo "error upload from upload not update";
     }else{
 
       $fileType = $_FILES[$imageFile.$index]['type'];
       $this->isImageFile($fileType);
-      $imgPath = "../../images/";
       $img = $_FILES[$imageFile.$index]['tmp_name'];
-      $newImageName = 'img_'.$lastId.'_'.$index;
+      $newImageName = 'img_'.$lastId.'_'.$counter;
       $dst = $imgPath.$newImageName ;
 
       if (($img_info = getimagesize($img)) === FALSE){
@@ -108,7 +107,7 @@ class NewsService
 
 
 
-  public function uploadPdf($lastId,$index)
+  public function uploadPdf($lastId,$index,$pdfPath)
   {
     $pdfArray = array();
 
@@ -122,7 +121,6 @@ class NewsService
       $ext = pathinfo(basename($_FILES[$pdfFile.$index]['name'] ),PATHINFO_EXTENSION);
       $oldPdfName = basename($_FILES[$pdfFile.$index]['name']);
       $newPdfName = 'pdf_'.$lastId.'_'.$index.'.'.$ext;
-      $pdfPath = "../../pdf/";
       $uploadPathPdf = $pdfPath.$newPdfName;
       $success = move_uploaded_file($_FILES[$pdfFile.$index]['tmp_name'] ,$uploadPathPdf);
       if($success == FALSE){
@@ -165,30 +163,26 @@ class NewsService
 
   }
 
-  public function updateExistNewsImage($newsImage,$index,$newsId)
+  public function updateExistNewsImage($newsImage,$index,$newsId,$counter)
   {
-    $sql = "UPDATE `news_image` SET `news_image`='$newsImage',img_index ='$index' WHERE img_index = '$index' AND news_id = '$newsId' ";
+    $sql = "UPDATE `news_image` SET `news_image`='$newsImage',img_index ='$counter' WHERE img_index = '$index' AND news_id = '$newsId' ";
     $result = mysqli_query( $GLOBALS['conn'] , $sql );
+    echo $sql;
+    return $result;
   }
 
-  public function updateImage($newsId,$index)
-  {
-    $imageFile = "newsPicAddtopic";
-    $fileType = $_FILES[$imageFile.$index]['type'];
-    $this->isImageFile($fileType);
-    $result = $this->isImageExist($newsId,$index);
-    if($result > 0){
-      echo "exist";
-      $newsImage =  $this->uploadImage($newsId,$index);
-      $this->updateExistNewsImage($newsImage,$index,$newsId);
-    }
 
 
-
-
-
-
-  }
+  // public function updateImage($newsId,$index,$imagePath)
+  // {
+  //   $imageFile = "newsPicAddtopic";
+  //   $fileType = $_FILES[$imageFile.$index]['type'];
+  //   $this->isImageFile($fileType);
+  //   $newsImage =  $this->uploadImage($newsId,$index,$imagePath);
+  //   $this->updateExistNewsImage($newsImage,$index,$newsId);
+  //
+  //
+  // }
 
   public function isImageExist($newsId,$index)
   {
@@ -196,6 +190,66 @@ class NewsService
     $result = mysqli_query($GLOBALS['conn'], $sql);
     return mysqli_num_rows($result);
   }
+
+  public function destroyFile($image,$imagePath,$newsId,$index)
+  {
+    $filePath =   $imagePath.$image;
+    if(file_exists($filePath)){
+      $isDestroy = unlink($filePath);
+      if($isDestroy){
+        echo $_POST['delete_'.$index];
+      }else{
+        echo $_POST['delete_'.$index];
+      }
+    }
+    return $isDestroy;
+
+
+  }
+
+
+  public function deleteInfoFromNewsImageTable($newsId,$index)
+  {
+    $sql = "DELETE FROM `news_image` WHERE news_id = '$newsId' AND img_index='$index' ";
+    $result = mysqli_query($GLOBALS['conn'],$sql);
+    return $result;
+
+  }
+
+  public function getInfoFromNewsImageTable($newsId,$index)
+  {
+    $sql= "SELECT * FROM `news_image` WHERE news_id = '$newsId' AND img_index ='$index'";
+    $result = mysqli_query($GLOBALS['conn'], $sql);
+    if(mysqli_num_rows($result) > 0){
+      $data = mysqli_fetch_array($result);
+      $image = $data['news_image'];
+      return $image;
+    }else{
+      return "";
+    }
+
+  }
+
+  public function renameFile($image,$imagePath,$newsId,$counter)
+  {
+    $isRenameFile = rename($imagePath.$image,$imagePath."img_".$newsId."_".$counter.".jpg");
+    if($isRenameFile){
+      echo "images/img_".$newsId."_".$counter.".jpg : File Renamed";
+
+    }else{
+      echo "images/img_".$newsId."_".$counter.".jpg : File cannot Renamed";
+    }
+    return $isRenameFile;
+  }
+
+  public function updateExistNewsImageByCounter($newsImage,$counter,$index,$newsId)
+  {
+    $newImageName = "img_".$newsId."_".$counter.".jpg";
+    $sql = "UPDATE `news_image` SET `news_image`='$newImageName',img_index ='$counter' WHERE img_index = '$index' AND news_id = '$newsId' ";
+    $result = mysqli_query( $GLOBALS['conn'] , $sql );
+  }
+
+
 
 
 
